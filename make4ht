@@ -1,0 +1,83 @@
+#!/usr/bin/env texlua
+
+function get_inserter(args,tb)
+	return function(key, value)
+		local v = args[key] and value or ""
+		table.insert(tb,v)
+	end
+end
+
+local make4ht = require("make4ht-lib")
+local lapp    = require("lapp-mk4")
+local mkutils = require("mkutils")
+local args    = lapp [[
+make4ht - build system for tex4ht
+Usage:
+make4ht [options] filename ["tex4ht.sty op." "tex4ht op." "t4ht op" "latex op"]
+  -c,--config (default xhtml) Custom config file
+	-d,--output-dir (default "")  Output directory
+	-l,--lua  Use lualatex for document compilation
+	-s,--shell-escape Enables running external programs from LaTeX
+	-u,--utf8  For output documents in utf8 encoding
+	-x,--xetex Use xelatex for document compilation
+	<filename> (string) Input file name
+]]
+
+local outdir = args["output-dir"] or ""
+local compiler = args.lua and "dvilualatex" or args.xetex and "xelatex --no-pdf" or "latex"
+local input = mkutils.remove_extension(args.filename)
+
+local latex_params = {}
+local insert_latex = get_inserter(args,latex_params)
+insert_latex("shell-escape","-shell-escape")
+table.insert(latex_params,"-jobname="..input)
+table.insert(latex_params,args[5] or "")
+--table.insert(latex_params,args["shell-escape"] and "-shell-escape")
+
+local t4sty = ""
+if args[2] and args[2] ~= "" then 
+	t4sty = args[2] 
+else
+  local utf = args.utf8 and ",charset=utf-8" or ""
+	t4sty = args.config..utf
+end
+
+local tex4ht = ""
+if args[3] and args[3] ~="" then
+	tex4ht = args[3]
+else
+	tex4ht = args.utf8 and " -cunihtf -utf8" or ""
+end
+
+local t4ht = args[4] or ""
+
+local parameters = {
+	htlatex = compiler
+	,input=input
+  ,latex_par=table.concat(latex_params," ")
+  --,config=ebookutils.remove_extension(args.config)
+	,tex4ht_sty_par=t4sty
+	,tex4ht_par=tex4ht
+	,t4ht_par=t4ht
+	--,t4ht_dir_format=t4ht_dir_format
+}
+
+print("Output dir: ",outdir)
+print("Compiler: ", compiler)
+print("Latex options: ", table.concat(latex_params," "))
+print("tex4ht.sty :",t4sty)
+print("tex4ht",tex4ht)
+
+local make = mkutils.load_config(parameters, input.. ".mk4")["Make"]
+make.params = parameters
+if make:length() < 1 then
+	make:htlatex()
+	make:htlatex()
+	make:htlatex()
+end
+make:tex4ht()
+make:t4ht()
+for k,v in pairs(make.params) do
+	print(k, type(v))
+end
+make:run()
