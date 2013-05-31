@@ -62,6 +62,7 @@ local parameters = {
 	--,t4ht_dir_format=t4ht_dir_format
 }
 
+if outdir then parameters.outdir = outdir end
 print("Output dir: ",outdir)
 print("Compiler: ", compiler)
 print("Latex options: ", table.concat(latex_params," "))
@@ -77,7 +78,11 @@ if make:length() < 1 then
 end
 make:tex4ht()
 make:t4ht()
-for k,v in pairs(make.params) do
-	print(k, type(v))
-end
+make:match("tmp$", function() return false,"tmp file" end)
+make:match(".*",function(filename,par)
+	local outdir = par["outdir"] and par["outdir"] .."/" or ""
+	local outfilename = outdir .. filename
+	mkutils.copy(filename,outfilename)
+	return true
+end)
 make:run()
