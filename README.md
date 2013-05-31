@@ -20,6 +20,49 @@ Other problem is with `t4ht` application. It reads file `filename.lg`, generated
 
 Image conversion is directed with the [env file](http://www.tug.org/applications/tex4ht/mn35.html#index35-73001), with really strange syntax based on whitespace and [os dependent](http://www.tug.org/applications/tex4ht/mn-unix.html#index27-69005). Build scripts should be able to take image conversion process and also to enable actions like conversion with xslt processor ot tidy on output files, based on file extensions.
 
+Idea is to use LUA buildfile, with name `filename + .mk4 extension` and specify there actions.
 
+Build file
+----------
 
-Idea is to use LUA file, with name `filename + .mk4 extension` where 
+Sample:
+
+    Make:htlatex()
+    Make:match("html$", "tidy -m -xml -utf8 -q -i ${filename}")
+
+This build file will run htlatex one time. You can add more commands like `Make:htlatex` with 
+
+    Make:add("name", "command", {default parameters})
+
+you can run then 
+
+    Make:name()
+
+`command` can be text template, or function:
+
+    Make:add("text", "hello, input file: ${input}")
+    Make:add("function", function(params) for k, v in pairs(params) do print(k..": "..v) end)
+
+Default parameters are:
+
+  - htlatex - used compiler
+  - input - input file
+  - latex_par - parameters to latex
+  - tex4ht_sty_par - parameters to tex4ht.sty
+  - tex4ht_par - parameters to tex4ht application
+  - t4ht_par - parameters to t4ht application
+  - outdir - output directory
+
+Other type of actions which can be specified in build file are
+functions which are running on the generated files:
+
+    Make:match("html$", "tidy -m -xml -utf8 -q -i ${filename}")
+
+This tests filenames with lua pattern matching and on matched items it run 
+command or function specified in second argument". Parameters are the same, as in previous section, except filename, which is generated output name.
+
+Future plans
+
+  - extend documentation
+  - add commands for image conversion
+
