@@ -61,7 +61,23 @@ functions which are running on the generated files:
 This tests filenames with lua pattern matching and on matched items it run 
 command or function specified in second argument". Parameters are the same, as in previous section, except filename, which is generated output name.
 
+Command line options
+--------------------
+
+    make4ht - build system for tex4ht
+    Usage:
+    make4ht [options] filename ["tex4ht.sty op." "tex4ht op." "t4ht op" "latex op"]
+    -c,--config (default xhtml) Custom config file
+    -d,--output-dir (default "")  Output directory
+    -l,--lua  Use lualatex for document compilation
+    -s,--shell-escape Enables running external programs from LaTeX
+    -u,--utf8  For output documents in utf8 encoding
+    -x,--xetex Use xelatex for document compilation
+    <filename> (string) Input file name
+
+
 Future plans
+------------
 
   - extend documentation
   - add commands for image conversion
