@@ -26,7 +26,11 @@ make4ht [options] filename ["tex4ht.sty op." "tex4ht op." "t4ht op" "latex op"]
 
 --local outdir = args["output-dir"] == "nil" and nil or args["output-dir"]
 local outdir = ""
-if  args["output-dir"] ~= "nil" then outdir =  args["output-dir"] end
+if  args["output-dir"] ~= "nil" then 
+	outdir =  args["output-dir"] 
+	outdir = outdir:gsub('\\','/')
+	outdir = outdir:gsub('/$','')
+end
 
 local compiler = args.lua and "dvilualatex" or args.xetex and "xelatex --no-pdf" or "latex"
 local input = mkutils.remove_extension(args.filename)
@@ -85,7 +89,7 @@ make:t4ht()
 make:match("tmp$", function() return false,"tmp file" end)
 make:match(".*",function(filename,par)
 	local outdir =  '' --par["outdir"] and par["outdir"] .."/" or ''
-	if par['outdir'] then outdir = par['outdir'] end
+	if par['outdir'] then outdir = par['outdir'] .. '/' end
 	print("outdir: "..outdir)
 	local outfilename = outdir .. filename
 	mkutils.copy(filename,outfilename)
