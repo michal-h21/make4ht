@@ -104,9 +104,11 @@ mkdirectories = function(dirs)
 	--local dirs = path:split("/")
 	--table.remove(dirs,#dirs) 
 	for _,dir in ipairs(dirs) do
-		local status = lfs.chdir(dir)
+		local status, msg = lfs.chdir(dir)
+		print("Chdir: ",dir,status,msg)
 		if not status then  
 			local status, msg = lfs.mkdir(dir)
+			print("Make: ",dir, status)
 			if not status then 
 				print("Path making error: "..msg)
 				break
