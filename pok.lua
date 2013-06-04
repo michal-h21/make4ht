@@ -3,7 +3,7 @@ local mkutils=require("mkutils")
 local dirs = {"","home","mint","pokus","ahoj"}
 print(table.concat(dirs,"/"))
 for _,d in pairs(dirs) do
-  local stat = lfs.chdir(d)
+	local stat = lfs.chdir(d)
 	if not stat then 
 		print ("Directory doesn't extsit: "..d)
 		--local  mkstat =lfs.mkdir(d)
@@ -40,21 +40,21 @@ function find_directories(dirs, pos)
 	if pos == 1 and dirs[pos] == "" then
 		path = "/" 
 	else
-    path = table.concat(dirs,"/", 1,pos)
+		path = table.concat(dirs,"/", 1,pos) .. "/"
 	end
 	if not lfs.chdir(path)  then -- recursion until we succesfully changed dir 
-	                             -- or there are no elements in the dir table
-		return find_directories(dirs,pos - 1)
-	elseif pos ~= #dirs then -- if we succesfully changed dir 
-		                       -- and we have dirs to create
-		local p = {}
-		for i = pos+1, #dirs do
-			table.insert(p, dirs[i])
-		end
-		return p
-	else  -- whole path exists
-		return {}
+	-- or there are no elements in the dir table
+	return find_directories(dirs,pos - 1)
+elseif pos ~= #dirs then -- if we succesfully changed dir 
+	-- and we have dirs to create
+	local p = {}
+	for i = pos+1, #dirs do
+		table.insert(p, dirs[i])
 	end
+	return p
+else  -- whole path exists
+	return {}
+end
 end
 
 function mkdirectories(dirs)
@@ -62,8 +62,8 @@ function mkdirectories(dirs)
 		return false, "mkdirectories: dirs is not table" 
 	end
 	for _,d in pairs(dirs) do
-    local stat,msg = lfs.mkdir(d)
-    if not stat then return false, "makedirectories error: "..msg end
+		local stat,msg = lfs.mkdir(d)
+		if not stat then return false, "makedirectories error: "..msg end
 		lfs.chdir(d)
 	end
 	return true
@@ -79,16 +79,18 @@ function test(dir,pos)
 	stat, msg = mkdirectories(stat)
 	if not stat then print(msg) end
 end
-
+--[[
 prepare_path("ahoj/svete")
 prepare_path("d:/ahoj/aaa/")
 prepare_path("/ss/ssss")
 prepare_path("~/sss/ahoj.sss")
 prepare_path("~/ahoj.sss")
-
-lfs.chdir(arg[0])
+--]]
+--lfs.chdir(arg[0])
 print("Adresar pred vytvarenim: " ..lfs.currentdir())
-test("ahoj/svete/aaaa.j")
+--test("ahoj/svete/aaaa.j")
 --test("~/ahoj/svete/aaa.kk")
-test("/sss/aaaa/aaq.aaa")
-test("~/Downloads/aaaaa.sss")
+--test("/sss/aaaa/aaq.aaa")
+--test("~/Downloads/aaaaa.sss")
+test("d:/pokus/ahoj/svete.txt")
+
