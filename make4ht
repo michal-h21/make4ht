@@ -39,7 +39,7 @@ local latex_params = {}
 local insert_latex = get_inserter(args,latex_params)
 insert_latex("shell-escape","-shell-escape")
 table.insert(latex_params,"-jobname="..input)
-table.insert(latex_params,args[5] or "")
+table.insert(latex_params,args[4] or "")
 --table.insert(latex_params,args["shell-escape"] and "-shell-escape")
 
 local t4sty = ""
