@@ -89,7 +89,7 @@ make:t4ht()
 make:match("tmp$", function() return false,"tmp file" end)
 make:match(".*",function(filename,par)
 	local outdir =  '' --par["outdir"] and par["outdir"] .."/" or ''
-	if par['outdir'] then outdir = par['outdir'] .. '/' end
+	if par['outdir'] ~= "" then outdir = par['outdir'] .. '/' end
 	print("outdir: "..outdir)
 	local outfilename = outdir .. filename
 	mkutils.copy(filename,outfilename)
