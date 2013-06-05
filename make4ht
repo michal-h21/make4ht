@@ -11,7 +11,8 @@ end
 local make4ht = require("make4ht-lib")
 local lapp    = require("lapp-mk4")
 local mkutils = require("mkutils")
-local args    = lapp [[
+local mkparams = require("mkparams")
+local args    =  [[
 make4ht - build system for tex4ht
 Usage:
 make4ht [options] filename ["tex4ht.sty op." "tex4ht op." "t4ht op" "latex op"]
@@ -24,6 +25,7 @@ make4ht [options] filename ["tex4ht.sty op." "tex4ht op." "t4ht op" "latex op"]
 	<filename> (string) Input file name
 ]]
 
+local args = mkparams.get_args()
 --local outdir = args["output-dir"] == "nil" and nil or args["output-dir"]
 local outdir = ""
 if  args["output-dir"] ~= "nil" then 
