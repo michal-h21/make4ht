@@ -36,7 +36,7 @@ end
 
 Make.match = function(self, pattern, command, params) 
 	local params = params or {}
-  self.matches[pattern] = {command = command, params = params}
+	table.insert(self.matches,{pattern = pattern, command = command, params = params})
 end
 
 Make.run_command = function(self,filename,s)
@@ -63,17 +63,18 @@ Make.file_matches = function(self, files)
 	local statuses = {}
 	-- First make params for all matchers
 	for k,v in pairs(self.matches) do
-		local v = self.matches[k]
+		--local v = self.matches[k]
 		local p = self.params or {}
-		for i,k in pairs(v.params) do
-			p[i] = k
+		for i,j in pairs(v.params) do
+			p[i] = j
 		end
 		self.matches[k].params = p
 	end
 	-- Loop over files, run command on matched
 	for _, file in pairs(files)do
 		statuses[file] = {}
-		for pattern, s in pairs(self.matches) do
+		for _, s in pairs(self.matches) do
+			local pattern= s.pattern
 			if file:match(pattern) then 
 				local status, msg = self:run_command(file,s)
 				msg = msg or "No message given"
