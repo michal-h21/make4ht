@@ -47,11 +47,12 @@ Default parameters are:
 
   - htlatex - used compiler
   - input - input file
-  - latex_par - parameters to latex
-  - tex4ht_sty_par - parameters to tex4ht.sty
-  - tex4ht_par - parameters to tex4ht application
-  - t4ht_par - parameters to t4ht application
+  - latex\_par - parameters to latex
+  - tex4ht\_sty\_par - parameters to tex4ht.sty
+  - tex4ht\_par - parameters to tex4ht application
+  - t4ht\_par - parameters to t4ht application
   - outdir - output directory
+
 
 Other type of actions which can be specified in build file are
 functions which are running on the generated files:
@@ -60,6 +61,20 @@ functions which are running on the generated files:
 
 This tests filenames with lua pattern matching and on matched items it run 
 command or function specified in second argument". Parameters are the same, as in previous section, except filename, which is generated output name.
+
+
+Instalation
+-----------
+
+Find your local texmf tree with command:
+
+    kpsewhich -var-value TEXMFHOME
+
+and go to directory `scripts/lua` 
+(you will need to create it, if it doesn't exist).
+In this directory, run:
+
+    git clone git://github.com/michal-h21/make4ht.git
 
 Command line options
 --------------------
@@ -74,6 +89,23 @@ Command line options
     -u,--utf8  For output documents in utf8 encoding
     -x,--xetex Use xelatex for document compilation
     <filename> (string) Input file name
+
+
+You can still use `make4ht` in same way as `htlatex`
+
+    make4ht filename "customcfg, charset=utf-8" " -cunihtf -utf8" " -dfoo"
+
+this is the same as:
+
+    make4ht -u -c customcfg -d foo filename
+
+Output directory doesn't have to exist, it will be created automaticaly. 
+Specified path can be relative to current directory, or absolute:
+
+    make4ht -d use/current/dir/ filename
+    make4ht -d ../gotoparrentdir filename
+    make4ht -d ~/gotohomedir filename
+    make4ht -d c:\documents\windowspathsareworkingtoo filename
 
 
 Future plans
