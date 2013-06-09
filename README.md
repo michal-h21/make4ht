@@ -95,6 +95,10 @@ You can still use `make4ht` in same way as `htlatex`
 
     make4ht filename "customcfg, charset=utf-8" " -cunihtf -utf8" " -dfoo"
 
+but note that this will not use `make4ht` routines for output dir making and copying. If you want to use them, change the line above to:
+
+    make4ht filename "customcfg, charset=utf-8" " -cunihtf -utf8"  -d foo
+
 this is the same as:
 
     make4ht -u -c customcfg -d foo filename
