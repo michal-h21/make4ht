@@ -12,17 +12,19 @@ local make4ht = require("make4ht-lib")
 local lapp    = require("lapp-mk4")
 local mkutils = require("mkutils")
 local mkparams = require("mkparams")
+-- args string is here just as sample, we dont pass it it to 
+-- mkparams.get_args() so default args string is used
 local args    =  [[
 make4ht - build system for tex4ht
 Usage:
 make4ht [options] filename ["tex4ht.sty op." "tex4ht op." "t4ht op" "latex op"]
-  -c,--config (default xhtml) Custom config file
-	-d,--output-dir (default nil)  Output directory
-	-l,--lua  Use lualatex for document compilation
-	-s,--shell-escape Enables running external programs from LaTeX
-	-u,--utf8  For output documents in utf8 encoding
-	-x,--xetex Use xelatex for document compilation
-	<filename> (string) Input file name
+-c,--config (default xhtml) Custom config file
+-d,--output-dir (default nil)  Output directory
+-l,--lua  Use lualatex for document compilation
+-s,--shell-escape Enables running external programs from LaTeX
+-u,--utf8  For output documents in utf8 encoding
+-x,--xetex Use xelatex for document compilation
+<filename> (string) Input file name
 ]]
 
 local args = mkparams.get_args()
@@ -64,8 +66,8 @@ local t4ht = args[3] or ""
 local parameters = {
 	htlatex = compiler
 	,input=input
-  ,latex_par=table.concat(latex_params," ")
-  --,config=ebookutils.remove_extension(args.config)
+	,latex_par=table.concat(latex_params," ")
+	--,config=ebookutils.remove_extension(args.config)
 	,tex4ht_sty_par=t4sty
 	,tex4ht_par=tex4ht
 	,t4ht_par=t4ht
