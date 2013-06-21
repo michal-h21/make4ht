@@ -19,7 +19,7 @@ ${progname} [options] filename ["tex4ht.sty op." "tex4ht op." "t4ht op" "latex o
 -x,--xetex Use xelatex for document compilation
 ]]
 	optiontext = optiontext .. parameters.postparams .."<filename> (string) Input file name\n" .. parameters.postfile 
-	print("--------------\n" .. optiontext .."--------------\n")
+	--print("--------------\n" .. optiontext .."--------------\n")
 	return lapp(optiontext % parameters)
 end
 m.get_args = get_args
