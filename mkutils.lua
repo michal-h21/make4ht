@@ -157,8 +157,14 @@ end
 -- Config loading
 local function run(untrusted_code, env)
 	if untrusted_code:byte(1) == 27 then return nil, "binary bytecode prohibited" end
-	local untrusted_function, message = loadstring(untrusted_code)
+	local untrusted_function = nil
+	if not loadstring then  
+		untrusted_function, message = load(untrusted_code, nil, "t",env)
+	else
+		untrusted_function, message = loadstring(untrusted_code)
+	end
 	if not untrusted_function then return nil, message end
+	if not setfenv then setfenv = function(a,b) return true end end
 	setfenv(untrusted_function, env)
 	return pcall(untrusted_function)
 end
@@ -192,7 +198,7 @@ env.Make   = make4ht.Make
 env.Make.params = env.settings
 env.Make:add("test","no takže ${tex4ht_sty_par} ${htlatex} ${input} ${config}")
 --env.Make:add("htlatex", "${htlatex} ${latex_par} '\\\makeatletter\\def\\HCode{\\futurelet\\HCode\\HChar}\\def\\HChar{\\ifx\"\\HCode\\def\\HCode\"##1\"{\\Link##1}\\expandafter\\HCode\\else\\expandafter\\Link\\fi}\\def\\Link#1.a.b.c.{\\g@addto@macro\\@documentclasshook{\\RequirePackage[#1,html]{tex4ht}\\let\\HCode\\documentstyle\\def\\documentstyle{\\let\\documentstyle\\HCode\\expandafter\\def\\csname tex4ht\\endcsname{#1,html}\\def\\HCode####1{\\documentstyle[tex4ht,}\\@ifnextchar[{\\HCode}{\\documentstyle[tex4ht]}}}\\makeatother\\HCode '${config}${tex4ht_sty_par}'.a.b.c.\\input ' ${input}")
-env.Make:add("htlatex", "${htlatex} ${latex_par} --jobname=${input} '\\makeatletter\\def\\HCode{\\futurelet\\HCode\\HChar}\\def\\HChar{\\ifx\"\\HCode\\def\\HCode\"##1\"{\\Link##1}\\expandafter\\HCode\\else\\expandafter\\Link\\fi}\\def\\Link#1.a.b.c.{\\g@addto@macro\\@documentclasshook{\\RequirePackage[#1,html]{tex4ht}${packages}}\\let\\HCode\\documentstyle\\def\\documentstyle{\\let\\documentstyle\\HCode\\expandafter\\def\\csname tex4ht\\endcsname{#1,html}\\def\\HCode####1{\\documentstyle[tex4ht,}\\@ifnextchar[{\\HCode}{\\documentstyle[tex4ht]}}}\\makeatother\\HCode '${tex4ht_sty_par}'.a.b.c.\\input ' ${input}",{packages=""})
+env.Make:add("htlatex", "${htlatex} ${latex_par} --jobname=${input} '\\makeatletter\\def\\HCode{\\futurelet\\HCode\\HChar}\\def\\HChar{\\ifx\"\\HCode\\def\\HCode\"##1\"{\\Link##1}\\expandafter\\HCode\\else\\expandafter\\Link\\fi}\\def\\Link#1.a.b.c.{\\g@addto@macro\\@documentclasshook{\\RequirePackage[#1,html]{tex4ht}${packages}}\\let\\HCode\\documentstyle\\def\\documentstyle{\\let\\documentstyle\\HCode\\expandafter\\def\\csname tex4ht\\endcsname{#1,html}\\def\\HCode####1{\\documentstyle[tex4ht,}\\@ifnextchar[{\\HCode}{\\documentstyle[tex4ht]}}}\\makeatother\\HCode '${tex4ht_sty_par}'.a.b.c.\\input ${input}",{packages=""})
 env.Make:add("tex4ht","tex4ht ${input} ${tex4ht_par}")
 env.Make:add("t4ht","t4ht ${input} ${t4ht_par}")
 
@@ -203,7 +209,9 @@ function load_config(settings, config_name)
 	local f = io.open(config_name,"r")
 	if not f then return env, "Cannot open config file" end
 	local code = f:read("*all")
-	assert(run(code,env))
+	local fn, msg = run(code,env)
+	if not fn then print(msg) end
+	assert(fn)
 	return env
 end
 
