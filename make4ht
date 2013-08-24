@@ -63,6 +63,8 @@ end
 
 local t4ht = args[3] or ""
 
+local mode = args.mode or "default"
+
 local parameters = {
 	htlatex = compiler
 	,input=input
@@ -71,6 +73,7 @@ local parameters = {
 	,tex4ht_sty_par=t4sty
 	,tex4ht_par=tex4ht
 	,t4ht_par=t4ht
+	,mode = mode
 	--,t4ht_dir_format=t4ht_dir_format
 }
 
@@ -84,9 +87,13 @@ print("tex4ht",tex4ht)
 local make = mkutils.load_config(parameters, input.. ".mk4")["Make"]
 make.params = parameters
 if make:length() < 1 then
-	make:htlatex()
-	make:htlatex()
-	make:htlatex()
+	if mode == "draft" then
+		make:htlatex()
+	else
+		make:htlatex()
+		make:htlatex()
+		make:htlatex()
+	end
 end
 make:tex4ht()
 make:t4ht()

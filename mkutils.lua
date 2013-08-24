@@ -215,6 +215,7 @@ env.Make:add("t4ht","t4ht ${input} ${t4ht_par}")
 function load_config(settings, config_name)
 	local settings = settings or main_settings
 	env.settings = settings
+	env.mode = settings.mode
 	local config_name = config_name or "config.lua"
 	local f = io.open(config_name,"r")
 	if not f then return env, "Cannot open config file" end

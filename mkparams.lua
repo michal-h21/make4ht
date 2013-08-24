@@ -14,6 +14,7 @@ ${progname} [options] filename ["tex4ht.sty op." "tex4ht op." "t4ht op" "latex o
 -c,--config (default xhtml) Custom config file
 -d,--output-dir (default nil)  Output directory
 -l,--lua  Use lualatex for document compilation
+-m,--mode (default default) Switch which can be used in the makefile 
 -s,--shell-escape Enables running external programs from LaTeX
 -u,--utf8  For output documents in utf8 encoding
 -x,--xetex Use xelatex for document compilation

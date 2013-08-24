@@ -62,6 +62,23 @@ functions which are running on the generated files:
 This tests filenames with lua pattern matching and on matched items it run 
 command or function specified in second argument". Parameters are the same, as in previous section, except filename, which is generated output name.
 
+## `mode` variable
+
+Variable `mode` contains contents of `-mode` command line option. 
+It can be used to run some commands conditionally. For example:
+
+     if mode == "draft" then
+       Make:htlatex{} 
+     else
+       Make:htlatex{}
+       Make:htlatex{}
+       Make:htlatex{}
+     end
+
+In this example (which is default configuration used by `make4ht`),
+LaTeX is called only once when `make4ht` is called with
+    
+    make4ht -m draft filename
 
 Instalation
 -----------
@@ -85,6 +102,7 @@ Command line options
     -c,--config (default xhtml) Custom config file
     -d,--output-dir (default "")  Output directory
     -l,--lua  Use lualatex for document compilation
+    -m,--mode (default default) Switch which can be used in the makefile
     -s,--shell-escape Enables running external programs from LaTeX
     -u,--utf8  For output documents in utf8 encoding
     -x,--xetex Use xelatex for document compilation
