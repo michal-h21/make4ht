@@ -62,7 +62,7 @@ functions which are running on the generated files:
 This tests filenames with lua pattern matching and on matched items it run 
 command or function specified in second argument". Parameters are the same, as in previous section, except filename, which is generated output name.
 
-## `mode` variable
+### `mode` variable
 
 Variable `mode` contains contents of `-mode` command line option. 
 It can be used to run some commands conditionally. For example:
