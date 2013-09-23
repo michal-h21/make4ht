@@ -59,6 +59,8 @@ if args[2] and args[2] ~="" then
 	tex4ht = args[2]
 else
 	tex4ht = args.utf8 and " -cunihtf -utf8" or ""
+        local xdv = args.xetex and " -.xdv" or ""
+        tex4ht = tex4ht .. xdv
 end
 
 local t4ht = args[3] or ""
@@ -96,7 +98,8 @@ if make:length() < 1 then
 	end
 end
 make:tex4ht()
-make:t4ht()
+local ext = args.xetex and "xdv" or "dvi"
+make:t4ht {ext = ext}
 make:match("tmp$", function() return false,"tmp file" end)
 make:match(".*",function(filename,par)
 	local outdir =  '' --par["outdir"] and par["outdir"] .."/" or ''
