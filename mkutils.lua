@@ -1,6 +1,6 @@
 module(...,package.seeall)
 
-local make4ht = require("make4ht")
+local make4ht = require("make4ht-lib")
 --template engine
 function interp(s, tab)
 	local tab = tab or {}

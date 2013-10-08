@@ -1,6 +1,6 @@
 -- Simple make system for tex4ht
 --kpse.set_program_name("luatex")
-module("make4ht",package.seeall)
+module(...,package.seeall)
 
 Make = {}
 --Make.params = {}
