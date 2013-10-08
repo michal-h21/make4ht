@@ -135,6 +135,18 @@ function mkdirectories(dirs)
 	return true
 end
 
+function copy_filter(src,dest, filter)
+  local src_f=io.open(src,"rb")
+  local dst_f=io.open(dest,"w")
+  local contents = src_f:read("*all")
+  local filter = filter or function(s) return s end
+  src_f:close()
+  dst_f:write(filter(contents))
+  dst_f:close()
+end
+
+
+
 function copy(filename,outfilename)
 	local currdir = lfs.currentdir()
 	if filename == outfilename then return true end
