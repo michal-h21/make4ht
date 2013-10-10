@@ -70,6 +70,7 @@ local mode = args.mode or "default"
 local parameters = {
 	htlatex = compiler
 	,input=input
+	,packages=""
 	,latex_par=table.concat(latex_params," ")
 	--,config=ebookutils.remove_extension(args.config)
 	,tex4ht_sty_par=t4sty
