@@ -88,6 +88,7 @@ function prepare_path(path)
 		path = path:gsub("^~/","")
 		table.insert(dirs,1,"")
 	end
+	if path:match("/$")then path = path .. " " end
 	for _,d in pairs(path:split "/") do
 		table.insert(dirs,d)
 	end
