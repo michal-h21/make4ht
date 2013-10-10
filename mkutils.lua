@@ -47,24 +47,37 @@ end
 
 -- searching for converted images
 function parse_lg(filename)
-	print("Parse LG")
-	local outputimages,outputfiles,status={},{},nil
-	if not file_exists(filename) then
-		print("Cannot read log file: "..filename)
-	else
-		local usedfiles={}
-		for line in io.lines(filename) do
-			line:gsub("==> ([%a%d%p%.%-%_]*)",function(k) table.insert(outputimages,k)end)
-			line:gsub("File: (.*)",  function(k) 
-				if not usedfiles[k] then
-					table.insert(outputfiles,k)
-					usedfiles[k] = true
-				end
-			end)
-		end
-		status=true
-	end
-	return {files = outputfiles, images = outputimages},status
+  print("Parse LG")
+  local outputimages,outputfiles,status={},{},nil
+  local fonts, used_fonts = {},{}
+  if not file_exists(filename) then
+    print("Cannot read log file: "..filename)
+  else
+    local usedfiles={}
+    for line in io.lines(filename) do
+      line:gsub("==> ([%a%d%p%.%-%_]*)",function(k) table.insert(outputimages,k)end)
+      line:gsub("File: (.*)",  function(k) 
+        if not usedfiles[k] then
+          table.insert(outputfiles,k)
+          usedfiles[k] = true
+        end
+      end)
+      line:gsub("htfcss: ([^%s]+)(.*)",function(k,r)
+        local fields = {}
+        r:gsub("[%s]*([^%:]+):[%s]*([^;]+);",function(c,v)
+          fields[c] = v
+        end)
+        fonts[k] = fields
+      end)
+
+      line:gsub('Font("([^"]+)","([%d]+)","([%d]+)","([%d]+)"',function(n,s1,s2,s3)
+        table.insert(used_fonts,{n,s1,s2,s3})
+      end)
+
+    end
+    status=true
+  end
+  return {files = outputfiles, images = outputimages},status
 end
 
 
