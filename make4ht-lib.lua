@@ -91,7 +91,9 @@ Make.image_convert =  function(self, images)
 				if type(command) == "function" then
 					command(p)
 				elseif type(command) == "string" then
-					os.execute(command % p)
+					local c = command % p
+					print("Make4ht convert: "..c)
+					os.execute(c)
 				end
 				break
 			end
