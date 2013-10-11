@@ -7,6 +7,7 @@ Make = {}
 Make.build_seq = {}
 -- Patterns for matching output filenames
 Make.matches = {}
+Make.image_patterns = {}
 
 Make.add = function(self,name,fn,par)
 	local par = par or {}
@@ -58,20 +59,56 @@ Make.run_command = function(self,filename,s)
 	return false, "parse_lg: Command is not string or function"
 end
 
+Make.image = function(self, pattern, command, params)
+	local tab = {
+		pattern = pattern,
+		command = command,
+		params  = params
+	}
+	table.insert(self.image_patterns, tab)
+end
 
 Make.image_convert =  function(self, images)
+	local image_patterns = self.image_patterns or {}
+	for i, r in pairs(image_patterns) do
+		local p = self.params or {}
+		local v = r.params or {}
+		for k,v in pairs(v) do
+			p[k]= v
+		end
+		image_patterns[i].params = p
+	end
+	for _,i in pairs(images) do
+		local output = i.output
+		for _, x in pairs(image_patterns) do
+			local pattern = x.pattern
+			if output:match(pattern) then
+				local command = x.command
+				local p = x.params or {}
+				p.output = output
+				p.page= i.page
+				p.source = i.source
+				if type(command) == "function" then
+					command(p)
+				elseif type(command) == "string" then
+					os.execute(command % p)
+				end
+				break
+			end
+		end
+	end
 end
 
 Make.file_matches = function(self, files)
 	local statuses = {}
 	-- First make params for all matchers
 	for k,v in pairs(self.matches) do
-		--local v = self.matches[k]
+		local v = self.matches[k].params or {}
 		local p = self.params or {}
-		for i,j in pairs(v.params) do
-			p[i] = j
+		for i,j in pairs(p) do
+			v[i] = j
 		end
-		self.matches[k].params = p
+		self.matches[k].params = v
 	end
 	-- Loop over files, run command on matched
 	for _, file in pairs(files)do
