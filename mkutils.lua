@@ -55,7 +55,18 @@ function parse_lg(filename)
   else
     local usedfiles={}
     for line in io.lines(filename) do
-      line:gsub("==> ([%a%d%p%.%-%_]*)",function(k) table.insert(outputimages,k)end)
+			--- needs --- pokus.idv[1] ==> pokus0x.png --- 
+      -- line:gsub("needs --- (.+?)[([0-9]+) ==> ([%a%d%p%.%-%_]*)",function(name,page,k) table.insert(outputimages,k)end)
+      line:gsub("needs %-%-%- (.+)%[([0-9]+)%] ==> ([%a%d%p%.%-%_]*)",
+			  function(file,page,output) 
+					local rec = {
+						source = file,
+						page=page,
+						output = output
+					}
+					table.insert(outputimages,rec)
+				end
+			)
       line:gsub("File: (.*)",  function(k) 
         if not usedfiles[k] then
           table.insert(outputfiles,k)

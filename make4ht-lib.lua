@@ -117,7 +117,11 @@ Make.run = function(self)
 		self:image_convert(lg["images"])
 		-- Then run file matchers on lg files and converted images
 		local files = lg["files"]
-		for _,v in pairs(lg["images"]) do table.insert(files,v) end
+		for _,v in pairs(lg["images"]) do 
+			local v = v.output
+			print(v)
+			table.insert(files,v) 
+		end
 		self:file_matches(files)
 	else
 		print("No lg file. tex4ht run failed?")
