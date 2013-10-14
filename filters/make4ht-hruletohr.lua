@@ -5,7 +5,7 @@
 -- this assumption may be wrong, needs more real world testing
 
 local hruletohr = function(s)
-	return s:gsub("___+([%s]*)</p>","$1</p>\n<hr class=\"hrule\" />")
+	return s:gsub("___+(.-)</p>","%1</p>\n<hr class=\"hrule\" />")
 end
 
 return hruletohr
