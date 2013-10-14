@@ -225,6 +225,7 @@ env.texio  = texio
 env.type   = type
 env.lfs    = lfs
 env.os     = os
+env.unicode = unicode
 env.Font   = function(s)
 	local font_name = s["name"]
 	if not font_name then return nil, "Cannot find font name" end
