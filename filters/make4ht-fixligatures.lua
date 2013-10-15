@@ -7,9 +7,10 @@ function filter(s)
 		["ﬁ"] = "fi",
 		["ﬃ"] = "ffi",
 		["ﬂ"] = "fl",
-		["ﬄ"] = "ffl"
+		["ﬄ"] = "ffl",
+		["ﬀ"] = "ff"
 	}
-	return gsub(s, "([ﬁﬃﬂﬄ])",function (x) return replaces[x] or x end)
+	return gsub(s, "([ﬁﬃﬂﬄﬀ])",function (x) return replaces[x] or x end)
 end
 
 return filter
