@@ -62,6 +62,33 @@ functions which are running on the generated files:
 This tests filenames with lua pattern matching and on matched items it run 
 command or function specified in second argument". Parameters are the same, as in previous section, except filename, which is generated output name.
 
+### Filters
+
+You can use filter module to modify contents of generated html files. 
+This is useful for fixing some tex4ht bugs.
+
+Example:
+
+    local filter = require "make4ht-filter"
+    local process = filter{"cleanspan", "fixligatures", "hruletohr"}
+    Make:htlatex()
+    Make:htlatex()
+    Make:match("html$",process)
+
+
+Filter module is located in `make4ht-filter`. Function is returned, 
+which is used for building filter chains then. 
+
+Built-in filters are:
+
+ - cleanspan - clean spurious span elements when accented characters are used
+ - fixligatures - decompose ligatures to base characters
+ - hruletohr - \hrule commands are translated to series of underscore characters
+   by `tex4ht`, this filter translate these underscores to `<hr>` elements
+
+Function `filter` accepts also function arguments, in this case this function 
+takes file contents as parameter and modified contents are returned.
+
 ### `mode` variable
 
 Variable `mode` contains contents of `-mode` command line option. 
