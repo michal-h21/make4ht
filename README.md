@@ -100,6 +100,30 @@ Example:
 In this case, spurious span elements are joined, ligatures are decomposed,
 and then all letters 'a' are replaced with 'z' letters.
 
+### Image conversion
+
+It is possible to convert parts of LaTeX input to pictures, it is used 
+for example for math or diagrams in `tex4ht`. 
+
+These pictures are stored in special `dvi` file, on which `dvi to image` 
+commands are called.
+
+This conversion is normally configured in the `env file`, 
+which is system dependent and which has a little bit unintuitive syntax.
+This configuration is processed by `t4ht` application and conversion
+commands are called for all pictures.
+
+It is possible to disable `t4ht` image processing and configure image 
+conversion in the make file:
+
+    Make:image("png$","dvipng -bg Transparent -T tight -o ${output}  -pp ${page} ${source}")                                                       
+
+There are three parameters:
+
+  - output - output image file name
+  - source - `dvi` file with the pictures
+  - page   - page number of the converted image
+
 ### `mode` variable
 
 Variable `mode` contains contents of `-mode` command line option. 
