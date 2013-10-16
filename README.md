@@ -89,6 +89,17 @@ Built-in filters are:
 Function `filter` accepts also function arguments, in this case this function 
 takes file contents as parameter and modified contents are returned.
 
+Example:
+
+    local filter  = require "make4ht-filter"                                    
+    local changea = function(s) return s:gsub("a","z") end
+    local process = filter{"cleanspan", "fixligatures", changea}            
+    Make:htlatex()                                                              
+    Make:htlatex()                                                                  Make:match("html$",process) 
+
+In this case, spurious span elements are joined, ligatures are decomposed,
+and then all letters 'a' are replaced with 'z' letters.
+
 ### `mode` variable
 
 Variable `mode` contains contents of `-mode` command line option. 
