@@ -121,6 +121,10 @@ conversion in the make file:
 
     Make:image("png$","dvipng -bg Transparent -T tight -o ${output}  -pp ${page} ${source}")                                                       
 
+`Make:image` takes two parameters, pattern to match image name and action.
+Action can be either string template with conversion command, 
+or function which takes table with parameters as argument.
+
 There are three parameters:
 
   - output - output image file name
