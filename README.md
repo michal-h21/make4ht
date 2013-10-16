@@ -54,6 +54,8 @@ Default parameters are:
   - outdir - output directory
 
 
+### File matches
+
 Other type of actions which can be specified in build file are
 functions which are running on the generated files:
 
@@ -95,7 +97,8 @@ Example:
     local changea = function(s) return s:gsub("a","z") end
     local process = filter{"cleanspan", "fixligatures", changea}            
     Make:htlatex()                                                              
-    Make:htlatex()                                                                  Make:match("html$",process) 
+    Make:htlatex()
+    Make:match("html$",process) 
 
 In this case, spurious span elements are joined, ligatures are decomposed,
 and then all letters 'a' are replaced with 'z' letters.
