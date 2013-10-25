@@ -87,6 +87,8 @@ Built-in filters are:
  - fixligatures - decompose ligatures to base characters
  - hruletohr - \hrule commands are translated to series of underscore characters
    by `tex4ht`, this filter translate these underscores to `<hr>` elements
+ - entites - convert prohibited named entities to numeric entities (crrently, only `&nbsp;`, asi it causes validation errors, and `tex4ht` is producing it sometimes
+
 
 Function `filter` accepts also function arguments, in this case this function 
 takes file contents as parameter and modified contents are returned.
