@@ -6,17 +6,30 @@
 -- local filename = arg[1]
 
 function filter(input)
-	local pattern = "(<?/?[%w]*>?)<span[%s]*class=\"([^\"]+)\"[%s]*>"
+	local parse_args = function(s)
+		local at = {}
+		s:gsub("(%w+)%s*=%s*\"([^\"]-)\"", function(k,w)
+			at[k]=w
+		end)
+		return at
+	end
+	-- local pattern = "(<?/?[%w]*>?)<span[%s]*class=\"([^\"]+)\"[%s]*>"
+  local pattern = "(<?/?[%w]*>?)<span[%s]*([^>]-)>"
 	local last_class = ""
-	return  input:gsub(pattern, function(tag, class) 
+	local depth = 0
+	return  input:gsub(pattern, function(tag, args)
+		local attr = parse_args(args) or {}
+		local class = attr["class"] or ""
 		if tag == "</span>" then
-			if class == last_class then 
+			if class == last_class and class~= ""  then 
 				last_class = class
 				return ""
 			end
+		elseif tag == "" then
+			class=""
 		end
 		last_class = class
-		return tag .. '<span class="'..class..'">'
+		return tag .. '<span '..args ..'>'
 	end)
 end
 
