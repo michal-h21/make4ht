@@ -14,22 +14,22 @@ function filter(input)
 		return at
 	end
 	-- local pattern = "(<?/?[%w]*>?)<span[%s]*class=\"([^\"]+)\"[%s]*>"
-  local pattern = "(<?/?[%w]*>?)<span[%s]*([^>]-)>"
+  local pattern = "(<?/?[%w]*>?)([%s]*)<span[%s]*([^>]-)>"
 	local last_class = ""
 	local depth = 0
-	return  input:gsub(pattern, function(tag, args)
+	return  input:gsub(pattern, function(tag,space, args)
 		local attr = parse_args(args) or {}
 		local class = attr["class"] or ""
 		if tag == "</span>" then
 			if class == last_class and class~= ""  then 
 				last_class = class
-				return ""
+				return space .. ""
 			end
 		elseif tag == "" then
 			class=""
 		end
 		last_class = class
-		return tag .. '<span '..args ..'>'
+		return tag ..space .. '<span '..args ..'>'
 	end)
 end
 
