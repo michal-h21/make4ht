@@ -32,9 +32,10 @@ Sample:
 
 This build file will run htlatex one time. You can add more commands like `Make:htlatex` with 
 
-    Make:add("name", "command", {default parameters})
+    Make:add("name", "command", {parameters}, repetition)
 
-you can run then 
+
+Now you can run: 
 
     Make:name()
 
@@ -42,6 +43,8 @@ you can run then
 
     Make:add("text", "hello, input file: ${input}")
     Make:add("function", function(params) for k, v in pairs(params) do print(k..": "..v) end)
+
+`parameters` is a table or `nil` value.
 
 Default parameters are:
 
@@ -53,6 +56,12 @@ Default parameters are:
   - t4ht\_par - parameters to t4ht application
   - outdir - output directory
 
+You may add your own paramaters, they are accesible in templates and functions.
+
+With `repetition`, you can limit number of command executions. 
+Its value should be number or `nil`. 
+This is used in the case of `tex4ht` and `t4ht` commands, 
+as they should be executed only once.
 
 ### File matches
 

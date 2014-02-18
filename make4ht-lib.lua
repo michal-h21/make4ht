@@ -8,8 +8,9 @@ Make.build_seq = {}
 -- Patterns for matching output filenames
 Make.matches = {}
 Make.image_patterns = {}
+Make.run_count = {}
 
-Make.add = function(self,name,fn,par)
+Make.add = function(self,name,fn,par,rep)
 	local par = par or {}
 	self.params = self.params or {}
 	Make[name] = function(self,p,typ)
@@ -28,7 +29,8 @@ Make.add = function(self,name,fn,par)
 			name=name,
 			type=typ,
 			command = fn,
-			params = params
+			params = params,
+			repetition = rep
 		}
 		table.insert(self.build_seq,command)
 	end
@@ -142,9 +144,19 @@ Make.run = function(self)
 			table.insert(return_codes,{name=v.name,status = v.command(params)})
 		elseif type(v.command) =="string" then
 			local command = v.command % params
-			print("Make4ht: " .. command)
-			local status = os.execute(command)
-			table.insert(return_codes,{name=v.name,status=status})
+			-- Some commands should be executed only limited times, typicaly once
+			-- tex4ht or t4ht for example
+			local run_count = self.run_count[v.command] or 0
+			run_count = run_count + 1
+			self.run_count[v.command] = run_count
+			local repetition = v.repetition
+			if repetition and run_count > repetition then 
+				print ("Make4ht: ".. command .." can be executed only "..repetition .."x")
+			else
+			  print("Make4ht: " .. command)
+			  local status = os.execute(command)
+			  table.insert(return_codes,{name=v.name,status=status})
+			end
 		else
 			print("Unknown command type, must be string or function - " ..v.name..": "..type(v.command))
 		end

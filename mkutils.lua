@@ -247,8 +247,8 @@ env.Make:add("htlatex",
 "\\HCode####1{\\documentstyle[tex4ht,}\\@ifnextchar[{\\HCode}{"..
 "\\documentstyle[tex4ht]}}}\\makeatother\\HCode '${tex4ht_sty_par}'.a.b.c."..
 "\\input ${input}'")
-env.Make:add("tex4ht","tex4ht ${input} ${tex4ht_par}")
-env.Make:add("t4ht","t4ht ${t4ht_par} ${input}.${ext}",{ext="dvi"})
+env.Make:add("tex4ht","tex4ht ${tex4ht_par} ${input}", nil, 1)
+env.Make:add("t4ht","t4ht ${t4ht_par} ${input}.${ext}",{ext="dvi"},1)
 
 function load_config(settings, config_name)
 	local settings = settings or main_settings
