@@ -183,6 +183,7 @@ Command line options
     -d,--output-dir (default "")  Output directory
     -l,--lua  Use lualatex for document compilation
     -m,--mode (default default) Switch which can be used in the makefile
+    -n,--no-tex4ht  Disable dvi file processing with tex4ht command
     -s,--shell-escape Enables running external programs from LaTeX
     -u,--utf8  For output documents in utf8 encoding
     -x,--xetex Use xelatex for document compilation

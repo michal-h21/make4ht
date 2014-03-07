@@ -98,7 +98,12 @@ if make:length() < 1 then
 		make:htlatex()
 	end
 end
-make:tex4ht()
+
+
+if not args["no-tex4ht"] then
+  make:tex4ht()
+end
+
 local ext = args.xetex and "xdv" or "dvi"
 if #make.image_patterns > 0 then
   make.params.t4ht_par = make.params.t4ht_par .. " -p"
