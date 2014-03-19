@@ -41,6 +41,7 @@ end
 if args.backend == "lua4ht" then
 	args.lua = true
 	args.xetex = nil
+	args.utf8 = true
 	args["no-tex4ht"] = true
 	packages = packages .."\\RequirePackage{lua4ht}"
 end
@@ -93,7 +94,7 @@ local mode = args.mode or "default"
 local parameters = {
 	htlatex = compiler
 	,input=input
-	,packages=""
+	,packages=packages
 	,latex_par=table.concat(latex_params," ")
 	--,config=ebookutils.remove_extension(args.config)
 	,tex4ht_sty_par=t4sty
