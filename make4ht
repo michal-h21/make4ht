@@ -46,21 +46,34 @@ table.insert(latex_params,"-jobname="..input)
 table.insert(latex_params,args[4] or "")
 --table.insert(latex_params,args["shell-escape"] and "-shell-escape")
 
-local t4sty = ""
-if args[1] and args[1] ~= "" then 
+
+local t4sty = args[1] or ""
+-- test if first option is custom config file
+local cfg_tmp = t4sty:match("([^,^ ]+)")
+if cfg_tmp and cfg_tmp ~= args.config then
+	local fn = cfg_tmp..".cfg"
+	local f = io.open(fn,"r")
+	if f then 
+		args.config = cfg_tmp 
+		f:close()
+	end
+end
+--[[if args[1] and args[1] ~= "" then 
 	t4sty = args[1] 
 else
-	local utf = args.utf8 and ",charset=utf-8" or ""
-	t4sty = args.config .. utf
-end
+--]]
+-- Different behaviour from htlatex
+local utf = args.utf8 and ",charset=utf-8" or ""
+t4sty = args.config .. "," .. t4sty .. utf
+--end
 
 local tex4ht = ""
 if args[2] and args[2] ~="" then
 	tex4ht = args[2]
 else
 	tex4ht = args.utf8 and " -cunihtf -utf8" or ""
-        local xdv = args.xetex and " -.xdv" or ""
-        tex4ht = tex4ht .. xdv
+  local xdv = args.xetex and " -.xdv" or ""
+  tex4ht = tex4ht .. xdv
 end
 
 local t4ht = args[3] or ""
