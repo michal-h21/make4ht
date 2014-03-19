@@ -21,7 +21,7 @@ Other problem is with `t4ht` application. It reads file `filename.lg`, generated
 Image conversion is directed with the [env file](http://www.tug.org/applications/tex4ht/mn35.html#index35-73001), with really strange syntax based on whitespace and [os dependent](http://www.tug.org/applications/tex4ht/mn-unix.html#index27-69005). Build scripts should be able to take image conversion process and also to enable actions like conversion with xslt processor ot tidy on output files, based on file extensions.
 
 Idea is to use LUA buildfile, with name `filename + .mk4 extension` and specify there actions.
-
+i
 Build file
 ----------
 
@@ -179,6 +179,7 @@ Command line options
     make4ht - build system for tex4ht
     Usage:
     make4ht [options] filename ["tex4ht.sty op." "tex4ht op." "t4ht op" "latex op"]
+    -b,--backend (default tex4ht) Backend used for xml generation.                       possible values: tex4ht or lua4ht
     -c,--config (default xhtml) Custom config file
     -d,--output-dir (default "")  Output directory
     -l,--lua  Use lualatex for document compilation

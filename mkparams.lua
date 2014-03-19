@@ -6,6 +6,8 @@ m.optiontext =  [[
 ${progname} - build system for tex4ht
 Usage:
 ${progname} [options] filename ["tex4ht.sty op." "tex4ht op." "t4ht op" "latex op"]
+-b,--backend (default tex4ht) Backend used for xml generation. 
+              possible values: tex4ht or lua4ht
 -c,--config (default xhtml) Custom config file
 -d,--output-dir (default nil)  Output directory
 -l,--lua  Use lualatex for document compilation

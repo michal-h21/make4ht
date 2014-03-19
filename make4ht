@@ -30,11 +30,21 @@ make4ht [options] filename ["tex4ht.sty op." "tex4ht op." "t4ht op" "latex op"]
 local args = mkparams.get_args()
 --local outdir = args["output-dir"] == "nil" and nil or args["output-dir"]
 local outdir = ""
+local packages = ""
+
 if  args["output-dir"] ~= "nil" then 
 	outdir =  args["output-dir"] 
 	outdir = outdir:gsub('\\','/')
 	outdir = outdir:gsub('/$','')
 end
+
+if args.backend == "lua4ht" then
+	args.lua = true
+	args.xetex = nil
+	args["no-tex4ht"] = true
+	packages = packages .."\\RequirePackage{lua4ht}"
+end
+
 
 local compiler = args.lua and "dvilualatex" or args.xetex and "xelatex --no-pdf" or "latex"
 local input = mkutils.remove_extension(args.filename)
