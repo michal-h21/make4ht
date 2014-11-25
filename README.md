@@ -93,6 +93,7 @@ which is used for building filter chains then.
 Built-in filters are:
 
  - cleanspan - clean spurious span elements when accented characters are used
+ - cleanspan-nat - alternative clean span filter, provided by Nat Kuhn
  - fixligatures - decompose ligatures to base characters
  - hruletohr - \hrule commands are translated to series of underscore characters
    by `tex4ht`, this filter translate these underscores to `<hr>` elements
