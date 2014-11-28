@@ -1,9 +1,6 @@
--- cleanspan4ht.lua 
+-- make4ht-cleanspan4ht.lua 
 -- fixes spurious <span> elements in tex4ht output
--- usage: texlua cleanspan4ht filename
--- file `filename` is modified, fixed version is writed back
 
--- local filename = arg[1]
 
 function filter(input)
 	local parse_args = function(s)
