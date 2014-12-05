@@ -160,6 +160,16 @@ Make.run = function(self)
 		else
 			print("Unknown command type, must be string or function - " ..v.name..": "..type(v.command))
 		end
+		local correct_exit = params.correct_exit or nil
+		if correct_exit then
+			local last_return = return_codes[#return_codes] or {}
+			local current_status = last_return.status or 0
+			if current_status ~= correct_exit then
+				local last_name = last_return.name or "unknown"
+				print("Make4ht: Fatal error. Command "..last_name .." returned exit code "..current_status)
+				os.exit(1)
+			end
+		end
 	end
 	local lgfile = params.input and params.input .. ".lg" or nil 
 	if lgfile then

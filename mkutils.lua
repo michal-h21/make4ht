@@ -246,7 +246,7 @@ env.Make:add("htlatex",
 "\\HCode\\expandafter\\def\\csname tex4ht\\endcsname{#1,html}\\def"..
 "\\HCode####1{\\documentstyle[tex4ht,}\\@ifnextchar[{\\HCode}{"..
 "\\documentstyle[tex4ht]}}}\\makeatother\\HCode '${tex4ht_sty_par}'.a.b.c."..
-"\\input ${input}'")
+"\\input ${input}'",{correct_exit=0})
 env.Make:add("tex4ht","tex4ht ${tex4ht_par} ${input}", nil, 1)
 env.Make:add("t4ht","t4ht ${t4ht_par} ${input}.${ext}",{ext="dvi"},1)
 
