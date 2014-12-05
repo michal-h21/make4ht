@@ -236,7 +236,8 @@ env.Make   = make4ht.Make
 env.Make.params = env.settings
 env.Make:add("test","no takže ${tex4ht_sty_par} ${htlatex} ${input} ${config}")
 --env.Make:add("htlatex", "${htlatex} ${latex_par} '\\\makeatletter\\def\\HCode{\\futurelet\\HCode\\HChar}\\def\\HChar{\\ifx\"\\HCode\\def\\HCode\"##1\"{\\Link##1}\\expandafter\\HCode\\else\\expandafter\\Link\\fi}\\def\\Link#1.a.b.c.{\\g@addto@macro\\@documentclasshook{\\RequirePackage[#1,html]{tex4ht}\\let\\HCode\\documentstyle\\def\\documentstyle{\\let\\documentstyle\\HCode\\expandafter\\def\\csname tex4ht\\endcsname{#1,html}\\def\\HCode####1{\\documentstyle[tex4ht,}\\@ifnextchar[{\\HCode}{\\documentstyle[tex4ht]}}}\\makeatother\\HCode '${config}${tex4ht_sty_par}'.a.b.c.\\input ' ${input}")
-env.Make:add("htlatex", 
+env.Make:add("htlatex",function(par) 
+	local command = 
 "${htlatex} ${latex_par} --jobname=${input} '\\makeatletter"..
 "\\def\\HCode{\\futurelet\\HCode\\HChar}\\def\\HChar{\\ifx\"\\HCode"..
 "\\def\\HCode\"##1\"{\\Link##1}\\expandafter\\HCode\\else"..
@@ -246,7 +247,24 @@ env.Make:add("htlatex",
 "\\HCode\\expandafter\\def\\csname tex4ht\\endcsname{#1,html}\\def"..
 "\\HCode####1{\\documentstyle[tex4ht,}\\@ifnextchar[{\\HCode}{"..
 "\\documentstyle[tex4ht]}}}\\makeatother\\HCode '${tex4ht_sty_par}'.a.b.c."..
-"\\input ${input}'",{correct_exit=0})
+"\\input ${input}'" 
+  command = command % par
+  os.execute(command)
+	local logfile = par.input .. ".log"
+	local f = io.open(logfile,"r")
+	if not f then 
+		print("Make4ht: cannot open log file "..logfile)
+		return 1
+	end
+	local len = f:seek("end")
+
+	f:seek("set", len - 256)
+	local text = f:read("*a")
+	f:close()
+	if text:match("No pages of output") then return 1 end
+	return 0 
+end
+,{correct_exit=0})
 env.Make:add("tex4ht","tex4ht ${tex4ht_par} ${input}", nil, 1)
 env.Make:add("t4ht","t4ht ${t4ht_par} ${input}.${ext}",{ext="dvi"},1)
 
