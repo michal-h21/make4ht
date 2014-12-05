@@ -63,6 +63,13 @@ Its value should be number or `nil`.
 This is used in the case of `tex4ht` and `t4ht` commands, 
 as they should be executed only once.
 
+You can set expected exit code from a command with `correct_exit`. Compilation
+is stopped when command returns different exit code. Situation is little bit
+difficult with LaTeX (all engines and formats in fact), because it doesn't 
+differentiate between fatal and non fatal errors and returns same exit code
+in all cases. Log parsing is used because of that, error code `1` is returned 
+in the case of fatal error, `0` is used otherwise.
+
 ### File matches
 
 Other type of actions which can be specified in build file are
