@@ -103,15 +103,20 @@ local parameters = {
 	,mode = mode
 	--,t4ht_dir_format=t4ht_dir_format
 }
+local build_file = input.. ".mk4"
 
+if args["build-file"] then
+   build_file = args["build-file"] 
+end
 if outdir then parameters.outdir = outdir end
 print("Output dir: ",outdir)
 print("Compiler: ", compiler)
 print("Latex options: ", table.concat(latex_params," "))
 print("tex4ht.sty :",t4sty)
 print("tex4ht",tex4ht)
+print("build_file", build_file)
 
-local make = mkutils.load_config(parameters, input.. ".mk4")["Make"]
+local make = mkutils.load_config(parameters, build_file)["Make"]
 make.params = parameters
 if make:length() < 1 then
 	if mode == "draft" then

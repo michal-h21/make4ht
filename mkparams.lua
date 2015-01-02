@@ -10,6 +10,7 @@ ${progname} [options] filename ["tex4ht.sty op." "tex4ht op." "t4ht op" "latex o
               possible values: tex4ht or lua4ht
 -c,--config (default xhtml) Custom config file
 -d,--output-dir (default nil)  Output directory
+-e,--build-file (default nil)  If build file is different than `filename`.mk4
 -l,--lua  Use lualatex for document compilation
 -m,--mode (default default) Switch which can be used in the makefile 
 -n,--no-tex4ht Disable dvi file processing with tex4ht command
