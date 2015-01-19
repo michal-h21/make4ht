@@ -105,7 +105,7 @@ local parameters = {
 }
 local build_file = input.. ".mk4"
 
-if args["build-file"] then
+if args["build-file"] and args["build-file"] ~= "nil" then
    build_file = args["build-file"] 
 end
 if outdir then parameters.outdir = outdir end
