@@ -238,7 +238,7 @@ env.Make:add("test","no takže ${tex4ht_sty_par} ${htlatex} ${input} ${config}")
 --env.Make:add("htlatex", "${htlatex} ${latex_par} '\\\makeatletter\\def\\HCode{\\futurelet\\HCode\\HChar}\\def\\HChar{\\ifx\"\\HCode\\def\\HCode\"##1\"{\\Link##1}\\expandafter\\HCode\\else\\expandafter\\Link\\fi}\\def\\Link#1.a.b.c.{\\g@addto@macro\\@documentclasshook{\\RequirePackage[#1,html]{tex4ht}\\let\\HCode\\documentstyle\\def\\documentstyle{\\let\\documentstyle\\HCode\\expandafter\\def\\csname tex4ht\\endcsname{#1,html}\\def\\HCode####1{\\documentstyle[tex4ht,}\\@ifnextchar[{\\HCode}{\\documentstyle[tex4ht]}}}\\makeatother\\HCode '${config}${tex4ht_sty_par}'.a.b.c.\\input ' ${input}")
 env.Make:add("htlatex",function(par) 
 	local command = 
-"${htlatex} ${latex_par} --jobname=${input} '\\makeatletter"..
+"${htlatex} ${latex_par} '\\makeatletter"..
 "\\def\\HCode{\\futurelet\\HCode\\HChar}\\def\\HChar{\\ifx\"\\HCode"..
 "\\def\\HCode\"##1\"{\\Link##1}\\expandafter\\HCode\\else"..
 "\\expandafter\\Link\\fi}\\def\\Link#1.a.b.c.{\\g@addto@macro"..
@@ -246,9 +246,10 @@ env.Make:add("htlatex",function(par)
 "\\let\\HCode\\documentstyle\\def\\documentstyle{\\let\\documentstyle"..
 "\\HCode\\expandafter\\def\\csname tex4ht\\endcsname{#1,html}\\def"..
 "\\HCode####1{\\documentstyle[tex4ht,}\\@ifnextchar[{\\HCode}{"..
-"\\documentstyle[tex4ht]}}}\\makeatother\\HCode '${tex4ht_sty_par}'.a.b.c."..
+"\\documentstyle[tex4ht]}}}\\makeatother\\HCode ${tex4ht_sty_par}.a.b.c."..
 "\\input ${input}'" 
   command = command % par
+  print("LaTeX call: "..command)
   os.execute(command)
 	local logfile = par.input .. ".log"
 	local f = io.open(logfile,"r")
