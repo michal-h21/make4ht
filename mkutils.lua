@@ -248,6 +248,9 @@ env.Make:add("htlatex",function(par)
 "\\HCode####1{\\documentstyle[tex4ht,}\\@ifnextchar[{\\HCode}{"..
 "\\documentstyle[tex4ht]}}}\\makeatother\\HCode ${tex4ht_sty_par}.a.b.c."..
 "\\input ${input}'" 
+  if os.type == "windows" then
+    command = command:gsub("'",'')
+  end
   command = command % par
   print("LaTeX call: "..command)
   os.execute(command)
