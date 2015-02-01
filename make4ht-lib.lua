@@ -1,6 +1,7 @@
 -- Simple make system for tex4ht
 --kpse.set_program_name("luatex")
-module(...,package.seeall)
+-- module(...,package.seeall)
+local m = {}
 
 Make = {}
 --Make.params = {}
@@ -189,6 +190,10 @@ Make.run = function(self)
 	end
 	return return_codes
 end
+
+m.Make = Make
+
+return m
 
 --[[Make:add("hello", "hello ${world}", {world = "world"})
 Make:add("ajaj", "ajaj")
