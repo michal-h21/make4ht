@@ -32,6 +32,7 @@ Installation
 Run following commands in the terminal:
 
     cd `kpsewhich -var-value TEXMFHOME`
+    # if the TEXMFHOME directory doesn't exists, you need to create it with the mkdir command
     mkdir -p scripts/lua
     cd scripts/lua
     git clone https://github.com/michal-h21/make4ht
