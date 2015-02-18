@@ -181,7 +181,7 @@ Make.run = function(self)
 		local files = lg["files"]
 		for _,v in pairs(lg["images"]) do 
 			local v = v.output
-			print(v)
+			-- print(v)
 			table.insert(files,v) 
 		end
 		self:file_matches(files)
