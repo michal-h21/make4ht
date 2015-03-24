@@ -31,95 +31,103 @@ end
 
 
 local function process_args(args)
-local function get_inserter(args,tb)
-	return function(key, value)
-		--local v = args[key] and value or ""
-		local v = ""
-		if args[key] then v = value end
-		table.insert(tb,v)
+	local function get_inserter(args,tb)
+		return function(key, value)
+			--local v = args[key] and value or ""
+			local v = ""
+			if args[key] then v = value end
+			table.insert(tb,v)
+		end
 	end
-end
 
-local outdir = ""
-local packages = ""
+	local outdir = ""
+	local packages = ""
 
-if  args["output-dir"] ~= "nil" then 
-	outdir =  args["output-dir"] 
-	outdir = outdir:gsub('\\','/')
-	outdir = outdir:gsub('/$','')
-end
-
-if args.backend == "lua4ht" then
-	args.lua = true
-	args.xetex = nil
-	args.utf8 = true
-	args["no-tex4ht"] = true
-	packages = packages .."\\RequirePackage{lua4ht}"
-end
-
-
-local compiler = args.lua and "dvilualatex" or args.xetex and "xelatex --no-pdf" or "latex"
-local input = mkutils.remove_extension(args.filename)
-
-local latex_params = {}
-local insert_latex = get_inserter(args,latex_params)
-insert_latex("shell-escape","-shell-escape")
-table.insert(latex_params,"-jobname="..input)
-table.insert(latex_params,args[4] or "")
---table.insert(latex_params,args["shell-escape"] and "-shell-escape")
-
-
-local t4sty = args[1] or ""
--- test if first option is custom config file
-local cfg_tmp = t4sty:match("([^,^ ]+)")
-if cfg_tmp and cfg_tmp ~= args.config then
-	local fn = cfg_tmp..".cfg"
-	local f = io.open(fn,"r")
-	if f then 
-		args.config = cfg_tmp 
-		f:close()
+	if  args["output-dir"] ~= "nil" then 
+		outdir =  args["output-dir"] 
+		outdir = outdir:gsub('\\','/')
+		outdir = outdir:gsub('/$','')
 	end
-end
---[[if args[1] and args[1] ~= "" then 
+
+	if args.backend == "lua4ht" then
+		args.lua = true
+		args.xetex = nil
+		args.utf8 = true
+		args["no-tex4ht"] = true
+		packages = packages .."\\RequirePackage{lua4ht}"
+	end
+
+
+	local compiler = args.lua and "dvilualatex" or args.xetex and "xelatex --no-pdf" or "latex"
+	local input = mkutils.remove_extension(args.filename)
+
+	local latex_params = {}
+	local insert_latex = get_inserter(args,latex_params)
+	insert_latex("shell-escape","-shell-escape")
+	table.insert(latex_params,"-jobname="..input)
+	table.insert(latex_params,args[4] or "")
+	--table.insert(latex_params,args["shell-escape"] and "-shell-escape")
+
+
+	local t4sty = args[1] or ""
+	-- test if first option is custom config file
+	local cfg_tmp = t4sty:match("([^,^ ]+)")
+	if cfg_tmp and cfg_tmp ~= args.config then
+		local fn = cfg_tmp..".cfg"
+		local f = io.open(fn,"r")
+		if f then 
+			args.config = cfg_tmp 
+			f:close()
+		end
+	end
+	--[[if args[1] and args[1] ~= "" then 
 	t4sty = args[1] 
-else
---]]
--- Different behaviour from htlatex
-local utf = args.utf8 and ",charset=utf-8" or ""
-t4sty = args.config .. "," .. t4sty .. utf
---end
+	else
+	--]]
+	-- Different behaviour from htlatex
+	local utf = args.utf8 and ",charset=utf-8" or ""
+	t4sty = args.config .. "," .. t4sty .. utf
+	--end
 
-local tex4ht = ""
-if args[2] and args[2] ~="" then
-	tex4ht = args[2]
-else
-	tex4ht = args.utf8 and " -cunihtf -utf8" or ""
-  local xdv = args.xetex and " -.xdv" or ""
-  tex4ht = tex4ht .. xdv
-end
+	local tex4ht = ""
+	if args[2] and args[2] ~="" then
+		tex4ht = args[2]
+	else
+		tex4ht = args.utf8 and " -cunihtf -utf8" or ""
+		local xdv = args.xetex and " -.xdv" or ""
+		tex4ht = tex4ht .. xdv
+	end
 
-local t4ht = args[3] or ""
+	local t4ht = args[3] or ""
 
-local mode = args.mode or "default"
+	local mode = args.mode or "default"
 
-local parameters = {
-	htlatex = compiler
-	,input=input
-	,packages=packages
-	,latex_par=table.concat(latex_params," ")
-	--,config=ebookutils.remove_extension(args.config)
-	,tex4ht_sty_par=t4sty
-	,tex4ht_par=tex4ht
-	,t4ht_par=t4ht
-	,mode = mode
-	--,t4ht_dir_format=t4ht_dir_format
-}
-local build_file = input.. ".mk4"
+	local parameters = {
+		htlatex = compiler
+		,input=input
+		,packages=packages
+		,latex_par=table.concat(latex_params," ")
+		--,config=ebookutils.remove_extension(args.config)
+		,tex4ht_sty_par=t4sty
+		,tex4ht_par=tex4ht
+		,t4ht_par=t4ht
+		,mode = mode
+		--,t4ht_dir_format=t4ht_dir_format
+	}
+	local build_file = input.. ".mk4"
 
-if args["build-file"] and args["build-file"] ~= "nil" then
-   build_file = args["build-file"] 
-end
-if outdir then parameters.outdir = outdir end
+	if args["build-file"] and args["build-file"] ~= "nil" then
+		build_file = args["build-file"] 
+	end
+	if outdir then parameters.outdir = outdir end
+	print("Output dir: ",outdir)
+	print("Compiler: ", compiler)
+	print("Latex options: ", table.concat(latex_params," "))
+	print("tex4ht.sty :",t4sty)
+	print("tex4ht",tex4ht)
+	print("build_file", build_file)
+	return parameters
 end
 m.get_args = get_args
+m.process_args = process_args
 return m
