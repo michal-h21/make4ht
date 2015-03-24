@@ -102,6 +102,12 @@ local function process_args(args)
 
 	local mode = args.mode or "default"
 
+	local build_file = input.. ".mk4"
+
+	if args["build-file"] and args["build-file"] ~= "nil" then
+		build_file = args["build-file"] 
+	end
+
 	local parameters = {
 		htlatex = compiler
 		,input=input
@@ -112,13 +118,9 @@ local function process_args(args)
 		,tex4ht_par=tex4ht
 		,t4ht_par=t4ht
 		,mode = mode
+    ,build_file = build_file
 		--,t4ht_dir_format=t4ht_dir_format
 	}
-	local build_file = input.. ".mk4"
-
-	if args["build-file"] and args["build-file"] ~= "nil" then
-		build_file = args["build-file"] 
-	end
 	if outdir then parameters.outdir = outdir end
 	print("Output dir: ",outdir)
 	print("Compiler: ", compiler)
