@@ -26,6 +26,8 @@ local args = mkparams.get_args()
 local parameters = mkparams.process_args(args) 
 
 local mode = parameters.mode
+local build_file = parameters.build_file 
+
 local make = mkutils.load_config(parameters, build_file)["Make"]
 make.params = parameters
 if make:length() < 1 then
