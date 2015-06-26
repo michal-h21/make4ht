@@ -213,18 +213,6 @@ LaTeX is called only once when `make4ht` is called with
     
     make4ht -m draft filename
 
-Instalation
------------
-
-Find your local texmf tree with command:
-
-    kpsewhich -var-value TEXMFHOME
-
-and go to directory `scripts/lua` 
-(you will need to create it, if it doesn't exist).
-In this directory, run:
-
-    git clone git://github.com/michal-h21/make4ht.git
 
 Command line options
 --------------------
