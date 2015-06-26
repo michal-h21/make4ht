@@ -3,6 +3,7 @@ doc_file = make4ht-doc.pdf
 TEXMFHOME = $(shell kpsewhich -var-value=TEXMFHOME)
 INSTALL_DIR = $(TEXMFHOME)/scripts/lua/make4ht
 MANUAL_DIR = $(TEXMFHOME)/doc/latex/make4ht
+SYSTEM_BIN = /usr/local/bin
 
 all: doc
 
@@ -25,6 +26,8 @@ build: doc $(lua_content)
 install: doc $(lua_content)
 	mkdir -p $(INSTALL_DIR)
 	mkdir -p $(MANUAL_DIR)
-	cp $(lua_content) $(INSTALL_DIR)
 	cp $(doc_file) $(MANUAL_DIR)
+	cp $(lua_content) $(INSTALL_DIR)
+	chmod +x $(INSTALL_DIR)/make4ht
+	ln -s $(INSTALL_DIR)/make4ht $(SYSTEM_BIN)/make4ht
 
