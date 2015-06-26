@@ -1,15 +1,15 @@
-tex_content = $(wildcard *.sty) $(wildcard *.4ht) $(wildcard *.tex) $(wildcard *.lua)
-doc_file = tex4ebook-doc.pdf
+lua_content = make4ht $(wildcard *.lua)
+doc_file = make4ht-doc.pdf
 TEXMFHOME = $(shell kpsewhich -var-value=TEXMFHOME)
-INSTALL_DIR = $(TEXMFHOME)/tex/latex/tex4ebook
-MANUAL_DIR = $(TEXMFHOME)/doc/latex/tex4ebook
+INSTALL_DIR = $(TEXMFHOME)/scripts/lua/make4ht
+MANUAL_DIR = $(TEXMFHOME)/doc/latex/make4ht
 
 all: doc
 
 doc: $(doc_file) readme.tex
 
-tex4ebook-doc.pdf: tex4ebook-doc.tex readme.tex changelog.tex
-	latexmk -lualatex tex4ebook-doc.tex
+make4ht-doc.pdf: make4ht-doc.tex readme.tex changelog.tex
+	latexmk -lualatex make4ht-doc.tex
 
 readme.tex: README.md
 	pandoc -f markdown+definition_lists -t LaTeX README.md > readme.tex
@@ -17,14 +17,14 @@ readme.tex: README.md
 changelog.tex: CHANGELOG.md
 	pandoc -f markdown+definition_lists -t LaTeX CHANGELOG.md > changelog.tex
 
-build: doc $(tex_content)
+build: doc $(lua_content)
 	@rm -rf build
 	@mkdir build
-	@zip build/tex4ebook.zip $(tex_content)  README.md tex4ebook-doc.pdf
+	@zip build/make4ht.zip $(lua_content)  README.md make4ht-doc.pdf
 
-install: doc $(tex_content)
+install: doc $(lua_content)
 	mkdir -p $(INSTALL_DIR)
 	mkdir -p $(MANUAL_DIR)
-	cp $(tex_content) $(INSTALL_DIR)
+	cp $(lua_content) $(INSTALL_DIR)
 	cp $(doc_file) $(MANUAL_DIR)
 
