@@ -3,20 +3,10 @@ Installation
 
 ## Unix systems
 
-Run following commands in the terminal:
+Run these commands:
 
-    cd `kpsewhich -var-value TEXMFHOME`
-    # if the TEXMFHOME directory doesn't exists, you need to create it with the mkdir command
-    mkdir -p scripts/lua
-    cd scripts/lua
-    git clone https://github.com/michal-h21/make4ht
-
-then you need to make `make4ht` executable:
-
-    cd make4ht
-    chmod +x make4ht
-    ln -s /full/path/to/make4ht /usr/local/bin/make4ht
-  
+     make
+     sudo make install
 
 ## Windows
 
