@@ -106,12 +106,25 @@ which is used for building filter chains then.
 
 Built-in filters are:
 
- - cleanspan - clean spurious span elements when accented characters are used
- - cleanspan-nat - alternative clean span filter, provided by Nat Kuhn
- - fixligatures - decompose ligatures to base characters
- - hruletohr - \hrule commands are translated to series of underscore characters
-   by `tex4ht`, this filter translate these underscores to `<hr>` elements
- - entites - convert prohibited named entities to numeric entities (crrently, only `&nbsp;`, asi it causes validation errors, and `tex4ht` is producing it sometimes
+cleanspan 
+
+:    clean spurious span elements when accented characters are used
+
+cleanspan-nat 
+
+:    alternative clean span filter, provided by Nat Kuhn
+
+fixligatures 
+
+:    decompose ligatures to base characters
+
+hruletohr 
+
+:   `\hrule` commands are translated to series of underscore characters
+    by `tex4ht`, this filter translate these underscores to `<hr>` elements
+entites 
+
+:    convert prohibited named entities to numeric entities (currently, only `&nbsp;`, asi it causes validation errors, and `tex4ht` is producing it sometimes
 
 
 Function `filter` accepts also function arguments, in this case this function 
@@ -145,7 +158,9 @@ commands are called for all pictures.
 It is possible to disable `t4ht` image processing and configure image 
 conversion in the make file:
 
-    Make:image("png$","dvipng -bg Transparent -T tight -o ${output}  -pp ${page} ${source}")                                                       
+    Make:image("png$",
+    "dvipng -bg Transparent -T tight -o ${output}  -pp ${page} ${source}")                                                       
+
 
 `Make:image` takes two parameters, pattern to match image name and action.
 Action can be either string template with conversion command, 
