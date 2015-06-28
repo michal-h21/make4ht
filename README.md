@@ -53,12 +53,16 @@ Sample:
     Make:htlatex()
     Make:match("html$", "tidy -m -xml -utf8 -q -i ${filename}")
 
-This build file will run htlatex one time. You can add more commands like `Make:htlatex` with 
+ `Make:htlatex()` is preconfigured command for calling LaTeX with `tex4ht` loaded on the input file. In this case it will be called  one time. After compilation, `tidy` command is executed on the output `html` file.
+
+Note that you don't have to call `tex4ht` and `t4ht` commands explicitly in the build file, they are called automatically. 
+
+You can add more commands like `Make:htlatex` with 
 
     Make:add("name", "command", {parameters}, repetition)
 
 
-Now you can run: 
+it can be called with
 
     Make:name()
 
@@ -71,20 +75,24 @@ Now you can run:
 
 Default parameters are:
 
-  - htlatex - used compiler
-  - input - input file
-  - latex\_par - parameters to latex
-  - tex4ht\_sty\_par - parameters to tex4ht.sty
-  - tex4ht\_par - parameters to tex4ht application
-  - t4ht\_par - parameters to t4ht application
-  - outdir - output directory
+  - `htlatex` - used compiler
+  - `input` - input file
+  - `latex_par` - parameters to latex
+  - `tex4ht_sty\_par` - parameters to tex4ht.sty
+  - `tex4ht_par` - parameters to tex4ht application
+  - `t4ht_par` - parameters to t4ht application
+  - `outdir` - output directory
+  - `repetition` - limit number of command execution.
+  - `correct_exit` - expected `exit code` from the command.
 
-You may add your own paramaters, they are accesible in templates and functions.
+You may add your own parameters, they will be accessible in templates and
+functions.
 
-With `repetition`, you can limit number of command executions. 
-Its value should be number or `nil`. 
-This is used in the case of `tex4ht` and `t4ht` commands, 
-as they should be executed only once.
+With `repetition`, you can limit number of command executions.  Its value
+should be number or `nil`.  This is used in the case of `tex4ht` and `t4ht`
+commands, as they should be executed only once and they would be executed
+multiple times if you include them in the build file, because they would be
+called also by `make4ht`. With `repetition`, second execution is blocked.
 
 You can set expected exit code from a command with `correct_exit`. Compilation
 is stopped when command returns different exit code. Situation is little bit
@@ -95,18 +103,21 @@ in the case of fatal error, `0` is used otherwise.
 
 ### File matches
 
-Other type of actions which can be specified in build file are
-functions which are running on the generated files:
+Other type of action which can be specified in the build file are
+matches  which may be called  on the generated files:
 
     Make:match("html$", "tidy -m -xml -utf8 -q -i ${filename}")
 
-This tests filenames with lua pattern matching and on matched items it run 
-command or function specified in second argument". Parameters are the same, as in previous section, except filename, which is generated output name.
+It tests filenames with `Lua` pattern matching and on matched items will
+execute command or function, specified in the second argument. Parameters are
+the same as in previous section, except `filename`, which contains generated
+output name.
 
-### Filters
+#### Filters
 
-You can use filter module to modify contents of generated html files. 
-This is useful for fixing some tex4ht bugs.
+Some default match actions which you can use are in the `filter` module.  It
+contains some functions which ares useful for fixing some `tex4ht` bugs or
+shortcomings.
 
 Example:
 
@@ -140,7 +151,7 @@ hruletohr
     by `tex4ht`, this filter translate these underscores to `<hr>` elements
 entites 
 
-:    convert prohibited named entities to numeric entities (currently, only `&nbsp;`, asi it causes validation errors, and `tex4ht` is producing it sometimes
+:    convert prohibited named entities to numeric entities (currently, only `&nbsp;`, as it causes validation errors, and `tex4ht` is producing it sometimes
 
 
 Function `filter` accepts also function arguments, in this case this function 
@@ -164,7 +175,7 @@ It is possible to convert parts of LaTeX input to pictures, it is used
 for example for math or diagrams in `tex4ht`. 
 
 These pictures are stored in special `dvi` file, on which `dvi to image` 
-commands are called.
+commands are called. 
 
 This conversion is normally configured in the `env file`, 
 which is system dependent and which has a little bit unintuitive syntax.
@@ -212,11 +223,13 @@ Command line options
 
     make4ht - build system for tex4ht
     Usage:
-    make4ht [options] filename ["tex4ht.sty op." "tex4ht op." "t4ht op" "latex op"]
+    make4ht [options] filename ["tex4ht.sty op." "tex4ht op." 
+         "t4ht op" "latex op"]
     -b,--backend (default tex4ht) Backend used for xml generation.                       possible values: tex4ht or lua4ht
     -c,--config (default xhtml) Custom config file
     -d,--output-dir (default "")  Output directory
-    -e,--build-file (default nil)  If build file is different than `filename`.mk4
+    -e,--build-file (default nil)  If build file name is different 
+         than `filename`.mk4
     -l,--lua  Use lualatex for document compilation
     -m,--mode (default default) Switch which can be used in the makefile
     -n,--no-tex4ht  Disable dvi file processing with tex4ht command
@@ -230,15 +243,16 @@ You can still use `make4ht` in same way as `htlatex`
 
     make4ht filename "customcfg, charset=utf-8" " -cunihtf -utf8" " -dfoo"
 
-but note that this will not use `make4ht` routines for output dir making and copying. If you want to use them, change the line above to:
+Note that this will not use `make4ht` routines for output dir making and
+copying If you want to use them, change the line above to:
 
     make4ht filename "customcfg, charset=utf-8" " -cunihtf -utf8"  -d foo
 
-this is the same as:
+This call has the same effect as following:
 
     make4ht -u -c customcfg -d foo filename
 
-Output directory doesn't have to exist, it will be created automaticaly. 
+Output directory doesn't have to exist, it will be created automatically. 
 Specified path can be relative to current directory, or absolute:
 
     make4ht -d use/current/dir/ filename
