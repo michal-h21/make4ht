@@ -1,4 +1,4 @@
-\documentclass{article}
+\documentclass{ltxdoc}
 
 
 \usepackage[english]{babel}
@@ -8,13 +8,16 @@
 \usepackage[utf8]{inputenc}
 \else
 \usepackage{fontspec}
+\setmainfont{TeX Gyre Schola}
 \fi
+\usepackage{microtype}
 
-\title{make4ht}
+\title{The |make4ht| system}
 \author{Michal Hoftich}
 \begin{document}
 \maketitle
 \tableofcontents
+\section{The \texttt{make4ht} system}
 \input{readme}
 
 \input{changelog}
