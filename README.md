@@ -225,7 +225,8 @@ Command line options
     Usage:
     make4ht [options] filename ["tex4ht.sty op." "tex4ht op." 
          "t4ht op" "latex op"]
-    -b,--backend (default tex4ht) Backend used for xml generation.                       possible values: tex4ht or lua4ht
+    -b,--backend (default tex4ht) Backend used for xml generation.
+         possible values: tex4ht or lua4ht
     -c,--config (default xhtml) Custom config file
     -d,--output-dir (default "")  Output directory
     -e,--build-file (default nil)  If build file name is different 
