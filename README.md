@@ -78,7 +78,7 @@ Default parameters are:
   - `htlatex` - used compiler
   - `input` - input file
   - `latex_par` - parameters to latex
-  - `tex4ht_sty\_par` - parameters to tex4ht.sty
+  - `tex4ht_sty_par` - parameters to tex4ht.sty
   - `tex4ht_par` - parameters to tex4ht application
   - `t4ht_par` - parameters to t4ht application
   - `outdir` - output directory
