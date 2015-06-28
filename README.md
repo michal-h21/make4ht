@@ -1,12 +1,12 @@
-make4ht
-=======
+`make4ht` is a simple build system for tex4ht. It is both executable which
+simplifies `tex4ht` execution and a library which can be used to create
+customized conversion programs. An example of such conversion program is [tex4ebook](https://github.com/michal-h21/tex4ebook)
 
-Simple build system for tex4ht. Some day it may replace `t4ht` for generating `css` and `images`. First aim is to copy or move generated files to correct directories and possibility to write build scripts, allowing to run bibtex or indexing programs from make4ht run.
 
 How it works
 ------------
 
-Default compilation scripts for `tex4ht` compiles LaTeX files with this sequence:
+Default compilation script for `tex4ht`, named `htlatex`  compiles LaTeX files to `HTML` with this command  sequence:
 
     latex $latex_options 'code for loading tex4ht.sty \input{filename}'
     latex $latex_options 'code for loading tex4ht.sty \input{filename}'
