@@ -1,7 +1,13 @@
+# Introduction
+
 `make4ht` is a simple build system for tex4ht. It is both executable which
 simplifies `tex4ht` execution and a library which can be used to create
 customized conversion programs. An example of such conversion program is [tex4ebook](https://github.com/michal-h21/tex4ebook)
 
+## License
+
+Permission is granted to copy, distribute and/or modify this software
+under the terms of the LaTeX Project Public License, version 1.3.
 
 How it works
 ------------
@@ -41,8 +47,9 @@ interpreter is included in modern TeX distributions and `Lua` is ideal language
 for such task, it was chosen as language in which build script are written.
 
 
-Build file
-----------
+# Build files
+
+## Commands
 
 By default, build file is saved in file named `filename + .mk4 extension`.
 You can choose different build file with `-e` or `--build-file` command line
@@ -75,15 +82,42 @@ it can be called with
 
 Default parameters are:
 
-  - `htlatex` - used compiler
-  - `input` - input file
-  - `latex_par` - parameters to latex
-  - `tex4ht_sty_par` - parameters to tex4ht.sty
-  - `tex4ht_par` - parameters to tex4ht application
-  - `t4ht_par` - parameters to t4ht application
-  - `outdir` - output directory
-  - `repetition` - limit number of command execution.
-  - `correct_exit` - expected `exit code` from the command.
+htlatex 
+
+:     used compiler
+
+input 
+
+:    input file
+
+latex_par 
+
+:    parameters to `latex`
+
+tex4ht_sty_par 
+
+:    parameters to `tex4ht.sty`
+
+tex4ht_par 
+
+:     parameters to `tex4ht` application
+
+t4ht_par 
+
+:    parameters to `t4ht` application
+
+outdir 
+
+:     output directory
+
+repetition 
+
+:    limit number of command execution.
+
+correct_exit 
+
+:     expected `exit code` from the command.
+
 
 You may add your own parameters, they will be accessible in templates and
 functions.
@@ -101,7 +135,7 @@ differentiate between fatal and non fatal errors and returns same exit code
 in all cases. Log parsing is used because of that, error code `1` is returned 
 in the case of fatal error, `0` is used otherwise.
 
-### File matches
+## File matches
 
 Other type of action which can be specified in the build file are
 matches  which may be called  on the generated files:
@@ -113,7 +147,7 @@ execute command or function, specified in the second argument. Parameters are
 the same as in previous section, except `filename`, which contains generated
 output name.
 
-#### Filters
+### Filters
 
 Some default match actions which you can use are in the `filter` module.  It
 contains some functions which ares useful for fixing some `tex4ht` bugs or
@@ -169,7 +203,7 @@ Example:
 In this case, spurious span elements are joined, ligatures are decomposed,
 and then all letters 'a' are replaced with 'z' letters.
 
-### Image conversion
+## Image conversion
 
 It is possible to convert parts of LaTeX input to pictures, it is used 
 for example for math or diagrams in `tex4ht`. 
@@ -199,7 +233,7 @@ There are three parameters:
   - source - `dvi` file with the pictures
   - page   - page number of the converted image
 
-### `mode` variable
+## `mode` variable
 
 Variable `mode` contains contents of `-mode` command line option. 
 It can be used to run some commands conditionally. For example:
@@ -218,8 +252,7 @@ LaTeX is called only once when `make4ht` is called with
     make4ht -m draft filename
 
 
-Command line options
---------------------
+# Command line options
 
     make4ht - build system for tex4ht
     Usage:
