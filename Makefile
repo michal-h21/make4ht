@@ -7,6 +7,8 @@ INSTALL_DIR = $(TEXMFHOME)/scripts/lua/make4ht
 MANUAL_DIR = $(TEXMFHOME)/doc/latex/make4ht
 FILTERS_DIR = $(INSTALL_DIR)/filters
 SYSTEM_BIN = /usr/local/bin
+BUILD_DIR = build
+BUILD_MAKE4HT = $(BUILD_DIR)/make4ht
 
 all: doc
 
@@ -23,8 +25,12 @@ changelog.tex: CHANGELOG.md
 
 build: doc $(lua_content) $(filters)
 	@rm -rf build
-	@mkdir build
-	@zip build/make4ht.zip $(lua_content) $(filters) $(tex_content) README.md make4ht-doc.pdf
+	@mkdir -p $(BUILD_MAKE4HT)
+	@mkdir -p $(BUILD_MAKE4HT)/filters
+	@cp $(lua_content) $(tex_content)  make4ht-doc.pdf $(BUILD_MAKE4HT)
+	@cp $(filters) $(BUILD_MAKE4HT)/filters
+	@cp README.md $(BUILD_MAKE4HT)/README
+	@cd $(BUILD_DIR) && zip -r make4ht.zip make4ht
 
 install: doc $(lua_content) $(filters)
 	mkdir -p $(INSTALL_DIR)
