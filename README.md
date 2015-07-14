@@ -94,6 +94,11 @@ latex_par
 
 :    parameters to `latex`
 
+packages
+
+:    insert additionl LaTeX code which is inserted before `\documentclass`.
+     useful for passing options to packages or additional packages loading
+
 tex4ht_sty_par 
 
 :    parameters to `tex4ht.sty`
