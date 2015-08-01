@@ -93,7 +93,7 @@ local function process_args(args)
 	if args[2] and args[2] ~="" then
 		tex4ht = args[2]
 	else
-		tex4ht = args.utf8 and " -cunihtf -utf8" or ""
+		tex4ht = args.utf8 and " -cmozhtf -utf8" or ""
 		local xdv = args.xetex and " -.xdv" or ""
 		tex4ht = tex4ht .. xdv
 	end
