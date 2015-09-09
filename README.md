@@ -148,9 +148,10 @@ matches  which may be called  on the generated files:
     Make:match("html$", "tidy -m -xml -utf8 -q -i ${filename}")
 
 It tests filenames with `Lua` pattern matching and on matched items will
-execute command or function, specified in the second argument. Parameters are
-the same as in previous section, except `filename`, which contains generated
-output name.
+execute command or function, specified in the second argument. For functions,
+two arguments are passed, first one is the current filename, the second one
+table with parameters. These parameters are the same as in previous section,
+except for `filename`, which contains generated output name.
 
 ### Filters
 
