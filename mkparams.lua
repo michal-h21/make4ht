@@ -64,8 +64,11 @@ local function process_args(args)
 	local latex_params = {}
 	local insert_latex = get_inserter(args,latex_params)
 	insert_latex("shell-escape","-shell-escape")
-	table.insert(latex_params,"-jobname="..input)
-	table.insert(latex_params,args[4] or "")
+  local latex_cli_params = args[4] or ""
+  if not latex_cli_params:match("%-jobname") then
+    table.insert(latex_params,"-jobname="..input)
+  end
+	table.insert(latex_params, latex_cli_params)
 	--table.insert(latex_params,args["shell-escape"] and "-shell-escape")
 
 
