@@ -74,12 +74,12 @@ local function process_args(args)
     local newinput
     local first, rest = latex_cli_params:match("%-jobname=(.)(.*)")
     if first=='"' then
-      newinput=rest:match('([^"]-)')
+      newinput=rest:match('([^"]+)')
     elseif first=="'" then
-      newinput=rest:match("([^']-)")
+      newinput=rest:match("([^']+)")
     elseif type(first)== "string" then
       rest = first.. rest
-      newinput = rest:match("([^%s]-)")
+      newinput = rest:match("([^ ]+)")
     end
     if newinput then
       input = newinput
