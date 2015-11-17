@@ -1,5 +1,9 @@
 # Changelog
 
+## 2015/11/17
+
+- better -jobname handling
+
 ## 2015/06/29 version 0.1
 
 - major README file update
