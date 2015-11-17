@@ -248,7 +248,7 @@ env.Make:add("htlatex",function(par)
 "\\HCode\\expandafter\\def\\csname tex4ht\\endcsname{#1,html}\\def"..
 "\\HCode####1{\\documentstyle[tex4ht,}\\@ifnextchar[{\\HCode}{"..
 "\\documentstyle[tex4ht]}}}\\makeatother\\HCode ${tex4ht_sty_par}.a.b.c."..
-"\\input ${input}'" 
+"\\input ${tex_file}'" 
   if os.type == "windows" then
     command = command:gsub("'",'')
   end
