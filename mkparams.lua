@@ -62,10 +62,30 @@ local function process_args(args)
 	local input = mkutils.remove_extension(args.filename)
 
 	local latex_params = {}
+  local tex_file = input
 	local insert_latex = get_inserter(args,latex_params)
 	insert_latex("shell-escape","-shell-escape")
-	table.insert(latex_params,"-jobname="..input)
-	table.insert(latex_params,args[4] or "")
+  local latex_cli_params = args[4] or ""
+  if not latex_cli_params:match("%-jobname") then
+    table.insert(latex_params,"-jobname="..input)
+  else
+    -- when user specifies -jobname, we must change name of the input file,
+    -- in order to be able to process correct dvi file with tex4ht and t4ht
+    local newinput
+    local first, rest = latex_cli_params:match("%-jobname=(.)(.*)")
+    if first=='"' then
+      newinput=rest:match('([^"]+)')
+    elseif first=="'" then
+      newinput=rest:match("([^']+)")
+    elseif type(first)== "string" then
+      rest = first.. rest
+      newinput = rest:match("([^ ]+)")
+    end
+    if newinput then
+      input = newinput
+    end
+  end
+	table.insert(latex_params, latex_cli_params)
 	--table.insert(latex_params,args["shell-escape"] and "-shell-escape")
 
 
@@ -111,6 +131,7 @@ local function process_args(args)
 	local parameters = {
 		htlatex = compiler
 		,input=input
+    ,tex_file=tex_file
 		,packages=packages
 		,latex_par=table.concat(latex_params," ")
 		--,config=ebookutils.remove_extension(args.config)
