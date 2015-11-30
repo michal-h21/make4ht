@@ -270,16 +270,20 @@ env.Make:add("htlatex",function(par)
 	return 0 
 end
 ,{correct_exit=0})
-env.Make:add("tex4ht","tex4ht ${tex4ht_par} ${input}", nil, 1)
-env.Make:add("t4ht","t4ht ${t4ht_par} ${input}.${ext}",{ext="dvi"},1)
+env.Make:add("tex4ht","tex4ht ${tex4ht_par} \"${input}\"", nil, 1)
+env.Make:add("t4ht","t4ht ${t4ht_par} \"${input}.${ext}\"",{ext="dvi"},1)
 
 function load_config(settings, config_name)
 	local settings = settings or main_settings
 	env.settings = settings
 	env.mode = settings.mode
-	local config_name = config_name or "config.lua"
+	local config_name = kpse.find_file(config_name) or config_name
 	local f = io.open(config_name,"r")
-	if not f then return env, "Cannot open config file" end
+	if not f then 
+    print("Cannot open config file", config_name)
+    return  env
+  end
+  print("Using build file", config_name)
 	local code = f:read("*all")
 	local fn, msg = run(code,env)
 	if not fn then print(msg) end

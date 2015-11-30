@@ -1,8 +1,12 @@
 # Changelog
 
+## 2015/11/30
+
+- use `kpse` library for build file locating
+
 ## 2015/11/17
 
-- better -jobname handling
+- better `-jobname` handling
 
 ## 2015/09/23 version 0.1a
 
