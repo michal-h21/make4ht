@@ -88,7 +88,11 @@ htlatex
 
 input 
 
-:    input file
+:    it is output file name in fact
+
+tex_file
+
+:    input TeX file
 
 latex_par 
 
