@@ -44,7 +44,7 @@ local function process_args(args)
 	local packages = ""
 
 	if  args["output-dir"] ~= "nil" then 
-		outdir =  args["output-dir"] 
+		outdir =  args["output-dir"]  or ""
 		outdir = outdir:gsub('\\','/')
 		outdir = outdir:gsub('/$','')
 	end
