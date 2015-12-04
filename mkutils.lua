@@ -277,7 +277,7 @@ function load_config(settings, config_name)
 	local settings = settings or main_settings
 	env.settings = settings
 	env.mode = settings.mode
-	local config_name = kpse.find_file(config_name) or config_name
+	local config_name = kpse.find_file(config_name, 'texmfscripts') or config_name
 	local f = io.open(config_name,"r")
 	if not f then 
     print("Cannot open config file", config_name)
