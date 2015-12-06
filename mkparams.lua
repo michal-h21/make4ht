@@ -42,7 +42,7 @@ local function process_args(args)
 		end
 	end
 
-  if args.version ~=nil then
+  if args.version ==true then
     print "make4ht version 0.1a"
     os.exit()
   end
