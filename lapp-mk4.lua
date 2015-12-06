@@ -52,6 +52,15 @@ local function quit(msg,no_usage)
     os.exit(1);
 end
 
+local function help()
+  print(usage)
+  os.exit()
+end
+
+local function version()
+  return {version = true}
+end
+
 local function error(msg,no_usage)
     quit(arg[0]:gsub('.+[\\/]','')..':'..msg,no_usage)
 end
@@ -258,7 +267,10 @@ function process_options_string(str)
                 end
             end
             if parm == 'h' or parm == 'help' then
-                quit()
+                help()
+            end
+            if parm == "v" or parm == "version" then
+              return version()
             end
             if aliases[parm] then parm = aliases[parm] end
             ps = parms[parm]
