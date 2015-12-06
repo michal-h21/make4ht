@@ -11,12 +11,14 @@ ${progname} [options] filename ["tex4ht.sty op." "tex4ht op." "t4ht op" "latex o
 -c,--config (default xhtml) Custom config file
 -d,--output-dir (default nil)  Output directory
 -e,--build-file (default nil)  If build file is different than `filename`.mk4
+-h,-- help  Display this message
 -l,--lua  Use lualatex for document compilation
 -m,--mode (default default) Switch which can be used in the makefile 
 -n,--no-tex4ht Disable dvi file processing with tex4ht command
 -s,--shell-escape Enables running external programs from LaTeX
 -u,--utf8  For output documents in utf8 encoding
 -x,--xetex Use xelatex for document compilation
+-v,--version  Display version number
 ]]
 local function get_args(parameters, optiontext)
 	local parameters = parameters or {}
@@ -39,6 +41,11 @@ local function process_args(args)
 			table.insert(tb,v)
 		end
 	end
+
+  if args.version ~=nil then
+    print "make4ht version 0.1a"
+    os.exit()
+  end
 
 	local outdir = ""
 	local packages = ""
