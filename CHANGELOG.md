@@ -1,5 +1,10 @@
 # Changelog
 
+## 2015/12/06
+
+- modifed lapp library to recognize --version and 
+- added --help and --version command line options
+
 ## 2015/11/30
 
 - use `kpse` library for build file locating
