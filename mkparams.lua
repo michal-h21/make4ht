@@ -43,7 +43,7 @@ local function process_args(args)
 	end
 
   if args.version ==true then
-    print "make4ht version 0.1a"
+    print "make4ht version 0.1b"
     os.exit()
   end
 

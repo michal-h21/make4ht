@@ -279,6 +279,7 @@ LaTeX is called only once when `make4ht` is called with
     -n,--no-tex4ht  Disable dvi file processing with tex4ht command
     -s,--shell-escape Enables running external programs from LaTeX
     -u,--utf8  For output documents in utf8 encoding
+    -v,--version  Print version number
     -x,--xetex Use xelatex for document compilation
     <filename> (string) Input file name
 

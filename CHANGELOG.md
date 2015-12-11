@@ -1,6 +1,6 @@
 # Changelog
 
-## 2015/12/06
+## 2015/12/06 version 0.1b
 
 - modifed lapp library to recognize --version and 
 - added --help and --version command line options
