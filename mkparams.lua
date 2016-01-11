@@ -74,6 +74,8 @@ local function process_args(args)
 	insert_latex("shell-escape","-shell-escape")
   local latex_cli_params = args[4] or ""
   if not latex_cli_params:match("%-jobname") then
+    -- we must strip out directories from jobname when full path to document is given
+    input = input:match("([^%/]+)$")
     table.insert(latex_params,"-jobname="..input)
   else
     -- when user specifies -jobname, we must change name of the input file,
