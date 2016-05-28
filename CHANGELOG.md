@@ -1,5 +1,9 @@
 # Changelog
 
+- 2016/01/11
+
+    - fixed bug in loading documents with full path specified
+
 - 2015/12/06 version 0.1b
 
     - modifed lapp library to recognize `--version` and 
