@@ -92,9 +92,12 @@ function parse_lg(filename)
 end
 
 
-local cp_func = os.type == "unix" and "cp" or "copy"
+-- 
+-- local cp_func = os.type == "unix" and "cp" or "copy"
+-- maybe it would be better to actually move the files
+local cp_func = os.type == "unix" and "mv" or "move"
 function cp(src,dest)
-	local command = string.format('%s %s %s', cp_func, src, dest)
+	local command = string.format('%s "%s" "%s"', cp_func, src, dest)
 	if cp_func == "copy" then command = command:gsub("/",'\\') end
 	print("Copy: "..command)
 	os.execute(command)
