@@ -119,12 +119,12 @@ local function process_args(args)
 	--end
 
 	local tex4ht = ""
+  local dvi= args.xetex and "xdv" or "dvi"
 	if args[2] and args[2] ~="" then
 		tex4ht = args[2]
 	else
 		tex4ht = args.utf8 and " -cmozhtf -utf8" or ""
-		local xdv = args.xetex and " -.xdv" or ""
-		tex4ht = tex4ht .. xdv
+		-- tex4ht = tex4ht .. xdv
 	end
 
 	local t4ht = args[3] or ""
@@ -148,6 +148,7 @@ local function process_args(args)
 		,tex4ht_par=tex4ht
 		,t4ht_par=t4ht
 		,mode = mode
+    ,dvi = dvi
     ,build_file = build_file
 		--,t4ht_dir_format=t4ht_dir_format
 	}

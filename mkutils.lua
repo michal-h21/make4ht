@@ -270,7 +270,7 @@ env.Make:add("htlatex",function(par)
 	return 0 
 end
 ,{correct_exit=0})
-env.Make:add("tex4ht","tex4ht ${tex4ht_par} \"${input}\"", nil, 1)
+env.Make:add("tex4ht","tex4ht ${tex4ht_par} \"${input}.${dvi}\"", nil, 1)
 env.Make:add("t4ht","t4ht ${t4ht_par} \"${input}.${ext}\"",{ext="dvi"},1)
 
 function load_config(settings, config_name)
