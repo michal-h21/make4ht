@@ -124,6 +124,7 @@ local function process_args(args)
 		tex4ht = args[2]
 	else
 		tex4ht = args.utf8 and " -cmozhtf -utf8" or ""
+    if args.xetex then tex4ht = tex4ht .. " -.xdv" end
 		-- tex4ht = tex4ht .. xdv
 	end
 
