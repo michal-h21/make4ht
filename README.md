@@ -193,10 +193,16 @@ hruletohr
 
 :   `\hrule` commands are translated to series of underscore characters
     by `tex4ht`, this filter translate these underscores to `<hr>` elements
+
 entites 
 
 :    convert prohibited named entities to numeric entities (currently, only `&nbsp;`, as it causes validation errors, and `tex4ht` is producing it sometimes
 
+fix-links
+
+:    replace colons in local links and `id` attributes with underscores. Some
+     cross-reference commands may produce colons in internal links, which results in
+     validation error.
 
 Function `filter` accepts also function arguments, in this case this function 
 takes file contents as parameter and modified contents are returned.

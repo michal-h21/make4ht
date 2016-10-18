@@ -1,5 +1,9 @@
 # Changelog
 
+- 2016/10/18
+
+    - new filter: replace colons in `id` and `href` attributes with underscores
+
 - 2016/01/11
 
     - fixed bug in loading documents with full path specified
