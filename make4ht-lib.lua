@@ -134,6 +134,27 @@ Make.file_matches = function(self, files)
 	return statuses
 end
 
+-- add files from the mk4 file
+-- we must add them to the table generated from the lg file, so they can be processed later
+--
+Make.add_file = function(self, filename)
+  -- self.lgfile should be present, as it is created once the lg_file was parsed for the first time
+  local lg = self.lgfile or {}
+  local files = lg.files or {}
+  -- run filters on the file
+  local filtertable = {filename}
+  -- should we care about return status?
+  self:file_matches(filtertable)
+  -- break if the file is present already 
+  -- start at the end, it it was added by a build file, the file will be likely at the end
+  for i = #files,1,-1  do 
+    if files[i] == filename then return false, "File was already added" end
+  end
+  -- save the added file to the lg_file
+  table.insert(lg.files, filename)
+  self.lg = lg
+end
+
 Make.run = function(self) 
 	local return_codes = {}
   local params = self.params or {}
@@ -174,7 +195,8 @@ Make.run = function(self)
 	end
 	local lgfile = params.input and params.input .. ".lg" or nil 
 	if lgfile then
-   	local lg = mkutils.parse_lg(lgfile)
+   	self.lgfile = self.lgfile or mkutils.parse_lg(lgfile)
+    local lg = self.lgfile
 		-- First convert images from lg files
 		self:image_convert(lg["images"])
 		-- Then run file matchers on lg files and converted images

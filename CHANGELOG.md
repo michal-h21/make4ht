@@ -2,7 +2,8 @@
 
 - 2016/10/22
 
-    - use ipairs instead of pairs for traversing files and executing filters. This should ensure correct order of executions
+    - new command available in the build file: `Make:add_file(filename)`. This enables filters and commands to register files to the output.
+    - use ipairs instead of pairs for traversing files and executing filters. This should ensure correct order of executions.
 
 - 2016/10/18
 
