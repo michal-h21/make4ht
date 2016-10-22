@@ -1,5 +1,9 @@
 # Changelog
 
+- 2016/10/22
+
+    - use ipairs instead of pairs for traversing files and executing filters. This should ensure correct order of executions
+
 - 2016/10/18
 
     - new filter: replace colons in `id` and `href` attributes with underscores
