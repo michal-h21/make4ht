@@ -116,9 +116,9 @@ Make.file_matches = function(self, files)
 		self.matches[k].params = v
 	end
 	-- Loop over files, run command on matched
-	for _, file in pairs(files)do
+	for _, file in ipairs(files)do
 		statuses[file] = {}
-		for _, s in pairs(self.matches) do
+		for _, s in ipairs(self.matches) do
 			local pattern= s.pattern
 			if file:match(pattern) then 
 				local status, msg = self:run_command(file,s)
@@ -179,7 +179,7 @@ Make.run = function(self)
 		self:image_convert(lg["images"])
 		-- Then run file matchers on lg files and converted images
 		local files = lg["files"]
-		for _,v in pairs(lg["images"]) do 
+		for _,v in ipairs(lg["images"]) do 
 			local v = v.output
 			-- print(v)
 			table.insert(files,v) 
