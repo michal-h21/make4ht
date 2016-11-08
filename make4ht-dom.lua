@@ -88,21 +88,21 @@ local parse = function(x)
   parser.options.stripWS = nil
   parser:parse(x)
   parser.current = parser._handler.root
+
   function parser.get_path(self,path, current)
     local function traverse_path(path_elements, current, t)
       local t = t or {}
       if #path_elements == 0 then 
-        for _, x in ipairs(current._children or {}) do
-          table.insert(t,x)
-        end
+        -- for _, x in ipairs(current._children or {}) do
+          -- table.insert(t,x)
+        -- end
+        table.insert(t,current)
         return t
       end
       local current_path = table.remove(path_elements, 1)
       for _, x in ipairs(current._children or {}) do
-        -- print( "assaa", x._type)
         if x._type == "ELEMENT" then
           local name = string.lower(x._name)
-          print(name, current_path) 
           if name == current_path then
             t = traverse_path(path_elements, x, t)
           end
