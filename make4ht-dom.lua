@@ -117,6 +117,31 @@ local parse = function(x)
     return traverse_path(path_elements, current)
   end
 
+  function parser.traverse_node_list(self, nodelist, fn)
+    local nodelist = nodelist or {}
+    for _, node in ipairs(nodelist) do
+      for _, element in ipairs(node._children) do
+        fn(element)
+      end
+    end
+  end
+
+  function parser.replace_node(self, old, new)
+    local parent = old._parent
+    local id,msg = self:find_element_pos(parent, old)
+    if id then
+      parent._children[id] = new
+      return true
+    end
+    return false, msg
+  end
+
+  function parser.add_child_node(self, parent, child)
+    child._parent = parent
+    table.insert(parent._children, child)
+  end
+
+
   function parser.copy_node(self, element)
     local t = {}
     for k, v in pairs(element) do
@@ -138,6 +163,20 @@ local parse = function(x)
     new._children = {}
     new._parent = parent
     return new
+  end
+
+  function parser.remove_node(self, element)
+    local parent = element._parent
+    local pos = self:find_element_pos(parent, element)
+    if pos then table.remove(parent._children, pos) end
+  end
+  
+  function parser.find_element_pos(self, parent, el)
+    if parent._type ~= "ELEMENT" then return nil, "The parent isn't element" end
+    for i, x in ipairs(parent._children) do
+      if x == el then return i end
+    end
+    return false, "Cannot find element"
   end
     
   -- parser:
