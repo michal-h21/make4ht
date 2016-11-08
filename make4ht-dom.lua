@@ -92,22 +92,19 @@ local parse = function(x)
     local function traverse_path(path_elements, current, t)
       local t = t or {}
       if #path_elements == 0 then 
-        for _, x in ipairs(current or {}) do
-          print "mame match"
+        for _, x in ipairs(current._children or {}) do
           table.insert(t,x)
         end
         return t
       end
       local current_path = table.remove(path_elements, 1)
-      print("current path", current_path)
       for _, x in ipairs(current._children or {}) do
+        -- print( "assaa", x._type)
         if x._type == "ELEMENT" then
           local name = string.lower(x._name)
           print(name, current_path) 
           if name == current_path then
-            for _, child in ipairs(x._children) do
-              t = traverse_path(path_elements, child, t)
-            end
+            t = traverse_path(path_elements, x, t)
           end
         end
       end
