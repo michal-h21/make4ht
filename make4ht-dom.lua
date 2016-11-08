@@ -83,11 +83,13 @@ end
 
 local parse = function(x)
   local domHandler = handler.domHandler()
-  local parser = xml.xmlParser(domHandler)
+  local Parser = xml.xmlParser(domHandler)
   -- preserve whitespace
-  parser.options.stripWS = nil
-  parser:parse(x)
-  parser.current = parser._handler.root
+  Parser.options.stripWS = nil
+  Parser:parse(x)
+  Parser.current = Parser._handler.root
+  Parser.__index = Parser
+  local parser = setmetatable({}, Parser)
 
   function parser.get_path(self,path, current)
     local function traverse_path(path_elements, current, t)
