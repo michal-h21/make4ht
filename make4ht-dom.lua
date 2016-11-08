@@ -116,6 +116,29 @@ local parse = function(x)
     for el in path:gmatch("([^%s]+)") do table.insert(path_elements, el) end
     return traverse_path(path_elements, current)
   end
+
+  function parser.copy_node(self, element)
+    local t = {}
+    for k, v in pairs(element) do
+      if type(v) == "table" and k~="_parent" then
+        t[k] = self:copy_node(v)
+      else
+        t[k] = v
+      end
+    end
+    return t
+  end
+
+  function parser.create_element(self, name, attributes, parent)
+    local parent = parent or self
+    local new = {}
+    new._type = "ELEMENT"
+    new._name = name
+    new._attr = attributes or {}
+    new._children = {}
+    new._parent = parent
+    return new
+  end
     
   -- parser:
   return parser
