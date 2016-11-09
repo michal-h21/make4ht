@@ -91,36 +91,37 @@ local parse = function(x)
   Parser.__index = Parser
   local parser = setmetatable({}, Parser)
 
-  function parser.root_node(self)
+  function Parser.root_node(self)
     return self._handler.root
   end
 
-  function parser.get_element_type(self, el)
+
+  function Parser.get_element_type(self, el)
     local el = el or {}
     return el._type
   end
-  function parser.is_element(self, el)
+  function Parser.is_element(self, el)
     return self:get_element_type(el) == "ELEMENT" 
   end
 
-  function parser.is_text(self, el)
+  function Parser.is_text(self, el)
     return self:get_element_type(el) == "TEXT"
   end
 
   local lower = string.lower
 
-  function parser.get_element_name(self, el)
+  function Parser.get_element_name(self, el)
     return el._name or "unnamed"
   end
 
-  function parser.get_attribute(self, el, name)
+  function Parser.get_attribute(self, el, name)
     if self:is_element(el) then
       local attr = el._attr or {}
       return attr[name]
     end
   end
 
-  function parser.set_attribute(self, el, name, value)
+  function Parser.set_attribute(self, el, name, value)
     if self:is_element(el) then
       el._attr[name] = value
       return true
@@ -128,11 +129,11 @@ local parse = function(x)
   end
   
 
-  function parser.serialize(self, current)
+  function Parser.serialize(self, current)
     return table.concat(serialize_dom(self, current))
   end
 
-  function parser.get_path(self,path, current)
+  function Parser.get_path(self,path, current)
     local function traverse_path(path_elements, current, t)
       local t = t or {}
       if #path_elements == 0 then 
@@ -160,13 +161,13 @@ local parse = function(x)
     return traverse_path(path_elements, current)
   end
 
-  function parser.get_children(self, el)
+  function Parser.get_children(self, el)
     local el  = el or {}
     local children = el._children or {}
     return children
   end
 
-  function parser.traverse_elements(self, fn, current)
+  function Parser.traverse_elements(self, fn, current)
     local current = current or self:root_node()
     local status = true
     if self:is_element(current) or self:get_element_type(current) == "ROOT"then
@@ -180,7 +181,7 @@ local parse = function(x)
     end
   end
 
-  function parser.traverse_node_list(self, nodelist, fn)
+  function Parser.traverse_node_list(self, nodelist, fn)
     local nodelist = nodelist or {}
     for _, node in ipairs(nodelist) do
       for _, element in ipairs(node._children) do
@@ -189,7 +190,7 @@ local parse = function(x)
     end
   end
 
-  function parser.replace_node(self, old, new)
+  function Parser.replace_node(self, old, new)
     local parent = old._parent
     local id,msg = self:find_element_pos(parent, old)
     if id then
@@ -199,13 +200,13 @@ local parse = function(x)
     return false, msg
   end
 
-  function parser.add_child_node(self, parent, child)
+  function Parser.add_child_node(self, parent, child)
     child._parent = parent
     table.insert(parent._children, child)
   end
 
 
-  function parser.copy_node(self, element)
+  function Parser.copy_node(self, element)
     local t = {}
     for k, v in pairs(element) do
       if type(v) == "table" and k~="_parent" then
@@ -217,7 +218,7 @@ local parse = function(x)
     return t
   end
 
-  function parser.create_element(self, name, attributes, parent)
+  function Parser.create_element(self, name, attributes, parent)
     local parent = parent or self
     local new = {}
     new._type = "ELEMENT"
@@ -228,7 +229,7 @@ local parse = function(x)
     return new
   end
 
-  function parser.remove_node(self, element)
+  function Parser.remove_node(self, element)
     local parent = element._parent
     local pos = self:find_element_pos(parent, element)
     -- if pos then table.remove(parent._children, pos) end
@@ -238,7 +239,7 @@ local parse = function(x)
     end
   end
 
-  function parser.find_element_pos(self, parent, el)
+  function Parser.find_element_pos(self, parent, el)
     if not self:is_element(parent) and self:get_element_type(parent) ~= "ROOT" then return nil, "The parent isn't element" end
     for i, x in ipairs(parent._children) do
       if x == el then return i end
@@ -246,6 +247,9 @@ local parse = function(x)
     return false, "Cannot find element"
   end
 
+  parser:traverse_elements(function(a) 
+    setmetatable(a, Parser)
+  end)
   -- parser:
   return parser
 end
