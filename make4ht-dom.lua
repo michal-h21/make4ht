@@ -112,6 +112,20 @@ local parse = function(x)
   function parser.get_element_name(self, el)
     return el._name or "unnamed"
   end
+
+  function parser.get_attribute(self, el, name)
+    if self:is_element(el) then
+      local attr = el._attr or {}
+      return attr[name]
+    end
+  end
+
+  function parser.set_attribute(self, el, name, value)
+    if self:is_element(el) then
+      el._attr[name] = value
+      return true
+    end
+  end
   
 
   function parser.serialize(self, current)
