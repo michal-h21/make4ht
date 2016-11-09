@@ -251,6 +251,9 @@ local parse = function(x)
     return false, "Cannot find element"
   end
 
+  function parser.get_next_element(self, el)
+  end
+
   -- parser:
   return parser
 end
