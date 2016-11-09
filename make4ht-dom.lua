@@ -129,9 +129,9 @@ local parse = function(x)
         return t
       end
       local current_path = table.remove(path_elements, 1)
-      for _, x in ipairs(current._children or {}) do
-        if x._type == "ELEMENT" then
-          local name = string.lower(x._name)
+      for _, x in ipairs(self:get_children(current)) do
+        if self:is_element(x) then
+          local name = string.lower(self:get_element_name(x))
           if name == current_path then
             t = traverse_path(path_elements, x, t)
           end
