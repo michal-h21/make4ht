@@ -95,6 +95,25 @@ local parse = function(x)
     return self._handler.root
   end
 
+  function parser.get_element_type(self, el)
+    local el = el or {}
+    return el._type
+  end
+  function parser.is_element(self, el)
+    return self:get_element_type(el) == "ELEMENT" or self:get_element_type(el) == "ROOT"
+  end
+
+  function parser.is_text(self, el)
+    return self:get_element_type(el) == "TEXT"
+  end
+
+  local lower = string.lower
+
+  function parser.get_element_name(self, el)
+    return el._name or "unnamed"
+  end
+  
+
   function parser.serialize(self, current)
     return table.concat(serialize_dom(self, current))
   end
