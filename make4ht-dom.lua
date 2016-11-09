@@ -100,7 +100,7 @@ local parse = function(x)
     return el._type
   end
   function parser.is_element(self, el)
-    return self:get_element_type(el) == "ELEMENT" or self:get_element_type(el) == "ROOT"
+    return self:get_element_type(el) == "ELEMENT" 
   end
 
   function parser.is_text(self, el)
