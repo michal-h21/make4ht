@@ -97,20 +97,23 @@ local parse = function(x)
 
 
   function Parser.get_element_type(self, el)
-    local el = el or {}
+    local el = el or self
     return el._type
   end
   function Parser.is_element(self, el)
+    local el = el or self
     return self:get_element_type(el) == "ELEMENT" 
   end
 
   function Parser.is_text(self, el)
+    local el = el or self
     return self:get_element_type(el) == "TEXT"
   end
 
   local lower = string.lower
 
   function Parser.get_element_name(self, el)
+    local el = el or self
     return el._name or "unnamed"
   end
 
