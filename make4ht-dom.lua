@@ -247,9 +247,15 @@ local parse = function(x)
     return false, "Cannot find element"
   end
 
-  parser:traverse_elements(function(a) 
-    setmetatable(a, Parser)
-  end)
+  -- include the methods to all xml nodes
+  local function save_methods(element)
+    setmetatable(element,Parser)
+    local children = element._children or {}
+    for _, x in ipairs(children) do
+      save_methods(x)
+    end
+  end
+  save_methods(parser._handler.root)
   -- parser:
   return parser
 end
