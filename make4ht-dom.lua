@@ -139,11 +139,31 @@ local parse = function(x)
       end
       return t
     end
-    local current = current or self._handler.root
+    local current = current or self:root_node() -- self._handler.root
     local path_elements = {}
     local path = string.lower(path)
     for el in path:gmatch("([^%s]+)") do table.insert(path_elements, el) end
     return traverse_path(path_elements, current)
+  end
+
+  function parser.get_children(self, el)
+    local el  = el or {}
+    local children = el._children or {}
+    return children
+  end
+
+  function parser.traverse_elements(self, fn, current)
+    local current = current or self:root_node()
+    local status = true
+    if self:is_element(current) or self:get_element_type(current) == "ROOT" then
+      print "je element"
+      local status = fn(current)
+      if status ~= false then
+        for _, child in ipairs(self:get_children(current)) do
+          self:traverse_elements(fn, child)
+        end
+      end
+    end
   end
 
   function parser.traverse_node_list(self, nodelist, fn)
