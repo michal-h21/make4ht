@@ -91,6 +91,10 @@ local parse = function(x)
   Parser.__index = Parser
   local parser = setmetatable({}, Parser)
 
+  function parser.serialize(self, current)
+    return table.concat(serialize_dom(self, current))
+  end
+
   function parser.get_path(self,path, current)
     local function traverse_path(path_elements, current, t)
       local t = t or {}
