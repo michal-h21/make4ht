@@ -239,7 +239,7 @@ local parse = function(x)
   end
 
   function parser.find_element_pos(self, parent, el)
-    if parent._type ~= "ELEMENT" then return nil, "The parent isn't element" end
+    if not self:is_element(parent) and self:get_element_type(parent) ~= "ROOT" then return nil, "The parent isn't element" end
     for i, x in ipairs(parent._children) do
       if x == el then return i end
     end
