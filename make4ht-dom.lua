@@ -133,6 +133,12 @@ local parse = function(x)
   
 
   function Parser.serialize(self, current)
+    local current = current
+    -- if no current element is added and self is not plain parser object
+    -- (_type is then nil), use the current object as serialized root
+    if not current and self._type then
+      current = self
+    end
     return table.concat(serialize_dom(self, current))
   end
 
