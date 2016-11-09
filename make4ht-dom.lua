@@ -169,9 +169,9 @@ local parse = function(x)
   function parser.traverse_elements(self, fn, current)
     local current = current or self:root_node()
     local status = true
-    if self:is_element(current) or self:get_element_type(current) == "ROOT" then
-      print "je element"
+    if self:is_element(current) or self:get_element_type(current) == "ROOT"then
       local status = fn(current)
+      -- don't traverse child nodes when the user function return false
       if status ~= false then
         for _, child in ipairs(self:get_children(current)) do
           self:traverse_elements(fn, child)
