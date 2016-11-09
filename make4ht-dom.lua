@@ -191,7 +191,7 @@ local parse = function(x)
 
   function parser.replace_node(self, old, new)
     local parent = old._parent
-    local id,msg = self:find_element_pos(parent, old)
+    local id,msg = self:find_element_pos( old)
     if id then
       parent._children[id] = new
       return true
@@ -230,7 +230,7 @@ local parse = function(x)
 
   function parser.remove_node(self, element)
     local parent = element._parent
-    local pos = self:find_element_pos(parent, element)
+    local pos = self:find_element_pos(element)
     -- if pos then table.remove(parent._children, pos) end
     if pos then 
       -- table.remove(parent._children, pos) 
@@ -238,7 +238,8 @@ local parse = function(x)
     end
   end
 
-  function parser.find_element_pos(self, parent, el)
+  function parser.find_element_pos(self, el)
+    local parent = el._parent
     if not self:is_element(parent) and self:get_element_type(parent) ~= "ROOT" then return nil, "The parent isn't element" end
     for i, x in ipairs(parent._children) do
       if x == el then return i end
