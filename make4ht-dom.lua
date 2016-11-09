@@ -231,9 +231,13 @@ local parse = function(x)
   function parser.remove_node(self, element)
     local parent = element._parent
     local pos = self:find_element_pos(parent, element)
-    if pos then table.remove(parent._children, pos) end
+    -- if pos then table.remove(parent._children, pos) end
+    if pos then 
+      -- table.remove(parent._children, pos) 
+      parent._children[pos] = {}
+    end
   end
-  
+
   function parser.find_element_pos(self, parent, el)
     if parent._type ~= "ELEMENT" then return nil, "The parent isn't element" end
     for i, x in ipairs(parent._children) do
