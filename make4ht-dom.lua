@@ -91,6 +91,10 @@ local parse = function(x)
   Parser.__index = Parser
   local parser = setmetatable({}, Parser)
 
+  function parser.root_node(self)
+    return self._handler.root
+  end
+
   function parser.serialize(self, current)
     return table.concat(serialize_dom(self, current))
   end
