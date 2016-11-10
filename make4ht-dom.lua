@@ -89,6 +89,14 @@ local parse = function(x)
   Parser:parse(x)
   Parser.current = Parser._handler.root
   Parser.__index = Parser
+
+  local function save_methods(element)
+    setmetatable(element,Parser)
+    local children = element._children or {}
+    for _, x in ipairs(children) do
+      save_methods(x)
+    end
+  end
   local parser = setmetatable({}, Parser)
 
   function Parser.root_node(self)
@@ -228,6 +236,7 @@ local parse = function(x)
         t[k] = v
       end
     end
+    save_methods(t)
     return t
   end
 
@@ -239,6 +248,7 @@ local parse = function(x)
     new._attr = attributes or {}
     new._children = {}
     new._parent = parent
+    save_methods(new)
     return new
   end
 
@@ -265,13 +275,6 @@ local parse = function(x)
   end
 
   -- include the methods to all xml nodes
-  local function save_methods(element)
-    setmetatable(element,Parser)
-    local children = element._children or {}
-    for _, x in ipairs(children) do
-      save_methods(x)
-    end
-  end
   save_methods(parser._handler.root)
   -- parser:
   return parser
