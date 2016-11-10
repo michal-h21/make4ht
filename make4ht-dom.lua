@@ -277,6 +277,10 @@ local parse = function(x)
   end
 
   function Parser.get_next_element(self, el)
+    local el = el or self
+    local pos = el:find_element_pos()
+    return pos
+
   end
 
   -- include the methods to all xml nodes
