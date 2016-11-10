@@ -276,12 +276,34 @@ local parse = function(x)
     return false, "Cannot find element"
   end
 
-  function Parser.get_next_element(self, el)
+  function Parser.get_siblibgs(self, el)
     local el = el or self
-    local pos = el:find_element_pos()
-    return pos
-
+    local parent = el:get_parent()
+    if parent:is_element() then
+      return parent:get_children()
+    end
   end
+
+  function Parser.get_sibling_node(self, change)
+    local el = self
+    local pos = el:find_element_pos()
+    local siblings = el:get_siblibgs()
+    if pos and siblings then
+      print(el, siblings, pos, #siblings)
+      return siblings[pos + change]
+    end
+  end
+
+  function Parser.get_next_node(self, el)
+    local el = el or self
+    return el:get_sibling_node(1)
+  end
+
+  function Parser.get_prev_node(self, el)
+    local el = el or self
+    return el:get_sibling_node(-1)
+  end
+
 
   -- include the methods to all xml nodes
   save_methods(parser._handler.root)
