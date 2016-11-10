@@ -289,7 +289,6 @@ local parse = function(x)
     local pos = el:find_element_pos()
     local siblings = el:get_siblibgs()
     if pos and siblings then
-      print(el, siblings, pos, #siblings)
       return siblings[pos + change]
     end
   end
