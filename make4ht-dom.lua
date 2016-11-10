@@ -125,14 +125,16 @@ local parse = function(x)
     return el._name or "unnamed"
   end
 
-  function Parser.get_attribute(self, el, name)
+  function Parser.get_attribute(self, name)
+    local el = self
     if self:is_element(el) then
       local attr = el._attr or {}
       return attr[name]
     end
   end
 
-  function Parser.set_attribute(self, el, name, value)
+  function Parser.set_attribute(self, name, value)
+    local el = self
     if self:is_element(el) then
       el._attr[name] = value
       return true
