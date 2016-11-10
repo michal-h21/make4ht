@@ -225,13 +225,15 @@ local parse = function(x)
     return false, msg
   end
 
-  function Parser.add_child_node(self, parent, child)
+  function Parser.add_child_node(self, child)
+    local parent = self
     child._parent = parent
     table.insert(parent._children, child)
   end
 
 
   function Parser.copy_node(self, element)
+    local element = element or self
     local t = {}
     for k, v in pairs(element) do
       if type(v) == "table" and k~="_parent" then
