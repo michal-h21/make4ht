@@ -181,7 +181,7 @@ local parse = function(x)
   end
 
   function Parser.get_children(self, el)
-    local el  = el or {}
+    local el  = el or self
     local children = el._children or {}
     return children
   end
