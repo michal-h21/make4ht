@@ -214,7 +214,8 @@ local parse = function(x)
     end
   end
 
-  function Parser.replace_node(self, old, new)
+  function Parser.replace_node(self,  new)
+    local old = self
     local parent = self:get_parent(old)
     local id,msg = self:find_element_pos( old)
     if id then
