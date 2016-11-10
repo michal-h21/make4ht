@@ -262,7 +262,7 @@ local parse = function(x)
     -- if pos then table.remove(parent._children, pos) end
     if pos then 
       -- table.remove(parent._children, pos) 
-      parent._children[pos] = save_methods({_type = "removed"})
+      parent._children[pos] = setmetatable({_type = "removed"}, Parser)
     end
   end
 
