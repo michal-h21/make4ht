@@ -187,6 +187,7 @@ local parse = function(x)
   end
 
   function Parser.get_parent(self, el)
+    local el = el or self
     return el._parent
   end
 
