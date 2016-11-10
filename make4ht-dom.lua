@@ -256,6 +256,7 @@ local parse = function(x)
   end
 
   function Parser.remove_node(self, element)
+    local element = element or self
     local parent = self:get_parent(element)
     local pos = self:find_element_pos(element)
     -- if pos then table.remove(parent._children, pos) end
@@ -266,6 +267,7 @@ local parse = function(x)
   end
 
   function Parser.find_element_pos(self, el)
+    local el = el or self
     local parent = self:get_parent(el)
     if not self:is_element(parent) and self:get_element_type(parent) ~= "ROOT" then return nil, "The parent isn't element" end
     for i, x in ipairs(parent._children) do
