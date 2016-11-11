@@ -208,17 +208,82 @@ local parse = function(x)
     return specificity
   end
 
-  
+  function Parser.match_querylist(self, querylist)
+    local matches = {}
 
+    local function test_part(key, value, el)
+      if key == "tag" then 
+        return el:get_element_name() == value
+      elseif key == "id" then
+        local id = el:get_attribute "id"
+        return id and id == value
+      elseif key == "class" then 
+        local class = el:get_attribute "class"
+        if not class then return false end
+        local c = {}
+        for part in class:gmatch "([^%s]+)" do
+          c[part] = true
+        end
+        return c[value] == true
+      end
+      -- TODO: Add more cases
+      -- just return true for not supported selectors
+      return true
+    end
+
+    local function test_object(query, el)
+      -- test one object in CSS selector
+      local matched = {}
+      for key, value in pairs(query) do
+        matches[#matches+1] = test_part(key, value, el)
+      end
+      if #matches == 0 then return false end
+      for k, v in ipairs(matches) do
+        if v ~= true then return false end
+      end
+      return true
+    end
+        
+    local function match_query(query, el)
+      local query = query or {}
+      local object = table.remove(query) -- get current object from the query stack
+      if not object then return true end -- if the query stack is empty, then we can be sure that it matched previous items
+      if not el:is_element() then return false end -- if there is object to test, but current node isn't element, test failed
+      local result = test_object(object, el)
+      if result then
+        return match_query(query, el:get_parent())
+      end
+      return false
+    end
+    for _,element in ipairs(querylist) do
+      local query = element.query
+      if #query > 0 then -- don't try to match empty query
+        local result = match_query(query, self)
+        if result then matches[#matches+1] = element end
+      end
+    end
+    return matches
+  end
+
+  function Parser.get_selector_path(self, selectorlist)
+    local nodelist = {}
+    self:traverse_elements(function(el)
+      local matches = el:match_querylist(selectorlist)
+      print("Matching", el:get_element_name(), #matches)
+      if #matches > 0 then nodelist[#nodelist+1] = el
+      end
+    end)
+    return nodelist
+  end
 
   --- Parse CSS selector to match table
   function Parser.prepare_selector(self, selector)
     local querylist = {}
     local function parse_selector(item)
       local query = {}
-      -- process the parts backwards
-      for i = #item, 1, -1 do
-        local part = item[i]
+      -- for i = #item, 1, -1 do
+        -- local part = item[i]
+      for _, part in ipairs(item) do
         local t = {}
         for _, atom in ipairs(part) do
           local key = atom[1]
