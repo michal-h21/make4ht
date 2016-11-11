@@ -194,7 +194,7 @@ local parse = function(x)
   function Parser.calculate_specificity(self, query)
     local query = query or {}
     local specificity = 0
-    for _, item in ipairs(query) do
+    for _, item in ipairs(query.query or {}) do
       for key, value in pairs(item) do
         if key == "id" then
           specificity = specificity + 100
@@ -233,7 +233,7 @@ local parse = function(x)
     local parts = query.parse_query(selector) or {}
     -- several selectors may be separated using ",", we must process them separately
     for _, part in ipairs(parts) do
-      elements[#elements+1] = parse_selector(part)
+      elements[#elements+1] = {query =  parse_selector(part)}
     end
     return elements
   end
