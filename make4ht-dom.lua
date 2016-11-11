@@ -208,10 +208,12 @@ local parse = function(x)
     return specificity
   end
 
+  
+
 
   --- Parse CSS selector to match table
   function Parser.prepare_selector(self, selector)
-    local elements = {}
+    local querylist = {}
     local function parse_selector(item)
       local query = {}
       -- process the parts backwards
@@ -233,9 +235,9 @@ local parse = function(x)
     local parts = query.parse_query(selector) or {}
     -- several selectors may be separated using ",", we must process them separately
     for _, part in ipairs(parts) do
-      elements[#elements+1] = {query =  parse_selector(part)}
+      querylist[#querylist+1] = {query =  parse_selector(part)}
     end
-    return elements
+    return querylist
   end
 
   function Parser.get_children(self, el)
