@@ -210,8 +210,10 @@ local parse = function(x)
 
   function Parser.match_querylist(self, querylist)
     local matches = {}
+    local querylist = querylist
 
     local function test_part(key, value, el)
+      -- print("testing", key, value, el:get_element_name())
       if key == "tag" then 
         return el:get_element_name() == value
       elseif key == "id" then
@@ -235,10 +237,10 @@ local parse = function(x)
       -- test one object in CSS selector
       local matched = {}
       for key, value in pairs(query) do
-        matches[#matches+1] = test_part(key, value, el)
+        matched[#matched+1] = test_part(key, value, el)
       end
-      if #matches == 0 then return false end
-      for k, v in ipairs(matches) do
+      if #matched == 0 then return false end
+      for k, v in ipairs(matched) do
         if v ~= true then return false end
       end
       return true
@@ -256,7 +258,8 @@ local parse = function(x)
       return false
     end
     for _,element in ipairs(querylist) do
-      local query = element.query
+      local query =  {}
+      for k,v in ipairs(element.query) do query[k] = v end
       if #query > 0 then -- don't try to match empty query
         local result = match_query(query, self)
         if result then matches[#matches+1] = element end
