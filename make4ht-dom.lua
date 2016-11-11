@@ -3,6 +3,7 @@
 local dom = {}
 local xml = require("luaxml-mod-xml")
 local handler = require("luaxml-mod-handler")
+local query = require("make4ht-parse-query")
 
 
 local void = {area = true, base = true, br = true, col = true, hr = true, img = true, input = true, link = true, meta = true, param = true}
@@ -190,16 +191,49 @@ local parse = function(x)
     return traverse_path(path_elements, current)
   end
 
+  function Parser.calculate_specificity(self, query)
+    local query = query or {}
+    local specificity = 0
+    for _, item in ipairs(query) do
+      for key, value in pairs(item) do
+        if key == "id" then
+          specificity = specificity + 100
+        elseif key == "tag" then
+          specificity = specificity + 1
+        else
+          specificity = specificity + 10
+        end
+      end
+    end
+    return specificity
+  end
+
+
   --- Parse CSS selector to match table
   function Parser.prepare_selector(self, selector)
     local elements = {}
     local function parse_selector(item)
-      local t = {}
-      local 
-      return item
+      local query = {}
+      -- process the parts backwards
+      for i = #item, 1, -1 do
+        local part = item[i]
+        local t = {}
+        for _, atom in ipairs(part) do
+          local key = atom[1]
+          local value = atom[2]
+          t[key] =  value
+        end
+        query[#query + 1] = t
+      end
+      return query
     end
-    for item in selector:gmatch("([^%s]+)") do
-      elements[#elements+1] = parse_selector(item)
+    -- for item in selector:gmatch("([^%s]+)") do
+    -- elements[#elements+1] = parse_selector(item)
+    -- end
+    local parts = query.parse_query(selector) or {}
+    -- several selectors may be separated using ",", we must process them separately
+    for _, part in ipairs(parts) do
+      elements[#elements+1] = parse_selector(part)
     end
     return elements
   end
