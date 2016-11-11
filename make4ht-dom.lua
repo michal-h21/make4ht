@@ -1,4 +1,6 @@
-local sentenceparser = {}
+--- DOM module for LuaXML
+-- @module make4ht-dom
+local dom = {}
 local xml = require("luaxml-mod-xml")
 local handler = require("luaxml-mod-handler")
 
@@ -13,7 +15,14 @@ local actions = {
   DTD = {start = "<!DOCTYPE ", text = "%s" , stop=">"}
 }
 
-local function serialize_dom(parser, current,level, output)
+--- It serializes the DOM object back to XML 
+-- @function serialize_dom
+-- @param parser DOM object
+-- @param current 
+-- @param level
+-- @param output
+-- @return table
+function serialize_dom(parser, current,level, output)
   local output = output or {}
   local function get_action(typ, action)
     local ac = actions[typ] or {}
@@ -99,6 +108,7 @@ local parse = function(x)
   end
   local parser = setmetatable({}, Parser)
 
+  --- @class Parser
   function Parser.root_node(self)
     return self._handler.root
   end
