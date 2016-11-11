@@ -62,10 +62,26 @@ describe("Basic DOM functions", function()
   end)
 
   describe("CSS selector handling", function()
-    local selector = "div#pokus span.ahoj, p, pokus.ahoj:first-child"
+    local selector = "div#pokus span.ahoj, p, div.ahoj:first-child"
     local objects = obj:prepare_selector(selector)
     assert.truthy(#objects == 3)
     assert.truthy(obj:calculate_specificity(objects[1]) == 112)
+    local document = [[
+    <html>
+    <body>
+    <div class="ahoj" id="pokus">
+    <span>first child</span>
+    <span class="ahoj">Pokus</span>
+    <p>Uff</p>
+    <b>Something different</b>
+    </div>
+    </body>
+    </html>
+    ]]
+    local newobj = dom.parse(document)
+    local matchedlist = newobj:get_selector_path(objects)
+    print("matched", #matchedlist)
+    for k, v in ipairs(matchedlist) do print(v:get_element_name()) end
     -- assert.truthy(#obj:prepare_selector(selector)==2)
   end)
 
