@@ -80,8 +80,7 @@ describe("Basic DOM functions", function()
     ]]
     local newobj = dom.parse(document)
     local matchedlist = newobj:get_selector_path(objects)
-    print("matched", #matchedlist)
-    for k, v in ipairs(matchedlist) do print(v:get_element_name()) end
+    assert.truthy(#matchedlist == 3)
     -- assert.truthy(#obj:prepare_selector(selector)==2)
   end)
 
