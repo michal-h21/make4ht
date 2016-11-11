@@ -190,6 +190,20 @@ local parse = function(x)
     return traverse_path(path_elements, current)
   end
 
+  --- Parse CSS selector to match table
+  function Parser.prepare_selector(self, selector)
+    local elements = {}
+    local function parse_selector(item)
+      local t = {}
+      local 
+      return item
+    end
+    for item in selector:gmatch("([^%s]+)") do
+      elements[#elements+1] = parse_selector(item)
+    end
+    return elements
+  end
+
   function Parser.get_children(self, el)
     local el  = el or self
     local children = el._children or {}
