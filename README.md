@@ -125,7 +125,8 @@ repetition
 
 correct_exit 
 
-:     expected `exit code` from the command.
+:    expected `exit code` from the command. The compilation will be terminted
+     when the command `exit code` is different.
 
 
 You may add your own parameters, they will be accessible in templates and
