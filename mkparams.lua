@@ -66,10 +66,9 @@ local function process_args(args)
 
 
 	local compiler = args.lua and "dvilualatex" or args.xetex and "xelatex --no-pdf" or "latex"
+  local tex_file = args.filename
 	local input = mkutils.remove_extension(args.filename)
-
 	local latex_params = {}
-  local tex_file = input
 	local insert_latex = get_inserter(args,latex_params)
 	insert_latex("shell-escape","-shell-escape")
   local latex_cli_params = args[4] or ""
