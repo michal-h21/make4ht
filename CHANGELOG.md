@@ -1,5 +1,9 @@
 # Changelog
 
+- 2016/12/19
+
+  - use full input name in `tex_file` variable. This should enable use of files without `.tex` extension.
+
 - 2016/10/22
 
     - new command available in the build file: `Make:add_file(filename)`. This enables filters and commands to register files to the output.
