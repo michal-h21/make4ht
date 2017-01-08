@@ -9,8 +9,8 @@ FILTERS_DIR = $(INSTALL_DIR)/filters
 SYSTEM_BIN = /usr/local/bin
 BUILD_DIR = build
 BUILD_MAKE4HT = $(BUILD_DIR)/make4ht
-# VERSION:= $(shell git --no-pager describe --dirty --abbrev=4 --tags --always )
-VERSION:= $(shell git describe --abbrev=4 --dirty --always --tags)
+VERSION:= $(shell git --no-pager describe --abbrev=0 --tags --always )
+# VERSION:= $(shell git describe --abbrev=4 --dirty --always --tags)
 DATE:= $(firstword $(shell git --no-pager show --date=short --format="%ad" --name-only))
 
 all: doc
