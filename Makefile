@@ -18,7 +18,7 @@ all: doc
 doc: $(doc_file) readme.tex
 
 make4ht-doc.pdf: make4ht-doc.tex readme.tex changelog.tex
-	latexmk -lualatex make4ht-doc.tex
+	latexmk -pdf -pdflatex='lualatex "\def\version{${VERSION}}\def\gitdate{${DATE}}\input{%S}"' make4ht-doc.tex
 
 readme.tex: README.md
 	pandoc -f markdown+definition_lists -t LaTeX README.md > readme.tex
