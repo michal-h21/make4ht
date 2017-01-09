@@ -2,7 +2,7 @@
 
 - 2016/12/19
 
-  - use full input name in `tex_file` variable. This should enable use of files without `.tex` extension.
+    - use full input name in `tex_file` variable. This should enable use of files without `.tex` extension.
 
 - 2016/10/22
 
