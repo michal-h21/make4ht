@@ -60,9 +60,12 @@ Sample:
     Make:htlatex()
     Make:match("html$", "tidy -m -xml -utf8 -q -i ${filename}")
 
- `Make:htlatex()` is preconfigured command for calling LaTeX with `tex4ht` loaded on the input file. In this case it will be called  one time. After compilation, `tidy` command is executed on the output `html` file.
+`Make:htlatex()` is preconfigured command for calling LaTeX with `tex4ht`
+loaded on the input file. In this case it will be called  one time. After
+compilation, `tidy` command is executed on the output `html` file.
 
-Note that you don't have to call `tex4ht` and `t4ht` commands explicitly in the build file, they are called automatically. 
+Note that you don't have to call `tex4ht` and `t4ht` commands explicitly in the
+build file, they are called automatically. 
 
 You can add more commands like `Make:htlatex` with 
 
@@ -76,7 +79,11 @@ it can be called with
 `command` can be text template, or function:
 
     Make:add("text", "hello, input file: ${input}")
-    Make:add("function", function(params) for k, v in pairs(params) do print(k..": "..v) end)
+    Make:add("function", function(params) 
+      for k, v in pairs(params) do 
+        print(k..": "..v) 
+      end
+    )
 
 `parameters` is a table or `nil` value.
 
@@ -101,7 +108,7 @@ latex_par
 packages
 
 :    insert additionl LaTeX code which is inserted before `\documentclass`.
-     useful for passing options to packages or additional packages loading
+     Useful for passing options to packages or additional packages loading
 
 tex4ht_sty_par 
 
@@ -139,9 +146,9 @@ multiple times if you include them in the build file, because they would be
 called also by `make4ht`. With `repetition`, second execution is blocked.
 
 You can set expected exit code from a command with `correct_exit`. Compilation
-is stopped when command returns different exit code. Situation is little bit
-difficult with LaTeX (all engines and formats in fact), because it doesn't 
-differentiate between fatal and non fatal errors and returns same exit code
+is stopped when command returns different exit code. The situation is 
+different for LaTeX (for all TeX engines and formats, in fact), because it doesn't 
+differentiate between fatal and non fatal errors, and it returns the same exit code
 in all cases. Log parsing is used because of that, error code `1` is returned 
 in the case of fatal error, `0` is used otherwise.
 
@@ -197,7 +204,9 @@ hruletohr
 
 entites 
 
-:    convert prohibited named entities to numeric entities (currently, only `&nbsp;`, as it causes validation errors, and `tex4ht` is producing it sometimes
+:    convert prohibited named entities to numeric entities (currently, only
+     `&nbsp;`, as it causes validation errors, and `tex4ht` is producing it
+     sometimes
 
 fix-links
 
@@ -229,7 +238,7 @@ These pictures are stored in special `dvi` file, on which `dvi to image`
 commands are called. 
 
 This conversion is normally configured in the `env file`, 
-which is system dependent and which has a little bit unintuitive syntax.
+which is system dependent and which has a bit unintuitive syntax.
 This configuration is processed by `t4ht` application and conversion
 commands are called for all pictures.
 
@@ -250,9 +259,9 @@ There are three parameters:
   - source - `dvi` file with the pictures
   - page   - page number of the converted image
 
-## `mode` variable
+## The `mode` variable
 
-Variable `mode` contains contents of `-mode` command line option. 
+The `mode` variable contains contents of `--mode` command line option. 
 It can be used to run some commands conditionally. For example:
 
      if mode == "draft" then
@@ -263,8 +272,8 @@ It can be used to run some commands conditionally. For example:
        Make:htlatex{}
      end
 
-In this example (which is default configuration used by `make4ht`),
-LaTeX is called only once when `make4ht` is called with
+In this example (which is the default configuration used by `make4ht`),
+LaTeX is called only once when `make4ht` is called with `draft` mode:
     
     make4ht -m draft filename
 
