@@ -31,6 +31,7 @@ build: doc $(lua_content) $(filters)
 	@mkdir -p $(BUILD_MAKE4HT)
 	@mkdir -p $(BUILD_MAKE4HT)/filters
 	@cp $(lua_content) $(tex_content)  make4ht-doc.pdf $(BUILD_MAKE4HT)
+	@cat make4ht | sed -e "s/{{version}}/${VERSION}/" >  $(BUILD_MAKE4HT)/make4ht
 	@cp $(filters) $(BUILD_MAKE4HT)/filters
 	@cp README.md $(BUILD_MAKE4HT)/README
 	@cd $(BUILD_DIR) && zip -r make4ht.zip make4ht
@@ -41,6 +42,7 @@ install: doc $(lua_content) $(filters)
 	mkdir -p $(FILTERS_DIR)
 	cp  $(doc_file) $(MANUAL_DIR)
 	cp $(lua_content) $(INSTALL_DIR)
+	@cat make4ht | sed -e "s/{{version}}/${VERSION}/" >  $(INSTALL_DIR)/make4ht
 	cp $(filters) $(FILTERS_DIR)
 	chmod +x $(INSTALL_DIR)/make4ht
 	ln -s $(INSTALL_DIR)/make4ht $(SYSTEM_BIN)/make4ht
