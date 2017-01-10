@@ -2,6 +2,12 @@ local lapp = require "lapp-mk4"
 local mkutils = require "mkutils"
 local m = {} -- use ugly module system for new lua versions support
 
+-- these two variables will be used in the version number
+-- progname will be set in get_args
+m.progname = "make4ht"
+-- set the version number before call to process_args()
+m.version_number = "v0.1"
+
 m.optiontext =  [[
 ${progname} - build system for tex4ht
 Usage:
@@ -43,7 +49,7 @@ local function process_args(args)
 	end
 
   if args.version ==true then
-    print "make4ht version 0.1b"
+    print(string.format("%s version %s", m.progname, m.version_number))
     os.exit()
   end
 
