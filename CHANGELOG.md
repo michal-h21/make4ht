@@ -1,5 +1,9 @@
 # Changelog
 
+- 2016/01/11
+
+    - pass table with settings to the build file, so they can be accessed from here.
+
 - 2016/12/19
 
     - use full input name in `tex_file` variable. This should enable use of files without `.tex` extension.
