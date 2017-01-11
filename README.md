@@ -277,6 +277,17 @@ LaTeX is called only once when `make4ht` is called with `draft` mode:
     
     make4ht -m draft filename
 
+## The `settings` table
+
+You may want to access to the parameters also outside commands, file matches
+and image conversion functions. For example, if you want to convert your file to
+the `OpenDocument Format`, you can use the following settings, based on `oolatex`
+command:
+
+    settings.tex4ht_sty_par = settings.tex4ht_sty_par ..",ooffice"
+    settings.tex4ht_par = settings.tex4ht_par .. " ooffice/! -cmozhtf"
+    settings.t4ht_par = settings.t4ht_par .. " -cooxtpipes -coo "
+
 
 # Command line options
 
