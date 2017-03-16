@@ -1,5 +1,9 @@
 # Changelog
 
+- 2017/03/16
+
+    - check for `TeX capacity exceeded` error in the \LaTeX\ run.
+
 - 2016/12/19
 
     - use full input name in `tex_file` variable. This should enable use of files without `.tex` extension.
