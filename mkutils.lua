@@ -266,11 +266,10 @@ env.Make:add("htlatex",function(par)
 		return 1
 	end
 	local len = f:seek("end")
-
-	f:seek("set", len - 256)
+	f:seek("set", len - 1256)
 	local text = f:read("*a")
 	f:close()
-	if text:match("No pages of output") then return 1 end
+	if text:match("No pages of output") or text:match("TeX capacity exceeded, sorry") then return 1 end
 	return 0 
 end
 ,{correct_exit=0})
