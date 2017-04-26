@@ -1,7 +1,7 @@
 require "busted.runner" ()
 kpse.set_program_name "luatex"
 
-local dom = require "make4ht-dom"
+local dom = require "luaxml-domobject"
 
 describe("Basic DOM functions", function() 
   local document = [[
@@ -36,7 +36,7 @@ describe("Basic DOM functions", function()
       if obj:get_element_name(el) == "p" then
         matched = true
         it("Element matching should work", function()
-          assert.truthy(el:root_node():get_element_type() == "ROOT")
+          assert.truthy(el:root_node():get_node_type() == "ROOT")
           assert.truthy(el:is_element())
           assert.truthy(el:get_element_name()== "p")
         end)
@@ -61,28 +61,29 @@ describe("Basic DOM functions", function()
     assert.truthy(serialized:match("<p>")== nil)
   end)
 
-  describe("CSS selector handling", function()
-    local selector = "div#pokus span.ahoj, p, div.ahoj:first-child"
-    local objects = obj:prepare_selector(selector)
-    assert.truthy(#objects == 3)
-    assert.truthy(obj:calculate_specificity(objects[1]) == 112)
-    local document = [[
-    <html>
-    <body>
-    <div class="ahoj" id="pokus">
-    <span>first child</span>
-    <span class="ahoj">Pokus</span>
-    <p>Uff</p>
-    <b>Something different</b>
-    </div>
-    </body>
-    </html>
-    ]]
-    local newobj = dom.parse(document)
-    local matchedlist = newobj:get_selector_path(objects)
-    assert.truthy(#matchedlist == 3)
-    -- assert.truthy(#obj:prepare_selector(selector)==2)
-  end)
+  -- css selector handling was moved to another module
+  -- describe("CSS selector handling", function()
+  --   local selector = "div#pokus span.ahoj, p, div.ahoj:first-child"
+  --   local objects = obj:prepare_selector(selector)
+  --   assert.truthy(#objects == 3)
+  --   assert.truthy(obj:calculate_specificity(objects[1]) == 112)
+  --   local document = [[
+  --   <html>
+  --   <body>
+  --   <div class="ahoj" id="pokus">
+  --   <span>first child</span>
+  --   <span class="ahoj">Pokus</span>
+  --   <p>Uff</p>
+  --   <b>Something different</b>
+  --   </div>
+  --   </body>
+  --   </html>
+  --   ]]
+  --   local newobj = dom.parse(document)
+  --   local matchedlist = newobj:get_selector_path(objects)
+  --   assert.truthy(#matchedlist == 3)
+  --   -- assert.truthy(#obj:prepare_selector(selector)==2)
+  -- end)
 
 
 end)
