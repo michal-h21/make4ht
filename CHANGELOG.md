@@ -1,5 +1,9 @@
 # Changelog
 
+- 2017/04/26
+
+    - Released version `v0.1c`
+
 - 2017/03/16
 
     - check for `TeX capacity exceeded` error in the \LaTeX\ run.
