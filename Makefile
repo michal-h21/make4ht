@@ -1,3 +1,4 @@
+.PHONY: build
 lua_content = make4ht $(wildcard *.lua) 
 filters = $(wildcard filters/*.lua)
 tex_content = $(wildcard *.tex)
