@@ -3,6 +3,7 @@
 - 2017/08/22
 
     - fixed the command line option parsing for `tex4ht`, `t4ht` and `latex` commands
+    - various grammar and factual fixes in the documentation
 
 - 2017/03/16
 
