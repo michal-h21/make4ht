@@ -1,5 +1,9 @@
 # Changelog
 
+- 2017/08/22
+
+    - fixed the command line option parsing for `tex4ht`, `t4ht` and `latex` commands
+
 - 2017/03/16
 
     - check for `TeX capacity exceeded` error in the \LaTeX\ run.
