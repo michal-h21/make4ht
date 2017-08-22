@@ -332,4 +332,28 @@ Specified path can be relative to current directory, or absolute:
     make4ht -d ~/gotohomedir filename
     make4ht -d c:\documents\windowspathsareworkingtoo filename
 
+# Troubleshooting 
+
+## Incorrect handling of command line arguments for `tex4ht`, `t4ht` or `latex`
+
+Sometimes, you may get a similar error:
+
+> make4ht:unrecognized parameter: i
+
+It may be caused by a following `make4ht` invocations:
+
+     make4ht hello.tex "customcfg,charset=utf-8" "-cunihtf -utf8" -d foo
+
+The command line option parser is confused by mixing options for `make4ht` and
+`tex4ht` in this case and tries to interpret the `-cunihtf -utf8`, which are
+options for `tex4ht` command as `make4ht` options. To fix that, you can either
+move either move the `-d foo` directly after `make4ht` command:
+
+     make4ht -d foo hello.tex "customcfg,charset=utf-8" "-cunihtf -utf8" 
+
+Or, you can add space before `tex4ht` options:
+
+     make4ht hello.tex "customcfg,charset=utf-8" " -cunihtf -utf8" -d foo
+
+The former way is preferable, though.
 
