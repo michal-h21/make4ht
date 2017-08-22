@@ -313,14 +313,14 @@ command:
 
 You can still use `make4ht` in same way as `htlatex`
 
-    make4ht filename "customcfg, charset=utf-8" " -cunihtf -utf8" " -dfoo"
+    make4ht filename "customcfg, charset=utf-8" "-cunihtf -utf8" "-dfoo"
 
-Note that this will not use `make4ht` routines for output dir making and
-copying If you want to use them, change the line above to:
+Note that this will not use `make4ht` routines for output directory making and
+copying. If you want to use them, change the line above to:
 
-    make4ht filename "customcfg, charset=utf-8" " -cunihtf -utf8"  -d foo
+    make4ht -d foo filename "customcfg, charset=utf-8" "-cunihtf -utf8"  
 
-This call has the same effect as following:
+This call has the same effect as the following:
 
     make4ht -u -c customcfg -d foo filename
 
