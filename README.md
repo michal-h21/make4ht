@@ -139,7 +139,7 @@ correct_exit
 You may add your own parameters, they will be accessible in templates and
 functions.
 
-With `repetition`, you can limit number of command executions.  Its value
+Using `repetition`, you can limit number of command executions. Its value
 should be number or `nil`.  This is used in the case of `tex4ht` and `t4ht`
 commands, as they should be executed only once and they would be executed
 multiple times if you include them in the build file, because they would be
