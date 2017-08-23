@@ -33,6 +33,19 @@ local function get_args(parameters, optiontext)
 	local optiontext = optiontext or m.optiontext
 	parameters.postfile = parameters.postfile or ""
 	optiontext = optiontext .. parameters.postparams .."<filename> (string) Input file name\n" .. parameters.postfile 
+  -- we can pass arguments for tex4ht and t4ht after filename, but it will confuse lapp, thinking that these 
+  -- options are for make4ht. this may result in execution error or wrong option parsing
+  -- as fix, add a space before options at the end (we need to stop to add spaces as soon as we find
+  -- nonempty string which doesn't start with - it will be filename or tex4ht.sty options
+  for i=#arg,1,-1 do
+    local current = arg[i]
+    if current:match("^%-") then
+      arg[i] = " ".. arg[i]
+    elseif current == "" then
+    else
+      break
+    end
+  end
 	--print("--------------\n" .. optiontext .."--------------\n")
 	return lapp(optiontext % parameters)
 end

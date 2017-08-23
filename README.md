@@ -49,7 +49,6 @@ for such task, it was chosen as language in which build script are written.
 
 # Build files
 
-## Commands
 
 By default, build file is saved in file named `filename + .mk4 extension`.
 You can choose different build file with `-e` or `--build-file` command line
@@ -67,27 +66,47 @@ compilation, `tidy` command is executed on the output `html` file.
 Note that you don't have to call `tex4ht` and `t4ht` commands explicitly in the
 build file, they are called automatically. 
 
-You can add more commands like `Make:htlatex` with 
+## User commands
+
+You can add more commands like `Make:htlatex` using `Make:add` command: 
 
     Make:add("name", "command", {parameters}, repetition)
 
+The `name` and `command` parameters are required, rest of the parameters are optional.
 
-it can be called with
+This defines `name` command, which can be then executed as `Make:name()` command.
 
-    Make:name()
+### Command function
 
-`command` can be text template, or function:
+The `command` parameter can be either string template, or function:
 
-    Make:add("text", "hello, input file: ${input}")
+    Make:add("text", "echo hello, input file: ${input}")
     Make:add("function", function(params) 
       for k, v in pairs(params) do 
         print(k..": "..v) 
-      end
+      end, {custom="Hello world"}
     )
 
-`parameters` is a table or `nil` value.
+The template can get value of variables from the parameters table using
+`${var_name}` placeholder. Templates are executed using operating system, so
+they should invoke existing OS commands. Function commands may execute system
+commands using `os.execute` function.
 
-Default parameters are:
+
+### Parameters table
+
+`parameters` parameter is optional, it can be table or `nil` value, which
+should be used if you want to use the `repetition` parameter, but don't want to
+modify the parameters table. 
+
+The table with default parameters is passed to all commands, they can be accessed from command functions  
+or templates. When you specify your own parameters in the command definition, these additional 
+parameters are added to the default parameters table for this particular
+command. You can override the default parameters in the parameters table.
+
+
+
+The default parameters are following:
 
 htlatex 
 
@@ -136,21 +155,26 @@ correct_exit
      when the command `exit code` is different.
 
 
-You may add your own parameters, they will be accessible in templates and
-functions.
+### Repetition
 
-With `repetition`, you can limit number of command executions.  Its value
-should be number or `nil`.  This is used in the case of `tex4ht` and `t4ht`
-commands, as they should be executed only once and they would be executed
-multiple times if you include them in the build file, because they would be
-called also by `make4ht`. With `repetition`, second execution is blocked.
+Repetition is number which specify maximal number of executions of the particular command.
+This is used for instance for `tex4ht` and `t4ht` commands, as they should be
+executed only once in the compilation. They would be executed
+multiple times if you include them in the build file, because they are 
+called  by `make4ht` by default. Because these commands are allowed only one
+`repetition`, the second execution is blocked.
 
-You can set expected exit code from a command with `correct_exit`. Compilation
-is stopped when command returns different exit code. The situation is 
-different for LaTeX (for all TeX engines and formats, in fact), because it doesn't 
-differentiate between fatal and non fatal errors, and it returns the same exit code
-in all cases. Log parsing is used because of that, error code `1` is returned 
-in the case of fatal error, `0` is used otherwise.
+### Expected exit code
+
+You can set the expected exit code from a command with `correct_exit` key in the
+parameters table. Compilation is stopped when command returns different exit
+code. 
+
+This mechanism isn't used for LaTeX (for all TeX engines and formats, in
+fact), because it doesn't differentiate between fatal and non fatal errors, and
+it returns the same exit code in all cases. Log parsing is used because of
+that, error code `1` is returned in the case of fatal error, `0` is used
+otherwise.
 
 ## File matches
 
@@ -261,8 +285,9 @@ There are three parameters:
 
 ## The `mode` variable
 
-The `mode` variable contains contents of `--mode` command line option. 
-It can be used to run some commands conditionally. For example:
+There is global `mode` variable available in the build file. It contains
+contents of `--mode` command line option.  It can be used to run some commands
+conditionally. For example:
 
      if mode == "draft" then
        Make:htlatex{} 
@@ -313,14 +338,14 @@ command:
 
 You can still use `make4ht` in same way as `htlatex`
 
-    make4ht filename "customcfg, charset=utf-8" " -cunihtf -utf8" " -dfoo"
+    make4ht filename "customcfg, charset=utf-8" "-cunihtf -utf8" "-dfoo"
 
-Note that this will not use `make4ht` routines for output dir making and
-copying If you want to use them, change the line above to:
+Note that this will not use `make4ht` routines for output directory making and
+copying. If you want to use them, change the line above to:
 
-    make4ht filename "customcfg, charset=utf-8" " -cunihtf -utf8"  -d foo
+    make4ht -d foo filename "customcfg, charset=utf-8" "-cunihtf -utf8"  
 
-This call has the same effect as following:
+This call has the same effect as the following:
 
     make4ht -u -c customcfg -d foo filename
 
@@ -332,4 +357,28 @@ Specified path can be relative to current directory, or absolute:
     make4ht -d ~/gotohomedir filename
     make4ht -d c:\documents\windowspathsareworkingtoo filename
 
+# Troubleshooting 
+
+## Incorrect handling of command line arguments for `tex4ht`, `t4ht` or `latex`
+
+Sometimes, you may get a similar error:
+
+> make4ht:unrecognized parameter: i
+
+It may be caused by a following `make4ht` invocations:
+
+     make4ht hello.tex "customcfg,charset=utf-8" "-cunihtf -utf8" -d foo
+
+The command line option parser is confused by mixing options for `make4ht` and
+`tex4ht` in this case and tries to interpret the `-cunihtf -utf8`, which are
+options for `tex4ht` command as `make4ht` options. To fix that, you can either
+move either move the `-d foo` directly after `make4ht` command:
+
+     make4ht -d foo hello.tex "customcfg,charset=utf-8" "-cunihtf -utf8" 
+
+Or, you can add space before `tex4ht` options:
+
+     make4ht hello.tex "customcfg,charset=utf-8" " -cunihtf -utf8" -d foo
+
+The former way is preferable, though.
 
