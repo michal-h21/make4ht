@@ -26,6 +26,15 @@ ${progname} [options] filename ["tex4ht.sty op." "tex4ht op." "t4ht op" "latex o
 -x,--xetex Use xelatex for document compilation
 -v,--version  Display version number
 ]]
+
+-- test if the current command line argument should be passed to tex4ht, t4ht or latex
+local function is_escapedargument(arg)
+  -- we need to ignore make4ht options which can be used without filename, ie --version and --help
+  local ignored_options = {["-h"]=true, ["--help"]=true, ["-v"] = true, ["--version"]=true}
+  if ignored_options[arg] then return false end
+  -- in other cases, match if the argument starts with "-" character
+  return arg:match("^%-")
+end
 local function get_args(parameters, optiontext)
 	local parameters = parameters or {}
 	parameters.progname = parameters.progname or "make4ht"
@@ -37,13 +46,16 @@ local function get_args(parameters, optiontext)
   -- options are for make4ht. this may result in execution error or wrong option parsing
   -- as fix, add a space before options at the end (we need to stop to add spaces as soon as we find
   -- nonempty string which doesn't start with - it will be filename or tex4ht.sty options
-  for i=#arg,1,-1 do
-    local current = arg[i]
-    if current:match("^%-") then
-      arg[i] = " ".. arg[i]
-    elseif current == "" then
-    else
-      break
+  if #arg > 1 then -- do this only if more than one argument is used
+    for i=#arg,1,-1 do
+      local current = arg[i]
+      if is_escapedargument(arg[i]) then
+        arg[i] = " ".. arg[i]
+      -- empty parameter
+      elseif current == "" then
+      else
+        break
+      end
     end
   end
 	--print("--------------\n" .. optiontext .."--------------\n")
