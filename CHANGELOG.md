@@ -1,5 +1,9 @@
 # Changelog
 
+- 2017/09/04
+
+    - fixed bug caused by the previous change -- the --help and --version didn't work
+
 - 2017/08/22
 
     - fixed the command line option parsing for `tex4ht`, `t4ht` and `latex` commands
