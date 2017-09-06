@@ -223,6 +223,7 @@ env.split  = split
 env.string = string
 env.table  = table
 env.copy   = copy
+env.tonumber = tonumber
 env.mkdirectories = mkdirectories
 env.require = require
 env.texio  = texio
