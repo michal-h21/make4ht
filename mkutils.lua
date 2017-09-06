@@ -231,6 +231,7 @@ env.type   = type
 env.lfs    = lfs
 env.os     = os
 env.io     = io
+env.math   = math
 env.unicode = unicode
 env.Font   = function(s)
 	local font_name = s["name"]
