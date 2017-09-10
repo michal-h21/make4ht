@@ -252,7 +252,6 @@ local function testlogfile(par)
 		return 1
 	end
 	local len = f:seek("end")
-  print("len:", len)
   -- test only the end of the log file, no need to run search functions on everything
   local newlen = len - 1256
   -- but the value to seek must be greater than 0
@@ -264,12 +263,13 @@ local function testlogfile(par)
 	return 0
 end
 
-env.Make:add("testlogfile", testlogfile)
 
+-- Make this function available in the build files
+Make.testlogfile = testlogfile
 --env.Make:add("htlatex", "${htlatex} ${latex_par} '\\\makeatletter\\def\\HCode{\\futurelet\\HCode\\HChar}\\def\\HChar{\\ifx\"\\HCode\\def\\HCode\"##1\"{\\Link##1}\\expandafter\\HCode\\else\\expandafter\\Link\\fi}\\def\\Link#1.a.b.c.{\\g@addto@macro\\@documentclasshook{\\RequirePackage[#1,html]{tex4ht}\\let\\HCode\\documentstyle\\def\\documentstyle{\\let\\documentstyle\\HCode\\expandafter\\def\\csname tex4ht\\endcsname{#1,html}\\def\\HCode####1{\\documentstyle[tex4ht,}\\@ifnextchar[{\\HCode}{\\documentstyle[tex4ht]}}}\\makeatother\\HCode '${config}${tex4ht_sty_par}'.a.b.c.\\input ' ${input}")
 
 -- template for calling LaTeX with tex4ht loaded
-local command = "${htlatex} ${latex_par} '\\makeatletter"..
+Make.latex_command = "${htlatex} ${latex_par} '\\makeatletter"..
 "\\def\\HCode{\\futurelet\\HCode\\HChar}\\def\\HChar{\\ifx\"\\HCode"..
 "\\def\\HCode\"##1\"{\\Link##1}\\expandafter\\HCode\\else"..
 "\\expandafter\\Link\\fi}\\def\\Link#1.a.b.c.{\\g@addto@macro"..
@@ -281,7 +281,7 @@ local command = "${htlatex} ${latex_par} '\\makeatletter"..
 "\\input ${tex_file}'"
 
 env.Make:add("htlatex",function(par)
-  local command = command
+  local command = Make.latex_command
   if os.type == "windows" then
     command = command:gsub("'",'')
   end
