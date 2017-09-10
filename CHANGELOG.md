@@ -1,5 +1,10 @@
 # Changelog
 
+- 2017/09/10
+
+    - Added support for Latexmk
+    - Added support of `math` library and `tonumber` function in the build files
+
 - 2017/09/04
 
     - fixed bug caused by the previous change -- the --help and --version didn't work
