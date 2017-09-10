@@ -76,6 +76,25 @@ The `name` and `command` parameters are required, rest of the parameters are opt
 
 This defines `name` command, which can be then executed as `Make:name()` command.
 
+### Provided commands
+
+`Make:htlatex`
+
+:    One call to TeX engine with special configuration for `tex4ht` loading.
+
+`Make:latexmk`
+
+:    Use `Latexmk` for the document compilation. `tex4ht` is loaded automatically.
+
+`Make:tex4ht`
+
+:    Process the DVI file and creates the output files.
+
+`Make:t4ht`
+
+:    Creates the CSS file.
+
+
 ### Command function
 
 The `command` parameter can be either string template, or function:
