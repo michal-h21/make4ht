@@ -293,25 +293,38 @@ end
 ,{correct_exit=0})
 
 
+env.Make:add("latexmk", function(par)
+  local command = Make.latex_command
+  par.expanded = command % par
+  -- quotes in latex_command must be escaped, they cause Latexmk error
+  par.expanded = par.expanded:gsub('"', '\\"')
+  local newcommand = 'latexmk -latex="${expanded}" ${tex_file}' % par
+  os.execute(newcommand)
+  return Make.testlogfile(par)
+end, {correct_exit= 0})
+
+
+Make:latexmk {}
+
 env.Make:add("tex4ht","tex4ht ${tex4ht_par} \"${input}.${dvi}\"", nil, 1)
 env.Make:add("t4ht","t4ht ${t4ht_par} \"${input}.${ext}\"",{ext="dvi"},1)
 
 function load_config(settings, config_name)
-	local settings = settings or main_settings
-	env.settings = settings
-	env.mode = settings.mode
-	local config_name = kpse.find_file(config_name, 'texmfscripts') or config_name
-	local f = io.open(config_name,"r")
-	if not f then 
+  local settings = settings or main_settings
+  env.settings = settings
+  env.mode = settings.mode
+  local config_name = kpse.find_file(config_name, 'texmfscripts') or config_name
+  local f = io.open(config_name,"r")
+  if not f then 
     print("Cannot open config file", config_name)
     return  env
   end
   print("Using build file", config_name)
-	local code = f:read("*all")
-	local fn, msg = run(code,env)
-	if not fn then print(msg) end
-	assert(fn)
-	return env
+  local code = f:read("*all")
+  local fn, msg = run(code,env)
+  if not fn then print(msg) end
+  assert(fn)
+  return env
 end
 
 
