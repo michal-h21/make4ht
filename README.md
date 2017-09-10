@@ -193,7 +193,8 @@ This mechanism isn't used for LaTeX (for all TeX engines and formats, in
 fact), because it doesn't differentiate between fatal and non fatal errors, and
 it returns the same exit code in all cases. Log parsing is used because of
 that, error code `1` is returned in the case of fatal error, `0` is used
-otherwise.
+otherwise. The `Make.testlogfile` function can be used in the build file to
+detect compilation errors in the TeX log file.
 
 ## File matches
 
