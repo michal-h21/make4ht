@@ -241,7 +241,7 @@ end
 
 env.Make   = make4ht.Make
 env.Make.params = env.settings
-env.Make:add("test","no takže ${tex4ht_sty_par} ${htlatex} ${input} ${config}")
+env.Make:add("test","test the variables:  ${tex4ht_sty_par} ${htlatex} ${input} ${config}")
 
 -- this function reads the LaTeX log file and tries to detect fatal errors in the compilation
 local function testlogfile(par)
