@@ -304,7 +304,6 @@ env.Make:add("latexmk", function(par)
 end, {correct_exit= 0})
 
 
-Make:latexmk {}
 
 env.Make:add("tex4ht","tex4ht ${tex4ht_par} \"${input}.${dvi}\"", nil, 1)
 env.Make:add("t4ht","t4ht ${t4ht_par} \"${input}.${ext}\"",{ext="dvi"},1)
