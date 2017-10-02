@@ -50,3 +50,8 @@ install: doc $(lua_content) $(filters)
 
 version:
 	echo $(VERSION), $(DATE)
+
+.PHONY: test
+test:
+	texlua test/test-mkparams.lua
+
