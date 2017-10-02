@@ -63,9 +63,14 @@ local function get_args(parameters, optiontext)
 	return lapp(optiontext % parameters)
 end
 
+--- get outptut file format and list of extensions from --format option string
 local function get_format_extensions(format_string)
   local format, rest = format_string:match("^([a-zA-Z0-9]+)(.*)")
-  return format, rest
+  local extensions = {}
+  rest:gsub("([%+%-])([^%+^%-]+)",function(typ, name)
+    table.insert(extensions, {type = typ, name = name})
+  end)
+  return format, extensions
 end
 
 local function process_args(args)
