@@ -346,6 +346,7 @@ command:
     -d,--output-dir (default "")  Output directory
     -e,--build-file (default nil)  If build file name is different 
          than `filename`.mk4
+    -f,--format  (default nil)  Output file format
     -l,--lua  Use lualatex for document compilation
     -m,--mode (default default) Switch which can be used in the makefile
     -n,--no-tex4ht  Disable dvi file processing with tex4ht command

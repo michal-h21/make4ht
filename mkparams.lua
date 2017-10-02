@@ -17,6 +17,7 @@ ${progname} [options] filename ["tex4ht.sty op." "tex4ht op." "t4ht op" "latex o
 -c,--config (default xhtml) Custom config file
 -d,--output-dir (default nil)  Output directory
 -e,--build-file (default nil)  If build file is different than `filename`.mk4
+-f,--format  (default nil)  Output file format
 -h,-- help  Display this message
 -l,--lua  Use lualatex for document compilation
 -m,--mode (default default) Switch which can be used in the makefile 
@@ -62,6 +63,10 @@ local function get_args(parameters, optiontext)
 	return lapp(optiontext % parameters)
 end
 
+local function get_format_extensions(format_string)
+  local format, rest = format_string:match("^([a-zA-Z0-9]+)(.*)")
+  return format, rest
+end
 
 local function process_args(args)
 	local function get_inserter(args,tb)
@@ -193,5 +198,6 @@ local function process_args(args)
 	return parameters
 end
 m.get_args = get_args
+m.get_format_extensions = get_format_extensions
 m.process_args = process_args
 return m
