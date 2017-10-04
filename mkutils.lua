@@ -332,6 +332,20 @@ function load_output_format(format_name)
   return format
 end
 
+function extensions_prepare_parameters(extensions, parameters)
+  for _, ext in ipairs(extensions) do
+    -- execute the extension only if it contains prepare_parameters function
+    local fn = ext.prepare_parameters
+    if fn then
+      parameters = fn(parameters)
+    end
+  end
+  return parameters
+end
+
+--- load one extension
+-- @param name  extension name
+-- @param format current output format
 local function load_extension(name,format)
   local extension = require("make4ht.extensions.".. name)
   -- extensions can test if the current output format is supported
