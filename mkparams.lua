@@ -175,8 +175,13 @@ local function process_args(args)
 	local build_file = input.. ".mk4"
 
 	if args["build-file"] and args["build-file"] ~= "nil" then
-		build_file = args["build-file"] 
+		build_file = args["build-file"]
 	end
+
+  local outformat, extensions
+  if args["format"] and arg["format"] ~= "nil" then
+    outformat, extensions = get_format_extensions(args["format"])
+  end
 
 	local parameters = {
 		htlatex = compiler
@@ -191,6 +196,8 @@ local function process_args(args)
 		,mode = mode
     ,dvi = dvi
     ,build_file = build_file
+    ,output_format = outformat
+    ,extensions = extensions
 		--,t4ht_dir_format=t4ht_dir_format
 	}
 	if outdir then parameters.outdir = outdir end
@@ -200,6 +207,12 @@ local function process_args(args)
 	print("tex4ht.sty :",t4sty)
 	print("tex4ht",tex4ht)
 	print("build_file", build_file)
+  if outformat~="nil" then
+    print("Output format", outformat) 
+    for _, ex in ipairs(extensions) do
+      print("Extension", ex.type .. ex.name)
+    end
+  end
 	return parameters
 end
 m.get_args = get_args
