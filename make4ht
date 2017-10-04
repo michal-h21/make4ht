@@ -36,6 +36,23 @@ local parameters = mkparams.process_args(args)
 local mode = parameters.mode
 local build_file = parameters.build_file 
 
+-- handle output formats
+local allowed_output_formats = {xhtml = true, html5=true, odt = true}
+local output_format = parameters.output_format
+-- formatter is Lua library which must provide at least prepare_parameters
+-- and process_build_sequence functions
+local formatter
+local extensions 
+local output_format = parameters.output_format    
+if allowed_output_formats[ output_format ] then
+  formatter = mkutils.load_output_format(output_format)
+  extensions = mkutils.load_extensions(parameters.extensions)
+end
+
+if formatter then
+  parameters = formatter.prepare_parameters(parameters)
+  print("hello", parameters.hello)
+end
 local make = mkutils.load_config(parameters, build_file)["Make"]
 make.params = parameters
 if make:length() < 1 then

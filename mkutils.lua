@@ -326,4 +326,44 @@ function load_config(settings, config_name)
   return env
 end
 
+--- load the output format plugins
+function load_output_format(format_name)
+  local format = assert(require( "make4ht.formats."..format_name))
+  return format
+end
+
+local function load_extension(name,format)
+  local extension = require("make4ht.extensions.".. name)
+  -- extensions can test if the current output format is supported
+  local test = extension.test
+  if test then
+    if test(format) then 
+      return extension
+    end
+    -- if the test fail return nil
+    return nil
+  end
+  -- if the extension doesn't provide the test function, we will assume that
+  -- it supports every output format
+  return extension
+end
+
+--- load extensions
+-- @param extensions table created by mkparams.get_format_extensions function
+-- @param format  output type format. extensions may support only certain file
+-- formats
+function load_extensions(extensions, format)
+  local module_names = {}
+  local extension_table = {}
+  -- process the extension table. it contains type field, which can enable or
+  -- diable the extension
+  for _, v in ipairs(extensions) do
+    local enable = v.type == "+" and true or nil
+    module_names[v.name] = enable
+  end
+  for name, _ in pairs(module_names) do
+    table.insert(extension_table, load_extension(name,format))
+  end
+  return extension_table
+end
 
