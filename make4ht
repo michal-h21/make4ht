@@ -50,8 +50,7 @@ if allowed_output_formats[ output_format ] then
 end
 
 if formatter then
-  parameters = formatter.prepare_parameters(parameters)
-  print("hello", parameters.hello)
+  parameters = formatter.prepare_parameters(parameters,extensions)
 end
 local make = mkutils.load_config(parameters, build_file)["Make"]
 make.params = parameters
