@@ -6,7 +6,7 @@ function M.test(format)
 end
 
 function M.modify_build(make)
-  make:match("html$", "tidy -m -xml -utf8 -q -i ${filename}")
+  make:match("html$", "tidy -m -utf8 -w 512 -q ${filename}")
   return make
 end
 
