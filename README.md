@@ -198,8 +198,8 @@ repetition
 
 correct_exit 
 
-:    expected `exit code` from the command. The compilation will be terminted
-     when the command `exit code` is different.
+:    expected `exit code` from the command. The compilation will be terminated
+     if the command `exit code` is different.
 
 
 ### Repetition
