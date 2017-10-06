@@ -69,7 +69,13 @@ the output format name:
 
 Available extensions:
 
-% ToDo: list extensions
+`latexmk`
+
+:    Use `Latexmk` for \LaTeX\ compilation.
+
+`tidy`
+
+:    Clean the `HTML` files using `Tidy` command.
 
 # Build files
 
