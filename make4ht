@@ -80,6 +80,10 @@ if #make.image_patterns > 0 then
   make.params.t4ht_par = make.params.t4ht_par .. " -p"
 end
 make:t4ht {ext = ext}
+-- run extensions which modify the build sequence
+if #extensions > 0 then
+  make = mkutils.extensions_modify_build(extensions, make)
+end
 make:match("tmp$", function() return false,"tmp file" end)
 make:match(".*",function(filename,par)
 	local outdir =  '' --par["outdir"] and par["outdir"] .."/" or ''
@@ -90,7 +94,4 @@ make:match(".*",function(filename,par)
 	return true
 end)
 
--- run extensions which modify the build sequence
-if #extensions > 0 then
-end
 make:run()

@@ -341,6 +341,7 @@ function load_output_format(format_name)
   end
 end
 
+--- Execute the prepare_parameters function in list of extensions
 function extensions_prepare_parameters(extensions, parameters)
   for _, ext in ipairs(extensions) do
     -- execute the extension only if it contains prepare_parameters function
@@ -350,6 +351,19 @@ function extensions_prepare_parameters(extensions, parameters)
     end
   end
   return parameters
+end
+
+--- Modify the build sequence using extensions
+-- @param extensions list of extensions 
+-- @make  Make object
+function extensions_modify_build(extensions, make)
+  for _, ext in ipairs(extensions) do
+    local fn = ext.modify_build
+    if fn then
+      make = fn(make)
+    end
+  end
+  return make
 end
 
 
