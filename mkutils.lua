@@ -343,10 +343,19 @@ function extensions_prepare_parameters(extensions, parameters)
   return parameters
 end
 
+
+local function find_lua_file(name)
+  local extension_path = name:gsub("%.", "/") .. ".lua"
+  return kpse.find_file(extension_path, "lua")
+end
 --- load one extension
 -- @param name  extension name
 -- @param format current output format
 local function load_extension(name,format)
+  -- first test if the extension exists
+  local is_extension_file = find_lua_file(name)
+  -- don't try to load the extension if it doesn't exist
+  if not is_extension_file then return nil end
   local extension = require("make4ht.extensions.".. name)
   -- extensions can test if the current output format is supported
   local test = extension.test
