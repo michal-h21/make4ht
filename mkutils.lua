@@ -385,7 +385,12 @@ function load_extensions(extensions, format)
     module_names[v.name] = enable
   end
   for name, _ in pairs(module_names) do
-    table.insert(extension_table, load_extension(name,format))
+    local extension = load_extension(name,format)
+    if extension then
+      table.insert(extension_table, extension)
+    else
+      print("Cannot load extension: ".. name)
+    end
   end
   return extension_table
 end
