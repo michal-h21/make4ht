@@ -326,8 +326,14 @@ function load_config(settings, config_name)
   return env
 end
 
+local function find_lua_file(name)
+  local extension_path = name:gsub("%.", "/") .. ".lua"
+  return kpse.find_file(extension_path, "lua")
+end
+
 --- load the output format plugins
 function load_output_format(format_name)
+  local is_format_file = ""
   local format = assert(require( "make4ht.formats."..format_name))
   return format
 end
@@ -344,16 +350,13 @@ function extensions_prepare_parameters(extensions, parameters)
 end
 
 
-local function find_lua_file(name)
-  local extension_path = name:gsub("%.", "/") .. ".lua"
-  return kpse.find_file(extension_path, "lua")
-end
 --- load one extension
 -- @param name  extension name
 -- @param format current output format
 local function load_extension(name,format)
   -- first test if the extension exists
-  local is_extension_file = find_lua_file(name)
+  local extension_library = "make4ht.extensions." .. name
+  local is_extension_file = find_lua_file(extension_library)
   -- don't try to load the extension if it doesn't exist
   if not is_extension_file then return nil end
   local extension = require("make4ht.extensions.".. name)
