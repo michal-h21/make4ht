@@ -42,14 +42,17 @@ local output_format = parameters.output_format
 -- formatter is Lua library which must provide at least prepare_parameters
 -- and process_build_sequence functions
 local formatter
-local extensions 
 local output_format = parameters.output_format    
 if allowed_output_formats[ output_format ] then
   formatter = mkutils.load_output_format(output_format)
-  extensions = mkutils.load_extensions(parameters.extensions)
+else
+  -- load xhtml as default output format
+  formatter = mkutils.load_output_format("xhtml")
 end
+local extensions = mkutils.load_extensions(parameters.extensions)
 
-if formatter then
+-- run extensions with prepare_parameters function
+if #extensions > 0 then
   parameters = formatter.prepare_parameters(parameters,extensions)
 end
 local make = mkutils.load_config(parameters, build_file)["Make"]
@@ -83,4 +86,8 @@ make:match(".*",function(filename,par)
 	mkutils.copy(filename,outfilename)
 	return true
 end)
+
+-- run extensions which modify the build sequence
+if #extensions > 0 then
+end
 make:run()

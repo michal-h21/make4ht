@@ -333,9 +333,12 @@ end
 
 --- load the output format plugins
 function load_output_format(format_name)
-  local is_format_file = ""
-  local format = assert(require( "make4ht.formats."..format_name))
-  return format
+  local format_library =  "make4ht.formats."..format_name
+  local is_format_file = find_lua_file(format_library)
+  if is_format_file then 
+    local format = assert(require(format_library))
+    return format
+  end
 end
 
 function extensions_prepare_parameters(extensions, parameters)

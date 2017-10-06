@@ -67,6 +67,8 @@ end
 local function get_format_extensions(format_string)
   local format, rest = format_string:match("^([a-zA-Z0-9]+)(.*)")
   local extensions = {}
+  -- it is possible to pass only the extensions
+  rest = rest or format_string
   rest:gsub("([%+%-])([^%+^%-]+)",function(typ, name)
     table.insert(extensions, {type = typ, name = name})
   end)
