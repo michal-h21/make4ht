@@ -1,5 +1,10 @@
 # Changelog
 
+- 2017/10/06
+
+    - Added support for output format selection. Supported formats are `xhtml`, `html5` and `odt`
+    - Added support for extensions
+
 - 2017/09/10
 
     - Added support for Latexmk
