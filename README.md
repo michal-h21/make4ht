@@ -77,6 +77,10 @@ Available extensions:
 
 :    Clean the `HTML` files using `Tidy` command.
 
+`common_filters`
+
+:    Clean the output HTML files using filters.
+
 # Build files
 
 `make4ht` supports build files. These are `Lua` scripts which can adjust
@@ -122,7 +126,7 @@ This defines `name` command, which can be then executed as `Make:name()` command
 
 `Make:tex4ht`
 
-:    Process the DVI file and creates the output files.
+:    Process the `DVI` file and creates the output files.
 
 `Make:t4ht`
 
@@ -161,48 +165,48 @@ command. You can override the default parameters in the parameters table.
 
 The default parameters are following:
 
-htlatex 
+`htlatex`
 
 :     used compiler
 
-input 
+`input`
 
 :    it is output file name in fact
 
-tex_file
+`tex_file`
 
 :    input TeX file
 
-latex_par 
+`latex_par`
 
 :    parameters to `latex`
 
-packages
+`packages`
 
-:    insert additionl LaTeX code which is inserted before `\documentclass`.
+:    insert additional LaTeX code which is inserted before `\documentclass`.
      Useful for passing options to packages or additional packages loading
 
-tex4ht_sty_par 
+`tex4ht_sty_par`
 
 :    parameters to `tex4ht.sty`
 
-tex4ht_par 
+`tex4ht_par`
 
 :     parameters to `tex4ht` application
 
-t4ht_par 
+`t4ht_par`
 
 :    parameters to `t4ht` application
 
-outdir 
+`outdir`
 
 :     output directory
 
-repetition 
+`repetition`
 
 :    limit number of command execution.
 
-correct_exit 
+`correct_exit`
 
 :    expected `exit code` from the command. The compilation will be terminated
      if the command `exit code` is different.
@@ -263,30 +267,30 @@ which is used for building filter chains then.
 
 Built-in filters are:
 
-cleanspan 
+`cleanspan` 
 
 :    clean spurious span elements when accented characters are used
 
-cleanspan-nat 
+`cleanspan-nat`
 
 :    alternative clean span filter, provided by Nat Kuhn
 
-fixligatures 
+`fixligatures`
 
 :    decompose ligatures to base characters
 
-hruletohr 
+`hruletohr`
 
 :   `\hrule` commands are translated to series of underscore characters
     by `tex4ht`, this filter translate these underscores to `<hr>` elements
 
-entites 
+`entites`
 
 :    convert prohibited named entities to numeric entities (currently, only
      `&nbsp;`, as it causes validation errors, and `tex4ht` is producing it
      sometimes
 
-fix-links
+`fix-links`
 
 :    replace colons in local links and `id` attributes with underscores. Some
      cross-reference commands may produce colons in internal links, which results in
