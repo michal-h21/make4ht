@@ -47,6 +47,9 @@ if allowed_output_formats[ output_format ] then
   formatter = mkutils.load_output_format(output_format)
 else
   -- load xhtml as default output format
+  if output_format then 
+    print("Cannot load output format: ".. output_format)
+  end
   formatter = mkutils.load_output_format("xhtml")
 end
 local extensions = mkutils.load_extensions(parameters.extensions)
