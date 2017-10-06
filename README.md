@@ -1,6 +1,6 @@
 # Introduction
 
-`make4ht` is a simple build system for tex4ht. It is both executable which
+`make4ht` is a simple build system for `tex4ht`. It is both executable which
 simplifies `tex4ht` execution and a library which can be used to create
 customized conversion programs. An example of such conversion program is [tex4ebook](https://github.com/michal-h21/tex4ebook)
 
@@ -46,15 +46,43 @@ The idea is to make system controlled by a build file. Because `Lua`
 interpreter is included in modern TeX distributions and `Lua` is ideal language
 for such task, it was chosen as language in which build script are written.
 
+# Output file formats and extensions
+
+The default output format used by `make4ht` is `xhtml`. You can request different 
+format using `--format` option. Supported formats are:
+
+ - `xhtml`
+ - `html5`
+ - `odt`
+
+You can also request `make4ht` extensions using `--format` option.  
+
+## Extensions
+
+Extensions can be used to modify the build process without need to use a build file. They
+may post-process the output files or request additional commands for the compilation.
+
+The extensions can be enabled or disabled by appending `+EXTENSION` or `-EXTENSION` after
+the output format name:
+
+     make4ht -uf html5+tidy filename.tex
+
+Available extensions:
+
+% ToDo: list extensions
 
 # Build files
 
+`make4ht` supports build files. These are `Lua` scripts which can adjust
+the build process. You can request external applications like `bibtex` or `makeindex`,
+pass options to the commands, modify the image conversion process, or post-process the 
+generated files.
 
-By default, build file is saved in file named `filename + .mk4 extension`.
+`make4ht` tries to load default build file named as `filename + .mk4 extension`.
 You can choose different build file with `-e` or `--build-file` command line
 option.
 
-Sample:
+Sample build file:
 
     Make:htlatex()
     Make:match("html$", "tidy -m -xml -utf8 -q -i ${filename}")
