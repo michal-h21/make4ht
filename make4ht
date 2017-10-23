@@ -55,9 +55,7 @@ end
 local extensions = mkutils.load_extensions(parameters.extensions, output_format)
 
 -- run extensions with prepare_parameters function
-if #extensions > 0 then
-  parameters = formatter.prepare_parameters(parameters,extensions)
-end
+parameters = formatter.prepare_parameters(parameters,extensions)
 local make = mkutils.load_config(parameters, build_file)["Make"]
 make.params = parameters
 if make:length() < 1 then
