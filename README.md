@@ -296,6 +296,11 @@ Built-in filters are:
      cross-reference commands may produce colons in internal links, which results in
      validation error.
 
+`svg-height`
+
+:    Some  SVG images produced by `dvisvgm` seem to have wrong dimensions. This filter 
+     tries to set the  correct image size.
+
 Function `filter` accepts also function arguments, in this case this function 
 takes file contents as parameter and modified contents are returned.
 

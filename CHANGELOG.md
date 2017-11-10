@@ -1,5 +1,9 @@
 # Changelog
 
+- 2017/11/10
+
+    - Added new filter: `svg-height`. It tries to fix height of some of the images produced by `dvisvgm`
+
 - 2017/10/06
 
     - Added support for output format selection. Supported formats are `xhtml`, `html5` and `odt`
