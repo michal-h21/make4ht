@@ -1,5 +1,9 @@
 # Changelog
 
+- 2017/12/08
+
+    - fixed the `mk4` build file loading when it is placed in the current working dir and another one with same filename somewhere in the TEXMF tree.
+
 - 2017/11/10
 
     - Added new filter: `svg-height`. It tries to fix height of some of the images produced by `dvisvgm`
