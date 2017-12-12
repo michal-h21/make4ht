@@ -12,7 +12,7 @@ under the terms of the LaTeX Project Public License, version 1.3.
 How it works
 ------------
 
-Default compilation script for `tex4ht`, named `htlatex`  compiles LaTeX files to `HTML` with this command  sequence:
+Default compilation script for `tex4ht`, named `htlatex` compiles LaTeX files to `HTML` with this command sequence:
 
     latex $latex_options 'code for loading tex4ht.sty \input{filename}'
     latex $latex_options 'code for loading tex4ht.sty \input{filename}'
@@ -20,7 +20,7 @@ Default compilation script for `tex4ht`, named `htlatex`  compiles LaTeX files t
     tex4ht options filename
     t4ht options filename
 
-The problem is that this is inefficient when  you need to run program which
+The problem is that this is inefficient when you need to run program which
 interact with LaTeX, such as `Makeindex` or `Bibtex`. In that case, you need to
 create new script based on the default one, or run `htlatex` twice, which means
 six LaTeX runs. 
@@ -33,9 +33,9 @@ directory, but it doesn't preserve directory structure, so when you
 have images in some subdirectory, they will be copied to the output directory,
 but links will be pointing to non existing subdirectory.
 
-Image conversion is directed with the 
-[env file](http://www.tug.org/applications/tex4ht/mn35.html#index35-73001), 
-with really strange syntax based on whitespace and 
+Image conversion is directed with the
+[env file](http://www.tug.org/applications/tex4ht/mn35.html#index35-73001),
+with really strange syntax based on whitespace and
 [os dependent](http://www.tug.org/applications/tex4ht/mn-unix.html#index27-69005).
 With `make4ht` build files, we have simple mean to fix these issues. We can
 change image conversion parameters without need to modify the `env file`,
@@ -48,14 +48,14 @@ for such task, it was chosen as language in which build script are written.
 
 # Output file formats and extensions
 
-The default output format used by `make4ht` is `xhtml`. You can request different 
+The default output format used by `make4ht` is `xhtml`. You can request different
 format using `--format` option. Supported formats are:
 
  - `xhtml`
  - `html5`
  - `odt`
 
-You can also request `make4ht` extensions using `--format` option.  
+You can also request `make4ht` extensions using `--format` option.
 
 ## Extensions
 
@@ -85,7 +85,7 @@ Available extensions:
 
 `make4ht` supports build files. These are `Lua` scripts which can adjust
 the build process. You can request external applications like `bibtex` or `makeindex`,
-pass options to the commands, modify the image conversion process, or post-process the 
+pass options to the commands, modify the image conversion process, or post-process the
 generated files.
 
 `make4ht` tries to load default build file named as `filename + .mk4 extension`.
@@ -106,7 +106,7 @@ build file, they are called automatically.
 
 ## User commands
 
-You can add more commands like `Make:htlatex` using `Make:add` command: 
+You can add more commands like `Make:htlatex` using `Make:add` command:
 
     Make:add("name", "command", {parameters}, repetition)
 
@@ -156,8 +156,8 @@ commands using `os.execute` function.
 should be used if you want to use the `repetition` parameter, but don't want to
 modify the parameters table. 
 
-The table with default parameters is passed to all commands, they can be accessed from command functions  
-or templates. When you specify your own parameters in the command definition, these additional 
+The table with default parameters is passed to all commands, they can be accessed from command functions
+or templates. When you specify your own parameters in the command definition, these additional
 parameters are added to the default parameters table for this particular
 command. You can override the default parameters in the parameters table.
 
@@ -217,8 +217,8 @@ The default parameters are following:
 Repetition is number which specify maximal number of executions of the particular command.
 This is used for instance for `tex4ht` and `t4ht` commands, as they should be
 executed only once in the compilation. They would be executed
-multiple times if you include them in the build file, because they are 
-called  by `make4ht` by default. Because these commands are allowed only one
+multiple times if you include them in the build file, because they are
+called by `make4ht` by default. Because these commands are allowed only one
 `repetition`, the second execution is blocked.
 
 ### Expected exit code
@@ -228,7 +228,7 @@ parameters table. Compilation is stopped when command returns different exit
 code. 
 
 This mechanism isn't used for LaTeX (for all TeX engines and formats, in
-fact), because it doesn't differentiate between fatal and non fatal errors, and
+fact), because it doesn't differentiate between fatal and non-fatal errors, and
 it returns the same exit code in all cases. Log parsing is used because of
 that, error code `1` is returned in the case of fatal error, `0` is used
 otherwise. The `Make.testlogfile` function can be used in the build file to
@@ -237,7 +237,7 @@ detect compilation errors in the TeX log file.
 ## File matches
 
 Other type of action which can be specified in the build file are
-matches  which may be called  on the generated files:
+matches  which may be called on the generated files:
 
     Make:match("html$", "tidy -m -xml -utf8 -q -i ${filename}")
 
@@ -262,12 +262,12 @@ Example:
     Make:match("html$",process)
 
 
-Filter module is located in `make4ht-filter`. Function is returned, 
+Filter module is located in `make4ht-filter`. Function is returned,
 which is used for building filter chains then. 
 
 Built-in filters are:
 
-`cleanspan` 
+`cleanspan`
 
 :    clean spurious span elements when accented characters are used
 
@@ -288,7 +288,7 @@ Built-in filters are:
 
 :    convert prohibited named entities to numeric entities (currently, only
      `&nbsp;`, as it causes validation errors, and `tex4ht` is producing it
-     sometimes
+     sometimes)
 
 `fix-links`
 
@@ -298,46 +298,46 @@ Built-in filters are:
 
 `svg-height`
 
-:    Some  SVG images produced by `dvisvgm` seem to have wrong dimensions. This filter 
-     tries to set the  correct image size.
+:    Some  SVG images produced by `dvisvgm` seem to have wrong dimensions. This filter
+     tries to set the correct image size.
 
-Function `filter` accepts also function arguments, in this case this function 
+Function `filter` accepts also function arguments, in this case this function
 takes file contents as parameter and modified contents are returned.
 
 Example:
 
-    local filter  = require "make4ht-filter"                                    
+    local filter  = require "make4ht-filter"
     local changea = function(s) return s:gsub("a","z") end
-    local process = filter{"cleanspan", "fixligatures", changea}            
-    Make:htlatex()                                                              
+    local process = filter{"cleanspan", "fixligatures", changea}
     Make:htlatex()
-    Make:match("html$",process) 
+    Make:htlatex()
+    Make:match("html$",process)
 
 In this case, spurious span elements are joined, ligatures are decomposed,
 and then all letters 'a' are replaced with 'z' letters.
 
 ## Image conversion
 
-It is possible to convert parts of LaTeX input to pictures, it is used 
+It is possible to convert parts of LaTeX input to pictures, it is used
 for example for math or diagrams in `tex4ht`. 
 
-These pictures are stored in special `dvi` file, on which `dvi to image` 
+These pictures are stored in special `dvi` file, on which `dvi to image`
 commands are called. 
 
-This conversion is normally configured in the `env file`, 
+This conversion is normally configured in the `env file`,
 which is system dependent and which has a bit unintuitive syntax.
 This configuration is processed by `t4ht` application and conversion
 commands are called for all pictures.
 
-It is possible to disable `t4ht` image processing and configure image 
+It is possible to disable `t4ht` image processing and configure image
 conversion in the make file:
 
     Make:image("png$",
-    "dvipng -bg Transparent -T tight -o ${output}  -pp ${page} ${source}")                                                       
+    "dvipng -bg Transparent -T tight -o ${output}  -pp ${page} ${source}")
 
 
 `Make:image` takes two parameters, pattern to match image name and action.
-Action can be either string template with conversion command, 
+Action can be either string template with conversion command,
 or function which takes table with parameters as argument.
 
 There are three parameters:
@@ -407,7 +407,7 @@ You can still use `make4ht` in same way as `htlatex`
 Note that this will not use `make4ht` routines for output directory making and
 copying. If you want to use them, change the line above to:
 
-    make4ht -d foo filename "customcfg, charset=utf-8" "-cunihtf -utf8"  
+    make4ht -d foo filename "customcfg, charset=utf-8" "-cunihtf -utf8"
 
 This call has the same effect as the following:
 
@@ -436,11 +436,11 @@ It may be caused by a following `make4ht` invocations:
 The command line option parser is confused by mixing options for `make4ht` and
 `tex4ht` in this case and tries to interpret the `-cunihtf -utf8`, which are
 options for `tex4ht` command as `make4ht` options. To fix that, you can either
-move either move the `-d foo` directly after `make4ht` command:
+move the `-d foo` directly after `make4ht` command:
 
-     make4ht -d foo hello.tex "customcfg,charset=utf-8" "-cunihtf -utf8" 
+     make4ht -d foo hello.tex "customcfg,charset=utf-8" "-cunihtf -utf8"
 
-Or, you can add space before `tex4ht` options:
+Another option is to add a space before `tex4ht` options:
 
      make4ht hello.tex "customcfg,charset=utf-8" " -cunihtf -utf8" -d foo
 
