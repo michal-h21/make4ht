@@ -1,9 +1,9 @@
 # Introduction
 
-`make4ht` is a simple build system for `tex4ht`, TeX to XML converter. It provides a command line tool
+`make4ht` is a simple build system for `tex4ht`, \TeX\ to XML converter. It provides a command line tool
 that drive the conversion process. It also provides a library which can be used to create
 customized conversion tools. An example of such conversion tool is
-[tex4ebook](https://github.com/michal-h21/tex4ebook) for conversion of TeX to
+[tex4ebook](https://github.com/michal-h21/tex4ebook) for conversion of \TeX\ to
 ePub and other e-book formats.
 
 
@@ -13,12 +13,12 @@ ePub and other e-book formats.
 
 
 `tex4ht` system supports several output formats, most notably `XHTML`, `HTML 5` and `ODT`. 
-The conversion can be invoked using several commands. These commands invoke LaTeX or Plain TeX 
-with special instructions to load `tex4ht.sty` package. The TeX run produces special `DVI` file 
+The conversion can be invoked using several commands. These commands invoke LaTeX\ or Plain TeX 
+with special instructions to load `tex4ht.sty` package. The \TeX\ run produces special `DVI` file 
 which contains the code for desired output format. The `DVI` file is then processed and 
 desired output files are created.
 
-The basic command provided by `tex4ht` is named `htlatex`. It  compiles LaTeX
+The basic command provided by `tex4ht` is named `htlatex`. It  compiles \LaTeX\  
 files to `HTML` with this command sequence:
 
     latex $latex_options 'code for loading tex4ht.sty \input{filename}'
@@ -99,7 +99,7 @@ You can also request `make4ht` extensions using `--format` option.
 
 ## Extensions
 
-Extensions can be used to modify the build process without need to use a build file. They
+Extensions can be used to modify the build process without the need to use a build file. They
 may post-process the output files or request additional commands for the compilation.
 
 The extensions can be enabled or disabled by appending `+EXTENSION` or `-EXTENSION` after
@@ -115,7 +115,7 @@ Available extensions:
 
 `tidy`
 
-:    Clean the `HTML` files using `Tidy` command.
+:    Clean the `HTML` files using the `tidy` command.
 
 `common_filters`
 
@@ -138,8 +138,8 @@ Sample build file:
     Make:match("html$", "tidy -m -xml -utf8 -q -i ${filename}")
 
 `Make:htlatex()` is preconfigured command for calling LaTeX with `tex4ht`
-loaded on the input file. In this case it will be called  one time. After
-compilation, `tidy` command is executed on the output `html` file.
+loaded on the input file. In this case, it will be called  one time. After
+compilation, the `tidy` command is executed on the output `HTML` file.
 
 Note that you don't have to call `tex4ht` and `t4ht` commands explicitly in the
 build file, they are called automatically. 
@@ -162,7 +162,7 @@ This defines `name` command, which can be then executed as `Make:name()` command
 
 `Make:latexmk`
 
-:    Use `Latexmk` for the document compilation. `tex4ht` is loaded automatically.
+:    Use `Latexmk` for the document compilation. `tex4ht` will be loaded automatically.
 
 `Make:tex4ht`
 
@@ -175,7 +175,7 @@ This defines `name` command, which can be then executed as `Make:name()` command
 
 ### Command function
 
-The `command` parameter can be either string template, or function:
+The `command` parameter can be either string template or function:
 
     Make:add("text", "echo hello, input file: ${input}")
     Make:add("function", function(params) 
@@ -184,7 +184,7 @@ The `command` parameter can be either string template, or function:
       end, {custom="Hello world"}
     )
 
-The template can get value of variables from the parameters table using
+The template can get variable value from the parameters table using a
 `${var_name}` placeholder. Templates are executed using operating system, so
 they should invoke existing OS commands. Function commands may execute system
 commands using `os.execute` function.
@@ -232,15 +232,15 @@ The default parameters are following:
 
 `tex4ht_par`
 
-:     parameters to `tex4ht` application
+:     parameters to the `tex4ht` application
 
 `t4ht_par`
 
-:    parameters to `t4ht` application
+:    parameters to the `t4ht` application
 
 `outdir`
 
-:     output directory
+:    the output directory
 
 `repetition`
 
@@ -254,18 +254,18 @@ The default parameters are following:
 
 ### Repetition
 
-Repetition is number which specify maximal number of executions of the particular command.
-This is used for instance for `tex4ht` and `t4ht` commands, as they should be
-executed only once in the compilation. They would be executed
-multiple times if you include them in the build file, because they are
-called by `make4ht` by default. Because these commands are allowed only one
-`repetition`, the second execution is blocked.
+Repetition is number which specifies a maximal number of executions of the
+particular command.  This is used for instance for `tex4ht` and `t4ht`
+commands, as they should be executed only once in the compilation. They would
+be executed multiple times if you include them in the build file because they
+are called by `make4ht` by default. Because these commands allow only one
+`repetition`, the second execution will be blocked.
 
 ### Expected exit code
 
-You can set the expected exit code from a command with `correct_exit` key in the
-parameters table. Compilation is stopped when command returns different exit
-code. 
+You can set the expected exit code from a command with a `correct_exit` key in the
+parameters table. The compilation will be stopped when the command returns a
+different exit code. 
 
 This mechanism isn't used for LaTeX (for all TeX engines and formats, in
 fact), because it doesn't differentiate between fatal and non-fatal errors, and
@@ -276,22 +276,31 @@ detect compilation errors in the TeX log file.
 
 ## File matches
 
-Other type of action which can be specified in the build file are
-matches  which may be called on the generated files:
+Another type of action which can be specified in the build file is
+`match`.  It can be called on the generated files:
 
     Make:match("html$", "tidy -m -xml -utf8 -q -i ${filename}")
 
-It tests filenames with `Lua` pattern matching and on matched items will
-execute command or function, specified in the second argument. For functions,
-two arguments are passed, first one is the current filename, the second one
-table with parameters. These parameters are the same as in previous section,
-except for `filename`, which contains generated output name.
+It tests output file names with `Lua` pattern matching and on matched items will
+execute a command or a function, specified in the second argument. Commands may be
+specified as strings, the templates will be expanded, `${var_name}` placeholders
+will be replaced with corresponding variables from the `parameters` table,
+described in the previous subsection. One additional variable is available:
+`filename`. It contains the name of the current output file.
+
+The above example will clean all output `HTML` files using the `tidy` command.
+
+If function is used instead, it will get two parameters.
+The first one is a current filename, the second one
+table with parameters. 
+
+
 
 ### Filters
 
-Some default match actions which you can use are in the `filter` module.  It
-contains some functions which ares useful for fixing some `tex4ht` bugs or
-shortcomings.
+Some default `match` actions which can be used are available from  the
+`make4ht-filter` module.  It contains some functions which are useful for
+fixing some `tex4ht` bugs or shortcomings.
 
 Example:
 
@@ -301,9 +310,10 @@ Example:
     Make:htlatex()
     Make:match("html$",process)
 
-
-Filter module is located in `make4ht-filter`. Function is returned,
-which is used for building filter chains then. 
+The `make4ht-filter` module return a function which can be used for the filter
+chain building. Multiple filters can be chained, each of them can modify the string
+which was modified by the previous filters. The changes are then saved to the
+processed file.
 
 Built-in filters are:
 
@@ -342,7 +352,7 @@ Built-in filters are:
      tries to set the correct image size.
 
 Function `filter` accepts also function arguments, in this case this function
-takes file contents as parameter and modified contents are returned.
+takes file contents as a parameter and modified contents are returned.
 
 Example:
 
@@ -353,7 +363,7 @@ Example:
     Make:htlatex()
     Make:match("html$",process)
 
-In this case, spurious span elements are joined, ligatures are decomposed,
+In this example, spurious span elements are joined, ligatures are decomposed,
 and then all letters 'a' are replaced with 'z' letters.
 
 ## Image conversion
@@ -361,16 +371,16 @@ and then all letters 'a' are replaced with 'z' letters.
 It is possible to convert parts of LaTeX input to pictures, it is used
 for example for math or diagrams in `tex4ht`. 
 
-These pictures are stored in special `dvi` file, on which `dvi to image`
-commands are called. 
+These pictures are stored in a special `dvi` file, which can be processed by
+the `dvi to image` commands. 
 
 This conversion is normally configured in the `env file`,
 which is system dependent and which has a bit unintuitive syntax.
-This configuration is processed by `t4ht` application and conversion
+This configuration is processed by the `t4ht` application and conversion
 commands are called for all pictures.
 
 It is possible to disable `t4ht` image processing and configure image
-conversion in the make file:
+conversion in the build file:
 
     Make:image("png$",
     "dvipng -bg Transparent -T tight -o ${output}  -pp ${page} ${source}")
@@ -378,18 +388,18 @@ conversion in the make file:
 
 `Make:image` takes two parameters, pattern to match image name and action.
 Action can be either string template with conversion command,
-or function which takes table with parameters as argument.
+or function which takes a table with parameters as an argument.
 
 There are three parameters:
 
-  - output - output image file name
-  - source - `dvi` file with the pictures
-  - page   - page number of the converted image
+  - `output` - output image file name
+  - `source` - `dvi` file with the pictures
+  - `page`   - page number of the converted image
 
 ## The `mode` variable
 
 There is global `mode` variable available in the build file. It contains
-contents of `--mode` command line option.  It can be used to run some commands
+contents of the `--mode` command line option.  It can be used to run some commands
 conditionally. For example:
 
      if mode == "draft" then
@@ -409,7 +419,7 @@ LaTeX is called only once when `make4ht` is called with `draft` mode:
 
 You may want to access to the parameters also outside commands, file matches
 and image conversion functions. For example, if you want to convert your file to
-the `OpenDocument Format`, you can use the following settings, based on `oolatex`
+the `OpenDocument Format`, you can use the following settings, based on the `oolatex`
 command:
 
     settings.tex4ht_sty_par = settings.tex4ht_sty_par ..",ooffice"
@@ -440,7 +450,7 @@ command:
     <filename> (string) Input file name
 
 
-You can still use `make4ht` in same way as `htlatex`
+You can still invoke `make4ht` in the same way as `htlatex`:
 
     make4ht filename "customcfg, charset=utf-8" "-cunihtf -utf8" "-dfoo"
 
@@ -469,7 +479,7 @@ Sometimes, you may get a similar error:
 
 > make4ht:unrecognized parameter: i
 
-It may be caused by a following `make4ht` invocations:
+It may be caused by a following `make4ht` invocation:
 
      make4ht hello.tex "customcfg,charset=utf-8" "-cunihtf -utf8" -d foo
 
