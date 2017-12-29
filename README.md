@@ -1,7 +1,5 @@
 # Introduction
 
-[![Build Status](https://travis-ci.org/richelbilderbeek/make4ht.svg?branch=master)](https://travis-ci.org/richelbilderbeek/make4ht)
-
 `make4ht` is a simple build system for `tex4ht`, \TeX\ to XML converter. It provides a command line tool
 that drive the conversion process. It also provides a library which can be used to create
 customized conversion tools. An example of such conversion tool is
