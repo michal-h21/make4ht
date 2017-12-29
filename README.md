@@ -1,3 +1,5 @@
+% [![Build Status](https://travis-ci.org/michal-h21/make4ht.svg?branch=master)](https://travis-ci.org/michal-h21/make4ht)
+
 # Introduction
 
 `make4ht` is a simple build system for `tex4ht`, \TeX\ to XML converter. It provides a command line tool
