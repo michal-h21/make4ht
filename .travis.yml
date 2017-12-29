@@ -10,5 +10,6 @@ script:
   - ./make4ht -v
   - make
   - sudo make install
+  - make test
   # Now runs globally
   - make4ht -v
