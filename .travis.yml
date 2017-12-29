@@ -1,13 +1,14 @@
 
 install:
   # Local
-  - sudo apt-get install -qq luatex texlive-base texlive-luatex
+  - sudo apt-get install -qq luatex texlive-base texlive-luatex luarocks
   # Global 
   - sudo apt-get install -qq pandoc latexmk texlive texlive-xetex
 
 script:
   # Already runs locally
   - ./make4ht -v
+  - sudo luarocks install busted
   - make
   - sudo make install
   - make test
