@@ -9,8 +9,9 @@ script:
   # Already runs locally
   - ./make4ht -v
   - luarocks --local install busted
+  - git fetch --tags
   - make
   - sudo make install
-  - make test
+  # - make test
   # Now runs globally
   - make4ht -v
