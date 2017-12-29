@@ -8,7 +8,7 @@ install:
 script:
   # Already runs locally
   - ./make4ht -v
-  - sudo luarocks install busted
+  - luarocks --local install busted
   - make
   - sudo make install
   - make test
