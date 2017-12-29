@@ -3,4 +3,9 @@ install:
   - sudo apt-get install -qq luatex texlive-base texlive-luatex
 
 script:
+  # Already runs locally
   - ./make4ht -v
+  - make
+  - sudo make install
+  # Now runs globally
+  - make4ht -v
