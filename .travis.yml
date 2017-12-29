@@ -1,6 +1,6 @@
 
 install:
-  - sudo apt-get install -qq luatex texlive-base texlive-luatex
+  - sudo apt-get install -qq luatex texlive-base texlive-luatex pandoc
 
 script:
   # Already runs locally
