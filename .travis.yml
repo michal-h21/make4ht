@@ -1,0 +1,6 @@
+
+install:
+  - sudo apt-get install -qq luatex texlive-base texlive-luatex
+
+script:
+  - make4ht -v
