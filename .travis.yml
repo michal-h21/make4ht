@@ -3,7 +3,7 @@ install:
   # Local
   - sudo apt-get install -qq luatex texlive-base texlive-luatex luarocks
   # Global 
-  - sudo apt-get install -qq pandoc latexmk texlive texlive-xetex
+  - sudo apt-get install -qq pandoc latexmk texlive texlive-xetex  texlive-fonts-extra
 
 script:
   # Already runs locally
