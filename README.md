@@ -421,13 +421,55 @@ LaTeX is called only once when `make4ht` is called with `draft` mode:
 
 You may want to access to the parameters also outside commands, file matches
 and image conversion functions. For example, if you want to convert your file to
-the `OpenDocument Format`, you can use the following settings, based on the `oolatex`
+the `OpenDocument Format (ODT)`, you can use the following settings, based on the `oolatex`
 command:
 
     settings.tex4ht_sty_par = settings.tex4ht_sty_par ..",ooffice"
     settings.tex4ht_par = settings.tex4ht_par .. " ooffice/! -cmozhtf"
     settings.t4ht_par = settings.t4ht_par .. " -cooxtpipes -coo "
 
+There are some functions to ease access to the settings:
+
+`set_settings{parameters}`
+
+:   overwrite settings with values from a passed table
+
+`settings_add{parameters}`
+
+:   add values to the current settings 
+
+`filter_settings "filter name" {parameters}`
+
+:   set settings for a filter
+
+`get_filter_settings(name)`
+
+:   get settings for a filter
+
+
+Using these functions, it is possible to simplify the settings for the `ODT` format:
+
+    settings_add {
+      tex4ht_sty_par =",ooffice",
+      tex4ht_par = " ooffice/! -cmozhtf",
+      t4ht_par = " -cooxtpipes -coo "
+    }
+
+Settings for filters and extensions can be set using `filter_settings`:
+
+    
+    filter_settings "test" {
+      hello = "world"
+    }
+
+These settings can be read in the extensions and filters using `get_filter_settings`:
+
+    function test(input)
+       local options = get_filter_settings("test")
+       print(options.hello)
+       return input
+    end
+       
 
 # Command line options
 

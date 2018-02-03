@@ -1,5 +1,10 @@
 # Changelog
 
+- 2018/02/03
+
+    - added settings handling functions
+    - settings made available for extensions and filters
+
 - 2017/12/08
 
     - fixed the `mk4` build file loading when it is placed in the current working dir and another one with same filename somewhere in the TEXMF tree.
