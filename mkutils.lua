@@ -234,6 +234,42 @@ env.os     = os
 env.io     = io
 env.math   = math
 env.unicode = unicode
+
+
+-- it is necessary to use the settings table
+-- set in the Make environment by mkutils
+function env.set_settings(par)
+  local settings = env.settings
+  for k,v in pairs(par) do
+    settings[k] = v
+  end
+end
+
+function env.get_filter_settings(name)
+  local settings = env.settings
+  for k,v in pairs(settings) do 
+    print("get settings", k,v)
+  end
+  -- local settings = self.params
+  local filters = settings.filter or {}
+  local filter_options = filters[name] or {}
+  return filter_options
+end
+
+function env.filter_settings(name)
+  -- local settings = Make.params
+  local settings = env.settings
+  local filters = settings.filter or {}
+  local filter_options = filters[name] or {}
+  return function(par)
+    for k,v in pairs(par) do
+      print("save settings",k,v)
+      filter_options[k] = v
+    end
+    filters[name] = filter_options
+    settings.filter = filters
+  end
+end
 env.Font   = function(s)
 	local font_name = s["name"]
 	if not font_name then return nil, "Cannot find font name" end
