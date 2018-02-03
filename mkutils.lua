@@ -245,6 +245,15 @@ function env.set_settings(par)
   end
 end
 
+-- Add a value to the current settings
+function env.settings_add(par)
+  local settings = env.settings
+  for k,v in pairs(par) do
+    local oldval = settings[k] or ""
+    settings[k] = oldval .. v
+  end
+end
+
 function env.get_filter_settings(name)
   local settings = env.settings
   for k,v in pairs(settings) do 
