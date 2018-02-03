@@ -463,3 +463,6 @@ function load_extensions(extensions, format)
   return extension_table
 end
 
+-- I don't know if this is clean, but settings functions won't be available
+-- for filters and extensions otherwise
+for k,v in pairs(env) do _G[k] = v end
