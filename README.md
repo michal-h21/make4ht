@@ -521,22 +521,22 @@ Specified path can be relative to current directory, or absolute:
 
 Sometimes, you may get a similar error:
 
-> make4ht:unrecognized parameter: i
+    make4ht:unrecognized parameter: i
 
 It may be caused by a following `make4ht` invocation:
 
-     make4ht hello.tex "customcfg,charset=utf-8" "-cunihtf -utf8" -d foo
+    make4ht hello.tex "customcfg,charset=utf-8" "-cunihtf -utf8" -d foo
 
 The command line option parser is confused by mixing options for `make4ht` and
 `tex4ht` in this case and tries to interpret the `-cunihtf -utf8`, which are
 options for `tex4ht` command as `make4ht` options. To fix that, you can either
 move the `-d foo` directly after `make4ht` command:
 
-     make4ht -d foo hello.tex "customcfg,charset=utf-8" "-cunihtf -utf8"
+    make4ht -d foo hello.tex "customcfg,charset=utf-8" "-cunihtf -utf8"
 
 Another option is to add a space before `tex4ht` options:
 
-     make4ht hello.tex "customcfg,charset=utf-8" " -cunihtf -utf8" -d foo
+    make4ht hello.tex "customcfg,charset=utf-8" " -cunihtf -utf8" -d foo
 
 The former way is preferable, though.
 
