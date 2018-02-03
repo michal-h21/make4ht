@@ -38,11 +38,10 @@ local build_file = parameters.build_file
 
 -- handle output formats
 local allowed_output_formats = {xhtml = true, html5=true, odt = true}
-local output_format = parameters.output_format
 -- formatter is Lua library which must provide at least prepare_parameters
 -- and process_build_sequence functions
 local formatter
-local output_format = parameters.output_format    
+local output_format = parameters.output_format
 if allowed_output_formats[ output_format ] then
   formatter = mkutils.load_output_format(output_format)
 else
