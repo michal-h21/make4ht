@@ -256,9 +256,6 @@ end
 
 function env.get_filter_settings(name)
   local settings = env.settings
-  for k,v in pairs(settings) do 
-    print("get settings", k,v)
-  end
   -- local settings = self.params
   local filters = settings.filter or {}
   local filter_options = filters[name] or {}
@@ -272,7 +269,6 @@ function env.filter_settings(name)
   local filter_options = filters[name] or {}
   return function(par)
     for k,v in pairs(par) do
-      print("save settings",k,v)
       filter_options[k] = v
     end
     filters[name] = filter_options
