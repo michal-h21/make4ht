@@ -1,6 +1,7 @@
 .PHONY: build
 lua_content = make4ht $(wildcard *.lua) 
 filters = $(wildcard filters/*.lua)
+domfilters = $(wildcard domfilters/*.lua)
 extensions = $(wildcard extensions/*.lua)
 formats = $(wildcard formats/*.lua)
 tex_content = $(wildcard *.tex)
@@ -9,6 +10,7 @@ TEXMFHOME = $(shell kpsewhich -var-value=TEXMFHOME)
 INSTALL_DIR = $(TEXMFHOME)/scripts/lua/make4ht
 MANUAL_DIR = $(TEXMFHOME)/doc/latex/make4ht
 FILTERS_DIR = $(INSTALL_DIR)/filters
+DOMFILTERS_DIR = $(INSTALL_DIR)/domfilters
 FORMATS_DIR = $(INSTALL_DIR)/formats
 EXTENSION_DIR = $(INSTALL_DIR)/extensions
 SYSTEM_BIN = /usr/local/bin
@@ -31,30 +33,34 @@ readme.tex: README.md
 changelog.tex: CHANGELOG.md
 	pandoc -f markdown+definition_lists -t LaTeX CHANGELOG.md > changelog.tex
 
-build: doc $(lua_content) $(filters)
+build: doc $(lua_content) $(filters) $(domfilters)
 	@rm -rf build
 	@mkdir -p $(BUILD_MAKE4HT)
 	@mkdir -p $(BUILD_MAKE4HT)/filters
+	@mkdir -p $(BUILD_MAKE4HT)/domfilters
 	@mkdir -p $(BUILD_MAKE4HT)/extensions
 	@mkdir -p $(BUILD_MAKE4HT)/formats
 	@cp $(lua_content) $(tex_content)  make4ht-doc.pdf $(BUILD_MAKE4HT)
 	@cat make4ht | sed -e "s/{{version}}/${VERSION}/" >  $(BUILD_MAKE4HT)/make4ht
 	@cp $(filters) $(BUILD_MAKE4HT)/filters
+	@cp $(domfilters) $(BUILD_MAKE4HT)/domfilters
 	@cp $(formats)  $(BUILD_MAKE4HT)/formats
 	@cp $(extensions)  $(BUILD_MAKE4HT)/extensions
 	@cp README.md $(BUILD_MAKE4HT)/README
 	@cd $(BUILD_DIR) && zip -r make4ht.zip make4ht
 
-install: doc $(lua_content) $(filters)
+install: doc $(lua_content) $(filters) $(domfilters)
 	mkdir -p $(INSTALL_DIR)
 	mkdir -p $(MANUAL_DIR)
 	mkdir -p $(FILTERS_DIR)
+	mkdir -p $(DOMFILTERS_DIR)
 	mkdir -p $(FORMATS_DIR)
 	mkdir -p $(EXTENSION_DIR)
 	cp  $(doc_file) $(MANUAL_DIR)
 	cp $(lua_content) $(INSTALL_DIR)
 	@cat make4ht | sed -e "s/{{version}}/${VERSION}/" >  $(INSTALL_DIR)/make4ht
 	cp $(filters) $(FILTERS_DIR)
+	cp $(domfilters) $(DOMFILTERS_DIR)
 	cp $(extensions) $(EXTENSION_DIR)
 	cp $(formats)  $(FORMATS_DIR)
 	chmod +x $(INSTALL_DIR)/make4ht
