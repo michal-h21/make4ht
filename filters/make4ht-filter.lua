@@ -9,6 +9,7 @@ function filter(filters,parameters)
 	return function(filename)
 		if not filename then return false, "filters: no filename" end
     local input = filter_lib.load_input_file(filename)
+    if not input  then return nil, "Cannot load the input file" end
 		for _,f in pairs(sequence) do
 			input = f(input,parameters)
 		end
