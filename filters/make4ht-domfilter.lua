@@ -1,13 +1,14 @@
 local filter_lib = require "make4ht-filterlib"
+local mkutils    = require "mkutils"
 
 local function load_filter(filtername)
 	return require("filters.make4ht-"..filtername)
 end
 
-function filter(filters,parameters)
-  local sequence = filter_lib.load_filters(filters, parameters)
-	return function(filename)
-		if not filename then return false, "filters: no filename" end
+local function filter(filters, name)
+  local sequence = filter_lib.load_filters(filters, load_filter)
+
+	return function(filename, parameters)
     local input = filter_lib.load_input_file(filename)
 		for _,f in pairs(sequence) do
 			input = f(input,parameters)
