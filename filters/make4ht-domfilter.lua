@@ -3,7 +3,7 @@ local dom    = require "luaxml-domobject"
 local mkutils    = require "mkutils"
 
 local function load_filter(filtername)
-	return require("filters.make4ht-"..filtername)
+	return require("domfilters.make4ht-"..filtername)
 end
 
 local function filter(filters, name)
