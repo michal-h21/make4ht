@@ -6,7 +6,13 @@ function M.test(format)
 end
 
 function M.modify_build(make)
-  make:match("html$", "tidy -m -utf8 -w 512 -q ${filename}")
+  make:match("html$", function(filename, par)
+    local settings = get_filter_settings "tidy" or {}
+    par.options = par.options or settings.options or "-m -utf8 -w 512 -q"
+    local command = "tidy ${options}  ${filename}" % par
+    print("execute: ".. command)
+    os.execute(command)
+  end)
   return make
 end
 
