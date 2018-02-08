@@ -368,6 +368,10 @@ Example:
 In this example, spurious span elements are joined, ligatures are decomposed,
 and then all letters 'a' are replaced with 'z' letters.
 
+### DOM filters
+
+
+
 ## Image conversion
 
 It is possible to convert parts of LaTeX input to pictures, it is used
@@ -470,6 +474,38 @@ These settings can be read in the extensions and filters using `get_filter_setti
        return input
     end
        
+## List of available settings for filters and extensions.
+
+These settings may be set using `filter_settings` function.
+
+### `tidy` extension
+
+options
+
+:  command line options for the `tidy` command. Default value is `-m -utf8 -w 512 -q`.
+
+### `fixinlines` dom filter 
+
+inline\_elements
+
+:  list of inline elements which shouldn't be direct descendants of the `body` element.
+
+Example
+
+    filter_settings "fixinlines" {inline_elements = {a = true, b = true}}
+
+### `joincharacters` dom filter
+
+charelements 
+
+:  list of tags which should be joined.
+
+Example
+
+    filter_settings "joincharacters" { charclases = { span=true, mn = true}}
+
+
+
 
 # Command line options
 
