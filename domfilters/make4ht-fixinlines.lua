@@ -37,7 +37,7 @@ local inline_elements = {
 
 
 local function fix_inlines(obj)
-  local settings = get_filter_settings "fix_inlines"
+  local settings = get_filter_settings "fixinlines"
   local inline_elements = settings.inline_elements or inline_elements
   local nodes = obj:get_path("html body")
   obj:traverse_node_list(nodes, function(jej) 
