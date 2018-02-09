@@ -370,6 +370,13 @@ and then all letters 'a' are replaced with 'z' letters.
 
 ### DOM filters
 
+DOM filters use the `LuaXML` library to modify directly the XML object. This enables more powerful
+operations than the regex based filters from the previous section. 
+
+Example:
+
+
+
 
 
 ## Image conversion
@@ -488,7 +495,7 @@ options
 
 inline\_elements
 
-:  list of inline elements which shouldn't be direct descendants of the `body` element.
+:  table of inline elements which shouldn't be direct descendants of the `body` element. The element names should be table keys, the values should be true.
 
 Example
 
@@ -498,7 +505,7 @@ Example
 
 charelements 
 
-:  list of tags which should be joined.
+:  table of elements which should be joined if several instances with the same value of `class` attribute are side by side.
 
 Example
 
