@@ -6,6 +6,10 @@ local function load_filter(filtername)
 	return require("domfilters.make4ht-"..filtername)
 end
 
+-- save processed names, in order to block multiple executions of the filter
+-- sequence on a same file
+local processed = {}
+
 local function filter(filters, name)
   -- because XML parsing to DOM is potentially expensive operation
   -- this filter will use cache for it's sequence
@@ -24,6 +28,12 @@ local function filter(filters, name)
   mkutils.filter_settings (name) (settings)
 
 	return function(filename, parameters)
+    -- load processed files for the current filter name
+    local processed_files = processed[name] or {}
+    -- don't process the file again
+    if processed_files[filename] then
+      return nil
+    end
     local input = filter_lib.load_input_file(filename)
     if not input  then return nil, "Cannot load the input file" end
     local domobject = dom.parse(input)
@@ -32,6 +42,9 @@ local function filter(filters, name)
 		end
     local output = domobject:serialize()
     filter_lib.save_input_file(filename, output)
+    -- mark the filename as processed
+    processed_files[filename] = true
+    processed[name] = processed_files
 	end
 end
 return filter
