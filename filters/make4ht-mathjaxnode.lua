@@ -31,7 +31,7 @@ end
 local function extract_css(contents)
   local css = ""
   local filename = cssfilename
-  contents = contents:gsub('<style [^>]+>(.+)</style>', function(style)
+  contents = contents:gsub('<style [^>]+>(.-)</style>', function(style)
     -- replace only the style for mathjax
     if style:match "%.mjx%-math" then
       css = style
@@ -71,13 +71,14 @@ end
 
 return function(text, arguments)
   -- if arguments.prg then mathnodepath = arguments.prg end
+  local extoptions = mkutils.get_filter_settings "mathjaxnode" or {}
   local arguments = arguments or {}
-  mathnodepath = arguments.prg or mathnodepath
-  options      = arguments.options or options
-  fontdir      = arguments.fontdir or fontdir
-  fontdest     = arguments.fontdest or fontdest
-  fontformat   = arguments.fontformat or fontformat
-  cssfilename  = arguments.cssfilename or cssfilename
+  mathnodepath = arguments.prg or extoptions.prg or  mathnodepath
+  options      = arguments.options or extoptions.options or options
+  fontdir      = arguments.fontdir or extoptions.fontdir or fontdir
+  fontdest     = arguments.fontdest or extoptions.fontdest or fontdest
+  fontformat   = arguments.fontformat or extoptions.fontformat or fontformat
+  cssfilename  = arguments.cssfilename or extoptions.cssfilename or cssfilename
   local newtext = compile(text)
   local cssfile, newtext,  css = extract_css(newtext)
   -- use local font files if fontdir is present
