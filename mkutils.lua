@@ -414,7 +414,7 @@ end
 --- load one extension
 -- @param name  extension name
 -- @param format current output format
-local function load_extension(name,format)
+function load_extension(name,format)
   -- first test if the extension exists
   local extension_library = "make4ht.extensions." .. name
   local is_extension_file = find_lua_file(extension_library)
