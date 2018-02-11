@@ -1,4 +1,4 @@
-local charelements = {
+local charclases = {
   span=true,
   mn = true,
 }
@@ -6,8 +6,8 @@ local charelements = {
 local function join_characters(obj)
   -- join adjanced span and similar elements inserted by 
   -- tex4ht to just one object.
-  local options = get_filter_settings "joincharacters"
-  local charclases = options.charelements or charelements
+  local options = get_filter_settings "join_characters"
+  local charclases = options.charclases or charclases
 
   obj:traverse_elements(function(el)
     local get_name = function(curr) 
@@ -18,13 +18,17 @@ local function join_characters(obj)
     end
     local is_span = function(next_el)
       return charclases[get_name(next_el)]
-      -- return get_name(next_el) == "span"
     end
 
     local function get_next(curr, class)
       local next_el = curr:get_next_node()
       if next_el and next_el:is_element() and is_span(next_el) then
         return next_el
+        -- if the next node is space followed by a matching element, we should add this space
+      elseif next_el and next_el:is_text() and get_next(next_el, class) then
+        local text = next_el._text
+        -- match only text containing just whitespace
+        if text:match("^%s+$")  then return next_el end
       end
     end
     -- loop over all elements and test if the current element is in a list of
@@ -42,6 +46,14 @@ local function join_characters(obj)
             el:add_child_node(child)
           end
           -- remove the next element
+          next_el:remove_node()
+          -- add the whitespace
+        elseif next_el:is_text() then
+          local s = next_el._text 
+          -- this is needed to fix newlines inserted by Tidy
+          s = s:gsub("\n", "")
+          -- we must create a new node
+          el:add_child_node(el:create_text_node(s))
           next_el:remove_node()
         end
         -- use the saved element as a next object
