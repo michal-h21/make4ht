@@ -36,12 +36,25 @@ local function filter(filters, name)
     end
     local input = filter_lib.load_input_file(filename)
     if not input  then return nil, "Cannot load the input file" end
-    local domobject = dom.parse(input)
+    -- we need to use pcall, because XML error would break the whole build process
+    -- domobject will be error object if DOM parsing failed
+    local status, domobject = pcall(function()
+      return dom.parse(input)
+    end)
+    if not status then
+      print("DOM parsing of " .. filename .. " failed:")
+      print(domobject)
+      return nil, "DOM parsing failed"
+    end
 		for _,f in pairs(sequence) do
 			domobject = f(domobject,parameters)
 		end
     local output = domobject:serialize()
-    filter_lib.save_input_file(filename, output)
+    if output then
+      filter_lib.save_input_file(filename, output)
+    else
+      print("DOM filter failed on ".. filename)
+    end
     -- mark the filename as processed
     processed_files[filename] = true
     processed[name] = processed_files
