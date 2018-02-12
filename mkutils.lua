@@ -381,6 +381,9 @@ function load_output_format(format_name)
   local is_format_file = find_lua_file(format_library)
   if is_format_file then 
     local format = assert(require(format_library))
+    if format then
+      format.prepare_extensions = format.prepare_extensions or function(extensions) return extensions end
+    end
     return format
   end
 end

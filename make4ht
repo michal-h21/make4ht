@@ -51,7 +51,8 @@ else
   end
   formatter = mkutils.load_output_format("xhtml")
 end
-local extensions = mkutils.load_extensions(parameters.extensions, output_format)
+local extensions = formatter.prepare_extensions(parameters.extensions)
+extensions = mkutils.load_extensions(extensions, output_format)
 
 -- run extensions with prepare_parameters function
 parameters = formatter.prepare_parameters(parameters,extensions)
