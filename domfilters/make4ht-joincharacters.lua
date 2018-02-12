@@ -6,7 +6,7 @@ local charclases = {
 local function join_characters(obj)
   -- join adjanced span and similar elements inserted by 
   -- tex4ht to just one object.
-  local options = get_filter_settings "join_characters"
+  local options = get_filter_settings "joincharacters"
   local charclases = options.charclases or charclases
 
   obj:traverse_elements(function(el)
