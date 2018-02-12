@@ -1,5 +1,35 @@
 # Changelog
 
+- 2018/02/12
+
+    - handle XML parsing errors in the DOM handler
+    - enable extension loading in Formatters
+
+- 2018/02/11
+
+    - fixed Tidy extension output to support LuaXML
+    - fixed white space issues with `joicharacters` DOM filter
+ 
+- 2018/02/09
+
+    - fixed issues with the Mathjax filter
+    - documented basic info about thd DOM filters
+    - DOM filter optimalizations
+
+- 2018/02/08
+
+    - make Tidy extension configurable
+    - documented filter settings
+
+- 2018/02/07
+
+    - added filter for Mathjax-node
+
+- 2018/02/06
+
+    - created DOM filter function
+    - added DOM filter for spurious inlinine elements
+
 - 2018/02/03
 
     - added settings handling functions
