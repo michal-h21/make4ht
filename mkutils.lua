@@ -1,6 +1,7 @@
 module(...,package.seeall)
 
 local make4ht = require("make4ht-lib")
+local mkparams = require("mkparams")
 --template engine
 function interp(s, tab)
 	local tab = tab or {}
@@ -460,6 +461,16 @@ function load_extensions(extensions, format)
     end
   end
   return extension_table
+end
+
+--- add new extensions to a list of loaded extensions
+-- @param added  string with extensions to be added in the form +ext1+ext2
+function add_extensions(added, extensions)
+  local _, newextensions = mkparams.get_format_extensions("dummyfmt" .. added)
+  -- insert new extension at the beginning, in order to support disabling using
+  -- the -f option
+  for _, x in ipairs(extensions or {}) do table.insert(newextensions, x) end
+  return newextensions
 end
 
 -- I don't know if this is clean, but settings functions won't be available
