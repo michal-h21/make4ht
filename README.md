@@ -123,6 +123,12 @@ Available extensions:
 
 :    Clean the output HTML files using filters.
 
+`common_domfilters`
+
+:    Clean the HTML file using DOM filters. It is more powerful than
+`common_filters`. Used DOM filters are `fixinlines`, `idcolons` and
+`joincharacters`.
+
 # Build files
 
 `make4ht` supports build files. These are `Lua` scripts which can adjust
@@ -370,12 +376,31 @@ and then all letters 'a' are replaced with 'z' letters.
 
 ### DOM filters
 
-DOM filters use the `LuaXML` library to modify directly the XML object. This enables more powerful
+DOM filters use the [`LuaXML`](https://ctan.org/pkg/luaxml) library to modify
+directly the XML object. This enables more powerful
 operations than the regex based filters from the previous section. 
 
 Example:
 
+    local domfilter = require "make4ht-domfilter"
+    local process = domfilter {"joincharacters"}
+    Make:match("html$", process)
 
+
+Available DOM filters:
+
+
+`fixinlines`
+
+:  Put all inline elements which are direct children of the `<body>` elements to a paragraph.
+
+`idcolons`
+
+:  Replace `:` character in internal links and `id` attributes.
+
+`joincharacters`
+
+:  Join consecutive `<span>` or `<mn>` elements.
 
 
 
