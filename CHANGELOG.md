@@ -2,6 +2,11 @@
 
 - 2018/02/12
 
+    - added `common_domfilters` extension
+    - documented DOM filters
+
+- 2018/02/12
+
     - handle XML parsing errors in the DOM handler
     - enable extension loading in Formatters
 
