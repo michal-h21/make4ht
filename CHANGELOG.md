@@ -1,5 +1,10 @@
 # Changelog
 
+- 2018/02/15
+
+    - use HTML5 as a default format
+    - use `common_domfilters` implicitly for the XHTML and HTML5 formats
+
 - 2018/02/12
 
     - added `common_domfilters` extension
