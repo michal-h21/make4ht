@@ -90,14 +90,14 @@ for such task, it was chosen as language in which the build scripts are written.
 
 # Output file formats and extensions
 
-The default output format used by `make4ht` is `xhtml`. You can request different
+The default output format used by `make4ht` is `html5`. You can request different
 format using `--format` option. Supported formats are:
 
  - `xhtml`
  - `html5`
  - `odt`
 
-You can also request `make4ht` extensions using `--format` option.
+It is also possible to load extensions using the `--format` option.
 
 ## Extensions
 
@@ -108,6 +108,11 @@ The extensions can be enabled or disabled by appending `+EXTENSION` or `-EXTENSI
 the output format name:
 
      make4ht -uf html5+tidy filename.tex
+
+The `common_domfilters` extension is executed by default for `HTML5` and
+`XHTML` formats. It can be disabled in the case of issues using:
+
+    make4ht -f html5-common_domfilters filename.tex
 
 Available extensions:
 
