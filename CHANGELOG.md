@@ -1,5 +1,10 @@
 # Changelog
 
+- 2018/02/19
+
+    - fixed bug in filter loading
+    - added `mathjaxnode` extension
+
 - 2018/02/15
 
     - use HTML5 as a default format
