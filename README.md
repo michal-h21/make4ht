@@ -134,6 +134,12 @@ Available extensions:
 `common_filters`. Used DOM filters are `fixinlines`, `idcolons` and
 `joincharacters`.
 
+`mathjaxnode`
+
+:    Use [mathjax-node-page](https://github.com/pkra/mathjax-node-page/) to
+     convert from MathML code to HTML + CSS or SVG. See [the available
+     settings](#mathjaxsettings).
+
 # Build files
 
 `make4ht` supports build files. These are `Lua` scripts which can adjust
@@ -359,6 +365,10 @@ Built-in filters are:
      cross-reference commands may produce colons in internal links, which results in
      validation error.
 
+`mathjaxnode`
+
+:    
+
 `svg-height`
 
 :    Some  SVG images produced by `dvisvgm` seem to have wrong dimensions. This filter
@@ -541,7 +551,7 @@ Example
 
     filter_settings "joincharacters" { charclases = { span=true, mn = true}}
 
-
+### `mathjaxnode` filter {#mathjaxsettings}
 
 
 # Command line options
