@@ -5,7 +5,7 @@ local function load_filter(filtername)
 end
 
 function filter(filters,parameters)
-  local sequence = filter_lib.load_filters(filters, parameters)
+  local sequence = filter_lib.load_filters(filters, load_filter)
 	return function(filename)
 		if not filename then return false, "filters: no filename" end
     local input = filter_lib.load_input_file(filename)
