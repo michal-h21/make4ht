@@ -76,6 +76,7 @@ return function(text, arguments)
   mathnodepath = arguments.prg or extoptions.prg or  mathnodepath
   options      = arguments.options or extoptions.options or options
   fontdir      = arguments.fontdir or extoptions.fontdir or fontdir
+  -- the following ne is unused ATM
   fontdest     = arguments.fontdest or extoptions.fontdest or fontdest
   fontformat   = arguments.fontformat or extoptions.fontformat or fontformat
   cssfilename  = arguments.cssfilename or extoptions.cssfilename or cssfilename
