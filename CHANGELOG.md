@@ -1,5 +1,9 @@
 # Changelog
 
+- 2018/02/20
+
+    - fixed bug in `joincharacters` DOM filter
+
 - 2018/02/19
 
     - fixed bug in filter loading
@@ -23,7 +27,7 @@
 - 2018/02/11
 
     - fixed Tidy extension output to support LuaXML
-    - fixed white space issues with `joicharacters` DOM filter
+    - fixed white space issues with `joincharacters` DOM filter
  
 - 2018/02/09
 
