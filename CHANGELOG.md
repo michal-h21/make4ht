@@ -3,6 +3,8 @@
 - 2018/02/20
 
     - fixed bug in `joincharacters` DOM filter
+    - make `woff` default font format for `mathjaxnode`
+    - added documentation for `mathjaxnode` settings
 
 - 2018/02/19
 

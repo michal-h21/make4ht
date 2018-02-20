@@ -367,7 +367,9 @@ Built-in filters are:
 
 `mathjaxnode`
 
-:    
+:    Use [mathjax-node-page](https://github.com/pkra/mathjax-node-page/) to
+     convert from MathML code to HTML + CSS or SVG. See [the available
+     settings](#mathjaxsettings).
 
 `svg-height`
 
@@ -416,7 +418,6 @@ Available DOM filters:
 `joincharacters`
 
 :  Join consecutive `<span>` or `<mn>` elements.
-
 
 
 ## Image conversion
@@ -525,13 +526,13 @@ These settings can be read in the extensions and filters using `get_filter_setti
 
 These settings may be set using `filter_settings` function.
 
-### `tidy` extension
+### The `tidy` extension
 
 options
 
 :  command line options for the `tidy` command. Default value is `-m -utf8 -w 512 -q`.
 
-### `fixinlines` dom filter 
+### The `fixinlines` dom filter 
 
 inline\_elements
 
@@ -541,7 +542,7 @@ Example
 
     filter_settings "fixinlines" {inline_elements = {a = true, b = true}}
 
-### `joincharacters` dom filter
+### The `joincharacters` dom filter
 
 charelements 
 
@@ -551,8 +552,34 @@ Example
 
     filter_settings "joincharacters" { charclases = { span=true, mn = true}}
 
-### `mathjaxnode` filter {#mathjaxsettings}
+### The `mathjaxnode` filter {#mathjaxsettings}
 
+options
+
+:  command line options for the `mjpage` command. Default value is `--output CommonHTML`
+
+Example
+
+    filter_settings "mathjaxnode" {
+      options="--output SVG --font Neo-Euler"
+    }
+
+cssfilename  
+
+:  `mjpage` puts some CSS code into the HTML pages. `mathjaxnode` extracts this information and saves it to a standalone CSS file. Default CSS filename is `mathjax-chtml.css`
+
+fontdir
+
+:  directory with MathJax font files. This option enables use of local fonts, which
+   is usefull in Epub conversion, for example. The font directory should be
+   sub-directory of the current directory. Only TeX font is supported at the moment.
+
+Example
+
+
+    filter_settings "mathjaxnode" {
+      fontdir="fonts/TeX/woff/" 
+    }
 
 # Command line options
 
