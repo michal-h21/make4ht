@@ -90,14 +90,14 @@ for such task, it was chosen as language in which the build scripts are written.
 
 # Output file formats and extensions
 
-The default output format used by `make4ht` is `html5`. You can request different
-format using `--format` option. Supported formats are:
+The default output format used by `make4ht` is `html5`. Different
+format can be requested using the `--format` option. Supported formats are:
 
  - `xhtml`
  - `html5`
  - `odt`
 
-It is also possible to load extensions using the `--format` option.
+The `--format` option can be also used for extension loading.
 
 ## Extensions
 
@@ -116,27 +116,27 @@ The `common_domfilters` extension is executed by default for `HTML5` and
 
 Available extensions:
 
-`latexmk`
+latexmk
 
-:    Use `Latexmk` for \LaTeX\ compilation.
+:    use `Latexmk` for \LaTeX\ compilation.
 
-`tidy`
+tidy
 
-:    Clean the `HTML` files using the `tidy` command.
+:    clean the `HTML` files using the `tidy` command.
 
-`common_filters`
+common\_filters
 
-:    Clean the output HTML files using filters.
+:    clean the output HTML files using filters.
 
-`common_domfilters`
+common\_domfilters
 
 :    Clean the HTML file using DOM filters. It is more powerful than
 `common_filters`. Used DOM filters are `fixinlines`, `idcolons` and
 `joincharacters`.
 
-`mathjaxnode`
+mathjaxnode
 
-:    Use [mathjax-node-page](https://github.com/pkra/mathjax-node-page/) to
+:    use [mathjax-node-page](https://github.com/pkra/mathjax-node-page/) to
      convert from MathML code to HTML + CSS or SVG. See [the available
      settings](#mathjaxsettings).
 
@@ -336,44 +336,44 @@ processed file.
 
 Built-in filters are:
 
-`cleanspan`
+cleanspan
 
 :    clean spurious span elements when accented characters are used
 
-`cleanspan-nat`
+cleanspan-nat
 
 :    alternative clean span filter, provided by Nat Kuhn
 
-`fixligatures`
+fixligatures
 
 :    decompose ligatures to base characters
 
-`hruletohr`
+hruletohr
 
 :   `\hrule` commands are translated to series of underscore characters
     by `tex4ht`, this filter translate these underscores to `<hr>` elements
 
-`entites`
+entites
 
 :    convert prohibited named entities to numeric entities (currently, only
      `&nbsp;`, as it causes validation errors, and `tex4ht` is producing it
      sometimes)
 
-`fix-links`
+fix-links
 
 :    replace colons in local links and `id` attributes with underscores. Some
      cross-reference commands may produce colons in internal links, which results in
      validation error.
 
-`mathjaxnode`
+mathjaxnode
 
-:    Use [mathjax-node-page](https://github.com/pkra/mathjax-node-page/) to
+:    use [mathjax-node-page](https://github.com/pkra/mathjax-node-page/) to
      convert from MathML code to HTML + CSS or SVG. See [the available
      settings](#mathjaxsettings).
 
-`svg-height`
+svg-height
 
-:    Some  SVG images produced by `dvisvgm` seem to have wrong dimensions. This filter
+:    some  SVG images produced by `dvisvgm` seem to have wrong dimensions. This filter
      tries to set the correct image size.
 
 Function `filter` accepts also function arguments, in this case this function
@@ -407,17 +407,17 @@ Example:
 Available DOM filters:
 
 
-`fixinlines`
+fixinlines
 
-:  Put all inline elements which are direct children of the `<body>` elements to a paragraph.
+:  put all inline elements which are direct children of the `<body>` elements to a paragraph.
 
-`idcolons`
+idcolons
 
-:  Replace `:` character in internal links and `id` attributes.
+:  replace the colon (`:`) character in internal links and `id` attributes. They cause validation issues.
 
-`joincharacters`
+joincharacters
 
-:  Join consecutive `<span>` or `<mn>` elements.
+:  join consecutive `<span>` or `<mn>` elements.
 
 
 ## Image conversion
