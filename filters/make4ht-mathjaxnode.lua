@@ -8,7 +8,7 @@ local options = "--output CommonHTML"
 local fontdir = nil
 -- if we copy fonts 
 local fontdest = nil
-local fontformat = "otf"
+local fontformat = "woff"
 local cssfilename =  "mathjax-chtml.css"
 
 local function compile(text)
