@@ -50,7 +50,7 @@ local function join_characters(obj,par)
           next_el:remove_node()
           -- add the whitespace
         elseif next_el:is_text() then
-          local s = next_el._text 
+          local s = next_el._text
           -- this is needed to fix newlines inserted by Tidy
           s = s:gsub("\n", "")
           -- we must create a new node
@@ -65,6 +65,21 @@ local function join_characters(obj,par)
       end
     end
 
+  end)
+  -- join text nodes in an element into one
+  obj:traverse_elements(function(el)
+    -- save the text
+    local t = {}
+    local children = el:get_children()
+    for _, x in ipairs(children) do
+      if x:is_text() then
+        t[#t+1] = x._text
+      else
+        return nil
+      end
+    end
+    el._text = table.concat(t)
+    return el
   end)
   return obj
 end
