@@ -41,7 +41,7 @@ local function join_characters(obj,par)
       while  next_el do
         -- save the next element because we will remove it later
         local real_next = get_next(next_el)
-        if get_name(el) == get_name(next_el) and get_class(el) == get_class(next_el) then
+        if get_name(el) == get_name(next_el) and get_class(el) == get_class(next_el) and not el:get_attribute("id") then
           -- it the following element match, copy it's children to the current element
           for _, child in ipairs(next_el:get_children()) do
             el:add_child_node(child)
