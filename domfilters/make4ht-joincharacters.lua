@@ -3,11 +3,12 @@ local charclases = {
   mn = true,
 }
 
-local function join_characters(obj)
+local function join_characters(obj,par)
   -- join adjanced span and similar elements inserted by 
   -- tex4ht to just one object.
+  local par = par or {}
   local options = get_filter_settings "joincharacters"
-  local charclases = options.charclases or charclases
+  local charclases = options.charclases or par.charclases or charclases
 
   obj:traverse_elements(function(el)
     local get_name = function(curr) 
