@@ -1,5 +1,10 @@
 # Changelog
 
+- 2018/02/21
+
+    - added Aeneas domfilter
+    - fixed bugs in `joincharacters` filter
+
 - 2018/02/20
 
     - fixed bug in `joincharacters` DOM filter
