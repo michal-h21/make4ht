@@ -43,10 +43,11 @@ local function fix_inlines(obj)
   obj:traverse_node_list(nodes, function(jej) 
     if jej._type == "ELEMENT" then
       local name = string.lower(jej._name)
+      -- local parent = jej:get_parent_node()
       if inline_elements[name] then
         local new = obj:create_element("p" )
-        obj:add_child_node(new, obj:copy_node(jej))
-        obj:replace_node(jej, new)
+        new:add_child_node(obj:copy_node(jej))
+        jej:replace_node(new)
       end
     end
   end)
