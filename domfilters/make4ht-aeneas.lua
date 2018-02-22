@@ -4,6 +4,7 @@
 --
 --
 local cssquery = require "luaxml-cssquery"
+local mkutils  = require "mkutils"
 
 -- Table of CSS selectors to be skipped.
 local skip_elements = { "math", "svg"}
@@ -63,6 +64,62 @@ local function is_skipped(el, css)
   return #matched > 0
 end
 
+-- from https://www.readbeyond.it/aeneas/docs/clitutorial.html#xml-config-file-config-xml
+local config_template = [[
+<job>
+    <job_language>${lang}</job_language>
+    <job_description>${description}</job_description>
+    <tasks>
+        <task>
+            <task_language>en</task_language>
+            <task_description>Sonnet 1</task_description>
+            <task_custom_id>sonnet001</task_custom_id>
+            <is_text_file>OEBPS/Resources/sonnet001.txt</is_text_file>
+            <is_text_type>parsed</is_text_type>
+            <is_audio_file>OEBPS/Resources/sonnet001.mp3</is_audio_file>
+            <os_task_file_name>sonnet001.smil</os_task_file_name>
+            <os_task_file_format>smil</os_task_file_format>
+            <os_task_file_smil_page_ref>sonnet001.xhtml</os_task_file_smil_page_ref>
+            <os_task_file_smil_audio_ref>sonnet001.mp3</os_task_file_smil_audio_ref>
+        </task>
+        <task>
+            <task_language>en</task_language>
+            <task_description>Sonnet 2</task_description>
+            <task_custom_id>sonnet002</task_custom_id>
+            <is_text_file>OEBPS/Resources/sonnet002.txt</is_text_file>
+            <is_text_type>parsed</is_text_type>
+            <is_audio_file>OEBPS/Resources/sonnet002.mp3</is_audio_file>
+            <os_task_file_name>sonnet002.smil</os_task_file_name>
+            <os_task_file_format>smil</os_task_file_format>
+            <os_task_file_smil_page_ref>sonnet002.xhtml</os_task_file_smil_page_ref>
+            <os_task_file_smil_audio_ref>sonnet002.mp3</os_task_file_smil_audio_ref>
+        </task>
+        <task>
+            <task_language>en</task_language>
+            <task_description>Sonnet 3</task_description>
+            <task_custom_id>sonnet003</task_custom_id>
+            <is_text_file>OEBPS/Resources/sonnet003.txt</is_text_file>
+            <is_text_type>parsed</is_text_type>
+            <is_audio_file>OEBPS/Resources/sonnet003.mp3</is_audio_file>
+            <os_task_file_name>sonnet003.smil</os_task_file_name>
+            <os_task_file_format>smil</os_task_file_format>
+            <os_task_file_smil_page_ref>sonnet003.xhtml</os_task_file_smil_page_ref>
+            <os_task_file_smil_audio_ref>sonnet003.mp3</os_task_file_smil_audio_ref>
+        </task>
+    </tasks>
+    <os_job_file_name>output_example4</os_job_file_name>
+    <os_job_file_container>zip</os_job_file_container>
+    <os_job_file_hierarchy_type>flat</os_job_file_hierarchy_type>
+    <os_job_file_hierarchy_prefix>OEBPS/Resources/</os_job_file_hierarchy_prefix>
+</job>
+]]
+-- write Aeneeas configuration file in the XML format
+local function write_config(filename, configuration)
+  if not mkutils.file_exists(filename) then
+    print(config_template % configuration)
+  end
+end
+
 
 local function aeneas(dom, par)
   local par = par or {}
@@ -71,6 +128,7 @@ local function aeneas(dom, par)
   local skip_elements = options.skip_elements or par.skip_elements or skip_elements
   local id_prefix = options.id_prefix or par.id_prefix or id_prefix
   local skip_object = prepare_selectors(skip_elements)
+  local config_name = options.config_name or par.config_name or "config.xml"
   sentence_match = options.sentence_match or par.sentence_match or sentence_match
   local body = dom:query_selector("body")[1]
   -- process only the document body
@@ -119,6 +177,7 @@ local function aeneas(dom, par)
       end
     end
   end)
+  write_config(config_name, configuration)
   return dom
 end
 
