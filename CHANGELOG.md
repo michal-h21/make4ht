@@ -1,9 +1,12 @@
 # Changelog
 
+- 2018/02/22
+
+    - fixed bug in `fixinlines` DOM filter
 - 2018/02/21
 
     - added Aeneas domfilter
-    - fixed bugs in `joincharacters` filter
+    - fixed bugs in `joincharacters` DOM filter
 
 - 2018/02/20
 
