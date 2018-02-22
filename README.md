@@ -406,6 +406,10 @@ Example:
 
 Available DOM filters:
 
+aeneas
+
+:  [Aeneas](https://www.readbeyond.it/aeneas/) is a tool for automagical synchronization of text and audio.
+   This filter modifies the HTML code to support the synchronization.
 
 fixinlines
 
@@ -580,6 +584,22 @@ Example
     filter_settings "mathjaxnode" {
       fontdir="fonts/TeX/woff/" 
     }
+
+### The `aeneas` filter
+
+skip\_elements
+
+:  List of CSS selectors that match elements which shouldn't be processed. Default value: `{ "math", "svg"}`.
+
+id\_prefix 
+
+:  prefix used in the ID attribute forming.
+
+sentence\_match 
+
+:  Lua pattern used to match a sentence. Default value: `"([^%.^%?^!]*)([%.%?!]?)"`.
+
+
 
 # Command line options
 
