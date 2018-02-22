@@ -6,12 +6,16 @@
 local cssquery = require "luaxml-cssquery"
 
 -- Table of CSS selectors to be skipped.
-local skip_elements = {"head", "math", "svg"}
+local skip_elements = { "math", "svg"}
 
 -- The id attribute format is configurable
--- Aeneas must be told to search for the ID pattern using is_text_unparsed_id_regex 
+-- Aeneas must be told to search for the ID pattern using is_text_unparsed_id_regex
 -- option in Aneas configuration file
 local id_prefix = "ast"
+
+-- Pattern to mach a sentence. It should match two groups, first is actual
+-- sentence, the second optional interpunction mark.
+local sentence_match = "([^%.^%?^!]*)([%.%?!]?)"
 
 -- convert table with selectors to a query list
 local function prepare_selectors(skips)
@@ -42,7 +46,7 @@ end
 local function make_ids(parent, text, lastid, id_prefix)
   local t = {}
   local id
-  for chunk, punct in text:gmatch("([^%.^%?^!]*)([%.%?!]?)") do
+  for chunk, punct in text:gmatch(sentence_match) do
     id, lastid = make_id(lastid, id_prefix)
     local newtext = chunk..punct
     -- the newtext is empty string sometimes. we can skipt it then.
@@ -67,6 +71,7 @@ local function aeneas(dom, par)
   local skip_elements = options.skip_elements or par.skip_elements or skip_elements
   local id_prefix = options.id_prefix or par.id_prefix or id_prefix
   local skip_object = prepare_selectors(skip_elements)
+  sentence_match = options.sentence_match or par.sentence_match or sentence_match
   local body = dom:query_selector("body")[1]
   -- process only the document body
   if not body then return dom end
