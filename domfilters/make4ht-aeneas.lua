@@ -64,48 +64,52 @@ local function is_skipped(el, css)
   return #matched > 0
 end
 
+local task_template = [[
+<task>
+    <task_language>${lang}</task_language>
+    <task_description>${file_desc}</task_description>
+    <task_custom_id>${file_id}</task_custom_id>
+    <is_text_file>${html_file}</is_text_file>
+    <is_text_type>${text_type}</is_text_type>
+    <is_audio_file>${audio_file}</is_audio_file>
+    <os_task_file_name>${sub_file}</os_task_file_name>
+    <os_task_file_format>${sub_format}</os_task_file_format>
+    <os_task_file_smil_page_ref>${htmlfile}</os_task_file_smil_page_ref>
+    <os_task_file_smil_audio_ref>${audiofile}</os_task_file_smil_audio_ref>
+</task>
+]]
+
+-- get html files
+local function get_html_files(config)
+  local config = config or {}
+  local files = {}
+  local filematch = config.file_match or  "html$"
+  -- this is a trick to get list of files from the LG file
+  for _, file in ipairs(Make.lgfile.files) do
+    if file:match(filematch) then table.insert(files, file) end
+  end
+  return files
+end
+
+
+
+-- create task record for each HTML file
+local function prepare_tasks(files, configuration)
+  local tasks = {}
+  for _, filename in ipairs(files) do
+    local taskconfig = configuration
+    taskconfig.html_file = filename
+    tasks[#tasks+1] = task_template % taskconfig
+  end
+  return table.concat(tasks, "\n")
+end
 -- from https://www.readbeyond.it/aeneas/docs/clitutorial.html#xml-config-file-config-xml
 local config_template = [[
 <job>
     <job_language>${lang}</job_language>
     <job_description>${description}</job_description>
     <tasks>
-        <task>
-            <task_language>en</task_language>
-            <task_description>Sonnet 1</task_description>
-            <task_custom_id>sonnet001</task_custom_id>
-            <is_text_file>OEBPS/Resources/sonnet001.txt</is_text_file>
-            <is_text_type>parsed</is_text_type>
-            <is_audio_file>OEBPS/Resources/sonnet001.mp3</is_audio_file>
-            <os_task_file_name>sonnet001.smil</os_task_file_name>
-            <os_task_file_format>smil</os_task_file_format>
-            <os_task_file_smil_page_ref>sonnet001.xhtml</os_task_file_smil_page_ref>
-            <os_task_file_smil_audio_ref>sonnet001.mp3</os_task_file_smil_audio_ref>
-        </task>
-        <task>
-            <task_language>en</task_language>
-            <task_description>Sonnet 2</task_description>
-            <task_custom_id>sonnet002</task_custom_id>
-            <is_text_file>OEBPS/Resources/sonnet002.txt</is_text_file>
-            <is_text_type>parsed</is_text_type>
-            <is_audio_file>OEBPS/Resources/sonnet002.mp3</is_audio_file>
-            <os_task_file_name>sonnet002.smil</os_task_file_name>
-            <os_task_file_format>smil</os_task_file_format>
-            <os_task_file_smil_page_ref>sonnet002.xhtml</os_task_file_smil_page_ref>
-            <os_task_file_smil_audio_ref>sonnet002.mp3</os_task_file_smil_audio_ref>
-        </task>
-        <task>
-            <task_language>en</task_language>
-            <task_description>Sonnet 3</task_description>
-            <task_custom_id>sonnet003</task_custom_id>
-            <is_text_file>OEBPS/Resources/sonnet003.txt</is_text_file>
-            <is_text_type>parsed</is_text_type>
-            <is_audio_file>OEBPS/Resources/sonnet003.mp3</is_audio_file>
-            <os_task_file_name>sonnet003.smil</os_task_file_name>
-            <os_task_file_format>smil</os_task_file_format>
-            <os_task_file_smil_page_ref>sonnet003.xhtml</os_task_file_smil_page_ref>
-            <os_task_file_smil_audio_ref>sonnet003.mp3</os_task_file_smil_audio_ref>
-        </task>
+    ${tasks}
     </tasks>
     <os_job_file_name>output_example4</os_job_file_name>
     <os_job_file_container>zip</os_job_file_container>
@@ -113,11 +117,28 @@ local config_template = [[
     <os_job_file_hierarchy_prefix>OEBPS/Resources/</os_job_file_hierarchy_prefix>
 </job>
 ]]
+
+-- check if the config file exists
+local function is_config(filename)
+  return mkutils.file_exists(filename)
+end
+
+-- prepare Aeneas configuration
+local function prepare_configuration(dom, parameters)
+  local get_lang = function(d)
+    local html = d:query_selector("html")[1] or {}
+    return html:get_attribute("lang")
+  end
+  local config = parameters or {}
+  config.lang = parameters.lang or  get_lang(dom)
+  print(parameters.files)
+  config.tasks = prepare_tasks(parameters.files, config)
+  return config
+end
+
 -- write Aeneeas configuration file in the XML format
 local function write_config(filename, configuration)
-  if not mkutils.file_exists(filename) then
-    print(config_template % configuration)
-  end
+  print(config_template % configuration)
 end
 
 
@@ -130,6 +151,10 @@ local function aeneas(dom, par)
   local skip_object = prepare_selectors(skip_elements)
   local config_name = options.config_name or par.config_name or "config.xml"
   sentence_match = options.sentence_match or par.sentence_match or sentence_match
+
+  -- configuration table for Aeneas job
+  local configuration = {}
+  configuration.description = options.description or par.description or "Aeneas job"
   local body = dom:query_selector("body")[1]
   -- process only the document body
   if not body then return dom end
@@ -177,7 +202,12 @@ local function aeneas(dom, par)
       end
     end
   end)
-  write_config(config_name, configuration)
+  -- write the configuration only if the config file doesn't exist
+  if not is_config(config_name) then
+    configuration.files = get_html_files()
+    local configuration = prepare_configuration(dom, configuration)
+    write_config(config_name, configuration)
+  end
   return dom
 end
 
