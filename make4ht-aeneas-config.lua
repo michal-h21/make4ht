@@ -1,4 +1,6 @@
 
+local mkutils = require "mkutils"
+
 local task_template = [[
 <task>
     <task_language>${lang}</task_language>
@@ -7,6 +9,8 @@ local task_template = [[
     <is_text_file>${html_file}</is_text_file>
     <is_text_type>${text_type}</is_text_type>
     <is_audio_file>${audio_file}</is_audio_file>
+    <is_text_unparsed_id_sort>${id_sort}</is_text_unparsed_id_sort>
+    <is_text_unparsed_id_regex>${id_regex}</is_text_unparsed_id_regex>
     <os_task_file_name>${sub_file}</os_task_file_name>
     <os_task_file_format>${sub_format}</os_task_file_format>
     <os_task_file_smil_page_ref>${htmlfile}</os_task_file_smil_page_ref>
@@ -26,14 +30,30 @@ local function get_html_files(config)
   return files
 end
 
+-- prepare filename for the audio
+local function get_audio_file(filename, config)
+  local extension = config.audio_extension or "mp3"
+  local base = mkutils.remove_extension(filename)
+  return base .. "." .. extension
+end
+
 
 
 -- create task record for each HTML file
 local function prepare_tasks(files, configuration)
   local tasks = {}
-  for _, filename in ipairs(files) do
+  --  the map can contain info for particular files, otherwise we will interfere default values
+  local map = configuration.map or {}
+  for i, filename in ipairs(files) do
+    local filemap = map[filename] or {}
     local taskconfig = configuration
     taskconfig.html_file = filename
+    taskconfig.file_desc = filemap.description or configuration.description .. " " .. i
+    taskconfig.file_id = filemap.id or filename:gsub("[%/%.]", "_")
+    taskconfig.text_type = filemap.text_type or configuration.text_type
+    taskconfig.audio_file = filemap.audio_file or get_audio_file(filename, configuration)
+    taskconfig.id_sort= map.id_sort  or configuration.id_sort
+    taskconfig.id_prefix = map.id_regex or configuration.id_regex
     tasks[#tasks+1] = task_template % taskconfig
   end
   return table.concat(tasks, "\n")
@@ -62,7 +82,6 @@ end
 local function prepare_configuration(parameters)
   local config = parameters or {}
   config.lang = parameters.lang 
-  print(parameters.files)
   config.tasks = prepare_tasks(parameters.files, config)
   return config
 end
@@ -78,6 +97,10 @@ local function run(options)
   local par = get_filter_settings "aeneas-config"
   configuration.lang = options.lang or par.lang or "en"
   configuration.description = options.description or par.description or "Aeneas job"
+  configuration.map = options.map or par.map or {}
+  configuration.text_type = options.text_type or par.text_type or "unparsed"
+  configuration.id_sort = options.id_sort or par.id_sort or "numeric"
+  configuration.id_regex = options.id_regex or par.id_regex or par.id_prefix .. "[0-9]+"
   local config_name = options.config_name or par.config_name or "config.xml"
   if not is_config(config_name) then
     configuration.files = get_html_files()
