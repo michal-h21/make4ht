@@ -28,15 +28,16 @@ local function prepare_selectors(skips)
 end
 
 -- save the HTML language 
-local function save_lang(dom)
+local function save_config(dom, saves)
   local get_lang = function(d)
     local html = d:query_selector("html")[1] or {}
     return html:get_attribute("lang")
   end
+  local saves = saves or {}
   local config = get_filter_settings "aeneas_config"
   if config.language then return end
-  local lang = get_lang(dom)
-  filter_settings "aeneas-config" {lang = lang }
+  saves.lang = get_lang(dom)
+  filter_settings "aeneas-config" (saves)
 end
 -- make span element with unique id for a sentence
 local function make_span(id,parent, text)
@@ -89,7 +90,8 @@ local function aeneas(dom, par)
   local body = dom:query_selector("body")[1]
   -- process only the document body
   if not body then return dom end
-  save_lang(dom)
+  -- save information for aeneas_config
+  save_config(dom, {id_prefix = id_prefix})
   body:traverse_elements(function(el)
     -- skip disabled elements
     if(is_skipped(el, skip_object)) then return false end
