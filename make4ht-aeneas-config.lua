@@ -6,15 +6,15 @@ local task_template = [[
     <task_language>${lang}</task_language>
     <task_description>${file_desc}</task_description>
     <task_custom_id>${file_id}</task_custom_id>
-    <is_text_file>${html_file}</is_text_file>
+    <is_text_file>${prefix}${html_file}</is_text_file>
     <is_text_type>${text_type}</is_text_type>
-    <is_audio_file>${audio_file}</is_audio_file>
+    <is_audio_file>${prefix}${audio_file}</is_audio_file>
     <is_text_unparsed_id_sort>${id_sort}</is_text_unparsed_id_sort>
     <is_text_unparsed_id_regex>${id_regex}</is_text_unparsed_id_regex>
     <os_task_file_name>${sub_file}</os_task_file_name>
     <os_task_file_format>${sub_format}</os_task_file_format>
-    <os_task_file_smil_page_ref>${htmlfile}</os_task_file_smil_page_ref>
-    <os_task_file_smil_audio_ref>${audiofile}</os_task_file_smil_audio_ref>
+    <os_task_file_smil_page_ref>${html_file}</os_task_file_smil_page_ref>
+    <os_task_file_smil_audio_ref>${audio_file}</os_task_file_smil_audio_ref>
 </task>
 ]]
 
@@ -37,6 +37,11 @@ local function get_audio_file(filename, config)
   return base .. "." .. extension
 end
 
+local function get_sub_file(filename, config)
+  local extension = config.sub_format or "smil"
+  local base = mkutils.remove_extension(filename)
+  return base .. "." .. extension
+end
 
 
 -- create task record for each HTML file
@@ -45,16 +50,24 @@ local function prepare_tasks(files, configuration)
   --  the map can contain info for particular files, otherwise we will interfere default values
   local map = configuration.map or {}
   for i, filename in ipairs(files) do
-    local filemap = map[filename] or {}
-    local taskconfig = configuration
-    taskconfig.html_file = filename
-    taskconfig.file_desc = filemap.description or configuration.description .. " " .. i
-    taskconfig.file_id = filemap.id or filename:gsub("[%/%.]", "_")
-    taskconfig.text_type = filemap.text_type or configuration.text_type
-    taskconfig.audio_file = filemap.audio_file or get_audio_file(filename, configuration)
-    taskconfig.id_sort= map.id_sort  or configuration.id_sort
-    taskconfig.id_prefix = map.id_regex or configuration.id_regex
-    tasks[#tasks+1] = task_template % taskconfig
+    local filemap = map[filename] 
+    if filemap ~= false then
+      filemap = filemap or {}
+      local taskconfig = configuration
+      taskconfig.html_file = filename
+      taskconfig.prefix = filemap.prefix or configuration.prefix
+      taskconfig.file_desc = filemap.description or configuration.description .. " " .. i
+      taskconfig.file_id = filemap.id or filename:gsub("[%/%.]", "_")
+      taskconfig.text_type = filemap.text_type or configuration.text_type
+      taskconfig.audio_file = filemap.audio_file or get_audio_file(filename, configuration)
+      taskconfig.sub_file = filemap.sub_file or get_sub_file(filename, configuration)
+      taskconfig.id_sort= filemap.id_sort  or configuration.id_sort
+      taskconfig.id_prefix = filemap.id_regex or configuration.id_regex
+      taskconfig.sub_format = filemap.sub_format or configuration.sub_format
+      tasks[#tasks+1] = task_template % taskconfig
+      Make:add_file(taskconfig.audio_file)
+      Make:add_file(taskconfig.sub_file)
+    end
   end
   return table.concat(tasks, "\n")
 end
@@ -69,7 +82,7 @@ local config_template = [[
     <os_job_file_name>output_example4</os_job_file_name>
     <os_job_file_container>zip</os_job_file_container>
     <os_job_file_hierarchy_type>flat</os_job_file_hierarchy_type>
-    <os_job_file_hierarchy_prefix>OEBPS/Resources/</os_job_file_hierarchy_prefix>
+    <os_job_file_hierarchy_prefix>${prefix}</os_job_file_hierarchy_prefix>
 </job>
 ]]
 
@@ -88,7 +101,11 @@ end
 
 -- write Aeneeas configuration file in the XML format
 local function write_config(filename, configuration)
-  print(config_template % configuration)
+  local cfg = config_template % configuration
+  print(cfg)
+  local f = io.open(filename, "w")
+  f:write(cfg)
+  f:close()
 end
 
 local function run(options)
@@ -101,6 +118,8 @@ local function run(options)
   configuration.text_type = options.text_type or par.text_type or "unparsed"
   configuration.id_sort = options.id_sort or par.id_sort or "numeric"
   configuration.id_regex = options.id_regex or par.id_regex or par.id_prefix .. "[0-9]+"
+  configuration.sub_format = options.sub_format or par.sub_format or "smil"
+  configuration.prefix = options.prefix or par.prefix or "./"
   local config_name = options.config_name or par.config_name or "config.xml"
   if not is_config(config_name) then
     configuration.files = get_html_files()
