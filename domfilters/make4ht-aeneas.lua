@@ -107,9 +107,11 @@ local function aeneas(dom, par)
       and first_child:is_text()
       and not el:get_attribute("id")
       and string.len(first_child._text) < 20
+      and el._attr
     then
       local idtitle
       idtitle, id = make_id(id, id_prefix)
+      print(el._name, first_child._text)
       el:set_attribute("id", idtitle)
       return el
     end
