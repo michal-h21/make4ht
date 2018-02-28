@@ -1,3 +1,4 @@
+local M = {}
 
 local mkutils = require "mkutils"
 
@@ -49,6 +50,8 @@ local function prepare_tasks(files, configuration)
   local tasks = {}
   --  the map can contain info for particular files, otherwise we will interfere default values
   local map = configuration.map or {}
+  -- task_template should be configurable
+  local task_template = configuration.task_template or task_template
   for i, filename in ipairs(files) do
     local filemap = map[filename] 
     if filemap ~= false then
@@ -108,9 +111,9 @@ local function write_config(filename, configuration)
   f:close()
 end
 
-local function run(options)
-  -- write the configuration only if the config file doesn't exist
-  local configuration = par or {}
+
+local function make_default_options(options)
+  local configuration = {}
   local par = get_filter_settings "aeneas-config"
   configuration.lang = options.lang or par.lang or "en"
   configuration.description = options.description or par.description or "Aeneas job"
@@ -120,21 +123,38 @@ local function run(options)
   configuration.id_regex = options.id_regex or par.id_regex or par.id_prefix .. "[0-9]+"
   configuration.sub_format = options.sub_format or par.sub_format or "smil"
   configuration.prefix = options.prefix or par.prefix or "./"
-  local config_name = options.config_name or par.config_name or "config.xml"
-  if not is_config(config_name) then
-    configuration.files = get_html_files()
-    local configuration = prepare_configuration(configuration)
+  configuration.config_name = options.config_name or par.config_name or "config.xml"
+  configuration.keep_config = options.keep_config or par.keep_config
+  return configuration
+end
+
+
+local function configure_job(options)
+  local configuration = make_default_options(options)
+  local config_name = configuration.config_name
+  -- prepare the configuration in every case
+  configuration.files = get_html_files()
+  local configuration = prepare_configuration(configuration)
+  -- write the configuration only if the config file doesn't exist
+  -- and keep_config option is set to true
+  if is_config(config_name) and configuration.keep_config==true then
+  else
     write_config(config_name, configuration)
   end
 end
 
 
-
-local function aeneas_config(par)
+-- write Aeneas job configuration file
+-- it doesn't 
+function M.write_job(par)
   -- configuration table for Aeneas job
   Make:match("tmp$", function()
-    run(par)
+    configure_job(par)
   end)
 end
 
-return aeneas_config
+function M.execute(par)
+end
+
+
+return M
