@@ -1,5 +1,9 @@
 # Changelog
 
+- 2018/02/28
+
+    - Aeneas configuration file creation works
+
 - 2018/02/22
 
     - fixed bug in `fixinlines` DOM filter
