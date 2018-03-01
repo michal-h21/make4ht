@@ -148,25 +148,17 @@ local function execute_job(options)
   local configuration = make_default_options(options)
   configuration.files = get_html_files()
   -- we need to configure prepare_tasks to return calls to aeneas task convertor
-  configuration.python = options.python or par.python or "python"
+  configuration.python = options.python or par.python or "python3"
   configuration.module = options.module or par.module or "aeneas.tools.execute_task"
   configuration.task_template = '${python} -m "${module}" "${audio_file}" "${html_file}" "is_text_type=${text_type}|os_task_file_smil_audio_ref=${audio_file}|os_task_file_smil_page_ref=${html_file}|task_language=${lang}|is_text_unparsed_id_sort=${id_sort}|is_text_unparsed_id_regex=${id_regex}|os_task_file_format=${sub_format}" "${sub_file}"'
-  -- configuration.task_template='python3 -m "aeneas.tools.execute_task" "krecek.mp3" "krecekli1.xhtml" "is_text_type=unparsed|task_language=cs|is_text_unparsed_id_sort=numeric|is_text_unparsed_id_regex=ast[0-9]+|os_task_file_format=srt" krecek.srt'
   local tasks = prepare_tasks(configuration.files, configuration)
   -- execute the tasks
   for _, v in ipairs(tasks) do
     print("task", v)
     local proc = io.popen(v, "r")
     local result = proc:read("*all")
-    local filename = v:match("([a-zA-Z0-9]+%.xhtml)")
-    print(filename)
-    local f = io.open(filename, "r")
-    local t = f:read("*all")
-    f:close()
     proc:close()
     print(result)
-    print(t)
-    -- os.execute(v)
   end
 end
 
@@ -174,7 +166,11 @@ end
 -- have been executed
 local function get_last_lg_file()
   local t = Make.lgfile.files
-  print("last", t[#t])
+  for i = #t, 1, -1 do
+    --  find last html file
+    local x = t[i]
+    if x:match "html$" then return x end
+  end
   return t[#t]
 end
 
@@ -187,17 +183,15 @@ function M.write_job(par)
   end)
 end
 
-local executed = false
 -- execute Aeneas directly
 function M.execute(par)
   Make:match("tmp$", function()
-    if executed then return false end
+    -- there may be html files after the .tmp file
+    -- the aeneas must be executed after the Aeneas filter inserts the id
+    -- attributes, so it is necessary to execute this code as very last one
     local last = get_last_lg_file()
     Make:match(last, function()
-      if executed then return false end
       execute_job(par)
-      print("hello")
-      executed = true
       return false
     end)
   end)
