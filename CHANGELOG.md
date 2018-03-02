@@ -3,6 +3,7 @@
 - 2018/01/02
 
     - Aeneas execution works
+    - Aeneas documentation
 
 - 2018/02/28
 
