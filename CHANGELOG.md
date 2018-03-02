@@ -1,5 +1,9 @@
 # Changelog
 
+- 2018/01/02
+
+    - Aeneas execution works
+
 - 2018/02/28
 
     - Aeneas configuration file creation works
