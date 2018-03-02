@@ -423,6 +423,145 @@ joincharacters
 
 :  join consecutive `<span>` or `<mn>` elements.
 
+### make4ht-aeneas-config package
+
+Companion for the `aeneas` DOM filter is the `make4ht-aeneas-config` plugin. It
+can be used to write Aeneas configuration file or execute Aeneas on the
+generated HTML files.
+
+Available functions:
+
+write\_job(parameters)
+
+:  write Aenas job configuration to `config.xml` file. See the [Aeneas
+   documentation](https://www.readbeyond.it/aeneas/docs/clitutorial.html#processing-jobs)
+   for more information about jobs.
+
+execute(parameters)
+
+:  execute Aeneas.
+
+process\_files(parameters)
+
+:  process the audio and generated subtitle files.
+
+
+By default, the `smil` file is created. It is assumed that there is audio file
+in `mp3` format named as the TeX file. It is possible to use different formats
+and file names using mapping.
+
+The configuration options can be passed directly to the functions or set using
+`filter_settings "aeneas-config" {parameters}` function.
+
+
+Available parameters:
+
+
+lang 
+
+:  document language. It is interfered from the HTML file, so it is not necessary to set it. 
+
+map 
+
+:  mapping between HTML, audio and subtitle files. More info bellow. 
+
+text\_type 
+
+:  type of the input. The `aeneas` DOM filter produces `unparsed` text type.
+
+id\_sort 
+
+:  sorting of id attributes. Default value is `numeric`.
+
+id\_regex 
+
+:  regular expression to parse the id attributes.
+
+sub\_format 
+
+:  generated subtitle format. Default `smil`.
+
+
+Additional parameters for the job configuration file:
+
+- description 
+- prefix 
+- config\_name 
+- keep\_config 
+
+
+
+It is possible to generate multiple HTML files from the LaTeX source. For
+example, `tex4ebook` generates separate file for each chapter or section. It is
+possible to set options for each HTML file, in particular names of the
+corresponding audio files. This mapping is done using `map` parameter. 
+
+Example:
+
+    filter_settings "aeneas-config" {
+      map = {
+        ["sampleli1.html"] = {audio_file="sample.mp3"}, 
+        ["sample.html"] = false
+      }
+    }
+
+Table keys are the configured file names. It is necessary to insert them as
+`["filename.html"]`, because of Lua syntax rules.
+
+This example maps audio file `sample.mp3` to a section subpage. The main HTML
+file, which may contain title and table of contents doesn't have an
+corresponding audio file.
+
+The filenames of sub files corresponds to chapter numbers, so they are not
+stable when a new chapter is added. It is possible to request file names
+interfered from the chapter titles using the `sec-filename` option or `tex4ht`.
+
+Available `map` options:
+
+
+audio\_file 
+
+:  the corresponding audio file 
+
+sub\_file 
+
+:  name of the generated subtitle file
+
+The following options are same as their counter-parts from the main parameters table and generally don't need to be set:
+
+- prefix 
+- file\_desc 
+- file\_id 
+- text\_type 
+- id\_sort
+- id\_prefix 
+- sub\_format 
+
+
+Full example:
+
+
+    local domfilter = require "make4ht-domfilter"
+    local aeneas_config = require "make4ht-aeneas-config"
+    
+    filter_settings "aeneas-config" {
+      map = {
+        ["krecekli1.xhtml"] = {audio_file="krecek.mp3"}, 
+        ["krecek.xhtml"] = false
+      }
+    }
+    
+    local process = domfilter {"aeneas"}
+    Make:match("html$", process)
+
+    if mode == "draft" then
+      aeneas_config.process_files {}
+    else
+      aeneas_config.execute {}
+    end
+
+
+
 
 ## Image conversion
 
