@@ -1,9 +1,10 @@
 # Changelog
 
-- 2018/01/02
+- 2018/03/02
 
     - Aeneas execution works
     - Aeneas documentation
+    - added support for `.make4ht` configuration file
 
 - 2018/02/28
 
@@ -12,6 +13,7 @@
 - 2018/02/22
 
     - fixed bug in `fixinlines` DOM filter
+
 - 2018/02/21
 
     - added Aeneas domfilter
