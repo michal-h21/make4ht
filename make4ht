@@ -9,6 +9,7 @@ local make4ht = require("make4ht-lib")
 local lapp    = require("lapp-mk4")
 local mkutils = require("mkutils")
 local mkparams = require("mkparams")
+local mk_config = require("make4ht-config")
 -- args string is here just as sample, we dont pass it it to 
 -- mkparams.get_args() so default args string is used
 local args    =  [[
@@ -53,6 +54,15 @@ else
 end
 local extensions = formatter.prepare_extensions(parameters.extensions)
 extensions = mkutils.load_extensions(extensions, output_format)
+
+-- find make4ht configuration file
+local configname = "make4ht"
+local conffile = mk_config.find_config(configname) or mk_config.find_xdg_config(configname)
+if conffile then
+  print("Using configuration file: " .. conffile)
+  mkutils.load_config(parameters, conffile)
+end
+
 
 -- run extensions with prepare_parameters function
 parameters = formatter.prepare_parameters(parameters,extensions)
