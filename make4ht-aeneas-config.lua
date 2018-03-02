@@ -187,14 +187,17 @@ end
 
 -- execute Aeneas directly
 function M.execute(par)
-  Make:match("tmp$", function()
+  Make:match("tmp$", function(current_name)
     -- there may be html files after the .tmp file
     -- the aeneas must be executed after the Aeneas filter inserts the id
     -- attributes, so it is necessary to execute this code as very last one
     local last = get_last_lg_file()
+    -- execute the job if there are no HTML files after the tmp file
+    if current_name == last then
+      execute_job(par)
+    end
     Make:match(last, function()
       execute_job(par)
-      return false
     end)
   end)
 end
