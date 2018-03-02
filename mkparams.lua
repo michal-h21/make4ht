@@ -17,7 +17,7 @@ ${progname} [options] filename ["tex4ht.sty op." "tex4ht op." "t4ht op" "latex o
 -c,--config (default xhtml) Custom config file
 -d,--output-dir (default nil)  Output directory
 -e,--build-file (default nil)  If build file is different than `filename`.mk4
--f,--format  (default nil)  Output file format
+-f,--format  (default html5)  Output file format
 -h,-- help  Display this message
 -l,--lua  Use lualatex for document compilation
 -m,--mode (default default) Switch which can be used in the makefile 
