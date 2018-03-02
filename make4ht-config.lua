@@ -39,6 +39,7 @@ local xdg_config  = function(filename, xdg_config_name)
 end
 
 local find_config = function(filename)
+  local filename = "." .. filename
 	local current =  lfs.currentdir()
 	local path = {}
 	current:gsub("([^/]+)", function(s) table.insert(path,s) end)
