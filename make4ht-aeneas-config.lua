@@ -167,9 +167,11 @@ end
 local function get_last_lg_file()
   local t = Make.lgfile.files
   for i = #t, 1, -1 do
-    --  find last html file
+    --  find last html file or the tmp file
     local x = t[i]
-    if x:match "html$" then return x end
+    if x:match "html$" or x:match "tmp$" then 
+      return x 
+    end
   end
   return t[#t]
 end
