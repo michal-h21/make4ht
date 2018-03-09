@@ -1,5 +1,9 @@
 # Changelog
 
+- 2018/03/09
+
+    - load the configuration file before extensions
+
 - 2018/03/02
 
     - Aeneas execution works
