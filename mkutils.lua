@@ -351,6 +351,18 @@ end, {correct_exit= 0})
 env.Make:add("tex4ht","tex4ht ${tex4ht_par} \"${input}.${dvi}\"", nil, 1)
 env.Make:add("t4ht","t4ht ${t4ht_par} \"${input}.${ext}\"",{ext="dvi"},1)
 
+-- enable extension in the config file
+-- the following two functions must be here and not in make4ht-lib.lua
+-- because of the access to env.settings
+env.Make.enable_extension = function(self,name)
+  table.insert(env.settings.extensions, {type="+", name=name})
+end
+
+-- disable extension in the config file
+env.Make.disable_extension = function(self,name)
+  table.insert(env.settings.extensions, {type="-", name=name})
+end
+
 function load_config(settings, config_name)
   local settings = settings or main_settings
   env.settings = settings
