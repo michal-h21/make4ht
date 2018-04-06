@@ -1,5 +1,10 @@
 # Changelog
 
+- 2018/04/06
+
+    - added `Make:enable_extension` and `Make:disable_extension` functions
+    - documented the configuration file
+
 - 2018/03/09
 
     - load the configuration file before extensions

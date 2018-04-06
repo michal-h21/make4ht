@@ -738,7 +738,41 @@ sentence\_match
 
 :  Lua pattern used to match a sentence. Default value: `"([^%.^%?^!]*)([%.%?!]?)"`.
 
+# Configuration file {#configfile}
 
+It is possible to globally modify the build settings using the configuration
+file. New compilation commands can be added, extensions can be loaded or
+disabled and settings can be set.
+
+## Location 
+
+The configuration file can be saved either in
+`$HOME/.config/make4ht/config.lua` or in `.make4ht` in the current directory or
+it's parents (up to `$HOME`).
+
+## Additional commands
+
+There are two additional commands:
+
+`Make:enable_extension(name)`
+
+:  require extension
+
+`Make:disable_extension(name)`
+
+:  disable extension
+
+## Example
+
+The following configuration add support for the `biber` command, disables
+`common_domfilters` extension which is loaded by default and requires MathML
+output for math.
+
+    Make:add("biber", "biber ${input}")
+    Make:disable_extension "common_domfilters"
+    settings_add {
+      tex4ht_sty_par =",mathml"
+    }
 
 # Command line options
 
