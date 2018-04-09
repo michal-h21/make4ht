@@ -1,5 +1,11 @@
 # Changelog
 
+- 2018/04/09
+
+    - released version `0.2`
+    - disabled default loading of `common_domfilters` extension
+    
+
 - 2018/04/06
 
     - added `Make:enable_extension` and `Make:disable_extension` functions
