@@ -109,11 +109,6 @@ the output format name:
 
      make4ht -uf html5+tidy filename.tex
 
-The `common_domfilters` extension is executed by default for `HTML5` and
-`XHTML` formats. It can be disabled in the case of issues using:
-
-    make4ht -f html5-common_domfilters filename.tex
-
 Available extensions:
 
 latexmk
@@ -764,12 +759,12 @@ There are two additional commands:
 
 ## Example
 
-The following configuration add support for the `biber` command, disables
-`common_domfilters` extension which is loaded by default and requires MathML
+The following configuration add support for the `biber` command, requires
+`common_domfilters` extension and requires MathML
 output for math.
 
     Make:add("biber", "biber ${input}")
-    Make:disable_extension "common_domfilters"
+    Make:enable_extension "common_domfilters"
     settings_add {
       tex4ht_sty_par =",mathml"
     }
