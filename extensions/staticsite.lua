@@ -1,23 +1,24 @@
 local M = {}
 local filter = require "make4ht-filter"
-local domfilter = require "make4ht-domfilter"
 local domobj = require "luaxml-domobject"
 local mkutils = require "mkutils"
 
+-- get the published file name
 local function get_slug(settings)
   local published_name = mkutils.remove_extension(settings.tex_file) .. ".published"
 
   local slug = os.date("%Y-%m-%d-" .. settings.input)
+  -- we must save the published date, so the subsequent compilations at different days
+  -- use the same name
   if mkutils.file_exists(published_name) then
     local f = io.open(published_name, "r")
     slug = f:read("*line")
     print("Already pubslished", slug)
-    -- settings.input = published_filename
     f:close()
   else
     -- escape 
     -- slug must contain the unescaped input name
-    local f = io.open(published_name, "w") 
+    local f = io.open(published_name, "w")
     f:write(slug)
     f:close()
     -- make the output file name in the format YYYY-MM-DD-old-filename.html
@@ -25,17 +26,8 @@ local function get_slug(settings)
   return slug
 end
 
-function M.test(format)
-  Make.input = "hello"
-  local settings = Make.params
-  return true
-end
 
--- Make:enable_extension ( "tidy" )
--- os.exit()
--- Make:disable_extension ("common_domfilters")
--- table.insert(settings.extensions,{type="-", name= "common_domfilters"})
--- table.insert(settings.extensions,{type="+", name= "grrr"})
+-- save the header settings in YAML format
 local function make_yaml(tbl, level)
   local t = {}
   local level = level or 0
@@ -86,8 +78,8 @@ local function get_header(tbl)
 end
 
 
--- if mode=="publish" then
 function M.modify_build(make)
+  -- I should make filter from this
   local process = filter {
     function(s,par)
       print(os.getenv "blog_home")
@@ -118,23 +110,18 @@ function M.modify_build(make)
     end
   }
   local settings = make.params
+  -- get the published file name
   local slug = get_slug(settings)
   for _, cmd in ipairs(make.build_seq) do
+    -- all commands must use the published file name
     cmd.params.input = slug
-    if cmd.name == "htlatex" then
-
-    end
   end
 
-  -- settings.input = slug
-  -- settings.extensions = mkutils.add_extensions("-common_domfilters+tidy", settings.extensions)
-  -- settings.extensions = mkutils.add_extensions("-common_domfilters+tidy", settings.extensions)
   local quotepattern = '(['..("%^$().[]*+-?"):gsub("(.)", "%%%1")..'])'
   local mainfile = string.gsub(slug, quotepattern, "%%%1")
-  -- make:htlatex {}
-  -- match only the main input file
+  -- is this useful for anything?
   make:match("tmp$", function(a) 
-    print "pubslih jede"
+    print "publish jede"
     print("input",settings.input)
     for k,v in pairs(settings.extensions) do
       print("extension", k)
@@ -143,6 +130,7 @@ function M.modify_build(make)
     return a
   end)
 
+  -- make the YAML header only for the main HTML file
   make:match(mainfile .. ".html", process)
   return make
 end
