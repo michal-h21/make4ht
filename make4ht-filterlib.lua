@@ -6,7 +6,7 @@ function M.load_filters(filters, load_filter)
 	if type(filters) == "string" then
 		table.insert(sequence,load_filter(filters))
 	elseif type(filters) == "table" then
-		for _,n in pairs(filters) do
+		for _,n in ipairs(filters) do
 			if type(n) == "string" then
 				table.insert(sequence,load_filter(n))
 			elseif type(n) == "function" then
