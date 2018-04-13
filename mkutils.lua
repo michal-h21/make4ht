@@ -157,7 +157,7 @@ function mkdirectories(dirs)
 	if type(dirs) ~="table" then
 		return false, "mkdirectories: dirs is not table"
 	end
-	for _,d in pairs(dirs) do
+	for _,d in ipairs(dirs) do
 		local stat,msg = lfs.mkdir(d)
 		if not stat then return false, "makedirectories error: "..msg end
 		lfs.chdir(d)
