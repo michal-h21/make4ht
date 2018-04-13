@@ -121,6 +121,10 @@ function M.modify_build(make)
   local site_settings = get_filter_settings "staticsite"
   local outdir = site_settings.output_dir
 
+  if outdir then
+    settings.outdir = outdir
+    set_settings {outdir=outdir}
+  end
   local quotepattern = '(['..("%^$().[]*+-?"):gsub("(.)", "%%%1")..'])'
   local mainfile = string.gsub(slug, quotepattern, "%%%1")
   -- is this useful for anything?
@@ -132,10 +136,6 @@ function M.modify_build(make)
       for x,y in pairs(v) do print(x,y) end
     end
     -- this doesn't work. why?
-    if outdir then
-      settings.outdir = outdir
-      set_settings {outdir=outdir}
-    end
     return a
   end)
 
