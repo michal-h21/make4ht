@@ -107,7 +107,7 @@ end
 Make.file_matches = function(self, files)
 	local statuses = {}
 	-- First make params for all matchers
-	for k,v in pairs(self.matches) do
+	for k,v in ipairs(self.matches) do
 		local v = self.matches[k].params or {}
 		local p = self.params or {}
 		for i,j in pairs(p) do
