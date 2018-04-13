@@ -1,5 +1,9 @@
 # Changelog
 
+- 2018/04/13
+
+    - use `ipairs` instead of `pairs` to traverse lists of images and image match functions
+
 - 2018/04/09
 
     - released version `0.2`
