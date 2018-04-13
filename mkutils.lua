@@ -458,13 +458,19 @@ end
 function load_extensions(extensions, format)
   local module_names = {}
   local extension_table = {}
+  local extension_sequence = {}
   -- process the extension table. it contains type field, which can enable or
   -- diable the extension
   for _, v in ipairs(extensions) do
     local enable = v.type == "+" and true or nil
-    module_names[v.name] = enable
+    -- don't load extensions multiple times
+    if not module_names[v.name] then
+      module_names[v.name] = enable
+      -- load extenisons in a correct order
+      table.insert(extension_sequence, v.name)
+    end
   end
-  for name, _ in pairs(module_names) do
+  for _, name in ipairs(extension_sequence) do
     local extension = load_extension(name,format)
     if extension then
       table.insert(extension_table, extension)
