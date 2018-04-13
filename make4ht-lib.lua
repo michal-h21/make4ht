@@ -81,9 +81,9 @@ Make.image_convert =  function(self, images)
 		end
 		image_patterns[i].params = p
 	end
-	for _,i in pairs(images) do
+	for _,i in ipairs(images) do
 		local output = i.output
-		for _, x in pairs(image_patterns) do
+		for _, x in ipairs(image_patterns) do
 			local pattern = x.pattern
 			if output:match(pattern) then
 				local command = x.command
