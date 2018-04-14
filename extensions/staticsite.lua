@@ -77,6 +77,20 @@ local function get_header(tbl)
   return "---\n".. yaml.. "\n---\n"
 end
 
+local function update_jobname(slug, latex_par)
+  local latex_par = latex_par or ""
+  if latex_par:match("%-jobname") then
+    local firstchar=latex_par:match("%-jobname=.")
+    local replace_pattern="%-jobname=[^%s]+"
+    if firstchar == "'" or firstchar=='"' then
+      replace_pattern = "%-jobname=".. firstchar .."[^%"..firstchar.."]+"
+    end
+    
+    return latex_par:gsub(replace_pattern, "-jobname=".. slug)
+  else
+    return latex_par .. "-jobname="..slug
+  end
+end
 
 function M.modify_build(make)
   -- I should make filter from this
@@ -115,7 +129,7 @@ function M.modify_build(make)
   for _, cmd in ipairs(make.build_seq) do
     -- all commands must use the published file name
     cmd.params.input = slug
-    cmd.params.latex_par =  "-jobname="..slug
+    cmd.params.latex_par = "-jobname="..slug -- update_jobname(slug, cmd.params.latex_par)
   end
 
   -- get extension settings
