@@ -115,6 +115,7 @@ function M.modify_build(make)
   for _, cmd in ipairs(make.build_seq) do
     -- all commands must use the published file name
     cmd.params.input = slug
+    cmd.params.latex_par =  "-jobname="..slug
   end
 
   -- get extension settings
