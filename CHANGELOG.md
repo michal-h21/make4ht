@@ -1,5 +1,14 @@
 # Changelog
 
+- 2018/04/16
+
+    - check for Git repo in the Makefile, don't run Git commands outside of repo
+
+- 2018/04/15
+
+    - added `staticsite` filter
+    - working on `staticsite` extension
+
 - 2018/04/13
 
     - use `ipairs` instead of `pairs` to traverse lists of images and image match functions
