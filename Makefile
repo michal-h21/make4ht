@@ -1,4 +1,4 @@
-.PHONY: build
+.PHONY: build tags
 lua_content = make4ht $(wildcard *.lua) 
 filters = $(wildcard filters/*.lua)
 domfilters = $(wildcard domfilters/*.lua)
@@ -16,15 +16,24 @@ EXTENSION_DIR = $(INSTALL_DIR)/extensions
 SYSTEM_BIN = /usr/local/bin
 BUILD_DIR = build
 BUILD_MAKE4HT = $(BUILD_DIR)/make4ht
-VERSION:= $(shell git --no-pager describe --abbrev=0 --tags --always )
-# VERSION:= $(shell git describe --abbrev=4 --dirty --always --tags)
-DATE:= $(firstword $(shell git --no-pager show --date=short --format="%ad" --name-only))
+VERSION:= undefined
+DATE:= undefined
+
+ifeq ($(strip $(shell git rev-parse --is-inside-work-tree 2>/dev/null)),true)
+	VERSION:= $(shell git --no-pager describe --abbrev=0 --tags --always )
+	DATE:= $(firstword $(shell git --no-pager show --date=short --format="%ad" --name-only))
+endif
 
 all: doc
 
-doc: $(doc_file) readme.tex
+tags:
+ifeq ($(strip $(shell git rev-parse --is-inside-work-tree 2>/dev/null)),true)
+	git fetch --tags
+endif 
 
-make4ht-doc.pdf: make4ht-doc.tex readme.tex changelog.tex
+doc: $(doc_file) readme.tex 
+ 
+make4ht-doc.pdf: make4ht-doc.tex readme.tex changelog.tex tags
 	latexmk -pdf -pdflatex='lualatex "\def\version{${VERSION}}\def\gitdate{${DATE}}\input{%S}"' make4ht-doc.tex
 
 readme.tex: README.md
