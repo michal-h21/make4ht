@@ -26,6 +26,8 @@ local function get_slug(settings)
 end
 
 
+-- it is necessary to set correct -jobname in latex_par parameters field
+-- in order to the get correct HTML file name
 local function update_jobname(slug, latex_par)
   local latex_par = latex_par or ""
   if latex_par:match("%-jobname") then
@@ -42,18 +44,24 @@ local function update_jobname(slug, latex_par)
 end
 
 function M.modify_build(make)
+  -- it is necessary to insert the filters for YAML header and file copying as last matches
+  -- we use an bogus match which will be executed only once as the very first one to insert
+  -- the filters
+  local insert_executed = false
   local function insert_filter(outdir)
-    table.insert(make.matches, 1, {
-      pattern=".*",
-      params = {}, 
-      command = function()
-        for _, match in ipairs(make.matches) do
-          match.params.outdir = outdir
-          print(match.pattern, match.params.outdir)
+    if not insert_executed  then
+      table.insert(make.matches, 1, {
+        pattern=".*",
+        params = {},
+        command = function()
+          for _, match in ipairs(make.matches) do
+            match.params.outdir = outdir
+            print(match.pattern, match.params.outdir)
+          end
         end
-        -- os.exit()
-      end
-    })
+      })
+    end
+    insert_executed = true
 
     -- local first = make.matches[1]
     -- for k,v in pairs(first) do
