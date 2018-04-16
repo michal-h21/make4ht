@@ -17,3 +17,7 @@ build
 *.toc
 *.fdb_latexmk
 doc
+tags
+*.css
+readme.tex
+changelog.tex
