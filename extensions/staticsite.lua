@@ -5,8 +5,10 @@ local mkutils = require "mkutils"
 -- get the published file name
 local function get_slug(settings)
   local published_name = mkutils.remove_extension(settings.tex_file) .. ".published"
+  local config = get_filter_settings "staticsite"
+  local file_pattern = config.file_pattern or "%Y-%m-%d-${input}"
 
-  local slug = os.date("%Y-%m-%d-" .. settings.input)
+  local slug = os.date(file_pattern) % settings
   -- we must save the published date, so the subsequent compilations at different days
   -- use the same name
   if mkutils.file_exists(published_name) then
