@@ -43,32 +43,28 @@ local function update_jobname(slug, latex_par)
   end
 end
 
-function M.modify_build(make)
-  -- it is necessary to insert the filters for YAML header and file copying as last matches
-  -- we use an bogus match which will be executed only once as the very first one to insert
-  -- the filters
+local function insert_filter(make, pattern, fn)
   local insert_executed = false
-  local function insert_filter(outdir)
-    if not insert_executed  then
-      table.insert(make.matches, 1, {
-        pattern=".*",
-        params = {},
-        command = function()
-          for _, match in ipairs(make.matches) do
-            match.params.outdir = outdir
-            print(match.pattern, match.params.outdir)
-          end
-        end
-      })
+  table.insert(make.matches, 1, {
+    pattern=pattern,
+    params = {},
+    command = function()
+      if not insert_executed  then
+        fn()
+      end
+      insert_executed = true
     end
-    insert_executed = true
-
+  })
     -- local first = make.matches[1]
     -- for k,v in pairs(first) do
     --   print("xxx",k,v)
     -- end
     -- os.exit()
-  end
+end
+function M.modify_build(make)
+  -- it is necessary to insert the filters for YAML header and file copying as last matches
+  -- we use an bogus match which will be executed only once as the very first one to insert
+  -- the filters
   -- I should make filter from this
   local process = filter {
     "staticsite"
@@ -84,26 +80,21 @@ function M.modify_build(make)
 
   -- get extension settings
   local site_settings = get_filter_settings "staticsite"
-  local outdir = site_settings.output_dir
+  local site_root = site_settings.site_root
 
-  insert_filter(outdir)
 
   local quotepattern = '(['..("%^$().[]*+-?"):gsub("(.)", "%%%1")..'])'
   local mainfile = string.gsub(slug, quotepattern, "%%%1")
-  -- is this useful for anything?
-  make:match("tmp$", function(a) 
-    print "publish jede"
-    print("input",settings.input)
-    for k,v in pairs(settings.extensions) do
-      print("extension", k)
-      for x,y in pairs(v) do print(x,y) end
-    end
-    -- this doesn't work. why?
-    return a
-  end)
 
-  -- make the YAML header only for the main HTML file
-  make:match(mainfile .. ".html", process)
+  -- run the following code once in the first match on the first file
+  insert_filter(make, ".*", function()
+    -- for _, match in ipairs(make.matches) do
+    --   match.params.outdir = outdir
+    --   print(match.pattern, match.params.outdir)
+    -- end
+    -- make the YAML header only for the main HTML file
+    make:match(mainfile .. ".html", process)
+  end)
   return make
 end
 
