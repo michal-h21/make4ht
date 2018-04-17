@@ -60,6 +60,30 @@ local function insert_filter(make, pattern, fn)
     end
   })
 end
+
+
+local function copy_files(filename, par)
+  local function prepare_path(dir, subdir)
+    local path = dir .. "/" .. subdir .. "/" .. filename
+    return path:gsub("//", "/")
+  end
+  -- get extension settings
+  local site_settings = get_filter_settings "staticsite"
+  local site_root = site_settings.site_root
+  local map = site_settings.map or {}
+  -- default path without subdir, will be used if the file is not matched
+  -- by any pattern in the map
+  local path = prepare_path(site_root, "")
+  for pattern, destination in pairs(map) do
+    if filename:match(pattern) then
+      path = prepare_path(site_root, destination)
+      break
+    end
+  end
+  -- it is possible to use string extrapolation in path, for example for slug
+  mkutils.copy(filename, path % par)
+end
+
 function M.modify_build(make)
   -- it is necessary to insert the filters for YAML header and file copying as last matches
   -- we use an bogus match which will be executed only once as the very first one to insert
@@ -77,9 +101,6 @@ function M.modify_build(make)
     cmd.params.latex_par = "-jobname="..slug -- update_jobname(slug, cmd.params.latex_par)
   end
 
-  -- get extension settings
-  local site_settings = get_filter_settings "staticsite"
-  local site_root = site_settings.site_root
 
 
   local quotepattern = '(['..("%^$().[]*+-?"):gsub("(.)", "%%%1")..'])'
@@ -93,6 +114,7 @@ function M.modify_build(make)
     -- end
     -- make the YAML header only for the main HTML file
     make:match(mainfile .. ".html", process)
+    make:match(".*", copy_files, {slug=slug})
   end)
   return make
 end
