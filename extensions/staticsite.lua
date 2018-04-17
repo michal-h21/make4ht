@@ -101,8 +101,6 @@ function M.modify_build(make)
     cmd.params.latex_par = "-jobname="..slug -- update_jobname(slug, cmd.params.latex_par)
   end
 
-
-
   local quotepattern = '(['..("%^$().[]*+-?"):gsub("(.)", "%%%1")..'])'
   local mainfile = string.gsub(slug, quotepattern, "%%%1")
 
@@ -116,6 +114,7 @@ function M.modify_build(make)
     make:match(mainfile .. ".html", process)
     make:match(".*", copy_files, {slug=slug})
   end)
+
   return make
 end
 
