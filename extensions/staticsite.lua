@@ -45,6 +45,8 @@ local function update_jobname(slug, latex_par)
   end
 end
 
+-- execute the function passed as parameter only once, when the file matching
+-- starts
 local function insert_filter(make, pattern, fn)
   local insert_executed = false
   table.insert(make.matches, 1, {
