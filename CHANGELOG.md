@@ -1,5 +1,9 @@
 # Changelog
 
+- 2018/04/17
+
+    - done first version of `staticsite` extension
+
 - 2018/04/16
 
     - check for Git repo in the Makefile, don't run Git commands outside of repo
