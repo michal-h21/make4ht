@@ -57,11 +57,6 @@ local function insert_filter(make, pattern, fn)
       insert_executed = true
     end
   })
-    -- local first = make.matches[1]
-    -- for k,v in pairs(first) do
-    --   print("xxx",k,v)
-    -- end
-    -- os.exit()
 end
 function M.modify_build(make)
   -- it is necessary to insert the filters for YAML header and file copying as last matches
