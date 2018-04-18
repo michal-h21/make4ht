@@ -23,8 +23,20 @@ local function get_slug(settings)
     local f = io.open(published_name, "w")
     f:write(time)
     f:close()
-    -- make the output file name in the format YYYY-MM-DD-old-filename.html
   end
+  -- set the updated and publishing times
+  local updated
+  -- the updated time will be set only when it is more than one day from the published time
+  local newtime = os.time()
+  if (newtime - time) > (24 * 3600) then updated = newtime end
+  filter_settings "staticsite" {
+    header = {
+      time = time,
+      updated = updated
+    }
+  }
+
+  -- make the output file name in the format YYYY-MM-DD-old-filename.html
   local slug = os.date(file_pattern,time) % settings
   return slug
 end
