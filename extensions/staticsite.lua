@@ -100,7 +100,7 @@ function M.modify_build(make)
   for _, cmd in ipairs(make.build_seq) do
     -- all commands must use the published file name
     cmd.params.input = slug
-    cmd.params.latex_par = "-jobname="..slug -- update_jobname(slug, cmd.params.latex_par)
+    cmd.params.latex_par = update_jobname(slug, cmd.params.latex_par)
   end
 
   local quotepattern = '(['..("%^$().[]*+-?"):gsub("(.)", "%%%1")..'])'
