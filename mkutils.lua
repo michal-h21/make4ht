@@ -22,6 +22,19 @@ getmetatable("").__add = addProperty
 --print( "${name} is ${value}" % {name = "foo", value = "bar"} )
 -- Outputs "foo is bar"
 
+
+-- merge two tables recursively
+function merge(t1, t2)
+  for k, v in pairs(t2) do
+    if (type(v) == "table") and (type(t1[k] or false) == "table") then
+      merge(t1[k], t2[k])
+    else
+      t1[k] = v
+    end
+  end
+  return t1
+end
+
 function string:split(sep)
 	local sep, fields = sep or ":", {}
 	local pattern = string.format("([^%s]+)", sep)
@@ -269,10 +282,7 @@ function env.filter_settings(name)
   local filters = settings.filter or {}
   local filter_options = filters[name] or {}
   return function(par)
-    for k,v in pairs(par) do
-      filter_options[k] = v
-    end
-    filters[name] = filter_options
+    filters[name] = merge(filter_options, par)
     settings.filter = filters
   end
 end
