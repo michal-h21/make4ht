@@ -135,6 +135,10 @@ mathjaxnode
      convert from MathML code to HTML + CSS or SVG. See [the available
      settings](#mathjaxsettings).
 
+staticsite
+
+:    build the document in form suitable for static site generators like [Jekyll](https://jekyllrb.com/).
+
 # Build files
 
 `make4ht` supports build files. These are `Lua` scripts which can adjust
@@ -365,6 +369,10 @@ mathjaxnode
 :    use [mathjax-node-page](https://github.com/pkra/mathjax-node-page/) to
      convert from MathML code to HTML + CSS or SVG. See [the available
      settings](#mathjaxsettings).
+
+staticsite
+
+:    create HTML file in format suitable for static site generators such as [Jekyll](https://jekyllrb.com/)
 
 svg-height
 
@@ -732,6 +740,43 @@ id\_prefix
 sentence\_match 
 
 :  Lua pattern used to match a sentence. Default value: `"([^%.^%?^!]*)([%.%?!]?)"`.
+
+### The `staticsite` filter and extension
+
+site\_root 
+
+:  directory where generated files should be copied.
+
+map
+
+:  table where keys are patterns that match filenames, value contains destination directoryfor matched files, relative to the `site_root` (it is possible to use `..` to swich to parent directory).
+
+file\_pattern 
+
+:  pattern used for filename generation. It is possible to use string templates and format strings for `os.date` function. Default value of `%Y-%m-%d-${input}` creates names in the form of `YYYY-MM-DD-file_name`.
+
+header
+
+:  table with variables to be set in the YAML header in HTML files. If the table value is a function, it is executed with current parameters as an argument.
+
+Example:
+
+
+    local outdir = os.getenv "blog_root" 
+    
+    filter_settings "staticsite" {
+      site_root = outdir, 
+      map = {
+        [".css$"] = "../css/"
+      },
+      header = {
+         layout="post",
+         date = function(parameters)
+           return os.date("!%Y-%m-%d %T", parameters.time)
+         end
+      }
+    }
+
 
 # Configuration file {#configfile}
 
