@@ -7,23 +7,25 @@ local function get_slug(settings)
   local published_name = mkutils.remove_extension(settings.tex_file) .. ".published"
   local config = get_filter_settings "staticsite"
   local file_pattern = config.file_pattern or "%Y-%m-%d-${input}"
+  local time = os.time()
 
-  local slug = os.date(file_pattern) % settings
   -- we must save the published date, so the subsequent compilations at different days
   -- use the same name
   if mkutils.file_exists(published_name) then
     local f = io.open(published_name, "r")
-    slug = f:read("*line")
+    local readtime  = f:read("*line")
+    time = tonumber(readtime)
     print("Already pubslished", slug)
     f:close()
   else
     -- escape 
     -- slug must contain the unescaped input name
     local f = io.open(published_name, "w")
-    f:write(slug)
+    f:write(time)
     f:close()
     -- make the output file name in the format YYYY-MM-DD-old-filename.html
   end
+  local slug = os.date(file_pattern,time) % settings
   return slug
 end
 
