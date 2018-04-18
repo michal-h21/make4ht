@@ -1,5 +1,12 @@
 # Changelog
 
+- 2018/04/18
+
+    - `staticsite` extension:
+      - make YAML header configurable
+      - set the `time` and `updated` headers
+    - don't override existing tables in `filter_settings`
+
 - 2018/04/17
 
     - done first version of `staticsite` extension
