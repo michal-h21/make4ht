@@ -27,8 +27,11 @@ local function make_yaml(tbl, level)
             table.insert(t, indent .. string.format("- '%s'", y))
           else
             -- subtables need to be indented
-            table.insert(t, indent .. "-")
-            table.insert(t, make_yaml(y, level + 1))
+            -- table.insert(t, indent .. "-")
+            local subtable = make_yaml(y, level + 1)
+            -- we must insert dash at a correct place
+            local insert_dash = subtable:gsub("^(%s*)%s%s", "%1- ")
+            table.insert(t, insert_dash)
           end
         end
       else
