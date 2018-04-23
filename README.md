@@ -757,7 +757,7 @@ file\_pattern
 
 header
 
-:  table with variables to be set in the YAML header in HTML files. If the table value is a function, it is executed with current parameters as an argument.
+:  table with variables to be set in the YAML header in HTML files. If the table value is a function, it is executed with current parameters and HTML page DOM object as arguments.
 
 Example:
 
@@ -771,7 +771,7 @@ Example:
       },
       header = {
          layout="post",
-         date = function(parameters)
+         date = function(parameters, dom)
            return os.date("!%Y-%m-%d %T", parameters.time)
          end
       }
