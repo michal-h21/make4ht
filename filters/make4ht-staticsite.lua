@@ -11,7 +11,7 @@ local function make_yaml(tbl, level)
       -- detect multiline strings
       if v:match("\n") then
         table.insert(t, string.format(indent .. "%s: |", k))
-        v = str_indent .. (v:gsub("\n", "\n".. str_indent))
+        table.insert(t, str_indent .. (v:gsub("\n", "\n".. str_indent)))
       else
         v = v:gsub("'", "''")
         table.insert(t, string.format(indent .. "%s: '%s'", k,v))
