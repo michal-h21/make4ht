@@ -2,6 +2,7 @@
 
 - 2018/05/03
 
+    - released version `0.2a`
     - renamed `latexmk` extension to `latexmk_build`, due to clash in TL
 
 - 2018/04/18
