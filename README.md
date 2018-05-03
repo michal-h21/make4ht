@@ -111,7 +111,7 @@ the output format name:
 
 Available extensions:
 
-latexmk
+latexmk_build
 
 :    use `Latexmk` for \LaTeX\ compilation.
 

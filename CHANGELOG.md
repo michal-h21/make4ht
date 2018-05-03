@@ -1,5 +1,9 @@
 # Changelog
 
+- 2018/05/03
+
+    - renamed `latexmk` extension to `latexmk_build`, due to clash in TL
+
 - 2018/04/18
 
     - `staticsite` extension:
