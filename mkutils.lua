@@ -213,11 +213,7 @@ end
 local function run(untrusted_code, env)
 	if untrusted_code:byte(1) == 27 then return nil, "binary bytecode prohibited" end
 	local untrusted_function = nil
-	if not loadstring then  
-		untrusted_function, message = load(untrusted_code, nil, "t",env)
-	else
-		untrusted_function, message = loadstring(untrusted_code)
-	end
+  untrusted_function, message = load(untrusted_code, nil, "t",env)
 	if not untrusted_function then return nil, message end
 	if not setfenv then setfenv = function(a,b) return true end end
 	setfenv(untrusted_function, env)
