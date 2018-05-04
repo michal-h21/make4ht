@@ -2,6 +2,11 @@
 
 - 2018/05/03
 
+    - released version `0.2b`
+    - bug fix: use only `load` function in `Make:run`, in order to support a local environment.
+
+- 2018/05/03
+
     - released version `0.2a`
     - renamed `latexmk` extension to `latexmk_build`, due to clash in TL
 
