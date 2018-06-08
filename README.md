@@ -883,6 +883,14 @@ Another option is to add a space before `tex4ht` options:
 
 The former way is preferable, though.
 
+## Filenames containing spaces
+
+`tex4ht` cannot handle filenames containing spaces. `make4ht` thus replaces spaces in input file names with underscores, so generated XML files use underscores instead of spaces as well.
+
+## Filenames containing non-ASCII characters
+
+The `odt` output doesn't support accented filenames, it is best to stick to ASCII characters in filenames.
+
 # License
 
 Permission is granted to copy, distribute and/or modify this software
