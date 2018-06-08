@@ -3,6 +3,7 @@
 - 2018/06/08
 
     - added support for filenames containing spaces
+    - don't require sudo for the installation, let the user to install symbolic links to `$PATH`
 
 - 2018/05/03
 

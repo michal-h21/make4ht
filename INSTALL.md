@@ -16,7 +16,11 @@ distributions include it. You also need [Pandoc](http://pandoc.org/) in order to
 Run these commands:
 
      make
-     sudo make install
+     make install
+
+It is also necessary to make the `make4ht` runnable. It is best to make symbolic link to a directory contained in the $PATH environmental variable. Similar command should work:
+
+     sudo ln -s /home/username/texmf/scripts/lua/make4ht/make4ht /usr/local/bin/make4ht
 
 ## Windows
 
