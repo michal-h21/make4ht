@@ -1,5 +1,9 @@
 # Changelog
 
+- 2018/06/08
+
+    - added support for filenames containing spaces
+
 - 2018/05/03
 
     - released version `0.2b`
