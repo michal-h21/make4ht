@@ -73,7 +73,7 @@ install: doc $(lua_content) $(filters) $(domfilters)
 	cp $(extensions) $(EXTENSION_DIR)
 	cp $(formats)  $(FORMATS_DIR)
 	chmod +x $(INSTALL_DIR)/make4ht
-	ln -s $(INSTALL_DIR)/make4ht $(SYSTEM_BIN)/make4ht
+	# ln -s $(INSTALL_DIR)/make4ht $(SYSTEM_BIN)/make4ht
 
 version:
 	echo $(VERSION), $(DATE)
