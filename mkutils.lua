@@ -327,7 +327,7 @@ Make.latex_command = "${htlatex} ${latex_par} '\\makeatletter"..
 "\\HCode\\expandafter\\def\\csname tex4ht\\endcsname{#1,html}\\def"..
 "\\HCode####1{\\documentstyle[tex4ht,}\\@ifnextchar[{\\HCode}{"..
 "\\documentstyle[tex4ht]}}}\\makeatother\\HCode ${tex4ht_sty_par}.a.b.c."..
-"\\input \"${tex_file}\"'"
+"\\input \"\\detokenize{${tex_file}}\"'"
 
 env.Make:add("htlatex",function(par)
   local command = Make.latex_command
