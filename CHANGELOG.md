@@ -4,6 +4,7 @@
 
     - new function available for formats, `format.modify_build`
     - function `mkutils.delete_dir` for directory removal
+    - function `mkutils.mv` for file moving
     - started on packing of the `ODT` files directly by the format, instead of `t4ht`
 
 - 2018/06/08
