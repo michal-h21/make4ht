@@ -118,6 +118,15 @@ function cp(src,dest)
 	os.execute(command)
 end
 
+function mv(src, dest)
+  local mv_func = os.type == "unix" and "mv " or "move "
+	local command = string.format('%s "%s" "%s"', mv_func, src, dest)
+  -- fix windows paths
+	if mv_func == "move" then command = command:gsub("/",'\\') end
+  print("Move: ".. command)
+  os.execute(command)
+end
+
 function delete_dir(path)
   local cmd = os.type == "unix" and "rm -rd " or "rd /s/q "
   os.execute(cmd .. path)
