@@ -11,7 +11,8 @@ script:
   - luarocks --local install busted
   - git fetch --tags
   - make
-  - sudo make install
+  - make install
+  - sudo ln -s ~/texmf/scrips/lua/make4ht /usr/local/bin/make4ht
   # - make test
   # Now runs globally
   - make4ht -v
