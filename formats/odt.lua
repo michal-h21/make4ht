@@ -20,8 +20,8 @@ Odtfile.__index = Odtfile
 Odtfile.new = function(archivename)
   local self = setmetatable({}, Odtfile)
   -- create temporary directory
-  local tmpname = os.tmpname():match("([a-zAZ0-9_%-]+)$")
-  print(tmpname)
+  local tmpname = os.tmpname()
+  tmpname = tmpname:match("([a-zA-Z0-9_%-]+)$")
   local status, msg = lfs.mkdir(tmpname)
   if not status then return nil, msg end
   self.archivelocation = tmpname
