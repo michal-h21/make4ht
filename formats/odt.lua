@@ -3,18 +3,6 @@ local mkutils = require "mkutils"
 local lfs     = require "lfs"
 local os      = require "os"
 
--- sort output files according to their extensions
-local function prepare_output_files(lgfiles)
-  local groups = {}
-  for _, name in ipairs(lgfiles) do
-    local basename, extension = name:match("(.-)%.([^%.]+)$")
-    local group = groups[extension] or {}
-    table.insert(group, basename)
-    groups[extension] = group
-    print(basename, extension)
-  end
-  return groups
-end
 
 function M.prepare_parameters(settings, extensions)
   settings.tex4ht_sty_par = settings.tex4ht_sty_par ..",ooffice"
@@ -46,6 +34,17 @@ function Odtfile:copy(src, dest)
 end
 
 function Odtfile:pack()
+-- sort output files according to their extensions
+local function prepare_output_files(lgfiles)
+  local groups = {}
+  for _, name in ipairs(lgfiles) do
+    local basename, extension = name:match("(.-)%.([^%.]+)$")
+    local group = groups[extension] or {}
+    table.insert(group, basename)
+    groups[extension] = group
+    print(basename, extension)
+  end
+  return groups
 end
 
 -- execute function on all files in the group
