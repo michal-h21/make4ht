@@ -34,6 +34,14 @@ function Odtfile:copy(src, dest)
 end
 
 function Odtfile:pack()
+  local currentdir = lfs.currentdir()
+  lfs.chdir(self.archivelocation)
+  os.execute("zip -r " .. self.name .. " *")
+  lfs.chdir(currentdir)
+  mkutils.cp(self.archivelocation .. "/" .. self.name, self.name)
+  mkutils.delete_dir(self.archivelocation)
+end
+
 -- sort output files according to their extensions
 local function prepare_output_files(lgfiles)
   local groups = {}
