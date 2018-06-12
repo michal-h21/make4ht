@@ -402,6 +402,7 @@ function load_output_format(format_name)
     local format = assert(require(format_library))
     if format then
       format.prepare_extensions = format.prepare_extensions or function(extensions) return extensions end
+      format.modify_build = format.modify_build or function(make) return make end
     end
     return format
   end
