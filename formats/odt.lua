@@ -37,6 +37,14 @@ function Odtfile:move(src, dest)
   mkutils.mv(src, self.archivelocation .. "/" .. dest)
 end
 
+function Odtfile:create_dir(dir)
+  local currentdir = lfs.currentdir()
+  lfs.chdir(self.archivelocation)
+  lfs.mkdir(dir)
+  lfs.chdir(currentdir)
+end
+  
+
 function Odtfile:pack()
   local currentdir = lfs.currentdir()
   lfs.chdir(self.archivelocation)
