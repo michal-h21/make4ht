@@ -71,7 +71,7 @@ end
 -- function fn takes current filename and table with various attributes
 local function exec_group(groups, name, fn)
   for _, basename in ipairs(groups[name] or {}) do
-    fn{basename = basename, extension=name}
+    fn{basename = basename, extension=name, filename = basename .. "." .. name}
   end
 end
 
