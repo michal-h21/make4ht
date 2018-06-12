@@ -91,12 +91,42 @@ function M.modify_build(make)
       -- odt packing will be done here
       make:match(lastfile, function()
         local groups = prepare_output_files(make.lgfile.files)
-        local odtname = groups.odt[1] .. ".odt"
+        local basename = groups.odt[1]
+        local odtname = basename .. ".odt"
         local odt,msg = Odtfile.new(odtname)
+        if not odt then
+          print("Cannot create ODT file: " .. msg)
+        end
+        -- helper function for simple file moving
+        local function move_file(group, dest)
+          exec_group(groups, group, function(par)
+            odt:move("${filename}" % par, dest)
+          end)
+        end
+
         exec_group(groups, "4oo", function(par)
-          odt:move("${basename}.${extension}" % par, "content.xml")
+          odt:move("${filename}" % par, "content.xml")
+          odt:create_dir("Pictures")
         end)
-        print(odt, msg)
+
+        exec_group(groups, "4of", function(par)
+          odt:create_dir("META-INF")
+          odt:move("${filename}" % par, "META-INF/manifest.xml")
+        end)
+
+        -- math
+        exec_group(groups, "4om", function(par)
+          odt:create_dir(par.basename)
+          odt:move("${filename}" % par, "${basename}/content.xml" % par)
+          -- copy the settings file to math subdir
+          local settings = groups["4os"][1]
+          odt:copy(settings .. ".4os", "${basename}/settings.xml" % par)
+        end)
+
+        move_file("4os", "settings.xml")
+        move_file("4ot", "meta.xml")
+        move_file("4oy", "styles.xml")
+
         odt:pack()
       end)
     end
