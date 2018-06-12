@@ -30,7 +30,7 @@ Odtfile.new = function(archivename)
 end
 
 function Odtfile:copy(src, dest)
-  mkutils.copy(src, self.archivelocation .. "/" .. dest)
+  mkutils.cp(src, self.archivelocation .. "/" .. dest)
 end
 
 function Odtfile:pack()
