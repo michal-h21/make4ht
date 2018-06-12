@@ -118,6 +118,11 @@ function cp(src,dest)
 	os.execute(command)
 end
 
+function delete_dir(path)
+  local cmd = os.type == "unix" and "rm -rd " or "rd /s/q "
+  os.execute(cmd .. path)
+end
+
 local used_dir = {}
 
 function prepare_path(path)
