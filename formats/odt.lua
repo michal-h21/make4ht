@@ -81,7 +81,11 @@ function M.modify_build(make)
         local groups = prepare_output_files(make.lgfile.files)
         local odtname = groups.odt[1] .. ".odt"
         local odt,msg = Odtfile.new(odtname)
+        exec_group(groups, "4oo", function(par)
+          odt:copy("${basename}.${extension}" % par, "content.xml")
+        end)
         print(odt, msg)
+        odt:pack()
       end)
     end
     executed = true
