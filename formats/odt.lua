@@ -123,9 +123,17 @@ function M.modify_build(make)
           odt:copy(settings .. ".4os", "${basename}/settings.xml" % par)
         end)
 
+        -- these files are created only once, so it doesn't matter that they are
+        -- copied to one file
         move_file("4os", "settings.xml")
         move_file("4ot", "meta.xml")
         move_file("4oy", "styles.xml")
+
+        -- pictures
+        exec_group(groups, "4og", function(par)
+          -- the Pictues dir is flat, without subdirs
+          odt:copy("${basename}" % par, "Pictures")
+        end)
 
         odt:pack()
       end)
