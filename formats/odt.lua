@@ -33,6 +33,10 @@ function Odtfile:copy(src, dest)
   mkutils.cp(src, self.archivelocation .. "/" .. dest)
 end
 
+function Odtfile:move(src, dest)
+  mkutils.mv(src, self.archivelocation .. "/" .. dest)
+end
+
 function Odtfile:pack()
   local currentdir = lfs.currentdir()
   lfs.chdir(self.archivelocation)
@@ -82,7 +86,7 @@ function M.modify_build(make)
         local odtname = groups.odt[1] .. ".odt"
         local odt,msg = Odtfile.new(odtname)
         exec_group(groups, "4oo", function(par)
-          odt:copy("${basename}.${extension}" % par, "content.xml")
+          odt:move("${basename}.${extension}" % par, "content.xml")
         end)
         print(odt, msg)
         odt:pack()
