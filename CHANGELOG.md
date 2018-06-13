@@ -1,5 +1,9 @@
 # Changelog
 
+- 2018/06/12
+
+    - added support for direct `ODT` file packing
+
 - 2018/06/11
 
     - new function available for formats, `format.modify_build`

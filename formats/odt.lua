@@ -2,6 +2,7 @@ local M = {}
 local mkutils = require "mkutils"
 local lfs     = require "lfs"
 local os      = require "os"
+local kpse    = require "kpse"
 
 
 function M.prepare_parameters(settings, extensions)
@@ -104,11 +105,13 @@ function M.modify_build(make)
           end)
         end
 
+        -- the document text
         exec_group(groups, "4oo", function(par)
           odt:move("${filename}" % par, "content.xml")
           odt:create_dir("Pictures")
         end)
 
+        -- manifest
         exec_group(groups, "4of", function(par)
           odt:create_dir("META-INF")
           odt:move("${filename}" % par, "META-INF/manifest.xml")
@@ -131,8 +134,18 @@ function M.modify_build(make)
 
         -- pictures
         exec_group(groups, "4og", function(par)
+          -- add support for images in the TEXMF tree
+          if not mkutils.file_exists(par.basename) then
+            par.basename = kpse.find_file(par.basename, "graphic/figure")
+            if not par.basename then return nil, "Cannot find picture" end
+          end
           -- the Pictues dir is flat, without subdirs
           odt:copy("${basename}" % par, "Pictures")
+        end)
+
+        -- remove some spurious file
+        exec_group(groups, "4od", function(par)
+          os.remove(par.filename)
         end)
 
         odt:pack()
