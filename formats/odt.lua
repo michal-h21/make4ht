@@ -87,7 +87,7 @@ function M.modify_build(make)
       -- this is list of processed files
       local lgfiles = make.lgfile.files
       -- find the last one
-      local lastfile = lgfiles[#lgfiles]
+      local lastfile = lgfiles[#lgfiles] .."$"
       -- make match for the last file
       -- odt packing will be done here
       make:match(lastfile, function()
