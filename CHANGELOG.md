@@ -1,5 +1,10 @@
 # Changelog
 
+- 2018/06/19
+
+    - added new filter: `entities-to-unicode`. It converts XML entites for Unicode characters back to Unicode.
+    - execute `entities-to-uniocode` filter on text and math files in the ODT output.
+
 - 2018/06/12
 
     - added support for direct `ODT` file packing
