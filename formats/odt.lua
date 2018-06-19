@@ -3,6 +3,7 @@ local mkutils = require "mkutils"
 local lfs     = require "lfs"
 local os      = require "os"
 local kpse    = require "kpse"
+local filter  = require "make4ht-filter"
 
 
 function M.prepare_parameters(settings, extensions)
@@ -78,6 +79,10 @@ end
 
 function M.modify_build(make)
   local executed = false
+  -- convert XML entities for Unicoe characters produced by Xtpipes to characters
+  local fixentities = filter {"entities-to-unicode"}
+  make:match("4oo", fixentities)
+  make:match("4om", fixentities)
   -- build the ODT file. This match must be executed as a last one
   -- this will be executed as a first match, just to find the last filename 
   -- in the lgfile
