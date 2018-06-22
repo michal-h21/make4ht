@@ -1,5 +1,9 @@
 # Changelog
 
+- 2018/06/22
+
+    - added `mkutils.find_zip` function. It detects `zip` or `miktex-zip` executables
+
 - 2018/06/19
 
     - added new filter: `entities-to-unicode`. It converts XML entites for Unicode characters back to Unicode.
