@@ -223,6 +223,17 @@ function copy(filename,outfilename)
 	return true
 end
 
+-- find the zip command
+function find_zip()
+  if io.popen("zip -v","r"):close() then
+    return "zip"
+  elseif io.popen("miktex-zip -v","r"):close() then
+    return "miktex-zip"
+  end
+  -- we cannot find the zip command
+  return "zip"
+end
+
 -- Config loading
 local function run(untrusted_code, env)
 	if untrusted_code:byte(1) == 27 then return nil, "binary bytecode prohibited" end

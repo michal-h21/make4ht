@@ -49,8 +49,9 @@ end
 
 function Odtfile:pack()
   local currentdir = lfs.currentdir()
+  local zip_command = mkutils.find_zip()
   lfs.chdir(self.archivelocation)
-  os.execute("zip -r " .. self.name .. " *")
+  os.execute(zip_command .." -r " .. self.name .. " *")
   lfs.chdir(currentdir)
   mkutils.cp(self.archivelocation .. "/" .. self.name, self.name)
   mkutils.delete_dir(self.archivelocation)
