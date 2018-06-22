@@ -236,13 +236,13 @@ end
 
 -- Config loading
 local function run(untrusted_code, env)
-	if untrusted_code:byte(1) == 27 then return nil, "binary bytecode prohibited" end
-	local untrusted_function = nil
+  if untrusted_code:byte(1) == 27 then return nil, "binary bytecode prohibited" end
+  local untrusted_function = nil
   untrusted_function, message = load(untrusted_code, nil, "t",env)
-	if not untrusted_function then return nil, message end
-	if not setfenv then setfenv = function(a,b) return true end end
-	setfenv(untrusted_function, env)
-	return pcall(untrusted_function)
+  if not untrusted_function then return nil, message end
+  if not setfenv then setfenv = function(a,b) return true end end
+  setfenv(untrusted_function, env)
+  return pcall(untrusted_function)
 end
 
 local main_settings = {}
@@ -308,9 +308,9 @@ function env.filter_settings(name)
   end
 end
 env.Font   = function(s)
-	local font_name = s["name"]
-	if not font_name then return nil, "Cannot find font name" end
-	env.settings.fonts[font_name] = s
+  local font_name = s["name"]
+  if not font_name then return nil, "Cannot find font name" end
+  env.settings.fonts[font_name] = s
 end
 
 env.Make   = make4ht.Make
@@ -319,22 +319,22 @@ env.Make:add("test","test the variables:  ${tex4ht_sty_par} ${htlatex} ${input} 
 
 -- this function reads the LaTeX log file and tries to detect fatal errors in the compilation
 local function testlogfile(par)
-	local logfile = par.input .. ".log"
-	local f = io.open(logfile,"r")
-	if not f then
-		print("Make4ht: cannot open log file "..logfile)
-		return 1
-	end
-	local len = f:seek("end")
+  local logfile = par.input .. ".log"
+  local f = io.open(logfile,"r")
+  if not f then
+    print("Make4ht: cannot open log file "..logfile)
+    return 1
+  end
+  local len = f:seek("end")
   -- test only the end of the log file, no need to run search functions on everything
   local newlen = len - 1256
   -- but the value to seek must be greater than 0
   newlen = (newlen > 0) and newlen or 0
-	f:seek("set", newlen)
-	local text = f:read("*a")
-	f:close()
-	if text:match("No pages of output") or text:match("TeX capacity exceeded, sorry") then return 1 end
-	return 0
+  f:seek("set", newlen)
+  local text = f:read("*a")
+  f:close()
+  if text:match("No pages of output") or text:match("TeX capacity exceeded, sorry") then return 1 end
+  return 0
 end
 
 
