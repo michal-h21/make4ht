@@ -1,5 +1,9 @@
 # Changelog
 
+- 2018/06/25
+
+    - moved call to `xtpipes` from `t4ht` to the `ODT` format drives. This should fix issues with path expansion in `tex4ht.env` in TeX distributions.
+
 - 2018/06/22
 
     - added `mkutils.find_zip` function. It detects `zip` or `miktex-zip` executables
