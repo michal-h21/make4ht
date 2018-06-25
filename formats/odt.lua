@@ -57,6 +57,39 @@ function Odtfile:pack()
   mkutils.delete_dir(self.archivelocation)
 end
 
+-- call xtpipes from Lua
+local function call_xtpipes(make)
+  -- we must find root of the TeX distribution
+  local selfautoparent = kpse.var_value("SELFAUTOPARENT")
+  if selfautoparent then
+    -- make pattern using TeX distro path
+    local pattern = string.format("java -classpath %s/texmf-dist/tex4ht/bin/tex4ht.jar xtpipes -i %s/texmf-dist/tex4ht/xtpipes/ -o ${outputfile} ${filename}", selfautoparent, selfautoparent)
+    -- call xtpipes on a temporary file
+    local matchfunction =  function(filename)
+      -- move the matched file to a temporary file, xtpipes will write it back to the original file
+      local basename = mkutils.remove_extension(filename)
+      local tmpfile = basename ..".tmp"
+      mkutils.mv(filename, tmpfile)
+      local command = pattern % {filename = tmpfile, outputfile = filename}
+      print(command)
+      os.execute(command)
+    end
+    make:match("4oo", matchfunction)
+    make:match("4om", matchfunction)
+    -- is is necessary to execute the above matches as first in the build file
+    local matches = make.matches
+    -- move last match to a first place
+    local function move_matches()
+      local last = matches[#matches]
+      table.insert(matches, 1, last)
+      matches[#matches] = nil
+    end
+    -- we need to move last two matches, for 4oo and 4om files
+    move_matches()
+    move_matches()
+  end
+end
+
 -- sort output files according to their extensions
 local function prepare_output_files(lgfiles)
   local groups = {}
@@ -80,6 +113,9 @@ end
 
 function M.modify_build(make)
   local executed = false
+  -- execute xtpipes from the build file, instead of t4ht. this fixes issues with wrong paths
+  -- expanded in tex4ht.env in Miktex or Debian
+  call_xtpipes(make)
   -- convert XML entities for Unicoe characters produced by Xtpipes to characters
   local fixentities = filter {"entities-to-unicode"}
   make:match("4oo", fixentities)
