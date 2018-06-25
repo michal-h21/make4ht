@@ -72,7 +72,21 @@ local function call_xtpipes(make)
       mkutils.mv(filename, tmpfile)
       local command = pattern % {filename = tmpfile, outputfile = filename}
       print(command)
-      os.execute(command)
+      local status = os.execute(command)
+      if status > 0 then
+        -- if xtpipes failed to process the file, it may mean that it was bad-formed xml
+        -- we can try to make it well-formed using Tidy
+        local tidy_command = "tidy -utf8 -xml -asxml -q -o ${filename} ${tmpfile}" % {tmpfile = tmpfile, filename = filename}
+        print("xtpipes failed trying tidy")
+        print(tidy_command)
+        local status = os.execute(tidy_command)
+        if status > 0 then
+          -- if tidy failed as well, just use the original file
+          -- it will probably produce corrupted ODT file though
+          print("Tidy failed as well")
+          mkutils.mv(tmpfile, filename)
+        end
+      end
     end
     make:match("4oo", matchfunction)
     make:match("4om", matchfunction)
