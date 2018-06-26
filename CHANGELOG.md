@@ -1,5 +1,9 @@
 # Changelog
 
+- 2018/06/26
+
+    - added code for detection of TeX distribution root for Miktex and TL
+
 - 2018/06/25
 
     - moved call to `xtpipes` from `t4ht` to the `ODT` format drives. This should fix issues with path expansion in `tex4ht.env` in TeX distributions.
