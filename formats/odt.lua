@@ -57,13 +57,43 @@ function Odtfile:pack()
   mkutils.delete_dir(self.archivelocation)
 end
 
+-- find if tex4ht.jar exists in a path
+local function find_tex4ht_jar(path)
+  local jar_file = path .. "/tex4ht/bin/tex4ht.jar"
+  return mkutils.file_exists(jar_file)
+end
+
+-- return value of TEXMFROOT variable if it exists and if tex4ht.jar can be located inside
+local function get_texmfroot()
+  -- user can set TEXMFROOT environmental variable as the last resort
+  local root = kpse.var_value("TEXMFROOT") or os.getenv("TEXMFROOT")
+  if root then
+    if find_tex4ht_jar(root) then return root end
+    -- TeX live locates files in texmf-dist subdirectory, but Miktex doesn't
+    local path = root .. "/texmf-dist"
+    if find_tex4ht_jar(path) then return path end
+  end
+end
+
+-- Miktex doesn't seem to set TeX variables such as TEXMFROOT
+-- we will try to find the TeX root using trick with locating package in TeX root
+-- there is a danger that this file is located in TEXMFHOME, the location will fail then
+local function find_texmfroot()
+  local tex4ht_path = kpse.find_file("tex4ht.sty")
+  if tex4ht_path then
+    local path = tex4ht_path:gsub("/tex/generic/tex4ht/tex4ht.sty$","")
+    if find_tex4ht_jar(path) then return path end
+  end
+  return nil
+end
+
 -- call xtpipes from Lua
 local function call_xtpipes(make)
   -- we must find root of the TeX distribution
-  local selfautoparent = kpse.var_value("SELFAUTOPARENT")
+  local selfautoparent = get_texmfroot() or find_texmfroot()
   if selfautoparent then
     -- make pattern using TeX distro path
-    local pattern = string.format("java -classpath %s/texmf-dist/tex4ht/bin/tex4ht.jar xtpipes -i %s/texmf-dist/tex4ht/xtpipes/ -o ${outputfile} ${filename}", selfautoparent, selfautoparent)
+    local pattern = string.format("java -classpath %s/tex4ht/bin/tex4ht.jar xtpipes -i %s/tex4ht/xtpipes/ -o ${outputfile} ${filename}", selfautoparent, selfautoparent)
     -- call xtpipes on a temporary file
     local matchfunction =  function(filename)
       -- move the matched file to a temporary file, xtpipes will write it back to the original file
@@ -101,6 +131,8 @@ local function call_xtpipes(make)
     -- we need to move last two matches, for 4oo and 4om files
     move_matches()
     move_matches()
+  else
+    print "Cannot locate xtpipes. Try to set TEXMFROOT variable to a root directory of your TeX distribution"
   end
 end
 
