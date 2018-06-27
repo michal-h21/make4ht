@@ -1,5 +1,9 @@
 # Changelog
 
+- 2018/06/27
+
+    - fixed root dir detection
+
 - 2018/06/26
 
     - added code for detection of TeX distribution root for Miktex and TL
