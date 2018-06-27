@@ -66,12 +66,14 @@ end
 -- return value of TEXMFROOT variable if it exists and if tex4ht.jar can be located inside
 local function get_texmfroot()
   -- user can set TEXMFROOT environmental variable as the last resort
-  local root = kpse.var_value("TEXMFROOT") or os.getenv("TEXMFROOT")
-  if root then
-    if find_tex4ht_jar(root) then return root end
-    -- TeX live locates files in texmf-dist subdirectory, but Miktex doesn't
-    local path = root .. "/texmf-dist"
-    if find_tex4ht_jar(path) then return path end
+  local root_directories = {kpse.var_value("TEXMFROOT"), kpse.var_value("TEXMFDIST"), os.getenv("TEXMFROOT")}
+  for _, root in ipairs(root_directories) do
+    if root then
+      if find_tex4ht_jar(root) then return root end
+      -- TeX live locates files in texmf-dist subdirectory, but Miktex doesn't
+      local path = root .. "/texmf-dist"
+      if find_tex4ht_jar(path) then return path end
+    end
   end
 end
 
