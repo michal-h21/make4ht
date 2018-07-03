@@ -1,5 +1,9 @@
 # Changelog
 
+- 2018/07/02
+
+    - disabled conversion of XML entities for &, < and > characters back to Unicode, because it breaks XML validity
+
 - 2018/06/27
 
     - fixed root dir detection
