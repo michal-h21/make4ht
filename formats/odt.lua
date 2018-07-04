@@ -48,11 +48,27 @@ function Odtfile:create_dir(dir)
   lfs.chdir(currentdir)
 end
   
+function Odtfile:make_mimetype()
+  self.mimetypename = "mimetype"
+  local m = io.open(self.mimetypename, "w")
+  m:write("application/vnd.oasis.opendocument.text")
+  m:close()
+end
+
+function Odtfile:remove_mimetype()
+  os.remove(self.mimetypename)
+end
+
 
 function Odtfile:pack()
   local currentdir = lfs.currentdir()
   local zip_command = mkutils.find_zip()
   lfs.chdir(self.archivelocation)
+  -- make temporary mime type file
+  self:make_mimetype()
+  os.execute(zip_command .. " -q0X " .. self.name .. " " .. self.mimetypename)
+  -- remove it, so the next command doesn't overwrite it
+  self:remove_mimetype()
   os.execute(zip_command .." -r " .. self.name .. " *")
   lfs.chdir(currentdir)
   mkutils.cp(self.archivelocation .. "/" .. self.name, self.name)
