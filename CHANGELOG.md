@@ -1,5 +1,9 @@
 # Changelog
 
+- 2018/07/03
+
+    - create the `mimetype` file to achieve the ODT file validity
+
 - 2018/07/02
 
     - disabled conversion of XML entities for &, < and > characters back to Unicode, because it breaks XML validity
