@@ -26,6 +26,8 @@ Odtfile.new = function(archivename)
   tmpname = tmpname:match("([a-zA-Z0-9_%-]+)$")
   local status, msg = lfs.mkdir(tmpname)
   if not status then return nil, msg end
+  -- make picture dir
+  lfs.mkdir(tmpname .. "/Pictures")
   self.archivelocation = tmpname
   self.name = archivename
   return self
