@@ -2,6 +2,8 @@ local dvireader = require "make4ht-dvireader"
 local mkutils = require "mkutils"
 local filter = require "make4ht-filter"
 
+
+local M = {}
 -- mapping between tex4ht image names and hashed image names
 local output_map = {}
 local dvisvgm_options = "-n --exact -c 1.15,1.15"
@@ -187,6 +189,7 @@ local function get_dvi_pages(arg)
 end
 
 function M.test(format)
+  -- ODT format doesn't support SVG
   if format == "odt" then return false end
   return true
 end
@@ -200,6 +203,9 @@ function M.modify_build(make)
   {
     parallel_size=parallel_size -- number of pages which should be concetanated before 
   })
+
+  -- insert dvisvgm_hashes command at the end of the build sequence -- it needs to be called after t4ht
+  make:dvisvgm_hashes {}
 
   -- replace original image names with hashed names
   local executed = false
@@ -227,8 +233,16 @@ function M.modify_build(make)
     end
   }
 
-  make:match("html$", process)
+  make:match("htm.?$", process)
 
   -- disable the image processing
+  for _,v in ipairs(make.build_seq) do
+    if v.name == "t4ht" then
+      v.params.t4ht_par = v.params.t4ht_par .. " -p"
+    end
+  end
   make:image(".", function() return "" end)
+  return make
 end
+
+return M

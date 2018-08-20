@@ -1,5 +1,9 @@
 # Changelog
 
+- 2018/08/20
+
+    - added `dvisvgm_hashes` extension
+
 - 2018/07/03
 
     - create the `mimetype` file to achieve the ODT file validity
