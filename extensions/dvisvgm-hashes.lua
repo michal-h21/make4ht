@@ -80,7 +80,7 @@ local function test_make()
   if not make then return false end
   local content = make:read("*all")
   make:close()
-  return content:match("GNU Make")
+  return true
 end
 
 local function save_file(filename, text)
