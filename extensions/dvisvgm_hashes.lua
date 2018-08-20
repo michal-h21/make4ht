@@ -1,4 +1,4 @@
-local dvireader = require "dvireader"
+local dvireader = require "make4ht-dvireader"
 local mkutils = require "mkutils"
 local filter = require "make4ht-filter"
 
@@ -102,7 +102,7 @@ local function make_makefile_command(idvfile, page_sequences)
     local logfile = target .. ".dlog"
     logs[#logs + 1] = logfile
     all[#all+1] = target
-    local chunk = target .. ":\n\tdvisvgm -v4" .. dvisvgm_options .. " -p " .. ranges  .. " " .. idvfile .. " 2> " .. logfile .. "\n"
+    local chunk = target .. ":\n\tdvisvgm -v4 " .. dvisvgm_options .. " -p " .. ranges  .. " " .. idvfile .. " 2> " .. logfile .. "\n"
     targets[#targets + 1] = chunk
   end
   -- construct makefile and save it
@@ -186,41 +186,49 @@ local function get_dvi_pages(arg)
 
 end
 
--- this must be used in the .mk4 file as
--- Make:dvisvgm_hashes {}
-Make:add("dvisvgm_hashes", function(arg)
-  get_dvi_pages(arg)
-end, {
-  parallel_size=parallel_size -- number of pages which should be concetanated before 
-})
+function M.test(format)
+  if format == "odt" then return false end
+  return true
+end
 
--- replace original image names with hashed names
-local executed = false
-Make:match(".*", function(arg)
-  if not executed then
-    executed = true
-    local lgfiles = Make.lgfile.files
-    for i, filename in ipairs(lgfiles) do
-      local replace = output_map[filename]
-      if replace then
-        lgfiles[i] = replace
+function M.modify_build(make)
+  -- this must be used in the .mk4 file as
+  -- Make:dvisvgm_hashes {}
+  make:add("dvisvgm_hashes", function(arg)
+    get_dvi_pages(arg)
+  end, 
+  {
+    parallel_size=parallel_size -- number of pages which should be concetanated before 
+  })
+
+  -- replace original image names with hashed names
+  local executed = false
+  make:match(".*", function(arg)
+    if not executed then
+      executed = true
+      local lgfiles = make.lgfile.files
+      for i, filename in ipairs(lgfiles) do
+        local replace = output_map[filename]
+        if replace then
+          lgfiles[i] = replace
+        end
       end
-     end
-  end
-end)
+    end
+  end)
 
--- fix src attributes
-local process = filter {
-  function(str)
-    return str:gsub('src="([^"]+)', function(filename)
-      local newname = output_map[filename] or filename
-      print("newname", newname)
-      return 'src="'.. newname 
-    end)
-  end
-}
-  
-Make:match("html$", process)
+  -- fix src attributes
+  local process = filter {
+    function(str)
+      return str:gsub('src="([^"]+)', function(filename)
+        local newname = output_map[filename] or filename
+        print("newname", newname)
+        return 'src="'.. newname 
+      end)
+    end
+  }
 
--- disable the image processing
-Make:image(".", function() return "" end)
+  make:match("html$", process)
+
+  -- disable the image processing
+  make:image(".", function() return "" end)
+end
