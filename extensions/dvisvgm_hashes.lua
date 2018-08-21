@@ -208,7 +208,6 @@ function M.modify_build(make)
     get_dvi_pages(arg)
   end, 
   {
-    parallel_size=parallel_size -- number of pages which should be concetanated before 
   })
 
   -- insert dvisvgm_hashes command at the end of the build sequence -- it needs to be called after t4ht
