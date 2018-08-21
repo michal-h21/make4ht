@@ -1,5 +1,10 @@
 # Changelog
 
+- 2018/08/21
+
+    - added processor core detection on Windows
+    - make processor number configurable
+
 - 2018/08/20
 
     - added `dvisvgm_hashes` extension
