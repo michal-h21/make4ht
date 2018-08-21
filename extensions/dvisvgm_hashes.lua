@@ -28,6 +28,12 @@ if os.name == 'linux' then
   -- set default number of threds if no CPU core have been found
   if cpu_cnt == 0 then cpu_cnt = 1 end
   cpuinfo:close()
+elseif os.name == 'cygwin' or os.type == 'windows' then
+  -- windows has NUMBER_OF_PROCESSORS environmental value
+  local nop = os.getenv('NUMBER_OF_PROCESSORS')
+  if tonumber(nop) then
+    cpu_cnt = nop
+  end
 end
 
 
