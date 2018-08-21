@@ -164,6 +164,7 @@ local function get_dvi_pages(arg)
   local extoptions = mkutils.get_filter_settings "dvisvgm-hashes" or {}
   dvisvgm_options = arg.options or extoptions.options or dvisvgm_options
   parallel_size = arg.parallel_size or extoptions.parallel_size or parallel_size
+  cpu_cnt = arg.cpu_cnt or extoptions.cpu_cnt or cpu_cnt
   local f = io.open(idv_file, "r")
   if not f then return nil, "Cannot open idv file: " .. idv_file end
   local content = f:read("*all")
