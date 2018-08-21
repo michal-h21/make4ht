@@ -161,7 +161,7 @@ local function get_dvi_pages(arg)
   local to_convert = {}
   local idv_file = arg.input .. ".idv"
   -- set extension options
-  local extoptions = mkutils.get_filter_settings "dvisvgm-hashes" or {}
+  local extoptions = mkutils.get_filter_settings "dvisvgm_hashes" or {}
   dvisvgm_options = arg.options or extoptions.options or dvisvgm_options
   parallel_size = arg.parallel_size or extoptions.parallel_size or parallel_size
   cpu_cnt = arg.cpu_cnt or extoptions.cpu_cnt or cpu_cnt
