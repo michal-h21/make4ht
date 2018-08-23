@@ -119,6 +119,11 @@ tidy
 
 :    clean the `HTML` files using the `tidy` command.
 
+dvisvgm_hashes
+
+:    efficient generation of SVG pictures using Dvisvgm. It can utilize
+multiple processor cores and generates only changed images.
+
 common\_filters
 
 :    clean the output HTML files using filters.
@@ -776,6 +781,20 @@ Example:
          end
       }
     }
+
+### The `dvisvgm_hashes` extension
+
+options
+
+:  command line options for Dvisvgm. The default value is `-n --exact -c 1.15,1.15`.
+
+cpu_cnt
+
+:  number of processor cores used for conversion. The extension tries to detect the available cores automatically by default.
+
+parallel_size
+
+:  number of pages used in each Dvisvgm call. The extension detects changed pages in the DVI file and construct multiple calls to Dvisvgm with only changed pages.
 
 
 # Configuration file {#configfile}

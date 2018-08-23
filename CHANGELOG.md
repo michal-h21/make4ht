@@ -4,6 +4,7 @@
 
     - added processor core detection on Windows
     - make processor number configurable
+    - updated the documentation.
 
 - 2018/08/20
 
@@ -36,7 +37,7 @@
 - 2018/06/19
 
     - added new filter: `entities-to-unicode`. It converts XML entites for Unicode characters back to Unicode.
-    - execute `entities-to-uniocode` filter on text and math files in the ODT output.
+    - execute `entities-to-unicode` filter on text and math files in the ODT output.
 
 - 2018/06/12
 
