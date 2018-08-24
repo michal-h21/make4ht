@@ -1,5 +1,9 @@
 # Changelog
 
+- 2018/08/23
+
+    - released version 0.2c
+
 - 2018/08/21
 
     - added processor core detection on Windows
