@@ -4,6 +4,7 @@ local lfs     = require "lfs"
 local os      = require "os"
 local kpse    = require "kpse"
 local filter  = require "make4ht-filter"
+local domfilter  = require "make4ht-domfilter"
 
 
 function M.prepare_parameters(settings, extensions)
@@ -182,10 +183,14 @@ function M.modify_build(make)
   -- execute xtpipes from the build file, instead of t4ht. this fixes issues with wrong paths
   -- expanded in tex4ht.env in Miktex or Debian
   call_xtpipes(make)
-  -- convert XML entities for Unicoe characters produced by Xtpipes to characters
+  -- convert XML entities for Unicode characters produced by Xtpipes to characters
   local fixentities = filter {"entities-to-unicode"}
   make:match("4oo", fixentities)
   make:match("4om", fixentities)
+  -- fix the image dimensions wrongly set by xtpipes
+  local domfilters = domfilter {"odtimagesize"}
+  make:match("4oo$", domfilters)
+
   -- build the ODT file. This match must be executed as a last one
   -- this will be executed as a first match, just to find the last filename 
   -- in the lgfile

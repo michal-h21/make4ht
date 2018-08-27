@@ -431,6 +431,10 @@ joincharacters
 
 :  join consecutive `<span>` or `<mn>` elements.
 
+odtimagesize
+
+:  set correct dimensions for images in the ODT format. It is loaded by default for the ODT output.
+
 ### make4ht-aeneas-config package
 
 Companion for the `aeneas` DOM filter is the `make4ht-aeneas-config` plugin. It

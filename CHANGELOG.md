@@ -1,5 +1,10 @@
 # Changelog
 
+- 2018/08/27
+
+    - added `odtimagesize` domfilter
+    - load `odtimagesize` by default in the ODT format
+
 - 2018/08/23
 
     - released version 0.2c
