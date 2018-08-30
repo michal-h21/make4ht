@@ -11,21 +11,21 @@ m.version_number = "v0.1"
 m.optiontext =  [[
 ${progname} - build system for tex4ht
 Usage:
-${progname} [options] filename ["tex4ht.sty op." "tex4ht op." "t4ht op" "latex op"]
--b,--backend (default tex4ht) Backend used for xml generation. 
-              possible values: tex4ht or lua4ht
--c,--config (default xhtml) Custom config file
--d,--output-dir (default nil)  Output directory
--e,--build-file (default nil)  If build file is different than `filename`.mk4
--f,--format  (default html5)  Output file format
--h,-- help  Display this message
--l,--lua  Use lualatex for document compilation
--m,--mode (default default) Switch which can be used in the makefile 
--n,--no-tex4ht Disable dvi file processing with tex4ht command
--s,--shell-escape Enables running external programs from LaTeX
--u,--utf8  For output documents in utf8 encoding
--x,--xetex Use xelatex for document compilation
--v,--version  Display version number
+${progname} [options] <filename> ["tex4ht.sty op."] ["tex4ht op."] ["t4ht op"] ["latex op"]
+  -b,--backend (default tex4ht) Backend used for xml generation. 
+                possible values: tex4ht or lua4ht
+  -c,--config (default xhtml) Custom config file
+  -d,--output-dir (default nil)  Output directory
+  -e,--build-file (default nil)  If build file is different than `filename`.mk4
+  -f,--format  (default html5)  Output file format
+  -h,-- help  Display this message
+  -l,--lua  Use lualatex for document compilation
+  -m,--mode (default default) Switch which can be used in the makefile 
+  -n,--no-tex4ht Disable dvi file processing with tex4ht command
+  -s,--shell-escape Enables running external programs from LaTeX
+  -u,--utf8  For output documents in utf8 encoding
+  -x,--xetex Use xelatex for document compilation
+  -v,--version  Display version number
 ]]
 
 -- test if the current command line argument should be passed to tex4ht, t4ht or latex
@@ -42,7 +42,7 @@ local function get_args(parameters, optiontext)
 	parameters.postparams = parameters.postparams or ""
 	local optiontext = optiontext or m.optiontext
 	parameters.postfile = parameters.postfile or ""
-	optiontext = optiontext .. parameters.postparams .."<filename> (string) Input file name\n" .. parameters.postfile 
+	optiontext = optiontext .. parameters.postparams .."  <filename> (string) Input file name\n" .. parameters.postfile 
   -- we can pass arguments for tex4ht and t4ht after filename, but it will confuse lapp, thinking that these 
   -- options are for make4ht. this may result in execution error or wrong option parsing
   -- as fix, add a space before options at the end (we need to stop to add spaces as soon as we find
