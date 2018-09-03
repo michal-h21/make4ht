@@ -1,5 +1,9 @@
 # Changelog
 
+- 2018/09/03
+
+    - expanded the `--help` option
+
 - 2018/08/27
 
     - added `odtimagesize` domfilter

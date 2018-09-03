@@ -12,6 +12,8 @@ m.optiontext =  [[
 ${progname} - build system for tex4ht
 Usage:
 ${progname} [options] filename ["tex4ht.sty op."] ["tex4ht op."] ["t4ht op"] ["latex op"]
+
+Available options:
   -b,--backend (default tex4ht) Backend used for xml generation. 
                 possible values: tex4ht or lua4ht
   -c,--config (default xhtml) Custom config file
@@ -42,7 +44,18 @@ local function get_args(parameters, optiontext)
 	parameters.postparams = parameters.postparams or ""
 	local optiontext = optiontext or m.optiontext
 	parameters.postfile = parameters.postfile or ""
-	optiontext = optiontext .. parameters.postparams .."  <filename> (string) Input file name\n" .. parameters.postfile 
+	optiontext = optiontext .. parameters.postparams ..[[  <filename> (string) Input file name
+ 
+Positional optional argumens:
+  ["tex4ht.sty op."]  Additional parameters for tex4ht.sty
+  ["tex4ht op."]      Options for tex4ht command
+  ["t4ht op"]         Options for t4ht command
+  ["latex op"]        Additional options for LaTeX
+
+Documentation:                  <https://tug.org/applications/tex4ht/mn.html>
+Issue tracker for tex4ht bugs:  <https://puszcza.gnu.org.ua/bugs/?group=tex4ht>
+Issue tracker for make4ht bugs: <https://github.com/michal-h21/make4ht/issues>
+  ]] .. parameters.postfile 
   -- we can pass arguments for tex4ht and t4ht after filename, but it will confuse lapp, thinking that these 
   -- options are for make4ht. this may result in execution error or wrong option parsing
   -- as fix, add a space before options at the end (we need to stop to add spaces as soon as we find
