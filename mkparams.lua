@@ -52,9 +52,9 @@ Positional optional argumens:
   ["t4ht op"]         Options for t4ht command
   ["latex op"]        Additional options for LaTeX
 
-Documentation:                  <https://tug.org/applications/tex4ht/mn.html>
-Issue tracker for tex4ht bugs:  <https://puszcza.gnu.org.ua/bugs/?group=tex4ht>
-Issue tracker for make4ht bugs: <https://github.com/michal-h21/make4ht/issues>
+Documentation:                  https://tug.org/applications/tex4ht/mn.html
+Issue tracker for tex4ht bugs:  https://puszcza.gnu.org.ua/bugs/?group=tex4ht
+Issue tracker for make4ht bugs: https://github.com/michal-h21/make4ht/issues
   ]] .. parameters.postfile 
   -- we can pass arguments for tex4ht and t4ht after filename, but it will confuse lapp, thinking that these 
   -- options are for make4ht. this may result in execution error or wrong option parsing
