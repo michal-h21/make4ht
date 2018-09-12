@@ -414,6 +414,21 @@ function load_config(settings, config_name)
   return env
 end
 
+env.Make:add("xindy", function(par)
+  -- par.encoding  = par.encoding or "utf8"
+  -- par.language = par.language or "english"
+  par.idxfile = par.idxfile or par.input .. ".idx"
+  local modules = par.modules or {par.input}
+  local t = {}
+  for k,v in ipairs(modules) do
+    t[#t+1] = "-M ".. v
+  end
+  par.moduleopt = table.concat(t, " ")
+  local xindy_call = "xindy -L ${language} -C ${encoding} ${moduleopt} ${idxfile}" % par
+  print(xindy_call)
+  return os.execute(xindy_call)
+end, { language = "english", encoding = "utf8"})
+
 local function find_lua_file(name)
   local extension_path = name:gsub("%.", "/") .. ".lua"
   return kpse.find_file(extension_path, "lua")

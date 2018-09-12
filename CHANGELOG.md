@@ -1,5 +1,9 @@
 # Changelog
 
+- 2018/09/12
+
+    - added `xindy` command for the build file
+
 - 2018/09/03
 
     - expanded the `--help` option
