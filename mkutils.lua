@@ -372,7 +372,7 @@ env.Make:add("latexmk", function(par)
   par.expanded = command % par
   -- quotes in latex_command must be escaped, they cause Latexmk error
   par.expanded = par.expanded:gsub('"', '\\"')
-  local newcommand = 'latexmk -latex="${expanded}" ${tex_file}' % par
+  local newcommand = 'latexmk -latex="${expanded}" -dvi ${tex_file}' % par
   os.execute(newcommand)
   return Make.testlogfile(par)
 end, {correct_exit= 0})
