@@ -3,10 +3,12 @@ local mkutils = require "mkutils"
 local filter = require "make4ht-filter"
 
 
+local dvisvgm_par = {}
+
 local M = {}
 -- mapping between tex4ht image names and hashed image names
 local output_map = {}
-local dvisvgm_options = "-n --exact -c 1.15,1.15"
+local dvisvgm_options = "-n --exact -c ${scale} ${scale}"
 local parallel_size = 64
 -- local parallel_size = 3
 
@@ -165,6 +167,8 @@ local function get_dvi_pages(arg)
   dvisvgm_options = arg.options or extoptions.options or dvisvgm_options
   parallel_size = arg.parallel_size or extoptions.parallel_size or parallel_size
   cpu_cnt = arg.cpu_cnt or extoptions.cpu_cnt or cpu_cnt
+  dvisvgm_par.scale = arg.scale or extoptions.scale or 1.15
+  dvisvgm_options = dvisvgm_options % dvisvgm_par
   local f = io.open(idv_file, "r")
   if not f then return nil, "Cannot open idv file: " .. idv_file end
   local content = f:read("*all")
