@@ -800,6 +800,10 @@ parallel_size
 
 :  number of pages used in each Dvisvgm call. The extension detects changed pages in the DVI file and construct multiple calls to Dvisvgm with only changed pages.
 
+scale
+
+:  SVG scaling.
+
 
 # Configuration file {#configfile}
 
