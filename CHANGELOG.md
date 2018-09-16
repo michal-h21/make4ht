@@ -1,5 +1,13 @@
 # Changelog
 
+- 2018/09/16
+
+    - added the `scale` option for `dvisvgm_hashes` extension
+
+- 2018/09/14
+
+    - require the `-dvi` option with `latexmk_build` extension
+
 - 2018/09/12
 
     - added `xindy` command for the build file
