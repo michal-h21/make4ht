@@ -12,7 +12,7 @@ script:
   - git fetch --tags
   - make
   - make install
-  - sudo ln -s /home/travis/texmf/scripts/lua/make4ht/make4ht /usr/local/bin/make4ht
+  # - sudo ln -s /home/travis/texmf/scripts/lua/make4ht/make4ht /usr/local/bin/make4ht
   # - make test
   # Now runs globally
   - make4ht -v
