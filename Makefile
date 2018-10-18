@@ -13,7 +13,10 @@ FILTERS_DIR = $(INSTALL_DIR)/filters
 DOMFILTERS_DIR = $(INSTALL_DIR)/domfilters
 FORMATS_DIR = $(INSTALL_DIR)/formats
 EXTENSION_DIR = $(INSTALL_DIR)/extensions
-SYSTEM_BIN = /usr/local/bin
+BIN_DIR = /usr/local/bin
+# expand the bin directory
+SYSTEM_DIR = $(realpath $(BIN_DIR))
+EXECUTABLE = $(SYSTEM_DIR)/make4ht
 BUILD_DIR = build
 BUILD_MAKE4HT = $(BUILD_DIR)/make4ht
 VERSION:= undefined
@@ -22,6 +25,20 @@ DATE:= undefined
 ifeq ($(strip $(shell git rev-parse --is-inside-work-tree 2>/dev/null)),true)
 	VERSION:= $(shell git --no-pager describe --abbrev=0 --tags --always )
 	DATE:= $(firstword $(shell git --no-pager show --date=short --format="%ad" --name-only))
+endif
+
+# use sudo for install to destination directory outise home
+ifeq ($(findstring home,$(SYSTEM_DIR)),home)
+	SUDO:=
+else
+	SUDO:=sudo
+endif
+
+# install the executable only if the symlink doesn't exist yet
+ifeq ("$(wildcard $(EXECUTABLE))","")
+	INSTALL_COMMAND:=$(SUDO) ln -s $(INSTALL_DIR)/make4ht $(EXECUTABLE)
+else
+	INSTALL_COMMAND:=
 endif
 
 all: doc
@@ -73,7 +90,7 @@ install: doc $(lua_content) $(filters) $(domfilters)
 	cp $(extensions) $(EXTENSION_DIR)
 	cp $(formats)  $(FORMATS_DIR)
 	chmod +x $(INSTALL_DIR)/make4ht
-	# ln -s $(INSTALL_DIR)/make4ht $(SYSTEM_BIN)/make4ht
+	$(INSTALL_COMMAND)
 
 version:
 	echo $(VERSION), $(DATE)

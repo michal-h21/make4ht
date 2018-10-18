@@ -18,9 +18,10 @@ Run these commands:
      make
      make install
 
-It is also necessary to make the `make4ht` runnable. It is best to make symbolic link to a directory contained in the $PATH environmental variable. Similar command should work:
+`make4ht` is installed to `/usr/local/bin` directory by default. The
+directory can be changed by passing it's location to the `BIN_DIR` variable:
 
-     sudo ln -s /home/username/texmf/scripts/lua/make4ht/make4ht /usr/local/bin/make4ht
+    make install BIN_DIR=~/.local/bin/
 
 ## Windows
 
