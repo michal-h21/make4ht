@@ -17,7 +17,7 @@ ePub and other e-book formats.
 `tex4ht` system supports several output formats, most notably `XHTML`, `HTML 5` and `ODT`. 
 The conversion can be invoked using several commands. These commands invoke LaTeX\ or Plain TeX 
 with special instructions to load `tex4ht.sty` package. The \TeX\ run produces special `DVI` file 
-which contains the code for desired output format. The `DVI` file is then processed and 
+which contains the code for desired output format. Produced `DVI` file is then processed and 
 desired output files are created.
 
 The basic command provided by `tex4ht` is named `htlatex`. It  compiles \LaTeX\  
@@ -70,8 +70,6 @@ Links will be pointing to a non-existing subdirectory. The following command
 should copy all output files to the correct destinations.
 
     make4ht -d outputdir filename.tex
-
-
 
 The image conversion is configured in the
 [env file](http://www.tug.org/applications/tex4ht/mn35.html#index35-73001),
@@ -377,7 +375,7 @@ mathjaxnode
 
 staticsite
 
-:    create HTML file in format suitable for static site generators such as [Jekyll](https://jekyllrb.com/)
+:    create HTML files in format suitable for static site generators such as [Jekyll](https://jekyllrb.com/)
 
 svg-height
 
@@ -521,10 +519,10 @@ Table keys are the configured file names. It is necessary to insert them as
 `["filename.html"]`, because of Lua syntax rules.
 
 This example maps audio file `sample.mp3` to a section subpage. The main HTML
-file, which may contain title and table of contents doesn't have an
+file, which may contain title and table of contents doesn't have a
 corresponding audio file.
 
-The filenames of sub files corresponds to chapter numbers, so they are not
+Filenames of the sub files corresponds to the chapter numbers, so they are not
 stable when a new chapter is added. It is possible to request file names
 interfered from the chapter titles using the `sec-filename` option or `tex4ht`.
 
