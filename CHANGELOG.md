@@ -1,5 +1,9 @@
 # Changelog
 
+- 2018/10/18
+
+    - fixed the executable installation
+
 - 2018/09/16
 
     - added the `scale` option for `dvisvgm_hashes` extension
