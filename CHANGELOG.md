@@ -1,5 +1,9 @@
 # Changelog
 
+- 2018/10/26
+
+    - fixed ODT generation for files that contains special characters for Lua string patterns
+
 - 2018/10/18
 
     - fixed the executable installation
