@@ -3,6 +3,7 @@
 - 2018/10/26
 
     - fixed ODT generation for files that contains special characters for Lua string patterns
+    - replace non-breaking spaces with entities. It caused issues in LO 
 
 - 2018/10/18
 
