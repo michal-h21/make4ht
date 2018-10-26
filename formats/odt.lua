@@ -76,6 +76,12 @@ function Odtfile:pack()
   mkutils.delete_dir(self.archivelocation)
 end
 
+-- escape string to be used in the gsub search
+local function escape_file(filename)
+  local quotepattern = '(['..("%^$().[]*+-?"):gsub("(.)", "%%%1")..'])'
+  return filename:gsub(quotepattern, "%%%1")
+end
+
 -- find if tex4ht.jar exists in a path
 local function find_tex4ht_jar(path)
   local jar_file = path .. "/tex4ht/bin/tex4ht.jar"
@@ -199,8 +205,9 @@ function M.modify_build(make)
     if not executed then
       -- this is list of processed files
       local lgfiles = make.lgfile.files
-      -- find the last one
-      local lastfile = lgfiles[#lgfiles] .."$"
+      -- find the last file and escape it so it can be used 
+      -- in filename match
+      local lastfile = escape_file(lgfiles[#lgfiles]) .."$"
       -- make match for the last file
       -- odt packing will be done here
       make:match(lastfile, function()
