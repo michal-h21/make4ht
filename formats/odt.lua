@@ -114,6 +114,15 @@ local function find_texmfroot()
   return nil
 end
 
+-- This function moves the last added file matching function to the first place
+-- in the execution order. This ensures that filters are executed in the
+-- correct order.
+local function move_matches(make)
+  local matches = make.matches
+  local last = matches[#matches]
+  table.insert(matches, 1, last)
+  matches[#matches] = nil
+end
 -- call xtpipes from Lua
 local function call_xtpipes(make)
   -- we must find root of the TeX distribution
@@ -147,17 +156,10 @@ local function call_xtpipes(make)
     end
     make:match("4oo", matchfunction)
     make:match("4om", matchfunction)
-    -- is is necessary to execute the above matches as first in the build file
-    local matches = make.matches
     -- move last match to a first place
-    local function move_matches()
-      local last = matches[#matches]
-      table.insert(matches, 1, last)
-      matches[#matches] = nil
-    end
     -- we need to move last two matches, for 4oo and 4om files
-    move_matches()
-    move_matches()
+    move_matches(make)
+    move_matches(make)
   else
     print "Cannot locate xtpipes. Try to set TEXMFROOT variable to a root directory of your TeX distribution"
   end
@@ -189,13 +191,18 @@ function M.modify_build(make)
   -- execute xtpipes from the build file, instead of t4ht. this fixes issues with wrong paths
   -- expanded in tex4ht.env in Miktex or Debian
   call_xtpipes(make)
+  -- fix the image dimensions wrongly set by xtpipes
+  local domfilters = domfilter {"t4htlinks","odtimagesize"}
+  make:match("4oo$", domfilters)
+  -- execute it before xtpipes, because we don't want xtpipes to mess with t4htlink elements
+  move_matches(make)
   -- convert XML entities for Unicode characters produced by Xtpipes to characters
   local fixentities = filter {"entities-to-unicode"}
   make:match("4oo", fixentities)
   make:match("4om", fixentities)
-  -- fix the image dimensions wrongly set by xtpipes
-  local domfilters = domfilter {"odtimagesize"}
-  make:match("4oo$", domfilters)
+  -- execute fixentities as first
+  move_matches(make)
+  move_matches(make)
 
   -- build the ODT file. This match must be executed as a last one
   -- this will be executed as a first match, just to find the last filename 
