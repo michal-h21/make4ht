@@ -1,5 +1,10 @@
 # Changelog
 
+- 2018/11/01
+
+    - added `t4htlinks` domfilter
+    - fixed the `xtpipes` and `filters` execution order in the `ODT` format
+
 - 2018/10/26
 
     - fixed ODT generation for files that contains special characters for Lua string patterns

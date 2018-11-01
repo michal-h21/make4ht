@@ -433,6 +433,10 @@ odtimagesize
 
 :  set correct dimensions for images in the ODT format. It is loaded by default for the ODT output.
 
+t4htlinks
+
+:  fix hyperlinks in the ODT format.
+
 ### make4ht-aeneas-config package
 
 Companion for the `aeneas` DOM filter is the `make4ht-aeneas-config` plugin. It
