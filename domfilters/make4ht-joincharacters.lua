@@ -27,9 +27,9 @@ local function join_characters(obj,par)
         return next_el
         -- if the next node is space followed by a matching element, we should add this space
       elseif next_el and next_el:is_text() and get_next(next_el, class) then
-        local text = next_el._text
+        local text = next_el._text 
         -- match only text containing just whitespace
-        if text:match("^%s+$")  then return next_el end
+        if text:match("^%s+$") then return next_el end
       end
     end
     -- loop over all elements and test if the current element is in a list of
@@ -51,8 +51,6 @@ local function join_characters(obj,par)
           -- add the whitespace
         elseif next_el:is_text() then
           local s = next_el._text
-          -- this is needed to fix newlines inserted by Tidy
-          s = s:gsub("\n", "")
           -- we must create a new node
           el:add_child_node(el:create_text_node(s))
           next_el:remove_node()

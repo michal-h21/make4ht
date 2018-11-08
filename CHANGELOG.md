@@ -1,5 +1,9 @@
 # Changelog
 
+- 2018/11/08
+
+    - removed replacing newlines by blank strings in the `joincharacters` domfilter. The issue it fixed doesn't seem to exist anymore, and it ate spaces sometimes.
+
 - 2018/11/01
 
     - added `t4htlinks` domfilter
