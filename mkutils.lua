@@ -396,6 +396,10 @@ end
 
 function load_config(settings, config_name)
   local settings = settings or main_settings
+  -- the extensions requested from the command line should take precedence over
+  -- extensions enabled in the config file
+  local saved_extensions = settings.extensions
+  settings.extensions = {}
   env.settings = settings
   env.mode = settings.mode
   if config_name and not file_exists(config_name) then
@@ -411,6 +415,10 @@ function load_config(settings, config_name)
   local fn, msg = run(code,env)
   if not fn then print(msg) end
   assert(fn)
+  -- reload extensions from command line arguments for the "format" parameter
+  for _,v in ipairs(saved_extensions) do
+    table.insert(settings.extensions, v)
+  end
   return env
 end
 
@@ -510,19 +518,25 @@ function load_extensions(extensions, format)
   -- diable the extension
   for _, v in ipairs(extensions) do
     local enable = v.type == "+" and true or nil
+    -- load extenisons in a correct order
     -- don't load extensions multiple times
-    if not module_names[v.name] then
-      module_names[v.name] = enable
-      -- load extenisons in a correct order
+    if enable and not module_names[v.name] then
       table.insert(extension_sequence, v.name)
     end
+    -- the last extension request can disable it
+    module_names[v.name] = enable
   end
   for _, name in ipairs(extension_sequence) do
-    local extension = load_extension(name,format)
-    if extension then
-      table.insert(extension_table, extension)
-    else
-      print("Cannot load extension: ".. name)
+    -- the extension can be inserted into the extension_sequence, but disabled
+    -- later.
+    if module_names[name] == true then
+      local extension = load_extension(name,format)
+      if extension then
+        print("Load extension", name)
+        table.insert(extension_table, extension)
+      else
+        print("Cannot load extension: ".. name)
+      end
     end
   end
   return extension_table
