@@ -1,5 +1,11 @@
 # Changelog
 
+- 2018/12/17
+
+    - fixed extension handling. The disabling from the command line didn't take
+      precedence over extensions enabled in the config file. Extensions also
+      could be executed multiple times.
+
 - 2018/11/08
 
     - removed replacing newlines by blank strings in the `joincharacters` domfilter. The issue it fixed doesn't seem to exist anymore, and it ate spaces sometimes.
