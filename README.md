@@ -128,7 +128,7 @@ common\_filters
 
 common\_domfilters
 
-:    Clean the HTML file using DOM filters. It is more powerful than
+:    clean the HTML file using DOM filters. It is more powerful than
 `common_filters`. Used DOM filters are `fixinlines`, `idcolons` and
 `joincharacters`.
 
@@ -137,6 +137,10 @@ mathjaxnode
 :    use [mathjax-node-page](https://github.com/pkra/mathjax-node-page/) to
      convert from MathML code to HTML + CSS or SVG. See [the available
      settings](#mathjaxsettings).
+
+odttemplate
+
+:    automatically load the `odttemplate` filter.
 
 staticsite
 
@@ -372,6 +376,12 @@ mathjaxnode
 :    use [mathjax-node-page](https://github.com/pkra/mathjax-node-page/) to
      convert from MathML code to HTML + CSS or SVG. See [the available
      settings](#mathjaxsettings).
+
+odttemplate
+
+:    use styles from another `ODT` file serving as a template in the current
+     document. It works for the `styles.xml` file in the `ODT` file. During
+     the compilation, this file is named as `\jobname.4oy`.
 
 staticsite
 
@@ -805,6 +815,18 @@ parallel_size
 scale
 
 :  SVG scaling.
+
+### The `odttemplate` filter and extension
+
+template
+
+:  filename of the template `ODT` file 
+
+
+`odttemplate` can also get the template filename from the `odttemplate` option from `tex4ht_sty_par` parameter. It can be set useing following command line call, for example:
+
+     make4ht -f odt+odttemplate filename.tex "odttemplate=template.odt"
+
 
 
 # Configuration file {#configfile}
