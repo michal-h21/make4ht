@@ -4,6 +4,7 @@
 
     - new filter: `odttemplate`. It can be used for replacing style in a generated `ODT` file by a style from another existing `ODT` file.
     - new extension: `odttemplate`. Companioning extension for filter with the same name.
+    - fixed bug in `make4ht-filters.lua`: the parameters table haven't been passed to filters.
 
 - 2018/12/17
 
