@@ -1,5 +1,10 @@
 # Changelog
 
+- 2018/12/18
+
+    - new filter: `odttemplate`. It can be used for replacing style in a generated `ODT` file by a style from another existing `ODT` file.
+    - new extension: `odttemplate`. Companioning extension for filter with the same name.
+
 - 2018/12/17
 
     - fixed extension handling. The disabling from the command line didn't take
