@@ -66,6 +66,16 @@ function M.get_xtpipes(selfautoparent)
   return matchfunction
 end
 
+-- This function moves the last added file matching function to the first place
+-- in the execution order. This ensures that filters are executed in the
+-- correct order.
+function M.move_matches(make)
+  local matches = make.matches
+  local last = matches[#matches]
+  table.insert(matches, 1, last)
+  matches[#matches] = nil
+end
+
 M.get_texmfroot = get_texmfroot
 M.find_texmfroot = find_texmfroot
 M.find_tex4ht_jar = find_tex4ht_jar

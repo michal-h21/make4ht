@@ -83,15 +83,7 @@ local function escape_file(filename)
   return filename:gsub(quotepattern, "%%%1")
 end
 
--- This function moves the last added file matching function to the first place
--- in the execution order. This ensures that filters are executed in the
--- correct order.
-local function move_matches(make)
-  local matches = make.matches
-  local last = matches[#matches]
-  table.insert(matches, 1, last)
-  matches[#matches] = nil
-end
+local move_matches = xtpipeslib.move_matches
 
 -- call xtpipes from Lua
 local function call_xtpipes(make)
