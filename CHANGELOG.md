@@ -1,5 +1,10 @@
 # Changelog
 
+- 2018/12/19
+
+    - new library: `make4ht-xtpipes.lua`. It contains code for xtpipes handling.
+    - moved Xtpipes handling code from `formats/odt.lua`.
+
 - 2018/12/18
 
     - new filter: `odttemplate`. It can be used for replacing style in a generated `ODT` file by a style from another existing `ODT` file.
