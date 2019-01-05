@@ -1,5 +1,9 @@
 # Changelog
 
+- 2019/01/05
+
+    - added `docbook` output format.
+
 - 2018/12/19
 
     - new library: `make4ht-xtpipes.lua`. It contains code for xtpipes handling.
