@@ -23,8 +23,6 @@ local function call_xtpipes(make)
   if selfautoparent then
     local matchfunction = xtpipeslib.get_xtpipes(selfautoparent)
     make:match("xml$", matchfunction)
-    -- move last match to a first place
-    -- we need to move last two matches, for 4oo and 4om files
     move_matches(make)
   else
     print "Cannot locate xtpipes. Try to set TEXMFROOT variable to a root directory of your TeX distribution"
