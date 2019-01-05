@@ -1,4 +1,4 @@
-% [![Build Status](https://travis-ci.org/michal-h21/make4ht.svg?branch=master)](https://travis-ci.org/michal-h21/make4ht)
+ % [![Build Status](https://travis-ci.org/michal-h21/make4ht.svg?branch=master)](https://travis-ci.org/michal-h21/make4ht)
 
 # Introduction
 
@@ -94,6 +94,8 @@ format can be requested using the `--format` option. Supported formats are:
  - `xhtml`
  - `html5`
  - `odt`
+ - `tei`
+ - `docbook`
 
 The `--format` option can be also used for extension loading.
 

@@ -2,7 +2,7 @@
 
 - 2019/01/05
 
-    - added `docbook` output format.
+    - added `docbook` and `tei` output formats.
 
 - 2018/12/19
 
