@@ -1,5 +1,9 @@
 # Changelog
 
+- 2019/01/10
+
+    - version 0.2d released
+
 - 2019/01/05
 
     - added `docbook` and `tei` output formats.
