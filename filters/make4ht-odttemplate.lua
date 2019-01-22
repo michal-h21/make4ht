@@ -1,5 +1,6 @@
 local mkutils = require "mkutils"
 local zip = require "zip"
+local domobject = require "luaxml-domobject"
 
 
 local function get_template_filename(settings)
@@ -10,6 +11,34 @@ local function get_template_filename(settings)
   -- read the template odt filename from settings
   local filtersettings = get_filter_settings "odttemplate"
   return settings.template or filtersettings.template
+end
+
+local function join_styles(old, new)
+  local old_dom = domobject.parse(old)
+  local new_dom = domobject.parse(new)
+
+  local template_styles = {}
+  local template_obj  -- <office:styles> element, we will add new styles from the generated ODT here
+
+  -- detect style names in the template file and save them in a table for easy accesss
+  for _, style in ipairs(new_dom:query_selector("office|styles *")) do
+    template_obj = template_obj or style:get_parent()
+    local name = style:get_attribute("style:name") -- get the <office:styles> element
+    if name then
+      template_styles[name] = true
+    end
+  end
+
+  -- process the generated styles and add ones not used in the template
+  for _, style in ipairs(old_dom:query_selector("office|styles *")) do
+    local name = style:get_attribute("style:name")
+    if name and not template_styles[name] then
+      template_obj:add_child_node(style)
+    end
+  end
+
+  -- return template with additional styles from the generated file
+  return new_dom:serialize()
 end
 
 return function(content, settings)
@@ -23,7 +52,8 @@ return function(content, settings)
     -- just break if the styles cannot be found
     if not stylesfile then return content end
     local styles = stylesfile:read("*all")
-    return styles
+    local newstyle = join_styles(content, styles)
+    return newstyle
   end
   -- just return content in the case of problems
   return content
