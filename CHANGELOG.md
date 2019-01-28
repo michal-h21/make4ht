@@ -6,8 +6,8 @@
 
 - 2019/01/22
 
-    - updated the `odttemplate` filter. It will use styles from the generated ODT file that haven't been present in the template file.
     - version 0.2e released
+    - updated the `odttemplate` filter. It will use styles from the generated ODT file that haven't been present in the template file.
 
 - 2019/01/10
 
