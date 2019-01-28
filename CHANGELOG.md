@@ -1,5 +1,9 @@
 # Changelog
 
+- 2019/01/28
+
+    - added `joincolors` domfilter and `join_colors` extension. It can join CSS rules created for the LaTeX colors and update the HTML file.
+
 - 2019/01/22
 
     - updated the `odttemplate` filter. It will use styles from the generated ODT file that haven't been present in the template file.

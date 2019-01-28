@@ -134,6 +134,10 @@ common\_domfilters
 `common_filters`. Used DOM filters are `fixinlines`, `idcolons` and
 `joincharacters`.
 
+join\_colors
+
+:    load the `joincolors` domfilter for all HTML files.
+
 mathjaxnode
 
 :    use [mathjax-node-page](https://github.com/pkra/mathjax-node-page/) to
@@ -440,6 +444,13 @@ idcolons
 joincharacters
 
 :  join consecutive `<span>` or `<mn>` elements.
+
+joincolors
+
+:  many `<span>` elements with unique `id` attribute are created when \LaTeX\ colors are being used in the document.
+   CSS rule is added for each of these elements, which may result in
+   substantial grow of the CSS file. This filter replace these rules with a
+   common one for elements with the same color value.
 
 odtimagesize
 
