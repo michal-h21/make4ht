@@ -21,7 +21,7 @@ local xdg_config  = function(filename, xdg_config_name)
   local dotfilename = "." .. filename
   local xdg_config_name = xdg_config_name or "config.lua"
   local xdg = os.getenv("XDG_CONFIG_HOME") or ((os.getenv("HOME") or "") ..  "/.config")
-  local home = os.getenv("HOME")
+  local home = os.getenv("HOME") or os.getenv("USERPROFILE")
   if xdg then
     -- filename like ~/.config/make4ht/config.lua
     local fn = make_name{ xdg ,filename , xdg_config_name }

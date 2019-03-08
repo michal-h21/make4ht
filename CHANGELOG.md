@@ -1,5 +1,9 @@
 # Changelog
 
+- 2019/03/08
+
+    - use `%USERPROFILE` for home dir search on Windows.
+
 - 2019/01/28
 
     - added `joincolors` domfilter and `join_colors` extension. It can join CSS rules created for the LaTeX colors and update the HTML file.
