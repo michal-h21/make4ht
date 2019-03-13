@@ -130,7 +130,7 @@ function M.modify_build(make)
   -- expanded in tex4ht.env in Miktex or Debian
   call_xtpipes(make)
   -- fix the image dimensions wrongly set by xtpipes
-  local domfilters = domfilter {"t4htlinks","odtimagesize"}
+  local domfilters = domfilter {"t4htlinks"}
   make:match("4oo$", domfilters)
   -- execute it before xtpipes, because we don't want xtpipes to mess with t4htlink elements
   move_matches(make)

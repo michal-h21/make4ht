@@ -1,5 +1,9 @@
 # Changelog
 
+- 2019/03/13
+
+    - don't use `odtimagesize` domfilter in the `ODT` format, the issue it fixes had been resolved in `tex4ht`.
+
 - 2019/03/08
 
     - use `%USERPROFILE` for home dir search on Windows.
