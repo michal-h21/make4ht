@@ -1,5 +1,9 @@
 # Changelog
 
+- 2019/03/15
+
+    - check for the image dimensions existence in the `odtimagesize` domfilter.
+
 - 2019/03/13
 
     - don't use `odtimagesize` domfilter in the `ODT` format, the issue it fixes had been resolved in `tex4ht`.

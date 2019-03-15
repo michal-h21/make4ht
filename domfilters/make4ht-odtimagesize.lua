@@ -7,8 +7,8 @@ return  function(dom)
       local image = images[1]
       local width = image:get_attribute("svg:width")
       local height = image:get_attribute("svg:height")
-      frame:set_attribute("svg:width", width)
-      frame:set_attribute("svg:height", height)
+      if widht then frame:set_attribute("svg:width", width) end
+      if height then frame:set_attribute("svg:height", height) end
       print("image dimensions", width, height)
     end
   end
