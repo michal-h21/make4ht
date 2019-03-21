@@ -1,5 +1,9 @@
 # Changelog
 
+- 2019/03/21
+
+    - version 0.2f released 
+
 - 2019/03/15
 
     - check for the image dimensions existence in the `odtimagesize` domfilter.
