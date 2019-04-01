@@ -1,5 +1,8 @@
 # Changelog
 
+- 2019/04/01
+  
+    - fixed bug in `dvisvgm_hashes` extension: didn't check for table index existence in string concenation
 - 2019/03/21
 
     - version 0.2f released 

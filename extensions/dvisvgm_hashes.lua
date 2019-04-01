@@ -248,7 +248,8 @@ function M.modify_build(make)
   -- disable the image processing
   for _,v in ipairs(make.build_seq) do
     if v.name == "t4ht" then
-      v.params.t4ht_par = v.params.t4ht_par .. " -p"
+      local t4ht_par = v.params.t4ht_par or make.params.t4ht_par or ""
+      v.params.t4ht_par = t4ht_par .. " -p"
     end
   end
   make:image(".", function() return "" end)
