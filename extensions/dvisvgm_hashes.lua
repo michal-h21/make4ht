@@ -229,6 +229,14 @@ function M.modify_build(make)
           lgfiles[i] = replace
         end
       end
+      -- tex4ebook process also the images table, so we need to replace generated filenames here as well
+      local lgimages = make.lgfile.images
+      for _, image in ipairs(lgimages) do
+        local  replace = output_map[image.output]
+        if replace then
+          image.output = replace
+        end
+      end
     end
   end)
 

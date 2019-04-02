@@ -1,5 +1,9 @@
 # Changelog
 
+- 2019/04/02
+
+    - `dvisvgm_hashes` fix:  update also the lgfile.images table with generated filenames, in order to support tex4ebook
+
 - 2019/04/01
   
     - fixed bug in `dvisvgm_hashes` extension: didn't check for table index existence in string concenation
