@@ -1,5 +1,10 @@
 # Changelog
 
+- 2019/04/09
+
+    - `make4ht-joincolors` fix: remove the hash character from the color name.
+      This caused issues with colors specified in the hexadecimal format.
+
 - 2019/04/02
 
     - `dvisvgm_hashes` fix:  update also the lgfile.images table with generated filenames, in order to support tex4ebook

@@ -12,6 +12,8 @@ local function extract_colors(csscontent)
     local converted = "textcolor-" .. color:gsub("rgb%((.-),(.-),(.-)%)", function(r,g,b)
       return string.format("%02x%02x%02x", tonumber(r), tonumber(g), tonumber(b))
     end)
+    -- remove the # characters from the converted color name
+    converted = converted:gsub("%#", "")
     -- save the id and used color
     colors[id] = converted
     used_colors[converted] = color
