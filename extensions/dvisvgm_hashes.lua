@@ -48,6 +48,7 @@ local function get_generated_pages(output, pages)
   while(pos) do
     pos, finish, file = string.find(output, "output written to ([^\n]+)", finish)
     pages[tonumber(page)] = file
+    if not finish then break end
     pos, finish, page = string.find(output, "processing page (%d+)", finish)
   end
   return pages
