@@ -78,7 +78,7 @@ local function make_ranges(pages)
 end
 
 local function read_log(dvisvgmlog)
-  local f = io.open(dvisvgmlog, "r")
+  local f = io.open(dvisvgmlog, "rb")
   if not f then return nil, "Cannot read dvisvgm log" end
   local output = f:read("*all")
   f:close()
@@ -170,7 +170,7 @@ local function get_dvi_pages(arg)
   cpu_cnt = arg.cpu_cnt or extoptions.cpu_cnt or cpu_cnt
   dvisvgm_par.scale = arg.scale or extoptions.scale or 1.15
   dvisvgm_options = dvisvgm_options % dvisvgm_par
-  local f = io.open(idv_file, "r")
+  local f = io.open(idv_file, "rb")
   if not f then return nil, "Cannot open idv file: " .. idv_file end
   local content = f:read("*all")
   f:close()
