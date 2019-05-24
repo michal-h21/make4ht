@@ -1,5 +1,10 @@
 # Changelog
 
+- 2019/05/24
+
+    - version 0.2g released
+    - fixed failing `dvisvgm_hashes` extension on Windows.
+
 - 2019/05/02
 
     - fixed infinite loop bug in the `dvisvgm_hashes` extension
