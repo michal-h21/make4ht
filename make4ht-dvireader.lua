@@ -103,7 +103,7 @@ local function read_opcode(opcode, str, pos)
   if not format then return nil, "Cannot find opcode format: " .. opcode end
   -- check that opcode byte in the current position is the same as required opcode
   local op = read_byte(str, pos)
-  if op ~= format.opcode then return nil, "Wrong opcode " .. op " at position " .. pos end
+  if op ~= format.opcode then return nil, "Wrong opcode " .. op .. " at position " .. pos end
   return read_arguments(str, pos+1, format.args)
 end
 
