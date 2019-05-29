@@ -92,7 +92,7 @@ local fix_idx_pages = function(content, idxobj)
         local entry = entries[tonumber(page)]
         if entry then
           -- construct link to the index entry
-          return "\\LNK{" .. entry.file .."}{".. entry.dest .."}{}{" .. page .."}"
+          return "\\Link[" .. entry.file .."]{".. entry.dest .."}{}" .. page .."\\EndLink"
         else
           return page
         end
