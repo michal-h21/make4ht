@@ -1,5 +1,9 @@
 # Changelog
 
+- 2019/05/29
+
+    - new module: `make4ht-indexing` for working  with index files.
+
 - 2019/05/24
 
     - version 0.2g released

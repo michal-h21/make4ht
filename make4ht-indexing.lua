@@ -25,6 +25,8 @@ local function sanitize_licr(l)
 end
 
 local load_enc = function(enc)
+  -- use default encodings if used doesn't provide one
+  enc = enc or  {"T1","T2A","T2B","T2C","T3","T5", "LGR"}
 	for _,e in pairs(enc) do
 		local filename = e:lower() .. "enc.dfu"
 		local dfufile = kpse.find_file(filename)
@@ -103,7 +105,7 @@ local fix_idx_pages = function(content, idxobj)
   return table.concat(buffer, "\n")
 end
 
-load_enc({"T1","T2A","T2B","T2C","T3","T5", "LGR"})
+
 
 M.get_utf8 = get_utf8
 M.load_enc = load_enc
