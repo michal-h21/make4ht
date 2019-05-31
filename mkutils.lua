@@ -2,6 +2,7 @@ module(...,package.seeall)
 
 local make4ht = require("make4ht-lib")
 local mkparams = require("mkparams")
+local indexing = require("make4ht-indexing")
 --template engine
 function interp(s, tab)
 	local tab = tab or {}
@@ -426,13 +427,15 @@ env.Make:add("xindy", function(par)
   -- par.encoding  = par.encoding or "utf8"
   -- par.language = par.language or "english"
   par.idxfile = par.idxfile or par.input .. ".idx"
+
+
   local modules = par.modules or {par.input}
   local t = {}
   for k,v in ipairs(modules) do
     t[#t+1] = "-M ".. v
   end
   par.moduleopt = table.concat(t, " ")
-  local xindy_call = "xindy -L ${language} -C ${encoding} ${moduleopt} ${idxfile}" % par
+  local xindy_call = "texindy -L ${language} -C ${encoding} ${moduleopt} ${idxfile}" % par
   print(xindy_call)
   return os.execute(xindy_call)
 end, { language = "english", encoding = "utf8"})
