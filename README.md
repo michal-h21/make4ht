@@ -433,6 +433,10 @@ aeneas
 :  [Aeneas](https://www.readbeyond.it/aeneas/) is a tool for automagical synchronization of text and audio.
    This filter modifies the HTML code to support the synchronization.
 
+collapsetoc
+
+:  collapse table of contents to contain only top level sectioning level and sections on the current page.
+
 fixinlines
 
 :  put all inline elements which are direct children of the `<body>` elements to a paragraph.
@@ -712,6 +716,28 @@ options
 
 :  command line options for the `tidy` command. Default value is `-m -utf8 -w 512 -q`.
 
+### The `collapsetoc` dom filter
+
+`toc_query` 
+
+:  CSS selector for selecting the table of contens container. 
+
+`title_query`
+
+:  CSS selector for selecting all elements that contain section ID attribute.
+
+`toc_levels` 
+
+:  table containing hiearchy of classes used in TOC
+
+Default values:
+
+    filter_settings "collapsetoc" {
+      toc_query = ".tableofcontents",
+      title_query = ".partHead a, .chapterHead a, .sectionHead a, .subsectionHead a",
+      toc_levels = {"partToc", "chapterToc", "sectionToc", "subsectionToc", "subsubsectionToc"}
+    }
+
 ### The `fixinlines` dom filter 
 
 inline\_elements
@@ -839,6 +865,7 @@ template
 `odttemplate` can also get the template filename from the `odttemplate` option from `tex4ht_sty_par` parameter. It can be set useing following command line call, for example:
 
      make4ht -f odt+odttemplate filename.tex "odttemplate=template.odt"
+
 
 
 

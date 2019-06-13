@@ -1,5 +1,9 @@
 # Changelog
 
+- 2019/06/13
+
+    - new DOM extension: `collapsetoc`.
+
 - 2019/05/29
 
     - new module: `make4ht-indexing` for working  with index files.
@@ -11,7 +15,7 @@
 
 - 2019/05/02
 
-    - fixed infinite loop bug in the `dvisvgm_hashes` extension
+    - fixed infinite loop bug in the `dvisvgm_hashes` extension.
 
 - 2019/04/09
 
