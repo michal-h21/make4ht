@@ -134,12 +134,15 @@ end
 -- local process = filter{ function(s)
   -- local dom = domobject.parse(s)
 local function collapse_toc(dom, par)
+  -- set options
   local options = get_filter_settings "collapsetoc"
   local toc_query = par.toc_query or options.toc_query or ".tableofcontents"
+  local title_query = par.title_query or options.title_query or ".partHead a, .chapterHead a, .sectionHead a, .subsectionHead a"
+  toc_levels = par.toc_levels or options.toc_levels or toc_levels
   -- keep track of current id of each sectioning level
   local current_ids, matched_ids = {}, {_levels = 0, ids = {}}
   -- search sectioning elements
-  local titles = dom:query_selector(".partHead a, .chapterHead a, .sectionHead a, .subsectionHead a")
+  local titles = dom:query_selector(title_query)
   local section_ids = {}
   for _, x in ipairs(titles) do
     -- get their id attributes and save them in a table
@@ -159,27 +162,15 @@ local function collapse_toc(dom, par)
     for _, el in ipairs(toc) do
       -- get sectioning level and id of the current TOC entry
       local name, id = get_id(el)
-      -- change span to div
-      -- el._name = "div"
-      --- if name == "partToc" then
-      ---   remove_sections(part_elements,currentpart,matched_ids)
-      ---   -- resert toc list
-      ---   currentpart = false
-      ---   part_elements = {}
-      ---   current_ids = {}
-      ---   matched_ids = {}
-      --- else
-      ---   -- add child elements of part to table
-      ---   part_elements[#part_elements+1] = el
-      --- end
       -- set the id of the current sectioning level
       current_ids[name] = id
       for _, sectid in ipairs(section_ids) do
         -- detect if the current TOC entry match some sectioning element in the current document
         if id == sectid then
           currentpart = true
-          -- copy the TOC hiearchy for the current toc level
+          -- save the current id as a matched id
           matched_ids.ids[id] = true
+          -- copy the TOC hiearchy for the current toc level
           for i, level in ipairs(toc_levels) do 
             -- print("xxx",i, level, current_ids[level])
             matched_ids[level] = current_ids[level]
