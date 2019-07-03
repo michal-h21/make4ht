@@ -460,6 +460,10 @@ odtimagesize
 
 :  set correct dimensions for images in the ODT format. It is loaded by default for the ODT output.
 
+odtpartable
+
+:  resolve tables nested inside paragraphs, which is invalid in the ODT format.
+
 t4htlinks
 
 :  fix hyperlinks in the ODT format.

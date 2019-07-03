@@ -1,5 +1,9 @@
 # Changelog
 
+- 2019/07/03
+
+    - new DOM filter: `odtpartable`. It fixes tables nested in paragraphs in the ODT format.
+
 - 2019/06/13
 
     - new DOM extension: `collapsetoc`.
