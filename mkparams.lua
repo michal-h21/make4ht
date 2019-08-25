@@ -41,6 +41,7 @@ end
 local function get_args(parameters, optiontext)
 	local parameters = parameters or {}
 	parameters.progname = parameters.progname or "make4ht"
+  parameters.issue_tracker = parameters.issue_tracker or "https://github.com/michal-h21/make4ht/issues"
 	parameters.postparams = parameters.postparams or ""
 	local optiontext = optiontext or m.optiontext
 	parameters.postfile = parameters.postfile or ""
@@ -54,7 +55,7 @@ Positional optional argumens:
 
 Documentation:                  https://tug.org/applications/tex4ht/mn.html
 Issue tracker for tex4ht bugs:  https://puszcza.gnu.org.ua/bugs/?group=tex4ht
-Issue tracker for make4ht bugs: https://github.com/michal-h21/make4ht/issues
+Issue tracker for ${progname} bugs: ${issue_tracker}
   ]] .. parameters.postfile 
   -- we can pass arguments for tex4ht and t4ht after filename, but it will confuse lapp, thinking that these 
   -- options are for make4ht. this may result in execution error or wrong option parsing
