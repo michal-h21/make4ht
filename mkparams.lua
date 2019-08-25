@@ -36,7 +36,7 @@ local function is_escapedargument(arg)
   local ignored_options = {["-h"]=true, ["--help"]=true, ["-v"] = true, ["--version"]=true}
   if ignored_options[arg] then return false end
   -- in other cases, match if the argument starts with "-" character
-  return arg:match("^%-")
+  return arg:match("^%-.+")
 end
 local function get_args(parameters, optiontext)
 	local parameters = parameters or {}
