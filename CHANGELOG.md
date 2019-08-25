@@ -1,5 +1,9 @@
 # Changelog
 
+- 2019/08/25
+
+    - the issue tracker link in the help message is now configurable.
+
 - 2019/07/03
 
     - new DOM filter: `odtpartable`. It fixes tables nested in paragraphs in the ODT format.
