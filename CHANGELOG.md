@@ -3,6 +3,8 @@
 - 2019/08/25
 
     - the issue tracker link in the help message is now configurable.
+    - fixed bug in the XeTeX handling: the `.xdv` argument for `tex4ht` wasn't
+      used if command line arguments for `tex4ht` were present.
 
 - 2019/07/03
 
