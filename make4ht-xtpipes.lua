@@ -38,7 +38,7 @@ end
 
 function M.get_xtpipes(selfautoparent)
   -- make pattern using TeX distro path
-  local pattern = string.format("java -classpath %s/tex4ht/bin/tex4ht.jar xtpipes -i %s/tex4ht/xtpipes/ -o ${outputfile} ${filename}", selfautoparent, selfautoparent)
+  local pattern = string.format('java -classpath "%s/tex4ht/bin/tex4ht.jar" xtpipes -i "%s/tex4ht/xtpipes/" -o "${outputfile}" "${filename}"', selfautoparent, selfautoparent)
   -- call xtpipes on a temporary file
   local matchfunction =  function(filename)
     -- move the matched file to a temporary file, xtpipes will write it back to the original file
@@ -51,7 +51,7 @@ function M.get_xtpipes(selfautoparent)
     if status > 0 then
       -- if xtpipes failed to process the file, it may mean that it was bad-formed xml
       -- we can try to make it well-formed using Tidy
-      local tidy_command = "tidy -utf8 -xml -asxml -q -o ${filename} ${tmpfile}" % {tmpfile = tmpfile, filename = filename}
+      local tidy_command = 'tidy -utf8 -xml -asxml -q -o "${filename}" "${tmpfile}"' % {tmpfile = tmpfile, filename = filename}
       print("xtpipes failed trying tidy")
       print(tidy_command)
       local status = os.execute(tidy_command)

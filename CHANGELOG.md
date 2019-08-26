@@ -1,5 +1,9 @@
 # Changelog
 
+- 2019/08/26
+
+    - quote file names and paths in `xtpipes` and `tidy` invocation.
+
 - 2019/08/25
 
     - the issue tracker link in the help message is now configurable.
