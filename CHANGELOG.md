@@ -2,7 +2,8 @@
 
 - 2019/08/27
 
-    - fixed -jobname detection regex.
+    - fixed `-jobname` detection regex.
+    - added function `handle_jobname`
 
 - 2019/08/26
 
