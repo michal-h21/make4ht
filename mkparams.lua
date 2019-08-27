@@ -91,11 +91,16 @@ local function get_format_extensions(format_string)
 end
 
 -- detect if user specified -jobname in arguments to the TeX engine
+-- or used the --jobname option for make4ht
 local function handle_jobname(input, args)
   -- parameters to the TeX engine
   local latex_params = {}
   local latex_cli_params = args[4] or ""
-  if not latex_cli_params:match("%-jobname") then
+  -- use the jobname as input name if it is specified
+  local jobname = args.jobname ~="nil" and args.jobname or nil
+  if jobname or not latex_cli_params:match("%-jobname") then
+    -- prefer jobname over input
+    input = jobname or input
     -- we must strip out directories from jobname when full path to document is given
     input = input:match("([^%/^%\\]+)$")
     -- input also cannot contain spaces, replace them with underscores
