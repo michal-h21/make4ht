@@ -20,7 +20,8 @@ Available options:
   -d,--output-dir (default nil)  Output directory
   -e,--build-file (default nil)  If build file is different than `filename`.mk4
   -f,--format  (default html5)  Output file format
-  -h,-- help  Display this message
+  -h,--help  Display this message
+  -j,--jobname (default nil)  Set the jobname
   -l,--lua  Use lualatex for document compilation
   -m,--mode (default default) Switch which can be used in the makefile 
   -n,--no-tex4ht Disable dvi file processing with tex4ht command
