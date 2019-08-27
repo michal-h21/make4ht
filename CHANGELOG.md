@@ -1,5 +1,9 @@
 # Changelog
 
+- 2019/08/27
+
+    - fixed -jobname detection regex.
+
 - 2019/08/26
 
     - quote file names and paths in `xtpipes` and `tidy` invocation.
