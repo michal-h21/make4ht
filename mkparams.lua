@@ -89,6 +89,42 @@ local function get_format_extensions(format_string)
   return format, extensions
 end
 
+-- detect if user specified -jobname in arguments to the TeX engine
+local function handle_jobname(input, args)
+  -- parameters to the TeX engine
+  local latex_params = {}
+  local latex_cli_params = args[4] or ""
+  if not latex_cli_params:match("%-jobname") then
+    -- we must strip out directories from jobname when full path to document is given
+    input = input:match("([^%/^%\\]+)$")
+    -- input also cannot contain spaces, replace them with underscores
+    input = input:gsub("%s", "_")
+    table.insert(latex_params,"-jobname="..input)
+  else
+    -- when user specifies -jobname, we must change name of the input file,
+    -- in order to be able to process correct dvi file with tex4ht and t4ht
+    local newinput
+    -- first contains quotation character or first character of the name
+    local first, rest = latex_cli_params:match("%-jobname%s*=?%s*(.)(.*)")
+    if first=='"' then
+      newinput=rest:match('([^"]+)')
+    elseif first=="'" then
+      newinput=rest:match("([^']+)")
+    elseif type(first)== "string" then
+      -- if the jobname is unquoted, it cannot contain space
+      -- join the first character and rest
+      rest = first.. rest
+      newinput = rest:match("([^ ]+)")
+    end
+    if newinput then
+      input = newinput
+    end
+  end
+  -- 
+	table.insert(latex_params, latex_cli_params)
+  return latex_params, input
+end
+
 local function process_args(args)
 	local function get_inserter(args,tb)
 		return function(key, value)
@@ -125,34 +161,10 @@ local function process_args(args)
 	local compiler = args.lua and "dvilualatex" or args.xetex and "xelatex --no-pdf" or "latex"
   local tex_file = args.filename
 	local input = mkutils.remove_extension(args.filename)
-	local latex_params = {}
+  -- the output file name can be influneced using -jobname parameter passed to the TeX engine
+	local latex_params, input = handle_jobname(input, args) 
 	local insert_latex = get_inserter(args,latex_params)
 	insert_latex("shell-escape","-shell-escape")
-  local latex_cli_params = args[4] or ""
-  if not latex_cli_params:match("%-jobname") then
-    -- we must strip out directories from jobname when full path to document is given
-    input = input:match("([^%/^%\\]+)$")
-    -- input also cannot contain spaces, replace them with underscores
-    input = input:gsub("%s", "_")
-    table.insert(latex_params,"-jobname="..input)
-  else
-    -- when user specifies -jobname, we must change name of the input file,
-    -- in order to be able to process correct dvi file with tex4ht and t4ht
-    local newinput
-    local first, rest = latex_cli_params:match("%-jobname=(.)(.*)")
-    if first=='"' then
-      newinput=rest:match('([^"]+)')
-    elseif first=="'" then
-      newinput=rest:match("([^']+)")
-    elseif type(first)== "string" then
-      rest = first.. rest
-      newinput = rest:match("([^ ]+)")
-    end
-    if newinput then
-      input = newinput
-    end
-  end
-	table.insert(latex_params, latex_cli_params)
 	--table.insert(latex_params,args["shell-escape"] and "-shell-escape")
 
 
