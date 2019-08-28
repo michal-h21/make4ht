@@ -96,8 +96,16 @@ end
 -- allow output formats to modify the build process at the end
 make = formatter.modify_build(make) or make
 
+make:match("tmp$", function(filename,params) 
+  -- remove the temporary tex file created when the input comes from the standard input
+  if params.is_tmp_file then
+    print("removing temp file", params.tex_file)
+    os.remove(params.tex_file)
+  end
+  -- prevent copying of the temporary file to the outdir
+  return false,"tmp file" end
+)
 
-make:match("tmp$", function() return false,"tmp file" end)
 make:match(".*",function(filename,par)
 	local outdir =  '' --par["outdir"] and par["outdir"] .."/" or ''
 	if par['outdir'] ~= "" then outdir = par['outdir'] .. '/' end
@@ -108,3 +116,4 @@ make:match(".*",function(filename,par)
 end)
 
 make:run()
+

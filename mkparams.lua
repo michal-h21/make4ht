@@ -131,6 +131,20 @@ local function handle_jobname(input, args)
   return latex_params, input
 end
 
+-- use standard input instead of file if the filename is just `-`
+-- return the filename and status if it is a tmp name
+local function handle_input_file(filename)
+  -- return the original file name if it isn't just dash
+  if not filename == "-" then return filename, false end
+  -- generate the temporary name. the added extension is important
+  local tmp_name = os.tmpname()
+  local contents = io.read("*all")
+  local f = io.open(tmp_name, "w")
+  f:write(contents)
+  f:close()
+  return tmp_name, true
+end
+
 local function process_args(args)
 	local function get_inserter(args,tb)
 		return function(key, value)
@@ -165,8 +179,8 @@ local function process_args(args)
 
 
 	local compiler = args.lua and "dvilualatex" or args.xetex and "xelatex --no-pdf" or "latex"
-  local tex_file = args.filename
-	local input = mkutils.remove_extension(args.filename)
+  local tex_file, is_tmp_file = handle_input_file(args.filename)
+	local input = mkutils.remove_extension(tex_file)
   -- the output file name can be influneced using -jobname parameter passed to the TeX engine
 	local latex_params, input = handle_jobname(input, args) 
 	local insert_latex = get_inserter(args,latex_params)
@@ -234,6 +248,7 @@ local function process_args(args)
     ,build_file = build_file
     ,output_format = outformat
     ,extensions = extensions
+    ,is_tmp_file = is_tmp_file
 		--,t4ht_dir_format=t4ht_dir_format
 	}
 	if outdir then parameters.outdir = outdir end

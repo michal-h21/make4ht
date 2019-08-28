@@ -922,6 +922,7 @@ output for math.
     -e,--build-file (default nil)  If build file name is different 
          than `filename`.mk4
     -f,--format  (default nil)  Output file format
+    -j,--jobname (default nil)  Set the jobname
     -l,--lua  Use lualatex for document compilation
     -m,--mode (default default) Switch which can be used in the makefile
     -n,--no-tex4ht  Disable dvi file processing with tex4ht command
@@ -952,6 +953,12 @@ Specified path can be relative to current directory, or absolute:
     make4ht -d ../gotoparrentdir filename
     make4ht -d ~/gotohomedir filename
     make4ht -d c:\documents\windowspathsareworkingtoo filename
+
+To pass output from other commands to `make4ht` use the `-` character as a
+filename. It is best to use this feature together with the `--jobname` or `-j`
+option.
+
+    cat hello.tex | make4ht -j world -
 
 # Troubleshooting 
 

@@ -1,5 +1,9 @@
 # Changelog
 
+- 2019/08/28
+
+    - added support for input from `stdin`.
+
 - 2019/08/27
 
     - fixed `-jobname` detection regex.
