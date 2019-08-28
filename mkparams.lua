@@ -135,7 +135,7 @@ end
 -- return the filename and status if it is a tmp name
 local function handle_input_file(filename)
   -- return the original file name if it isn't just dash
-  if not filename == "-" then return filename, false end
+  if filename ~= "-" then return filename, false end
   -- generate the temporary name. the added extension is important
   local tmp_name = os.tmpname()
   local contents = io.read("*all")
