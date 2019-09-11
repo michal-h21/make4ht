@@ -445,6 +445,9 @@ local function find_lua_file(name)
   return kpse.find_file(extension_path, "lua")
 end
 
+-- for the BibLaTeX support
+env.Make:add("biber", "biber ${input}")
+
 --- load the output format plugins
 function load_output_format(format_name)
   local format_library =  "make4ht.formats."..format_name

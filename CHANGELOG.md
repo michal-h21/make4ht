@@ -1,5 +1,9 @@
 # Changelog
 
+- 2019/09/11
+
+    - added support for Biber in the build files.
+
 - 2019/08/28
 
     - added support for input from `stdin`.
