@@ -138,9 +138,6 @@ function M.modify_build(make)
   local fixentities = filter {"entities-to-unicode"}
   make:match("4oo", fixentities)
   make:match("4om", fixentities)
-  -- execute fixentities as first
-  move_matches(make)
-  move_matches(make)
 
   -- build the ODT file. This match must be executed as a last one
   -- this will be executed as a first match, just to find the last filename 
