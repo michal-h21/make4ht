@@ -1,5 +1,9 @@
 # Changelog
 
+- 2019/09/12
+
+    - added support for the ODT files in `common_domfilters` extension.
+
 - 2019/09/11
 
     - added support for Biber in the build files.
