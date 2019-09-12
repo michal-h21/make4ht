@@ -4,6 +4,7 @@
 
     - added support for the ODT files in `common_domfilters` extension.
     - renamed `charclases` option for the `joincharacters` DOM filter to `charclasses`.
+    - don't execute the `fixentities` filter before Xtpipes, it makes no sense.
 
 - 2019/09/11
 
