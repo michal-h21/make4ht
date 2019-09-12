@@ -1,4 +1,4 @@
-local charclases = {
+local charclasses = {
   span=true,
   mn = true,
 }
@@ -8,7 +8,7 @@ local function join_characters(obj,par)
   -- tex4ht to just one object.
   local par = par or {}
   local options = get_filter_settings "joincharacters"
-  local charclases = options.charclases or par.charclases or charclases
+  local charclasses = options.charclasses or par.charclasses or charclasses
 
   obj:traverse_elements(function(el)
     local get_name = function(curr) 
@@ -18,7 +18,7 @@ local function join_characters(obj,par)
       return next_el:get_attribute("class")
     end
     local is_span = function(next_el)
-      return charclases[get_name(next_el)]
+      return charclasses[get_name(next_el)]
     end
 
     local function get_next(curr, class)
@@ -33,7 +33,7 @@ local function join_characters(obj,par)
       end
     end
     -- loop over all elements and test if the current element is in a list of
-    -- processed elements (charclases)
+    -- processed elements (charclasses)
     if is_span(el) then
       local next_el = get_next(el)
       -- loop over the following elements and test whether they are of the same type

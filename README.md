@@ -754,13 +754,13 @@ Example
 
 ### The `joincharacters` dom filter
 
-charelements 
+charclasses 
 
-:  table of elements which should be joined if several instances with the same value of `class` attribute are side by side.
+:  table of elements which should be concetanated when two or more of such elements with a same value of the `class` attribute are placed one after another.
 
 Example
 
-    filter_settings "joincharacters" { charclases = { span=true, mn = true}}
+    filter_settings "joincharacters" { charclasses = { span=true, mn = true}}
 
 ### The `mathjaxnode` filter {#mathjaxsettings}
 

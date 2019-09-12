@@ -3,6 +3,7 @@
 - 2019/09/12
 
     - added support for the ODT files in `common_domfilters` extension.
+    - renamed `charclases` option for the `joincharacters` DOM filter to `charclasses`.
 
 - 2019/09/11
 
