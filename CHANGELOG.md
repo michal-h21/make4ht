@@ -1,5 +1,11 @@
 # Changelog
 
+- 2019/09/13
+
+    - added `preprocess_input` extension. It enables compilation of formats
+      supported by [Knitr](https://yihui.name/knitr/) (`.Rnw`, `.Rtex`, `.Rmd`, `.Rrst`) 
+      and also Markdown and reStructuredText formats.
+
 - 2019/09/12
 
     - added support for the ODT files in `common_domfilters` extension.
