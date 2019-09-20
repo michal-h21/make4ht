@@ -5,9 +5,8 @@
 `make4ht` is a simple build system for `tex4ht`, \TeX\ to XML converter. It provides a command line tool
 that drive the conversion process. It also provides a library which can be used to create
 customized conversion tools. An example of such conversion tool is
-[tex4ebook](https://github.com/michal-h21/tex4ebook) for conversion of \TeX\ to
+[tex4ebook](https://github.com/michal-h21/tex4ebook), used for conversion of \TeX\ to
 ePub and other e-book formats.
-
 
 
 The basic conversion from \LaTeX\ to `HTML` using `make4ht` can be executed using the following command:
@@ -16,6 +15,66 @@ The basic conversion from \LaTeX\ to `HTML` using `make4ht` can be executed usin
 
 It will produce file `filename.html` if the compilation goes without fatal errors.
 
+
+# Command line options {#clioptions}
+\label{sec:clioptions}
+
+    make4ht - build system for tex4ht
+    Usage:
+    make4ht [options] filename ["tex4ht.sty op." "tex4ht op." 
+         "t4ht op" "latex op"]
+    -b,--backend (default tex4ht) Backend used for xml generation.
+         possible values: tex4ht or lua4ht
+    -c,--config (default xhtml) Custom config file
+    -d,--output-dir (default "")  Output directory
+    -e,--build-file (default nil)  If build file name is different 
+         than `filename`.mk4
+    -f,--format  (default nil)  Output file format
+    -j,--jobname (default nil)  Set the jobname
+    -l,--lua  Use lualatex for document compilation
+    -m,--mode (default default) Switch which can be used in the makefile
+    -n,--no-tex4ht  Disable dvi file processing with tex4ht command
+    -s,--shell-escape Enables running external programs from LaTeX
+    -u,--utf8  For output documents in utf8 encoding
+    -v,--version  Print version number
+    -x,--xetex Use xelatex for document compilation
+    <filename> (string) Input file name
+
+
+It is still possible to invoke `make4ht` in the same way as `htlatex`:
+
+    make4ht filename "customcfg, charset=utf-8" "-cunihtf -utf8" "-dfoo"
+
+Note that this will not use `make4ht` routines for the output directory handling. 
+See section \ref{sec:output-dir} for more information about this issue.
+To use these routines, change the previous listing to:
+
+    make4ht -d foo filename "customcfg, charset=utf-8" "-cunihtf -utf8"
+
+This call has the same effect as the following:
+
+    make4ht -u -c customcfg -d foo filename
+
+
+Output directory doesn't have to exist, it will be created automatically. 
+Specified path can be relative to the current directory, or absolute:
+
+    make4ht -d use/current/dir/ filename
+    make4ht -d ../gotoparrentdir filename
+    make4ht -d ~/gotohomedir filename
+    make4ht -d c:\documents\windowspathsareworkingtoo filename
+
+The short options that don't take parameters can be collapsed:
+
+
+    make4ht -ulc customcfg -d foo filename
+
+
+To pass output from the other commands to `make4ht` use the `-` character as a
+filename. It is best to use this feature together with the `--jobname` or `-j`
+option.
+
+    cat hello.tex | make4ht -j world -
 
 # Why `make4ht`? -- `htlatex` issues
 
@@ -59,6 +118,9 @@ It can be much more involved for the `HTML 5` output in `UTF-8` encoding:
 
     make4ht -u filename.tex
 
+The `-u` option requires the `UTF-8` encoding. `HTML 5` is used as the default
+output format by `make4ht`.
+
 More information about the command line arguments can be found in the section
 \ref{sec:clioptions}.
 
@@ -68,30 +130,31 @@ More information about the command line arguments can be found in the section
 Another issue is the fixed compilation order and hard-coded number of LaTeX invocations.
 
 When we want to run a program that interacts with \LaTeX, such as `Makeindex`
-or `Bibtex`, we have two options. First is to create a new script based on
-`htlatex`, second is to execute `htlatex` twice. The second option means that
+or `Bibtex`, we have two options. First option is to create a new script based on
+`htlatex`, the second is to execute `htlatex` twice. The second option means that
 \LaTeX\ will be invoked six times, as each call to `htlatex` executes three
 calls to \LaTeX. This can lead to significantly long compilation times. 
 
-`make4ht` provides a solution for this issue using build files and extensions.
-These can be used for interaction with the external tools.
+`make4ht` provides a solution for this issue using the build file or extensions.
+These can be used for the interaction with external tools.
 
-It also provides compilation modes, which enables to select commands that
-should be executed using a command line option for the `make4ht` command.
+`make4ht`  also provides compilation modes, which enables to select commands that
+should be executed using a command line option.
 
-There is a built-in `draft` mode, which invokes \LaTeX\ only once, instead of the default three invocations.
-It is useful for the compilations of the document before the final stage, when
-it is not important to have all cross-references working.
-It can save quite a lot of the compilation time:
+There is a built-in `draft` mode, which invokes \LaTeX\ only once, instead of
+the default three invocations.  It is useful for the compilations of the
+document before the final stage, when it is not important to have all
+cross-references working. It can save quite a lot of the compilation time:
 
     make4ht -um draft filename.tex
 
 More information about the build files can be found in the section \ref{sec:buildfiles}.
 
 ## Handling of the generated files
+\label{sec:output-dir}
 
-There are also issues with a behaviour of the `t4ht` application. It reads the 
-`.lg` file, generated by the `tex4ht` command. This file contains
+There are also issues with behaviour of the `t4ht` application. It reads the 
+`.lg` file generated by the `tex4ht` command. This file contains
 information about the generated files, `CSS` instructions, calls to the external
 applications, instructions for image conversions, etc. 
 
@@ -106,12 +169,12 @@ should copy all output files to the correct destinations.
 
 ## Image conversion and post-processing of the generated files
 
-`tex4ht` can convert parts of the document to images. This is useful for
-example for diagrams or complicated math.
+`tex4ht` can convert parts of the document to images. This is useful 
+for diagrams or complicated math for example.
 
 The image conversion is configured in a
 [`.env` file](http://www.tug.org/applications/tex4ht/mn35.html#index35-73001).
-It has really strange syntax,  with 
+It has a bit strange syntax,  with 
 [operating system dependent](http://www.tug.org/applications/tex4ht/mn-unix.html#index27-69005) rules.
 `make4ht` provides simpler means for the image conversion in the build files.
 It is possible to change the image conversion parameters without a need to modify the `.env` file.
@@ -203,12 +266,12 @@ tidy
 \label{sec:buildfiles}
 
 `make4ht` supports build files. These are `Lua` scripts which can adjust
-the build process. You can request external applications like `bibtex` or `makeindex`,
+the build process. They can request external applications like `bibtex` or `makeindex`,
 pass options to the commands, modify the image conversion process, or post-process the
 generated files.
 
 `make4ht` tries to load default build file named as `filename + .mk4 extension`.
-You can choose different build file with `-e` or `--build-file` command line
+It is possible to select a different build file with `-e` or `--build-file` command line
 option.
 
 Sample build file:
@@ -216,40 +279,24 @@ Sample build file:
     Make:htlatex()
     Make:match("html$", "tidy -m -xml -utf8 -q -i ${filename}")
 
-`Make:htlatex()` is preconfigured command for calling LaTeX with `tex4ht`
-loaded on the input file. In this case, it will be called  one time. After
-compilation, the `tidy` command is executed on the output `HTML` file.
+`Make:htlatex()` is preconfigured command for calling LaTeX with the `tex4ht.sty` package
+loaded. In this example, it will be executed  only once. After the 
+compilation, the `tidy` command is executed on the output `HTML` files.
 
-Note that you don't have to call `tex4ht` and `t4ht` commands explicitly in the
+Note that it is not necessary to call `tex4ht` and `t4ht` commands explicitly in the
 build file, they are called automatically. 
 
 ## User commands
 
-You can add more commands like `Make:htlatex` using `Make:add` command:
+It is possible to add more commands like `Make:htlatex` using the `Make:add` command:
 
     Make:add("name", "command", {parameters}, repetition)
 
+This defines the `name` command, which can be then executed using `Make:name()`
+command in the build file. 
+
 The `name` and `command` parameters are required, rest of the parameters are optional.
 
-This defines `name` command, which can be then executed as `Make:name()` command.
-
-### Provided commands
-
-`Make:htlatex`
-
-:    One call to TeX engine with special configuration for `tex4ht` loading.
-
-`Make:latexmk`
-
-:    Use `Latexmk` for the document compilation. `tex4ht` will be loaded automatically.
-
-`Make:tex4ht`
-
-:    Process the `DVI` file and creates the output files.
-
-`Make:t4ht`
-
-:    Creates the CSS file.
 
 
 ### Command function
@@ -257,25 +304,29 @@ This defines `name` command, which can be then executed as `Make:name()` command
 The `command` parameter can be either string template or function:
 
     Make:add("text", "echo hello, input file: ${input}")
-    Make:add("function", function(params) 
+
+The template can get variable value from the parameters table using a
+`${var_name}` placeholder. Templates are executed using the operating system, so
+they should invoke existing OS commands. 
+
+    Make:add("sample_function", function(params) 
       for k, v in pairs(params) do 
         print(k..": "..v) 
       end, {custom="Hello world"}
     )
 
-The template can get variable value from the parameters table using a
-`${var_name}` placeholder. Templates are executed using operating system, so
-they should invoke existing OS commands. Function commands may execute system
-commands using `os.execute` function.
+
+Function commands receive the `make4ht` parameters as a Lua table. They can can
+execute the system commands using the `os.execute` function.
 
 
 ### Parameters table
 
-`parameters` parameter is optional, it can be table or `nil` value, which
+`parameters` parameter is optional, it can be table or `nil` value. The `nil` value
 should be used if you want to use the `repetition` parameter, but don't want to
 modify the parameters table. 
 
-The table with default parameters is passed to all commands, they can be accessed from command functions
+The table with default parameters is passed to all commands. They can be accessed from command functions
 or templates. When you specify your own parameters in the command definition, these additional
 parameters are added to the default parameters table for this particular
 command. You can override the default parameters in the parameters table.
@@ -286,36 +337,36 @@ The default parameters are following:
 
 `htlatex`
 
-:     used compiler
+:     used \TeX\ engine
 
 `input`
 
-:    it is output file name in fact
+:    output file name
 
 `tex_file`
 
-:    input TeX file
+:    input \TeX\ file
 
 `latex_par`
 
-:    parameters to `latex`
+:    command line parameters to the \TeX\ engine
 
 `packages`
 
 :    insert additional LaTeX code which is inserted before `\documentclass`.
-     Useful for passing options to packages or additional packages loading
+     Useful for passing options to packages or to load additional packages.
 
 `tex4ht_sty_par`
 
-:    parameters to `tex4ht.sty`
+:    options for `tex4ht.sty`
 
 `tex4ht_par`
 
-:     parameters to the `tex4ht` application
+:     command line options for the `tex4ht` command
 
 `t4ht_par`
 
-:    parameters to the `t4ht` application
+:    command line options for the `t4ht` command
 
 `outdir`
 
@@ -328,17 +379,17 @@ The default parameters are following:
 `correct_exit`
 
 :    expected `exit code` from the command. The compilation will be terminated
-     if the command `exit code` is different.
+     if exit code of the executed command  is different.
 
 
 ### Repetition
 
-Repetition is number which specifies a maximal number of executions of the
+The `repetition` parameter  specifies the maximum number of executions of the
 particular command.  This is used for instance for `tex4ht` and `t4ht`
 commands, as they should be executed only once in the compilation. They would
-be executed multiple times if you include them in the build file because they
+be executed multiple times when they are included in the build file, as they
 are called by `make4ht` by default. Because these commands allow only one
-`repetition`, the second execution will be blocked.
+`repetition`, the second execution is blocked.
 
 ### Expected exit code
 
@@ -346,12 +397,38 @@ You can set the expected exit code from a command with a `correct_exit` key in t
 parameters table. The compilation will be stopped when the command returns a
 different exit code. 
 
-This mechanism isn't used for LaTeX (for all TeX engines and formats, in
-fact), because it doesn't differentiate between fatal and non-fatal errors, and
-it returns the same exit code in all cases. Log parsing is used because of
-that, error code `1` is returned in the case of fatal error, `0` is used
+This mechanism isn't used for \TeX, because it doesn't differentiate between fatal and non-fatal errors, and
+it returns the same exit code in all cases. Because of this, log parsing is used instead.
+Error code value `1` is returned in the case of fatal error, `0` is used
 otherwise. The `Make.testlogfile` function can be used in the build file to
 detect compilation errors in the TeX log file.
+
+## Provided commands
+
+`Make:htlatex`
+
+:    One call to TeX engine with special configuration for `tex4ht` loading.
+
+`Make:latexmk`
+
+:    Use `Latexmk` for the document compilation. `tex4ht` will be loaded automatically.
+
+`Make:tex4ht`
+
+:    Process the `DVI` file and create output files.
+
+`Make:t4ht`
+
+:    Create the CSS file and generate images.
+
+`Make:biber`
+
+:    Process bibliography using the `biber` command.
+
+`Make:xindy`
+
+
+:    Generate index using Xindy index processor.
 
 ## File matches
 \label{sec:postprocessing}
@@ -959,57 +1036,6 @@ output for math.
       tex4ht_sty_par =",mathml"
     }
 
-# Command line options {#clioptions}
-\label{sec:clioptions}
-
-    make4ht - build system for tex4ht
-    Usage:
-    make4ht [options] filename ["tex4ht.sty op." "tex4ht op." 
-         "t4ht op" "latex op"]
-    -b,--backend (default tex4ht) Backend used for xml generation.
-         possible values: tex4ht or lua4ht
-    -c,--config (default xhtml) Custom config file
-    -d,--output-dir (default "")  Output directory
-    -e,--build-file (default nil)  If build file name is different 
-         than `filename`.mk4
-    -f,--format  (default nil)  Output file format
-    -j,--jobname (default nil)  Set the jobname
-    -l,--lua  Use lualatex for document compilation
-    -m,--mode (default default) Switch which can be used in the makefile
-    -n,--no-tex4ht  Disable dvi file processing with tex4ht command
-    -s,--shell-escape Enables running external programs from LaTeX
-    -u,--utf8  For output documents in utf8 encoding
-    -v,--version  Print version number
-    -x,--xetex Use xelatex for document compilation
-    <filename> (string) Input file name
-
-
-You can still invoke `make4ht` in the same way as `htlatex`:
-
-    make4ht filename "customcfg, charset=utf-8" "-cunihtf -utf8" "-dfoo"
-
-Note that this will not use `make4ht` routines for output directory making and
-copying. If you want to use them, change the line above to:
-
-    make4ht -d foo filename "customcfg, charset=utf-8" "-cunihtf -utf8"
-
-This call has the same effect as the following:
-
-    make4ht -u -c customcfg -d foo filename
-
-Output directory doesn't have to exist, it will be created automatically. 
-Specified path can be relative to current directory, or absolute:
-
-    make4ht -d use/current/dir/ filename
-    make4ht -d ../gotoparrentdir filename
-    make4ht -d ~/gotohomedir filename
-    make4ht -d c:\documents\windowspathsareworkingtoo filename
-
-To pass output from other commands to `make4ht` use the `-` character as a
-filename. It is best to use this feature together with the `--jobname` or `-j`
-option.
-
-    cat hello.tex | make4ht -j world -
 
 # Troubleshooting 
 
