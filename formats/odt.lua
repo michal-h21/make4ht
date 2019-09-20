@@ -23,9 +23,12 @@ Odtfile.__index = Odtfile
 
 Odtfile.new = function(archivename)
   local self = setmetatable({}, Odtfile)
-  -- create temporary directory
+  -- create a temporary file
   local tmpname = os.tmpname()
-  tmpname = tmpname:match("([a-zA-Z0-9_%-]+)$")
+  -- remove a temporary file, we are interested only in the unique file name
+  os.remove(tmpname)
+  -- get the unique dir name
+  tmpname = tmpname:match("([a-zA-Z0-9_%-%.]+)$")
   local status, msg = lfs.mkdir(tmpname)
   if not status then return nil, msg end
   -- make picture dir

@@ -1,5 +1,9 @@
 # Changelog
 
+- 2019/09/20
+
+    - fixed bugs in the temporary directory handling for the ODT output.
+
 - 2019/09/13
 
     - added `preprocess_input` extension. It enables compilation of formats
