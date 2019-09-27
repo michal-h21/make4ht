@@ -472,7 +472,7 @@ changes are then saved to the processed file.
 
 Several built-in filters are available, it is also possible to create a new ones.
 
-Example:
+Example that use only the built-in filters:
 
     local filter = require "make4ht-filter"
     local process = filter{"cleanspan", "fixligatures", "hruletohr"}
@@ -482,23 +482,18 @@ Example:
 Function `filter` accepts also function arguments, in this case this function
 takes file contents as a parameter and modified contents are returned.
 
-Example:
+Example with custom filter:
 
     local filter  = require "make4ht-filter"
     local changea = function(s) return s:gsub("a","z") end
     local process = filter{"cleanspan", "fixligatures", changea}
     Make:htlatex()
-    Make:htlatex()
     Make:match("html$",process)
 
 In this example, spurious span elements are joined, ligatures are decomposed,
-and then all letters 'a' are replaced with 'z' letters.
+and then all letters "a" are replaced with "z" letters.
 
-Some default `match` actions which can be used are available from  the
-`make4ht-filter` module.  It contains some functions which are useful for
-fixing some `tex4ht` bugs or shortcomings.
-
-Built-in filters are:
+Built-in filters are the following:
 
 cleanspan
 
@@ -585,7 +580,7 @@ idcolons
 
 joincharacters
 
-:  join consecutive `<span>` or `<mn>` elements.
+:  join consecutive `<span>` or `<mn>` elements. This DOM filter supersedes the `cleanspan` filter.
 
 joincolors
 
@@ -611,27 +606,29 @@ t4htlinks
 ## Image conversion
 \label{sec:imageconversion}
 
-It is possible to convert parts of LaTeX input to pictures, it is used
-for example for math or diagrams in `tex4ht`. 
+It is possible to convert parts of \LaTeX\ input to pictures. It can be used
+for math or diagrams in `tex4ht`, for example. 
 
 These pictures are stored in a special `dvi` file, which can be processed by
-the `dvi to image` commands. 
+a `dvi to image` command, such as `dvipng` or `dvisvgm`. 
 
-This conversion is normally configured in the `env file`,
-which is system dependent and which has a bit unintuitive syntax.
-This configuration is processed by the `t4ht` application and conversion
-commands are called for all pictures.
+This conversion is normally configured in the `tex4ht.env` file. This file
+is system dependent and it has quite unintuitive syntax.
+The configuration is processed by the `t4ht` application and the conversion
+command is called for all pictures.
 
 It is possible to disable `t4ht` image processing and configure image
-conversion in the build file:
+conversion in the build file using the `image` action:
 
     Make:image("png$",
     "dvipng -bg Transparent -T tight -o ${output}  -pp ${page} ${source}")
 
 
-`Make:image` takes two parameters, pattern to match image name and action.
-Action can be either string template with conversion command,
-or function which takes a table with parameters as an argument.
+`Make:image` takes two parameters, a `Lua` pattern to match the image name, and
+the action.
+
+Action can be either string template with the conversion command,
+or a function which takes a table with parameters as an argument.
 
 There are three parameters:
 
@@ -688,7 +685,10 @@ There are some functions to ease access to the settings:
 :   get settings for a filter
 
 
- It is possible to simplify the settings for the `ODT` format using these functions:
+For example, it is possible to request a conversion to the `ODT` format using
+these settings (note that it is now possible to use the `--format odt` option,
+which is superior to the following code. This one is intended purely for an
+ilustration):
 
     settings_add {
       tex4ht_sty_par =",ooffice",
@@ -716,14 +716,20 @@ These settings can be retrieved in the extensions and filters using the `get_fil
 # Configuration file {#configfile}
 
 It is possible to globally modify the build settings using the configuration
-file. New compilation commands can be added, extensions can be loaded or
-disabled and settings can be set.
+file. It is a special version of a build file where the global settings can be set.
+
+Common task for the configuration file can be declaration of the new commands,
+loading of the default filters or specification of a default build sequence. 
+
+One additional functionality not available in the build files are commands for
+enabling and disabling of extensions.
+
 
 ## Location 
 
-The configuration file can be saved either in
-`$HOME/.config/make4ht/config.lua` or in `.make4ht` in the current directory or
-it's parents (up to `$HOME`).
+The configuration file can be saved either in the
+`$HOME/.config/make4ht/config.lua` file, or in the `.make4ht` file placed in
+the current directory or it's parent directories (up to the `$HOME` directory). 
 
 ## Additional commands
 
