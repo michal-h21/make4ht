@@ -1,5 +1,9 @@
 # Changelog
 
+- 2019/09/27
+
+    - don't convert Latin 1 entities to Unicode in the `entities_to_unicode` extension.
+
 - 2019/09/20
 
     - fixed bugs in the temporary directory handling for the ODT output.
