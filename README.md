@@ -300,6 +300,7 @@ The `name` and `command` parameters are required, rest of the parameters are opt
 
 
 ### Command function
+\label{sec:commandfunction}
 
 The `command` parameter can be either string template or function:
 
@@ -438,39 +439,64 @@ Another type of action which can be specified in the build file is
 
     Make:match("html$", "tidy -m -xml -utf8 -q -i ${filename}")
 
-It tests output file names with `Lua` pattern matching and on matched items will
-execute a command or a function, specified in the second argument. Commands may be
-specified as strings, the templates will be expanded, `${var_name}` placeholders
-will be replaced with corresponding variables from the `parameters` table,
-described in the previous subsection. One additional variable is available:
-`filename`. It contains the name of the current output file.
-
 The above example will clean all output `HTML` files using the `tidy` command.
 
-If function is used instead, it will get two parameters.
-The first one is a current filename, the second one
-table with parameters. 
+The `match` action tests output file names using a `Lua` pattern matching function.  
+It executes a command or a function, specified in the second argument, on files
+whose filenames match the pattern. 
+
+The commands to be executed can be specified as strings. They can contain
+`${var_name}` placeholders, which are replaced with corresponding variables
+from the `parameters` table. The templating system was described in the
+subsection \ref{sec:commandfunction}. There is and additional variable
+available in this table, called `filename`. It contains the name of the current
+output file.
+
+
+If function is used instead, it will get two parameters.  The first one is the
+current filename, the second one is the `parameters` table. 
 
 
 
 ## Filters
+\label{sec:filters}
 
-Some default `match` actions which can be used are available from  the
-`make4ht-filter` module.  It contains some functions which are useful for
-fixing some `tex4ht` bugs or shortcomings.
+To make it easier to post-process the generated files using the `match`
+actions, `make4ht` provides a filtering mechanism thanks to the
+`make4ht-filter` module. 
+
+The `make4ht-filter` module returns a function which can be used for the filter
+chain building. Multiple filters can be chained into a pipeline. Each filter
+can modify the string that is passed to it from the previous filters. The
+changes are then saved to the processed file. 
+
+Several built-in filters are available, it is also possible to create a new ones.
 
 Example:
 
     local filter = require "make4ht-filter"
     local process = filter{"cleanspan", "fixligatures", "hruletohr"}
     Make:htlatex()
+    Make:match("html$",process)
+
+Function `filter` accepts also function arguments, in this case this function
+takes file contents as a parameter and modified contents are returned.
+
+Example:
+
+    local filter  = require "make4ht-filter"
+    local changea = function(s) return s:gsub("a","z") end
+    local process = filter{"cleanspan", "fixligatures", changea}
+    Make:htlatex()
     Make:htlatex()
     Make:match("html$",process)
 
-The `make4ht-filter` module return a function which can be used for the filter
-chain building. Multiple filters can be chained, each of them can modify the string
-which was modified by the previous filters. The changes are then saved to the
-processed file.
+In this example, spurious span elements are joined, ligatures are decomposed,
+and then all letters 'a' are replaced with 'z' letters.
+
+Some default `match` actions which can be used are available from  the
+`make4ht-filter` module.  It contains some functions which are useful for
+fixing some `tex4ht` bugs or shortcomings.
 
 Built-in filters are:
 
@@ -524,20 +550,6 @@ svg-height
 :    some  SVG images produced by `dvisvgm` seem to have wrong dimensions. This filter
      tries to set the correct image size.
 
-Function `filter` accepts also function arguments, in this case this function
-takes file contents as a parameter and modified contents are returned.
-
-Example:
-
-    local filter  = require "make4ht-filter"
-    local changea = function(s) return s:gsub("a","z") end
-    local process = filter{"cleanspan", "fixligatures", changea}
-    Make:htlatex()
-    Make:htlatex()
-    Make:match("html$",process)
-
-In this example, spurious span elements are joined, ligatures are decomposed,
-and then all letters 'a' are replaced with 'z' letters.
 
 ## DOM filters
 
@@ -818,19 +830,6 @@ Example
       fontdir="fonts/TeX/woff/" 
     }
 
-## The `aeneas` filter
-
-skip\_elements
-
-:  List of CSS selectors that match elements which shouldn't be processed. Default value: `{ "math", "svg"}`.
-
-id\_prefix 
-
-:  prefix used in the ID attribute forming.
-
-sentence\_match 
-
-:  Lua pattern used to match a sentence. Default value: `"([^%.^%?^!]*)([%.%?!]?)"`.
 
 ## The `staticsite` filter and extension
 
@@ -896,6 +895,20 @@ template
 `odttemplate` can also get the template filename from the `odttemplate` option from `tex4ht_sty_par` parameter. It can be set useing following command line call, for example:
 
      make4ht -f odt+odttemplate filename.tex "odttemplate=template.odt"
+
+## The `aeneas` filter
+
+skip\_elements
+
+:  List of CSS selectors that match elements which shouldn't be processed. Default value: `{ "math", "svg"}`.
+
+id\_prefix 
+
+:  prefix used in the ID attribute forming.
+
+sentence\_match 
+
+:  Lua pattern used to match a sentence. Default value: `"([^%.^%?^!]*)([%.%?!]?)"`.
 
 ## The  `make4ht-aeneas-config` package
 
