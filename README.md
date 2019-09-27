@@ -453,7 +453,7 @@ table with parameters.
 
 
 
-### Filters
+## Filters
 
 Some default `match` actions which can be used are available from  the
 `make4ht-filter` module.  It contains some functions which are useful for
@@ -539,7 +539,7 @@ Example:
 In this example, spurious span elements are joined, ligatures are decomposed,
 and then all letters 'a' are replaced with 'z' letters.
 
-### DOM filters
+## DOM filters
 
 DOM filters use the [`LuaXML`](https://ctan.org/pkg/luaxml) library to modify
 directly the XML object. This enables more powerful
@@ -593,144 +593,6 @@ odtpartable
 t4htlinks
 
 :  fix hyperlinks in the ODT format.
-
-### make4ht-aeneas-config package
-
-Companion for the `aeneas` DOM filter is the `make4ht-aeneas-config` plugin. It
-can be used to write Aeneas configuration file or execute Aeneas on the
-generated HTML files.
-
-Available functions:
-
-write\_job(parameters)
-
-:  write Aenas job configuration to `config.xml` file. See the [Aeneas
-   documentation](https://www.readbeyond.it/aeneas/docs/clitutorial.html#processing-jobs)
-   for more information about jobs.
-
-execute(parameters)
-
-:  execute Aeneas.
-
-process\_files(parameters)
-
-:  process the audio and generated subtitle files.
-
-
-By default, the `smil` file is created. It is assumed that there is audio file
-in `mp3` format named as the TeX file. It is possible to use different formats
-and file names using mapping.
-
-The configuration options can be passed directly to the functions or set using
-`filter_settings "aeneas-config" {parameters}` function.
-
-
-Available parameters:
-
-
-lang 
-
-:  document language. It is interfered from the HTML file, so it is not necessary to set it. 
-
-map 
-
-:  mapping between HTML, audio and subtitle files. More info bellow. 
-
-text\_type 
-
-:  type of the input. The `aeneas` DOM filter produces `unparsed` text type.
-
-id\_sort 
-
-:  sorting of id attributes. Default value is `numeric`.
-
-id\_regex 
-
-:  regular expression to parse the id attributes.
-
-sub\_format 
-
-:  generated subtitle format. Default `smil`.
-
-
-Additional parameters for the job configuration file:
-
-- description 
-- prefix 
-- config\_name 
-- keep\_config 
-
-
-
-It is possible to generate multiple HTML files from the LaTeX source. For
-example, `tex4ebook` generates separate file for each chapter or section. It is
-possible to set options for each HTML file, in particular names of the
-corresponding audio files. This mapping is done using `map` parameter. 
-
-Example:
-
-    filter_settings "aeneas-config" {
-      map = {
-        ["sampleli1.html"] = {audio_file="sample.mp3"}, 
-        ["sample.html"] = false
-      }
-    }
-
-Table keys are the configured file names. It is necessary to insert them as
-`["filename.html"]`, because of Lua syntax rules.
-
-This example maps audio file `sample.mp3` to a section subpage. The main HTML
-file, which may contain title and table of contents doesn't have a
-corresponding audio file.
-
-Filenames of the sub files corresponds to the chapter numbers, so they are not
-stable when a new chapter is added. It is possible to request file names
-interfered from the chapter titles using the `sec-filename` option or `tex4ht`.
-
-Available `map` options:
-
-
-audio\_file 
-
-:  the corresponding audio file 
-
-sub\_file 
-
-:  name of the generated subtitle file
-
-The following options are same as their counter-parts from the main parameters table and generally don't need to be set:
-
-- prefix 
-- file\_desc 
-- file\_id 
-- text\_type 
-- id\_sort
-- id\_prefix 
-- sub\_format 
-
-
-Full example:
-
-
-    local domfilter = require "make4ht-domfilter"
-    local aeneas_config = require "make4ht-aeneas-config"
-    
-    filter_settings "aeneas-config" {
-      map = {
-        ["krecekli1.xhtml"] = {audio_file="krecek.mp3"}, 
-        ["krecek.xhtml"] = false
-      }
-    }
-    
-    local process = domfilter {"aeneas"}
-    Make:match("html$", process)
-
-    if mode == "draft" then
-      aeneas_config.process_files {}
-    else
-      aeneas_config.execute {}
-    end
-
 
 
 
@@ -837,167 +699,6 @@ These settings can be retrieved in the extensions and filters using the `get_fil
        return input
     end
        
-## List of available settings for filters and extensions.
-
-These settings may be set using `filter_settings` function.
-
-### The `tidy` extension
-
-options
-
-:  command line options for the `tidy` command. Default value is `-m -utf8 -w 512 -q`.
-
-### The `collapsetoc` dom filter
-
-`toc_query` 
-
-:  CSS selector for selecting the table of contens container. 
-
-`title_query`
-
-:  CSS selector for selecting all elements that contain section ID attribute.
-
-`toc_levels` 
-
-:  table containing hiearchy of classes used in TOC
-
-Default values:
-
-    filter_settings "collapsetoc" {
-      toc_query = ".tableofcontents",
-      title_query = ".partHead a, .chapterHead a, .sectionHead a, .subsectionHead a",
-      toc_levels = {"partToc", "chapterToc", "sectionToc", "subsectionToc", "subsubsectionToc"}
-    }
-
-### The `fixinlines` dom filter 
-
-inline\_elements
-
-:  table of inline elements which shouldn't be direct descendants of the `body` element. The element names should be table keys, the values should be true.
-
-Example
-
-    filter_settings "fixinlines" {inline_elements = {a = true, b = true}}
-
-### The `joincharacters` dom filter
-
-charclasses 
-
-:  table of elements which should be concetanated when two or more of such elements with a same value of the `class` attribute are placed one after another.
-
-Example
-
-    filter_settings "joincharacters" { charclasses = { span=true, mn = true}}
-
-### The `mathjaxnode` filter {#mathjaxsettings}
-
-options
-
-:  command line options for the `mjpage` command. Default value is `--output CommonHTML`
-
-Example
-
-    filter_settings "mathjaxnode" {
-      options="--output SVG --font Neo-Euler"
-    }
-
-cssfilename  
-
-:  `mjpage` puts some CSS code into the HTML pages. `mathjaxnode` extracts this information and saves it to a standalone CSS file. Default CSS filename is `mathjax-chtml.css`
-
-fontdir
-
-:  directory with MathJax font files. This option enables use of local fonts, which
-   is usefull in Epub conversion, for example. The font directory should be
-   sub-directory of the current directory. Only TeX font is supported at the moment.
-
-Example
-
-
-    filter_settings "mathjaxnode" {
-      fontdir="fonts/TeX/woff/" 
-    }
-
-### The `aeneas` filter
-
-skip\_elements
-
-:  List of CSS selectors that match elements which shouldn't be processed. Default value: `{ "math", "svg"}`.
-
-id\_prefix 
-
-:  prefix used in the ID attribute forming.
-
-sentence\_match 
-
-:  Lua pattern used to match a sentence. Default value: `"([^%.^%?^!]*)([%.%?!]?)"`.
-
-### The `staticsite` filter and extension
-
-site\_root 
-
-:  directory where generated files should be copied.
-
-map
-
-:  table where keys are patterns that match filenames, value contains destination directoryfor matched files, relative to the `site_root` (it is possible to use `..` to swich to parent directory).
-
-file\_pattern 
-
-:  pattern used for filename generation. It is possible to use string templates and format strings for `os.date` function. Default value of `%Y-%m-%d-${input}` creates names in the form of `YYYY-MM-DD-file_name`.
-
-header
-
-:  table with variables to be set in the YAML header in HTML files. If the table value is a function, it is executed with current parameters and HTML page DOM object as arguments.
-
-Example:
-
-
-    local outdir = os.getenv "blog_root" 
-    
-    filter_settings "staticsite" {
-      site_root = outdir, 
-      map = {
-        [".css$"] = "../css/"
-      },
-      header = {
-         layout="post",
-         date = function(parameters, dom)
-           return os.date("!%Y-%m-%d %T", parameters.time)
-         end
-      }
-    }
-
-### The `dvisvgm_hashes` extension
-
-options
-
-:  command line options for Dvisvgm. The default value is `-n --exact -c 1.15,1.15`.
-
-cpu_cnt
-
-:  number of processor cores used for conversion. The extension tries to detect the available cores automatically by default.
-
-parallel_size
-
-:  number of pages used in each Dvisvgm call. The extension detects changed pages in the DVI file and construct multiple calls to Dvisvgm with only changed pages.
-
-scale
-
-:  SVG scaling.
-
-### The `odttemplate` filter and extension
-
-template
-
-:  filename of the template `ODT` file 
-
-
-`odttemplate` can also get the template filename from the `odttemplate` option from `tex4ht_sty_par` parameter. It can be set useing following command line call, for example:
-
-     make4ht -f odt+odttemplate filename.tex "odttemplate=template.odt"
-
-
 
 
 # Configuration file {#configfile}
@@ -1036,6 +737,305 @@ output for math.
       tex4ht_sty_par =",mathml"
     }
 
+# List of available settings for filters and extensions.
+
+These settings may be set using `filter_settings` function in a build file or in the `make4ht` configuration file.
+
+## The `tidy` extension
+
+options
+
+:  command line options for the `tidy` command. Default value is `-m -utf8 -w 512 -q`.
+
+## The `collapsetoc` dom filter
+
+`toc_query` 
+
+:  CSS selector for selecting the table of contens container. 
+
+`title_query`
+
+:  CSS selector for selecting all elements that contain section ID attribute.
+
+`toc_levels` 
+
+:  table containing hiearchy of classes used in TOC
+
+Default values:
+
+    filter_settings "collapsetoc" {
+      toc_query = ".tableofcontents",
+      title_query = ".partHead a, .chapterHead a, .sectionHead a, .subsectionHead a",
+      toc_levels = {"partToc", "chapterToc", "sectionToc", "subsectionToc", "subsubsectionToc"}
+    }
+
+## The `fixinlines` dom filter 
+
+inline\_elements
+
+:  table of inline elements which shouldn't be direct descendants of the `body` element. The element names should be table keys, the values should be true.
+
+Example
+
+    filter_settings "fixinlines" {inline_elements = {a = true, b = true}}
+
+## The `joincharacters` dom filter
+
+charclasses 
+
+:  table of elements which should be concetanated when two or more of such elements with a same value of the `class` attribute are placed one after another.
+
+Example
+
+    filter_settings "joincharacters" { charclasses = { span=true, mn = true}}
+
+## The `mathjaxnode` filter {#mathjaxsettings}
+
+options
+
+:  command line options for the `mjpage` command. Default value is `--output CommonHTML`
+
+Example
+
+    filter_settings "mathjaxnode" {
+      options="--output SVG --font Neo-Euler"
+    }
+
+cssfilename  
+
+:  `mjpage` puts some CSS code into the HTML pages. `mathjaxnode` extracts this information and saves it to a standalone CSS file. Default CSS filename is `mathjax-chtml.css`
+
+fontdir
+
+:  directory with MathJax font files. This option enables use of local fonts, which
+   is usefull in Epub conversion, for example. The font directory should be
+   sub-directory of the current directory. Only TeX font is supported at the moment.
+
+Example
+
+
+    filter_settings "mathjaxnode" {
+      fontdir="fonts/TeX/woff/" 
+    }
+
+## The `aeneas` filter
+
+skip\_elements
+
+:  List of CSS selectors that match elements which shouldn't be processed. Default value: `{ "math", "svg"}`.
+
+id\_prefix 
+
+:  prefix used in the ID attribute forming.
+
+sentence\_match 
+
+:  Lua pattern used to match a sentence. Default value: `"([^%.^%?^!]*)([%.%?!]?)"`.
+
+## The `staticsite` filter and extension
+
+site\_root 
+
+:  directory where generated files should be copied.
+
+map
+
+:  table where keys are patterns that match filenames, value contains destination directoryfor matched files, relative to the `site_root` (it is possible to use `..` to swich to parent directory).
+
+file\_pattern 
+
+:  pattern used for filename generation. It is possible to use string templates and format strings for `os.date` function. Default value of `%Y-%m-%d-${input}` creates names in the form of `YYYY-MM-DD-file_name`.
+
+header
+
+:  table with variables to be set in the YAML header in HTML files. If the table value is a function, it is executed with current parameters and HTML page DOM object as arguments.
+
+Example:
+
+
+    local outdir = os.getenv "blog_root" 
+    
+    filter_settings "staticsite" {
+      site_root = outdir, 
+      map = {
+        [".css$"] = "../css/"
+      },
+      header = {
+         layout="post",
+         date = function(parameters, dom)
+           return os.date("!%Y-%m-%d %T", parameters.time)
+         end
+      }
+    }
+
+## The `dvisvgm_hashes` extension
+
+options
+
+:  command line options for Dvisvgm. The default value is `-n --exact -c 1.15,1.15`.
+
+cpu_cnt
+
+:  number of processor cores used for conversion. The extension tries to detect the available cores automatically by default.
+
+parallel_size
+
+:  number of pages used in each Dvisvgm call. The extension detects changed pages in the DVI file and construct multiple calls to Dvisvgm with only changed pages.
+
+scale
+
+:  SVG scaling.
+
+## The `odttemplate` filter and extension
+
+template
+
+:  filename of the template `ODT` file 
+
+
+`odttemplate` can also get the template filename from the `odttemplate` option from `tex4ht_sty_par` parameter. It can be set useing following command line call, for example:
+
+     make4ht -f odt+odttemplate filename.tex "odttemplate=template.odt"
+
+## The  `make4ht-aeneas-config` package
+
+Companion for the `aeneas` DOM filter is the `make4ht-aeneas-config` plugin. It
+can be used to write Aeneas configuration file or execute Aeneas on the
+generated HTML files.
+
+Available functions:
+
+write\_job(parameters)
+
+:  write Aenas job configuration to `config.xml` file. See the [Aeneas
+   documentation](https://www.readbeyond.it/aeneas/docs/clitutorial.html#processing-jobs)
+   for more information about jobs.
+
+execute(parameters)
+
+:  execute Aeneas.
+
+process\_files(parameters)
+
+:  process the audio and generated subtitle files.
+
+
+By default, the `smil` file is created. It is assumed that there is audio file
+in `mp3` format named as the TeX file. It is possible to use different formats
+and file names using mapping.
+
+The configuration options can be passed directly to the functions or set using
+`filter_settings "aeneas-config" {parameters}` function.
+
+
+### Available parameters
+
+
+lang 
+
+:  document language. It is interfered from the HTML file, so it is not necessary to set it. 
+
+map 
+
+:  mapping between HTML, audio and subtitle files. More info bellow. 
+
+text\_type 
+
+:  type of the input. The `aeneas` DOM filter produces `unparsed` text type.
+
+id\_sort 
+
+:  sorting of id attributes. Default value is `numeric`.
+
+id\_regex 
+
+:  regular expression to parse the id attributes.
+
+sub\_format 
+
+:  generated subtitle format. Default `smil`.
+
+
+### Additional parameters for the job configuration file
+
+- description 
+- prefix 
+- config\_name 
+- keep\_config 
+
+
+
+It is possible to generate multiple HTML files from the LaTeX source. For
+example, `tex4ebook` generates separate file for each chapter or section. It is
+possible to set options for each HTML file, in particular names of the
+corresponding audio files. This mapping is done using `map` parameter. 
+
+Example:
+
+    filter_settings "aeneas-config" {
+      map = {
+        ["sampleli1.html"] = {audio_file="sample.mp3"}, 
+        ["sample.html"] = false
+      }
+    }
+
+Table keys are the configured file names. It is necessary to insert them as
+`["filename.html"]`, because of Lua syntax rules.
+
+This example maps audio file `sample.mp3` to a section subpage. The main HTML
+file, which may contain title and table of contents doesn't have a
+corresponding audio file.
+
+Filenames of the sub files corresponds to the chapter numbers, so they are not
+stable when a new chapter is added. It is possible to request file names
+interfered from the chapter titles using the `sec-filename` option or `tex4ht`.
+
+### Available `map` options
+
+
+audio\_file 
+
+:  the corresponding audio file 
+
+sub\_file 
+
+:  name of the generated subtitle file
+
+The following options are same as their counter-parts from the main parameters table and generally don't need to be set:
+
+- prefix 
+- file\_desc 
+- file\_id 
+- text\_type 
+- id\_sort
+- id\_prefix 
+- sub\_format 
+
+
+### Full example
+
+
+    local domfilter = require "make4ht-domfilter"
+    local aeneas_config = require "make4ht-aeneas-config"
+    
+    filter_settings "aeneas-config" {
+      map = {
+        ["krecekli1.xhtml"] = {audio_file="krecek.mp3"}, 
+        ["krecek.xhtml"] = false
+      }
+    }
+    
+    local process = domfilter {"aeneas"}
+    Make:match("html$", process)
+
+    if mode == "draft" then
+      aeneas_config.process_files {}
+    else
+      aeneas_config.execute {}
+    end
+
+
+
 
 # Troubleshooting 
 
@@ -1064,7 +1064,9 @@ The former way is preferable, though.
 
 ## Filenames containing spaces
 
-`tex4ht` cannot handle filenames containing spaces. `make4ht` thus replaces spaces in input file names with underscores, so generated XML files use underscores instead of spaces as well.
+`tex4ht` command cannot handle filenames containing spaces. `make4ht` because
+of this replaces spaces in the input file names with underscores. The generated
+XML file names use underscores instead of spaces as well.
 
 ## Filenames containing non-ASCII characters
 
