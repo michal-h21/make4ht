@@ -458,7 +458,7 @@ current filename, the second one is the `parameters` table.
 
 
 
-## Filters
+### Filters
 \label{sec:filters}
 
 To make it easier to post-process the generated files using the `match`
@@ -546,9 +546,10 @@ svg-height
      tries to set the correct image size.
 
 
-## DOM filters
+### DOM filters
 
-DOM filters use the [`LuaXML`](https://ctan.org/pkg/luaxml) library to modify
+DOM filters are variant of filters that use the
+[`LuaXML`](https://ctan.org/pkg/luaxml) library to modify
 directly the XML object. This enables more powerful
 operations than the regex based filters from the previous section. 
 
@@ -638,7 +639,7 @@ There are three parameters:
 
 ## The `mode` variable
 
-There is global `mode` variable available in the build file. It contains
+The `mode` variable available in the build process contains 
 contents of the `--mode` command line option.  It can be used to run some commands
 conditionally. For example:
 
@@ -651,22 +652,26 @@ conditionally. For example:
      end
 
 In this example (which is the default configuration used by `make4ht`),
-LaTeX is called only once when `make4ht` is called with `draft` mode:
+\LaTeX\ is called only once when `make4ht` is called with the `draft` mode:
     
     make4ht -m draft filename
 
 ## The `settings` table
 
-You may want to access to the parameters also outside commands, file matches
-and image conversion functions. For example, if you want to convert your file to
-the `OpenDocument Format (ODT)`, you can use the following settings, based on the `oolatex`
-command:
+It is possible to access the parameters outside commands, file matches
+and image conversion functions. For example, to convert the document to
+the `OpenDocument Format (ODT)`, the following settings can be used. They are
+based on the `oolatex` command:
 
     settings.tex4ht_sty_par = settings.tex4ht_sty_par ..",ooffice"
     settings.tex4ht_par = settings.tex4ht_par .. " ooffice/! -cmozhtf"
     settings.t4ht_par = settings.t4ht_par .. " -cooxtpipes -coo "
 
-There are some functions to ease access to the settings:
+(Note that it is possible to use the `--format odt` option
+which is superior to the previous code. This example is intended just as an
+illustration)
+
+There are some functions to simplify access to the settings:
 
 `set_settings{parameters}`
 
@@ -685,10 +690,7 @@ There are some functions to ease access to the settings:
 :   get settings for a filter
 
 
-For example, it is possible to request a conversion to the `ODT` format using
-these settings (note that it is now possible to use the `--format odt` option,
-which is superior to the following code. This one is intended purely for an
-ilustration):
+For example, it is possible to simplify the sample from the previous code listings:
 
     settings_add {
       tex4ht_sty_par =",ooffice",
@@ -769,7 +771,7 @@ options
 
 `toc_query` 
 
-:  CSS selector for selecting the table of contens container. 
+:  CSS selector for selecting the table of contents container. 
 
 `title_query`
 
@@ -777,7 +779,7 @@ options
 
 `toc_levels` 
 
-:  table containing hiearchy of classes used in TOC
+:  table containing hierarchy of classes used in TOC
 
 Default values:
 
@@ -801,7 +803,7 @@ Example
 
 charclasses 
 
-:  table of elements which should be concetanated when two or more of such elements with a same value of the `class` attribute are placed one after another.
+:  table of elements which should be concatenated when two or more of such elements with a same value of the `class` attribute are placed one after another.
 
 Example
 
@@ -826,7 +828,7 @@ cssfilename
 fontdir
 
 :  directory with MathJax font files. This option enables use of local fonts, which
-   is usefull in Epub conversion, for example. The font directory should be
+   is useful in the conversion to ePub, for example. The font directory should be
    sub-directory of the current directory. Only TeX font is supported at the moment.
 
 Example
@@ -845,7 +847,7 @@ site\_root
 
 map
 
-:  table where keys are patterns that match filenames, value contains destination directoryfor matched files, relative to the `site_root` (it is possible to use `..` to swich to parent directory).
+:  table where keys are patterns that match filenames, value contains destination directory for the matched files, relative to the `site_root` (it is possible to use `..` to switch to a parent directory).
 
 file\_pattern 
 
@@ -881,7 +883,7 @@ options
 
 cpu_cnt
 
-:  number of processor cores used for conversion. The extension tries to detect the available cores automatically by default.
+:  number of processor cores used for the conversion. The extension tries to detect the available cores automatically by default.
 
 parallel_size
 
@@ -898,7 +900,7 @@ template
 :  filename of the template `ODT` file 
 
 
-`odttemplate` can also get the template filename from the `odttemplate` option from `tex4ht_sty_par` parameter. It can be set useing following command line call, for example:
+`odttemplate` can also get the template filename from the `odttemplate` option from `tex4ht_sty_par` parameter. It can be set using the following command line call:
 
      make4ht -f odt+odttemplate filename.tex "odttemplate=template.odt"
 
