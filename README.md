@@ -2,7 +2,7 @@
 
 # Introduction
 
-`make4ht` is a simple build system for \TeX4ht, \TeX\ to XML converter. It provides a command line tool
+`make4ht` is a build system for \TeX4ht, \TeX\ to XML converter. It provides a command line tool
 that drive the conversion process. It also provides a library which can be used to create
 customized conversion tools. An example of such conversion tool is
 [tex4ebook](https://github.com/michal-h21/tex4ebook), tool for conversion from \TeX\ to
@@ -127,15 +127,18 @@ More information about the command line arguments can be found in the section
 
 ## Compilation sequence
 
-Another issue is the fixed compilation order and hard-coded number of \LaTeX\ invocations.
+`htlatex` has fixed compilation order and hard-coded number of \LaTeX\ invocations. 
 
+It is not possible to execute additional commands during the compilation.
 When we want to run a program that interacts with \LaTeX, such as `Makeindex`
 or `Bibtex`, we have two options. First option is to create a new script based on
-`htlatex`, the second is to execute `htlatex` twice. The second option means that
-\LaTeX\ will be invoked six times, as each call to `htlatex` executes three
-calls to \LaTeX. This can lead to significantly long compilation times. 
+`htlatex` and add the wanted commands to the modified script. The second option
+is to execute `htlatex`, then the additional and then `htlatex` again. The
+second option means that \LaTeX\ will be invoked six times, as each call to
+`htlatex` executes three calls to \LaTeX. This can lead to significantly long
+compilation times. 
 
-`make4ht` provides a solution for this issue using the build file or extensions.
+`make4ht` provides a solution for this issue using a build file, or extensions.
 These can be used for the interaction with external tools.
 
 `make4ht`  also provides compilation modes, which enables to select commands that
@@ -143,8 +146,8 @@ should be executed using a command line option.
 
 There is a built-in `draft` mode, which invokes \LaTeX\ only once, instead of
 the default three invocations.  It is useful for the compilations of the
-document before the final stage, when it is not important to have all
-cross-references working. It can save quite a lot of the compilation time:
+document before its final stage, when it is not important that  all
+cross-references work. It can save quite a lot of the compilation time:
 
     make4ht -um draft filename.tex
 
