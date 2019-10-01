@@ -760,6 +760,14 @@ output for math.
       tex4ht_sty_par =",mathml"
     }
 
+# Development
+
+## Custom filters
+
+## New extensions
+
+## How to add new output format
+
 # List of available settings for filters and extensions.
 
 These settings may be set using `filter_settings` function in a build file or in the `make4ht` configuration file.
