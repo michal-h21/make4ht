@@ -2,10 +2,10 @@
 
 # Introduction
 
-`make4ht` is a simple build system for `tex4ht`, \TeX\ to XML converter. It provides a command line tool
+`make4ht` is a simple build system for \TeX4ht, \TeX\ to XML converter. It provides a command line tool
 that drive the conversion process. It also provides a library which can be used to create
 customized conversion tools. An example of such conversion tool is
-[tex4ebook](https://github.com/michal-h21/tex4ebook), used for conversion of \TeX\ to
+[tex4ebook](https://github.com/michal-h21/tex4ebook), tool for conversion from \TeX\ to
 ePub and other e-book formats.
 
 
@@ -13,13 +13,13 @@ The basic conversion from \LaTeX\ to `HTML` using `make4ht` can be executed usin
 
     make4ht filename.tex
 
-It will produce file `filename.html` if the compilation goes without fatal errors.
+It will produce a file named `filename.html` if the compilation goes without fatal errors.
 
 
 # Command line options {#clioptions}
 \label{sec:clioptions}
 
-    make4ht - build system for tex4ht
+    make4ht - build system for TeX4ht
     Usage:
     make4ht [options] filename ["tex4ht.sty op." "tex4ht op." 
          "t4ht op" "latex op"]
@@ -41,7 +41,7 @@ It will produce file `filename.html` if the compilation goes without fatal error
     <filename> (string) Input file name
 
 
-It is still possible to invoke `make4ht` in the same way as `htlatex`:
+It is still possible to invoke `make4ht` in the same way as is invoked `htlatex`:
 
     make4ht filename "customcfg, charset=utf-8" "-cunihtf -utf8" "-dfoo"
 
@@ -79,10 +79,10 @@ option.
 # Why `make4ht`? -- `htlatex` issues
 
 
-`tex4ht` system supports several output formats, most notably `XHTML`, `HTML 5`
+\TeX4ht\ system supports several output formats, most notably `XHTML`, `HTML 5`
 and `ODT`, but it also supports `TEI` or `Docbook`.
 
-The conversion can be invoked using several scripts distributed with `tex4ht`.
+The conversion can be invoked using several scripts, which are distributed with \TeX4ht.
 They differ in parameters passed to the underlying commands.
 
 These scripts invoke \LaTeX\ or Plain \TeX\ with special instructions to load
@@ -93,7 +93,7 @@ is then processed using the `tex4ht` command, which in conjunction with the
 
 ## Passing command line arguments
 
-The basic conversion script provided by `tex4ht` system is named `htlatex`. It  compiles \LaTeX\  
+The basic conversion script provided by \TeX4ht\ system is named `htlatex`. It  compiles \LaTeX\  
 files to `HTML` with this command sequence:
 
     latex $latex_options 'code for loading tex4ht.sty \input{filename}'
@@ -127,7 +127,7 @@ More information about the command line arguments can be found in the section
 
 ## Compilation sequence
 
-Another issue is the fixed compilation order and hard-coded number of LaTeX invocations.
+Another issue is the fixed compilation order and hard-coded number of \LaTeX\ invocations.
 
 When we want to run a program that interacts with \LaTeX, such as `Makeindex`
 or `Bibtex`, we have two options. First option is to create a new script based on
@@ -169,10 +169,10 @@ should copy all output files to the correct destinations.
 
 ## Image conversion and post-processing of the generated files
 
-`tex4ht` can convert parts of the document to images. This is useful 
-for diagrams or complicated math for example.
+\TeX4ht\ can convert parts of the document to images. This is useful 
+for diagrams or complicated math, for example.
 
-The image conversion is configured in a
+By default, the image conversion is configured in a
 [`.env` file](http://www.tug.org/applications/tex4ht/mn35.html#index35-73001).
 It has a bit strange syntax,  with 
 [operating system dependent](http://www.tug.org/applications/tex4ht/mn-unix.html#index27-69005) rules.
@@ -279,7 +279,7 @@ Sample build file:
     Make:htlatex()
     Make:match("html$", "tidy -m -xml -utf8 -q -i ${filename}")
 
-`Make:htlatex()` is preconfigured command for calling LaTeX with the `tex4ht.sty` package
+`Make:htlatex()` is preconfigured command for calling \LaTeX\ with the `tex4ht.sty` package
 loaded. In this example, it will be executed  only once. After the 
 compilation, the `tidy` command is executed on the output `HTML` files.
 
@@ -354,8 +354,8 @@ The default parameters are following:
 
 `packages`
 
-:    insert additional LaTeX code which is inserted before `\documentclass`.
-     Useful for passing options to packages or to load additional packages.
+:    additional \LaTeX\ code  inserted before `\documentclass`.
+     Useful for passing options to packages used in the document or to load additional packages.
 
 `tex4ht_sty_par`
 
@@ -408,11 +408,11 @@ detect compilation errors in the TeX log file.
 
 `Make:htlatex`
 
-:    One call to TeX engine with special configuration for `tex4ht` loading.
+:    One call to TeX engine with special configuration for loading of the `tex4ht.sty` package.
 
 `Make:latexmk`
 
-:    Use `Latexmk` for the document compilation. `tex4ht` will be loaded automatically.
+:    Use `Latexmk` for the document compilation. `tex4ht.sty` will be loaded automatically.
 
 `Make:tex4ht`
 
@@ -510,12 +510,12 @@ fixligatures
 hruletohr
 
 :   `\hrule` commands are translated to series of underscore characters
-    by `tex4ht`, this filter translate these underscores to `<hr>` elements
+    by \TeX4ht, this filter translate these underscores to `<hr>` elements
 
 entites
 
 :    convert prohibited named entities to numeric entities (currently, only
-     `&nbsp;`, as it causes validation errors, and `tex4ht` is producing it
+     `&nbsp;`, as it causes validation errors, and \TeX4ht\ produces it
      sometimes)
 
 fix-links
@@ -607,8 +607,8 @@ t4htlinks
 ## Image conversion
 \label{sec:imageconversion}
 
-It is possible to convert parts of \LaTeX\ input to pictures. It can be used
-for math or diagrams in `tex4ht`, for example. 
+It is possible to convert parts of the \LaTeX\ input as pictures. It can be used
+for preserving the appearance of  math or diagrams, for example. 
 
 These pictures are stored in a special `dvi` file, which can be processed by
 a `dvi to image` command, such as `dvipng` or `dvisvgm`. 
@@ -847,15 +847,22 @@ site\_root
 
 map
 
-:  table where keys are patterns that match filenames, value contains destination directory for the matched files, relative to the `site_root` (it is possible to use `..` to switch to a parent directory).
+:  hash table where keys contain patterns that match filenames and values contain
+destination directory for the matched files. The destination directories are
+relative to the `site_root` (it is possible to use `..` to switch to a parent
+directory).
 
 file\_pattern 
 
-:  pattern used for filename generation. It is possible to use string templates and format strings for `os.date` function. Default value of `%Y-%m-%d-${input}` creates names in the form of `YYYY-MM-DD-file_name`.
+:  pattern used for filename generation. It is possible to use string templates
+and format strings for `os.date` function. Default value of `%Y-%m-%d-${input}`
+creates names in the form of `YYYY-MM-DD-file_name`.
 
 header
 
-:  table with variables to be set in the YAML header in HTML files. If the table value is a function, it is executed with current parameters and HTML page DOM object as arguments.
+:  table with variables to be set in the YAML header in HTML files. If the
+table value is a function, it is executed with current parameters and HTML page
+DOM object as arguments.
 
 Example:
 
@@ -887,7 +894,9 @@ cpu_cnt
 
 parallel_size
 
-:  number of pages used in each Dvisvgm call. The extension detects changed pages in the DVI file and construct multiple calls to Dvisvgm with only changed pages.
+:  number of pages used in each Dvisvgm call. The extension detects changed
+pages in the DVI file and construct multiple calls to Dvisvgm with only changed
+pages.
 
 scale
 
@@ -986,7 +995,7 @@ sub\_format
 
 
 
-It is possible to generate multiple HTML files from the LaTeX source. For
+It is possible to generate multiple HTML files from the \LaTeX\ source. For
 example, `tex4ebook` generates separate file for each chapter or section. It is
 possible to set options for each HTML file, in particular names of the
 corresponding audio files. This mapping is done using `map` parameter. 
@@ -1009,7 +1018,7 @@ corresponding audio file.
 
 Filenames of the sub files corresponds to the chapter numbers, so they are not
 stable when a new chapter is added. It is possible to request file names
-interfered from the chapter titles using the `sec-filename` option or `tex4ht`.
+interfered from the chapter titles using the `sec-filename` option for `tex4ht.sty`.
 
 ### Available `map` options
 
@@ -1071,13 +1080,13 @@ It may be caused by a following `make4ht` invocation:
     make4ht hello.tex "customcfg,charset=utf-8" "-cunihtf -utf8" -d foo
 
 The command line option parser is confused by mixing options for `make4ht` and
-`tex4ht` in this case and tries to interpret the `-cunihtf -utf8`, which are
-options for `tex4ht` command as `make4ht` options. To fix that, you can either
-move the `-d foo` directly after `make4ht` command:
+\TeX4ht\ in this case. It tries to interpret the `-cunihtf -utf8`, which are
+options for the `tex4ht` command, as `make4ht` options. To fix that, try to
+move the `-d foo` directly after the `make4ht` command:
 
     make4ht -d foo hello.tex "customcfg,charset=utf-8" "-cunihtf -utf8"
 
-Another option is to add a space before `tex4ht` options:
+Another option is to add a space before the `tex4ht` options:
 
     make4ht hello.tex "customcfg,charset=utf-8" " -cunihtf -utf8" -d foo
 
