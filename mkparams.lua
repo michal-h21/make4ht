@@ -9,7 +9,7 @@ m.progname = "make4ht"
 m.version_number = "v0.1"
 
 m.optiontext =  [[
-${progname} - build system for tex4ht
+${progname} - build system for TeX4ht
 Usage:
 ${progname} [options] filename ["tex4ht.sty op."] ["tex4ht op."] ["t4ht op"] ["latex op"]
 
@@ -24,7 +24,7 @@ Available options:
   -j,--jobname (default nil)  Set the jobname
   -l,--lua  Use lualatex for document compilation
   -m,--mode (default default) Switch which can be used in the makefile 
-  -n,--no-tex4ht Disable dvi file processing with tex4ht command
+  -n,--no-tex4ht Disable dvi file processing with the tex4ht command
   -s,--shell-escape Enables running external programs from LaTeX
   -u,--utf8  For output documents in utf8 encoding
   -x,--xetex Use xelatex for document compilation
