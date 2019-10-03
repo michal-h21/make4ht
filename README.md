@@ -27,7 +27,7 @@ It will produce a file named `filename.html` if the compilation goes without fat
          possible values: tex4ht or lua4ht
     -c,--config (default xhtml) Custom config file
     -d,--output-dir (default "")  Output directory
-    -e,--build-file (default nil)  If build file name is different 
+    -e,--build-file (default nil)  If build filename is different 
          than `filename`.mk4
     -f,--format  (default nil)  Output file format
     -j,--jobname (default nil)  Set the jobname
@@ -38,7 +38,7 @@ It will produce a file named `filename.html` if the compilation goes without fat
     -u,--utf8  For output documents in utf8 encoding
     -v,--version  Print version number
     -x,--xetex Use xelatex for document compilation
-    <filename> (string) Input file name
+    <filename> (string) Input filename
 
 
 It is still possible to invoke `make4ht` in the same way as is invoked `htlatex`:
@@ -293,16 +293,22 @@ build file, they are called automatically.
 
 It is possible to add more commands like `Make:htlatex` using the `Make:add` command:
 
-    Make:add("name", "command", {parameters}, repetition)
+    Make:add("name", "command", {settings table}, repetition)
 
 This defines the `name` command, which can be then executed using `Make:name()`
 command in the build file. 
 
 The `name` and `command` parameters are required, the rest of the parameters are optional.
 
+The defined command receives a table with settings as parameter when it is
+called in the build file. There are default settings provided by `make4ht`,
+additional settings can be declared in the `Make:add` commands and user can
+override the default settings when the command is executed:
+
+    Make:name {hello="world"} 
 
 
-### Command function
+### The `command` function
 \label{sec:commandfunction}
 
 The `command` parameter can be either string template or function:
@@ -322,10 +328,12 @@ they should invoke existing OS commands.
 
 
 
-### The `parameters` table
+### The `settings table` table
+
 
 Commands receive the `make4ht` parameters as a Lua table. They can 
 execute the system commands using the `os.execute` function.
+
 
 The `parameters` parameter is optional, it can be a table or `nil` value. The `nil` value
 should be used if you want to use the `repetition` parameter, but don't want to
@@ -338,53 +346,6 @@ command. You can override the default parameters in the parameters table.
 
 
 
-The default parameters are following:
-
-`htlatex`
-
-:     used \TeX\ engine
-
-`input`
-
-:    output file name
-
-`tex_file`
-
-:    input \TeX\ file
-
-`latex_par`
-
-:    command line parameters to the \TeX\ engine
-
-`packages`
-
-:    additional \LaTeX\ code  inserted before `\documentclass`.
-     Useful for passing options to packages used in the document or to load additional packages.
-
-`tex4ht_sty_par`
-
-:    options for `tex4ht.sty`
-
-`tex4ht_par`
-
-:     command line options for the `tex4ht` command
-
-`t4ht_par`
-
-:    command line options for the `t4ht` command
-
-`outdir`
-
-:    the output directory
-
-`repetition`
-
-:    limit number of command execution.
-
-`correct_exit`
-
-:    expected `exit code` from the command. The compilation will be terminated
-     if exit code of the executed command  is different.
 
 
 ### Repetition
@@ -445,7 +406,7 @@ Another type of action which can be specified in the build file is
 
 The above example will clean all output `HTML` files using the `tidy` command.
 
-The `match` action tests output file names using a `Lua` pattern matching function.  
+The `match` action tests output filenames using a `Lua` pattern matching function.  
 It executes a command or a function, specified in the second argument, on files
 whose filenames match the pattern. 
 
@@ -638,7 +599,7 @@ or a function which takes a table with parameters as an argument.
 
 There are three parameters:
 
-  - `output` - output image file name
+  - `output` - output image filename
   - `source` - `dvi` file with the pictures
   - `page`   - page number of the converted image
 
@@ -662,6 +623,7 @@ In this example (which is the default configuration used by `make4ht`),
     make4ht -m draft filename
 
 ## The `settings` table
+\label{sec:settings}
 
 It is possible to access the parameters outside commands, file matches
 and image conversion functions. For example, to convert the document to
@@ -718,7 +680,55 @@ These settings can be retrieved in the extensions and filters using the `get_fil
        return input
     end
        
+### Default settings
 
+The default parameters are the following:
+
+`htlatex`
+
+:     used \TeX\ engine
+
+`input`
+
+:    output filename
+
+`tex_file`
+
+:    input \TeX\ file
+
+`latex_par`
+
+:    command line parameters to the \TeX\ engine
+
+`packages`
+
+:    additional \LaTeX\ code  inserted before `\documentclass`.
+     Useful for passing options to packages used in the document or to load additional packages.
+
+`tex4ht_sty_par`
+
+:    options for `tex4ht.sty`
+
+`tex4ht_par`
+
+:     command line options for the `tex4ht` command
+
+`t4ht_par`
+
+:    command line options for the `t4ht` command
+
+`outdir`
+
+:    the output directory
+
+`repetition`
+
+:    limit number of command execution.
+
+`correct_exit`
+
+:    expected `exit code` from the command. The compilation will be terminated
+     if exit code of the executed command  is different.
 
 # Configuration file {#configfile}
 
@@ -965,7 +975,7 @@ process\_files(parameters)
 
 By default, the `smil` file is created. It is assumed that there is audio file
 in `mp3` format named as the TeX file. It is possible to use different formats
-and file names using mapping.
+and filenames using mapping.
 
 The configuration options can be passed directly to the functions or set using
 `filter_settings "aeneas-config" {parameters}` function.
@@ -1022,7 +1032,7 @@ Example:
       }
     }
 
-Table keys are the configured file names. It is necessary to insert them as
+Table keys are the configured filenames. It is necessary to insert them as
 `["filename.html"]`, because of Lua syntax rules.
 
 This example maps audio file `sample.mp3` to a section subpage. The main HTML
@@ -1030,7 +1040,7 @@ file, which may contain title and table of contents doesn't have a
 corresponding audio file.
 
 Filenames of the sub files corresponds to the chapter numbers, so they are not
-stable when a new chapter is added. It is possible to request file names
+stable when a new chapter is added. It is possible to request filenames
 interfered from the chapter titles using the `sec-filename` option for `tex4ht.sty`.
 
 ### Available `map` options
@@ -1108,8 +1118,8 @@ The former way is preferable, though.
 ## Filenames containing spaces
 
 `tex4ht` command cannot handle filenames containing spaces. `make4ht` because
-of this replaces spaces in the input file names with underscores. The generated
-XML file names use underscores instead of spaces as well.
+of this replaces spaces in the input filenames with underscores. The generated
+XML filenames use underscores instead of spaces as well.
 
 ## Filenames containing non-ASCII characters
 
