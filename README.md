@@ -307,6 +307,10 @@ when the command is executed in the build file:
 
     Make:name({hello="world"})
 
+More information about settings, including the default settings provided by
+`make4ht`,  can be found in the section \ref{sec:settings} on the page
+\pageref{sec:settings}.
+
 
 ### The `command` function
 \label{sec:commandfunction}
@@ -319,11 +323,6 @@ The template can get a variable value from the parameters table using a
 `${var_name}` placeholder. Templates are executed using the operating system, so
 they should invoke existing OS commands. 
 
-    Make:add("sample_function", function(params) 
-      for k, v in pairs(params) do 
-        print(k..": "..v) 
-      end, {custom="Hello world"}
-    )
 
 
 
@@ -331,21 +330,15 @@ they should invoke existing OS commands.
 ### The `settings table` table
 
 
-Commands receive the `make4ht` parameters as a Lua table. They can 
-execute the system commands using the `os.execute` function.
+The `settings table` parameter is optional. If it is present, it should be
+table with new settings available in the command. It can also override the default
+`make4ht` settings for the defined command.
 
-
-The `parameters` parameter is optional, it can be a table or `nil` value. The `nil` value
-should be used if you want to use the `repetition` parameter, but don't want to
-modify the parameters table. 
-
-The table with default parameters is passed to all commands. They can be accessed from command functions
-or templates. When you specify your own parameters in the command definition, these additional
-parameters are added to the default parameters table for this particular
-command. You can override the default parameters in the parameters table.
-
-
-
+    Make:add("sample_function", function(params) 
+      for k, v in pairs(params) do 
+        print(k..": "..v) 
+      end, {custom="Hello world"}
+    )
 
 
 ### Repetition
@@ -360,20 +353,26 @@ are called by `make4ht` by default. Because these commands allow only one
 ### Expected exit code
 
 You can set the expected exit code from a command with a `correct_exit` key in the
-parameters table. The compilation will be stopped when the command returns a
+settings table. The compilation will be terminated when the command returns a
 different exit code. 
 
-This mechanism isn't used for \TeX, because it doesn't differentiate between fatal and non-fatal errors, and
-it returns the same exit code in all cases. Because of this, log parsing is used instead.
-Error code value `1` is returned in the case of fatal error, `0` is used
+    Make:add("biber", "biber ${input}", {correct_exit=0})
+
+Commands that execute lua functions can return the numerical values using the `return` statement.
+
+
+This mechanism isn't used for \TeX, because it doesn't differentiate between fatal and non-fatal errors. 
+It returns the same exit code in all cases. Because of this, log parsing is used for a fatal error detection instead.
+Error code value `1` is returned in the case of a fatal error, `0` is used
 otherwise. The `Make.testlogfile` function can be used in the build file to
 detect compilation errors in the TeX log file.
+
 
 ## Provided commands
 
 `Make:htlatex`
 
-:    One call to TeX engine with special configuration for loading of the `tex4ht.sty` package.
+:    One call to the TeX engine with special configuration for loading of the `tex4ht.sty` package.
 
 `Make:latexmk`
 
@@ -399,29 +398,40 @@ detect compilation errors in the TeX log file.
 ## File matches
 \label{sec:postprocessing}
 
-Another type of action which can be specified in the build file is
-`match`.  It can be called on the generated files:
+Another type of action that can be specified in the build file is
+`Make:match`.  It can be used to post-process  the generated files:
 
     Make:match("html$", "tidy -m -xml -utf8 -q -i ${filename}")
 
 The above example will clean all output `HTML` files using the `tidy` command.
 
-The `match` action tests output filenames using a `Lua` pattern matching function.  
+The `Make:match` action tests output filenames using a `Lua` pattern matching function.  
 It executes a command or a function, specified in the second argument, on files
 whose filenames match the pattern. 
 
 The commands to be executed can be specified as strings. They can contain
 `${var_name}` placeholders, which are replaced with corresponding variables
-from the `parameters` table. The templating system was described in the
-subsection \ref{sec:commandfunction}. There is and additional variable
+from the `settings` table. The templating system was described in 
+subsection \ref{sec:commandfunction}. There is an additional variable
 available in this table, called `filename`. It contains the name of the current
 output file.
 
 
-If function is used instead, it will get two parameters.  The first one is the
-current filename, the second one is the `parameters` table. 
+If a function is used instead, it will get two parameters.  The first one is the
+current filename, the second one is the `settings` table. 
 
+    Make:match("html$", function(filename, settings)
+      print("Post-processing file: ".. filename)
+      print("Available settings")
+      for k,v in pairs(settings)
+        print(k,v)
+      end
+      return true
+   end)
 
+Multiple post-processing actions can be executed on each filename. The Lua
+action functions can return exit code. If the exit code is false, the execution
+of the post-processing chain for the current file will be terminated.
 
 ### Filters
 \label{sec:filters}
@@ -430,12 +440,12 @@ To make it easier to post-process the generated files using the `match`
 actions, `make4ht` provides a filtering mechanism thanks to the
 `make4ht-filter` module. 
 
-The `make4ht-filter` module returns a function which can be used for the filter
+The `make4ht-filter` module returns a function that can be used for the filter
 chain building. Multiple filters can be chained into a pipeline. Each filter
 can modify the string that is passed to it from the previous filters. The
 changes are then saved to the processed file. 
 
-Several built-in filters are available, it is also possible to create a new ones.
+Several built-in filters are available, it is also possible to create new ones.
 
 Example that use only the built-in filters:
 
@@ -721,14 +731,10 @@ The default parameters are the following:
 
 :    the output directory
 
-`repetition`
-
-:    limit number of command execution.
-
 `correct_exit`
 
 :    expected `exit code` from the command. The compilation will be terminated
-     if exit code of the executed command  is different.
+     if the exit code of the executed command has a different value.
 
 # Configuration file {#configfile}
 
