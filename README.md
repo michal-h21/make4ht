@@ -300,12 +300,12 @@ command in the build file.
 
 The `name` and `command` parameters are required, the rest of the parameters are optional.
 
-The defined command receives a table with settings as parameter when it is
-called in the build file. There are default settings provided by `make4ht`,
-additional settings can be declared in the `Make:add` commands and user can
-override the default settings when the command is executed:
+The defined command receives a table with settings as a parameter at the call time. 
+The default settings are provided by `make4ht`. Additional settings can be
+declared in the `Make:add` commands, user can also override the default settings
+when the command is executed in the build file:
 
-    Make:name {hello="world"} 
+    Make:name({hello="world"})
 
 
 ### The `command` function
