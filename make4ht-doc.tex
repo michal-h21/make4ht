@@ -3,19 +3,20 @@
 
 \usepackage[english]{babel}
 \usepackage{hyperref}
+\newcommand\authormail[1]{\footnote{\textless\url{#1}\textgreater}}
 \ifdefined\HCode
-\usepackage[T1]{fontenc}
-\usepackage[utf8]{inputenc}
-\else
+\renewcommand\authormail[1]{\space\textless\Link[#1]{}{}#1\EndLink\textgreater}
+\fi
+
 \usepackage{fontspec}
 \setmainfont{TeX Gyre Schola}
 \setmonofont[Scale=MatchLowercase]{Inconsolatazi4}
-\fi
+
 \usepackage{microtype}
 \providecommand\tightlist{\relax}
 
 \title{The \texttt{make4ht} build system}
-\author{Michal Hoftich\footnote{\url{michal.h21@gmail.com}}}
+\author{Michal Hoftich\authormail{michal.h21@gmail.com}}
 \date{Version \version\\\gitdate}
 \begin{document}
 \maketitle

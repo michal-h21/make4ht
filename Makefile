@@ -5,7 +5,12 @@ domfilters = $(wildcard domfilters/*.lua)
 extensions = $(wildcard extensions/*.lua)
 formats = $(wildcard formats/*.lua)
 tex_content = $(wildcard *.tex)
-doc_file = make4ht-doc.pdf
+doc_root = make4ht-doc
+doc_tex = $(doc_root).tex
+doc_file = $(doc_root).pdf
+htmldoc = $(HTML_DOC_DIR)/$(doc_root).html
+doc_sources = $(doc_tex) readme.tex changelog.tex tags
+
 TEXMFHOME = $(shell kpsewhich -var-value=TEXMFHOME)
 INSTALL_DIR = $(TEXMFHOME)/scripts/lua/make4ht
 MANUAL_DIR = $(TEXMFHOME)/doc/latex/make4ht
@@ -19,6 +24,7 @@ SYSTEM_DIR = $(realpath $(BIN_DIR))
 EXECUTABLE = $(SYSTEM_DIR)/make4ht
 BUILD_DIR = build
 BUILD_MAKE4HT = $(BUILD_DIR)/make4ht
+HTML_DOC_DIR = htmldoc
 VERSION:= undefined
 DATE:= undefined
 
@@ -48,10 +54,13 @@ ifeq ($(strip $(shell git rev-parse --is-inside-work-tree 2>/dev/null)),true)
 	git fetch --tags
 endif 
 
-doc: $(doc_file) readme.tex 
+doc: $(doc_file) readme.tex $(htmldoc)
  
-make4ht-doc.pdf: make4ht-doc.tex readme.tex changelog.tex tags
+make4ht-doc.pdf: $(doc_sources)
 	latexmk -pdf -pdflatex='lualatex "\def\version{${VERSION}}\def\gitdate{${DATE}}\input{%S}"' make4ht-doc.tex
+
+$(htmldoc): $(doc_sources)
+	make4ht -ulm draft -f html5+common_domfilters+latexmk_build -d ${HTML_DOC_DIR} ${doc_tex} "" "" "" "\"\def\version{${VERSION}}\def\gitdate{${DATE}}\""
 
 readme.tex: README.md
 	pandoc -f markdown+definition_lists -t LaTeX README.md > readme.tex
