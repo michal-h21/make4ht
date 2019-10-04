@@ -1,5 +1,9 @@
 # Changelog
 
+- 2019/10/04
+
+    - added HTML documentation
+
 - 2019/09/27
 
     - don't convert Latin 1 entities to Unicode in the `entities_to_unicode` extension.
