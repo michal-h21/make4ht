@@ -54,7 +54,9 @@ ifeq ($(strip $(shell git rev-parse --is-inside-work-tree 2>/dev/null)),true)
 	git fetch --tags
 endif 
 
-doc: $(doc_file) readme.tex $(htmldoc)
+doc: $(doc_file) readme.tex 
+
+htmldoc: ${htmldoc}
  
 make4ht-doc.pdf: $(doc_sources)
 	latexmk -pdf -pdflatex='lualatex "\def\version{${VERSION}}\def\gitdate{${DATE}}\input{%S}"' make4ht-doc.tex
