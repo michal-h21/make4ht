@@ -33,7 +33,7 @@ It will produce a file named `filename.html` if the compilation goes without fat
     -j,--jobname (default nil)  Set the jobname
     -l,--lua  Use lualatex for document compilation
     -m,--mode (default default) Switch which can be used in the makefile
-    -n,--no-tex4ht  Disable dvi file processing with tex4ht command
+    -n,--no-tex4ht  Disable DVI file processing with tex4ht command
     -s,--shell-escape Enables running external programs from LaTeX
     -u,--utf8  For output documents in utf8 encoding
     -v,--version  Print version number
@@ -485,19 +485,18 @@ fixligatures
 hruletohr
 
 :   `\hrule` commands are translated to series of underscore characters
-    by \TeX4ht, this filter translate these underscores to `<hr>` elements
+    by \TeX4ht, this filter translates these underscores to `<hr>` elements
 
 entites
 
-:    convert prohibited named entities to numeric entities (currently, only
-     `&nbsp;`, as it causes validation errors, and \TeX4ht\ produces it
-     sometimes)
+:    convert prohibited named entities to numeric entities (only
+     `&nbsp;` currently).
 
 fix-links
 
 :    replace colons in local links and `id` attributes with underscores. Some
      cross-reference commands may produce colons in internal links, which results in
-     validation error.
+     a validation error.
 
 mathjaxnode
 
@@ -514,7 +513,7 @@ odttemplate
 
 staticsite
 
-:    create HTML files in format suitable for static site generators such as [Jekyll](https://jekyllrb.com/)
+:    create HTML files in a format suitable for static site generators such as [Jekyll](https://jekyllrb.com/)
 
 svg-height
 
@@ -524,10 +523,10 @@ svg-height
 
 ### DOM filters
 
-DOM filters are variant of filters that use the
+DOM filters are variants of filters that use the
 [`LuaXML`](https://ctan.org/pkg/luaxml) library to modify
 directly the XML object. This enables more powerful
-operations than the regex based filters from the previous section. 
+operations than the regex-based filters from the previous section. 
 
 Example:
 
@@ -541,11 +540,11 @@ Available DOM filters:
 aeneas
 
 :  [Aeneas](https://www.readbeyond.it/aeneas/) is a tool for automagical synchronization of text and audio.
-   This filter modifies the HTML code to support the synchronization.
+   This filter modifies the HTML code to support synchronization.
 
 collapsetoc
 
-:  collapse table of contents to contain only top level sectioning level and sections on the current page.
+:  collapse table of contents to contain only top-level sectioning level and sections on the current page.
 
 fixinlines
 
@@ -561,9 +560,9 @@ joincharacters
 
 joincolors
 
-:  many `<span>` elements with unique `id` attribute are created when \LaTeX\ colors are being used in the document.
-   CSS rule is added for each of these elements, which may result in
-   substantial grow of the CSS file. This filter replace these rules with a
+:  many `<span>` elements with unique `id` attributes are created when \LaTeX\ colors are being used in the document.
+   A CSS rule is added for each of these elements, which may result in
+   substantial growth of the CSS file. This filter replaces these rules with a
    common one for elements with the same color value.
 
 odtimagesize
@@ -586,11 +585,11 @@ t4htlinks
 It is possible to convert parts of the \LaTeX\ input as pictures. It can be used
 for preserving the appearance of  math or diagrams, for example. 
 
-These pictures are stored in a special `dvi` file, which can be processed by
-a `dvi to image` command, such as `dvipng` or `dvisvgm`. 
+These pictures are stored in a special `DVI` file, which can be processed by
+a `DVI` to image commands, such as `dvipng` or `dvisvgm`. 
 
 This conversion is normally configured in the `tex4ht.env` file. This file
-is system dependent and it has quite unintuitive syntax.
+is system dependent and it has quite an unintuitive syntax.
 The configuration is processed by the `t4ht` application and the conversion
 command is called for all pictures.
 
@@ -604,13 +603,13 @@ conversion in the build file using the `image` action:
 `Make:image` takes two parameters, a `Lua` pattern to match the image name, and
 the action.
 
-Action can be either string template with the conversion command,
-or a function which takes a table with parameters as an argument.
+Action can be either a string template with the conversion command,
+or a function that takes a table with parameters as an argument.
 
 There are three parameters:
 
   - `output` - output image filename
-  - `source` - `dvi` file with the pictures
+  - `source` - `DVI` file with the pictures
   - `page`   - page number of the converted image
 
 ## The `mode` variable
@@ -741,7 +740,7 @@ The default parameters are the following:
 It is possible to globally modify the build settings using the configuration
 file. It is a special version of a build file where the global settings can be set.
 
-Common task for the configuration file can be declaration of the new commands,
+Common tasks for the configuration file can be a declaration of the new commands,
 loading of the default filters or specification of a default build sequence. 
 
 One additional functionality not available in the build files are commands for
@@ -768,7 +767,7 @@ There are two additional commands:
 
 ## Example
 
-The following configuration add support for the `biber` command, requires
+The following example of the configuration file adds support for the `biber` command, requires
 `common_domfilters` extension and requires MathML
 output for math.
 
@@ -804,11 +803,11 @@ options
 
 `title_query`
 
-:  CSS selector for selecting all elements that contain section ID attribute.
+:  CSS selector for selecting all elements that contain the section ID attribute.
 
 `toc_levels` 
 
-:  table containing hierarchy of classes used in TOC
+:  table containing a hierarchy of classes used in TOC
 
 Default values:
 
@@ -822,7 +821,7 @@ Default values:
 
 inline\_elements
 
-:  table of inline elements which shouldn't be direct descendants of the `body` element. The element names should be table keys, the values should be true.
+:  table of inline elements that shouldn't be direct descendants of the `body` element. The element names should be table keys, the values should be true.
 
 Example
 
@@ -832,7 +831,7 @@ Example
 
 charclasses 
 
-:  table of elements which should be concatenated when two or more of such elements with a same value of the `class` attribute are placed one after another.
+:  table of elements that should be concatenated when two or more of such elements with the same value of the `class` attribute are placed one after another.
 
 Example
 
@@ -876,15 +875,15 @@ site\_root
 
 map
 
-:  hash table where keys contain patterns that match filenames and values contain
+:  a hash table where keys contain patterns that match filenames and values contain
 destination directory for the matched files. The destination directories are
 relative to the `site_root` (it is possible to use `..` to switch to a parent
 directory).
 
 file\_pattern 
 
-:  pattern used for filename generation. It is possible to use string templates
-and format strings for `os.date` function. Default value of `%Y-%m-%d-${input}`
+:  a pattern used for filename generation. It is possible to use string templates
+and format strings for `os.date` function. The default pattern `%Y-%m-%d-${input}`
 creates names in the form of `YYYY-MM-DD-file_name`.
 
 header
@@ -919,12 +918,12 @@ options
 
 cpu_cnt
 
-:  number of processor cores used for the conversion. The extension tries to detect the available cores automatically by default.
+:  a number of processor cores used for the conversion. The extension tries to detect the available cores automatically by default.
 
 parallel_size
 
-:  number of pages used in each Dvisvgm call. The extension detects changed
-pages in the DVI file and construct multiple calls to Dvisvgm with only changed
+:  a number of pages used in each Dvisvgm call. The extension detects changed
+pages in the DVI file and constructs multiple calls to Dvisvgm with only changed
 pages.
 
 scale
@@ -946,7 +945,7 @@ template
 
 skip\_elements
 
-:  List of CSS selectors that match elements which shouldn't be processed. Default value: `{ "math", "svg"}`.
+:  List of CSS selectors that match elements that shouldn't be processed. Default value: `{ "math", "svg"}`.
 
 id\_prefix 
 
@@ -959,7 +958,7 @@ sentence\_match
 ## The  `make4ht-aeneas-config` package
 
 Companion for the `aeneas` DOM filter is the `make4ht-aeneas-config` plugin. It
-can be used to write Aeneas configuration file or execute Aeneas on the
+can be used to write the Aeneas configuration file or execute Aeneas on the
 generated HTML files.
 
 Available functions:
@@ -979,8 +978,8 @@ process\_files(parameters)
 :  process the audio and generated subtitle files.
 
 
-By default, the `smil` file is created. It is assumed that there is audio file
-in `mp3` format named as the TeX file. It is possible to use different formats
+By default, a `SMIL` file is created. It is assumed that there is an audio file
+in the `mp3` format, named as the \TeX\ file. It is possible to use different formats
 and filenames using mapping.
 
 The configuration options can be passed directly to the functions or set using
@@ -996,15 +995,15 @@ lang
 
 map 
 
-:  mapping between HTML, audio and subtitle files. More info bellow. 
+:  mapping between HTML, audio and subtitle files. More info below. 
 
 text\_type 
 
-:  type of the input. The `aeneas` DOM filter produces `unparsed` text type.
+:  type of input. The `aeneas` DOM filter produces `unparsed` text type.
 
 id\_sort 
 
-:  sorting of id attributes. Default value is `numeric`.
+:  sorting of id attributes. The default value is `numeric`.
 
 id\_regex 
 
@@ -1012,7 +1011,7 @@ id\_regex
 
 sub\_format 
 
-:  generated subtitle format. Default `smil`.
+:  generated subtitle format. The default value is `smil`.
 
 
 ### Additional parameters for the job configuration file
@@ -1025,9 +1024,9 @@ sub\_format
 
 
 It is possible to generate multiple HTML files from the \LaTeX\ source. For
-example, `tex4ebook` generates separate file for each chapter or section. It is
+example, `tex4ebook` generates a separate file for each chapter or section. It is
 possible to set options for each HTML file, in particular names of the
-corresponding audio files. This mapping is done using `map` parameter. 
+corresponding audio files. This mapping is done using the `map` parameter. 
 
 Example:
 
@@ -1045,9 +1044,9 @@ This example maps audio file `sample.mp3` to a section subpage. The main HTML
 file, which may contain title and table of contents doesn't have a
 corresponding audio file.
 
-Filenames of the sub files corresponds to the chapter numbers, so they are not
+Filenames of the subfiles correspond to the chapter numbers, so they are not
 stable when a new chapter is added. It is possible to request filenames
-interfered from the chapter titles using the `sec-filename` option for `tex4ht.sty`.
+derived from the chapter titles using the `sec-filename` option for `tex4ht.sty`.
 
 ### Available `map` options
 
@@ -1060,7 +1059,7 @@ sub\_file
 
 :  name of the generated subtitle file
 
-The following options are same as their counter-parts from the main parameters table and generally don't need to be set:
+The following options are the same as their counterparts from the main parameters table and generally, don't need to be set:
 
 - prefix 
 - file\_desc 
@@ -1123,8 +1122,8 @@ The former way is preferable, though.
 
 ## Filenames containing spaces
 
-`tex4ht` command cannot handle filenames containing spaces. `make4ht` because
-of this replaces spaces in the input filenames with underscores. The generated
+`tex4ht` command cannot handle filenames containing spaces. to fix this issue, `make4ht` 
+replaces spaces in the input filenames with underscores. The generated
 XML filenames use underscores instead of spaces as well.
 
 ## Filenames containing non-ASCII characters
