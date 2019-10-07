@@ -392,7 +392,6 @@ detect compilation errors in the TeX log file.
 
 `Make:xindy`
 
-
 :    Generate index using Xindy index processor.
 
 ## File matches
