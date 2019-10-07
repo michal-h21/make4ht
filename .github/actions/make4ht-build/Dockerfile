@@ -17,7 +17,7 @@ RUN apt-get update && \
     make luatex texlive-base texlive-luatex \
     tidy \
     # texlive-fonts-recommended \
-    fonts-droid \
+    fonts-noto \
     texlive-plain-generic texlive-generic-recommended \
     pandoc latexmk texlive fonts-lmodern tex-gyre fonts-texgyre \
     texlive-lang-english && \
