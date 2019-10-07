@@ -30,16 +30,6 @@ function M.modify_build(make)
     make:match("html$", process)
     count = 1
   end
-  local matches = make.matches
-  -- the filters should be first match to be executed, especially if tidy
-  -- should be executed as well
-  if #matches > 1 then
-    for i = 1, count do
-      local last = matches[#matches]
-      table.insert(matches, 1, last)
-      matches[#matches] = nil
-    end
-  end
   return make
 end
 

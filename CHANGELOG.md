@@ -1,5 +1,11 @@
 # Changelog
 
+- 2019/10/07
+
+    - don't move the `common_domfilters` extension to the first place in the
+      file matches pipeline. We may want to run `tidy` or regex filters first,
+      to fix XML validation errors.
+
 - 2019/10/04
 
     - added HTML documentation
