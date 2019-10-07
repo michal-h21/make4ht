@@ -62,7 +62,7 @@ make4ht-doc.pdf: $(doc_sources)
 	latexmk -pdf -pdflatex='lualatex "\def\version{${VERSION}}\def\gitdate{${DATE}}\input{%S}"' make4ht-doc.tex
 
 $(htmldoc): $(doc_sources)
-	make4ht -ulm draft -f html5+common_domfilters+latexmk_build -d ${HTML_DOC_DIR} ${doc_tex} "" "" "" "\"\def\version{${VERSION}}\def\gitdate{${DATE}}\""
+	make4ht -ulm draft -f html5+tidy+common_domfilters+latexmk_build -d ${HTML_DOC_DIR} ${doc_tex} "" "" "" "\"\def\version{${VERSION}}\def\gitdate{${DATE}}\""
 
 readme.tex: README.md
 	pandoc -f markdown+definition_lists -t LaTeX README.md > readme.tex
