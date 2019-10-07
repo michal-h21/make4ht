@@ -1,6 +1,7 @@
 #!/bin/bash
 
 # make4ht -um draft 
-echo "hello world"
-pdflatex -v
+make install SUDO=""
+make htmldoc
+
 

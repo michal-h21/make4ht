@@ -14,10 +14,11 @@ ENV DEBIAN_FRONTEND noninteractive
 # Install all TeX and LaTeX dependencies
 RUN apt-get update && \
     apt-get install --yes --no-install-recommends \
-    luatex texlive-base texlive-luatex \
+    make luatex texlive-base texlive-luatex \
     texlive-fonts-recommended \
-    texlive-generic-recommended \
-    pandoc latexmk texlive texlive-fonts-recommended fonts-lmodern tex-gyre fonts-texgyre \
+    fonts-noto-mono \
+    texlive-plain-generic texlive-generic-recommended \
+    pandoc latexmk texlive fonts-lmodern tex-gyre fonts-texgyre \
     texlive-lang-english && \
     apt-get autoclean && apt-get --purge --yes autoremove && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
