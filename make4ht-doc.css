@@ -112,5 +112,6 @@ div.author{white-space: nowrap;}
 .abstract p {margin-left:5%; margin-right:5%;}
 div.abstract {width:100%;}
 .small-caps{font-variant: small-caps;}
+p.indent{text-indent:0;}
 /* end css.sty */
 
