@@ -6,15 +6,15 @@
 <meta charset='utf-8' />
 <meta content='TeX4ht (http://www.tug.org/tex4ht/)' name='generator' />
 <meta content='width=device-width,initial-scale=1' name='viewport' />
-<link href='make4ht-doc.css' type='text/css' rel='stylesheet' />
+<link href='make4ht-doc.css' rel='stylesheet' type='text/css' />
 <meta content='make4ht-doc.tex' name='src' />
 <script src='https://hypothes.is/embed.js'></script>
 <meta content='' property='og:title' />
 <meta content='Michal Hoftich' property='og:author' />
 <meta content='website' property='og:type' />
 <meta content='https://www.kodymirus.cz/make4ht/make4ht-doc.html' property='og:url' />
-<link href='https://www.kodymirus.cz/make4ht/make4ht-doc.html' rel='canonical' />
-<link rel='stylesheet' href='https://www.kodymirus.cz/reyman/css/scale.css' />
+<link rel='canonical' href='https://www.kodymirus.cz/make4ht/make4ht-doc.html' />
+<link href='https://www.kodymirus.cz/reyman/css/scale.css' rel='stylesheet' />
 </head>
 <body>
 <!-- l. 25 -->
@@ -26,11 +26,11 @@
 <!-- l. 25 -->
 <p class='noindent'><span class='cmr-17'>The make4ht build system</span></p>
 <div class='tabular'>
-<table id='TBL-1' class='tabular'>
+<table class='tabular' id='TBL-1'>
 <colgroup id='TBL-1-1g'>
 <col id='TBL-1-1' /></colgroup>
-<tr id='TBL-1-1-' style='vertical-align:baseline;'>
-<td style='white-space:nowrap; text-align:center;' class='td11' id='TBL-1-1-1'><span class='cmr-12'>Michal Hoftich </span><span class='cmr-12'>&lt;</span><a href='michal.h21@gmail.com'><span class='cmr-12'>michal.h21@gmail.com</span></a><span class='cmr-12'>&gt;</span></td>
+<tr style='vertical-align:baseline;' id='TBL-1-1-'>
+<td class='td11' style='white-space:nowrap; text-align:center;' id='TBL-1-1-1'><span class='cmr-12'>Michal Hoftich </span><span class='cmr-12'>&lt;</span><a href='michal.h21@gmail.com'><span class='cmr-12'>michal.h21@gmail.com</span></a><span class='cmr-12'>&gt;</span></td>
 </tr>
 </table>
 </div>
@@ -963,6 +963,11 @@ end</div>
 <p class='indent'><a id='changelog'></a></p>
 <h3 class='sectionHead'><span class='titlemark'>11</span> <a id='x1-5300011'></a>Changelog</h3>
 <ul class='itemize1'>
+<li class='itemize'>2019/10/08
+<ul class='itemize2'>
+<li class='itemize'>set up Github Actions pipeline to compile the documentation to HTML and publish it at https://www.kodymirus.cz/make4ht/make4ht-doc.html.</li>
+</ul>
+</li>
 <li class='itemize'>2019/10/07
 <ul class='itemize2'>
 <li class='itemize'>don’t move the common_domfilters extension to the first place in the file matches pipeline. We may want to run tidy or regex filters first, to fix XML validation errors.</li>
@@ -970,7 +975,7 @@ end</div>
 </li>
 <li class='itemize'>2019/10/04
 <ul class='itemize2'>
-<li class='itemize'>added HTML documentation</li>
+<li class='itemize'>added HTML documentation.</li>
 </ul>
 </li>
 <li class='itemize'>2019/09/27
