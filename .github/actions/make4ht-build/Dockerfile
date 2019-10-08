@@ -1,4 +1,4 @@
-FROM debian:latest
+FROM debian:unstable-slim
 
 LABEL "maintainer"="Michal Hoftich <michal.h21@gmail.com>"
 LABEL "repository"="https://github.com/michal-h21/make4ht"
