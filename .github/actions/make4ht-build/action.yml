@@ -1,0 +1,8 @@
+name: "LaTeX to XML"
+description: "Convert LaTeX documents to XML with make4ht"
+runs:
+  using: "docker"
+  image: "Dockerfile"
+
+
+
