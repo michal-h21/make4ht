@@ -11,7 +11,9 @@
 \usepackage{fontspec}
 \setmainfont{TeX Gyre Schola}
 % \setmonofont[Scale=MatchLowercase]{Inconsolatazi4}
-\setmonofont[Scale=MatchLowercase]{Noto Sans Mono Regular}
+\IfFontExistsTF{Noto Sans Mono Regular}{%
+  \setmonofont[Scale=MatchLowercase]{Noto Sans Mono Regular}
+}{\setmonofont{NotoMono-Regular.ttf}}
 
 \usepackage{microtype}
 \providecommand\tightlist{\relax}
