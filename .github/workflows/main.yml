@@ -16,4 +16,4 @@ jobs:
         echo Add other actions to build,
         echo test, and deploy your project.
     - name: Generate HTML docs
-      uses: actions/make4ht-build@master
+      uses: .github/actions/make4ht-build@master
