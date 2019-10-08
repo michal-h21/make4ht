@@ -17,3 +17,9 @@ jobs:
         echo test, and deploy your project.
     - name: Generate HTML docs
       uses: ./.github/actions/make4ht-build
+    - name: Publish the wen pages
+      uses: peaceiris/actions-gh-pages@v2.5.0
+      env:
+        ACTIONS_DEPLOY_KEY: ${{ secrets.ACTIONS_DEPLOY_KEY }}
+        PUBLISH_BRANCH: gh-pages
+        PUBLISH_DIR: ./htmldoc
