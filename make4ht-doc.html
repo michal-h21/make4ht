@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html lang='en'>
 <head>
-<meta content='HTML Tidy for HTML5 for Linux version 5.6.0' name='generator' />
-<title></title>
+<meta name='generator' content='HTML Tidy for HTML5 for Linux version 5.6.0' />
+<title>The make4ht build system</title>
 <meta charset='utf-8' />
-<meta content='TeX4ht (http://www.tug.org/tex4ht/)' name='generator' />
-<meta content='width=device-width,initial-scale=1' name='viewport' />
-<link href='make4ht-doc.css' rel='stylesheet' type='text/css' />
-<meta content='make4ht-doc.tex' name='src' />
+<meta name='generator' content='TeX4ht (http://www.tug.org/tex4ht/)' />
+<meta name='viewport' content='width=device-width,initial-scale=1' />
+<link type='text/css' rel='stylesheet' href='make4ht-doc.css' />
+<meta name='src' content='make4ht-doc.tex' />
 <script src='https://hypothes.is/embed.js'></script>
-<meta content='' property='og:title' />
+<meta content='The make4ht build system' property='og:title' />
 <meta content='Michal Hoftich' property='og:author' />
 <meta content='website' property='og:type' />
 <meta content='https://www.kodymirus.cz/make4ht/make4ht-doc.html' property='og:url' />
@@ -26,11 +26,11 @@
 <!-- l. 25 -->
 <p class='noindent'><span class='cmr-17'>The make4ht build system</span></p>
 <div class='tabular'>
-<table class='tabular' id='TBL-1'>
+<table id='TBL-1' class='tabular'>
 <colgroup id='TBL-1-1g'>
 <col id='TBL-1-1' /></colgroup>
 <tr style='vertical-align:baseline;' id='TBL-1-1-'>
-<td class='td11' style='white-space:nowrap; text-align:center;' id='TBL-1-1-1'><span class='cmr-12'>Michal Hoftich </span><span class='cmr-12'>&lt;</span><a href='michal.h21@gmail.com'><span class='cmr-12'>michal.h21@gmail.com</span></a><span class='cmr-12'>&gt;</span></td>
+<td id='TBL-1-1-1' style='white-space:nowrap; text-align:center;' class='td11'><span class='cmr-12'>Michal Hoftich </span><span class='cmr-12'>&lt;</span><a href='michal.h21@gmail.com'><span class='cmr-12'>michal.h21@gmail.com</span></a><span class='cmr-12'>&gt;</span></td>
 </tr>
 </table>
 </div>
@@ -39,8 +39,59 @@
 <span class='cmr-12'>undefined</span></p>
 </div>
 <h3 class='likesectionHead'><a id='x1-1000'></a>Contents</h3>
-<!-- l. 2 -->
-<p class='noindent'><a id='introduction'></a></p>
+<div class='tableofcontents'><span class='sectionToc'>1 <a id='QQ2-1-2' href='#x1-20001'>Introduction</a></span><br />
+<span class='sectionToc'>2 <a id='QQ2-1-3' href='#x1-30002'>Command line options</a></span><br />
+<span class='sectionToc'>3 <a id='QQ2-1-4' href='#x1-40003'>Why make4ht? – htlatex issues</a></span><br />
+ <span class='subsectionToc'>3.1 <a id='QQ2-1-5' href='#x1-50003.1'>Passing command line arguments</a></span><br />
+ <span class='subsectionToc'>3.2 <a id='QQ2-1-6' href='#x1-60003.2'>Compilation sequence</a></span><br />
+ <span class='subsectionToc'>3.3 <a id='QQ2-1-7' href='#x1-70003.3'>Handling of the generated files</a></span><br />
+ <span class='subsectionToc'>3.4 <a id='QQ2-1-8' href='#x1-80003.4'>Image conversion and post-processing of the generated files</a></span><br />
+<span class='sectionToc'>4 <a id='QQ2-1-9' href='#x1-90004'>Output file formats and extensions</a></span><br />
+ <span class='subsectionToc'>4.1 <a id='QQ2-1-10' href='#x1-100004.1'>Extensions</a></span><br />
+<span class='sectionToc'>5 <a id='QQ2-1-11' href='#x1-110005'>Build files</a></span><br />
+ <span class='subsectionToc'>5.1 <a id='QQ2-1-12' href='#x1-120005.1'>User commands</a></span><br />
+  <span class='subsubsectionToc'>5.1.1 <a id='QQ2-1-13' href='#x1-130005.1.1'>The command function</a></span><br />
+  <span class='subsubsectionToc'>5.1.2 <a id='QQ2-1-14' href='#x1-140005.1.2'>The settings table table</a></span><br />
+  <span class='subsubsectionToc'>5.1.3 <a id='QQ2-1-15' href='#x1-150005.1.3'>Repetition</a></span><br />
+  <span class='subsubsectionToc'>5.1.4 <a id='QQ2-1-16' href='#x1-160005.1.4'>Expected exit code</a></span><br />
+ <span class='subsectionToc'>5.2 <a id='QQ2-1-17' href='#x1-170005.2'>Provided commands</a></span><br />
+ <span class='subsectionToc'>5.3 <a id='QQ2-1-18' href='#x1-180005.3'>File matches</a></span><br />
+  <span class='subsubsectionToc'>5.3.1 <a id='QQ2-1-19' href='#x1-190005.3.1'>Filters</a></span><br />
+  <span class='subsubsectionToc'>5.3.2 <a id='QQ2-1-20' href='#x1-200005.3.2'>DOM filters</a></span><br />
+ <span class='subsectionToc'>5.4 <a id='QQ2-1-21' href='#x1-210005.4'>Image conversion</a></span><br />
+ <span class='subsectionToc'>5.5 <a id='QQ2-1-22' href='#x1-220005.5'>The mode variable</a></span><br />
+ <span class='subsectionToc'>5.6 <a id='QQ2-1-23' href='#x1-230005.6'>The settings table</a></span><br />
+  <span class='subsubsectionToc'>5.6.1 <a id='QQ2-1-24' href='#x1-240005.6.1'>Default settings</a></span><br />
+<span class='sectionToc'>6 <a id='QQ2-1-25' href='#x1-250006'>Configuration file</a></span><br />
+ <span class='subsectionToc'>6.1 <a id='QQ2-1-26' href='#x1-260006.1'>Location</a></span><br />
+ <span class='subsectionToc'>6.2 <a id='QQ2-1-27' href='#x1-270006.2'>Additional commands</a></span><br />
+ <span class='subsectionToc'>6.3 <a id='QQ2-1-28' href='#x1-280006.3'>Example</a></span><br />
+<span class='sectionToc'>7 <a id='QQ2-1-29' href='#x1-290007'>Development</a></span><br />
+ <span class='subsectionToc'>7.1 <a id='QQ2-1-30' href='#x1-300007.1'>Custom filters</a></span><br />
+ <span class='subsectionToc'>7.2 <a id='QQ2-1-31' href='#x1-310007.2'>New extensions</a></span><br />
+ <span class='subsectionToc'>7.3 <a id='QQ2-1-32' href='#x1-320007.3'>How to add new output format</a></span><br />
+<span class='sectionToc'>8 <a id='QQ2-1-33' href='#x1-330008'>List of available settings for filters and extensions.</a></span><br />
+ <span class='subsectionToc'>8.1 <a id='QQ2-1-34' href='#x1-340008.1'>The tidy extension</a></span><br />
+ <span class='subsectionToc'>8.2 <a id='QQ2-1-35' href='#x1-350008.2'>The collapsetoc dom filter</a></span><br />
+ <span class='subsectionToc'>8.3 <a id='QQ2-1-36' href='#x1-360008.3'>The fixinlines dom filter</a></span><br />
+ <span class='subsectionToc'>8.4 <a id='QQ2-1-37' href='#x1-370008.4'>The joincharacters dom filter</a></span><br />
+ <span class='subsectionToc'>8.5 <a id='QQ2-1-38' href='#x1-380008.5'>The mathjaxnode filter</a></span><br />
+ <span class='subsectionToc'>8.6 <a id='QQ2-1-39' href='#x1-390008.6'>The staticsite filter and extension</a></span><br />
+ <span class='subsectionToc'>8.7 <a id='QQ2-1-40' href='#x1-400008.7'>The dvisvgm_hashes extension</a></span><br />
+ <span class='subsectionToc'>8.8 <a id='QQ2-1-41' href='#x1-410008.8'>The odttemplate filter and extension</a></span><br />
+ <span class='subsectionToc'>8.9 <a id='QQ2-1-42' href='#x1-420008.9'>The aeneas filter</a></span><br />
+ <span class='subsectionToc'>8.10 <a id='QQ2-1-43' href='#x1-430008.10'>The make4ht-aeneas-config package</a></span><br />
+  <span class='subsubsectionToc'>8.10.1 <a id='QQ2-1-44' href='#x1-440008.10.1'>Available parameters</a></span><br />
+  <span class='subsubsectionToc'>8.10.2 <a id='QQ2-1-45' href='#x1-450008.10.2'>Additional parameters for the job configuration file</a></span><br />
+  <span class='subsubsectionToc'>8.10.3 <a id='QQ2-1-46' href='#x1-460008.10.3'>Available map options</a></span><br />
+  <span class='subsubsectionToc'>8.10.4 <a id='QQ2-1-47' href='#x1-470008.10.4'>Full example</a></span><br />
+<span class='sectionToc'>9 <a id='QQ2-1-48' href='#x1-480009'>Troubleshooting</a></span><br />
+ <span class='subsectionToc'>9.1 <a id='QQ2-1-49' href='#x1-490009.1'>Incorrect handling of command line arguments for tex4ht, t4ht or latex</a></span><br />
+ <span class='subsectionToc'>9.2 <a id='QQ2-1-50' href='#x1-500009.2'>Filenames containing spaces</a></span><br />
+ <span class='subsectionToc'>9.3 <a id='QQ2-1-51' href='#x1-510009.3'>Filenames containing non-ASCII characters</a></span><br />
+<span class='sectionToc'>10 <a id='QQ2-1-52' href='#x1-5200010'>License</a></span><br />
+<span class='sectionToc'>11 <a id='QQ2-1-53' href='#x1-5300011'>Changelog</a></span></div>
+<p><a id='introduction'></a></p>
 <h3 class='sectionHead'><span class='titlemark'>1</span> <a id='x1-20001'></a>Introduction</h3>
 <!-- l. 4 -->
 <p class='noindent'>make4ht is a build system for <span class='TEX'>T<span class='E'>E</span>X</span>4ht, <span class='TEX'>T<span class='E'>E</span>X</span> to XML converter. It provides a command line tool that drives the conversion process. It also provides a library that can be used to create customized conversion tools. An example of such tool is <a href='https://github.com/michal-h21/tex4ebook'>tex4ebook</a>, a tool for conversion from <span class='TEX'>T<span class='E'>E</span>X</span> to
@@ -83,7 +134,7 @@ make4ht [options] filename [”tex4ht.sty op.” ”tex4ht op.”  <br />
 <!-- l. 54 -->
 <p class='nopar'></p>
 <!-- l. 56 -->
-<p class='indent'>Note that this will not use make4ht routines for the output directory handling. See section 3.3 for more information about this issue. To use these routines, change the previous listing to:</p>
+<p class='indent'>Note that this will not use make4ht routines for the output directory handling. See section <a href='#x1-70003.3'>3.3<!-- tex4ht:ref: sec:output-dir  --></a> for more information about this issue. To use these routines, change the previous listing to:</p>
 <div id='verbatim-4' class='verbatim'>$ make4ht -d foo filename ”customcfg, charset=utf-8” ”-cunihtf -utf8”</div>
 <!-- l. 63 -->
 <p class='nopar'></p>
@@ -155,7 +206,7 @@ $ t4ht $t4ht˙options filename</div>
 <!-- l. 158 -->
 <p class='indent'>The -u option requires the UTF-8 encoding. HTML 5 is used as the default output format by make4ht.</p>
 <!-- l. 162 -->
-<p class='indent'>More information about the command line arguments can be found in section 2.</p>
+<p class='indent'>More information about the command line arguments can be found in section <a href='#x1-30002'>2<!-- tex4ht:ref: sec:clioptions  --></a>.</p>
 <!-- l. 166 -->
 <p class='indent'><a id='compilation-sequence'></a></p>
 <h4 class='subsectionHead'><span class='titlemark'>3.2</span> <a id='x1-60003.2'></a>Compilation sequence</h4>
@@ -174,7 +225,7 @@ means that <span class='LATEX'>L<span class='A'>A</span><span class='TEX'>T<span
 <!-- l. 195 -->
 <p class='nopar'></p>
 <!-- l. 197 -->
-<p class='indent'>More information about the build files can be found in section 5.</p>
+<p class='indent'>More information about the build files can be found in section <a href='#x1-110005'>5<!-- tex4ht:ref: sec:buildfiles  --></a>.</p>
 <!-- l. 202 -->
 <p class='indent'><a id='handling-of-the-generated-files'></a></p>
 <h4 class='subsectionHead'><span class='titlemark'>3.3</span> <a id='x1-70003.3'></a>Handling of the generated files</h4>
@@ -193,9 +244,9 @@ subdirectory, they will be copied to the output directory, losing the directory 
 <p class='noindent'><span class='TEX'>T<span class='E'>E</span>X</span>4ht can convert parts of the document to images. This is useful for diagrams or complicated math, for example.</p>
 <!-- l. 231 -->
 <p class='indent'>By default, the image conversion is configured in a <a href='http://www.tug.org/applications/tex4ht/mn35.html#index35-73001'>.env file</a>. It has a bit of strange syntax, with <a href='http://www.tug.org/applications/tex4ht/mn-unix.html#index27-69005'>operating system dependent</a> rules. make4ht provides simpler means for the image conversion in the build files. It is possible to change the image conversion parameters without a need to modify the .env file. The process is described in
-section 5.4.</p>
+section <a href='#x1-210005.4'>5.4<!-- tex4ht:ref: sec:imageconversion  --></a>.</p>
 <!-- l. 240 -->
-<p class='indent'>It is also possible to post-process the generated output files. The post-processing can be done either using external programs such as XSLT processors and HTML Tidy or using Lua functions. More information can be found in section 5.3.</p>
+<p class='indent'>It is also possible to post-process the generated output files. The post-processing can be done either using external programs such as XSLT processors and HTML Tidy or using Lua functions. More information can be found in section <a href='#x1-180005.3'>5.3<!-- tex4ht:ref: sec:postprocessing  --></a>.</p>
 <!-- l. 248 -->
 <p class='indent'><a id='output-file-formats-and-extensions'></a></p>
 <h3 class='sectionHead'><span class='titlemark'>4</span> <a id='x1-90004'></a>Output file formats and extensions</h3>
@@ -238,7 +289,7 @@ section 5.4.</p>
 <dt class='description'>mathjaxnode</dt>
 <dd class='description'>use <a href='https://github.com/pkra/mathjax-node-page/'>mathjax-node-page</a> to convert from MathML code to HTML + CSS or SVG. See <a href='#mathjaxsettings'>the available settings</a>.</dd>
 <dt class='description'>odttemplate</dt>
-<dd class='description'>it automatically loads the odttemplate filter (page 11).</dd>
+<dd class='description'>it automatically loads the odttemplate filter (page <a href='#x1-190005.3.1'>32<!-- tex4ht:ref: sec:odttemplate  --></a>).</dd>
 <dt class='description'>preprocess_input</dt>
 <dd class='description'>compilation of the formats supported by <a href='https://yihui.name/knitr/'>Knitr</a> (.Rnw, .Rtex, .Rmd, .Rrst) and also Markdown and reStructuredText formats. It requires <a href='https://www.r-project.org/'>R</a> + <a href='https://yihui.name/knitr/'>Knitr</a> installation, it requires also <a href='https://pandoc.org/'>Pandoc</a> for formats based on Markdown or reStructuredText.</dd>
 <dt class='description'>staticsite</dt>
@@ -281,7 +332,7 @@ Make:match(”html$”, ”tidy -m -xml -utf8 -q -i $–filename˝”)</d
 <!-- l. 378 -->
 <p class='nopar'></p>
 <!-- l. 380 -->
-<p class='indent'>More information about settings, including the default settings provided by make4ht, can be found in the section 5.6 on the page 13.</p>
+<p class='indent'>More information about settings, including the default settings provided by make4ht, can be found in the section <a href='#x1-230005.6'>5.6<!-- tex4ht:ref: sec:settings  --></a> on the page <a href='#x1-230005.6'>38<!-- tex4ht:ref: sec:settings  --></a>.</p>
 <!-- l. 386 -->
 <p class='indent'><a id='the-command-function'></a></p>
 <h5 class='subsubsectionHead'><span class='titlemark'>5.1.1</span> <a id='x1-130005.1.1'></a>The command function</h5>
@@ -354,7 +405,7 @@ Make:match(”html$”, ”tidy -m -xml -utf8 -q -i $–filename˝”)</d
 <p class='indent'>The Make:match action tests output filenames using a Lua pattern matching function.<br class='newline' />
 It executes a command or a function, specified in the second argument, on files whose filenames match the pattern.</p>
 <!-- l. 490 -->
-<p class='indent'>The commands to be executed can be specified as strings. They can contain ${var_name} placeholders, which are replaced with corresponding variables from the settings table. The templating system was described in subsection 5.1.1. There is an additional variable available in this table, called filename. It contains the name of the current output file.</p>
+<p class='indent'>The commands to be executed can be specified as strings. They can contain ${var_name} placeholders, which are replaced with corresponding variables from the settings table. The templating system was described in subsection <a href='#x1-130005.1.1'>5.1.1<!-- tex4ht:ref: sec:commandfunction  --></a>. There is an additional variable available in this table, called filename. It contains the name of the current output file.</p>
 <!-- l. 497 -->
 <p class='indent'>If a function is used instead, it will get two parameters. The first one is the current filename, the second one is the settings table.</p>
 <div id='verbatim-24' class='verbatim'>Make:match(”html$”, function(filename, settings)  <br />
@@ -414,7 +465,7 @@ Make:match(”html$”,process)</div>
 <dt class='description'>hruletohr</dt>
 <dd class='description'>\hrule commands are translated to series of underscore characters by <span class='TEX'>T<span class='E'>E</span>X</span>4ht, this filter translates these underscores to &lt;hr&gt; elements</dd>
 <dt class='description'>entites</dt>
-<dd class='description'>convert prohibited named entities to numeric entities (only   currently).</dd>
+<dd class='description'>convert prohibited named entities to numeric entities (only &amp;nbsp; currently).</dd>
 <dt class='description'>fix-links</dt>
 <dd class='description'>replace colons in local links and id attributes with underscores. Some cross-reference commands may produce colons in internal links, which results in a validation error.</dd>
 <dt class='description'>mathjaxnode</dt>
