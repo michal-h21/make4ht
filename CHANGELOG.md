@@ -1,5 +1,9 @@
 # Changelog
 
+- 2019/10/08
+
+    - set up Github Actions pipeline to compile the documentation to HTML and publish it at https://www.kodymirus.cz/make4ht/make4ht-doc.html.
+
 - 2019/10/07
 
     - don't move the `common_domfilters` extension to the first place in the
@@ -8,7 +12,7 @@
 
 - 2019/10/04
 
-    - added HTML documentation
+    - added HTML documentation.
 
 - 2019/09/27
 
