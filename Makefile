@@ -86,7 +86,9 @@ build: doc $(lua_content) $(filters) $(domfilters)
 	@cp README.md $(BUILD_MAKE4HT)/README
 	@cd $(BUILD_DIR) && zip -r make4ht.zip make4ht
 
-install: doc $(lua_content) $(filters) $(domfilters)
+install: doc $(lua_content) $(filters) $(domfilters) justinstall 
+
+justinstall:
 	mkdir -p $(INSTALL_DIR)
 	mkdir -p $(MANUAL_DIR)
 	mkdir -p $(FILTERS_DIR)
