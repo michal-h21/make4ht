@@ -372,6 +372,8 @@ end
 
 
 env.Make:add("latexmk", function(par)
+  local settings = get_filter_settings "htlatex" or {}
+  par.interaction = par.interaction or settings.interaction or "batchmode"
   local command = Make.latex_command
   par.expanded = command % par
   -- quotes in latex_command must be escaped, they cause Latexmk error
