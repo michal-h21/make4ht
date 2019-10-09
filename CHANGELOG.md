@@ -1,5 +1,11 @@
 # Changelog
 
+- 2019/10/09
+
+    - added the `interaction` parameter for the `htlatex` command. The default
+      value is `batchmode` to suppress the user input on errors, and to
+      suppress  full log output to the terminal.
+
 - 2019/10/08
 
     - set up Github Actions pipeline to compile the documentation to HTML and publish it at https://www.kodymirus.cz/make4ht/make4ht-doc.html.

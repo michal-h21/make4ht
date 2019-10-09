@@ -734,6 +734,7 @@ The default parameters are the following:
 :    expected `exit code` from the command. The compilation will be terminated
      if the exit code of the executed command has a different value.
 
+
 # Configuration file {#configfile}
 
 It is possible to globally modify the build settings using the configuration
@@ -787,6 +788,14 @@ output for math.
 # List of available settings for filters and extensions.
 
 These settings may be set using `filter_settings` function in a build file or in the `make4ht` configuration file.
+
+## The `htlatex` command
+
+`interaction`
+
+:    interaction mode for the \TeX\ engine. The default value is `batchmode` to
+     suppress user input on compilation errors. It also suppresses most of the \TeX\ 
+     compilation log output. Use the `errorstopmode` for the default behaviour.
 
 ## The `tidy` extension
 
