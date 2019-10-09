@@ -328,11 +328,9 @@ local function testlogfile(par)
     return 1
   end
   local content = f:read("*a")
-
   -- test only the end of the log file, no need to run search functions on everything
   local text = content:sub(-1256)
   f:close()
-  if text:match("No pages of output") or text:match("TeX capacity exceeded, sorry") or text:match("That makes 100 errors") or text:match("Emergency stop") then return 1 end
   -- parse log file for all errors in non-interactive modes
   if par.interaction~="errorstopmode" then
     local errors, chunks = error_logparser.parse(content)
@@ -344,6 +342,8 @@ local function testlogfile(par)
       end
     end
   end
+  -- test for fatal errors
+  if text:match("No pages of output") or text:match("TeX capacity exceeded, sorry") or text:match("That makes 100 errors") or text:match("Emergency stop") then return 1 end
   return 0
 end
 
