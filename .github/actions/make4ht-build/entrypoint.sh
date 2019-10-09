@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # make4ht -um draft 
-make install SUDO=""
+make justinstall SUDO=""
 make htmldoc
 cat htmldoc/make4ht-doc.html
 
