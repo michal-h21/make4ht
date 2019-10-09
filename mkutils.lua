@@ -3,6 +3,7 @@ module(...,package.seeall)
 local make4ht = require("make4ht-lib")
 local mkparams = require("mkparams")
 local indexing = require("make4ht-indexing")
+local error_logparser = require("make4ht-errorlogparser")
 --template engine
 function interp(s, tab)
 	local tab = tab or {}
@@ -326,15 +327,23 @@ local function testlogfile(par)
     print("Make4ht: cannot open log file "..logfile)
     return 1
   end
-  local len = f:seek("end")
+  local content = f:read("*a")
+
   -- test only the end of the log file, no need to run search functions on everything
-  local newlen = len - 1256
-  -- but the value to seek must be greater than 0
-  newlen = (newlen > 0) and newlen or 0
-  f:seek("set", newlen)
-  local text = f:read("*a")
+  local text = content:sub(-1256)
   f:close()
   if text:match("No pages of output") or text:match("TeX capacity exceeded, sorry") or text:match("That makes 100 errors") then return 1 end
+  -- parse log file for all errors in non-interactive modes
+  if par.interaction~="errorstopmode" then
+    local errors, chunks = error_logparser.parse(content)
+    if #errors > 0 then
+      print("Compilation errors in htlatex run")
+      print("Filename", "Line", "Message")
+      for _, err in ipairs(errors) do
+        print(err.filename or "?", err.line or "?", err.error)
+      end
+    end
+  end
   return 0
 end
 
