@@ -6,13 +6,13 @@
 <meta charset='utf-8' />
 <meta name='generator' content='TeX4ht (http://www.tug.org/tex4ht/)' />
 <meta name='viewport' content='width=device-width,initial-scale=1' />
-<link type='text/css' href='make4ht-doc.css' rel='stylesheet' />
+<link rel='stylesheet' type='text/css' href='make4ht-doc.css' />
 <meta name='src' content='make4ht-doc.tex' />
 <script src='https://hypothes.is/embed.js'></script>
-<meta content='The make4ht build system' property='og:title' />
-<meta content='Michal Hoftich' property='og:author' />
-<meta content='website' property='og:type' />
-<meta content='https://www.kodymirus.cz/make4ht/make4ht-doc.html' property='og:url' />
+<meta property='og:title' content='The make4ht build system' />
+<meta property='og:author' content='Michal Hoftich' />
+<meta property='og:type' content='website' />
+<meta property='og:url' content='https://www.kodymirus.cz/make4ht/make4ht-doc.html' />
 <link rel='canonical' href='https://www.kodymirus.cz/make4ht/make4ht-doc.html' />
 <link rel='stylesheet' href='https://www.kodymirus.cz/reyman/css/scale.css' />
 </head>
@@ -26,11 +26,11 @@
 <!-- l. 25 -->
 <p class='noindent'><span class='cmr-17'>The make4ht build system</span></p>
 <div class='tabular'>
-<table class='tabular' id='TBL-1'>
+<table id='TBL-1' class='tabular'>
 <colgroup id='TBL-1-1g'>
 <col id='TBL-1-1' /></colgroup>
-<tr style='vertical-align:baseline;' id='TBL-1-1-'>
-<td class='td11' style='white-space:nowrap; text-align:center;' id='TBL-1-1-1'><span class='cmr-12'>Michal Hoftich </span><span class='cmr-12'>&lt;</span><a href='michal.h21@gmail.com'><span class='cmr-12'>michal.h21@gmail.com</span></a><span class='cmr-12'>&gt;</span></td>
+<tr id='TBL-1-1-' style='vertical-align:baseline;'>
+<td style='white-space:nowrap; text-align:center;' id='TBL-1-1-1' class='td11'><span class='cmr-12'>Michal Hoftich </span><span class='cmr-12'>&lt;</span><a href='michal.h21@gmail.com'><span class='cmr-12'>michal.h21@gmail.com</span></a><span class='cmr-12'>&gt;</span></td>
 </tr>
 </table>
 </div>
@@ -99,7 +99,7 @@
 ePub and other e-book formats.</p>
 <!-- l. 11 -->
 <p class='indent'>The basic conversion from <span class='LATEX'>L<span class='A'>A</span><span class='TEX'>T<span class='E'>E</span>X</span></span> to HTML using make4ht can be executed using the following command:</p>
-<div class='verbatim' id='verbatim-1'>$ make4ht filename.tex</div>
+<div id='verbatim-1' class='verbatim'>$ make4ht filename.tex</div>
 <!-- l. 16 -->
 <p class='nopar'></p>
 <!-- l. 18 -->
@@ -107,7 +107,7 @@ ePub and other e-book formats.</p>
 <!-- l. 22 -->
 <p class='indent'><a id='clioptions'></a></p>
 <h3 class='sectionHead'><span class='titlemark'>2</span> <a id='x1-30002'></a>Command line options</h3>
-<div class='verbatim' id='verbatim-2'>make4ht - build system for TeX4ht  <br />
+<div id='verbatim-2' class='verbatim'>make4ht - build system for TeX4ht  <br />
 Usage:  <br />
 make4ht [options] filename [”tex4ht.sty op.” ”tex4ht op.”  <br />
      ”t4ht op” ”latex op”]  <br />
@@ -131,22 +131,22 @@ make4ht [options] filename [”tex4ht.sty op.” ”tex4ht op.”  <br />
 <p class='nopar'></p>
 <!-- l. 49 -->
 <p class='indent'>It is still possible to invoke make4ht in the same way as is invoked htlatex:</p>
-<div class='verbatim' id='verbatim-3'>$ make4ht filename ”customcfg, charset=utf-8” ”-cunihtf -utf8” ”-dfoo”</div>
+<div id='verbatim-3' class='verbatim'>$ make4ht filename ”customcfg, charset=utf-8” ”-cunihtf -utf8” ”-dfoo”</div>
 <!-- l. 54 -->
 <p class='nopar'></p>
 <!-- l. 56 -->
 <p class='indent'>Note that this will not use make4ht routines for the output directory handling. See section <a href='#x1-70003.3'>3.3<!-- tex4ht:ref: sec:output-dir  --></a> for more information about this issue. To use these routines, change the previous listing to:</p>
-<div class='verbatim' id='verbatim-4'>$ make4ht -d foo filename ”customcfg, charset=utf-8” ”-cunihtf -utf8”</div>
+<div id='verbatim-4' class='verbatim'>$ make4ht -d foo filename ”customcfg, charset=utf-8” ”-cunihtf -utf8”</div>
 <!-- l. 63 -->
 <p class='nopar'></p>
 <!-- l. 65 -->
 <p class='indent'>This call has the same effect as the following:</p>
-<div class='verbatim' id='verbatim-5'>$ make4ht -u -c customcfg -d foo filename</div>
+<div id='verbatim-5' class='verbatim'>$ make4ht -u -c customcfg -d foo filename</div>
 <!-- l. 69 -->
 <p class='nopar'></p>
 <!-- l. 71 -->
 <p class='indent'>Output directory doesn’t have to exist, it will be created automatically. Specified path can be relative to the current directory, or absolute:</p>
-<div class='verbatim' id='verbatim-6'>$ make4ht -d use/current/dir/ filename  <br />
+<div id='verbatim-6' class='verbatim'>$ make4ht -d use/current/dir/ filename  <br />
 $ make4ht -d ../gotoparrentdir filename  <br />
 $ make4ht -d ˜/gotohomedir filename  <br />
 $ make4ht -d c:“documents“windowspathsareworkingtoo filename</div>
@@ -154,12 +154,12 @@ $ make4ht -d c:“documents“windowspathsareworkingtoo filename</div>
 <p class='nopar'></p>
 <!-- l. 82 -->
 <p class='indent'>The short options that don’t take parameters can be collapsed:</p>
-<div class='verbatim' id='verbatim-7'>$ make4ht -ulc customcfg -d foo filename</div>
+<div id='verbatim-7' class='verbatim'>$ make4ht -ulc customcfg -d foo filename</div>
 <!-- l. 86 -->
 <p class='nopar'></p>
 <!-- l. 88 -->
 <p class='indent'>To pass output from the other commands to make4ht use the - character as a filename. It is best to use this feature together with the --jobname or -j option.</p>
-<div class='verbatim' id='verbatim-8'>$ cat hello.tex — make4ht -j world -</div>
+<div id='verbatim-8' class='verbatim'>$ cat hello.tex — make4ht -j world -</div>
 <!-- l. 94 -->
 <p class='nopar'></p>
 <!-- l. 98 -->
@@ -177,7 +177,7 @@ the t4ht command produces the desired output files.</p>
 <h4 class='subsectionHead'><span class='titlemark'>3.1</span> <a id='x1-50003.1'></a>Passing command line arguments</h4>
 <!-- l. 119 -->
 <p class='noindent'>The basic conversion script provided by <span class='TEX'>T<span class='E'>E</span>X</span>4ht system is named htlatex. It compiles <span class='LATEX'>L<span class='A'>A</span><span class='TEX'>T<span class='E'>E</span>X</span></span>  files to HTML with this command sequence:</p>
-<div class='verbatim' id='verbatim-9'>$ latex $latex˙options ’code for loading tex4ht.sty “input–filename˝’  <br />
+<div id='verbatim-9' class='verbatim'>$ latex $latex˙options ’code for loading tex4ht.sty “input–filename˝’  <br />
 $ latex $latex˙options ’code for loading tex4ht.sty “input–filename˝’  <br />
 $ latex $latex˙options ’code for loading tex4ht.sty “input–filename˝’  <br />
 $ tex4ht $tex4ht˙options filename  <br />
@@ -186,22 +186,22 @@ $ t4ht $t4ht˙options filename</div>
 <p class='nopar'></p>
 <!-- l. 131 -->
 <p class='indent'>The options for various parts of the system can be passed on the command line:</p>
-<div class='verbatim' id='verbatim-10'>$ htlatex filename ”tex4ht.sty options” ”tex4ht˙options” ”t4ht˙options” ”latex˙options”</div>
+<div id='verbatim-10' class='verbatim'>$ htlatex filename ”tex4ht.sty options” ”tex4ht˙options” ”t4ht˙options” ”latex˙options”</div>
 <!-- l. 136 -->
 <p class='nopar'></p>
 <!-- l. 138 -->
 <p class='indent'>For basic HTML conversion it is possible to use the most basic invocation:</p>
-<div class='verbatim' id='verbatim-11'>$ htlatex filename.tex</div>
+<div id='verbatim-11' class='verbatim'>$ htlatex filename.tex</div>
 <!-- l. 143 -->
 <p class='nopar'></p>
 <!-- l. 145 -->
 <p class='indent'>It can be much more involved for the HTML 5 output in UTF-8 encoding:</p>
-<div class='verbatim' id='verbatim-12'>$ htlatex filename.tex ”xhtml,html5,charset=utf-8” ” -cmozhtf -utf8”</div>
+<div id='verbatim-12' class='verbatim'>$ htlatex filename.tex ”xhtml,html5,charset=utf-8” ” -cmozhtf -utf8”</div>
 <!-- l. 150 -->
 <p class='nopar'></p>
 <!-- l. 152 -->
 <p class='indent'>make4ht can simplify it:</p>
-<div class='verbatim' id='verbatim-13'>$ make4ht -u filename.tex</div>
+<div id='verbatim-13' class='verbatim'>$ make4ht -u filename.tex</div>
 <!-- l. 156 -->
 <p class='nopar'></p>
 <!-- l. 158 -->
@@ -222,7 +222,7 @@ means that <span class='LATEX'>L<span class='A'>A</span><span class='TEX'>T<span
 <p class='indent'>make4ht also provides compilation modes, which enables to select commands that should be executed using a command line option.</p>
 <!-- l. 187 -->
 <p class='indent'>There is a built-in draft mode, which invokes <span class='LATEX'>L<span class='A'>A</span><span class='TEX'>T<span class='E'>E</span>X</span></span> only once, instead of the default three invocations. It is useful for the compilations of the document before its final stage, when it is not important that all cross-references work. It can save quite a lot of the compilation time:</p>
-<div class='verbatim' id='verbatim-14'>$ make4ht -um draft filename.tex</div>
+<div id='verbatim-14' class='verbatim'>$ make4ht -um draft filename.tex</div>
 <!-- l. 195 -->
 <p class='nopar'></p>
 <!-- l. 197 -->
@@ -235,7 +235,7 @@ means that <span class='LATEX'>L<span class='A'>A</span><span class='TEX'>T<span
 <!-- l. 212 -->
 <p class='indent'>t4ht can be instructed to copy the generated files to an output directory, but it doesn’t preserve the directory structure. When the images are placed in a<br class='newline' />
 subdirectory, they will be copied to the output directory, losing the directory structure. Links will be pointing to a non-existing subdirectory. The following command should copy all output files to the correct destinations.</p>
-<div class='verbatim' id='verbatim-15'>$ make4ht -d outputdir filename.tex</div>
+<div id='verbatim-15' class='verbatim'>$ make4ht -d outputdir filename.tex</div>
 <!-- l. 222 -->
 <p class='nopar'></p>
 <!-- l. 226 -->
@@ -269,7 +269,7 @@ section <a href='#x1-210005.4'>5.4<!-- tex4ht:ref: sec:imageconversion  --></a>.
 <p class='noindent'>Extensions can be used to modify the build process without the need to use a build file. They may post-process the output files or request additional commands for the compilation.</p>
 <!-- l. 277 -->
 <p class='indent'>The extensions can be enabled or disabled by appending +EXTENSION or -EXTENSION after the output format name:</p>
-<div class='verbatim' id='verbatim-16'> $ make4ht -uf html5+tidy filename.tex</div>
+<div id='verbatim-16' class='verbatim'> $ make4ht -uf html5+tidy filename.tex</div>
 <!-- l. 282 -->
 <p class='nopar'></p>
 <!-- l. 284 -->
@@ -307,7 +307,7 @@ section <a href='#x1-210005.4'>5.4<!-- tex4ht:ref: sec:imageconversion  --></a>.
 <p class='indent'>make4ht tries to load default build file named as filename + .mk4 extension. It is possible to select a different build file with -e or --build-file command line option.</p>
 <!-- l. 339 -->
 <p class='indent'>Sample build file:</p>
-<div class='verbatim' id='verbatim-17'>Make:htlatex()  <br />
+<div id='verbatim-17' class='verbatim'>Make:htlatex()  <br />
 Make:match(”html$”, ”tidy -m -xml -utf8 -q -i $–filename˝”)</div>
 <!-- l. 344 -->
 <p class='nopar'></p>
@@ -320,7 +320,7 @@ Make:match(”html$”, ”tidy -m -xml -utf8 -q -i $–filename˝”)</d
 <h4 class='subsectionHead'><span class='titlemark'>5.1</span> <a id='x1-120005.1'></a>User commands</h4>
 <!-- l. 357 -->
 <p class='noindent'>It is possible to add more commands like Make:htlatex using the Make:add command:</p>
-<div class='verbatim' id='verbatim-18'>Make:add(”name”, ”command”, –settings table˝, repetition)</div>
+<div id='verbatim-18' class='verbatim'>Make:add(”name”, ”command”, –settings table˝, repetition)</div>
 <!-- l. 362 -->
 <p class='nopar'></p>
 <!-- l. 364 -->
@@ -329,7 +329,7 @@ Make:match(”html$”, ”tidy -m -xml -utf8 -q -i $–filename˝”)</d
 <p class='indent'>The name and command parameters are required, the rest of the parameters are optional.</p>
 <!-- l. 370 -->
 <p class='indent'>The defined command receives a table with settings as a parameter at the call time. The default settings are provided by make4ht. Additional settings can be declared in the Make:add commands, user can also override the default settings when the command is executed in the build file:</p>
-<div class='verbatim' id='verbatim-19'>Make:name(–hello=”world”˝)</div>
+<div id='verbatim-19' class='verbatim'>Make:name(–hello=”world”˝)</div>
 <!-- l. 378 -->
 <p class='nopar'></p>
 <!-- l. 380 -->
@@ -339,7 +339,7 @@ Make:match(”html$”, ”tidy -m -xml -utf8 -q -i $–filename˝”)</d
 <h5 class='subsubsectionHead'><span class='titlemark'>5.1.1</span> <a id='x1-130005.1.1'></a>The command function</h5>
 <!-- l. 390 -->
 <p class='noindent'>The command parameter can be either string template or function:</p>
-<div class='verbatim' id='verbatim-20'>Make:add(”text”, ”echo hello, input file: $–input˝”)</div>
+<div id='verbatim-20' class='verbatim'>Make:add(”text”, ”echo hello, input file: $–input˝”)</div>
 <!-- l. 395 -->
 <p class='nopar'></p>
 <!-- l. 397 -->
@@ -349,7 +349,7 @@ Make:match(”html$”, ”tidy -m -xml -utf8 -q -i $–filename˝”)</d
 <h5 class='subsubsectionHead'><span class='titlemark'>5.1.2</span> <a id='x1-140005.1.2'></a>The settings table table</h5>
 <!-- l. 405 -->
 <p class='noindent'>The settings table parameter is optional. If it is present, it should be table with new settings available in the command. It can also override the default make4ht settings for the defined command.</p>
-<div class='verbatim' id='verbatim-21'>Make:add(”sample˙function”, function(params)  <br />
+<div id='verbatim-21' class='verbatim'>Make:add(”sample˙function”, function(params)  <br />
   for k, v in pairs(params) do  <br />
     print(k..”: ”..v)  <br />
   end, –custom=”Hello world”˝  <br />
@@ -366,7 +366,7 @@ Make:match(”html$”, ”tidy -m -xml -utf8 -q -i $–filename˝”)</d
 <h5 class='subsubsectionHead'><span class='titlemark'>5.1.4</span> <a id='x1-160005.1.4'></a>Expected exit code</h5>
 <!-- l. 431 -->
 <p class='noindent'>You can set the expected exit code from a command with a correct_exit key in the settings table. The compilation will be terminated when the command returns a different exit code.</p>
-<div class='verbatim' id='verbatim-22'>Make:add(”biber”, ”biber $–input˝”, –correct˙exit=0˝)</div>
+<div id='verbatim-22' class='verbatim'>Make:add(”biber”, ”biber $–input˝”, –correct˙exit=0˝)</div>
 <!-- l. 437 -->
 <p class='nopar'></p>
 <!-- l. 439 -->
@@ -397,7 +397,7 @@ Make:match(”html$”, ”tidy -m -xml -utf8 -q -i $–filename˝”)</d
 <h4 class='subsectionHead'><span class='titlemark'>5.3</span> <a id='x1-180005.3'></a>File matches</h4>
 <!-- l. 475 -->
 <p class='noindent'>Another type of action that can be specified in the build file is Make:match. It can be used to post-process the generated files:</p>
-<div class='verbatim' id='verbatim-23'>Make:match(”html$”, ”tidy -m -xml -utf8 -q -i $–filename˝”)</div>
+<div id='verbatim-23' class='verbatim'>Make:match(”html$”, ”tidy -m -xml -utf8 -q -i $–filename˝”)</div>
 <!-- l. 480 -->
 <p class='nopar'></p>
 <!-- l. 482 -->
@@ -409,7 +409,7 @@ It executes a command or a function, specified in the second argument, on files 
 <p class='indent'>The commands to be executed can be specified as strings. They can contain ${var_name} placeholders, which are replaced with corresponding variables from the settings table. The templating system was described in subsection <a href='#x1-130005.1.1'>5.1.1<!-- tex4ht:ref: sec:commandfunction  --></a>. There is an additional variable available in this table, called filename. It contains the name of the current output file.</p>
 <!-- l. 497 -->
 <p class='indent'>If a function is used instead, it will get two parameters. The first one is the current filename, the second one is the settings table.</p>
-<div class='verbatim' id='verbatim-24'>Make:match(”html$”, function(filename, settings)  <br />
+<div id='verbatim-24' class='verbatim'>Make:match(”html$”, function(filename, settings)  <br />
   print(”Post-processing file: ”.. filename)  <br />
   print(”Available settings”)  <br />
   for k,v in pairs(settings)  <br />
@@ -433,7 +433,7 @@ It executes a command or a function, specified in the second argument, on files 
 <p class='indent'>Several built-in filters are available, it is also possible to create new ones.</p>
 <!-- l. 534 -->
 <p class='indent'>Example that use only the built-in filters:</p>
-<div class='verbatim' id='verbatim-25'>local filter = require ”make4ht-filter”  <br />
+<div id='verbatim-25' class='verbatim'>local filter = require ”make4ht-filter”  <br />
 local process = filter–”cleanspan”, ”fixligatures”, ”hruletohr”˝  <br />
 Make:htlatex()  <br />
 Make:match(”html$”,process)</div>
@@ -443,7 +443,7 @@ Make:match(”html$”,process)</div>
 <p class='indent'>Function filter accepts also function arguments, in this case this function takes file contents as a parameter and modified contents are returned.</p>
 <!-- l. 547 -->
 <p class='indent'>Example with custom filter:</p>
-<div class='verbatim' id='verbatim-26'>local filter  = require ”make4ht-filter”  <br />
+<div id='verbatim-26' class='verbatim'>local filter  = require ”make4ht-filter”  <br />
 local changea = function(s) return s:gsub(”a”,”z”) end  <br />
 local process = filter–”cleanspan”, ”fixligatures”, changea˝  <br />
 Make:htlatex()  <br />
@@ -485,7 +485,7 @@ Make:match(”html$”,process)</div>
 <p class='noindent'>DOM filters are variants of filters that use the <a href='https://ctan.org/pkg/luaxml'>LuaXML</a> library to modify directly the XML object. This enables more powerful operations than the regex-based filters from the previous section.</p>
 <!-- l. 605 -->
 <p class='indent'>Example:</p>
-<div class='verbatim' id='verbatim-27'>local domfilter = require ”make4ht-domfilter”  <br />
+<div id='verbatim-27' class='verbatim'>local domfilter = require ”make4ht-domfilter”  <br />
 local process = domfilter –”joincharacters”˝  <br />
 Make:match(”html$”, process)</div>
 <!-- l. 611 -->
@@ -525,7 +525,7 @@ Make:match(”html$”, process)</div>
 <p class='indent'>This conversion is normally configured in the tex4ht.env file. This file is system dependent and it has quite an unintuitive syntax. The configuration is processed by the t4ht application and the conversion command is called for all pictures.</p>
 <!-- l. 666 -->
 <p class='indent'>It is possible to disable t4ht image processing and configure image conversion in the build file using the image action:</p>
-<div class='verbatim' id='verbatim-28'>Make:image(”png$”,  <br />
+<div id='verbatim-28' class='verbatim'>Make:image(”png$”,  <br />
 ”dvipng -bg Transparent -T tight -o $–output˝  -pp $–page˝ $–source˝”)</div>
 <!-- l. 672 -->
 <p class='nopar'></p>
@@ -545,7 +545,7 @@ Make:match(”html$”, process)</div>
 <h4 class='subsectionHead'><span class='titlemark'>5.5</span> <a id='x1-220005.5'></a>The mode variable</h4>
 <!-- l. 696 -->
 <p class='noindent'>The mode variable available in the build process contains contents of the --mode command line option. It can be used to run some commands conditionally. For example:</p>
-<div class='verbatim' id='verbatim-29'> if mode == ”draft” then  <br />
+<div id='verbatim-29' class='verbatim'> if mode == ”draft” then  <br />
    Make:htlatex–˝  <br />
  else  <br />
    Make:htlatex–˝  <br />
@@ -556,7 +556,7 @@ Make:match(”html$”, process)</div>
 <p class='nopar'></p>
 <!-- l. 710 -->
 <p class='indent'>In this example (which is the default configuration used by make4ht), <span class='LATEX'>L<span class='A'>A</span><span class='TEX'>T<span class='E'>E</span>X</span></span> is called only once when make4ht is called with the draft mode:</p>
-<div class='verbatim' id='verbatim-30'>make4ht -m draft filename</div>
+<div id='verbatim-30' class='verbatim'>make4ht -m draft filename</div>
 <!-- l. 716 -->
 <p class='nopar'></p>
 <!-- l. 720 -->
@@ -564,7 +564,7 @@ Make:match(”html$”, process)</div>
 <h4 class='subsectionHead'><span class='titlemark'>5.6</span> <a id='x1-230005.6'></a>The settings table</h4>
 <!-- l. 724 -->
 <p class='noindent'>It is possible to access the parameters outside commands, file matches and image conversion functions. For example, to convert the document to the OpenDocument Format (ODT), the following settings can be used. They are based on the oolatex command:</p>
-<div class='verbatim' id='verbatim-31'>settings.tex4ht˙sty˙par = settings.tex4ht˙sty˙par ..”,ooffice”  <br />
+<div id='verbatim-31' class='verbatim'>settings.tex4ht˙sty˙par = settings.tex4ht˙sty˙par ..”,ooffice”  <br />
 settings.tex4ht˙par = settings.tex4ht˙par .. ” ooffice/! -cmozhtf”  <br />
 settings.t4ht˙par = settings.t4ht˙par .. ” -cooxtpipes -coo ”</div>
 <!-- l. 733 -->
@@ -587,7 +587,7 @@ settings.t4ht˙par = settings.t4ht˙par .. ” -cooxtpipes -coo ”</div>
 </dl>
 <!-- l. 752 -->
 <p class='indent'>For example, it is possible to simplify the sample from the previous code listings:</p>
-<div class='verbatim' id='verbatim-32'>settings˙add –  <br />
+<div id='verbatim-32' class='verbatim'>settings˙add –  <br />
   tex4ht˙sty˙par =”,ooffice”,  <br />
   tex4ht˙par = ” ooffice/! -cmozhtf”,  <br />
   t4ht˙par = ” -cooxtpipes -coo ”  <br />
@@ -596,14 +596,14 @@ settings.t4ht˙par = settings.t4ht˙par .. ” -cooxtpipes -coo ”</div>
 <p class='nopar'></p>
 <!-- l. 763 -->
 <p class='indent'>Settings for filters and extensions can be set using filter_settings:</p>
-<div class='verbatim' id='verbatim-33'>filter˙settings ”test” –  <br />
+<div id='verbatim-33' class='verbatim'>filter˙settings ”test” –  <br />
   hello = ”world”  <br />
 ˝</div>
 <!-- l. 770 -->
 <p class='nopar'></p>
 <!-- l. 772 -->
 <p class='indent'>These settings can be retrieved in the extensions and filters using the get_filter_settings function:</p>
-<div class='verbatim' id='verbatim-34'>function test(input)  <br />
+<div id='verbatim-34' class='verbatim'>function test(input)  <br />
    local options = get˙filter˙settings(”test”)  <br />
    print(options.hello)  <br />
    return input  <br />
@@ -671,7 +671,7 @@ end</div>
 <h4 class='subsectionHead'><span class='titlemark'>6.3</span> <a id='x1-280006.3'></a>Example</h4>
 <!-- l. 853 -->
 <p class='noindent'>The following example of the configuration file adds support for the biber command, requires common_domfilters extension and requires MathML output for math.</p>
-<div class='verbatim' id='verbatim-35'>Make:add(”biber”, ”biber $–input˝”)  <br />
+<div id='verbatim-35' class='verbatim'>Make:add(”biber”, ”biber $–input˝”)  <br />
 Make:enable˙extension ”common˙domfilters”  <br />
 settings˙add –  <br />
   tex4ht˙sty˙par =”,mathml”  <br />
@@ -728,7 +728,7 @@ settings˙add –  <br />
 </dl>
 <!-- l. 921 -->
 <p class='noindent'>Default values:</p>
-<div class='verbatim' id='verbatim-36'>filter˙settings ”collapsetoc” –  <br />
+<div id='verbatim-36' class='verbatim'>filter˙settings ”collapsetoc” –  <br />
   toc˙query = ”.tableofcontents”,  <br />
   title˙query = ”.partHead a, .chapterHead a, .sectionHead a, .subsectionHead a”,  <br />
   toc˙levels = –”partToc”, ”chapterToc”, ”sectionToc”, ”subsectionToc”, ”subsubsectionToc”˝  <br />
@@ -746,7 +746,7 @@ settings˙add –  <br />
 </dl>
 <!-- l. 942 -->
 <p class='noindent'>Example</p>
-<div class='verbatim' id='verbatim-37'>filter˙settings ”fixinlines” –inline˙elements = –a = true, b = true˝˝</div>
+<div id='verbatim-37' class='verbatim'>filter˙settings ”fixinlines” –inline˙elements = –a = true, b = true˝˝</div>
 <!-- l. 946 -->
 <p class='nopar'></p>
 <!-- l. 950 -->
@@ -760,7 +760,7 @@ settings˙add –  <br />
 </dl>
 <!-- l. 959 -->
 <p class='noindent'>Example</p>
-<div class='verbatim' id='verbatim-38'>filter˙settings ”joincharacters” – charclasses = – span=true, mn = true˝˝</div>
+<div id='verbatim-38' class='verbatim'>filter˙settings ”joincharacters” – charclasses = – span=true, mn = true˝˝</div>
 <!-- l. 963 -->
 <p class='nopar'></p>
 <!-- l. 967 -->
@@ -774,7 +774,7 @@ settings˙add –  <br />
 </dl>
 <!-- l. 975 -->
 <p class='noindent'>Example</p>
-<div class='verbatim' id='verbatim-39'>filter˙settings ”mathjaxnode” –  <br />
+<div id='verbatim-39' class='verbatim'>filter˙settings ”mathjaxnode” –  <br />
   options=”--output SVG --font Neo-Euler”  <br />
 ˝</div>
 <!-- l. 981 -->
@@ -789,7 +789,7 @@ settings˙add –  <br />
 </dl>
 <!-- l. 995 -->
 <p class='indent'>Example</p>
-<div class='verbatim' id='verbatim-40'>filter˙settings ”mathjaxnode” –  <br />
+<div id='verbatim-40' class='verbatim'>filter˙settings ”mathjaxnode” –  <br />
   fontdir=”fonts/TeX/woff/”  <br />
 ˝</div>
 <!-- l. 1001 -->
@@ -811,7 +811,7 @@ settings˙add –  <br />
 </dl>
 <!-- l. 1026 -->
 <p class='noindent'>Example:</p>
-<div class='verbatim' id='verbatim-41'>local outdir = os.getenv ”blog˙root”  <br />
+<div id='verbatim-41' class='verbatim'>local outdir = os.getenv ”blog˙root”  <br />
 filter˙settings ”staticsite” –  <br />
   site˙root = outdir,  <br />
   map = –  <br />
@@ -852,7 +852,7 @@ filter˙settings ”staticsite” –  <br />
 </dl>
 <!-- l. 1073 -->
 <p class='noindent'>odttemplate can also get the template filename from the odttemplate option from tex4ht_sty_par parameter. It can be set using the following command line call:</p>
-<div class='verbatim' id='verbatim-42'> make4ht -f odt+odttemplate filename.tex ”odttemplate=template.odt”</div>
+<div id='verbatim-42' class='verbatim'> make4ht -f odt+odttemplate filename.tex ”odttemplate=template.odt”</div>
 <!-- l. 1079 -->
 <p class='nopar'></p>
 <!-- l. 1083 -->
@@ -921,7 +921,7 @@ filter˙settings ”staticsite” –  <br />
 <p class='noindent'>It is possible to generate multiple HTML files from the <span class='LATEX'>L<span class='A'>A</span><span class='TEX'>T<span class='E'>E</span>X</span></span> source. For example, tex4ebook generates a separate file for each chapter or section. It is possible to set options for each HTML file, in particular names of the corresponding audio files. This mapping is done using the map parameter.</p>
 <!-- l. 1167 -->
 <p class='indent'>Example:</p>
-<div class='verbatim' id='verbatim-43'>filter˙settings ”aeneas-config” –  <br />
+<div id='verbatim-43' class='verbatim'>filter˙settings ”aeneas-config” –  <br />
   map = –  <br />
     [”sampleli1.html”] = –audio˙file=”sample.mp3”˝,  <br />
     [”sample.html”] = false  <br />
@@ -960,7 +960,7 @@ filter˙settings ”staticsite” –  <br />
 <!-- l. 1223 -->
 <p class='indent'><a id='full-example'></a></p>
 <h5 class='subsubsectionHead'><span class='titlemark'>8.11.4</span> <a id='x1-480008.11.4'></a>Full example</h5>
-<div class='verbatim' id='verbatim-44'>local domfilter = require ”make4ht-domfilter”  <br />
+<div id='verbatim-44' class='verbatim'>local domfilter = require ”make4ht-domfilter”  <br />
 local aeneas˙config = require ”make4ht-aeneas-config”  <br />
 filter˙settings ”aeneas-config” –  <br />
   map = –  <br />
@@ -985,22 +985,22 @@ end</div>
 <h4 class='subsectionHead'><span class='titlemark'>9.1</span> <a id='x1-500009.1'></a>Incorrect handling of command line arguments for tex4ht, t4ht or latex</h4>
 <!-- l. 1254 -->
 <p class='noindent'>Sometimes, you may get a similar error:</p>
-<div class='verbatim' id='verbatim-45'>make4ht:unrecognized parameter: i</div>
+<div id='verbatim-45' class='verbatim'>make4ht:unrecognized parameter: i</div>
 <!-- l. 1258 -->
 <p class='nopar'></p>
 <!-- l. 1260 -->
 <p class='indent'>It may be caused by a following make4ht invocation:</p>
-<div class='verbatim' id='verbatim-46'>$ make4ht hello.tex ”customcfg,charset=utf-8” ”-cunihtf -utf8” -d foo</div>
+<div id='verbatim-46' class='verbatim'>$ make4ht hello.tex ”customcfg,charset=utf-8” ”-cunihtf -utf8” -d foo</div>
 <!-- l. 1264 -->
 <p class='nopar'></p>
 <!-- l. 1266 -->
 <p class='indent'>The command line option parser is confused by mixing options for make4ht and <span class='TEX'>T<span class='E'>E</span>X</span>4ht in this case. It tries to interpret the -cunihtf -utf8, which are options for the tex4ht command, as make4ht options. To fix that, try to move the -d foo directly after the make4ht command:</p>
-<div class='verbatim' id='verbatim-47'>$ make4ht -d foo hello.tex ”customcfg,charset=utf-8” ”-cunihtf -utf8”</div>
+<div id='verbatim-47' class='verbatim'>$ make4ht -d foo hello.tex ”customcfg,charset=utf-8” ”-cunihtf -utf8”</div>
 <!-- l. 1274 -->
 <p class='nopar'></p>
 <!-- l. 1276 -->
 <p class='indent'>Another option is to add a space before the tex4ht options:</p>
-<div class='verbatim' id='verbatim-48'>$ make4ht hello.tex ”customcfg,charset=utf-8” ” -cunihtf -utf8” -d foo</div>
+<div id='verbatim-48' class='verbatim'>$ make4ht hello.tex ”customcfg,charset=utf-8” ” -cunihtf -utf8” -d foo</div>
 <!-- l. 1280 -->
 <p class='nopar'></p>
 <!-- l. 1282 -->
