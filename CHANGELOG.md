@@ -5,6 +5,8 @@
     - added the `interaction` parameter for the `htlatex` command. The default
       value is `batchmode` to suppress the user input on errors, and to
       suppress  full log output to the terminal.
+    - added the `make4ht-errorlogparser` module. It is used to parse errors in
+      the `htlatex` run unless `interaction` is set to `errorstopmode`.
 
 - 2019/10/08
 
