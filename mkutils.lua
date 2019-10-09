@@ -334,7 +334,7 @@ local function testlogfile(par)
   f:seek("set", newlen)
   local text = f:read("*a")
   f:close()
-  if text:match("No pages of output") or text:match("TeX capacity exceeded, sorry") then return 1 end
+  if text:match("No pages of output") or text:match("TeX capacity exceeded, sorry") or text:match("That makes 100 errors") then return 1 end
   return 0
 end
 
