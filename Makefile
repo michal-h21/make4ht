@@ -103,6 +103,7 @@ justinstall:
 	cp $(extensions) $(EXTENSION_DIR)
 	cp $(formats)  $(FORMATS_DIR)
 	chmod +x $(INSTALL_DIR)/make4ht
+	echo $(wildcard $(EXECUTABLE))
 	$(INSTALL_COMMAND)
 
 version:
