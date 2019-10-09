@@ -9,7 +9,7 @@ install:
 script:
   # Already runs locally
   - ./make4ht -v
-  - luarocks --local install busted
+  # - luarocks --local install busted
   - git fetch --tags
   - make
   - make justinstall
