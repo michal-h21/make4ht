@@ -3,6 +3,7 @@
 - 2019/10/11
 
     - added `xindy` settings.
+    - added simple regular expression to detect errors in the log file, because log parsing can be slow.
 
 - 2019/10/09
 

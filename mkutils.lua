@@ -333,12 +333,15 @@ local function testlogfile(par)
   f:close()
   -- parse log file for all errors in non-interactive modes
   if par.interaction~="errorstopmode" then
-    local errors, chunks = error_logparser.parse(content)
-    if #errors > 0 then
-      print("Compilation errors in htlatex run")
-      print("Filename", "Line", "Message")
-      for _, err in ipairs(errors) do
-        print(err.filename or "?", err.line or "?", err.error)
+    -- the error log parsing can be slow, so detect errors first
+    if content:match("\n!")  then
+      local errors, chunks = error_logparser.parse(content)
+      if #errors > 0 then
+        print("Compilation errors in htlatex run")
+        print("Filename", "Line", "Message")
+        for _, err in ipairs(errors) do
+          print(err.filename or "?", err.line or "?", err.error)
+        end
       end
     end
   end
