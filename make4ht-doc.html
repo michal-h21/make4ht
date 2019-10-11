@@ -6,13 +6,13 @@
 <meta charset='utf-8' />
 <meta content='TeX4ht (http://www.tug.org/tex4ht/)' name='generator' />
 <meta content='width=device-width,initial-scale=1' name='viewport' />
-<link rel='stylesheet' type='text/css' href='make4ht-doc.css' />
+<link href='make4ht-doc.css' rel='stylesheet' type='text/css' />
 <meta content='make4ht-doc.tex' name='src' />
 <script src='https://hypothes.is/embed.js'></script>
-<meta property='og:title' content='The make4ht build system' />
-<meta property='og:author' content='Michal Hoftich' />
-<meta property='og:type' content='website' />
-<meta property='og:url' content='https://www.kodymirus.cz/make4ht/make4ht-doc.html' />
+<meta content='The make4ht build system' property='og:title' />
+<meta content='Michal Hoftich' property='og:author' />
+<meta content='website' property='og:type' />
+<meta content='https://www.kodymirus.cz/make4ht/make4ht-doc.html' property='og:url' />
 <link href='https://www.kodymirus.cz/make4ht/make4ht-doc.html' rel='canonical' />
 <link href='https://www.kodymirus.cz/reyman/css/scale.css' rel='stylesheet' />
 </head>
@@ -30,7 +30,7 @@
 <colgroup id='TBL-1-1g'>
 <col id='TBL-1-1' /></colgroup>
 <tr style='vertical-align:baseline;' id='TBL-1-1-'>
-<td id='TBL-1-1-1' style='white-space:nowrap; text-align:center;' class='td11'><span class='cmr-12'>Michal Hoftich </span><span class='cmr-12'>&lt;</span><a href='michal.h21@gmail.com'><span class='cmr-12'>michal.h21@gmail.com</span></a><span class='cmr-12'>&gt;</span></td>
+<td class='td11' style='white-space:nowrap; text-align:center;' id='TBL-1-1-1'><span class='cmr-12'>Michal Hoftich </span><span class='cmr-12'>&lt;</span><a href='michal.h21@gmail.com'><span class='cmr-12'>michal.h21@gmail.com</span></a><span class='cmr-12'>&gt;</span></td>
 </tr>
 </table>
 </div>
@@ -72,26 +72,27 @@
  <span class='subsectionToc'>7.3 <a href='#x1-320007.3' id='QQ2-1-32'>How to add new output format</a></span><br />
 <span class='sectionToc'>8 <a href='#x1-330008' id='QQ2-1-33'>List of available settings for filters and extensions.</a></span><br />
  <span class='subsectionToc'>8.1 <a href='#x1-340008.1' id='QQ2-1-34'>The htlatex command</a></span><br />
- <span class='subsectionToc'>8.2 <a href='#x1-350008.2' id='QQ2-1-35'>The tidy extension</a></span><br />
- <span class='subsectionToc'>8.3 <a href='#x1-360008.3' id='QQ2-1-36'>The collapsetoc dom filter</a></span><br />
- <span class='subsectionToc'>8.4 <a href='#x1-370008.4' id='QQ2-1-37'>The fixinlines dom filter</a></span><br />
- <span class='subsectionToc'>8.5 <a href='#x1-380008.5' id='QQ2-1-38'>The joincharacters dom filter</a></span><br />
- <span class='subsectionToc'>8.6 <a href='#x1-390008.6' id='QQ2-1-39'>The mathjaxnode filter</a></span><br />
- <span class='subsectionToc'>8.7 <a href='#x1-400008.7' id='QQ2-1-40'>The staticsite filter and extension</a></span><br />
- <span class='subsectionToc'>8.8 <a href='#x1-410008.8' id='QQ2-1-41'>The dvisvgm_hashes extension</a></span><br />
- <span class='subsectionToc'>8.9 <a href='#x1-420008.9' id='QQ2-1-42'>The odttemplate filter and extension</a></span><br />
- <span class='subsectionToc'>8.10 <a href='#x1-430008.10' id='QQ2-1-43'>The aeneas filter</a></span><br />
- <span class='subsectionToc'>8.11 <a href='#x1-440008.11' id='QQ2-1-44'>The make4ht-aeneas-config package</a></span><br />
-  <span class='subsubsectionToc'>8.11.1 <a href='#x1-450008.11.1' id='QQ2-1-45'>Available parameters</a></span><br />
-  <span class='subsubsectionToc'>8.11.2 <a href='#x1-460008.11.2' id='QQ2-1-46'>Additional parameters for the job configuration file</a></span><br />
-  <span class='subsubsectionToc'>8.11.3 <a href='#x1-470008.11.3' id='QQ2-1-47'>Available map options</a></span><br />
-  <span class='subsubsectionToc'>8.11.4 <a href='#x1-480008.11.4' id='QQ2-1-48'>Full example</a></span><br />
-<span class='sectionToc'>9 <a href='#x1-490009' id='QQ2-1-49'>Troubleshooting</a></span><br />
- <span class='subsectionToc'>9.1 <a href='#x1-500009.1' id='QQ2-1-50'>Incorrect handling of command line arguments for tex4ht, t4ht or latex</a></span><br />
- <span class='subsectionToc'>9.2 <a href='#x1-510009.2' id='QQ2-1-51'>Filenames containing spaces</a></span><br />
- <span class='subsectionToc'>9.3 <a href='#x1-520009.3' id='QQ2-1-52'>Filenames containing non-ASCII characters</a></span><br />
-<span class='sectionToc'>10 <a href='#x1-5300010' id='QQ2-1-53'>License</a></span><br />
-<span class='sectionToc'>11 <a href='#x1-5400011' id='QQ2-1-54'>Changelog</a></span></div>
+ <span class='subsectionToc'>8.2 <a href='#x1-350008.2' id='QQ2-1-35'>The xindy command</a></span><br />
+ <span class='subsectionToc'>8.3 <a href='#x1-360008.3' id='QQ2-1-36'>The tidy extension</a></span><br />
+ <span class='subsectionToc'>8.4 <a href='#x1-370008.4' id='QQ2-1-37'>The collapsetoc dom filter</a></span><br />
+ <span class='subsectionToc'>8.5 <a href='#x1-380008.5' id='QQ2-1-38'>The fixinlines dom filter</a></span><br />
+ <span class='subsectionToc'>8.6 <a href='#x1-390008.6' id='QQ2-1-39'>The joincharacters dom filter</a></span><br />
+ <span class='subsectionToc'>8.7 <a href='#x1-400008.7' id='QQ2-1-40'>The mathjaxnode filter</a></span><br />
+ <span class='subsectionToc'>8.8 <a href='#x1-410008.8' id='QQ2-1-41'>The staticsite filter and extension</a></span><br />
+ <span class='subsectionToc'>8.9 <a href='#x1-420008.9' id='QQ2-1-42'>The dvisvgm_hashes extension</a></span><br />
+ <span class='subsectionToc'>8.10 <a href='#x1-430008.10' id='QQ2-1-43'>The odttemplate filter and extension</a></span><br />
+ <span class='subsectionToc'>8.11 <a href='#x1-440008.11' id='QQ2-1-44'>The aeneas filter</a></span><br />
+ <span class='subsectionToc'>8.12 <a href='#x1-450008.12' id='QQ2-1-45'>The make4ht-aeneas-config package</a></span><br />
+  <span class='subsubsectionToc'>8.12.1 <a href='#x1-460008.12.1' id='QQ2-1-46'>Available parameters</a></span><br />
+  <span class='subsubsectionToc'>8.12.2 <a href='#x1-470008.12.2' id='QQ2-1-47'>Additional parameters for the job configuration file</a></span><br />
+  <span class='subsubsectionToc'>8.12.3 <a href='#x1-480008.12.3' id='QQ2-1-48'>Available map options</a></span><br />
+  <span class='subsubsectionToc'>8.12.4 <a href='#x1-490008.12.4' id='QQ2-1-49'>Full example</a></span><br />
+<span class='sectionToc'>9 <a href='#x1-500009' id='QQ2-1-50'>Troubleshooting</a></span><br />
+ <span class='subsectionToc'>9.1 <a href='#x1-510009.1' id='QQ2-1-51'>Incorrect handling of command line arguments for tex4ht, t4ht or latex</a></span><br />
+ <span class='subsectionToc'>9.2 <a href='#x1-520009.2' id='QQ2-1-52'>Filenames containing spaces</a></span><br />
+ <span class='subsectionToc'>9.3 <a href='#x1-530009.3' id='QQ2-1-53'>Filenames containing non-ASCII characters</a></span><br />
+<span class='sectionToc'>10 <a href='#x1-5400010' id='QQ2-1-54'>License</a></span><br />
+<span class='sectionToc'>11 <a href='#x1-5500011' id='QQ2-1-55'>Changelog</a></span></div>
 <p><a id='introduction'></a></p>
 <h3 class='sectionHead'><span class='titlemark'>1</span> <a id='x1-20001'></a>Introduction</h3>
 <!-- l. 4 -->
@@ -705,18 +706,31 @@ settings˙add –  <br />
 <dd class='description'>interaction mode for the <span class='TEX'>T<span class='E'>E</span>X</span> engine. The default value is batchmode to suppress user input on compilation errors. It also suppresses most of the <span class='TEX'>T<span class='E'>E</span>X</span>  compilation log output. Use the errorstopmode for the default behaviour.</dd>
 </dl>
 <!-- l. 899 -->
-<p class='noindent'><a id='the-tidy-extension'></a></p>
-<h4 class='subsectionHead'><span class='titlemark'>8.2</span> <a id='x1-350008.2'></a>The tidy extension</h4>
+<p class='noindent'><a id='the-xindy-command'></a></p>
+<h4 class='subsectionHead'><span class='titlemark'>8.2</span> <a id='x1-350008.2'></a>The xindy command</h4>
 <!-- l. 901 -->
+<p class='noindent'></p>
+<dl class='description'>
+<dt class='description'>encoding</dt>
+<dd class='description'>text encoding of the .idx file. Default value is utf8.</dd>
+<dt class='description'>language</dt>
+<dd class='description'>index language. Default language is English.</dd>
+<dt class='description'>modules</dt>
+<dd class='description'>additional Xindy modules.</dd>
+</dl>
+<!-- l. 912 -->
+<p class='noindent'><a id='the-tidy-extension'></a></p>
+<h4 class='subsectionHead'><span class='titlemark'>8.3</span> <a id='x1-360008.3'></a>The tidy extension</h4>
+<!-- l. 914 -->
 <p class='noindent'></p>
 <dl class='description'>
 <dt class='description'>options</dt>
 <dd class='description'>command line options for the tidy command. Default value is -m -utf8 -w 512 -q.</dd>
 </dl>
-<!-- l. 909 -->
+<!-- l. 922 -->
 <p class='noindent'><a id='the-collapsetoc-dom-filter'></a></p>
-<h4 class='subsectionHead'><span class='titlemark'>8.3</span> <a id='x1-360008.3'></a>The collapsetoc dom filter</h4>
-<!-- l. 911 -->
+<h4 class='subsectionHead'><span class='titlemark'>8.4</span> <a id='x1-370008.4'></a>The collapsetoc dom filter</h4>
+<!-- l. 924 -->
 <p class='noindent'></p>
 <dl class='description'>
 <dt class='description'>toc_query</dt>
@@ -726,60 +740,60 @@ settings˙add –  <br />
 <dt class='description'>toc_levels</dt>
 <dd class='description'>table containing a hierarchy of classes used in TOC</dd>
 </dl>
-<!-- l. 921 -->
+<!-- l. 934 -->
 <p class='noindent'>Default values:</p>
 <div class='verbatim' id='verbatim-36'>filter˙settings ”collapsetoc” –  <br />
   toc˙query = ”.tableofcontents”,  <br />
   title˙query = ”.partHead a, .chapterHead a, .sectionHead a, .subsectionHead a”,  <br />
   toc˙levels = –”partToc”, ”chapterToc”, ”sectionToc”, ”subsectionToc”, ”subsubsectionToc”˝  <br />
 ˝</div>
-<!-- l. 929 -->
+<!-- l. 942 -->
 <p class='nopar'></p>
-<!-- l. 933 -->
+<!-- l. 946 -->
 <p class='indent'><a id='the-fixinlines-dom-filter'></a></p>
-<h4 class='subsectionHead'><span class='titlemark'>8.4</span> <a id='x1-370008.4'></a>The fixinlines dom filter</h4>
-<!-- l. 935 -->
+<h4 class='subsectionHead'><span class='titlemark'>8.5</span> <a id='x1-380008.5'></a>The fixinlines dom filter</h4>
+<!-- l. 948 -->
 <p class='noindent'></p>
 <dl class='description'>
 <dt class='description'>inline_elements</dt>
 <dd class='description'>table of inline elements that shouldn’t be direct descendants of the body element. The element names should be table keys, the values should be true.</dd>
 </dl>
-<!-- l. 942 -->
+<!-- l. 955 -->
 <p class='noindent'>Example</p>
 <div class='verbatim' id='verbatim-37'>filter˙settings ”fixinlines” –inline˙elements = –a = true, b = true˝˝</div>
-<!-- l. 946 -->
+<!-- l. 959 -->
 <p class='nopar'></p>
-<!-- l. 950 -->
+<!-- l. 963 -->
 <p class='indent'><a id='the-joincharacters-dom-filter'></a></p>
-<h4 class='subsectionHead'><span class='titlemark'>8.5</span> <a id='x1-380008.5'></a>The joincharacters dom filter</h4>
-<!-- l. 952 -->
+<h4 class='subsectionHead'><span class='titlemark'>8.6</span> <a id='x1-390008.6'></a>The joincharacters dom filter</h4>
+<!-- l. 965 -->
 <p class='noindent'></p>
 <dl class='description'>
 <dt class='description'>charclasses</dt>
 <dd class='description'>table of elements that should be concatenated when two or more of such elements with the same value of the class attribute are placed one after another.</dd>
 </dl>
-<!-- l. 959 -->
+<!-- l. 972 -->
 <p class='noindent'>Example</p>
 <div class='verbatim' id='verbatim-38'>filter˙settings ”joincharacters” – charclasses = – span=true, mn = true˝˝</div>
-<!-- l. 963 -->
+<!-- l. 976 -->
 <p class='nopar'></p>
-<!-- l. 967 -->
+<!-- l. 980 -->
 <p class='indent'><a id='mathjaxsettings'></a></p>
-<h4 class='subsectionHead'><span class='titlemark'>8.6</span> <a id='x1-390008.6'></a>The mathjaxnode filter</h4>
-<!-- l. 969 -->
+<h4 class='subsectionHead'><span class='titlemark'>8.7</span> <a id='x1-400008.7'></a>The mathjaxnode filter</h4>
+<!-- l. 982 -->
 <p class='noindent'></p>
 <dl class='description'>
 <dt class='description'>options</dt>
 <dd class='description'>command line options for the mjpage command. Default value is --output CommonHTML</dd>
 </dl>
-<!-- l. 975 -->
+<!-- l. 988 -->
 <p class='noindent'>Example</p>
 <div class='verbatim' id='verbatim-39'>filter˙settings ”mathjaxnode” –  <br />
   options=”--output SVG --font Neo-Euler”  <br />
 ˝</div>
-<!-- l. 981 -->
+<!-- l. 994 -->
 <p class='nopar'></p>
-<!-- l. 983 -->
+<!-- l. 996 -->
 <p class='indent'></p>
 <dl class='description'>
 <dt class='description'>cssfilename</dt>
@@ -787,17 +801,17 @@ settings˙add –  <br />
 <dt class='description'>fontdir</dt>
 <dd class='description'>directory with MathJax font files. This option enables use of local fonts, which is useful in the conversion to ePub, for example. The font directory should be sub-directory of the current directory. Only TeX font is supported at the moment.</dd>
 </dl>
-<!-- l. 995 -->
+<!-- l. 1008 -->
 <p class='indent'>Example</p>
 <div class='verbatim' id='verbatim-40'>filter˙settings ”mathjaxnode” –  <br />
   fontdir=”fonts/TeX/woff/”  <br />
 ˝</div>
-<!-- l. 1001 -->
+<!-- l. 1014 -->
 <p class='nopar'></p>
-<!-- l. 1005 -->
+<!-- l. 1018 -->
 <p class='indent'><a id='the-staticsite-filter-and-extension'></a></p>
-<h4 class='subsectionHead'><span class='titlemark'>8.7</span> <a id='x1-400008.7'></a>The staticsite filter and extension</h4>
-<!-- l. 1007 -->
+<h4 class='subsectionHead'><span class='titlemark'>8.8</span> <a id='x1-410008.8'></a>The staticsite filter and extension</h4>
+<!-- l. 1020 -->
 <p class='noindent'></p>
 <dl class='description'>
 <dt class='description'>site_root</dt>
@@ -809,7 +823,7 @@ settings˙add –  <br />
 <dt class='description'>header</dt>
 <dd class='description'>table with variables to be set in the YAML header in HTML files. If the table value is a function, it is executed with current parameters and HTML page DOM object as arguments.</dd>
 </dl>
-<!-- l. 1026 -->
+<!-- l. 1039 -->
 <p class='noindent'>Example:</p>
 <div class='verbatim' id='verbatim-41'>local outdir = os.getenv ”blog˙root”  <br />
 filter˙settings ”staticsite” –  <br />
@@ -824,12 +838,12 @@ filter˙settings ”staticsite” –  <br />
      end  <br />
   ˝  <br />
 ˝</div>
-<!-- l. 1043 -->
+<!-- l. 1056 -->
 <p class='nopar'></p>
-<!-- l. 1047 -->
+<!-- l. 1060 -->
 <p class='indent'><a id='the-dvisvgm_hashes-extension'></a></p>
-<h4 class='subsectionHead'><span class='titlemark'>8.8</span> <a id='x1-410008.8'></a>The dvisvgm_hashes extension</h4>
-<!-- l. 1049 -->
+<h4 class='subsectionHead'><span class='titlemark'>8.9</span> <a id='x1-420008.9'></a>The dvisvgm_hashes extension</h4>
+<!-- l. 1062 -->
 <p class='noindent'></p>
 <dl class='description'>
 <dt class='description'>options</dt>
@@ -841,24 +855,24 @@ filter˙settings ”staticsite” –  <br />
 <dt class='description'>scale</dt>
 <dd class='description'>SVG scaling.</dd>
 </dl>
-<!-- l. 1066 -->
+<!-- l. 1079 -->
 <p class='noindent'><a id='the-odttemplate-filter-and-extension'></a></p>
-<h4 class='subsectionHead'><span class='titlemark'>8.9</span> <a id='x1-420008.9'></a>The odttemplate filter and extension</h4>
-<!-- l. 1068 -->
+<h4 class='subsectionHead'><span class='titlemark'>8.10</span> <a id='x1-430008.10'></a>The odttemplate filter and extension</h4>
+<!-- l. 1081 -->
 <p class='noindent'></p>
 <dl class='description'>
 <dt class='description'>template</dt>
 <dd class='description'>filename of the template ODT file</dd>
 </dl>
-<!-- l. 1073 -->
+<!-- l. 1086 -->
 <p class='noindent'>odttemplate can also get the template filename from the odttemplate option from tex4ht_sty_par parameter. It can be set using the following command line call:</p>
 <div class='verbatim' id='verbatim-42'> make4ht -f odt+odttemplate filename.tex ”odttemplate=template.odt”</div>
-<!-- l. 1079 -->
+<!-- l. 1092 -->
 <p class='nopar'></p>
-<!-- l. 1083 -->
+<!-- l. 1096 -->
 <p class='indent'><a id='the-aeneas-filter'></a></p>
-<h4 class='subsectionHead'><span class='titlemark'>8.10</span> <a id='x1-430008.10'></a>The aeneas filter</h4>
-<!-- l. 1085 -->
+<h4 class='subsectionHead'><span class='titlemark'>8.11</span> <a id='x1-440008.11'></a>The aeneas filter</h4>
+<!-- l. 1098 -->
 <p class='noindent'></p>
 <dl class='description'>
 <dt class='description'>skip_elements</dt>
@@ -868,14 +882,14 @@ filter˙settings ”staticsite” –  <br />
 <dt class='description'>sentence_match</dt>
 <dd class='description'>Lua pattern used to match a sentence. Default value: ”([ˆ%.ˆ%?ˆ!]*)([%.%?!]?)”.</dd>
 </dl>
-<!-- l. 1098 -->
+<!-- l. 1111 -->
 <p class='noindent'><a id='the-make4ht-aeneas-config-package'></a></p>
-<h4 class='subsectionHead'><span class='titlemark'>8.11</span> <a id='x1-440008.11'></a>The make4ht-aeneas-config package</h4>
-<!-- l. 1100 -->
+<h4 class='subsectionHead'><span class='titlemark'>8.12</span> <a id='x1-450008.12'></a>The make4ht-aeneas-config package</h4>
+<!-- l. 1113 -->
 <p class='noindent'>Companion for the aeneas DOM filter is the make4ht-aeneas-config plugin. It can be used to write the Aeneas configuration file or execute Aeneas on the generated HTML files.</p>
-<!-- l. 1104 -->
+<!-- l. 1117 -->
 <p class='indent'>Available functions:</p>
-<!-- l. 1106 -->
+<!-- l. 1119 -->
 <p class='indent'></p>
 <dl class='description'>
 <dt class='description'>write_job(parameters)</dt>
@@ -885,14 +899,14 @@ filter˙settings ”staticsite” –  <br />
 <dt class='description'>process_files(parameters)</dt>
 <dd class='description'>process the audio and generated subtitle files.</dd>
 </dl>
-<!-- l. 1117 -->
+<!-- l. 1130 -->
 <p class='indent'>By default, a SMIL file is created. It is assumed that there is an audio file in the mp3 format, named as the <span class='TEX'>T<span class='E'>E</span>X</span> file. It is possible to use different formats and filenames using mapping.</p>
-<!-- l. 1121 -->
+<!-- l. 1134 -->
 <p class='indent'>The configuration options can be passed directly to the functions or set using filter_settings ”aeneas-config” {parameters} function.</p>
-<!-- l. 1126 -->
+<!-- l. 1139 -->
 <p class='indent'><a id='available-parameters'></a></p>
-<h5 class='subsubsectionHead'><span class='titlemark'>8.11.1</span> <a id='x1-450008.11.1'></a>Available parameters</h5>
-<!-- l. 1128 -->
+<h5 class='subsubsectionHead'><span class='titlemark'>8.12.1</span> <a id='x1-460008.12.1'></a>Available parameters</h5>
+<!-- l. 1141 -->
 <p class='noindent'></p>
 <dl class='description'>
 <dt class='description'>lang</dt>
@@ -908,18 +922,18 @@ filter˙settings ”staticsite” –  <br />
 <dt class='description'>sub_format</dt>
 <dd class='description'>generated subtitle format. The default value is smil.</dd>
 </dl>
-<!-- l. 1147 -->
+<!-- l. 1160 -->
 <p class='noindent'><a id='additional-parameters-for-the-job-configuration-file'></a></p>
-<h5 class='subsubsectionHead'><span class='titlemark'>8.11.2</span> <a id='x1-460008.11.2'></a>Additional parameters for the job configuration file</h5>
+<h5 class='subsubsectionHead'><span class='titlemark'>8.12.2</span> <a id='x1-470008.12.2'></a>Additional parameters for the job configuration file</h5>
 <ul class='itemize1'>
 <li class='itemize'>description</li>
 <li class='itemize'>prefix</li>
 <li class='itemize'>config_name</li>
 <li class='itemize'>keep_config</li>
 </ul>
-<!-- l. 1161 -->
+<!-- l. 1174 -->
 <p class='noindent'>It is possible to generate multiple HTML files from the <span class='LATEX'>L<span class='A'>A</span><span class='TEX'>T<span class='E'>E</span>X</span></span> source. For example, tex4ebook generates a separate file for each chapter or section. It is possible to set options for each HTML file, in particular names of the corresponding audio files. This mapping is done using the map parameter.</p>
-<!-- l. 1167 -->
+<!-- l. 1180 -->
 <p class='indent'>Example:</p>
 <div class='verbatim' id='verbatim-43'>filter˙settings ”aeneas-config” –  <br />
   map = –  <br />
@@ -927,18 +941,18 @@ filter˙settings ”staticsite” –  <br />
     [”sample.html”] = false  <br />
   ˝  <br />
 ˝</div>
-<!-- l. 1176 -->
+<!-- l. 1189 -->
 <p class='nopar'></p>
-<!-- l. 1178 -->
+<!-- l. 1191 -->
 <p class='indent'>Table keys are the configured filenames. It is necessary to insert them as [”filename.html”], because of Lua syntax rules.</p>
-<!-- l. 1181 -->
-<p class='indent'>This example maps audio file sample.mp3 to a section subpage. The main HTML file, which may contain title and table of contents doesn’t have a corresponding audio file.</p>
-<!-- l. 1185 -->
-<p class='indent'>Filenames of the subfiles correspond to the chapter numbers, so they are not stable when a new chapter is added. It is possible to request filenames derived from the chapter titles using the sec-filename option for tex4ht.sty.</p>
-<!-- l. 1192 -->
-<p class='indent'><a id='available-map-options'></a></p>
-<h5 class='subsubsectionHead'><span class='titlemark'>8.11.3</span> <a id='x1-470008.11.3'></a>Available map options</h5>
 <!-- l. 1194 -->
+<p class='indent'>This example maps audio file sample.mp3 to a section subpage. The main HTML file, which may contain title and table of contents doesn’t have a corresponding audio file.</p>
+<!-- l. 1198 -->
+<p class='indent'>Filenames of the subfiles correspond to the chapter numbers, so they are not stable when a new chapter is added. It is possible to request filenames derived from the chapter titles using the sec-filename option for tex4ht.sty.</p>
+<!-- l. 1205 -->
+<p class='indent'><a id='available-map-options'></a></p>
+<h5 class='subsubsectionHead'><span class='titlemark'>8.12.3</span> <a id='x1-480008.12.3'></a>Available map options</h5>
+<!-- l. 1207 -->
 <p class='noindent'></p>
 <dl class='description'>
 <dt class='description'>audio_file</dt>
@@ -946,7 +960,7 @@ filter˙settings ”staticsite” –  <br />
 <dt class='description'>sub_file</dt>
 <dd class='description'>name of the generated subtitle file</dd>
 </dl>
-<!-- l. 1201 -->
+<!-- l. 1214 -->
 <p class='noindent'>The following options are the same as their counterparts from the main parameters table and generally, don’t need to be set:</p>
 <ul class='itemize1'>
 <li class='itemize'>prefix</li>
@@ -957,9 +971,9 @@ filter˙settings ”staticsite” –  <br />
 <li class='itemize'>id_prefix</li>
 <li class='itemize'>sub_format</li>
 </ul>
-<!-- l. 1223 -->
+<!-- l. 1236 -->
 <p class='indent'><a id='full-example'></a></p>
-<h5 class='subsubsectionHead'><span class='titlemark'>8.11.4</span> <a id='x1-480008.11.4'></a>Full example</h5>
+<h5 class='subsubsectionHead'><span class='titlemark'>8.12.4</span> <a id='x1-490008.12.4'></a>Full example</h5>
 <div class='verbatim' id='verbatim-44'>local domfilter = require ”make4ht-domfilter”  <br />
 local aeneas˙config = require ”make4ht-aeneas-config”  <br />
 filter˙settings ”aeneas-config” –  <br />
@@ -975,55 +989,60 @@ if mode == ”draft” then  <br />
 else  <br />
   aeneas˙config.execute –˝  <br />
 end</div>
-<!-- l. 1244 -->
-<p class='nopar'></p>
-<!-- l. 1247 -->
-<p class='indent'><a id='troubleshooting'></a></p>
-<h3 class='sectionHead'><span class='titlemark'>9</span> <a id='x1-490009'></a>Troubleshooting</h3>
-<!-- l. 1252 -->
-<p class='noindent'><a id='incorrect-handling-of-command-line-arguments-for-tex4ht-t4ht-or-latex'></a></p>
-<h4 class='subsectionHead'><span class='titlemark'>9.1</span> <a id='x1-500009.1'></a>Incorrect handling of command line arguments for tex4ht, t4ht or latex</h4>
-<!-- l. 1254 -->
-<p class='noindent'>Sometimes, you may get a similar error:</p>
-<div class='verbatim' id='verbatim-45'>make4ht:unrecognized parameter: i</div>
-<!-- l. 1258 -->
+<!-- l. 1257 -->
 <p class='nopar'></p>
 <!-- l. 1260 -->
+<p class='indent'><a id='troubleshooting'></a></p>
+<h3 class='sectionHead'><span class='titlemark'>9</span> <a id='x1-500009'></a>Troubleshooting</h3>
+<!-- l. 1265 -->
+<p class='noindent'><a id='incorrect-handling-of-command-line-arguments-for-tex4ht-t4ht-or-latex'></a></p>
+<h4 class='subsectionHead'><span class='titlemark'>9.1</span> <a id='x1-510009.1'></a>Incorrect handling of command line arguments for tex4ht, t4ht or latex</h4>
+<!-- l. 1267 -->
+<p class='noindent'>Sometimes, you may get a similar error:</p>
+<div class='verbatim' id='verbatim-45'>make4ht:unrecognized parameter: i</div>
+<!-- l. 1271 -->
+<p class='nopar'></p>
+<!-- l. 1273 -->
 <p class='indent'>It may be caused by a following make4ht invocation:</p>
 <div class='verbatim' id='verbatim-46'>$ make4ht hello.tex ”customcfg,charset=utf-8” ”-cunihtf -utf8” -d foo</div>
-<!-- l. 1264 -->
+<!-- l. 1277 -->
 <p class='nopar'></p>
-<!-- l. 1266 -->
+<!-- l. 1279 -->
 <p class='indent'>The command line option parser is confused by mixing options for make4ht and <span class='TEX'>T<span class='E'>E</span>X</span>4ht in this case. It tries to interpret the -cunihtf -utf8, which are options for the tex4ht command, as make4ht options. To fix that, try to move the -d foo directly after the make4ht command:</p>
 <div class='verbatim' id='verbatim-47'>$ make4ht -d foo hello.tex ”customcfg,charset=utf-8” ”-cunihtf -utf8”</div>
-<!-- l. 1274 -->
+<!-- l. 1287 -->
 <p class='nopar'></p>
-<!-- l. 1276 -->
+<!-- l. 1289 -->
 <p class='indent'>Another option is to add a space before the tex4ht options:</p>
 <div class='verbatim' id='verbatim-48'>$ make4ht hello.tex ”customcfg,charset=utf-8” ” -cunihtf -utf8” -d foo</div>
-<!-- l. 1280 -->
+<!-- l. 1293 -->
 <p class='nopar'></p>
-<!-- l. 1282 -->
-<p class='indent'>The former way is preferable, though.</p>
-<!-- l. 1286 -->
-<p class='indent'><a id='filenames-containing-spaces'></a></p>
-<h4 class='subsectionHead'><span class='titlemark'>9.2</span> <a id='x1-510009.2'></a>Filenames containing spaces</h4>
-<!-- l. 1288 -->
-<p class='noindent'>tex4ht command cannot handle filenames containing spaces. to fix this issue, make4ht replaces spaces in the input filenames with underscores. The generated XML filenames use underscores instead of spaces as well.</p>
 <!-- l. 1295 -->
-<p class='indent'><a id='filenames-containing-non-ascii-characters'></a></p>
-<h4 class='subsectionHead'><span class='titlemark'>9.3</span> <a id='x1-520009.3'></a>Filenames containing non-ASCII characters</h4>
-<!-- l. 1297 -->
-<p class='noindent'>The odt output doesn’t support accented filenames, it is best to stick to ASCII characters in filenames.</p>
+<p class='indent'>The former way is preferable, though.</p>
+<!-- l. 1299 -->
+<p class='indent'><a id='filenames-containing-spaces'></a></p>
+<h4 class='subsectionHead'><span class='titlemark'>9.2</span> <a id='x1-520009.2'></a>Filenames containing spaces</h4>
 <!-- l. 1301 -->
+<p class='noindent'>tex4ht command cannot handle filenames containing spaces. to fix this issue, make4ht replaces spaces in the input filenames with underscores. The generated XML filenames use underscores instead of spaces as well.</p>
+<!-- l. 1308 -->
+<p class='indent'><a id='filenames-containing-non-ascii-characters'></a></p>
+<h4 class='subsectionHead'><span class='titlemark'>9.3</span> <a id='x1-530009.3'></a>Filenames containing non-ASCII characters</h4>
+<!-- l. 1310 -->
+<p class='noindent'>The odt output doesn’t support accented filenames, it is best to stick to ASCII characters in filenames.</p>
+<!-- l. 1314 -->
 <p class='indent'><a id='license'></a></p>
-<h3 class='sectionHead'><span class='titlemark'>10</span> <a id='x1-5300010'></a>License</h3>
-<!-- l. 1303 -->
+<h3 class='sectionHead'><span class='titlemark'>10</span> <a id='x1-5400010'></a>License</h3>
+<!-- l. 1316 -->
 <p class='noindent'>Permission is granted to copy, distribute and/or modify this software under the terms of the LaTeX Project Public License, version 1.3.</p>
 <!-- l. 2 -->
 <p class='indent'><a id='changelog'></a></p>
-<h3 class='sectionHead'><span class='titlemark'>11</span> <a id='x1-5400011'></a>Changelog</h3>
+<h3 class='sectionHead'><span class='titlemark'>11</span> <a id='x1-5500011'></a>Changelog</h3>
 <ul class='itemize1'>
+<li class='itemize'>2019/10/11
+<ul class='itemize2'>
+<li class='itemize'>added xindy settings.</li>
+</ul>
+</li>
 <li class='itemize'>2019/10/09
 <ul class='itemize2'>
 <li class='itemize'>added the interaction parameter for the htlatex command. The default value is batchmode to suppress the user input on errors, and to suppress full log output to the terminal.</li>
