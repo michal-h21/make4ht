@@ -1,5 +1,9 @@
 # Changelog
 
+- 2019/10/11
+
+    - added `xindy` settings.
+
 - 2019/10/09
 
     - added the `interaction` parameter for the `htlatex` command. The default

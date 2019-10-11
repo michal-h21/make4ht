@@ -438,12 +438,13 @@ function load_config(settings, config_name)
 end
 
 env.Make:add("xindy", function(par)
-  -- par.encoding  = par.encoding or "utf8"
-  -- par.language = par.language or "english"
+  local settings = get_filter_settings "xindy" or {}
+  par.encoding  = settings.encoding or  par.encoding or "utf8"
+  par.language = settings.language or par.language or "english"
   par.idxfile = par.idxfile or par.input .. ".idx"
 
 
-  local modules = par.modules or {par.input}
+  local modules = settings.modules or par.modules or {par.input}
   local t = {}
   for k,v in ipairs(modules) do
     t[#t+1] = "-M ".. v
@@ -452,7 +453,7 @@ env.Make:add("xindy", function(par)
   local xindy_call = "texindy -L ${language} -C ${encoding} ${moduleopt} ${idxfile}" % par
   print(xindy_call)
   return os.execute(xindy_call)
-end, { language = "english", encoding = "utf8"})
+end, {})
 
 local function find_lua_file(name)
   local extension_path = name:gsub("%.", "/") .. ".lua"

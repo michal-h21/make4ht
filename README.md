@@ -797,6 +797,20 @@ These settings may be set using `filter_settings` function in a build file or in
      suppress user input on compilation errors. It also suppresses most of the \TeX\ 
      compilation log output. Use the `errorstopmode` for the default behaviour.
 
+## The `xindy` command
+
+encoding
+
+:    text encoding of the `.idx` file. Default value is `utf8`.
+
+language
+
+:    index language. Default language is English.
+
+modules
+
+:    additional `Xindy` modules.
+
 ## The `tidy` extension
 
 options
