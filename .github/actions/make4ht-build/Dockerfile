@@ -14,7 +14,7 @@ ENV DEBIAN_FRONTEND noninteractive
 # Install all TeX and LaTeX dependencies
 RUN apt-get update && \
     apt-get install --yes --no-install-recommends \
-    make luatex texlive-base texlive-luatex \
+    make luatex texlive-base texlive-luatex texlive-latex-extra \
     tidy \
     # texlive-fonts-recommended \
     fonts-noto \
