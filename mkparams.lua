@@ -27,8 +27,8 @@ Available options:
   -n,--no-tex4ht Disable dvi file processing with the tex4ht command
   -s,--shell-escape Enables running external programs from LaTeX
   -u,--utf8  For output documents in utf8 encoding
-  -x,--xetex Use xelatex for document compilation
   -v,--version  Display version number
+  -x,--xetex Use xelatex for document compilation
 ]]
 
 -- test if the current command line argument should be passed to tex4ht, t4ht or latex

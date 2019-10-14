@@ -36,8 +36,8 @@ It will produce a file named `filename.html` if the compilation goes without fat
     -n,--no-tex4ht  Disable DVI file processing with tex4ht command
     -s,--shell-escape Enables running external programs from LaTeX
     -u,--utf8  For output documents in utf8 encoding
-    -v,--version  Print version number
     -x,--xetex Use xelatex for document compilation
+    -v,--version  Print version number
     <filename> (string) Input filename
 
 
