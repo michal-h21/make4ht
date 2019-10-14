@@ -1,8 +1,38 @@
  
 /* start css.sty */
-.cmr-17{font-size:170%;}
-.cmr-12{font-size:120%;}
-.cmr-9{font-size:90%;}
+.rm-lmr-17{font-size:170%;}
+.rm-lmtt-12x-x-144{font-size:172%; font-family: monospace;}
+.rm-lmtt-12x-x-144{ font-family: monospace;}
+.rm-lmtt-12x-x-144{ font-family: monospace;}
+.rm-lmtt-12x-x-144{ font-family: monospace;}
+.rm-lmtt-12x-x-144{ font-family: monospace;}
+.rm-lmr-12{font-size:120%;}
+.rm-lmtt-12{font-size:120%; font-family: monospace;}
+.rm-lmtt-12{ font-family: monospace;}
+.rm-lmtt-12{ font-family: monospace;}
+.rm-lmtt-12{ font-family: monospace;}
+.rm-lmtt-12{ font-family: monospace;}
+.rm-lmtt-10{ font-family: monospace;}
+.rm-lmtt-10{ font-family: monospace;}
+.rm-lmtt-10{ font-family: monospace;}
+.rm-lmtt-10{ font-family: monospace;}
+.rm-lmtt-10{ font-family: monospace;}
+.rm-lmtt-9{font-size:90%; font-family: monospace;}
+.rm-lmtt-9{ font-family: monospace;}
+.rm-lmtt-9{ font-family: monospace;}
+.rm-lmtt-9{ font-family: monospace;}
+.rm-lmtt-9{ font-family: monospace;}
+.rm-lmbx-10{ font-weight: bold;}
+.rm-lmtk-10{ font-family: monospace;}
+.rm-lmtk-10{ font-family: monospace;}
+.rm-lmtk-10{ font-family: monospace;}
+.rm-lmtk-10{ font-family: monospace;}
+.rm-lmtk-10{ font-family: monospace;}
+.rm-lmtk-10{ font-family: monospace;}
+.rm-lmtk-10{ font-family: monospace;}
+.rm-lmtk-10{ font-family: monospace;}
+.rm-lmtk-10{ font-family: monospace;}
+.rm-lmtk-10{ font-family: monospace;}
 p.noindent { text-indent: 0em }
 td p.noindent { text-indent: 0em; margin-top:0em; }
 p.nopar { text-indent: 0em; }
