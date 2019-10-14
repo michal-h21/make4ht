@@ -87,6 +87,7 @@ build: doc $(lua_content) $(filters) $(domfilters)
 	@cd $(BUILD_DIR) && zip -r make4ht.zip make4ht
 
 install: doc $(lua_content) $(filters) $(domfilters) justinstall 
+	cp  $(doc_file) $(MANUAL_DIR)
 
 justinstall:
 	mkdir -p $(INSTALL_DIR)
@@ -95,7 +96,6 @@ justinstall:
 	mkdir -p $(DOMFILTERS_DIR)
 	mkdir -p $(FORMATS_DIR)
 	mkdir -p $(EXTENSION_DIR)
-	cp  $(doc_file) $(MANUAL_DIR)
 	cp $(lua_content) $(INSTALL_DIR)
 	@cat make4ht | sed -e "s/{{version}}/${VERSION}/" >  $(INSTALL_DIR)/make4ht
 	cp $(filters) $(FILTERS_DIR)
