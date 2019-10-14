@@ -1,19 +1,19 @@
 <!DOCTYPE html>
 <html lang='en'>
 <head>
-<meta name='generator' content='HTML Tidy for HTML5 for Linux version 5.6.0' />
+<meta content='HTML Tidy for HTML5 for Linux version 5.6.0' name='generator' />
 <title>The make4ht build system</title>
 <meta charset='utf-8' />
-<meta name='generator' content='TeX4ht (http://www.tug.org/tex4ht/)' />
-<meta name='viewport' content='width=device-width,initial-scale=1' />
+<meta content='TeX4ht (http://www.tug.org/tex4ht/)' name='generator' />
+<meta content='width=device-width,initial-scale=1' name='viewport' />
 <link type='text/css' rel='stylesheet' href='make4ht-doc.css' />
-<meta name='src' content='make4ht-doc.tex' />
+<meta content='make4ht-doc.tex' name='src' />
 <script src='https://hypothes.is/embed.js'></script>
 <meta content='The make4ht build system' property='og:title' />
 <meta content='Michal Hoftich' property='og:author' />
 <meta content='website' property='og:type' />
 <meta content='https://www.kodymirus.cz/make4ht/make4ht-doc.html' property='og:url' />
-<link href='https://www.kodymirus.cz/make4ht/make4ht-doc.html' rel='canonical' />
+<link rel='canonical' href='https://www.kodymirus.cz/make4ht/make4ht-doc.html' />
 <link rel='stylesheet' href='https://www.kodymirus.cz/reyman/css/scale.css' />
 </head>
 <body>
@@ -26,11 +26,11 @@
 <!-- l. 26 -->
 <p class='noindent'><span class='cmr-17'>The make4ht build system</span></p>
 <div class='tabular'>
-<table id='TBL-1' class='tabular'>
+<table class='tabular' id='TBL-1'>
 <colgroup id='TBL-1-1g'>
 <col id='TBL-1-1' /></colgroup>
-<tr id='TBL-1-1-' style='vertical-align:baseline;'>
-<td style='white-space:nowrap; text-align:center;' class='td11' id='TBL-1-1-1'><span class='cmr-12'>Michal Hoftich </span><span class='cmr-12'>&lt;</span><a href='michal.h21@gmail.com'><span class='cmr-12'>michal.h21@gmail.com</span></a><span class='cmr-12'>&gt;</span></td>
+<tr style='vertical-align:baseline;' id='TBL-1-1-'>
+<td style='white-space:nowrap; text-align:center;' id='TBL-1-1-1' class='td11'><span class='cmr-12'>Michal Hoftich </span><span class='cmr-12'>&lt;</span><a href='michal.h21@gmail.com'><span class='cmr-12'>michal.h21@gmail.com</span></a><span class='cmr-12'>&gt;</span></td>
 </tr>
 </table>
 </div>
@@ -39,60 +39,60 @@
 <span class='cmr-12'>undefined</span></p>
 </div>
 <h3 class='likesectionHead'><a id='x1-1000'></a>Contents</h3>
-<div class='tableofcontents'><span class='sectionToc'>1 <a id='QQ2-1-2' href='#x1-20001'>Introduction</a></span><br />
-<span class='sectionToc'>2 <a id='QQ2-1-3' href='#x1-30002'>Command line options</a></span><br />
-<span class='sectionToc'>3 <a id='QQ2-1-4' href='#x1-40003'>Why make4ht? – htlatex issues</a></span><br />
- <span class='subsectionToc'>3.1 <a id='QQ2-1-5' href='#x1-50003.1'>Passing command line arguments</a></span><br />
- <span class='subsectionToc'>3.2 <a id='QQ2-1-6' href='#x1-60003.2'>Compilation sequence</a></span><br />
- <span class='subsectionToc'>3.3 <a id='QQ2-1-7' href='#x1-70003.3'>Handling of the generated files</a></span><br />
- <span class='subsectionToc'>3.4 <a id='QQ2-1-8' href='#x1-80003.4'>Image conversion and post-processing of the generated files</a></span><br />
-<span class='sectionToc'>4 <a id='QQ2-1-9' href='#x1-90004'>Output file formats and extensions</a></span><br />
- <span class='subsectionToc'>4.1 <a id='QQ2-1-10' href='#x1-100004.1'>Extensions</a></span><br />
-<span class='sectionToc'>5 <a id='QQ2-1-11' href='#x1-110005'>Build files</a></span><br />
- <span class='subsectionToc'>5.1 <a id='QQ2-1-12' href='#x1-120005.1'>User commands</a></span><br />
-  <span class='subsubsectionToc'>5.1.1 <a id='QQ2-1-13' href='#x1-130005.1.1'>The command function</a></span><br />
-  <span class='subsubsectionToc'>5.1.2 <a id='QQ2-1-14' href='#x1-140005.1.2'>The settings table table</a></span><br />
-  <span class='subsubsectionToc'>5.1.3 <a id='QQ2-1-15' href='#x1-150005.1.3'>Repetition</a></span><br />
-  <span class='subsubsectionToc'>5.1.4 <a id='QQ2-1-16' href='#x1-160005.1.4'>Expected exit code</a></span><br />
- <span class='subsectionToc'>5.2 <a id='QQ2-1-17' href='#x1-170005.2'>Provided commands</a></span><br />
- <span class='subsectionToc'>5.3 <a id='QQ2-1-18' href='#x1-180005.3'>File matches</a></span><br />
-  <span class='subsubsectionToc'>5.3.1 <a id='QQ2-1-19' href='#x1-190005.3.1'>Filters</a></span><br />
-  <span class='subsubsectionToc'>5.3.2 <a id='QQ2-1-20' href='#x1-200005.3.2'>DOM filters</a></span><br />
- <span class='subsectionToc'>5.4 <a id='QQ2-1-21' href='#x1-210005.4'>Image conversion</a></span><br />
- <span class='subsectionToc'>5.5 <a id='QQ2-1-22' href='#x1-220005.5'>The mode variable</a></span><br />
- <span class='subsectionToc'>5.6 <a id='QQ2-1-23' href='#x1-230005.6'>The settings table</a></span><br />
-  <span class='subsubsectionToc'>5.6.1 <a id='QQ2-1-24' href='#x1-240005.6.1'>Default settings</a></span><br />
-<span class='sectionToc'>6 <a id='QQ2-1-25' href='#x1-250006'>Configuration file</a></span><br />
- <span class='subsectionToc'>6.1 <a id='QQ2-1-26' href='#x1-260006.1'>Location</a></span><br />
- <span class='subsectionToc'>6.2 <a id='QQ2-1-27' href='#x1-270006.2'>Additional commands</a></span><br />
- <span class='subsectionToc'>6.3 <a id='QQ2-1-28' href='#x1-280006.3'>Example</a></span><br />
-<span class='sectionToc'>7 <a id='QQ2-1-29' href='#x1-290007'>Development</a></span><br />
- <span class='subsectionToc'>7.1 <a id='QQ2-1-30' href='#x1-300007.1'>Custom filters</a></span><br />
- <span class='subsectionToc'>7.2 <a id='QQ2-1-31' href='#x1-310007.2'>New extensions</a></span><br />
- <span class='subsectionToc'>7.3 <a id='QQ2-1-32' href='#x1-320007.3'>How to add new output format</a></span><br />
-<span class='sectionToc'>8 <a id='QQ2-1-33' href='#x1-330008'>List of available settings for filters and extensions.</a></span><br />
- <span class='subsectionToc'>8.1 <a id='QQ2-1-34' href='#x1-340008.1'>The htlatex command</a></span><br />
- <span class='subsectionToc'>8.2 <a id='QQ2-1-35' href='#x1-350008.2'>The xindy command</a></span><br />
- <span class='subsectionToc'>8.3 <a id='QQ2-1-36' href='#x1-360008.3'>The tidy extension</a></span><br />
- <span class='subsectionToc'>8.4 <a id='QQ2-1-37' href='#x1-370008.4'>The collapsetoc dom filter</a></span><br />
- <span class='subsectionToc'>8.5 <a id='QQ2-1-38' href='#x1-380008.5'>The fixinlines dom filter</a></span><br />
- <span class='subsectionToc'>8.6 <a id='QQ2-1-39' href='#x1-390008.6'>The joincharacters dom filter</a></span><br />
- <span class='subsectionToc'>8.7 <a id='QQ2-1-40' href='#x1-400008.7'>The mathjaxnode filter</a></span><br />
- <span class='subsectionToc'>8.8 <a id='QQ2-1-41' href='#x1-410008.8'>The staticsite filter and extension</a></span><br />
- <span class='subsectionToc'>8.9 <a id='QQ2-1-42' href='#x1-420008.9'>The dvisvgm_hashes extension</a></span><br />
- <span class='subsectionToc'>8.10 <a id='QQ2-1-43' href='#x1-430008.10'>The odttemplate filter and extension</a></span><br />
- <span class='subsectionToc'>8.11 <a id='QQ2-1-44' href='#x1-440008.11'>The aeneas filter</a></span><br />
- <span class='subsectionToc'>8.12 <a id='QQ2-1-45' href='#x1-450008.12'>The make4ht-aeneas-config package</a></span><br />
-  <span class='subsubsectionToc'>8.12.1 <a id='QQ2-1-46' href='#x1-460008.12.1'>Available parameters</a></span><br />
-  <span class='subsubsectionToc'>8.12.2 <a id='QQ2-1-47' href='#x1-470008.12.2'>Additional parameters for the job configuration file</a></span><br />
-  <span class='subsubsectionToc'>8.12.3 <a id='QQ2-1-48' href='#x1-480008.12.3'>Available map options</a></span><br />
-  <span class='subsubsectionToc'>8.12.4 <a id='QQ2-1-49' href='#x1-490008.12.4'>Full example</a></span><br />
-<span class='sectionToc'>9 <a id='QQ2-1-50' href='#x1-500009'>Troubleshooting</a></span><br />
- <span class='subsectionToc'>9.1 <a id='QQ2-1-51' href='#x1-510009.1'>Incorrect handling of command line arguments for tex4ht, t4ht or latex</a></span><br />
- <span class='subsectionToc'>9.2 <a id='QQ2-1-52' href='#x1-520009.2'>Filenames containing spaces</a></span><br />
- <span class='subsectionToc'>9.3 <a id='QQ2-1-53' href='#x1-530009.3'>Filenames containing non-ASCII characters</a></span><br />
-<span class='sectionToc'>10 <a id='QQ2-1-54' href='#x1-5400010'>License</a></span><br />
-<span class='sectionToc'>11 <a id='QQ2-1-55' href='#x1-5500011'>Changelog</a></span></div>
+<div class='tableofcontents'><span class='sectionToc'>1 <a href='#x1-20001' id='QQ2-1-2'>Introduction</a></span><br />
+<span class='sectionToc'>2 <a href='#x1-30002' id='QQ2-1-3'>Command line options</a></span><br />
+<span class='sectionToc'>3 <a href='#x1-40003' id='QQ2-1-4'>Why make4ht? – htlatex issues</a></span><br />
+ <span class='subsectionToc'>3.1 <a href='#x1-50003.1' id='QQ2-1-5'>Passing command line arguments</a></span><br />
+ <span class='subsectionToc'>3.2 <a href='#x1-60003.2' id='QQ2-1-6'>Compilation sequence</a></span><br />
+ <span class='subsectionToc'>3.3 <a href='#x1-70003.3' id='QQ2-1-7'>Handling of the generated files</a></span><br />
+ <span class='subsectionToc'>3.4 <a href='#x1-80003.4' id='QQ2-1-8'>Image conversion and post-processing of the generated files</a></span><br />
+<span class='sectionToc'>4 <a href='#x1-90004' id='QQ2-1-9'>Output file formats and extensions</a></span><br />
+ <span class='subsectionToc'>4.1 <a href='#x1-100004.1' id='QQ2-1-10'>Extensions</a></span><br />
+<span class='sectionToc'>5 <a href='#x1-110005' id='QQ2-1-11'>Build files</a></span><br />
+ <span class='subsectionToc'>5.1 <a href='#x1-120005.1' id='QQ2-1-12'>User commands</a></span><br />
+  <span class='subsubsectionToc'>5.1.1 <a href='#x1-130005.1.1' id='QQ2-1-13'>The command function</a></span><br />
+  <span class='subsubsectionToc'>5.1.2 <a href='#x1-140005.1.2' id='QQ2-1-14'>The settings table table</a></span><br />
+  <span class='subsubsectionToc'>5.1.3 <a href='#x1-150005.1.3' id='QQ2-1-15'>Repetition</a></span><br />
+  <span class='subsubsectionToc'>5.1.4 <a href='#x1-160005.1.4' id='QQ2-1-16'>Expected exit code</a></span><br />
+ <span class='subsectionToc'>5.2 <a href='#x1-170005.2' id='QQ2-1-17'>Provided commands</a></span><br />
+ <span class='subsectionToc'>5.3 <a href='#x1-180005.3' id='QQ2-1-18'>File matches</a></span><br />
+  <span class='subsubsectionToc'>5.3.1 <a href='#x1-190005.3.1' id='QQ2-1-19'>Filters</a></span><br />
+  <span class='subsubsectionToc'>5.3.2 <a href='#x1-200005.3.2' id='QQ2-1-20'>DOM filters</a></span><br />
+ <span class='subsectionToc'>5.4 <a href='#x1-210005.4' id='QQ2-1-21'>Image conversion</a></span><br />
+ <span class='subsectionToc'>5.5 <a href='#x1-220005.5' id='QQ2-1-22'>The mode variable</a></span><br />
+ <span class='subsectionToc'>5.6 <a href='#x1-230005.6' id='QQ2-1-23'>The settings table</a></span><br />
+  <span class='subsubsectionToc'>5.6.1 <a href='#x1-240005.6.1' id='QQ2-1-24'>Default settings</a></span><br />
+<span class='sectionToc'>6 <a href='#x1-250006' id='QQ2-1-25'>Configuration file</a></span><br />
+ <span class='subsectionToc'>6.1 <a href='#x1-260006.1' id='QQ2-1-26'>Location</a></span><br />
+ <span class='subsectionToc'>6.2 <a href='#x1-270006.2' id='QQ2-1-27'>Additional commands</a></span><br />
+ <span class='subsectionToc'>6.3 <a href='#x1-280006.3' id='QQ2-1-28'>Example</a></span><br />
+<span class='sectionToc'>7 <a href='#x1-290007' id='QQ2-1-29'>Development</a></span><br />
+ <span class='subsectionToc'>7.1 <a href='#x1-300007.1' id='QQ2-1-30'>Custom filters</a></span><br />
+ <span class='subsectionToc'>7.2 <a href='#x1-310007.2' id='QQ2-1-31'>New extensions</a></span><br />
+ <span class='subsectionToc'>7.3 <a href='#x1-320007.3' id='QQ2-1-32'>How to add new output format</a></span><br />
+<span class='sectionToc'>8 <a href='#x1-330008' id='QQ2-1-33'>List of available settings for filters and extensions.</a></span><br />
+ <span class='subsectionToc'>8.1 <a href='#x1-340008.1' id='QQ2-1-34'>The htlatex command</a></span><br />
+ <span class='subsectionToc'>8.2 <a href='#x1-350008.2' id='QQ2-1-35'>The xindy command</a></span><br />
+ <span class='subsectionToc'>8.3 <a href='#x1-360008.3' id='QQ2-1-36'>The tidy extension</a></span><br />
+ <span class='subsectionToc'>8.4 <a href='#x1-370008.4' id='QQ2-1-37'>The collapsetoc dom filter</a></span><br />
+ <span class='subsectionToc'>8.5 <a href='#x1-380008.5' id='QQ2-1-38'>The fixinlines dom filter</a></span><br />
+ <span class='subsectionToc'>8.6 <a href='#x1-390008.6' id='QQ2-1-39'>The joincharacters dom filter</a></span><br />
+ <span class='subsectionToc'>8.7 <a href='#x1-400008.7' id='QQ2-1-40'>The mathjaxnode filter</a></span><br />
+ <span class='subsectionToc'>8.8 <a href='#x1-410008.8' id='QQ2-1-41'>The staticsite filter and extension</a></span><br />
+ <span class='subsectionToc'>8.9 <a href='#x1-420008.9' id='QQ2-1-42'>The dvisvgm_hashes extension</a></span><br />
+ <span class='subsectionToc'>8.10 <a href='#x1-430008.10' id='QQ2-1-43'>The odttemplate filter and extension</a></span><br />
+ <span class='subsectionToc'>8.11 <a href='#x1-440008.11' id='QQ2-1-44'>The aeneas filter</a></span><br />
+ <span class='subsectionToc'>8.12 <a href='#x1-450008.12' id='QQ2-1-45'>The make4ht-aeneas-config package</a></span><br />
+  <span class='subsubsectionToc'>8.12.1 <a href='#x1-460008.12.1' id='QQ2-1-46'>Available parameters</a></span><br />
+  <span class='subsubsectionToc'>8.12.2 <a href='#x1-470008.12.2' id='QQ2-1-47'>Additional parameters for the job configuration file</a></span><br />
+  <span class='subsubsectionToc'>8.12.3 <a href='#x1-480008.12.3' id='QQ2-1-48'>Available map options</a></span><br />
+  <span class='subsubsectionToc'>8.12.4 <a href='#x1-490008.12.4' id='QQ2-1-49'>Full example</a></span><br />
+<span class='sectionToc'>9 <a href='#x1-500009' id='QQ2-1-50'>Troubleshooting</a></span><br />
+ <span class='subsectionToc'>9.1 <a href='#x1-510009.1' id='QQ2-1-51'>Incorrect handling of command line arguments for tex4ht, t4ht or latex</a></span><br />
+ <span class='subsectionToc'>9.2 <a href='#x1-520009.2' id='QQ2-1-52'>Filenames containing spaces</a></span><br />
+ <span class='subsectionToc'>9.3 <a href='#x1-530009.3' id='QQ2-1-53'>Filenames containing non-ASCII characters</a></span><br />
+<span class='sectionToc'>10 <a href='#x1-5400010' id='QQ2-1-54'>License</a></span><br />
+<span class='sectionToc'>11 <a href='#x1-5500011' id='QQ2-1-55'>Changelog</a></span></div>
 <p><a id='introduction'></a></p>
 <h3 class='sectionHead'><span class='titlemark'>1</span> <a id='x1-20001'></a>Introduction</h3>
 <!-- l. 4 -->
