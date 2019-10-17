@@ -159,6 +159,11 @@ local function process_args(args)
 
   -- set error log level
   logging.set_level(args.loglevel)
+  -- the default LaTeX --interaction parameter
+  local interaction = "batchmode"
+  if args.loglevel == "debug" then
+    interaction = "errorstopmode"
+  end
 
   if args.version ==true then
     print(string.format("%s version %s", m.progname, m.version_number))
@@ -254,6 +259,7 @@ local function process_args(args)
     ,output_format = outformat
     ,extensions = extensions
     ,is_tmp_file = is_tmp_file
+    ,interaction = interaction
 		--,t4ht_dir_format=t4ht_dir_format
 	}
 	if outdir then parameters.outdir = outdir end
