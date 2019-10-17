@@ -1,5 +1,7 @@
 module(...,package.seeall)
 
+local log = logging.new("mkutils")
+
 local make4ht = require("make4ht-lib")
 local mkparams = require("mkparams")
 local indexing = require("make4ht-indexing")
@@ -324,7 +326,7 @@ local function testlogfile(par)
   local logfile = par.input .. ".log"
   local f = io.open(logfile,"r")
   if not f then
-    print("Make4ht: cannot open log file "..logfile)
+    log:warning("Make4ht: cannot open log file "..logfile)
     return 1
   end
   local content = f:read("*a")
@@ -337,10 +339,10 @@ local function testlogfile(par)
     if content:match("\n!")  then
       local errors, chunks = error_logparser.parse(content)
       if #errors > 0 then
-        print("Compilation errors in htlatex run")
-        print("Filename", "Line", "Message")
+        log:error("Compilation errors in the htlatex run")
+        log:error("Filename", "Line", "Message")
         for _, err in ipairs(errors) do
-          print(err.filename or "?", err.line or "?", err.error)
+          log:error(err.filename or "?", err.line or "?", err.error)
         end
       end
     end
@@ -376,7 +378,7 @@ env.Make:add("htlatex",function(par)
   -- the interaction parameter is configurable in settings or as a parameter
   par.interaction = par.interaction or settings.interaction or "batchmode"
   command = command % par
-  print("LaTeX call: "..command)
+  log:info("LaTeX call: "..command)
   os.execute(command)
   return testlogfile(par)
 end
