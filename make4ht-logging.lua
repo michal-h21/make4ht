@@ -24,6 +24,7 @@ function logging.prepare_levels(modes)
   logging.modes = modes
   for level, mode in ipairs(modes) do
     levels[mode.name] = level
+    mode.level = level
     max_width = math.max(string.len(mode.name), max_width)
   end
 end
@@ -54,7 +55,9 @@ function logging.new(module)
     local color = mode.color
     obj[name] = function(self, msg)
       -- max width is saved in logging.prepare_levels
-      logging.print_msg(string.upper(name),  string.format("%s: %s", self.module, msg), color)
+      if mode.level >= show_level then
+        logging.print_msg(string.upper(name),  string.format("%s: %s", self.module, msg), color)
+      end
     end
   end
   return setmetatable({}, obj)
@@ -72,6 +75,11 @@ logging.prepare_levels()
 -- local cls = logging.new("sample")
 -- cls:warning("hello")
 -- cls:error("world")
+-- cls:info("set new level")
+-- logging.set_level("error")
+-- cls:info("level set")
+-- cls:error("just print the error")
+
 
 return logging
   
