@@ -4,6 +4,7 @@
 
     - added `--loglevel` CLI parameter.
     - added logging mechanism.
+    - moved `htlatex` related code to `make4ht-htlatex.lua` from `mkutils.lua`
 
 - 2019/10/11
 
