@@ -702,6 +702,12 @@ The default parameters are the following:
 
 :    output filename
 
+`interaction`
+
+:    interaction mode for the \TeX\ engine. The default value is `batchmode` to
+     suppress user input on compilation errors. It also suppresses most of the \TeX\ 
+     compilation log output. Use the `errorstopmode` for the default behaviour.
+
 `tex_file`
 
 :    input \TeX\ file
@@ -791,13 +797,7 @@ output for math.
 
 These settings may be set using `filter_settings` function in a build file or in the `make4ht` configuration file.
 
-## The `htlatex` command
 
-`interaction`
-
-:    interaction mode for the \TeX\ engine. The default value is `batchmode` to
-     suppress user input on compilation errors. It also suppresses most of the \TeX\ 
-     compilation log output. Use the `errorstopmode` for the default behaviour.
 
 ## The `xindy` command
 
