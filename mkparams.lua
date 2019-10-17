@@ -14,6 +14,8 @@ Usage:
 ${progname} [options] filename ["tex4ht.sty op."] ["tex4ht op."] ["t4ht op"] ["latex op"]
 
 Available options:
+  -a,--loglevel (default warning) Set log level.
+                possible values: debug, info, warning, error, fatal
   -b,--backend (default tex4ht) Backend used for xml generation. 
                 possible values: tex4ht or lua4ht
   -c,--config (default xhtml) Custom config file
@@ -154,6 +156,9 @@ local function process_args(args)
 			table.insert(tb,v)
 		end
 	end
+
+  -- set error log level
+  logging.set_level(args.loglevel)
 
   if args.version ==true then
     print(string.format("%s version %s", m.progname, m.version_number))

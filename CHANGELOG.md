@@ -1,5 +1,10 @@
 # Changelog
 
+- 2019/10/17
+
+    - added `--loglevel` CLI parameter.
+    - added logging mechanism.
+
 - 2019/10/11
 
     - added `xindy` settings.
