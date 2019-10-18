@@ -55,13 +55,17 @@ Make.latex_command = "${htlatex} --interaction=${interaction} ${latex_par} '\\ma
 local m = {}
 
 function m.htlatex(par)
-  local settings = get_filter_settings "htlatex" or {}
   local command = Make.latex_command
+  local devnull = " > /dev/null 2>&1"
   if os.type == "windows" then
     command = command:gsub("'",'')
+    devnull = " > nul 2>&1"
   end
-  -- the interaction parameter is configurable in settings or as a parameter
-  par.interaction = par.interaction or settings.interaction or "batchmode"
+  par.interaction = par.interaction or "batchmode"
+  -- remove all terminal output from the batchmode 
+  if par.interaction == "batchmode" then
+    command = command .. devnull
+  end
   command = command % par
   log:info("LaTeX call: "..command)
   os.execute(command)
