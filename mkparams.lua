@@ -1,6 +1,7 @@
 local lapp = require "lapp-mk4"
 local mkutils = require "mkutils"
 local m = {} -- use ugly module system for new lua versions support
+local log = logging.new "mkparams"
 
 -- these two variables will be used in the version number
 -- progname will be set in get_args
@@ -263,16 +264,16 @@ local function process_args(args)
 		--,t4ht_dir_format=t4ht_dir_format
 	}
 	if outdir then parameters.outdir = outdir end
-	print("Output dir: ",outdir)
-	print("Compiler: ", compiler)
-	print("Latex options: ", table.concat(latex_params," "))
-	print("tex4ht.sty :",t4sty)
-	print("tex4ht",tex4ht)
-	print("build_file", build_file)
+	log:info("Output dir: "..outdir)
+	log:info("Compiler: "..compiler)
+	log:info("Latex options: ".. table.concat(latex_params," "))
+	log:info("tex4ht.sty: "..t4sty)
+	log:info("tex4ht: "..tex4ht)
+	log:info("build_file: ".. build_file)
   if outformat~="nil" then
-    print("Output format", outformat) 
+    log:info("Output format: ".. outformat) 
     for _, ex in ipairs(extensions) do
-      print("Extension", ex.type .. ex.name)
+      log:info("Extension: ".. ex.type .. ex.name)
     end
   end
 	return parameters
