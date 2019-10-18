@@ -64,11 +64,11 @@ end
 
 -- searching for converted images
 function parse_lg(filename)
-  print("Parse LG")
+  log:info("Parse LG")
   local outputimages,outputfiles,status={},{},nil
   local fonts, used_fonts = {},{}
   if not file_exists(filename) then
-    print("Cannot read log file: "..filename)
+    log:warning("Cannot read log file: "..filename)
   else
     local usedfiles={}
     for line in io.lines(filename) do
@@ -117,7 +117,7 @@ local cp_func = os.type == "unix" and "cp" or "copy"
 function cp(src,dest)
 	local command = string.format('%s "%s" "%s"', cp_func, src, dest)
 	if cp_func == "copy" then command = command:gsub("/",'\\') end
-	print("Copy: "..command)
+	log:info("Copy: "..command)
 	os.execute(command)
 end
 
@@ -126,7 +126,7 @@ function mv(src, dest)
 	local command = string.format('%s "%s" "%s"', mv_func, src, dest)
   -- fix windows paths
 	if mv_func == "move" then command = command:gsub("/",'\\') end
-  print("Move: ".. command)
+  log:info("Move: ".. command)
   os.execute(command)
 end
 
@@ -214,12 +214,12 @@ function copy(filename,outfilename)
 	if not used_dir[path] then 
 		local to_create, msg = find_directories(parts)
 		if not to_create then
-			print(msg)
+			log:warning(msg)
 			return false
 		end
 		used_dir[path] = true
 		local stat, msg = mkdirectories(to_create)
-		if not stat then print(msg) end
+		if not stat then log:warning(msg) end
 	end
 	lfs.chdir(currdir)
 	cp(filename, path)
@@ -367,13 +367,13 @@ function load_config(settings, config_name)
   end
   local f = io.open(config_name,"r")
   if not f then 
-    print("Cannot open config file", config_name)
+    log:info("Cannot open config file", config_name)
     return  env
   end
-  print("Using build file", config_name)
+  log:info("Using build file", config_name)
   local code = f:read("*all")
   local fn, msg = run(code,env)
-  if not fn then print(msg) end
+  if not fn then log:warning(msg) end
   assert(fn)
   -- reload extensions from command line arguments for the "format" parameter
   for _,v in ipairs(saved_extensions) do
@@ -396,7 +396,7 @@ env.Make:add("xindy", function(par)
   end
   par.moduleopt = table.concat(t, " ")
   local xindy_call = "texindy -L ${language} -C ${encoding} ${moduleopt} ${idxfile}" % par
-  print(xindy_call)
+  log:info(xindy_call)
   return os.execute(xindy_call)
 end, {})
 
@@ -498,10 +498,10 @@ function load_extensions(extensions, format)
     if module_names[name] == true then
       local extension = load_extension(name,format)
       if extension then
-        print("Load extension", name)
+        log:info("Load extension", name)
         table.insert(extension_table, extension)
       else
-        print("Cannot load extension: ".. name)
+        log:warning("Cannot load extension: ".. name)
       end
     end
   end
