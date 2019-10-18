@@ -47,7 +47,15 @@ end
 
 -- 
 function logging.new(module)
-  local obj = {module = module}
+  local obj = {
+    module = module,
+    output = function(self, output)
+      -- used for printing of output of commands
+      if show_level <= (levels[info] or 2) then
+        print(output)
+      end
+    end
+  }
   obj.__index = obj
   -- make a function for each mode
   for _, mode in ipairs(logging.modes) do
