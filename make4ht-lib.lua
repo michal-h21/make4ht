@@ -2,6 +2,7 @@
 --kpse.set_program_name("luatex")
 -- module(...,package.seeall)
 local m = {}
+local log = logging.new "make4ht-lib"
 
 Make = {}
 --Make.params = {}
@@ -17,13 +18,13 @@ Make.add = function(self,name,fn,par,rep)
 	Make[name] = function(self,p,typ)
 		local params = {}
 		for k,v in pairs(self.params) do params[k] = v end
-		for k,v in pairs(par) do params[k] = v; print("setting param "..k) end
+		for k,v in pairs(par) do params[k] = v; log:info("setting param "..k) end
 		local typ = typ or "make"
 		local p = p or {}
 		local fn = fn
 		for k,v in pairs(p) do
 			params[k]=v
-			print("Adding: ",k,v)
+			log:info("Adding: ",k,v)
 		end
 		-- print( fn % params)
 		local command = {
@@ -50,13 +51,13 @@ Make.run_command = function(self,filename,s)
 	local command = s.command
 	local params  = s.params
 	params["filename"] = filename
-	print("parse_lg process file: "..filename)
+	log:info("parse_lg process file: "..filename)
 	--for k,v in pairs(params) do print(k..": "..v) end
 	if type(command) == "function" then
 		return command(filename,params)
 	elseif type(command) == "string" then
 		local run = command % params
-		print("Execute: " .. run)
+		log:info("Execute: " .. run)
     return os.execute(run)
 	end
 	return false, "parse_lg: Command is not string or function"
@@ -95,7 +96,7 @@ Make.image_convert =  function(self, images)
 					command(p)
 				elseif type(command) == "string" then
 					local c = command % p
-					print("Make4ht convert: "..c)
+					log:info("Make4ht convert: "..c)
 					os.execute(c)
 				end
 				break
@@ -125,7 +126,7 @@ Make.file_matches = function(self, files)
 				msg = msg or "No message given"
 				table.insert(statuses[file],status)
 				if status == false then
-					print(msg)
+					log:info(msg)
 					break
 				end
 			end
@@ -173,14 +174,14 @@ Make.run = function(self)
 			self.run_count[v.command] = run_count
 			local repetition = v.repetition
 			if repetition and run_count > repetition then 
-				print ("Make4ht: ".. command .." can be executed only "..repetition .."x")
+				log:warning (command .." can be executed only "..repetition .."x")
 			else
-			  print("Make4ht: " .. command)
+			  log:info("executing: " .. command)
 			  local status = os.execute(command)
 			  table.insert(return_codes,{name=v.name,status=status})
 			end
 		else
-			print("Unknown command type, must be string or function - " ..v.name..": "..type(v.command))
+			log:warning("Unknown command type, must be string or function - " ..v.name..": "..type(v.command))
 		end
 		local correct_exit = params.correct_exit or nil
 		if correct_exit then
@@ -188,7 +189,7 @@ Make.run = function(self)
 			local current_status = last_return.status or 0
 			if current_status ~= correct_exit then
 				local last_name = last_return.name or "unknown"
-				print("Make4ht: Fatal error. Command "..last_name .." returned exit code "..current_status)
+				log:fatal("Fatal error. Command "..last_name .." returned exit code "..current_status)
 				os.exit(1)
 			end
 		end
@@ -208,7 +209,7 @@ Make.run = function(self)
 		end
 		self:file_matches(files)
 	else
-		print("No lg file. tex4ht run failed?")
+		log:warning("No lg file. tex4ht run failed?")
 	end
 	return return_codes
 end
