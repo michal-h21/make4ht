@@ -53,9 +53,11 @@ function logging.new(module)
   for _, mode in ipairs(logging.modes) do
     local name = mode.name
     local color = mode.color
-    obj[name] = function(self, msg)
+    obj[name] = function(self, ...)
       -- max width is saved in logging.prepare_levels
       if mode.level >= show_level then
+        -- support variable number of parameters
+        local msg = table.concat({...}, "\t")
         logging.print_msg(string.upper(name),  string.format("%s: %s", self.module, msg), color)
       end
     end
