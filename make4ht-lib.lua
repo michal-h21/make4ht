@@ -177,7 +177,14 @@ Make.run = function(self)
 				log:warning (command .." can be executed only "..repetition .."x")
 			else
 			  log:info("executing: " .. command)
-			  local status = os.execute(command)
+        local f = io.popen(command, "r")
+        local output = f:read("*all")
+        -- rc will contain return codes of the executed command
+        local rc =  {f:close()}
+        -- the status code is on the third position 
+        -- https://stackoverflow.com/a/14031974/2467963
+        local status = rc[3]
+        log:output(output)
 			  table.insert(return_codes,{name=v.name,status=status})
 			end
 		else
