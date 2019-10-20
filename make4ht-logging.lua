@@ -52,7 +52,7 @@ function logging.new(module)
     module = module,
     output = function(self, output)
       -- used for printing of output of commands
-      if show_level <= (levels[info] or 2) then
+      if show_level <= (levels[debug] or 1) then
         print(output)
       end
     end
