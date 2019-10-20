@@ -23,8 +23,8 @@ It will produce a file named `filename.html` if the compilation goes without fat
     Usage:
     make4ht [options] filename ["tex4ht.sty op." "tex4ht op." 
          "t4ht op" "latex op"]
-    -a,--loglevel (default warning) Set log level.
-                possible values: debug, info, warning, error, fatal
+    -a,--loglevel (default status) Set log level.
+                possible values: debug, info, status, warning, error, fatal
     -b,--backend (default tex4ht) Backend used for xml generation.
          possible values: tex4ht or lua4ht
     -c,--config (default xhtml) Custom config file
