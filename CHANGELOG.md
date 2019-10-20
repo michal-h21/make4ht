@@ -1,5 +1,14 @@
 # Changelog
 
+- 2019/10/20
+
+    - added `status` log level.
+
+- 2019/10/18
+
+    - converted most print commands to use the logging mechanism.
+    - added `output` log level used for printing of the commands output.
+
 - 2019/10/17
 
     - added `--loglevel` CLI parameter.
