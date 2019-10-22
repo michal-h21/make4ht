@@ -1,4 +1,5 @@
 local domobj = require "luaxml-domobject"
+local log = logging.new("staticsite")
 -- save the header settings in YAML format
 local function make_yaml(tbl, level)
   local t = {}
@@ -69,7 +70,6 @@ local function get_header(tbl)
 end
 
 return function(s,par)
-  print(os.getenv "blog_home")
   local dom = domobj.parse(s)
   local properties = {}
   local head = dom:query_selector("head")[1]
@@ -84,7 +84,7 @@ return function(s,par)
   properties.styles = styles
   local metas = {}
   for _, meta in ipairs(head:query_selector("meta")) do
-    print(meta:serialize())
+    log:debug("parsed meta: " .. meta:serialize())
     table.insert(metas, {charset= meta:get_attribute("charset"), content = meta:get_attribute("content"), property = meta:get_attribute("property"), name = meta:get_attribute("name")})
   end
   properties.meta = metas
@@ -92,7 +92,7 @@ return function(s,par)
 
 
   local body = dom:query_selector("body")[1]
-  print(get_header(properties))
+  log:debug(get_header(properties))
   -- return s
   return get_header(properties) .. body:serialize():gsub("<body.->", ""):gsub("</body>", "")
 end

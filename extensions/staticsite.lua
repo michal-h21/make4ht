@@ -1,6 +1,7 @@
 local M = {}
 local filter = require "make4ht-filter"
 local mkutils = require "mkutils"
+local log = logging.new "staticsite"
 
 -- get the published file name
 local function get_slug(settings)
@@ -15,7 +16,7 @@ local function get_slug(settings)
     local f = io.open(published_name, "r")
     local readtime  = f:read("*line")
     time = tonumber(readtime)
-    print("Already pubslished", slug)
+    log:info("Already pubslished", slug)
     f:close()
   else
     -- escape 
