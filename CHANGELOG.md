@@ -3,6 +3,8 @@
 - 2019/10/22
 
     - added `tablerows` domfilter.
+    - added the `tablerows` domfilter to the `common_domfilters` extension.
+    - converted most of the filters to use the logging mechanism.
 
 - 2019/10/20
 
