@@ -1,6 +1,7 @@
 local filter_lib = require "make4ht-filterlib"
 local dom    = require "luaxml-domobject"
 local mkutils    = require "mkutils"
+local log = logging.new "domfilter"
 
 local function load_filter(filtername)
 	return require("domfilters.make4ht-"..filtername)
@@ -42,8 +43,8 @@ local function filter(filters, name)
       return dom.parse(input)
     end)
     if not status then
-      print("DOM parsing of " .. filename .. " failed:")
-      print(domobject)
+      log:warning("DOM parsing of " .. filename .. " failed:")
+      log:warning(domobject)
       return nil, "DOM parsing failed"
     end
 		for _,f in pairs(sequence) do
@@ -53,7 +54,7 @@ local function filter(filters, name)
     if output then
       filter_lib.save_input_file(filename, output)
     else
-      print("DOM filter failed on ".. filename)
+      log:warning("DOM filter failed on ".. filename)
     end
     -- mark the filename as processed
     processed_files[filename] = true
