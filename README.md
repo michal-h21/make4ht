@@ -78,6 +78,17 @@ option.
 
     $ cat hello.tex | make4ht -j world -
 
+By default, `make4ht` tries to be quiet, so it hides most of the command line
+messages and the output from the executed commands. It will display only status
+messages, warnings and errors. The logging level can be selected using the
+`--loglevel` or `-a` options. If the compilation fails, it may be useful to display more 
+information using the `info` or `debug` levels. 
+
+
+    $ make4ht -a debug faulty.tex
+
+
+
 # Why `make4ht`? -- `htlatex` issues
 
 
