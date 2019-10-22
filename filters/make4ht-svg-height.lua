@@ -1,5 +1,7 @@
 
+local log = logging.new("svg-height")
 -- Make:image("svg$", "dvisvgm -n -a -p ${page} -b preview -c 1.4,1.4 -s ${source} > ${output}")
+
 
 local max = function(a,b)
   return a > b and a or b
@@ -34,7 +36,7 @@ return function(svg)
     max_height = get_max_height(path, max_height)
   end
   -- update the height only if the max_height is larger than height set in the SVG file
-  print(max_height, height)
+  log:debug("max height and height", max_height, height)
   if max_height > height then
     svg = update_height(svg, max_height)
   end
