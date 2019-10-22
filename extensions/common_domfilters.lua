@@ -26,7 +26,7 @@ function M.modify_build(make)
     make:match("4om$", process, {charclasses= charclasses})
     count = 2
   else
-    local process = filter {"fixinlines", "idcolons", "joincharacters"}
+    local process = filter {"fixinlines", "idcolons", "joincharacters", "tablerows"}
     make:match("html$", process)
     count = 1
   end
