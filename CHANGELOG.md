@@ -1,5 +1,9 @@
 # Changelog
 
+- 2019/10/22
+
+    - added `tablerows` domfilter.
+
 - 2019/10/20
 
     - added `status` log level.
