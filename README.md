@@ -224,8 +224,8 @@ common\_filters
 common\_domfilters
 
 :    clean the HTML file using DOM filters. It is more powerful than
-`common_filters`. Used DOM filters are `fixinlines`, `idcolons` and
-`joincharacters`.
+`common_filters`. Used DOM filters are `fixinlines`, `idcolons`,
+`joincharacters` and `tablerows`.
 
 dvisvgm\_hashes
 
@@ -573,6 +573,10 @@ odtimagesize
 odtpartable
 
 :  resolve tables nested inside paragraphs, which is invalid in the ODT format.
+
+tablerows
+
+:  remove spurious rows from HTML tables.
 
 t4htlinks
 
