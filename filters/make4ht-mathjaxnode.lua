@@ -1,4 +1,5 @@
 local mkutils = require "mkutils"
+local log = logging.new("mathjaxnode")
 -- other possible value is page2svg
 local mathnodepath = "mjpage"
 -- options for MathJax command
@@ -13,13 +14,13 @@ local cssfilename =  "mathjax-chtml.css"
 
 local function compile(text)
   local tmpfile = os.tmpname()
-  print("Compile using MathJax")
+  log:info("Compile using MathJax")
   local command =  mathnodepath .. " ".. options .. " > " .. tmpfile
-  print(command)
+  log:info(command)
   local commandhandle = io.popen(command,"w") 
   commandhandle:write(text)
   commandhandle:close()
-  print("Result written to: ".. tmpfile)
+  log:info("Result written to: ".. tmpfile)
   local f = io.open(tmpfile)
   local content = f:read("*all")
   f:close()
@@ -53,7 +54,7 @@ local function use_fonts(css)
     if not face:match("url%(") then return face end
     -- print(face)
     local family, filename = face:match(family_pattern)
-    print(family, filename)
+    log:info("use font: ",family, filename)
     local newfile = string.format("%s/%s.%s", fontdir, filename, fontformat)
     Make:add_file(newfile)
     return family_build:format(family, fontdir, filename, fontformat, fontformat)
@@ -89,6 +90,6 @@ return function(text, arguments)
   save_css(cssfile, css)
   Make:add_file(cssfile)
   -- print(css)
-  print(cssfile)
+  log:info("CSS file: " .. cssfile)
   return newtext
 end
