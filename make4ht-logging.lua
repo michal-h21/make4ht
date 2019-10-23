@@ -66,7 +66,14 @@ function logging.new(module)
       -- max width is saved in logging.prepare_levels
       if mode.level >= show_level then
         -- support variable number of parameters
-        local msg = table.concat({...}, "\t")
+        local table_with_holes = table.pack(...) 
+        local table_without_holes = {}
+        -- trick used to support the nil values in the varargs
+        -- https://stackoverflow.com/a/7186820/2467963
+        for i= 1, table_with_holes.n do
+          table.insert(table_without_holes, table_with_holes[i] or "")
+        end
+        local msg = table.concat(table_without_holes, "\t")
         logging.print_msg(string.upper(name),  string.format("%s: %s", self.module, msg), color)
       end
     end
