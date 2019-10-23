@@ -58,7 +58,7 @@ Make.run_command = function(self,filename,s)
 	elseif type(command) == "string" then
 		local run = command % params
 		log:info("Execute: " .. run)
-    return os.execute(run)
+    return mkutils.execute(run)
 	end
 	return false, "parse_lg: Command is not string or function"
 end
@@ -97,7 +97,7 @@ Make.image_convert =  function(self, images)
 				elseif type(command) == "string" then
 					local c = command % p
 					log:info("Make4ht convert: "..c)
-					os.execute(c)
+					mkutils.execute(c)
 				end
 				break
 			end
@@ -177,14 +177,7 @@ Make.run = function(self)
 				log:warning (command .." can be executed only "..repetition .."x")
 			else
 			  log:info("executing: " .. command)
-        local f = io.popen(command, "r")
-        local output = f:read("*all")
-        -- rc will contain return codes of the executed command
-        local rc =  {f:close()}
-        -- the status code is on the third position 
-        -- https://stackoverflow.com/a/14031974/2467963
-        local status = rc[3]
-        log:output(output)
+        local status = mkutils.execute(command)
 			  table.insert(return_codes,{name=v.name,status=status})
 			end
 		else

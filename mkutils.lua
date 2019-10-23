@@ -226,6 +226,20 @@ function copy(filename,outfilename)
 	return true
 end
 
+function execute(command)
+  local f = io.popen(command, "r")
+  local output = f:read("*all")
+  -- rc will contain return codes of the executed command
+  local rc =  {f:close()}
+  -- the status code is on the third position 
+  -- https://stackoverflow.com/a/14031974/2467963
+  local status = rc[3]
+  -- print the command line output only when requested through
+  -- log  level
+  log:output(output)
+  return status
+end
+
 -- find the zip command
 function find_zip()
   if io.popen("zip -v","r"):close() then
