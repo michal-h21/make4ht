@@ -1,5 +1,6 @@
 local M = {}
 
+local log = logging.new "xtpipes"
 -- find if tex4ht.jar exists in a path
 local function find_tex4ht_jar(path)
   local jar_file = path .. "/tex4ht/bin/tex4ht.jar"
@@ -46,19 +47,19 @@ function M.get_xtpipes(selfautoparent)
     local tmpfile = basename ..".tmp"
     mkutils.mv(filename, tmpfile)
     local command = pattern % {filename = tmpfile, outputfile = filename}
-    print(command)
-    local status = os.execute(command)
+    log:info("execute: " ..command)
+    local status = mkutils.execute(command)
     if status > 0 then
       -- if xtpipes failed to process the file, it may mean that it was bad-formed xml
       -- we can try to make it well-formed using Tidy
       local tidy_command = 'tidy -utf8 -xml -asxml -q -o "${filename}" "${tmpfile}"' % {tmpfile = tmpfile, filename = filename}
-      print("xtpipes failed trying tidy")
-      print(tidy_command)
+      log:warning("xtpipes failed trying tidy")
+      log:debug(tidy_command)
       local status = os.execute(tidy_command)
       if status > 0 then
         -- if tidy failed as well, just use the original file
         -- it will probably produce corrupted ODT file though
-        print("Tidy failed as well")
+        log:warning("Tidy failed as well")
         mkutils.mv(tmpfile, filename)
       end
     end
