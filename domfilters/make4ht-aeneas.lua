@@ -5,6 +5,7 @@
 --
 local cssquery = require "luaxml-cssquery"
 local mkutils  = require "mkutils"
+local log = logging.new "aeneas"
 
 -- Table of CSS selectors to be skipped.
 local skip_elements = { "math", "svg"}
@@ -111,7 +112,7 @@ local function aeneas(dom, par)
     then
       local idtitle
       idtitle, id = make_id(id, id_prefix)
-      print(el._name, first_child._text)
+      log:debug(el._name, first_child._text)
       el:set_attribute("id", idtitle)
       return el
     end
