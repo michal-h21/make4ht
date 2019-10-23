@@ -1,5 +1,9 @@
 # Changelog
 
+- 2019/10/23
+
+    - replaced `os.execute` function with `mkutils.execute`. It uses the logging mechanism for the output.
+
 - 2019/10/22
 
     - added `tablerows` domfilter.
