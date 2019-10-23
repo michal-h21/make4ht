@@ -1,5 +1,7 @@
 -- preprocess R literate sources or Markdown files to LaTeX
 local M = {}
+local log = logging.new "preprocess_input"
+local mkutils = require "mkutils"
 
 local commands = {
   knitr = { command = 'Rscript -e "library(knitr); knit(\'${tex_file}\', output=\'${tmp_file}\')"'},
@@ -36,8 +38,8 @@ local function execute_sequence(sequence, arg, make)
     local cmd  = commands[cmd_name]
     -- fill the command template with make4ht arguments and execute
     local command = cmd.command % arg
-    print(command)
-    os.execute(command)
+    log:info(command)
+    mkutils.execute(command)
   end
   return temp_files
 end
@@ -71,7 +73,7 @@ M.modify_build = function(make)
   -- get the execution sequence for the input format
   local matched, msg  = get_preprocessing_pipeline(arg.tex_file)
   if not matched then 
-    print("preprocess_input error: ".. msg)
+    log:error("preprocess_input error: ".. msg)
     return
   end
   -- prepare options 
@@ -83,7 +85,7 @@ M.modify_build = function(make)
   -- remove the intermediate temp files
   if #temp_files > 2 then
     for i = 1, #temp_files - 1 do
-      print("Removing temporary file", temp_files[i])
+      log:debug("Removing temporary file", temp_files[i])
       os.remove(temp_files[i])
     end
   end
