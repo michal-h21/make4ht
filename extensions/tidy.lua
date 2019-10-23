@@ -1,5 +1,6 @@
 local M = {}
 
+local log = logging.new "tidy"
 function M.test(format)
   if format == "odt" then return false end
   return true
@@ -41,7 +42,7 @@ function M.modify_build(make)
     local settings = get_filter_settings "tidy" or {}
     par.options = par.options or settings.options or "-utf8 -w 512 -ashtml -q"
     local command = "tidy ${options}  ${filename}" % par
-    print("execute: ".. command)
+    log:info("running tidy: ".. command)
     -- os.execute(command)
     local run = io.popen(command, "r")
     local result = run:read("*all")
