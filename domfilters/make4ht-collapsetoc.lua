@@ -1,17 +1,13 @@
 local domobject = require "luaxml-domobject"
 
 local filter = require "make4ht-filter"
+local log = logging.new "collapsetoc"
 
 
 local toc_levels = {"partToc", "chapterToc", "sectionToc", "subsectionToc", "subsubsectionToc"}
 
-local debug_print  
+local debug_print = function(...) log:debug(...) end
 
-if _debug then
-  debug_print = print
-else
-  debug_print = function(s) end
-end
 
 -- return toc element type and it's id
 local function get_id(el)
