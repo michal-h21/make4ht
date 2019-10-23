@@ -1,6 +1,7 @@
 local dvireader = require "make4ht-dvireader"
 local mkutils = require "mkutils"
 local filter = require "make4ht-filter"
+local log = logging.new "dvisvgm_hashes"
 
 
 local dvisvgm_par = {}
@@ -149,7 +150,7 @@ end
 local function execute_dvisvgm(idvfile, pages)
   if #pages < 1 then return nil, "No pages to convert" end
   local command, logs = prepare_command(idvfile, pages)
-  print(command)
+  log:info(command)
   os.execute(command)
   local generated_pages = {}
   for _, dvisvgmlog in ipairs(logs) do
@@ -184,7 +185,7 @@ local function get_dvi_pages(arg)
     local output_name = make_hashed_name(arg.input, hash)
     output_map[tex4ht_name] = output_name
     if not mkutils.file_exists(output_name) then
-      print(output_name)
+      log:debug("output file: ".. output_name)
       to_convert[#to_convert+1] = page
     end
   end
@@ -246,7 +247,7 @@ function M.modify_build(make)
     function(str)
       return str:gsub('src="([^"]+)', function(filename)
         local newname = output_map[filename] or filename
-        print("newname", newname)
+        log:debug("newname", newname)
         return 'src="'.. newname 
       end)
     end
