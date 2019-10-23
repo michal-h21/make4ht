@@ -3,6 +3,7 @@
 - 2019/10/23
 
     - replaced `os.execute` function with `mkutils.execute`. It uses the logging mechanism for the output.
+    - finished transforming of filters, extensions and formats to the logging system.
 
 - 2019/10/22
 
