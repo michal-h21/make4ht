@@ -6,6 +6,7 @@ local kpse    = require "kpse"
 local filter  = require "make4ht-filter"
 local domfilter  = require "make4ht-domfilter"
 local xtpipeslib = require "make4ht-xtpipes"
+local log = logging.new "docbook"
 
 function M.prepare_parameters(settings, extensions)
   settings.tex4ht_sty_par = settings.tex4ht_sty_par ..",docbook"
@@ -25,7 +26,7 @@ local function call_xtpipes(make)
     make:match("xml$", matchfunction)
     move_matches(make)
   else
-    print "Cannot locate xtpipes. Try to set TEXMFROOT variable to a root directory of your TeX distribution"
+    log:warning "Cannot locate xtpipes. Try to set TEXMFROOT variable to a root directory of your TeX distribution"
   end
 end
 
