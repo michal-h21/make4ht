@@ -1,3 +1,4 @@
+local log = logging.new "odtimagesize"
 -- set correct dimensions to frames around images
 return  function(dom)
   local frames  = dom:query_selector("draw|frame")
@@ -9,7 +10,7 @@ return  function(dom)
       local height = image:get_attribute("svg:height")
       if widht then frame:set_attribute("svg:width", width) end
       if height then frame:set_attribute("svg:height", height) end
-      print("image dimensions", width, height)
+      log:debug("image dimensions", width, height)
     end
   end
   return dom

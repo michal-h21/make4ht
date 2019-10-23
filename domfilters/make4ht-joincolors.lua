@@ -1,4 +1,5 @@
 local cssfiles = {}
+local log = logging.new "joincolors"
 
 
 -- keep mapping between span ids and colors
@@ -45,7 +46,7 @@ local function process_css_files(dom)
   for _, el in ipairs(dom:query_selector("link")) do
     local href = el:get_attribute("href") or ""
     if not cssfiles[href] and href:match("css$") then
-      print("Load CSS file ", href)
+      log:debug("Load CSS file ", href)
       cssfiles[href] = true
       process_css(href)
     end
