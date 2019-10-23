@@ -6,6 +6,7 @@ local kpse    = require "kpse"
 local filter  = require "make4ht-filter"
 local domfilter  = require "make4ht-domfilter"
 local xtpipeslib = require "make4ht-xtpipes"
+local log = logging.new "odt"
 
 
 function M.prepare_parameters(settings, extensions)
@@ -71,10 +72,10 @@ function Odtfile:pack()
   lfs.chdir(self.archivelocation)
   -- make temporary mime type file
   self:make_mimetype()
-  os.execute(zip_command .. " -q0X " .. self.name .. " " .. self.mimetypename)
+  mkutils.execute(zip_command .. " -q0X " .. self.name .. " " .. self.mimetypename)
   -- remove it, so the next command doesn't overwrite it
   self:remove_mimetype()
-  os.execute(zip_command .." -r " .. self.name .. " *")
+  mkutils.execute(zip_command .." -r " .. self.name .. " *")
   lfs.chdir(currentdir)
   mkutils.cp(self.archivelocation .. "/" .. self.name, self.name)
   mkutils.delete_dir(self.archivelocation)
@@ -102,7 +103,7 @@ local function call_xtpipes(make)
     move_matches(make)
     move_matches(make)
   else
-    print "Cannot locate xtpipes. Try to set TEXMFROOT variable to a root directory of your TeX distribution"
+    log:warning "Cannot locate xtpipes. Try to set TEXMFROOT variable to a root directory of your TeX distribution"
   end
 end
 
@@ -114,7 +115,7 @@ local function prepare_output_files(lgfiles)
     local group = groups[extension] or {}
     table.insert(group, basename)
     groups[extension] = group
-    print(basename, extension)
+    log:debug("prepare output file", basename, extension)
   end
   return groups
 end
@@ -161,7 +162,7 @@ function M.modify_build(make)
         local odtname = basename .. ".odt"
         local odt,msg = Odtfile.new(odtname)
         if not odt then
-          print("Cannot create ODT file: " .. msg)
+          log:error("Cannot create ODT file: " .. msg)
         end
         -- helper function for simple file moving
         local function move_file(group, dest)
