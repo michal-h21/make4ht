@@ -286,6 +286,7 @@ env.os     = os
 env.io     = io
 env.math   = math
 env.unicode = unicode
+env.logging = logging
 
 
 -- it is necessary to use the settings table
