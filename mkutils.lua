@@ -237,7 +237,7 @@ function execute(command)
   -- print the command line output only when requested through
   -- log  level
   log:output(output)
-  return status
+  return status, output
 end
 
 -- find the zip command
