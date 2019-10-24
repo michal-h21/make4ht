@@ -1,5 +1,9 @@
 # Changelog
 
+- 2019/10/24
+
+    - added functions for preparing and cleaning of the index files in `make4ht-indexing.lua`.
+
 - 2019/10/23
 
     - replaced `os.execute` function with `mkutils.execute`. It uses the logging mechanism for the output.

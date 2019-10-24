@@ -105,10 +105,38 @@ local fix_idx_pages = function(content, idxobj)
   return table.concat(buffer, "\n")
 end
 
+-- prepare the .idx file produced by tex4ht
+-- for use with Xindy or Makeindex
+local prepare_idx = function(filename)
+  local f = io.open(filename, "r")
+  local content = f:read("*all")
+  local idx = parse_idx(content)
+  local idxname = os.tmpname()
+  local f = io.open(idxname, "w")
+  f:write(idx.idx)
+  f:close()
+  -- return the object with mapping between dummy page numbers 
+  -- and link destinations in the files, and the temporary .idx file
+  -- these can be used for the processing with the index processor
+  return idx, idxname
+end
 
+-- add links to a index file
+local process_index = function(indname, idx)
+  local f = io.open(indname,  "r")
+  local content = f:read("*all")
+  f:close()
+
+  local newcontent = fix_idx_pages(content, idx)
+  local f = io.open(indname,"w")
+  f:write(newcontent)
+  f:close()
+end
 
 M.get_utf8 = get_utf8
 M.load_enc = load_enc
 M.parse_idx = parse_idx
 M.fix_idx_pages = fix_idx_pages
+M.prepare_idx = prepare_idx
+M.process_index = process_index
 return M
