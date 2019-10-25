@@ -7,6 +7,7 @@ local enc = {}
 
 local licrs = {}
 local codepoint2utf = unicode.utf8.char 
+local used_encodings = {}
 
 -- load inputenc encoding file
 local function load_encfiles(f)
@@ -29,10 +30,12 @@ local load_enc = function(enc)
   enc = enc or  {"T1","T2A","T2B","T2C","T3","T5", "LGR"}
 	for _,e in pairs(enc) do
 		local filename = e:lower() .. "enc.dfu"
+    if used_encodings[filename] then return true end
 		local dfufile = kpse.find_file(filename)
 		if dfufile then
 			load_encfiles(dfufile)
 		end
+    used_encodings[filename] = true
 	end
 end
 
