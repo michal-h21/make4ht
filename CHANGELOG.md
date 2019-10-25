@@ -1,5 +1,9 @@
 # Changelog
 
+- 2019/10/25
+
+    - modified the `Make:xindy` command to use the indexing mechanism.
+
 - 2019/10/24
 
     - added functions for preparing and cleaning of the index files in `make4ht-indexing.lua`.

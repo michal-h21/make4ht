@@ -1,5 +1,6 @@
 
 local M = {}
+local log = logging.new "indexing"
 
 -- Handle accented characters in files created with \usepackage[utf]{inputenc}
 -- this code was originally part of https://github.com/michal-h21/iec2utf/
@@ -114,6 +115,7 @@ end
 -- for use with Xindy or Makeindex
 local prepare_idx = function(filename)
   local f = io.open(filename, "r")
+  if not f then return nil, "Cannot open file :".. tostring(filename) end
   local content = f:read("*all")
   local idx = parse_idx(content)
   local idxname = os.tmpname()
@@ -129,6 +131,7 @@ end
 -- add links to a index file
 local process_index = function(indname, idx)
   local f = io.open(indname,  "r")
+  if not f then return  nil, "Cannot open .ind file: " .. tostring(indname) end
   local content = f:read("*all")
   f:close()
 
@@ -136,6 +139,7 @@ local process_index = function(indname, idx)
   local f = io.open(indname,"w")
   f:write(newcontent)
   f:close()
+  return true
 end
 
 M.get_utf8 = get_utf8
