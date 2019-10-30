@@ -409,7 +409,7 @@ env.Make:add("xindy", function(par)
   -- save hyperlinks and clean the .idx file
   local idxdata, newidxfile = indexing.prepare_idx(par.idxfile)
   if not idxdata then
-    -- if the prepara_idx function returns nil, the second reutrned value contains error msg
+    -- if the prepare_idx function returns nil, the second reuturned value contains error msg
     xindylog:warning(newidxfile)
     return false
   end
