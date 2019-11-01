@@ -2,7 +2,13 @@
 
 - 2019/11/01
 
-    - version 0.3 released
+    - version `0.3a` released.
+    - added `make4ht-` prefix to all extensions and formats
+    - removed the unused `mathjaxnode.lua` file.
+
+- 2019/11/01
+
+    - version `0.3` released.
     - added `Make:makeindex`, `Make:xindex` and `Make:bibtex` commands.
 
 - 2019/10/25
