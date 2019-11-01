@@ -407,6 +407,10 @@ detect compilation errors in the TeX log file.
 
 :    Generate index using Xindy index processor.
 
+`Make:makeindex`
+
+:    Generate index using the Makeindex command.
+
 ## File matches
 \label{sec:postprocessing}
 
@@ -817,11 +821,21 @@ These settings may be set using `filter_settings` function in a build file or in
 
 
 
-## The `xindy` command
+## Indexing commands
+
+The indexing commands (like `xindy` or `makeindex` uses some common setting or `makeindex` uses some common settings.
 
 idxfile
 
 :    name of the `.idx` file. Default value is `\jobname.idx`.
+
+indfile
+
+:    name of the `.ind` file. Default value is the same as `idxfile` with the file extension changed to `.ind`.
+
+Each indexing command can have some additional settings.
+
+### The `xindy` command
 
 encoding
 
@@ -834,6 +848,13 @@ language
 modules
 
 :    table with names of additional `Xindy` modules to be used.
+
+### The `makeindex` command
+
+options
+
+
+:    additional command line options for the Makeindex command.
 
 
 ## The `tidy` extension
