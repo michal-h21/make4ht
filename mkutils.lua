@@ -421,6 +421,16 @@ env.Make:add("makeindex", function(par)
   return status
 end, {})
 
+env.Make:add("xindex", function(par)
+  local xindex_call = "xindex -l ${language} ${options} -o ${indfile} ${newidxfile}"
+  local settings = get_filter_settings "xindex" or {}
+  par.options = settings.options or par.options  or ""
+  par.language = settings.language or par.language or "en"
+  local status = indexing.run_indexing_command(xindex_call, par)
+  return status
+end, {})
+
+
 
 local function find_lua_file(name)
   local extension_path = name:gsub("%.", "/") .. ".lua"

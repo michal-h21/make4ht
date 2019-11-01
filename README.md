@@ -403,6 +403,10 @@ detect compilation errors in the TeX log file.
 
 :    Process bibliography using the `biber` command.
 
+`Make:bibtex`
+
+:    Process bibliography using the `bibtex` command.
+
 `Make:xindy`
 
 :    Generate index using Xindy index processor.
@@ -410,6 +414,11 @@ detect compilation errors in the TeX log file.
 `Make:makeindex`
 
 :    Generate index using the Makeindex command.
+
+`Make:xindex`
+
+:    Generate index using the Xindex command.
+
 
 ## File matches
 \label{sec:postprocessing}
@@ -856,6 +865,16 @@ options
 
 :    additional command line options for the Makeindex command.
 
+### The `xindex` command
+
+options
+
+
+:    additional command line options for the Xindex command.
+
+language
+
+:    document language
 
 ## The `tidy` extension
 
