@@ -17,6 +17,7 @@
 .rm-lmtt-10{ font-family: monospace;}
 .rm-lmtt-10{ font-family: monospace;}
 .rm-lmtt-10{ font-family: monospace;}
+.rm-lmr-7{font-size:70%;}
 .rm-lmtt-9{font-size:90%; font-family: monospace;}
 .rm-lmtt-9{ font-family: monospace;}
 .rm-lmtt-9{ font-family: monospace;}
@@ -92,7 +93,9 @@ td.td01{ padding-left:0pt; padding-right:5pt; }
 td.td10{ padding-left:5pt; padding-right:0pt; }
 td.td11{ padding-left:5pt; padding-right:5pt; }
 table[rules] {border-left:solid black 0.4pt; border-right:solid black 0.4pt; }
-.hline hr, .cline hr{ height : 1px; margin:0px; }
+.hline hr, .cline hr{ height : 0px; margin:0px; }
+.hline td, .cline td{ padding: 0; }
+.hline hr, .cline hr{border:none;border-top:1px solid black;}
 .tabbing-right {text-align:right;}
 span.TEX {letter-spacing: -0.125em; }
 span.TEX span.E{ position:relative;top:0.5ex;left:-0.0417em;}
