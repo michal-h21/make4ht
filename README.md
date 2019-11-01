@@ -813,16 +813,16 @@ output for math.
       tex4ht_sty_par =",mathml"
     }
 
-
+<!--
 # Development
-
-
 
 ## Custom filters
 
 ## New extensions
 
 ## How to add new output format
+
+-->
 
 # List of available settings for filters and extensions.
 
