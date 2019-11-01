@@ -413,7 +413,9 @@ env.Make:add("xindy", function(par)
 end, {})
 
 env.Make:add("makeindex", function(par)
-  local makeindxcall = "makeindex -t ${ilgfile} -o ${indfile} ${newidxfile}"
+  local makeindxcall = "makeindex ${options} -t ${ilgfile} -o ${indfile} ${newidxfile}"
+  local settings = get_filter_settings "makeindex" or {}
+  par.options = settings.options or par.options  or ""
   par.ilgfile = par.input .. ".ilg" 
   local status = indexing.run_indexing_command(makeindxcall, par)
   return status
