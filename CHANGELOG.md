@@ -2,6 +2,7 @@
 
 - 2019/11/01
 
+    - version 0.3 released
     - added `Make:makeindex`, `Make:xindex` and `Make:bibtex` commands.
 
 - 2019/10/25
