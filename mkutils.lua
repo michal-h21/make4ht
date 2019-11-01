@@ -443,7 +443,7 @@ env.Make:add("bibtex", "bibtex ${input}")
 
 --- load the output format plugins
 function load_output_format(format_name)
-  local format_library =  "make4ht.formats."..format_name
+  local format_library =  "make4ht.formats.make4ht-"..format_name
   local is_format_file = find_lua_file(format_library)
   if is_format_file then 
     local format = assert(require(format_library))
@@ -486,11 +486,11 @@ end
 -- @param format current output format
 function load_extension(name,format)
   -- first test if the extension exists
-  local extension_library = "make4ht.extensions." .. name
+  local extension_library = "make4ht.extensions.make4ht-" .. name
   local is_extension_file = find_lua_file(extension_library)
   -- don't try to load the extension if it doesn't exist
   if not is_extension_file then return nil end
-  local extension = require("make4ht.extensions.".. name)
+  local extension = require("make4ht.extensions.make4ht-".. name)
   -- extensions can test if the current output format is supported
   local test = extension.test
   if test then
