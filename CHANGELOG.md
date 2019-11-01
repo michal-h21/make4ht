@@ -1,5 +1,9 @@
 # Changelog
 
+- 2019/11/01
+
+    - added `Make:makeindex`, `Make:xindex` and `Make:bibtex` commands.
+
 - 2019/10/25
 
     - modified the `Make:xindy` command to use the indexing mechanism.
