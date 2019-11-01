@@ -715,7 +715,7 @@ The default parameters are the following:
 
 `input`
 
-:    output filename
+:    content of `\jobname`, see also the `tex_file` parameter.
 
 `interaction`
 
@@ -725,7 +725,7 @@ The default parameters are the following:
 
 `tex_file`
 
-:    input \TeX\ file
+:    input \TeX\ filename
 
 `latex_par`
 
@@ -800,7 +800,10 @@ output for math.
       tex4ht_sty_par =",mathml"
     }
 
+
 # Development
+
+
 
 ## Custom filters
 
@@ -816,6 +819,10 @@ These settings may be set using `filter_settings` function in a build file or in
 
 ## The `xindy` command
 
+idxfile
+
+:    name of the `.idx` file. Default value is `\jobname.idx`.
+
 encoding
 
 :    text encoding of the `.idx` file. Default value is `utf8`.
@@ -826,7 +833,8 @@ language
 
 modules
 
-:    additional `Xindy` modules.
+:    table with names of additional `Xindy` modules to be used.
+
 
 ## The `tidy` extension
 
