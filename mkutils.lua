@@ -429,6 +429,7 @@ end
 
 -- for the BibLaTeX support
 env.Make:add("biber", "biber ${input}")
+env.Make:add("bibtex", "bibtex ${input}")
 
 --- load the output format plugins
 function load_output_format(format_name)
