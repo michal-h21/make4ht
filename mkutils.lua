@@ -402,19 +402,6 @@ env.Make:add("xindy", function(par)
   local settings = get_filter_settings "xindy" or {}
   par.encoding  = settings.encoding or  par.encoding or "utf8"
   par.language = settings.language or par.language or "english"
-  par.idxfile = par.idxfile or par.input .. ".idx"
-  -- construct the .ind name, based on the .idx name
-  par.indfile = par.idxfile:gsub("idx$", "ind")
-  indexing.load_enc()
-  -- save hyperlinks and clean the .idx file
-  local idxdata, newidxfile = indexing.prepare_idx(par.idxfile)
-  if not idxdata then
-    -- if the prepare_idx function returns nil, the second reuturned value contains error msg
-    xindylog:warning(newidxfile)
-    return false
-  end
-  par.newidxfile = newidxfile
-  xindylog:debug("Prepared temporary idx file: ", newidxfile)
   local modules = settings.modules or par.modules or {}
   local t = {}
   for k,v in ipairs(modules) do
@@ -422,15 +409,16 @@ env.Make:add("xindy", function(par)
     t[#t+1] = "-M ".. v
   end
   par.moduleopt = table.concat(t, " ")
-  local xindy_call = "texindy -L ${language} -C ${encoding} ${moduleopt} -o ${indfile} ${newidxfile}" % par
-  xindylog:info(xindy_call)
-  local status = execute(xindy_call)
-  -- insert correct links to the index
-  local status, msg = indexing.process_index(par.indfile, idxdata)
-  if not status then xindylog:warning(msg) end
-  -- remove the temporary idx file
-  os.remove(newidxfile)
+  return  indexing.run_indexing_command("texindy -L ${language} -C ${encoding} ${moduleopt} -o ${indfile} ${newidxfile}", par)
 end, {})
+
+env.Make:add("makeindex", function(par)
+  local makeindxcall = "makeindex -t ${ilgfile} -o ${indfile} ${newidxfile}"
+  par.ilgfile = par.input .. ".ilg" 
+  local status = indexing.run_indexing_command(makeindxcall, par)
+  return status
+end, {})
+
 
 local function find_lua_file(name)
   local extension_path = name:gsub("%.", "/") .. ".lua"

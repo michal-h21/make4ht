@@ -142,10 +142,49 @@ local process_index = function(indname, idx)
   return true
 end
 
+local prepare_tmp_idx = function(par)
+  par.idxfile = par.idxfile or par.input .. ".idx"
+  -- construct the .ind name, based on the .idx name
+  par.indfile = par.indfile or par.idxfile:gsub("idx$", "ind")
+  load_enc()
+  -- save hyperlinks and clean the .idx file
+  local idxdata, newidxfile = prepare_idx(par.idxfile)
+  if not idxdata then
+    -- if the prepare_idx function returns nil, the second reuturned value contains error msg
+    return nil, newidxfile
+  end
+  return  newidxfile, idxdata
+end
+
+local run_indexing_command = function(command, par)
+  -- detect command name from the command. It will be the first word
+  local cmd_name = command:match("^[%a]+") or "indexing"
+  local xindylog  = logging.new(cmd_name)
+  local newidxfile, idxdata = prepare_tmp_idx(par)
+  if not newidxfile then
+    -- the idxdata will contain error message in the case of error
+    xindylog:warning(idxdata)
+    return false
+  end
+  par.newidxfile = newidxfile
+  xindylog:debug("Prepared temporary idx file: ", newidxfile)
+  -- prepare modules
+  local xindy_call = command % par
+  xindylog:info(xindy_call)
+  local status = mkutils.execute(xindy_call)
+  -- insert correct links to the index
+  local status, msg = process_index(par.indfile, idxdata)
+  if not status then xindylog:warning(msg) end
+  -- remove the temporary idx file
+  os.remove(newidxfile)
+end
+
 M.get_utf8 = get_utf8
 M.load_enc = load_enc
 M.parse_idx = parse_idx
 M.fix_idx_pages = fix_idx_pages
 M.prepare_idx = prepare_idx
 M.process_index = process_index
+M.prepare_tmp_idx = prepare_tmp_idx
+M.run_indexing_command = run_indexing_command
 return M
