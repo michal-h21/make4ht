@@ -486,11 +486,11 @@ end
 -- @param format current output format
 function load_extension(name,format)
   -- first test if the extension exists
-  local extension_library = "make4ht.extensions.make4ht-" .. name
+  local extension_library = "make4ht.extensions.make4ht-ext-" .. name
   local is_extension_file = find_lua_file(extension_library)
   -- don't try to load the extension if it doesn't exist
   if not is_extension_file then return nil end
-  local extension = require("make4ht.extensions.make4ht-".. name)
+  local extension = require("make4ht.extensions.make4ht-ext-".. name)
   -- extensions can test if the current output format is supported
   local test = extension.test
   if test then
