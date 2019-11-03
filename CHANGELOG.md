@@ -1,5 +1,10 @@
 # Changelog
 
+- 2019/11/03
+
+    - version `0.3b`
+    - use `make4ht-ext-` prefix for extensions to prevent filename clashes with corresponding filters.
+
 - 2019/11/01
 
     - version `0.3a` released.
