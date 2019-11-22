@@ -1,7 +1,22 @@
+local log = logging.new("joincharacters")
+
 local charclasses = {
   span=true,
   mn = true,
+  mi = true
 }
+
+local has_matching_attributes = function (el, next_el)
+  local el_attr = el._attr or {}
+  local next_attr = next_el._attr or {}
+  -- if the number of attributes doesn't match, elements don't match
+  if #next_attr ~= #el_attr then return false end
+  for k, v in pairs(el_attr) do
+    -- if any attribute doesn't match, elements don't match
+    if v~=next_attr[k] then return false end
+  end
+  return true
+end
 
 local function join_characters(obj,par)
   -- join adjanced span and similar elements inserted by 
@@ -10,12 +25,13 @@ local function join_characters(obj,par)
   local options = get_filter_settings "joincharacters"
   local charclasses = options.charclasses or par.charclasses or charclasses
 
+
   obj:traverse_elements(function(el)
     local get_name = function(curr) 
       return string.lower(curr:get_element_name())
     end
     local get_class = function(next_el)
-      return next_el:get_attribute("class")
+      return next_el:get_attribute("class") or next_el:get_attribute("mathvariant")
     end
     local is_span = function(next_el)
       return charclasses[get_name(next_el)]
@@ -41,7 +57,7 @@ local function join_characters(obj,par)
       while  next_el do
         -- save the next element because we will remove it later
         local real_next = get_next(next_el)
-        if get_name(el) == get_name(next_el) and get_class(el) == get_class(next_el) and not el:get_attribute("id") then
+        if get_name(el) == get_name(next_el) and has_matching_attributes(el,next_el) and not el:get_attribute("id") then
           -- it the following element match, copy it's children to the current element
           for _, child in ipairs(next_el:get_children()) do
             el:add_child_node(child)
