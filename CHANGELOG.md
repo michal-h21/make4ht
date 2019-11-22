@@ -4,6 +4,7 @@
 
     - `make4ht-joincharacters` dom filter: added support for the  `<mi>`
       element. Test all attributes for match when joining characters.
+    - `html5` format: use the `common_domfilters` by default.
 
 - 2019/11/03
 
