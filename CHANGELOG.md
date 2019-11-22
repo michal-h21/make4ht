@@ -1,5 +1,10 @@
 # Changelog
 
+- 2019/11/22
+
+    - `make4ht-joincharacters` dom filter: added support for the  `<mi>`
+      element. Test all attributes for match when joining characters.
+
 - 2019/11/03
 
     - version `0.3b`
