@@ -606,6 +606,10 @@ tablerows
 
 :  remove spurious rows from HTML tables.
 
+mathmlfixes
+
+:  fix common issues for MathML.
+
 t4htlinks
 
 :  fix hyperlinks in the ODT format.
