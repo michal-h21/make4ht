@@ -19,14 +19,14 @@ function M.modify_build(make)
   local count = 0
   if current_format == "odt" then
     -- some formats doesn't make sense in the ODT format
-    local process = filter {"joincharacters"}
-    local charclasses = {mn = true, ["text:span"] = true}
+    local process = filter {"joincharacters", "mathmlfixes"}
+    local charclasses = {mn = true, ["text:span"] = true, mi=true}
     make:match("4oo$", process, {charclasses= charclasses})
     -- match math documents
     make:match("4om$", process, {charclasses= charclasses})
     count = 2
   else
-    local process = filter {"fixinlines", "idcolons", "joincharacters", "tablerows"}
+    local process = filter {"fixinlines", "idcolons", "joincharacters", "mathmlfixes", "tablerows"}
     make:match("html$", process)
     count = 1
   end
