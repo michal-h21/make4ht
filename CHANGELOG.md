@@ -3,6 +3,8 @@
 - 2019/11/25
 
     - added `pythontex` command.
+    - added `mathmlfixes` DOM filter.
+    - use the `mathmlfixes` DOM filter in `common_domfilters` extension.
 
 - 2019/11/22
 
