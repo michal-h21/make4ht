@@ -3,8 +3,7 @@ local M = {}
 local mkutils = require "mkutils"
 
 function M.prepare_extensions(extensions)
-  -- return mkutils.add_extensions("+common_domfilters", extensions)
-  return extensions
+  return mkutils.add_extensions("+common_domfilters", extensions)
 end
 
 function M.prepare_parameters(parameters,extensions)
