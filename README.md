@@ -403,6 +403,10 @@ detect compilation errors in the TeX log file.
 
 :    Process bibliography using the `biber` command.
 
+`Make:pythontex`
+
+:    Process the input file using `pythontex`.
+
 `Make:bibtex`
 
 :    Process bibliography using the `bibtex` command.

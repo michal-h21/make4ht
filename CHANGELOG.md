@@ -1,5 +1,9 @@
 # Changelog
 
+- 2019/11/25
+
+    - added `pythontex` command.
+
 - 2019/11/22
 
     - `make4ht-joincharacters` dom filter: added support for the  `<mi>`
