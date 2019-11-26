@@ -3,6 +3,7 @@
 - 2019/11/28
 
     - updated `mathmlfixes` DOM filter. It handles `<mstyle>` element inside token elements now.
+    - use `mathmlfixes` and `joincharacters` DOM filters for math XML files in the ODT output.
 
 - 2019/11/25
 

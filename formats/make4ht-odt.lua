@@ -136,6 +136,9 @@ function M.modify_build(make)
   -- fix the image dimensions wrongly set by xtpipes
   local domfilters = domfilter {"t4htlinks", "odtpartable"}
   make:match("4oo$", domfilters)
+  -- fixes for mathml
+  local mathmldomfilters = domfilter {"joincharacters","mathmlfixes"}
+  make:match("4om$", mathmldomfilters)
   -- execute it before xtpipes, because we don't want xtpipes to mess with t4htlink elements
   move_matches(make)
   -- convert XML entities for Unicode characters produced by Xtpipes to characters
