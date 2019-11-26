@@ -1,5 +1,9 @@
 # Changelog
 
+- 2019/11/28
+
+    - updated `mathmlfixes` DOM filter. It handles `<mstyle>` element inside token elements now.
+
 - 2019/11/25
 
     - added `pythontex` command.
