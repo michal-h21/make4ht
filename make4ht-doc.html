@@ -6,14 +6,14 @@
 <meta charset='utf-8' />
 <meta name='generator' content='TeX4ht (http://www.tug.org/tex4ht/)' />
 <meta name='viewport' content='width=device-width,initial-scale=1' />
-<link href='make4ht-doc.css' type='text/css' rel='stylesheet' />
+<link rel='stylesheet' type='text/css' href='make4ht-doc.css' />
 <meta name='src' content='make4ht-doc.tex' />
 <script src='https://hypothes.is/embed.js'></script>
 <meta content='The make4ht build system' property='og:title' />
 <meta content='Michal Hoftich' property='og:author' />
 <meta content='website' property='og:type' />
 <meta content='https://www.kodymirus.cz/make4ht/make4ht-doc.html' property='og:url' />
-<link href='https://www.kodymirus.cz/make4ht/make4ht-doc.html' rel='canonical' />
+<link rel='canonical' href='https://www.kodymirus.cz/make4ht/make4ht-doc.html' />
 <link href='https://www.kodymirus.cz/reyman/css/scale.css' rel='stylesheet' />
 </head>
 <body>
@@ -30,7 +30,7 @@
 <colgroup id='TBL-1-1g'>
 <col id='TBL-1-1' /></colgroup>
 <tr id='TBL-1-1-' style='vertical-align:baseline;'>
-<td style='white-space:nowrap; text-align:center;' id='TBL-1-1-1' class='td11'><span class='rm-lmr-12'>Michal Hoftich &lt;</span><a href='michal.h21@gmail.com'><span class='rm-lmr-12'>michal.h21@gmail.com</span></a><span class='rm-lmr-12'>&gt;</span></td>
+<td id='TBL-1-1-1' class='td11' style='white-space:nowrap; text-align:center;'><span class='rm-lmr-12'>Michal Hoftich &lt;</span><a href='michal.h21@gmail.com'><span class='rm-lmr-12'>michal.h21@gmail.com</span></a><span class='rm-lmr-12'>&gt;</span></td>
 </tr>
 </table>
 </div>
@@ -39,58 +39,58 @@
 <span class='rm-lmr-12'>undefined</span></p>
 </div>
 <h3 class='likesectionHead'><a id='x1-1000'></a>Contents</h3>
-<div class='tableofcontents'><span class='sectionToc'>1 <a href='#x1-20001' id='QQ2-1-2'>Introduction</a></span><br />
-<span class='sectionToc'>2 <a href='#x1-30002' id='QQ2-1-3'>Command line options</a></span><br />
-<span class='sectionToc'>3 <a href='#x1-40003' id='QQ2-1-4'>Why <span class='rm-lmtt-10'>make4ht</span>? – <span class='rm-lmtt-10'>htlatex</span> issues</a></span><br />
-&nbsp;<span class='subsectionToc'>3.1 <a href='#x1-50003.1' id='QQ2-1-5'>Passing command line arguments</a></span><br />
-&nbsp;<span class='subsectionToc'>3.2 <a href='#x1-60003.2' id='QQ2-1-6'>Compilation sequence</a></span><br />
-&nbsp;<span class='subsectionToc'>3.3 <a href='#x1-70003.3' id='QQ2-1-7'>Handling of the generated files</a></span><br />
-&nbsp;<span class='subsectionToc'>3.4 <a href='#x1-80003.4' id='QQ2-1-8'>Image conversion and post-processing of the generated files</a></span><br />
-<span class='sectionToc'>4 <a href='#x1-90004' id='QQ2-1-9'>Output file formats and extensions</a></span><br />
-&nbsp;<span class='subsectionToc'>4.1 <a href='#x1-100004.1' id='QQ2-1-10'>Extensions</a></span><br />
-<span class='sectionToc'>5 <a href='#x1-110005' id='QQ2-1-11'>Build files</a></span><br />
-&nbsp;<span class='subsectionToc'>5.1 <a href='#x1-120005.1' id='QQ2-1-12'>User commands</a></span><br />
-&nbsp;&nbsp;<span class='subsubsectionToc'>5.1.1 <a href='#x1-130005.1.1' id='QQ2-1-13'>The <span class='rm-lmtt-10'>command</span> function</a></span><br />
-&nbsp;&nbsp;<span class='subsubsectionToc'>5.1.2 <a href='#x1-140005.1.2' id='QQ2-1-14'>The <span class='rm-lmtt-10'>settings table</span> table</a></span><br />
-&nbsp;&nbsp;<span class='subsubsectionToc'>5.1.3 <a href='#x1-150005.1.3' id='QQ2-1-15'>Repetition</a></span><br />
-&nbsp;&nbsp;<span class='subsubsectionToc'>5.1.4 <a href='#x1-160005.1.4' id='QQ2-1-16'>Expected exit code</a></span><br />
-&nbsp;<span class='subsectionToc'>5.2 <a href='#x1-170005.2' id='QQ2-1-17'>Provided commands</a></span><br />
-&nbsp;<span class='subsectionToc'>5.3 <a href='#x1-180005.3' id='QQ2-1-18'>File matches</a></span><br />
-&nbsp;&nbsp;<span class='subsubsectionToc'>5.3.1 <a href='#x1-190005.3.1' id='QQ2-1-19'>Filters</a></span><br />
-&nbsp;&nbsp;<span class='subsubsectionToc'>5.3.2 <a href='#x1-200005.3.2' id='QQ2-1-20'>DOM filters</a></span><br />
-&nbsp;<span class='subsectionToc'>5.4 <a href='#x1-210005.4' id='QQ2-1-21'>Image conversion</a></span><br />
-&nbsp;<span class='subsectionToc'>5.5 <a href='#x1-220005.5' id='QQ2-1-22'>The <span class='rm-lmtt-10'>mode</span> variable</a></span><br />
-&nbsp;<span class='subsectionToc'>5.6 <a href='#x1-230005.6' id='QQ2-1-23'>The <span class='rm-lmtt-10'>settings</span> table</a></span><br />
-&nbsp;&nbsp;<span class='subsubsectionToc'>5.6.1 <a href='#x1-240005.6.1' id='QQ2-1-24'>Default settings</a></span><br />
-<span class='sectionToc'>6 <a href='#x1-250006' id='QQ2-1-25'>Configuration file</a></span><br />
-&nbsp;<span class='subsectionToc'>6.1 <a href='#x1-260006.1' id='QQ2-1-26'>Location</a></span><br />
-&nbsp;<span class='subsectionToc'>6.2 <a href='#x1-270006.2' id='QQ2-1-27'>Additional commands</a></span><br />
-&nbsp;<span class='subsectionToc'>6.3 <a href='#x1-280006.3' id='QQ2-1-28'>Example</a></span><br />
-<span class='sectionToc'>7 <a href='#x1-290007' id='QQ2-1-29'>List of available settings for filters and extensions.</a></span><br />
-&nbsp;<span class='subsectionToc'>7.1 <a href='#x1-300007.1' id='QQ2-1-30'>Indexing commands</a></span><br />
-&nbsp;&nbsp;<span class='subsubsectionToc'>7.1.1 <a href='#x1-310007.1.1' id='QQ2-1-31'>The <span class='rm-lmtt-10'>xindy</span> command</a></span><br />
-&nbsp;&nbsp;<span class='subsubsectionToc'>7.1.2 <a href='#x1-320007.1.2' id='QQ2-1-32'>The <span class='rm-lmtt-10'>makeindex</span> command</a></span><br />
-&nbsp;&nbsp;<span class='subsubsectionToc'>7.1.3 <a href='#x1-330007.1.3' id='QQ2-1-33'>The <span class='rm-lmtt-10'>xindex</span> command</a></span><br />
-&nbsp;<span class='subsectionToc'>7.2 <a href='#x1-340007.2' id='QQ2-1-34'>The <span class='rm-lmtt-10'>tidy</span> extension</a></span><br />
-&nbsp;<span class='subsectionToc'>7.3 <a href='#x1-350007.3' id='QQ2-1-35'>The <span class='rm-lmtt-10'>collapsetoc</span> dom filter</a></span><br />
-&nbsp;<span class='subsectionToc'>7.4 <a href='#x1-360007.4' id='QQ2-1-36'>The <span class='rm-lmtt-10'>fixinlines</span> dom filter</a></span><br />
-&nbsp;<span class='subsectionToc'>7.5 <a href='#x1-370007.5' id='QQ2-1-37'>The <span class='rm-lmtt-10'>joincharacters</span> dom filter</a></span><br />
-&nbsp;<span class='subsectionToc'>7.6 <a href='#x1-380007.6' id='QQ2-1-38'>The <span class='rm-lmtt-10'>mathjaxnode</span> filter</a></span><br />
-&nbsp;<span class='subsectionToc'>7.7 <a href='#x1-390007.7' id='QQ2-1-39'>The <span class='rm-lmtt-10'>staticsite</span> filter and extension</a></span><br />
-&nbsp;<span class='subsectionToc'>7.8 <a href='#x1-400007.8' id='QQ2-1-40'>The <span class='rm-lmtt-10'>dvisvgm_hashes</span> extension</a></span><br />
-&nbsp;<span class='subsectionToc'>7.9 <a href='#x1-410007.9' id='QQ2-1-41'>The <span class='rm-lmtt-10'>odttemplate</span> filter and extension</a></span><br />
-&nbsp;<span class='subsectionToc'>7.10 <a href='#x1-420007.10' id='QQ2-1-42'>The <span class='rm-lmtt-10'>aeneas</span> filter</a></span><br />
-&nbsp;<span class='subsectionToc'>7.11 <a href='#x1-430007.11' id='QQ2-1-43'>The <span class='rm-lmtt-10'>make4ht-aeneas-config</span> package</a></span><br />
-&nbsp;&nbsp;<span class='subsubsectionToc'>7.11.1 <a href='#x1-440007.11.1' id='QQ2-1-44'>Available parameters</a></span><br />
-&nbsp;&nbsp;<span class='subsubsectionToc'>7.11.2 <a href='#x1-450007.11.2' id='QQ2-1-45'>Additional parameters for the job configuration file</a></span><br />
-&nbsp;&nbsp;<span class='subsubsectionToc'>7.11.3 <a href='#x1-460007.11.3' id='QQ2-1-46'>Available <span class='rm-lmtt-10'>map</span> options</a></span><br />
-&nbsp;&nbsp;<span class='subsubsectionToc'>7.11.4 <a href='#x1-470007.11.4' id='QQ2-1-47'>Full example</a></span><br />
-<span class='sectionToc'>8 <a href='#x1-480008' id='QQ2-1-48'>Troubleshooting</a></span><br />
-&nbsp;<span class='subsectionToc'>8.1 <a href='#x1-490008.1' id='QQ2-1-49'>Incorrect handling of command line arguments for <span class='rm-lmtt-10'>tex4ht</span>, <span class='rm-lmtt-10'>t4ht</span> or <span class='rm-lmtt-10'>latex</span></a></span><br />
-&nbsp;<span class='subsectionToc'>8.2 <a href='#x1-500008.2' id='QQ2-1-50'>Filenames containing spaces</a></span><br />
-&nbsp;<span class='subsectionToc'>8.3 <a href='#x1-510008.3' id='QQ2-1-51'>Filenames containing non-ASCII characters</a></span><br />
-<span class='sectionToc'>9 <a href='#x1-520009' id='QQ2-1-52'>License</a></span><br />
-<span class='sectionToc'>10 <a href='#x1-5300010' id='QQ2-1-53'>Changelog</a></span></div>
+<div class='tableofcontents'><span class='sectionToc'>1 <a id='QQ2-1-2' href='#x1-20001'>Introduction</a></span><br />
+<span class='sectionToc'>2 <a id='QQ2-1-3' href='#x1-30002'>Command line options</a></span><br />
+<span class='sectionToc'>3 <a id='QQ2-1-4' href='#x1-40003'>Why <span class='rm-lmtt-10'>make4ht</span>? – <span class='rm-lmtt-10'>htlatex</span> issues</a></span><br />
+&nbsp;<span class='subsectionToc'>3.1 <a id='QQ2-1-5' href='#x1-50003.1'>Passing command line arguments</a></span><br />
+&nbsp;<span class='subsectionToc'>3.2 <a id='QQ2-1-6' href='#x1-60003.2'>Compilation sequence</a></span><br />
+&nbsp;<span class='subsectionToc'>3.3 <a id='QQ2-1-7' href='#x1-70003.3'>Handling of the generated files</a></span><br />
+&nbsp;<span class='subsectionToc'>3.4 <a id='QQ2-1-8' href='#x1-80003.4'>Image conversion and post-processing of the generated files</a></span><br />
+<span class='sectionToc'>4 <a id='QQ2-1-9' href='#x1-90004'>Output file formats and extensions</a></span><br />
+&nbsp;<span class='subsectionToc'>4.1 <a id='QQ2-1-10' href='#x1-100004.1'>Extensions</a></span><br />
+<span class='sectionToc'>5 <a id='QQ2-1-11' href='#x1-110005'>Build files</a></span><br />
+&nbsp;<span class='subsectionToc'>5.1 <a id='QQ2-1-12' href='#x1-120005.1'>User commands</a></span><br />
+&nbsp;&nbsp;<span class='subsubsectionToc'>5.1.1 <a id='QQ2-1-13' href='#x1-130005.1.1'>The <span class='rm-lmtt-10'>command</span> function</a></span><br />
+&nbsp;&nbsp;<span class='subsubsectionToc'>5.1.2 <a id='QQ2-1-14' href='#x1-140005.1.2'>The <span class='rm-lmtt-10'>settings table</span> table</a></span><br />
+&nbsp;&nbsp;<span class='subsubsectionToc'>5.1.3 <a id='QQ2-1-15' href='#x1-150005.1.3'>Repetition</a></span><br />
+&nbsp;&nbsp;<span class='subsubsectionToc'>5.1.4 <a id='QQ2-1-16' href='#x1-160005.1.4'>Expected exit code</a></span><br />
+&nbsp;<span class='subsectionToc'>5.2 <a id='QQ2-1-17' href='#x1-170005.2'>Provided commands</a></span><br />
+&nbsp;<span class='subsectionToc'>5.3 <a id='QQ2-1-18' href='#x1-180005.3'>File matches</a></span><br />
+&nbsp;&nbsp;<span class='subsubsectionToc'>5.3.1 <a id='QQ2-1-19' href='#x1-190005.3.1'>Filters</a></span><br />
+&nbsp;&nbsp;<span class='subsubsectionToc'>5.3.2 <a id='QQ2-1-20' href='#x1-200005.3.2'>DOM filters</a></span><br />
+&nbsp;<span class='subsectionToc'>5.4 <a id='QQ2-1-21' href='#x1-210005.4'>Image conversion</a></span><br />
+&nbsp;<span class='subsectionToc'>5.5 <a id='QQ2-1-22' href='#x1-220005.5'>The <span class='rm-lmtt-10'>mode</span> variable</a></span><br />
+&nbsp;<span class='subsectionToc'>5.6 <a id='QQ2-1-23' href='#x1-230005.6'>The <span class='rm-lmtt-10'>settings</span> table</a></span><br />
+&nbsp;&nbsp;<span class='subsubsectionToc'>5.6.1 <a id='QQ2-1-24' href='#x1-240005.6.1'>Default settings</a></span><br />
+<span class='sectionToc'>6 <a id='QQ2-1-25' href='#x1-250006'>Configuration file</a></span><br />
+&nbsp;<span class='subsectionToc'>6.1 <a id='QQ2-1-26' href='#x1-260006.1'>Location</a></span><br />
+&nbsp;<span class='subsectionToc'>6.2 <a id='QQ2-1-27' href='#x1-270006.2'>Additional commands</a></span><br />
+&nbsp;<span class='subsectionToc'>6.3 <a id='QQ2-1-28' href='#x1-280006.3'>Example</a></span><br />
+<span class='sectionToc'>7 <a id='QQ2-1-29' href='#x1-290007'>List of available settings for filters and extensions.</a></span><br />
+&nbsp;<span class='subsectionToc'>7.1 <a id='QQ2-1-30' href='#x1-300007.1'>Indexing commands</a></span><br />
+&nbsp;&nbsp;<span class='subsubsectionToc'>7.1.1 <a id='QQ2-1-31' href='#x1-310007.1.1'>The <span class='rm-lmtt-10'>xindy</span> command</a></span><br />
+&nbsp;&nbsp;<span class='subsubsectionToc'>7.1.2 <a id='QQ2-1-32' href='#x1-320007.1.2'>The <span class='rm-lmtt-10'>makeindex</span> command</a></span><br />
+&nbsp;&nbsp;<span class='subsubsectionToc'>7.1.3 <a id='QQ2-1-33' href='#x1-330007.1.3'>The <span class='rm-lmtt-10'>xindex</span> command</a></span><br />
+&nbsp;<span class='subsectionToc'>7.2 <a id='QQ2-1-34' href='#x1-340007.2'>The <span class='rm-lmtt-10'>tidy</span> extension</a></span><br />
+&nbsp;<span class='subsectionToc'>7.3 <a id='QQ2-1-35' href='#x1-350007.3'>The <span class='rm-lmtt-10'>collapsetoc</span> dom filter</a></span><br />
+&nbsp;<span class='subsectionToc'>7.4 <a id='QQ2-1-36' href='#x1-360007.4'>The <span class='rm-lmtt-10'>fixinlines</span> dom filter</a></span><br />
+&nbsp;<span class='subsectionToc'>7.5 <a id='QQ2-1-37' href='#x1-370007.5'>The <span class='rm-lmtt-10'>joincharacters</span> dom filter</a></span><br />
+&nbsp;<span class='subsectionToc'>7.6 <a id='QQ2-1-38' href='#x1-380007.6'>The <span class='rm-lmtt-10'>mathjaxnode</span> filter</a></span><br />
+&nbsp;<span class='subsectionToc'>7.7 <a id='QQ2-1-39' href='#x1-390007.7'>The <span class='rm-lmtt-10'>staticsite</span> filter and extension</a></span><br />
+&nbsp;<span class='subsectionToc'>7.8 <a id='QQ2-1-40' href='#x1-400007.8'>The <span class='rm-lmtt-10'>dvisvgm_hashes</span> extension</a></span><br />
+&nbsp;<span class='subsectionToc'>7.9 <a id='QQ2-1-41' href='#x1-410007.9'>The <span class='rm-lmtt-10'>odttemplate</span> filter and extension</a></span><br />
+&nbsp;<span class='subsectionToc'>7.10 <a id='QQ2-1-42' href='#x1-420007.10'>The <span class='rm-lmtt-10'>aeneas</span> filter</a></span><br />
+&nbsp;<span class='subsectionToc'>7.11 <a id='QQ2-1-43' href='#x1-430007.11'>The <span class='rm-lmtt-10'>make4ht-aeneas-config</span> package</a></span><br />
+&nbsp;&nbsp;<span class='subsubsectionToc'>7.11.1 <a id='QQ2-1-44' href='#x1-440007.11.1'>Available parameters</a></span><br />
+&nbsp;&nbsp;<span class='subsubsectionToc'>7.11.2 <a id='QQ2-1-45' href='#x1-450007.11.2'>Additional parameters for the job configuration file</a></span><br />
+&nbsp;&nbsp;<span class='subsubsectionToc'>7.11.3 <a id='QQ2-1-46' href='#x1-460007.11.3'>Available <span class='rm-lmtt-10'>map</span> options</a></span><br />
+&nbsp;&nbsp;<span class='subsubsectionToc'>7.11.4 <a id='QQ2-1-47' href='#x1-470007.11.4'>Full example</a></span><br />
+<span class='sectionToc'>8 <a id='QQ2-1-48' href='#x1-480008'>Troubleshooting</a></span><br />
+&nbsp;<span class='subsectionToc'>8.1 <a id='QQ2-1-49' href='#x1-490008.1'>Incorrect handling of command line arguments for <span class='rm-lmtt-10'>tex4ht</span>, <span class='rm-lmtt-10'>t4ht</span> or <span class='rm-lmtt-10'>latex</span></a></span><br />
+&nbsp;<span class='subsectionToc'>8.2 <a id='QQ2-1-50' href='#x1-500008.2'>Filenames containing spaces</a></span><br />
+&nbsp;<span class='subsectionToc'>8.3 <a id='QQ2-1-51' href='#x1-510008.3'>Filenames containing non-ASCII characters</a></span><br />
+<span class='sectionToc'>9 <a id='QQ2-1-52' href='#x1-520009'>License</a></span><br />
+<span class='sectionToc'>10 <a id='QQ2-1-53' href='#x1-5300010'>Changelog</a></span></div>
 <p><a id='introduction'></a></p>
 <h3 class='sectionHead'><span class='titlemark'>1</span> <a id='x1-20001'></a>Introduction</h3>
 <!-- l. 4 -->
@@ -1075,6 +1075,11 @@ end</div>
 <p class='indent'><a id='changelog'></a></p>
 <h3 class='sectionHead'><span class='titlemark'>10</span> <a id='x1-5300010'></a>Changelog</h3>
 <ul class='itemize1'>
+<li class='itemize'>2019/12/14
+<ul class='itemize2'>
+<li class='itemize'>fixed bug in the <span class='rm-lmtt-10'>tablerows</span> DOM filter – it could remove table rows if they contained only one column with elements that contained no text content.</li>
+</ul>
+</li>
 <li class='itemize'>2019/11/28
 <ul class='itemize2'>
 <li class='itemize'>version <span class='rm-lmtt-10'>0.3c</span> released.</li>
