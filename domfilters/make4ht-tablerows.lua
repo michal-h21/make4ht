@@ -1,5 +1,16 @@
 local log = logging.new ("tablerows")
 return function(dom)
+  local has_child_elements = function(child)
+    -- detect if the element contains child elements
+    local child_elements = 0
+    local children = child:get_children()
+    for _, el in ipairs(children) do
+      local step = el:is_element() and 1 or 0
+      -- log:info("element name", el._name)
+      child_elements = child_elements + step
+    end
+    return child_elements > 0
+  end
   local is_empty_row = function(row)
     local not_empty = false
     local element_count = 0
@@ -11,7 +22,8 @@ return function(dom)
       if child:is_element() then 
         element_count = element_count + 1
         -- empty rows contain only one element, it is not empty otherwise
-        if element_count > 1 then return false end
+        if element_count > 1 or has_child_elements(child) then return false end
+
         -- detect if it contains only whitespace
         not_empty = child:get_text():gsub("%s","") ~= "" or not_empty
       end

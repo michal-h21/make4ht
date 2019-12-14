@@ -1,5 +1,11 @@
 # Changelog
 
+- 2019/12/14
+
+    - fixed bug in the `tablerows` DOM filter -- it could remove table rows if
+      they contained only one column with elements that contained no text
+      content.
+
 - 2019/11/28
 
     - version `0.3c` released.
