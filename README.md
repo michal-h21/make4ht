@@ -571,6 +571,10 @@ aeneas
 :  [Aeneas](https://www.readbeyond.it/aeneas/) is a tool for automagical synchronization of text and audio.
    This filter modifies the HTML code to support synchronization.
 
+booktabs
+
+:  fix lines produced by the `\cmidrule` command provided by the Booktabs package.
+
 collapsetoc
 
 :  collapse table of contents to contain only top-level sectioning level and sections on the current page.

@@ -1,5 +1,9 @@
 # Changelog
 
+- 2019/12/17
+
+    - added `booktabs` DOM filter.
+
 - 2019/12/14
 
     - fixed bug in the `tablerows` DOM filter -- it could remove table rows if
