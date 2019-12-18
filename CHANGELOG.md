@@ -3,6 +3,7 @@
 - 2019/12/17
 
     - added `booktabs` DOM filter.
+    - load the `booktabs` in `common_domfilters` by default. 
 
 - 2019/12/14
 
