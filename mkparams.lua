@@ -134,6 +134,11 @@ local function handle_jobname(input, args)
   return latex_params, input
 end
 
+local function tex_file_not_exits(tex_file)
+  -- try to find the input file, return false if we cannot find it
+  return not (kpse.find_file(tex_file, "tex") or kpse.find_file(tex_file .. ".tex", "tex"))
+end
+
 -- use standard input instead of file if the filename is just `-`
 -- return the filename and status if it is a tmp name
 local function handle_input_file(filename)
@@ -191,6 +196,10 @@ local function process_args(args)
 
 	local compiler = args.lua and "dvilualatex" or args.xetex and "xelatex --no-pdf" or "latex"
   local tex_file, is_tmp_file = handle_input_file(args.filename)
+  -- test if the file exists
+  if not is_tmp_file and tex_file_not_exits(tex_file) then
+    log:warning("Cannot find input file: " .. tex_file)
+  end
 	local input = mkutils.remove_extension(tex_file)
   -- the output file name can be influneced using -jobname parameter passed to the TeX engine
 	local latex_params, input = handle_jobname(input, args) 

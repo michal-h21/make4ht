@@ -1,5 +1,9 @@
 # Changelog
 
+- 2019/12/28
+
+    - print warning if the input file doesn't exist.
+
 - 2019/12/17
 
     - added `booktabs` DOM filter.
