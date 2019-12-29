@@ -6,9 +6,27 @@ local charclasses = {
   mi = true
 }
 
+local function update_mathvariant(el, next_el)
+  local set_mathvariant = function(curr)
+    -- when we join several <mi> elements, they will be rendered incorrectly
+    -- we must set the mathvariant attribute
+    local parent = curr:get_parent()
+    -- set mathvariant only if it haven't been set by the parent element
+    if not parent:get_attribute("mathvariant") then
+      curr._attr = curr._attr or {}
+      local mathvariant = curr:get_attribute("mathvariant") or "italic"
+      curr:set_attribute("mathvariant", mathvariant)
+    end
+  end
+  set_mathvariant(el)
+  set_mathvariant(next_el)
+end
+
 local has_matching_attributes = function (el, next_el)
+  if el:get_element_name() == "mi" then update_mathvariant(el, next_el) end
   local el_attr = el._attr or {}
   local next_attr = next_el._attr or {}
+  -- fix <mi> elements
   -- if the number of attributes doesn't match, elements don't match
   if #next_attr ~= #el_attr then return false end
   for k, v in pairs(el_attr) do
@@ -17,6 +35,7 @@ local has_matching_attributes = function (el, next_el)
   end
   return true
 end
+
 
 local function join_characters(obj,par)
   -- join adjanced span and similar elements inserted by 

@@ -1,5 +1,9 @@
 # Changelog
 
+- 2019/12/29
+
+    - use the `mathvariant="italic"` attribute for joined `<mi>` elements.
+
 - 2019/12/28
 
     - print warning if the input file doesn't exist.
