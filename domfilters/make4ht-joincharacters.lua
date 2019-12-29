@@ -18,20 +18,31 @@ local function update_mathvariant(el, next_el)
       curr:set_attribute("mathvariant", mathvariant)
     end
   end
-  set_mathvariant(el)
-  set_mathvariant(next_el)
+  if el:get_attribute("mathvariant") == next_el:get_attribute("mathvariant") then
+    set_mathvariant(el)
+    set_mathvariant(next_el)
+  end
 end
 
+local table_count = function(tbl)
+  local i = 0
+  for k,v in pairs(tbl) do i = i + 1 end
+  return i
+end
+
+
 local has_matching_attributes = function (el, next_el)
-  if el:get_element_name() == "mi" then update_mathvariant(el, next_el) end
   local el_attr = el._attr or {}
   local next_attr = next_el._attr or {}
-  -- fix <mi> elements
   -- if the number of attributes doesn't match, elements don't match
-  if #next_attr ~= #el_attr then return false end
+  if table_count(next_attr) ~= table_count(el_attr) then return false end
   for k, v in pairs(el_attr) do
     -- if any attribute doesn't match, elements don't match
     if v~=next_attr[k] then return false end
+  end
+  -- fix <mi> elements mathvariant attributes
+  if el:get_element_name() == "mi" then 
+    update_mathvariant(el, next_el) 
   end
   return true
 end

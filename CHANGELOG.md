@@ -3,6 +3,7 @@
 - 2019/12/29
 
     - use the `mathvariant="italic"` attribute for joined `<mi>` elements.
+    - fixed comparison of element attributes in `joincharacters` DOM filter.
 
 - 2019/12/28
 
