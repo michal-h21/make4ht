@@ -177,6 +177,9 @@ local run_indexing_command = function(command, par)
   if not status then xindylog:warning(msg) end
   -- remove the temporary idx file
   os.remove(newidxfile)
+  -- null the indfile, it is necessary in order to support
+  -- multiple indices
+  par.indfile = nil
 end
 
 M.get_utf8 = get_utf8
