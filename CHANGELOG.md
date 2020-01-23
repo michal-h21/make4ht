@@ -3,6 +3,9 @@
 - 2020/01/22
 
     - added `Make:httex` command for Plain TeX support.
+    - added `detect_engine` extension. It supports detection of the used engine
+      and format from TeX Shop or TeXWorks magic comments. These comments can
+      look like: `%!TEX TS-program = xelatex`.
 
 - 2020/01/22
 

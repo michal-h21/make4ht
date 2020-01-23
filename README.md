@@ -238,6 +238,16 @@ common\_domfilters
 `common_filters`. Used DOM filters are `fixinlines`, `idcolons`,
 `joincharacters`, and `tablerows`.
 
+detect\_engine
+
+:    detect engine and format necessary for the document compilation from the
+     magic comments supported by \LaTeX\ editors such as TeXShop or TeXWorks. 
+     Add something like the following line at the beginning of the main \TeX\ file:
+
+     `%!TEX TS-program = xelatex`
+
+     It supports also Plain \TeX, use for example `tex` or `luatex` as the program name.
+
 dvisvgm\_hashes
 
 :    efficient generation of SVG pictures using Dvisvgm. It can utilize
@@ -386,6 +396,10 @@ detect compilation errors in the TeX log file.
 `Make:htlatex`
 
 :    One call to the TeX engine with special configuration for loading of the `tex4ht.sty` package.
+
+`Make:httex`
+
+:    Variant of `Make:htlatex` suitable for Plain \TeX.
 
 `Make:latexmk`
 
