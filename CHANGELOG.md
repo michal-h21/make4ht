@@ -2,6 +2,7 @@
 
 - 2020/01/22
 
+    - version `0.3d` released.
     - added `Make:httex` command for Plain TeX support.
     - added `detect_engine` extension. It supports detection of the used engine
       and format from TeX Shop or TeXWorks magic comments. These comments can
