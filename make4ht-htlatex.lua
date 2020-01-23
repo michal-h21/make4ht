@@ -51,11 +51,17 @@ Make.latex_command = "${htlatex} --interaction=${interaction} ${latex_par} '\\ma
 "\\documentstyle[tex4ht]}}}\\makeatother\\HCode ${tex4ht_sty_par}.a.b.c."..
 "\\input \"\\detokenize{${tex_file}}\"'"
 
+Make.plain_command = '${htlatex} --interaction=${interaction} ${latex_par}' ..
+"'\\def\\Link#1.a.b.c.{\\expandafter\\def\\csname tex4ht\\endcsname{\\expandafter\\def\\csname tex4ht\\endcsname{#1,html}\\input tex4ht.sty }}" ..
+"\\def\\HCode{\\futurelet\\HCode\\HChar}\\def\\HChar{\\ifx\"\\HCode\\def\\HCode\"##1\"{\\Link##1}\\expandafter\\HCode\\else\\expandafter\\Link\\fi}" ..
+"\\HCode ${tex4ht_sty_par}.a.b.c.\\input \"\\detokenize{${tex_file}}\"'"
+
 
 local m = {}
 
-function m.htlatex(par)
-  local command = Make.latex_command
+function m.htlatex(par, latex_command)
+  -- latex_command can be also plain_command for Plain TeX
+  local command = latex_command or Make.latex_command
   local devnull = " > /dev/null 2>&1"
   if os.type == "windows" then
     command = command:gsub("'",'')
@@ -70,6 +76,17 @@ function m.htlatex(par)
   log:info("LaTeX call: "..command)
   os.execute(command)
   return Make.testlogfile(par)
+end
+
+function m.httex(par)
+  local newpar = {}
+  for k,v in pairs(par) do newpar[k] = v end
+  -- change executable name from *latex to *tex
+  newpar.htlatex = newpar.htlatex:gsub("latex", "tex")
+  -- plain tex command doesn't support etex extensions
+  -- which are necessary for TeX4ht. just quick hack to fix this
+  if newpar.htlatex == "tex" then newpar.htlatex = "etex" end
+  return m.htlatex(newpar, Make.plain_command)
 end
 
 return m

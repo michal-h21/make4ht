@@ -2,6 +2,10 @@
 
 - 2020/01/22
 
+    - added `Make:httex` command for Plain TeX support.
+
+- 2020/01/22
+
     - fixed support for multiple indices in `make4ht-indexing.lua`.
 
 - 2019/12/29
