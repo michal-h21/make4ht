@@ -4,16 +4,16 @@
 <meta name="generator" content="HTML Tidy for HTML5 for Linux version 5.6.0" />
 <title>The make4ht build system</title>
 <meta charset='utf-8' />
-<meta name='generator' content='TeX4ht (http://www.tug.org/tex4ht/)' />
-<meta name='viewport' content='width=device-width,initial-scale=1' />
-<link type='text/css' rel='stylesheet' href='make4ht-doc.css' />
-<meta name='src' content='make4ht-doc.tex' />
+<meta content='TeX4ht (http://www.tug.org/tex4ht/)' name='generator' />
+<meta content='width=device-width,initial-scale=1' name='viewport' />
+<link rel='stylesheet' href='make4ht-doc.css' type='text/css' />
+<meta content='make4ht-doc.tex' name='src' />
 <script src='https://hypothes.is/embed.js'></script>
-<meta property='og:title' content='The make4ht build system' />
-<meta property='og:author' content='Michal Hoftich' />
-<meta property='og:type' content='website' />
-<meta property='og:url' content='https://www.kodymirus.cz/make4ht/make4ht-doc.html' />
-<link rel='canonical' href='https://www.kodymirus.cz/make4ht/make4ht-doc.html' />
+<meta content='The make4ht build system' property='og:title' />
+<meta content='Michal Hoftich' property='og:author' />
+<meta content='website' property='og:type' />
+<meta content='https://www.kodymirus.cz/make4ht/make4ht-doc.html' property='og:url' />
+<link href='https://www.kodymirus.cz/make4ht/make4ht-doc.html' rel='canonical' />
 <link href='https://www.kodymirus.cz/reyman/css/scale.css' rel='stylesheet' />
 </head>
 <body>
@@ -30,7 +30,7 @@
 <colgroup id='TBL-1-1g'>
 <col id='TBL-1-1' /></colgroup>
 <tr style='vertical-align:baseline;' id='TBL-1-1-'>
-<td class='td11' id='TBL-1-1-1' style='white-space:nowrap; text-align:center;'><span class='rm-lmr-12'>Michal Hoftich &lt;</span><a href='michal.h21@gmail.com'><span class='rm-lmr-12'>michal.h21@gmail.com</span></a><span class='rm-lmr-12'>&gt;</span></td>
+<td style='white-space:nowrap; text-align:center;' id='TBL-1-1-1' class='td11'><span class='rm-lmr-12'>Michal Hoftich &lt;</span><a href='michal.h21@gmail.com'><span class='rm-lmr-12'>michal.h21@gmail.com</span></a><span class='rm-lmr-12'>&gt;</span></td>
 </tr>
 </table>
 </div>
@@ -94,9 +94,9 @@
 <p><a id='introduction'></a></p>
 <h3 class='sectionHead'><span class='titlemark'>1</span> <a id='x1-20001'></a>Introduction</h3>
 <!-- l. 4 -->
-<p class='noindent'><span class='rm-lmtt-10'>make4ht</span> is a build system for TE X4ht, TE X&nbsp;to XML converter. It provides a command line tool that drives the conversion process. It also provides a library that can be used to create customized conversion tools. An example of such a tool is <a href='https://github.com/michal-h21/tex4ebook'>tex4ebook</a>, a tool for conversion from TE X&nbsp;to ePub and other e-book formats.</p>
+<p class='noindent'><span class='rm-lmtt-10'>make4ht</span> is a build system for TeX4ht, TeX&nbsp;to XML converter. It provides a command line tool that drives the conversion process. It also provides a library that can be used to create customized conversion tools. An example of such a tool is <a href='https://github.com/michal-h21/tex4ebook'>tex4ebook</a>, a tool for conversion from TeX&nbsp;to ePub and other e-book formats.</p>
 <!-- l. 11 -->
-<p class='indent'>The basic conversion from L<span class='rm-lmr-7'>A</span>TE X&nbsp;to <span class='rm-lmtt-10'>HTML</span> using <span class='rm-lmtt-10'>make4ht</span> can be executed using the following command:</p>
+<p class='indent'>The basic conversion from LaTeX&nbsp;to <span class='rm-lmtt-10'>HTML</span> using <span class='rm-lmtt-10'>make4ht</span> can be executed using the following command:</p>
 <div class='verbatim' id='verbatim-1'>$&nbsp;make4ht&nbsp;filename.tex</div>
 <!-- l. 16 -->
 <p class='nopar'></p>
@@ -172,17 +172,17 @@ $&nbsp;make4ht&nbsp;-d&nbsp;c:\documents\windowspathsareworkingtoo&nbsp;filename
 <p class='indent'><a id='why-make4ht-htlatex-issues'></a></p>
 <h3 class='sectionHead'><span class='titlemark'>3</span> <a id='x1-40003'></a>Why <span class='rm-lmtt-10'>make4ht</span>? – <span class='rm-lmtt-10'>htlatex</span> issues</h3>
 <!-- l. 113 -->
-<p class='noindent'>TE X4ht&nbsp;system supports several output formats, most notably <span class='rm-lmtt-10'>XHTML</span>, <span class='rm-lmtt-10'>HTML&nbsp;5</span> and <span class='rm-lmtt-10'>ODT</span>, but it also supports <span class='rm-lmtt-10'>TEI</span> or <span class='rm-lmtt-10'>Docbook</span>.</p>
+<p class='noindent'>TeX4ht&nbsp;system supports several output formats, most notably <span class='rm-lmtt-10'>XHTML</span>, <span class='rm-lmtt-10'>HTML&nbsp;5</span> and <span class='rm-lmtt-10'>ODT</span>, but it also supports <span class='rm-lmtt-10'>TEI</span> or <span class='rm-lmtt-10'>Docbook</span>.</p>
 <!-- l. 117 -->
-<p class='indent'>The conversion can be invoked using several scripts, which are distributed with TE X4ht. They differ in parameters passed to the underlying commands.</p>
+<p class='indent'>The conversion can be invoked using several scripts, which are distributed with TeX4ht. They differ in parameters passed to the underlying commands.</p>
 <!-- l. 121 -->
-<p class='indent'>These scripts invoke L<span class='rm-lmr-7'>A</span>TE X&nbsp;or Plain TE X&nbsp;with special instructions to load the <span class='rm-lmtt-10'>tex4ht.sty</span> package. The TE X&nbsp;run produces a special <span class='rm-lmtt-10'>DVI</span> file that contains the code for the desired output format. The produced <span class='rm-lmtt-10'>DVI</span> file is then processed using the <span class='rm-lmtt-10'>tex4ht</span> command, which in conjunction with the <span class=
-'rm-lmtt-10'>t4ht</span> command produces the desired output files.</p>
+<p class='indent'>These scripts invoke LaTeX&nbsp;or Plain TeX&nbsp;with special instructions to load the <span class='rm-lmtt-10'>tex4ht.sty</span> package. The TeX&nbsp;run produces a special <span class='rm-lmtt-10'>DVI</span> file that contains the code for the desired output format. The produced <span class='rm-lmtt-10'>DVI</span> file is then processed using the <span class='rm-lmtt-10'>tex4ht</span> command, which in conjunction with the <span class='rm-lmtt-10'>t4ht</span> command produces the
+desired output files.</p>
 <!-- l. 130 -->
 <p class='indent'><a id='passing-command-line-arguments'></a></p>
 <h4 class='subsectionHead'><span class='titlemark'>3.1</span> <a id='x1-50003.1'></a>Passing command line arguments</h4>
 <!-- l. 132 -->
-<p class='noindent'>The basic conversion script provided by TE X4ht&nbsp;system is named <span class='rm-lmtt-10'>htlatex</span>. It compiles L<span class='rm-lmr-7'>A</span>TE X&nbsp; files to <span class='rm-lmtt-10'>HTML</span> with this command sequence:</p>
+<p class='noindent'>The basic conversion script provided by TeX4ht&nbsp;system is named <span class='rm-lmtt-10'>htlatex</span>. It compiles LaTeX&nbsp; files to <span class='rm-lmtt-10'>HTML</span> with this command sequence:</p>
 <div class='verbatim' id='verbatim-10'>$&nbsp;latex&nbsp;$latex_options&nbsp;’code&nbsp;for&nbsp;loading&nbsp;tex4ht.sty&nbsp;\input{filename}’ &nbsp;<br />
 $&nbsp;latex&nbsp;$latex_options&nbsp;’code&nbsp;for&nbsp;loading&nbsp;tex4ht.sty&nbsp;\input{filename}’ &nbsp;<br />
 $&nbsp;latex&nbsp;$latex_options&nbsp;’code&nbsp;for&nbsp;loading&nbsp;tex4ht.sty&nbsp;\input{filename}’ &nbsp;<br />
@@ -218,16 +218,16 @@ $&nbsp;t4ht&nbsp;$t4ht_options&nbsp;filename</div>
 <p class='indent'><a id='compilation-sequence'></a></p>
 <h4 class='subsectionHead'><span class='titlemark'>3.2</span> <a id='x1-60003.2'></a>Compilation sequence</h4>
 <!-- l. 181 -->
-<p class='noindent'><span class='rm-lmtt-10'>htlatex</span> has a fixed compilation order and a hard-coded number of L<span class='rm-lmr-7'>A</span>TE X&nbsp;invocations.</p>
+<p class='noindent'><span class='rm-lmtt-10'>htlatex</span> has a fixed compilation order and a hard-coded number of LaTeX&nbsp;invocations.</p>
 <!-- l. 184 -->
-<p class='indent'>It is not possible to execute additional commands during the compilation. When we want to run a program that interacts with L<span class='rm-lmr-7'>A</span>TE X, such as <span class='rm-lmtt-10'>Makeindex</span> or <span class='rm-lmtt-10'>Bibtex</span>, we have two options. The first option is to create a new script based on <span class='rm-lmtt-10'>htlatex</span> and add the wanted commands to the modified script. The second option is to execute <span class='rm-lmtt-10'>htlatex</span>,
-then the additional and then <span class='rm-lmtt-10'>htlatex</span> again. The second option means that L<span class='rm-lmr-7'>A</span>TE X&nbsp;will be invoked six times, as each call to <span class='rm-lmtt-10'>htlatex</span> executes three calls to L<span class='rm-lmr-7'>A</span>TE X. This can lead to significantly long compilation times.</p>
+<p class='indent'>It is not possible to execute additional commands during the compilation. When we want to run a program that interacts with LaTeX, such as <span class='rm-lmtt-10'>Makeindex</span> or <span class='rm-lmtt-10'>Bibtex</span>, we have two options. The first option is to create a new script based on <span class='rm-lmtt-10'>htlatex</span> and add the wanted commands to the modified script. The second option is to execute <span class='rm-lmtt-10'>htlatex</span>, then the additional and then
+<span class='rm-lmtt-10'>htlatex</span> again. The second option means that LaTeX&nbsp;will be invoked six times, as each call to <span class='rm-lmtt-10'>htlatex</span> executes three calls to LaTeX. This can lead to significantly long compilation times.</p>
 <!-- l. 194 -->
 <p class='indent'><span class='rm-lmtt-10'>make4ht</span> provides a solution for this issue using a build file, or extensions. These can be used for interaction with external tools.</p>
 <!-- l. 197 -->
 <p class='indent'><span class='rm-lmtt-10'>make4ht</span> also provides compilation modes, which enables to select commands that should be executed using a command line option.</p>
 <!-- l. 200 -->
-<p class='indent'>There is a built-in <span class='rm-lmtt-10'>draft</span> mode, which invokes L<span class='rm-lmr-7'>A</span>TE X&nbsp;only once, instead of the default three invocations. It is useful for the compilations of the document before its final stage, when it is not important that all cross-references work. It can save quite a lot of the compilation time:</p>
+<p class='indent'>There is a built-in <span class='rm-lmtt-10'>draft</span> mode, which invokes LaTeX&nbsp;only once, instead of the default three invocations. It is useful for the compilations of the document before its final stage, when it is not important that all cross-references work. It can save quite a lot of the compilation time:</p>
 <div class='verbatim' id='verbatim-15'>$&nbsp;make4ht&nbsp;-um&nbsp;draft&nbsp;filename.tex</div>
 <!-- l. 208 -->
 <p class='nopar'></p>
@@ -248,7 +248,7 @@ subdirectory, they will be copied to the output directory, losing the directory 
 <p class='indent'><a id='image-conversion-and-post-processing-of-the-generated-files'></a></p>
 <h4 class='subsectionHead'><span class='titlemark'>3.4</span> <a id='x1-80003.4'></a>Image conversion and post-processing of the generated files</h4>
 <!-- l. 241 -->
-<p class='noindent'>TE X4ht&nbsp;can convert parts of the document to images. This is useful for diagrams or complicated math, for example.</p>
+<p class='noindent'>TeX4ht&nbsp;can convert parts of the document to images. This is useful for diagrams or complicated math, for example.</p>
 <!-- l. 244 -->
 <p class='indent'>By default, the image conversion is configured in a <a href='http://www.tug.org/applications/tex4ht/mn35.html#index35-73001'><span class='rm-lmtt-10'>.env</span> file</a>. It has a bit of strange syntax, with <a href='http://www.tug.org/applications/tex4ht/mn-unix.html#index27-69005'>operating system dependent</a> rules. <span class='rm-lmtt-10'>make4ht</span> provides simpler means for the image conversion in the build files. It is possible to change the image conversion parameters
 without a need to modify the <span class='rm-lmtt-10'>.env</span> file. The process is described in section <a href='#x1-210005.4'>5.4<!-- tex4ht:ref: sec:imageconversion  --></a>.</p>
@@ -288,17 +288,17 @@ without a need to modify the <span class='rm-lmtt-10'>.env</span> file. The proc
 <dt class='description'><span class='rm-lmbx-10'>common_domfilters</span></dt>
 <dd class='description'>clean the HTML file using DOM filters. It is more powerful than <span class='rm-lmtt-10'>common_filters</span>. Used DOM filters are <span class='rm-lmtt-10'>fixinlines</span>, <span class='rm-lmtt-10'>idcolons</span>, <span class='rm-lmtt-10'>joincharacters</span>, and <span class='rm-lmtt-10'>tablerows</span>.</dd>
 <dt class='description'><span class='rm-lmbx-10'>detect_engine</span></dt>
-<dd class='description'>detect engine and format necessary for the document compilation from the magic comments supported by L<span class='rm-lmr-7'>A</span>TE X&nbsp;editors such as TeXShop or TeXWorks. Add something like the following line at the beginning of the main TE X&nbsp;file: <!-- l. 312 -->
+<dd class='description'>detect engine and format necessary for the document compilation from the magic comments supported by LaTeX&nbsp;editors such as TeXShop or TeXWorks. Add something like the following line at the beginning of the main TeX&nbsp;file: <!-- l. 312 -->
 <p class='noindent'><span class='rm-lmtt-10'>%!TEX&nbsp;TS-program&nbsp;=&nbsp;xelatex</span></p>
 <!-- l. 314 -->
-<p class='noindent'>It supports also Plain TE X, use for example <span class='rm-lmtt-10'>tex</span> or <span class='rm-lmtt-10'>luatex</span> as the program name.</p>
+<p class='noindent'>It supports also Plain TeX, use for example <span class='rm-lmtt-10'>tex</span> or <span class='rm-lmtt-10'>luatex</span> as the program name.</p>
 </dd>
 <dt class='description'><span class='rm-lmbx-10'>dvisvgm_hashes</span></dt>
 <dd class='description'>efficient generation of SVG pictures using Dvisvgm. It can utilize multiple processor cores and generates only changed images.</dd>
 <dt class='description'><span class='rm-lmbx-10'>join_colors</span></dt>
 <dd class='description'>load the <span class='rm-lmtt-10'>joincolors</span> domfilter for all HTML files.</dd>
 <dt class='description'><span class='rm-lmbx-10'>latexmk_build</span></dt>
-<dd class='description'>use <a href='https://ctan.org/pkg/latexmk?lang=en'>Latexmk</a> for the L<span class='rm-lmr-7'>A</span>TE X&nbsp;compilation.</dd>
+<dd class='description'>use <a href='https://ctan.org/pkg/latexmk?lang=en'>Latexmk</a> for the LaTeX&nbsp;compilation.</dd>
 <dt class='description'><span class='rm-lmbx-10'>mathjaxnode</span></dt>
 <dd class='description'>use <a href='https://github.com/pkra/mathjax-node-page/'>mathjax-node-page</a> to convert from MathML code to HTML + CSS or SVG. See <a href='#mathjaxsettings'>the available settings</a>.</dd>
 <dt class='description'><span class='rm-lmbx-10'>odttemplate</span></dt>
@@ -325,7 +325,7 @@ Make:match("html$",&nbsp;"tidy&nbsp;-m&nbsp;-xml&nbsp;-utf8&nbsp;-q&nbsp;-i&nbsp
 <!-- l. 367 -->
 <p class='nopar'></p>
 <!-- l. 369 -->
-<p class='indent'><span class='rm-lmtt-10'>Make:htlatex()</span> is preconfigured command for calling L<span class='rm-lmr-7'>A</span>TE X&nbsp;with the <span class='rm-lmtt-10'>tex4ht.sty</span> package loaded. In this example, it will be executed only once. After the compilation, the <span class='rm-lmtt-10'>tidy</span> command is executed on the output <span class='rm-lmtt-10'>HTML</span> files.</p>
+<p class='indent'><span class='rm-lmtt-10'>Make:htlatex()</span> is preconfigured command for calling LaTeX&nbsp;with the <span class='rm-lmtt-10'>tex4ht.sty</span> package loaded. In this example, it will be executed only once. After the compilation, the <span class='rm-lmtt-10'>tidy</span> command is executed on the output <span class='rm-lmtt-10'>HTML</span> files.</p>
 <!-- l. 374 -->
 <p class='indent'>Note that it is not necessary to call <span class='rm-lmtt-10'>tex4ht</span> and <span class='rm-lmtt-10'>t4ht</span> commands explicitly in the build file, they are called automatically.</p>
 <!-- l. 378 -->
@@ -386,7 +386,7 @@ one <span class='rm-lmtt-10'>repetition</span>, the second execution is blocked.
 <!-- l. 463 -->
 <p class='indent'>Commands that execute lua functions can return the numerical values using the <span class='rm-lmtt-10'>return</span> statement.</p>
 <!-- l. 466 -->
-<p class='indent'>This mechanism isn’t used for TE X, because it doesn’t differentiate between fatal and non-fatal errors. It returns the same exit code in all cases. Because of this, log parsing is used for a fatal error detection instead. Error code value <span class='rm-lmtt-10'>1</span> is returned in the case of a fatal error, <span class='rm-lmtt-10'>0</span> is used otherwise. The <span class='rm-lmtt-10'>Make.testlogfile</span> function can be used in the build file to detect compilation errors in
+<p class='indent'>This mechanism isn’t used for TeX, because it doesn’t differentiate between fatal and non-fatal errors. It returns the same exit code in all cases. Because of this, log parsing is used for a fatal error detection instead. Error code value <span class='rm-lmtt-10'>1</span> is returned in the case of a fatal error, <span class='rm-lmtt-10'>0</span> is used otherwise. The <span class='rm-lmtt-10'>Make.testlogfile</span> function can be used in the build file to detect compilation errors in
 the TeX log file.</p>
 <!-- l. 475 -->
 <p class='indent'><a id='provided-commands'></a></p>
@@ -397,7 +397,7 @@ the TeX log file.</p>
 <dt class='description'><span class='rm-lmtk-10'>Make:htlatex</span></dt>
 <dd class='description'>One call to the TeX engine with special configuration for loading of the <span class='rm-lmtt-10'>tex4ht.sty</span> package.</dd>
 <dt class='description'><span class='rm-lmtk-10'>Make:httex</span></dt>
-<dd class='description'>Variant of <span class='rm-lmtt-10'>Make:htlatex</span> suitable for Plain TE X.</dd>
+<dd class='description'>Variant of <span class='rm-lmtt-10'>Make:htlatex</span> suitable for Plain TeX.</dd>
 <dt class='description'><span class='rm-lmtk-10'>Make:latexmk</span></dt>
 <dd class='description'>Use <span class='rm-lmtt-10'>Latexmk</span> for the document compilation. <span class='rm-lmtt-10'>tex4ht.sty</span> will be loaded automatically.</dd>
 <dt class='description'><span class='rm-lmtk-10'>Make:tex4ht</span></dt>
@@ -490,7 +490,7 @@ Make:match("html$",process)</div>
 <dt class='description'><span class='rm-lmbx-10'>fixligatures</span></dt>
 <dd class='description'>decompose ligatures to base characters</dd>
 <dt class='description'><span class='rm-lmbx-10'>hruletohr</span></dt>
-<dd class='description'><span class='rm-lmtt-10'>\hrule</span> commands are translated to series of underscore characters by TE X4ht, this filter translates these underscores to <span class='rm-lmtt-10'>&lt;hr&gt;</span> elements</dd>
+<dd class='description'><span class='rm-lmtt-10'>\hrule</span> commands are translated to series of underscore characters by TeX4ht, this filter translates these underscores to <span class='rm-lmtt-10'>&lt;hr&gt;</span> elements</dd>
 <dt class='description'><span class='rm-lmbx-10'>entites</span></dt>
 <dd class='description'>convert prohibited named entities to numeric entities (only <span class='rm-lmtt-10'>&amp;nbsp;</span> currently).</dd>
 <dt class='description'><span class='rm-lmbx-10'>fix-links</span></dt>
@@ -534,7 +534,7 @@ Make:match("html$",&nbsp;process)</div>
 <dt class='description'><span class='rm-lmbx-10'>joincharacters</span></dt>
 <dd class='description'>join consecutive <span class='rm-lmtt-10'>&lt;span&gt;</span> or <span class='rm-lmtt-10'>&lt;mn&gt;</span> elements. This DOM filter supersedes the <span class='rm-lmtt-10'>cleanspan</span> filter.</dd>
 <dt class='description'><span class='rm-lmbx-10'>joincolors</span></dt>
-<dd class='description'>many <span class='rm-lmtt-10'>&lt;span&gt;</span> elements with unique <span class='rm-lmtt-10'>id</span> attributes are created when L<span class='rm-lmr-7'>A</span>TE X&nbsp;colors are being used in the document. A CSS rule is added for each of these elements, which may result in substantial growth of the CSS file. This filter replaces these rules with a common one for elements with the same color value.</dd>
+<dd class='description'>many <span class='rm-lmtt-10'>&lt;span&gt;</span> elements with unique <span class='rm-lmtt-10'>id</span> attributes are created when LaTeX&nbsp;colors are being used in the document. A CSS rule is added for each of these elements, which may result in substantial growth of the CSS file. This filter replaces these rules with a common one for elements with the same color value.</dd>
 <dt class='description'><span class='rm-lmbx-10'>odtimagesize</span></dt>
 <dd class='description'>set correct dimensions for images in the ODT format. It is loaded by default for the ODT output.</dd>
 <dt class='description'><span class='rm-lmbx-10'>odtpartable</span></dt>
@@ -550,7 +550,7 @@ Make:match("html$",&nbsp;process)</div>
 <p class='indent'><a id='image-conversion'></a></p>
 <h4 class='subsectionHead'><span class='titlemark'>5.4</span> <a id='x1-210005.4'></a>Image conversion</h4>
 <!-- l. 695 -->
-<p class='noindent'>It is possible to convert parts of the L<span class='rm-lmr-7'>A</span>TE X&nbsp;input as pictures. It can be used for preserving the appearance of math or diagrams, for example.</p>
+<p class='noindent'>It is possible to convert parts of the LaTeX&nbsp;input as pictures. It can be used for preserving the appearance of math or diagrams, for example.</p>
 <!-- l. 698 -->
 <p class='indent'>These pictures are stored in a special <span class='rm-lmtt-10'>DVI</span> file, which can be processed by a <span class='rm-lmtt-10'>DVI</span> to image commands, such as <span class='rm-lmtt-10'>dvipng</span> or <span class='rm-lmtt-10'>dvisvgm</span>.</p>
 <!-- l. 702 -->
@@ -587,7 +587,7 @@ Make:match("html$",&nbsp;process)</div>
 <!-- l. 749 -->
 <p class='nopar'></p>
 <!-- l. 751 -->
-<p class='indent'>In this example (which is the default configuration used by <span class='rm-lmtt-10'>make4ht</span>), L<span class='rm-lmr-7'>A</span>TE X&nbsp;is called only once when <span class='rm-lmtt-10'>make4ht</span> is called with the <span class='rm-lmtt-10'>draft</span> mode:</p>
+<p class='indent'>In this example (which is the default configuration used by <span class='rm-lmtt-10'>make4ht</span>), LaTeX&nbsp;is called only once when <span class='rm-lmtt-10'>make4ht</span> is called with the <span class='rm-lmtt-10'>draft</span> mode:</p>
 <div class='verbatim' id='verbatim-31'>make4ht&nbsp;-m&nbsp;draft&nbsp;filename</div>
 <!-- l. 757 -->
 <p class='nopar'></p>
@@ -651,17 +651,17 @@ end</div>
 <p class='indent'></p>
 <dl class='description'>
 <dt class='description'><span class='rm-lmtk-10'>htlatex</span></dt>
-<dd class='description'>used TE X&nbsp;engine</dd>
+<dd class='description'>used TeX&nbsp;engine</dd>
 <dt class='description'><span class='rm-lmtk-10'>input</span></dt>
 <dd class='description'>content of <span class='rm-lmtt-10'>\jobname</span>, see also the <span class='rm-lmtt-10'>tex_file</span> parameter.</dd>
 <dt class='description'><span class='rm-lmtk-10'>interaction</span></dt>
-<dd class='description'>interaction mode for the TE X&nbsp;engine. The default value is <span class='rm-lmtt-10'>batchmode</span> to suppress user input on compilation errors. It also suppresses most of the TE X&nbsp; compilation log output. Use the <span class='rm-lmtt-10'>errorstopmode</span> for the default behavior.</dd>
+<dd class='description'>interaction mode for the TeX&nbsp;engine. The default value is <span class='rm-lmtt-10'>batchmode</span> to suppress user input on compilation errors. It also suppresses most of the TeX&nbsp; compilation log output. Use the <span class='rm-lmtt-10'>errorstopmode</span> for the default behavior.</dd>
 <dt class='description'><span class='rm-lmtk-10'>tex_file</span></dt>
-<dd class='description'>input TE X&nbsp;filename</dd>
+<dd class='description'>input TeX&nbsp;filename</dd>
 <dt class='description'><span class='rm-lmtk-10'>latex_par</span></dt>
-<dd class='description'>command line parameters to the TE X&nbsp;engine</dd>
+<dd class='description'>command line parameters to the TeX&nbsp;engine</dd>
 <dt class='description'><span class='rm-lmtk-10'>packages</span></dt>
-<dd class='description'>additional L<span class='rm-lmr-7'>A</span>TE X&nbsp;code inserted before <span class='rm-lmtt-10'>\documentclass</span>. Useful for passing options to packages used in the document or to load additional packages.</dd>
+<dd class='description'>additional LaTeX&nbsp;code inserted before <span class='rm-lmtt-10'>\documentclass</span>. Useful for passing options to packages used in the document or to load additional packages.</dd>
 <dt class='description'><span class='rm-lmtk-10'>tex4ht_sty_par</span></dt>
 <dd class='description'>options for <span class='rm-lmtt-10'>tex4ht.sty</span></dd>
 <dt class='description'><span class='rm-lmtk-10'>tex4ht_par</span></dt>
@@ -947,7 +947,7 @@ filter_settings&nbsp;"staticsite"&nbsp;{ &nbsp;<br />
 <dd class='description'>process the audio and generated subtitle files.</dd>
 </dl>
 <!-- l. 1190 -->
-<p class='indent'>By default, a <span class='rm-lmtt-10'>SMIL</span> file is created. It is assumed that there is an audio file in the <span class='rm-lmtt-10'>mp3</span> format, named as the TE X&nbsp;file. It is possible to use different formats and filenames using mapping.</p>
+<p class='indent'>By default, a <span class='rm-lmtt-10'>SMIL</span> file is created. It is assumed that there is an audio file in the <span class='rm-lmtt-10'>mp3</span> format, named as the TeX&nbsp;file. It is possible to use different formats and filenames using mapping.</p>
 <!-- l. 1194 -->
 <p class='indent'>The configuration options can be passed directly to the functions or set using <span class='rm-lmtt-10'>filter_settings&nbsp;"aeneas-config"&nbsp;{parameters}</span> function.</p>
 <!-- l. 1199 -->
@@ -979,7 +979,7 @@ filter_settings&nbsp;"staticsite"&nbsp;{ &nbsp;<br />
 <li class='itemize'>keep_config</li>
 </ul>
 <!-- l. 1234 -->
-<p class='noindent'>It is possible to generate multiple HTML files from the L<span class='rm-lmr-7'>A</span>TE X&nbsp;source. For example, <span class='rm-lmtt-10'>tex4ebook</span> generates a separate file for each chapter or section. It is possible to set options for each HTML file, in particular names of the corresponding audio files. This mapping is done using the <span class='rm-lmtt-10'>map</span> parameter.</p>
+<p class='noindent'>It is possible to generate multiple HTML files from the LaTeX&nbsp;source. For example, <span class='rm-lmtt-10'>tex4ebook</span> generates a separate file for each chapter or section. It is possible to set options for each HTML file, in particular names of the corresponding audio files. This mapping is done using the <span class='rm-lmtt-10'>map</span> parameter.</p>
 <!-- l. 1240 -->
 <p class='indent'>Example:</p>
 <div class='verbatim' id='verbatim-44'>filter_settings&nbsp;"aeneas-config"&nbsp;{ &nbsp;<br />
@@ -1055,7 +1055,7 @@ end</div>
 <!-- l. 1337 -->
 <p class='nopar'></p>
 <!-- l. 1339 -->
-<p class='indent'>The command line option parser is confused by mixing options for <span class='rm-lmtt-10'>make4ht</span> and TE X4ht&nbsp;in this case. It tries to interpret the <span class='rm-lmtt-10'>-cunihtf&nbsp;-utf8</span>, which are options for the <span class='rm-lmtt-10'>tex4ht</span> command, as <span class='rm-lmtt-10'>make4ht</span> options. To fix that, try to move the <span class='rm-lmtt-10'>-d&nbsp;foo</span> directly after the <span class='rm-lmtt-10'>make4ht</span> command:</p>
+<p class='indent'>The command line option parser is confused by mixing options for <span class='rm-lmtt-10'>make4ht</span> and TeX4ht&nbsp;in this case. It tries to interpret the <span class='rm-lmtt-10'>-cunihtf&nbsp;-utf8</span>, which are options for the <span class='rm-lmtt-10'>tex4ht</span> command, as <span class='rm-lmtt-10'>make4ht</span> options. To fix that, try to move the <span class='rm-lmtt-10'>-d&nbsp;foo</span> directly after the <span class='rm-lmtt-10'>make4ht</span> command:</p>
 <div class='verbatim' id='verbatim-48'>$&nbsp;make4ht&nbsp;-d&nbsp;foo&nbsp;hello.tex&nbsp;"customcfg,charset=utf-8"&nbsp;"-cunihtf&nbsp;-utf8"</div>
 <!-- l. 1347 -->
 <p class='nopar'></p>
@@ -1085,6 +1085,11 @@ end</div>
 <p class='indent'><a id='changelog'></a></p>
 <h3 class='sectionHead'><span class='titlemark'>10</span> <a id='x1-5300010'></a>Changelog</h3>
 <ul class='itemize1'>
+<li class='itemize'>2020/02/06
+<ul class='itemize2'>
+<li class='itemize'>added support for <span class='rm-lmtt-10'>harflatex</span> and <span class='rm-lmtt-10'>harftex</span> in the <span class='rm-lmtt-10'>detect_engine</span> extension.</li>
+</ul>
+</li>
 <li class='itemize'>2020/01/22
 <ul class='itemize2'>
 <li class='itemize'>version <span class='rm-lmtt-10'>0.3d</span> released.</li>
@@ -1689,7 +1694,7 @@ end</div>
 </li>
 <li class='itemize'>2017/03/16
 <ul class='itemize2'>
-<li class='itemize'>check for <span class='rm-lmtt-10'>TeX&nbsp;capacity&nbsp;exceeded</span> error in the L<span class='rm-lmr-7'>A</span>TE X&nbsp;run.</li>
+<li class='itemize'>check for <span class='rm-lmtt-10'>TeX&nbsp;capacity&nbsp;exceeded</span> error in the LaTeX&nbsp;run.</li>
 </ul>
 </li>
 <li class='itemize'>2016/12/19
