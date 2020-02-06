@@ -1,5 +1,9 @@
 # Changelog
 
+- 2020/02/06
+
+    - added support for `harflatex` and `harftex` in the `detect_engine` extension.
+
 - 2020/01/22
 
     - version `0.3d` released.

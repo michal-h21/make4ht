@@ -34,8 +34,14 @@ local change_table = {
   },
   pdflatex = {
     htlatex = "latex"
+  },
+  harflatex = {
+    htlatex = "harflatex --output-format=dvi"
+  },
+  harftex= {
+    htlatex = "harftex --output-format=dvi",
+    command = htlatex.httex
   }
-
 }
 
 local function find_magic_program(filename)
