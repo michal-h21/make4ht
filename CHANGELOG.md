@@ -1,5 +1,9 @@
 # Changelog
 
+- 2020/02/07
+
+    - use `lualatex-dev` instead of `harflatex`
+
 - 2020/02/06
 
     - added support for `harflatex` and `harftex` in the `detect_engine` extension.

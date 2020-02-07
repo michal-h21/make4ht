@@ -36,7 +36,7 @@ local change_table = {
     htlatex = "latex"
   },
   harflatex = {
-    htlatex = "harflatex --output-format=dvi"
+    htlatex = "lualatex-dev --output-format=dvi"
   },
   harftex= {
     htlatex = "harftex --output-format=dvi",
