@@ -29,7 +29,7 @@ Available options:
   -m,--mode (default default) Switch which can be used in the makefile 
   -n,--no-tex4ht Disable dvi file processing with the tex4ht command
   -s,--shell-escape Enables running external programs from LaTeX
-  -u,--utf8  For output documents in utf8 encoding
+  -u,--utf8  (obsolete) The document is generated in UTF8 encoding by default
   -v,--version  Display version number
   -x,--xetex Use xelatex for document compilation
 ]]
@@ -184,6 +184,12 @@ local function process_args(args)
 		outdir = outdir:gsub('\\','/')
 		outdir = outdir:gsub('/$','')
 	end
+
+  -- make4ht now requires UTF-8 output, because of DOM filters
+  -- numeric entites are expanded to Unicode characters. These
+  -- characters would be displayed incorrectly in 8 bit encodings.
+
+  args.utf8 = true
 
 	if args.backend == "lua4ht" then
 		args.lua = true

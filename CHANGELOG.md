@@ -1,5 +1,9 @@
 # Changelog
 
+- 2020/02/19
+
+    - use `UTF-8` output by default. `8-bit` output is broken and non fixable.
+
 - 2020/02/07
 
     - use `lualatex-dev` instead of `harflatex`
