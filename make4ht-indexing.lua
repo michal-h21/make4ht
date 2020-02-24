@@ -142,8 +142,12 @@ local process_index = function(indname, idx)
   return true
 end
 
+local get_idxname = function(par)
+  return par.idxfile or par.input .. ".idx"
+end
+
 local prepare_tmp_idx = function(par)
-  par.idxfile = par.idxfile or par.input .. ".idx"
+  par.idxfile = get_idxname(par)
   -- construct the .ind name, based on the .idx name
   par.indfile = par.indfile or par.idxfile:gsub("idx$", "ind")
   load_enc()
@@ -156,10 +160,56 @@ local prepare_tmp_idx = function(par)
   return  newidxfile, idxdata
 end
 
-local run_indexing_command = function(command, par)
+
+local splitindex = function(par)
+  local files = {}
+  local idxfiles = {}
+  local buffer 
+  local idxfile = get_idxname(par)
+  for line in io.lines(idxfile) do
+    local file = line:match("indexentry%[(.-)%]")
+    if file then
+      -- generate idx name for the current output file
+      file = file .. ".idx"
+      local current = files[file] or {}
+      -- remove file name from the index entry
+      local indexentry = line:gsub("indexentry%[.-%]", "indexentry")
+      -- save the index entry and preseding line to the current buffer
+      table.insert(current, buffer)
+      table.insert(current, indexentry)
+      files[file] = current
+    end
+    -- 
+    buffer = line
+  end
+  -- save idx files
+  for filename, contents in pairs(files) do
+    log:info("Saving split index file: " .. filename)
+    idxfiles[#idxfiles+1] = filename
+    local f = io.open(filename, "w")
+    f:write(table.concat(contents, "\n"))
+    f:close()
+  end
+  return idxfiles
+end
+
+local function run_indexing_command (command, par)
   -- detect command name from the command. It will be the first word
   local cmd_name = command:match("^[%a]+") or "indexing"
   local xindylog  = logging.new(cmd_name)
+  -- support split index
+  local subindexes = splitindex(par)
+  if #subindexes > 0 then
+    -- call the command again on all files produced by splitindex
+    for _, subindex in ipairs(subindexes) do
+      -- make copy of the parameters
+      local t = {}
+      for k,v in pairs(par) do t[k] = v end
+      t.idxfile = subindex
+      run_indexing_command(command, t)
+    end
+    return nil
+  end
   local newidxfile, idxdata = prepare_tmp_idx(par)
   if not newidxfile then
     -- the idxdata will contain error message in the case of error
@@ -181,6 +231,7 @@ local run_indexing_command = function(command, par)
   -- multiple indices
   par.indfile = nil
 end
+
 
 M.get_utf8 = get_utf8
 M.load_enc = load_enc

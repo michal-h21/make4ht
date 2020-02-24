@@ -2,7 +2,8 @@
 
 - 2020/02/24
 
-    - `t4htlinks` DOM filter: cleanup file names from internal links
+    - `t4htlinks` DOM filter: cleanup file names from internal links.
+    - `make4ht-indexing`: added support for splitindex.
 
 - 2020/02/19
 
