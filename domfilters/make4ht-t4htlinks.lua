@@ -8,6 +8,7 @@ return  function(dom)
     -- add a link if it contains any subnodes and has href attribute
     if #children > 0 and href then
       link._name = "text:a"
+      href = href:gsub("^.+4oo%#", "#")
       link._attr = {["xlink:type"]="simple", ["xlink:href"]=href}
       -- if the link is named, add a bookmark
       if name then
