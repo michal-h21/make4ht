@@ -170,7 +170,7 @@ local splitindex = function(par)
     local file = line:match("indexentry%[(.-)%]")
     if file then
       -- generate idx name for the current output file
-      file = file .. ".idx"
+      file =  par.input .. "-" ..file .. ".idx"
       local current = files[file] or {}
       -- remove file name from the index entry
       local indexentry = line:gsub("indexentry%[.-%]", "indexentry")
