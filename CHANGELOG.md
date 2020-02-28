@@ -1,5 +1,9 @@
 # Changelog
 
+- 2020/02/28
+
+    - version `0.3e released` 
+
 - 2020/02/24
 
     - `t4htlinks` DOM filter: cleanup file names from internal links.
