@@ -1,42 +1,30 @@
  
 /* start css.sty */
 .rm-lmr-17{font-size:170%;}
-.rm-lmtt-12x-x-144{font-size:172%; font-family: monospace;}
-.rm-lmtt-12x-x-144{ font-family: monospace;}
-.rm-lmtt-12x-x-144{ font-family: monospace;}
-.rm-lmtt-12x-x-144{ font-family: monospace;}
-.rm-lmtt-12x-x-144{ font-family: monospace;}
+.ec-lmtt-12x-x-144{font-size:172%; font-family: monospace,monospace;}
+.ec-lmtt-12x-x-144{ font-family: monospace,monospace;}
+.ec-lmtt-12x-x-144{ font-family: monospace,monospace;}
+.ec-lmtt-12x-x-144{ font-family: monospace,monospace;}
 .rm-lmr-12{font-size:120%;}
-.rm-lmtt-12{font-size:120%; font-family: monospace;}
-.rm-lmtt-12{ font-family: monospace;}
-.rm-lmtt-12{ font-family: monospace;}
-.rm-lmtt-12{ font-family: monospace;}
-.rm-lmtt-12{ font-family: monospace;}
-.rm-lmtt-10{ font-family: monospace;}
-.rm-lmtt-10{ font-family: monospace;}
-.rm-lmtt-10{ font-family: monospace;}
-.rm-lmtt-10{ font-family: monospace;}
-.rm-lmtt-10{ font-family: monospace;}
-.rm-lmtt-9{font-size:90%; font-family: monospace;}
-.rm-lmtt-9{ font-family: monospace;}
-.rm-lmtt-9{ font-family: monospace;}
-.rm-lmtt-9{ font-family: monospace;}
-.rm-lmtt-9{ font-family: monospace;}
+.ec-lmtt-12{font-size:120%; font-family: monospace,monospace;}
+.ec-lmtt-12{ font-family: monospace,monospace;}
+.ec-lmtt-12{ font-family: monospace,monospace;}
+.ec-lmtt-12{ font-family: monospace,monospace;}
+.ec-lmtt-10{ font-family: monospace,monospace;}
+.ec-lmtt-10{ font-family: monospace,monospace;}
+.ec-lmtt-10{ font-family: monospace,monospace;}
+.ec-lmtt-10{ font-family: monospace,monospace;}
+.rm-lmtt-9{font-size:90%; font-family: monospace,monospace;}
 .rm-lmbx-10{ font-weight: bold;}
-.rm-lmtk-10{ font-family: monospace;}
-.rm-lmtk-10{ font-family: monospace;}
-.rm-lmtk-10{ font-family: monospace;}
-.rm-lmtk-10{ font-family: monospace;}
-.rm-lmtk-10{ font-family: monospace;}
-.rm-lmtk-10{ font-family: monospace;}
-.rm-lmtk-10{ font-family: monospace;}
-.rm-lmtk-10{ font-family: monospace;}
-.rm-lmtk-10{ font-family: monospace;}
-.rm-lmtk-10{ font-family: monospace;}
-p.noindent { text-indent: 0em }
-td p.noindent { text-indent: 0em; margin-top:0em; }
-p.nopar { text-indent: 0em; }
-p.indent{ text-indent: 1.5em }
+.ec-lmtk-10{ font-family: monospace,monospace;}
+.ec-lmtk-10{ font-family: monospace,monospace;}
+.ec-lmtk-10{ font-family: monospace,monospace;}
+.ec-lmtk-10{ font-family: monospace,monospace;}
+p{margin-top:0;margin-bottom:0}
+p.indent{text-indent:0;}
+p + p{margin-top:1em;}
+p + div, p + pre {margin-top:1em;}
+div + p, pre + p {margin-top:1em;}
 @media print {div.crosslinks {visibility:hidden;}}
 a img { border-top: 0; border-left: 0; border-right: 0; }
 center { margin-top:1em; margin-bottom:1em; }
@@ -59,7 +47,7 @@ div.obeylines-v p { margin-top:0; margin-bottom:0; }
 td.displaylines {text-align:center; white-space:nowrap;}
 .centerline {text-align:center;}
 .rightline {text-align:right;}
-div.verbatim {font-family: monospace; white-space: nowrap; text-align:left; clear:both; }
+div.verbatim {font-family: monospace,monospace; white-space: nowrap; text-align:left; clear:both; }
 .fbox {padding-left:3.0pt; padding-right:3.0pt; text-indent:0pt; border:solid black 0.4pt; }
 div.fbox {display:table}
 div.center div.fbox {text-align:center; clear:both; padding-left:3.0pt; padding-right:3.0pt; text-indent:0pt; border:solid black 0.4pt; }
@@ -96,11 +84,6 @@ table[rules] {border-left:solid black 0.4pt; border-right:solid black 0.4pt; }
 .hline td, .cline td{ padding: 0; }
 .hline hr, .cline hr{border:none;border-top:1px solid black;}
 .tabbing-right {text-align:right;}
-span.TEX {letter-spacing: -0.125em; }
-span.TEX span.E{ position:relative;top:0.5ex;left:-0.0417em;}
-a span.TEX span.E {text-decoration: none; }
-span.LATEX span.A{ position:relative; top:-0.5ex; left:-0.4em; font-size:85%;}
-span.LATEX span.TEX{ position:relative; left: -0.4em; }
 div.float, div.figure {margin-left: auto; margin-right: auto;}
 div.float img {text-align:center;}
 div.figure img {text-align:center;}
