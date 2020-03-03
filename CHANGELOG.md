@@ -1,8 +1,12 @@
 # Changelog
 
+- 2020/03/03
+
+    - added `jats` format.
+
 - 2020/02/28
 
-    - version `0.3e released` 
+    - version `0.3e released`.
 
 - 2020/02/24
 
