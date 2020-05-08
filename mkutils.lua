@@ -264,9 +264,11 @@ end
 
 local main_settings = {}
 main_settings.fonts = {}
-local env = {}
+-- use global environment in the build file
+-- it used to be sandboxed, but it proved not to be useful at all
+local env = _G ---{}
 
--- We make sandbox for make script, all functions must be explicitely declared
+-- explicitly enale some functions and modules in the sandbox
 -- Function declarations:
 env.pairs  = pairs
 env.ipairs = ipairs

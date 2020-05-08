@@ -1,5 +1,9 @@
 # Changelog
 
+- 2020/05/08
+
+    - use global environment in the build files.
+
 - 2020/03/03
 
     - added `jats` format.
