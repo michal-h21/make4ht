@@ -9,7 +9,7 @@ end
 
 function M.modify_build(make)
   local mathjax = filter { "mathjaxnode"}
-  make:match("html$",mathjax)
+  make:match("html?$",mathjax)
   return make
 end
 

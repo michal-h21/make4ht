@@ -11,7 +11,7 @@ function M.test(format)
 end
 
 function M.modify_build(make)
-  make:match("html$", process)
+  make:match("html?$", process)
   local matches = make.matches
   -- the filters should be first match to be executed, especially if tidy
   -- should be executed as well

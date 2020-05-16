@@ -27,7 +27,7 @@ function M.modify_build(make)
     count = 2
   else
     local process = filter {"fixinlines", "idcolons", "joincharacters", "mathmlfixes", "tablerows","booktabs"}
-    make:match("html$", process)
+    make:match("html?$", process)
     count = 1
   end
   return make

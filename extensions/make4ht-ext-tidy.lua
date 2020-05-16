@@ -38,7 +38,7 @@ end
 
 
 function M.modify_build(make)
-  make:match("html$", function(filename, par)
+  make:match("html?$", function(filename, par)
     local settings = get_filter_settings "tidy" or {}
     par.options = par.options or settings.options or "-utf8 -w 512 -ashtml -q"
     local command = "tidy ${options}  ${filename}" % par
