@@ -1,5 +1,9 @@
 # Changelog
 
+- 2020/05/16
+
+    - fixed HTML filename matching in extensions.
+
 - 2020/05/08
 
     - use global environment in the build files.
