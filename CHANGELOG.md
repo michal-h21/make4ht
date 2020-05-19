@@ -1,5 +1,9 @@
 # Changelog
 
+- 2020/05/19
+
+    - fixed image filename replace in `dvisvgm_hashes` extension.
+
 - 2020/05/16
 
     - fixed HTML filename matching in extensions.
