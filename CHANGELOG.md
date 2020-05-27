@@ -2,7 +2,7 @@
 
 - 2020/05/27
 
-    - test if copied file exists in `mkutils.copy`.
+    - test if copied file exists in `mkutils.cp`.
     
 - 2020/05/19
 
