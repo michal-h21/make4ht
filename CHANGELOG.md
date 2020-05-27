@@ -1,5 +1,9 @@
 # Changelog
 
+- 2020/05/27
+
+    - test if copied file exists in `mkutils.copy`.
+    
 - 2020/05/19
 
     - fixed image filename replace in `dvisvgm_hashes` extension.

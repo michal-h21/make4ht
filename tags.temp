@@ -1,0 +1,1164 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+", function	test/dom-test.lua	/^describe("Basic DOM functions", function() $/;"	f
+- " ..v.name..": "..type	build/make4ht/make4ht-lib.lua	/^			log:warning("Unknown command type, must be string or function - " ..v.name..": "..type(v.command))$/;"	f
+- " ..v.name..": "..type	make4ht-lib.lua	/^			log:warning("Unknown command type, must be string or function - " ..v.name..": "..type(v.command))$/;"	f
+.Canvas 	htmldoc/make4ht-doc.css	/^.Canvas { position:relative; }$/;"	c
+.Canvas 	make4ht-doc.css	/^.Canvas { position:relative; }$/;"	c
+.Canvas 	out/make4ht-doc.css	/^.Canvas { position:relative; }$/;"	c
+.abstract p 	htmldoc/make4ht-doc.css	/^.abstract p {margin-left:5%; margin-right:5%;}$/;"	c
+.abstract p 	make4ht-doc.css	/^.abstract p {margin-left:5%; margin-right:5%;}$/;"	c
+.abstract p 	out/make4ht-doc.css	/^.abstract p {margin-left:5%; margin-right:5%;}$/;"	c
+.centerline 	htmldoc/make4ht-doc.css	/^.centerline {text-align:center;}$/;"	c
+.centerline 	make4ht-doc.css	/^.centerline {text-align:center;}$/;"	c
+.centerline 	out/make4ht-doc.css	/^.centerline {text-align:center;}$/;"	c
+.cline hr	htmldoc/make4ht-doc.css	/^.hline hr, .cline hr{ height : 0px; margin:0px; }$/;"	c
+.cline hr	htmldoc/make4ht-doc.css	/^.hline hr, .cline hr{border:none;border-top:1px solid black;}$/;"	c
+.cline hr	make4ht-doc.css	/^.hline hr, .cline hr{ height : 0px; margin:0px; }$/;"	c
+.cline hr	make4ht-doc.css	/^.hline hr, .cline hr{border:none;border-top:1px solid black;}$/;"	c
+.cline hr	out/make4ht-doc.css	/^.hline hr, .cline hr{ height : 0px; margin:0px; }$/;"	c
+.cline hr	out/make4ht-doc.css	/^.hline hr, .cline hr{border:none;border-top:1px solid black;}$/;"	c
+.cline td	htmldoc/make4ht-doc.css	/^.hline td, .cline td{ padding: 0; }$/;"	c
+.cline td	make4ht-doc.css	/^.hline td, .cline td{ padding: 0; }$/;"	c
+.cline td	out/make4ht-doc.css	/^.hline td, .cline td{ padding: 0; }$/;"	c
+.ec-lmtk-10	htmldoc/make4ht-doc.css	/^.ec-lmtk-10{ font-family: monospace;}$/;"	c
+.ec-lmtk-10	make4ht-doc.css	/^.ec-lmtk-10{ font-family: monospace;}$/;"	c
+.ec-lmtk-10	out/make4ht-doc.css	/^.ec-lmtk-10{ font-family: monospace;}$/;"	c
+.ec-lmtt-10	htmldoc/make4ht-doc.css	/^.ec-lmtt-10{ font-family: monospace;}$/;"	c
+.ec-lmtt-10	make4ht-doc.css	/^.ec-lmtt-10{ font-family: monospace;}$/;"	c
+.ec-lmtt-10	out/make4ht-doc.css	/^.ec-lmtt-10{ font-family: monospace;}$/;"	c
+.ec-lmtt-12	htmldoc/make4ht-doc.css	/^.ec-lmtt-12{ font-family: monospace;}$/;"	c
+.ec-lmtt-12	htmldoc/make4ht-doc.css	/^.ec-lmtt-12{font-size:120%; font-family: monospace;}$/;"	c
+.ec-lmtt-12	make4ht-doc.css	/^.ec-lmtt-12{ font-family: monospace;}$/;"	c
+.ec-lmtt-12	make4ht-doc.css	/^.ec-lmtt-12{font-size:120%; font-family: monospace;}$/;"	c
+.ec-lmtt-12	out/make4ht-doc.css	/^.ec-lmtt-12{ font-family: monospace;}$/;"	c
+.ec-lmtt-12	out/make4ht-doc.css	/^.ec-lmtt-12{font-size:120%; font-family: monospace;}$/;"	c
+.ec-lmtt-12x-x-144	htmldoc/make4ht-doc.css	/^.ec-lmtt-12x-x-144{ font-family: monospace;}$/;"	c
+.ec-lmtt-12x-x-144	htmldoc/make4ht-doc.css	/^.ec-lmtt-12x-x-144{font-size:172%; font-family: monospace;}$/;"	c
+.ec-lmtt-12x-x-144	make4ht-doc.css	/^.ec-lmtt-12x-x-144{ font-family: monospace;}$/;"	c
+.ec-lmtt-12x-x-144	make4ht-doc.css	/^.ec-lmtt-12x-x-144{font-size:172%; font-family: monospace;}$/;"	c
+.ec-lmtt-12x-x-144	out/make4ht-doc.css	/^.ec-lmtt-12x-x-144{ font-family: monospace;}$/;"	c
+.ec-lmtt-12x-x-144	out/make4ht-doc.css	/^.ec-lmtt-12x-x-144{font-size:172%; font-family: monospace;}$/;"	c
+.enumerate1 	htmldoc/make4ht-doc.css	/^.enumerate1 {list-style-type:decimal;}$/;"	c
+.enumerate1 	make4ht-doc.css	/^.enumerate1 {list-style-type:decimal;}$/;"	c
+.enumerate1 	out/make4ht-doc.css	/^.enumerate1 {list-style-type:decimal;}$/;"	c
+.enumerate2 	htmldoc/make4ht-doc.css	/^.enumerate2 {list-style-type:lower-alpha;}$/;"	c
+.enumerate2 	make4ht-doc.css	/^.enumerate2 {list-style-type:lower-alpha;}$/;"	c
+.enumerate2 	out/make4ht-doc.css	/^.enumerate2 {list-style-type:lower-alpha;}$/;"	c
+.enumerate3 	htmldoc/make4ht-doc.css	/^.enumerate3 {list-style-type:lower-roman;}$/;"	c
+.enumerate3 	make4ht-doc.css	/^.enumerate3 {list-style-type:lower-roman;}$/;"	c
+.enumerate3 	out/make4ht-doc.css	/^.enumerate3 {list-style-type:lower-roman;}$/;"	c
+.enumerate4 	htmldoc/make4ht-doc.css	/^.enumerate4 {list-style-type:upper-alpha;}$/;"	c
+.enumerate4 	make4ht-doc.css	/^.enumerate4 {list-style-type:upper-alpha;}$/;"	c
+.enumerate4 	out/make4ht-doc.css	/^.enumerate4 {list-style-type:upper-alpha;}$/;"	c
+.equation td	htmldoc/make4ht-doc.css	/^.equation td{text-align:center; }$/;"	c
+.equation td	make4ht-doc.css	/^.equation td{text-align:center; }$/;"	c
+.equation td	out/make4ht-doc.css	/^.equation td{text-align:center; }$/;"	c
+.fbox 	htmldoc/make4ht-doc.css	/^.fbox {padding-left:3.0pt; padding-right:3.0pt; text-indent:0pt; border:solid black 0.4pt; }$/;"	c
+.fbox 	make4ht-doc.css	/^.fbox {padding-left:3.0pt; padding-right:3.0pt; text-indent:0pt; border:solid black 0.4pt; }$/;"	c
+.fbox 	out/make4ht-doc.css	/^.fbox {padding-left:3.0pt; padding-right:3.0pt; text-indent:0pt; border:solid black 0.4pt; }$/;"	c
+.framebox-c	htmldoc/make4ht-doc.css	/^.framebox-c, .framebox-l, .framebox-r { padding-left:3.0pt; padding-right:3.0pt; text-indent:0pt; border:solid black 0.4pt; }$/;"	c
+.framebox-c	make4ht-doc.css	/^.framebox-c, .framebox-l, .framebox-r { padding-left:3.0pt; padding-right:3.0pt; text-indent:0pt; border:solid black 0.4pt; }$/;"	c
+.framebox-c	out/make4ht-doc.css	/^.framebox-c, .framebox-l, .framebox-r { padding-left:3.0pt; padding-right:3.0pt; text-indent:0pt; border:solid black 0.4pt; }$/;"	c
+.framebox-c 	htmldoc/make4ht-doc.css	/^.framebox-c {text-align:center;}$/;"	c
+.framebox-c 	make4ht-doc.css	/^.framebox-c {text-align:center;}$/;"	c
+.framebox-c 	out/make4ht-doc.css	/^.framebox-c {text-align:center;}$/;"	c
+.framebox-l	htmldoc/make4ht-doc.css	/^.framebox-c, .framebox-l, .framebox-r { padding-left:3.0pt; padding-right:3.0pt; text-indent:0pt; border:solid black 0.4pt; }$/;"	c
+.framebox-l	make4ht-doc.css	/^.framebox-c, .framebox-l, .framebox-r { padding-left:3.0pt; padding-right:3.0pt; text-indent:0pt; border:solid black 0.4pt; }$/;"	c
+.framebox-l	out/make4ht-doc.css	/^.framebox-c, .framebox-l, .framebox-r { padding-left:3.0pt; padding-right:3.0pt; text-indent:0pt; border:solid black 0.4pt; }$/;"	c
+.framebox-l 	htmldoc/make4ht-doc.css	/^.framebox-l {text-align:left;}$/;"	c
+.framebox-l 	make4ht-doc.css	/^.framebox-l {text-align:left;}$/;"	c
+.framebox-l 	out/make4ht-doc.css	/^.framebox-l {text-align:left;}$/;"	c
+.framebox-r 	htmldoc/make4ht-doc.css	/^.framebox-c, .framebox-l, .framebox-r { padding-left:3.0pt; padding-right:3.0pt; text-indent:0pt; border:solid black 0.4pt; }$/;"	c
+.framebox-r 	htmldoc/make4ht-doc.css	/^.framebox-r {text-align:right;}$/;"	c
+.framebox-r 	make4ht-doc.css	/^.framebox-c, .framebox-l, .framebox-r { padding-left:3.0pt; padding-right:3.0pt; text-indent:0pt; border:solid black 0.4pt; }$/;"	c
+.framebox-r 	make4ht-doc.css	/^.framebox-r {text-align:right;}$/;"	c
+.framebox-r 	out/make4ht-doc.css	/^.framebox-c, .framebox-l, .framebox-r { padding-left:3.0pt; padding-right:3.0pt; text-indent:0pt; border:solid black 0.4pt; }$/;"	c
+.framebox-r 	out/make4ht-doc.css	/^.framebox-r {text-align:right;}$/;"	c
+.hline hr	htmldoc/make4ht-doc.css	/^.hline hr, .cline hr{ height : 0px; margin:0px; }$/;"	c
+.hline hr	htmldoc/make4ht-doc.css	/^.hline hr, .cline hr{border:none;border-top:1px solid black;}$/;"	c
+.hline hr	make4ht-doc.css	/^.hline hr, .cline hr{ height : 0px; margin:0px; }$/;"	c
+.hline hr	make4ht-doc.css	/^.hline hr, .cline hr{border:none;border-top:1px solid black;}$/;"	c
+.hline hr	out/make4ht-doc.css	/^.hline hr, .cline hr{ height : 0px; margin:0px; }$/;"	c
+.hline hr	out/make4ht-doc.css	/^.hline hr, .cline hr{border:none;border-top:1px solid black;}$/;"	c
+.hline td	htmldoc/make4ht-doc.css	/^.hline td, .cline td{ padding: 0; }$/;"	c
+.hline td	make4ht-doc.css	/^.hline td, .cline td{ padding: 0; }$/;"	c
+.hline td	out/make4ht-doc.css	/^.hline td, .cline td{ padding: 0; }$/;"	c
+.index-item	htmldoc/make4ht-doc.css	/^.index-item, .index-subitem, .index-subsubitem {display:block}$/;"	c
+.index-item	make4ht-doc.css	/^.index-item, .index-subitem, .index-subsubitem {display:block}$/;"	c
+.index-item	out/make4ht-doc.css	/^.index-item, .index-subitem, .index-subsubitem {display:block}$/;"	c
+.index-subitem	htmldoc/make4ht-doc.css	/^.index-item, .index-subitem, .index-subsubitem {display:block}$/;"	c
+.index-subitem	make4ht-doc.css	/^.index-item, .index-subitem, .index-subsubitem {display:block}$/;"	c
+.index-subitem	out/make4ht-doc.css	/^.index-item, .index-subitem, .index-subsubitem {display:block}$/;"	c
+.index-subsubitem 	htmldoc/make4ht-doc.css	/^.index-item, .index-subitem, .index-subsubitem {display:block}$/;"	c
+.index-subsubitem 	make4ht-doc.css	/^.index-item, .index-subitem, .index-subsubitem {display:block}$/;"	c
+.index-subsubitem 	out/make4ht-doc.css	/^.index-item, .index-subitem, .index-subsubitem {display:block}$/;"	c
+.likeparagraphHead 	htmldoc/make4ht-doc.css	/^.paragraphHead, .likeparagraphHead { margin-top:2em; font-weight: bold;}$/;"	c
+.likeparagraphHead 	make4ht-doc.css	/^.paragraphHead, .likeparagraphHead { margin-top:2em; font-weight: bold;}$/;"	c
+.likeparagraphHead 	out/make4ht-doc.css	/^.paragraphHead, .likeparagraphHead { margin-top:2em; font-weight: bold;}$/;"	c
+.likepartToc 	htmldoc/make4ht-doc.css	/^.partToc a, .partToc, .likepartToc a, .likepartToc {line-height: 200%; font-weight:bold; font-size:110%;}$/;"	c
+.likepartToc 	make4ht-doc.css	/^.partToc a, .partToc, .likepartToc a, .likepartToc {line-height: 200%; font-weight:bold; font-size:110%;}$/;"	c
+.likepartToc 	out/make4ht-doc.css	/^.partToc a, .partToc, .likepartToc a, .likepartToc {line-height: 200%; font-weight:bold; font-size:110%;}$/;"	c
+.likepartToc a	htmldoc/make4ht-doc.css	/^.partToc a, .partToc, .likepartToc a, .likepartToc {line-height: 200%; font-weight:bold; font-size:110%;}$/;"	c
+.likepartToc a	make4ht-doc.css	/^.partToc a, .partToc, .likepartToc a, .likepartToc {line-height: 200%; font-weight:bold; font-size:110%;}$/;"	c
+.likepartToc a	out/make4ht-doc.css	/^.partToc a, .partToc, .likepartToc a, .likepartToc {line-height: 200%; font-weight:bold; font-size:110%;}$/;"	c
+.likesubparagraphHead 	htmldoc/make4ht-doc.css	/^.subparagraphHead, .likesubparagraphHead { font-weight: bold;}$/;"	c
+.likesubparagraphHead 	make4ht-doc.css	/^.subparagraphHead, .likesubparagraphHead { font-weight: bold;}$/;"	c
+.likesubparagraphHead 	out/make4ht-doc.css	/^.subparagraphHead, .likesubparagraphHead { font-weight: bold;}$/;"	c
+.marginpar	htmldoc/make4ht-doc.css	/^.marginpar,.reversemarginpar {width:20%; float:right; text-align:left; margin-left:auto; margin-top:0.5em; font-size:85%; text-decoration:underline;}$/;"	c
+.marginpar	make4ht-doc.css	/^.marginpar,.reversemarginpar {width:20%; float:right; text-align:left; margin-left:auto; margin-top:0.5em; font-size:85%; text-decoration:underline;}$/;"	c
+.marginpar	out/make4ht-doc.css	/^.marginpar,.reversemarginpar {width:20%; float:right; text-align:left; margin-left:auto; margin-top:0.5em; font-size:85%; text-decoration:underline;}$/;"	c
+.marginpar p	htmldoc/make4ht-doc.css	/^.marginpar p,.reversemarginpar p{margin-top:0.4em; margin-bottom:0.4em;}$/;"	c
+.marginpar p	make4ht-doc.css	/^.marginpar p,.reversemarginpar p{margin-top:0.4em; margin-bottom:0.4em;}$/;"	c
+.marginpar p	out/make4ht-doc.css	/^.marginpar p,.reversemarginpar p{margin-top:0.4em; margin-bottom:0.4em;}$/;"	c
+.obeylines-h	htmldoc/make4ht-doc.css	/^.obeylines-h,.obeylines-v {white-space: nowrap; }$/;"	c
+.obeylines-h	make4ht-doc.css	/^.obeylines-h,.obeylines-v {white-space: nowrap; }$/;"	c
+.obeylines-h	out/make4ht-doc.css	/^.obeylines-h,.obeylines-v {white-space: nowrap; }$/;"	c
+.overline	htmldoc/make4ht-doc.css	/^.overline{ text-decoration:overline; }$/;"	c
+.overline	make4ht-doc.css	/^.overline{ text-decoration:overline; }$/;"	c
+.overline	out/make4ht-doc.css	/^.overline{ text-decoration:overline; }$/;"	c
+.overline img	htmldoc/make4ht-doc.css	/^.overline img{ border-top: 1px solid black; }$/;"	c
+.overline img	make4ht-doc.css	/^.overline img{ border-top: 1px solid black; }$/;"	c
+.overline img	out/make4ht-doc.css	/^.overline img{ border-top: 1px solid black; }$/;"	c
+.paragraphHead	htmldoc/make4ht-doc.css	/^.paragraphHead, .likeparagraphHead { margin-top:2em; font-weight: bold;}$/;"	c
+.paragraphHead	make4ht-doc.css	/^.paragraphHead, .likeparagraphHead { margin-top:2em; font-weight: bold;}$/;"	c
+.paragraphHead	out/make4ht-doc.css	/^.paragraphHead, .likeparagraphHead { margin-top:2em; font-weight: bold;}$/;"	c
+.partToc	htmldoc/make4ht-doc.css	/^.partToc a, .partToc, .likepartToc a, .likepartToc {line-height: 200%; font-weight:bold; font-size:110%;}$/;"	c
+.partToc	make4ht-doc.css	/^.partToc a, .partToc, .likepartToc a, .likepartToc {line-height: 200%; font-weight:bold; font-size:110%;}$/;"	c
+.partToc	out/make4ht-doc.css	/^.partToc a, .partToc, .likepartToc a, .likepartToc {line-height: 200%; font-weight:bold; font-size:110%;}$/;"	c
+.partToc a	htmldoc/make4ht-doc.css	/^.partToc a, .partToc, .likepartToc a, .likepartToc {line-height: 200%; font-weight:bold; font-size:110%;}$/;"	c
+.partToc a	make4ht-doc.css	/^.partToc a, .partToc, .likepartToc a, .likepartToc {line-height: 200%; font-weight:bold; font-size:110%;}$/;"	c
+.partToc a	out/make4ht-doc.css	/^.partToc a, .partToc, .likepartToc a, .likepartToc {line-height: 200%; font-weight:bold; font-size:110%;}$/;"	c
+.quotation 	htmldoc/make4ht-doc.css	/^.quotation {margin-bottom:0.25em; margin-top:0.25em; margin-left:1em; }$/;"	c
+.quotation 	make4ht-doc.css	/^.quotation {margin-bottom:0.25em; margin-top:0.25em; margin-left:1em; }$/;"	c
+.quotation 	out/make4ht-doc.css	/^.quotation {margin-bottom:0.25em; margin-top:0.25em; margin-left:1em; }$/;"	c
+.quote 	htmldoc/make4ht-doc.css	/^.quote {margin-bottom:0.25em; margin-top:0.25em; margin-left:1em; margin-right:1em; text-align:justify;}$/;"	c
+.quote 	make4ht-doc.css	/^.quote {margin-bottom:0.25em; margin-top:0.25em; margin-left:1em; margin-right:1em; text-align:justify;}$/;"	c
+.quote 	out/make4ht-doc.css	/^.quote {margin-bottom:0.25em; margin-top:0.25em; margin-left:1em; margin-right:1em; text-align:justify;}$/;"	c
+.reversemarginpar	htmldoc/make4ht-doc.css	/^.reversemarginpar{float:left;}$/;"	c
+.reversemarginpar	make4ht-doc.css	/^.reversemarginpar{float:left;}$/;"	c
+.reversemarginpar	out/make4ht-doc.css	/^.reversemarginpar{float:left;}$/;"	c
+.rightline 	htmldoc/make4ht-doc.css	/^.rightline {text-align:right;}$/;"	c
+.rightline 	make4ht-doc.css	/^.rightline {text-align:right;}$/;"	c
+.rightline 	out/make4ht-doc.css	/^.rightline {text-align:right;}$/;"	c
+.rm-lmbx-10	htmldoc/make4ht-doc.css	/^.rm-lmbx-10{ font-weight: bold;}$/;"	c
+.rm-lmbx-10	make4ht-doc.css	/^.rm-lmbx-10{ font-weight: bold;}$/;"	c
+.rm-lmbx-10	out/make4ht-doc.css	/^.rm-lmbx-10{ font-weight: bold;}$/;"	c
+.rm-lmr-12	htmldoc/make4ht-doc.css	/^.rm-lmr-12{font-size:120%;}$/;"	c
+.rm-lmr-12	make4ht-doc.css	/^.rm-lmr-12{font-size:120%;}$/;"	c
+.rm-lmr-12	out/make4ht-doc.css	/^.rm-lmr-12{font-size:120%;}$/;"	c
+.rm-lmr-17	htmldoc/make4ht-doc.css	/^.rm-lmr-17{font-size:170%;}$/;"	c
+.rm-lmr-17	make4ht-doc.css	/^.rm-lmr-17{font-size:170%;}$/;"	c
+.rm-lmr-17	out/make4ht-doc.css	/^.rm-lmr-17{font-size:170%;}$/;"	c
+.rm-lmtt-9	htmldoc/make4ht-doc.css	/^.rm-lmtt-9{font-size:90%; font-family: monospace;}$/;"	c
+.rm-lmtt-9	make4ht-doc.css	/^.rm-lmtt-9{font-size:90%; font-family: monospace;}$/;"	c
+.rm-lmtt-9	out/make4ht-doc.css	/^.rm-lmtt-9{font-size:90%; font-family: monospace;}$/;"	c
+.small-caps	htmldoc/make4ht-doc.css	/^.small-caps{font-variant: small-caps;}$/;"	c
+.small-caps	make4ht-doc.css	/^.small-caps{font-variant: small-caps;}$/;"	c
+.small-caps	out/make4ht-doc.css	/^.small-caps{font-variant: small-caps;}$/;"	c
+.subparagraphHead	htmldoc/make4ht-doc.css	/^.subparagraphHead, .likesubparagraphHead { font-weight: bold;}$/;"	c
+.subparagraphHead	make4ht-doc.css	/^.subparagraphHead, .likesubparagraphHead { font-weight: bold;}$/;"	c
+.subparagraphHead	out/make4ht-doc.css	/^.subparagraphHead, .likesubparagraphHead { font-weight: bold;}$/;"	c
+.tabbing-right 	htmldoc/make4ht-doc.css	/^.tabbing-right {text-align:right;}$/;"	c
+.tabbing-right 	make4ht-doc.css	/^.tabbing-right {text-align:right;}$/;"	c
+.tabbing-right 	out/make4ht-doc.css	/^.tabbing-right {text-align:right;}$/;"	c
+.underline	htmldoc/make4ht-doc.css	/^.underline{ text-decoration:underline; }$/;"	c
+.underline	make4ht-doc.css	/^.underline{ text-decoration:underline; }$/;"	c
+.underline	out/make4ht-doc.css	/^.underline{ text-decoration:underline; }$/;"	c
+.underline img	htmldoc/make4ht-doc.css	/^.underline img{ border-bottom: 1px solid black; margin-bottom:1pt; }$/;"	c
+.underline img	make4ht-doc.css	/^.underline img{ border-bottom: 1px solid black; margin-bottom:1pt; }$/;"	c
+.underline img	out/make4ht-doc.css	/^.underline img{ border-bottom: 1px solid black; margin-bottom:1pt; }$/;"	c
+.verse	htmldoc/make4ht-doc.css	/^.verse{white-space:nowrap; margin-left:2em}$/;"	c
+.verse	make4ht-doc.css	/^.verse{white-space:nowrap; margin-left:2em}$/;"	c
+.verse	out/make4ht-doc.css	/^.verse{white-space:nowrap; margin-left:2em}$/;"	c
+Additional commands	build/make4ht/readme.tex	/^\\subsection{Additional commands}\\label{additional-commands}}$/;"	b
+Additional commands	readme.tex	/^\\subsection{Additional commands}\\label{additional-commands}}$/;"	b
+Additional parameters for the job configuration file	build/make4ht/readme.tex	/^\\subsubsection{Additional parameters for the job configuration$/;"	b
+Additional parameters for the job configuration file	readme.tex	/^\\subsubsection{Additional parameters for the job configuration$/;"	b
+Available parameters	build/make4ht/readme.tex	/^\\subsubsection{Available parameters}\\label{available-parameters}}$/;"	b
+Available parameters	readme.tex	/^\\subsubsection{Available parameters}\\label{available-parameters}}$/;"	b
+BIN_DIR	Makefile	/^BIN_DIR = \/usr\/local\/bin$/;"	m
+BUILD_DIR	Makefile	/^BUILD_DIR = build$/;"	m
+BUILD_MAKE4HT	Makefile	/^BUILD_MAKE4HT = $(BUILD_DIR)\/make4ht$/;"	m
+Changelog	build/make4ht/changelog.tex	/^\\section{Changelog}\\label{changelog}}$/;"	s
+Changelog	changelog.tex	/^\\section{Changelog}\\label{changelog}}$/;"	s
+Command line options	build/make4ht/readme.tex	/^\\section{Command line options}\\label{clioptions}}$/;"	s
+Command line options	readme.tex	/^\\section{Command line options}\\label{clioptions}}$/;"	s
+Compilation sequence	build/make4ht/readme.tex	/^\\subsection{Compilation sequence}\\label{compilation-sequence}}$/;"	b
+Compilation sequence	readme.tex	/^\\subsection{Compilation sequence}\\label{compilation-sequence}}$/;"	b
+DATE	Makefile	/^	DATE:= $(firstword $(shell git --no-pager show --date=short --format="%ad" --name-only))$/;"	m
+DATE	Makefile	/^DATE:= undefined$/;"	m
+DOMFILTERS_DIR	Makefile	/^DOMFILTERS_DIR = $(INSTALL_DIR)\/domfilters$/;"	m
+EXECUTABLE	Makefile	/^EXECUTABLE = $(SYSTEM_DIR)\/make4ht$/;"	m
+EXTENSION_DIR	Makefile	/^EXTENSION_DIR = $(INSTALL_DIR)\/extensions$/;"	m
+Example	build/make4ht/readme.tex	/^\\subsection{Example}\\label{example}}$/;"	b
+Example	readme.tex	/^\\subsection{Example}\\label{example}}$/;"	b
+FILTERS_DIR	Makefile	/^FILTERS_DIR = $(INSTALL_DIR)\/filters$/;"	m
+FORMATS_DIR	Makefile	/^FORMATS_DIR = $(INSTALL_DIR)\/formats$/;"	m
+Filenames containing non ASCII characters	build/make4ht/readme.tex	/^\\subsection{Filenames containing non-ASCII$/;"	b
+Filenames containing non ASCII characters	readme.tex	/^\\subsection{Filenames containing non-ASCII$/;"	b
+Filenames containing spaces	build/make4ht/readme.tex	/^\\subsection{Filenames containing$/;"	b
+Filenames containing spaces	readme.tex	/^\\subsection{Filenames containing$/;"	b
+Full example	build/make4ht/readme.tex	/^\\subsubsection{Full example}\\label{full-example}}$/;"	b
+Full example	readme.tex	/^\\subsubsection{Full example}\\label{full-example}}$/;"	b
+HTML_DOC_DIR	Makefile	/^HTML_DOC_DIR = htmldoc$/;"	m
+Handling of the generated files	build/make4ht/readme.tex	/^\\subsection{Handling of the generated$/;"	b
+Handling of the generated files	readme.tex	/^\\subsection{Handling of the generated$/;"	b
+INSTALL_COMMAND	Makefile	/^	INSTALL_COMMAND:=$(SUDO) ln -s $(INSTALL_DIR)\/make4ht $(EXECUTABLE)$/;"	m
+INSTALL_COMMAND	Makefile	/^	INSTALL_COMMAND:=$/;"	m
+INSTALL_DIR	Makefile	/^INSTALL_DIR = $(TEXMFHOME)\/scripts\/lua\/make4ht$/;"	m
+Indexing commands	build/make4ht/readme.tex	/^\\subsection{Indexing commands}\\label{indexing-commands}}$/;"	b
+Indexing commands	readme.tex	/^\\subsection{Indexing commands}\\label{indexing-commands}}$/;"	b
+Introduction	build/make4ht/readme.tex	/^\\section{Introduction}\\label{introduction}}$/;"	s
+Introduction	readme.tex	/^\\section{Introduction}\\label{introduction}}$/;"	s
+List of available settings for filters and extensions	build/make4ht/readme.tex	/^\\section{List of available settings for filters and$/;"	s
+List of available settings for filters and extensions	readme.tex	/^\\section{List of available settings for filters and$/;"	s
+M.execute	build/make4ht/make4ht-aeneas-config.lua	/^function M.execute(par)$/;"	f
+M.execute	make4ht-aeneas-config.lua	/^function M.execute(par)$/;"	f
+M.get_selfautoparent	build/make4ht/make4ht-xtpipes.lua	/^function M.get_selfautoparent()$/;"	f
+M.get_selfautoparent	make4ht-xtpipes.lua	/^function M.get_selfautoparent()$/;"	f
+M.get_xtpipes	build/make4ht/make4ht-xtpipes.lua	/^function M.get_xtpipes(selfautoparent)$/;"	f
+M.get_xtpipes	make4ht-xtpipes.lua	/^function M.get_xtpipes(selfautoparent)$/;"	f
+M.load_filters	build/make4ht/make4ht-filterlib.lua	/^function M.load_filters(filters, load_filter)$/;"	f
+M.load_filters	make4ht-filterlib.lua	/^function M.load_filters(filters, load_filter)$/;"	f
+M.load_input_file	build/make4ht/make4ht-filterlib.lua	/^function M.load_input_file(filename)$/;"	f
+M.load_input_file	make4ht-filterlib.lua	/^function M.load_input_file(filename)$/;"	f
+M.modify_build	build/make4ht/extensions/make4ht-ext-common_domfilters.lua	/^function M.modify_build(make)$/;"	f
+M.modify_build	build/make4ht/extensions/make4ht-ext-common_filters.lua	/^function M.modify_build(make)$/;"	f
+M.modify_build	build/make4ht/extensions/make4ht-ext-detect_engine.lua	/^function M.modify_build(make)$/;"	f
+M.modify_build	build/make4ht/extensions/make4ht-ext-dvisvgm_hashes.lua	/^function M.modify_build(make)$/;"	f
+M.modify_build	build/make4ht/extensions/make4ht-ext-join_colors.lua	/^function M.modify_build(make)$/;"	f
+M.modify_build	build/make4ht/extensions/make4ht-ext-latexmk_build.lua	/^function M.modify_build(make)$/;"	f
+M.modify_build	build/make4ht/extensions/make4ht-ext-mathjaxnode.lua	/^function M.modify_build(make)$/;"	f
+M.modify_build	build/make4ht/extensions/make4ht-ext-staticsite.lua	/^function M.modify_build(make)$/;"	f
+M.modify_build	build/make4ht/extensions/make4ht-ext-tidy.lua	/^function M.modify_build(make)$/;"	f
+M.modify_build	build/make4ht/formats/make4ht-docbook.lua	/^function M.modify_build(make)$/;"	f
+M.modify_build	build/make4ht/formats/make4ht-odt.lua	/^function M.modify_build(make)$/;"	f
+M.modify_build	extensions/make4ht-ext-common_domfilters.lua	/^function M.modify_build(make)$/;"	f
+M.modify_build	extensions/make4ht-ext-common_filters.lua	/^function M.modify_build(make)$/;"	f
+M.modify_build	extensions/make4ht-ext-detect_engine.lua	/^function M.modify_build(make)$/;"	f
+M.modify_build	extensions/make4ht-ext-dvisvgm_hashes.lua	/^function M.modify_build(make)$/;"	f
+M.modify_build	extensions/make4ht-ext-join_colors.lua	/^function M.modify_build(make)$/;"	f
+M.modify_build	extensions/make4ht-ext-latexmk_build.lua	/^function M.modify_build(make)$/;"	f
+M.modify_build	extensions/make4ht-ext-mathjaxnode.lua	/^function M.modify_build(make)$/;"	f
+M.modify_build	extensions/make4ht-ext-staticsite.lua	/^function M.modify_build(make)$/;"	f
+M.modify_build	extensions/make4ht-ext-tidy.lua	/^function M.modify_build(make)$/;"	f
+M.modify_build	formats/make4ht-docbook.lua	/^function M.modify_build(make)$/;"	f
+M.modify_build	formats/make4ht-odt.lua	/^function M.modify_build(make)$/;"	f
+M.modify_build 	build/make4ht/extensions/make4ht-ext-odttemplate.lua	/^M.modify_build = function(make)$/;"	f
+M.modify_build 	build/make4ht/extensions/make4ht-ext-preprocess_input.lua	/^M.modify_build = function(make)$/;"	f
+M.modify_build 	extensions/make4ht-ext-odttemplate.lua	/^M.modify_build = function(make)$/;"	f
+M.modify_build 	extensions/make4ht-ext-preprocess_input.lua	/^M.modify_build = function(make)$/;"	f
+M.move_matches	build/make4ht/make4ht-xtpipes.lua	/^function M.move_matches(make)$/;"	f
+M.move_matches	make4ht-xtpipes.lua	/^function M.move_matches(make)$/;"	f
+M.prepare_extensions	build/make4ht/formats/make4ht-html5.lua	/^function M.prepare_extensions(extensions)$/;"	f
+M.prepare_extensions	build/make4ht/formats/make4ht-tei.lua	/^function M.prepare_extensions(extensions)$/;"	f
+M.prepare_extensions	build/make4ht/formats/make4ht-xhtml.lua	/^function M.prepare_extensions(extensions)$/;"	f
+M.prepare_extensions	formats/make4ht-html5.lua	/^function M.prepare_extensions(extensions)$/;"	f
+M.prepare_extensions	formats/make4ht-jats.lua	/^function M.prepare_extensions(extensions)$/;"	f
+M.prepare_extensions	formats/make4ht-tei.lua	/^function M.prepare_extensions(extensions)$/;"	f
+M.prepare_extensions	formats/make4ht-xhtml.lua	/^function M.prepare_extensions(extensions)$/;"	f
+M.prepare_parameters	build/make4ht/formats/make4ht-docbook.lua	/^function M.prepare_parameters(settings, extensions)$/;"	f
+M.prepare_parameters	build/make4ht/formats/make4ht-html5.lua	/^function M.prepare_parameters(parameters,extensions)$/;"	f
+M.prepare_parameters	build/make4ht/formats/make4ht-odt.lua	/^function M.prepare_parameters(settings, extensions)$/;"	f
+M.prepare_parameters	build/make4ht/formats/make4ht-tei.lua	/^function M.prepare_parameters(settings, extensions)$/;"	f
+M.prepare_parameters	build/make4ht/formats/make4ht-xhtml.lua	/^function M.prepare_parameters(parameters,extensions)$/;"	f
+M.prepare_parameters	formats/make4ht-docbook.lua	/^function M.prepare_parameters(settings, extensions)$/;"	f
+M.prepare_parameters	formats/make4ht-html5.lua	/^function M.prepare_parameters(parameters,extensions)$/;"	f
+M.prepare_parameters	formats/make4ht-jats.lua	/^function M.prepare_parameters(settings, extensions)$/;"	f
+M.prepare_parameters	formats/make4ht-odt.lua	/^function M.prepare_parameters(settings, extensions)$/;"	f
+M.prepare_parameters	formats/make4ht-tei.lua	/^function M.prepare_parameters(settings, extensions)$/;"	f
+M.prepare_parameters	formats/make4ht-xhtml.lua	/^function M.prepare_parameters(parameters,extensions)$/;"	f
+M.process_files	build/make4ht/make4ht-aeneas-config.lua	/^function M.process_files(par)$/;"	f
+M.process_files	make4ht-aeneas-config.lua	/^function M.process_files(par)$/;"	f
+M.save_input_file	build/make4ht/make4ht-filterlib.lua	/^function M.save_input_file(filename, input)$/;"	f
+M.save_input_file	make4ht-filterlib.lua	/^function M.save_input_file(filename, input)$/;"	f
+M.test	build/make4ht/extensions/make4ht-ext-common_domfilters.lua	/^function M.test(format)$/;"	f
+M.test	build/make4ht/extensions/make4ht-ext-common_filters.lua	/^function M.test(format)$/;"	f
+M.test	build/make4ht/extensions/make4ht-ext-dvisvgm_hashes.lua	/^function M.test(format)$/;"	f
+M.test	build/make4ht/extensions/make4ht-ext-join_colors.lua	/^function M.test(format)$/;"	f
+M.test	build/make4ht/extensions/make4ht-ext-mathjaxnode.lua	/^function M.test(format)$/;"	f
+M.test	build/make4ht/extensions/make4ht-ext-tidy.lua	/^function M.test(format)$/;"	f
+M.test	extensions/make4ht-ext-common_domfilters.lua	/^function M.test(format)$/;"	f
+M.test	extensions/make4ht-ext-common_filters.lua	/^function M.test(format)$/;"	f
+M.test	extensions/make4ht-ext-dvisvgm_hashes.lua	/^function M.test(format)$/;"	f
+M.test	extensions/make4ht-ext-join_colors.lua	/^function M.test(format)$/;"	f
+M.test	extensions/make4ht-ext-mathjaxnode.lua	/^function M.test(format)$/;"	f
+M.test	extensions/make4ht-ext-tidy.lua	/^function M.test(format)$/;"	f
+M.test 	build/make4ht/extensions/make4ht-ext-odttemplate.lua	/^M.test = function(format)$/;"	f
+M.test 	extensions/make4ht-ext-odttemplate.lua	/^M.test = function(format)$/;"	f
+M.write_job	build/make4ht/make4ht-aeneas-config.lua	/^function M.write_job(par)$/;"	f
+M.write_job	make4ht-aeneas-config.lua	/^function M.write_job(par)$/;"	f
+MANUAL_DIR	Makefile	/^MANUAL_DIR = $(TEXMFHOME)\/doc\/latex\/make4ht$/;"	m
+Make.add 	build/make4ht/make4ht-lib.lua	/^Make.add = function(self,name,fn,par,rep)$/;"	f
+Make.add 	make4ht-lib.lua	/^Make.add = function(self,name,fn,par,rep)$/;"	f
+Make.add_file 	build/make4ht/make4ht-lib.lua	/^Make.add_file = function(self, filename)$/;"	f
+Make.add_file 	make4ht-lib.lua	/^Make.add_file = function(self, filename)$/;"	f
+Make.file_matches 	build/make4ht/make4ht-lib.lua	/^Make.file_matches = function(self, files)$/;"	f
+Make.file_matches 	make4ht-lib.lua	/^Make.file_matches = function(self, files)$/;"	f
+Make.image 	build/make4ht/make4ht-lib.lua	/^Make.image = function(self, pattern, command, params)$/;"	f
+Make.image 	make4ht-lib.lua	/^Make.image = function(self, pattern, command, params)$/;"	f
+Make.image_convert 	build/make4ht/make4ht-lib.lua	/^Make.image_convert =  function(self, images)$/;"	f
+Make.image_convert 	make4ht-lib.lua	/^Make.image_convert =  function(self, images)$/;"	f
+Make.length 	build/make4ht/make4ht-lib.lua	/^Make.length = function(self)$/;"	f
+Make.length 	make4ht-lib.lua	/^Make.length = function(self)$/;"	f
+Make.match 	build/make4ht/make4ht-lib.lua	/^Make.match = function(self, pattern, command, params) $/;"	f
+Make.match 	make4ht-lib.lua	/^Make.match = function(self, pattern, command, params) $/;"	f
+Make.run 	build/make4ht/make4ht-lib.lua	/^Make.run = function(self) $/;"	f
+Make.run 	make4ht-lib.lua	/^Make.run = function(self) $/;"	f
+Make.run_command 	build/make4ht/make4ht-lib.lua	/^Make.run_command = function(self,filename,s)$/;"	f
+Make.run_command 	make4ht-lib.lua	/^Make.run_command = function(self,filename,s)$/;"	f
+Make[name] 	build/make4ht/make4ht-lib.lua	/^	Make[name] = function(self,p,typ)$/;"	f
+Make[name] 	make4ht-lib.lua	/^	Make[name] = function(self,p,typ)$/;"	f
+Odtfile.new 	build/make4ht/formats/make4ht-odt.lua	/^Odtfile.new = function(archivename)$/;"	f
+Odtfile.new 	formats/make4ht-odt.lua	/^Odtfile.new = function(archivename)$/;"	f
+Odtfile:copy	build/make4ht/formats/make4ht-odt.lua	/^function Odtfile:copy(src, dest)$/;"	f
+Odtfile:copy	formats/make4ht-odt.lua	/^function Odtfile:copy(src, dest)$/;"	f
+Odtfile:create_dir	build/make4ht/formats/make4ht-odt.lua	/^function Odtfile:create_dir(dir)$/;"	f
+Odtfile:create_dir	formats/make4ht-odt.lua	/^function Odtfile:create_dir(dir)$/;"	f
+Odtfile:make_mimetype	build/make4ht/formats/make4ht-odt.lua	/^function Odtfile:make_mimetype()$/;"	f
+Odtfile:make_mimetype	formats/make4ht-odt.lua	/^function Odtfile:make_mimetype()$/;"	f
+Odtfile:move	build/make4ht/formats/make4ht-odt.lua	/^function Odtfile:move(src, dest)$/;"	f
+Odtfile:move	formats/make4ht-odt.lua	/^function Odtfile:move(src, dest)$/;"	f
+Odtfile:pack	build/make4ht/formats/make4ht-odt.lua	/^function Odtfile:pack()$/;"	f
+Odtfile:pack	formats/make4ht-odt.lua	/^function Odtfile:pack()$/;"	f
+Odtfile:remove_mimetype	build/make4ht/formats/make4ht-odt.lua	/^function Odtfile:remove_mimetype()$/;"	f
+Odtfile:remove_mimetype	formats/make4ht-odt.lua	/^function Odtfile:remove_mimetype()$/;"	f
+Passing command line arguments	build/make4ht/readme.tex	/^\\subsection{Passing command line$/;"	b
+Passing command line arguments	readme.tex	/^\\subsection{Passing command line$/;"	b
+SUDO	Makefile	/^	SUDO:=$/;"	m
+SUDO	Makefile	/^	SUDO:=sudo$/;"	m
+SYSTEM_DIR	Makefile	/^SYSTEM_DIR = $(realpath $(BIN_DIR))$/;"	m
+TEXMFHOME	Makefile	/^TEXMFHOME = $(shell kpsewhich -var-value=TEXMFHOME)$/;"	m
+Troubleshooting	build/make4ht/readme.tex	/^\\section{Troubleshooting}\\label{troubleshooting}}$/;"	s
+Troubleshooting	readme.tex	/^\\section{Troubleshooting}\\label{troubleshooting}}$/;"	s
+VERSION	Makefile	/^	VERSION:= $(shell git --no-pager describe --abbrev=0 --tags --always )$/;"	m
+VERSION	Makefile	/^VERSION:= undefined$/;"	m
+__call 	build/make4ht/lapp-mk4.lua	/^    __call = function(tbl,str) return process_options_string(str) end,$/;"	f
+__call 	lapp-mk4.lua	/^    __call = function(tbl,str) return process_options_string(str) end,$/;"	f
+a img 	htmldoc/make4ht-doc.css	/^a img { border-top: 0; border-left: 0; border-right: 0; }$/;"	s
+a img 	make4ht-doc.css	/^a img { border-top: 0; border-left: 0; border-right: 0; }$/;"	s
+a img 	out/make4ht-doc.css	/^a img { border-top: 0; border-left: 0; border-right: 0; }$/;"	s
+a span.TEX span.E 	htmldoc/make4ht-doc.css	/^a span.TEX span.E {text-decoration: none; }$/;"	s
+a span.TEX span.E 	make4ht-doc.css	/^a span.TEX span.E {text-decoration: none; }$/;"	s
+a span.TEX span.E 	out/make4ht-doc.css	/^a span.TEX span.E {text-decoration: none; }$/;"	s
+addProperty	build/make4ht/mkutils.lua	/^function addProperty(s,prop)$/;"	f
+addProperty	mkutils.lua	/^function addProperty(s,prop)$/;"	f
+add_extensions	build/make4ht/mkutils.lua	/^function add_extensions(added, extensions)$/;"	f
+add_extensions	mkutils.lua	/^function add_extensions(added, extensions)$/;"	f
+aeneas	build/make4ht/domfilters/make4ht-aeneas.lua	/^local function aeneas(dom, par)$/;"	f
+aeneas	domfilters/make4ht-aeneas.lua	/^local function aeneas(dom, par)$/;"	f
+border-left:solid black 0.4pt	htmldoc/make4ht-doc.css	/^table[rules] {border-left:solid black 0.4pt; border-right:solid black 0.4pt; }$/;"	s
+border-left:solid black 0.4pt	make4ht-doc.css	/^table[rules] {border-left:solid black 0.4pt; border-right:solid black 0.4pt; }$/;"	s
+border-left:solid black 0.4pt	out/make4ht-doc.css	/^table[rules] {border-left:solid black 0.4pt; border-right:solid black 0.4pt; }$/;"	s
+border-right:solid black 0.4pt	htmldoc/make4ht-doc.css	/^table[rules] {border-left:solid black 0.4pt; border-right:solid black 0.4pt; }$/;"	s
+border-right:solid black 0.4pt	make4ht-doc.css	/^table[rules] {border-left:solid black 0.4pt; border-right:solid black 0.4pt; }$/;"	s
+border-right:solid black 0.4pt	out/make4ht-doc.css	/^table[rules] {border-left:solid black 0.4pt; border-right:solid black 0.4pt; }$/;"	s
+call_xtpipes	build/make4ht/formats/make4ht-docbook.lua	/^local function call_xtpipes(make)$/;"	f
+call_xtpipes	build/make4ht/formats/make4ht-odt.lua	/^local function call_xtpipes(make)$/;"	f
+call_xtpipes	formats/make4ht-docbook.lua	/^local function call_xtpipes(make)$/;"	f
+call_xtpipes	formats/make4ht-odt.lua	/^local function call_xtpipes(make)$/;"	f
+center 	htmldoc/make4ht-doc.css	/^center { margin-top:1em; margin-bottom:1em; }$/;"	s
+center 	make4ht-doc.css	/^center { margin-top:1em; margin-bottom:1em; }$/;"	s
+center 	out/make4ht-doc.css	/^center { margin-top:1em; margin-bottom:1em; }$/;"	s
+check_varargs	build/make4ht/lapp-mk4.lua	/^    local function check_varargs(s)$/;"	f
+check_varargs	lapp-mk4.lua	/^    local function check_varargs(s)$/;"	f
+close_tags	build/make4ht/extensions/make4ht-ext-tidy.lua	/^local function close_tags(s)$/;"	f
+close_tags	extensions/make4ht-ext-tidy.lua	/^local function close_tags(s)$/;"	f
+collapse_toc	build/make4ht/domfilters/make4ht-collapsetoc.lua	/^local function collapse_toc(dom, par)$/;"	f
+collapse_toc	domfilters/make4ht-collapsetoc.lua	/^local function collapse_toc(dom, par)$/;"	f
+command 	build/make4ht/extensions/make4ht-ext-staticsite.lua	/^    command = function()$/;"	f
+command 	extensions/make4ht-ext-staticsite.lua	/^    command = function()$/;"	f
+compile	build/make4ht/filters/make4ht-mathjaxnode.lua	/^local function compile(text)$/;"	f
+compile	filters/make4ht-mathjaxnode.lua	/^local function compile(text)$/;"	f
+configure_job	build/make4ht/make4ht-aeneas-config.lua	/^local function configure_job(options)$/;"	f
+configure_job	make4ht-aeneas-config.lua	/^local function configure_job(options)$/;"	f
+constraint 	build/make4ht/lapp-mk4.lua	/^                        constraint = function(x)$/;"	f
+constraint 	lapp-mk4.lua	/^                        constraint = function(x)$/;"	f
+contents 	build/make4ht/filters/make4ht-mathjaxnode.lua	/^  contents = contents:gsub('<style [^>]+>(.-)<\/style>', function(style)$/;"	f
+contents 	filters/make4ht-mathjaxnode.lua	/^  contents = contents:gsub('<style [^>]+>(.-)<\/style>', function(style)$/;"	f
+convert_parameter	build/make4ht/lapp-mk4.lua	/^local function convert_parameter(ps,val)$/;"	f
+convert_parameter	lapp-mk4.lua	/^local function convert_parameter(ps,val)$/;"	f
+copy	build/make4ht/mkutils.lua	/^function copy(filename,outfilename)$/;"	f
+copy	mkutils.lua	/^function copy(filename,outfilename)$/;"	f
+copy_files	build/make4ht/extensions/make4ht-ext-staticsite.lua	/^local function copy_files(filename, par)$/;"	f
+copy_files	extensions/make4ht-ext-staticsite.lua	/^local function copy_files(filename, par)$/;"	f
+copy_filter	build/make4ht/mkutils.lua	/^function copy_filter(src,dest, filter)$/;"	f
+copy_filter	mkutils.lua	/^function copy_filter(src,dest, filter)$/;"	f
+cp	build/make4ht/mkutils.lua	/^function cp(src,dest)$/;"	f
+cp	mkutils.lua	/^function cp(src,dest)$/;"	f
+css 	build/make4ht/filters/make4ht-mathjaxnode.lua	/^  css = css:gsub("(@font%-face%s*{.-})", function(face)$/;"	f
+css 	filters/make4ht-mathjaxnode.lua	/^  css = css:gsub("(@font%-face%s*{.-})", function(face)$/;"	f
+csscontent 	build/make4ht/domfilters/make4ht-joincolors.lua	/^  csscontent = csscontent:gsub("[%a]*%#(textcolor.-)%s*{%s*color%s*%:%s*(.-)%s*%}%s", function(id, color)$/;"	f
+csscontent 	domfilters/make4ht-joincolors.lua	/^  csscontent = csscontent:gsub("[%a]*%#(textcolor.-)%s*{%s*color%s*%:%s*(.-)%s*%}%s", function(id, color)$/;"	f
+delete_dir	build/make4ht/mkutils.lua	/^function delete_dir(path)$/;"	f
+delete_dir	mkutils.lua	/^function delete_dir(path)$/;"	f
+div + p	htmldoc/make4ht-doc.css	/^div + p, pre + p {margin-top:1em;}$/;"	s
+div + p	make4ht-doc.css	/^div + p, pre + p {margin-top:1em;}$/;"	s
+div + p	out/make4ht-doc.css	/^div + p, pre + p {margin-top:1em;}$/;"	s
+div.abstract 	htmldoc/make4ht-doc.css	/^div.abstract {width:100%;}$/;"	s
+div.abstract 	make4ht-doc.css	/^div.abstract {width:100%;}$/;"	s
+div.abstract 	out/make4ht-doc.css	/^div.abstract {width:100%;}$/;"	s
+div.array 	htmldoc/make4ht-doc.css	/^div.array {text-align:center;}$/;"	s
+div.array 	make4ht-doc.css	/^div.array {text-align:center;}$/;"	s
+div.array 	out/make4ht-doc.css	/^div.array {text-align:center;}$/;"	s
+div.author	htmldoc/make4ht-doc.css	/^div.author, div.date {text-align:center;}$/;"	s
+div.author	htmldoc/make4ht-doc.css	/^div.author{white-space: nowrap;}$/;"	s
+div.author	make4ht-doc.css	/^div.author, div.date {text-align:center;}$/;"	s
+div.author	make4ht-doc.css	/^div.author{white-space: nowrap;}$/;"	s
+div.author	out/make4ht-doc.css	/^div.author, div.date {text-align:center;}$/;"	s
+div.author	out/make4ht-doc.css	/^div.author{white-space: nowrap;}$/;"	s
+div.caption 	htmldoc/make4ht-doc.css	/^div.caption {text-indent:-2em; margin-left:3em; margin-right:1em; text-align:left;}$/;"	s
+div.caption 	make4ht-doc.css	/^div.caption {text-indent:-2em; margin-left:3em; margin-right:1em; text-align:left;}$/;"	s
+div.caption 	out/make4ht-doc.css	/^div.caption {text-indent:-2em; margin-left:3em; margin-right:1em; text-align:left;}$/;"	s
+div.caption span.id	htmldoc/make4ht-doc.css	/^div.caption span.id{font-weight: bold; white-space: nowrap; }$/;"	s
+div.caption span.id	make4ht-doc.css	/^div.caption span.id{font-weight: bold; white-space: nowrap; }$/;"	s
+div.caption span.id	out/make4ht-doc.css	/^div.caption span.id{font-weight: bold; white-space: nowrap; }$/;"	s
+div.center	htmldoc/make4ht-doc.css	/^div.center, div.center div.center {text-align: center; margin-left:1em; margin-right:1em;}$/;"	s
+div.center	make4ht-doc.css	/^div.center, div.center div.center {text-align: center; margin-left:1em; margin-right:1em;}$/;"	s
+div.center	out/make4ht-doc.css	/^div.center, div.center div.center {text-align: center; margin-left:1em; margin-right:1em;}$/;"	s
+div.center div 	htmldoc/make4ht-doc.css	/^div.center div {text-align: left;}$/;"	s
+div.center div 	make4ht-doc.css	/^div.center div {text-align: left;}$/;"	s
+div.center div 	out/make4ht-doc.css	/^div.center div {text-align: left;}$/;"	s
+div.center div.center 	htmldoc/make4ht-doc.css	/^div.center, div.center div.center {text-align: center; margin-left:1em; margin-right:1em;}$/;"	s
+div.center div.center 	make4ht-doc.css	/^div.center, div.center div.center {text-align: center; margin-left:1em; margin-right:1em;}$/;"	s
+div.center div.center 	out/make4ht-doc.css	/^div.center, div.center div.center {text-align: center; margin-left:1em; margin-right:1em;}$/;"	s
+div.center div.fbox 	htmldoc/make4ht-doc.css	/^div.center div.fbox {text-align:center; clear:both; padding-left:3.0pt; padding-right:3.0pt; text-indent:0pt; border:solid black 0.4pt; }$/;"	s
+div.center div.fbox 	make4ht-doc.css	/^div.center div.fbox {text-align:center; clear:both; padding-left:3.0pt; padding-right:3.0pt; text-indent:0pt; border:solid black 0.4pt; }$/;"	s
+div.center div.fbox 	out/make4ht-doc.css	/^div.center div.fbox {text-align:center; clear:both; padding-left:3.0pt; padding-right:3.0pt; text-indent:0pt; border:solid black 0.4pt; }$/;"	s
+div.center div.tabular 	htmldoc/make4ht-doc.css	/^div.tabular, div.center div.tabular {text-align: center; margin-top:0.5em; margin-bottom:0.5em; }$/;"	s
+div.center div.tabular 	make4ht-doc.css	/^div.tabular, div.center div.tabular {text-align: center; margin-top:0.5em; margin-bottom:0.5em; }$/;"	s
+div.center div.tabular 	out/make4ht-doc.css	/^div.tabular, div.center div.tabular {text-align: center; margin-top:0.5em; margin-bottom:0.5em; }$/;"	s
+div.crosslinks 	htmldoc/make4ht-doc.css	/^@media print {div.crosslinks {visibility:hidden;}}$/;"	s
+div.crosslinks 	make4ht-doc.css	/^@media print {div.crosslinks {visibility:hidden;}}$/;"	s
+div.crosslinks 	out/make4ht-doc.css	/^@media print {div.crosslinks {visibility:hidden;}}$/;"	s
+div.date 	htmldoc/make4ht-doc.css	/^div.author, div.date {text-align:center;}$/;"	s
+div.date 	make4ht-doc.css	/^div.author, div.date {text-align:center;}$/;"	s
+div.date 	out/make4ht-doc.css	/^div.author, div.date {text-align:center;}$/;"	s
+div.eqnarray	htmldoc/make4ht-doc.css	/^div.eqnarray{text-align:center;}$/;"	s
+div.eqnarray	make4ht-doc.css	/^div.eqnarray{text-align:center;}$/;"	s
+div.eqnarray	out/make4ht-doc.css	/^div.eqnarray{text-align:center;}$/;"	s
+div.fbox 	htmldoc/make4ht-doc.css	/^div.fbox {display:table}$/;"	s
+div.fbox 	make4ht-doc.css	/^div.fbox {display:table}$/;"	s
+div.fbox 	out/make4ht-doc.css	/^div.fbox {display:table}$/;"	s
+div.figure 	htmldoc/make4ht-doc.css	/^div.float, div.figure {margin-left: auto; margin-right: auto;}$/;"	s
+div.figure 	htmldoc/make4ht-doc.css	/^figure.float, div.figure {margin-left: auto; margin-right: auto;}$/;"	s
+div.figure 	make4ht-doc.css	/^div.float, div.figure {margin-left: auto; margin-right: auto;}$/;"	s
+div.figure 	make4ht-doc.css	/^figure.float, div.figure {margin-left: auto; margin-right: auto;}$/;"	s
+div.figure 	out/make4ht-doc.css	/^div.float, div.figure {margin-left: auto; margin-right: auto;}$/;"	s
+div.figure 	out/make4ht-doc.css	/^figure.float, div.figure {margin-left: auto; margin-right: auto;}$/;"	s
+div.figure img 	htmldoc/make4ht-doc.css	/^div.figure img {text-align:center;}$/;"	s
+div.figure img 	make4ht-doc.css	/^div.figure img {text-align:center;}$/;"	s
+div.figure img 	out/make4ht-doc.css	/^div.figure img {text-align:center;}$/;"	s
+div.float	htmldoc/make4ht-doc.css	/^div.float, div.figure {margin-left: auto; margin-right: auto;}$/;"	s
+div.float	make4ht-doc.css	/^div.float, div.figure {margin-left: auto; margin-right: auto;}$/;"	s
+div.float	out/make4ht-doc.css	/^div.float, div.figure {margin-left: auto; margin-right: auto;}$/;"	s
+div.float img 	htmldoc/make4ht-doc.css	/^div.float img {text-align:center;}$/;"	s
+div.float img 	make4ht-doc.css	/^div.float img {text-align:center;}$/;"	s
+div.float img 	out/make4ht-doc.css	/^div.float img {text-align:center;}$/;"	s
+div.flushleft 	htmldoc/make4ht-doc.css	/^div.flushleft {text-align: left;}$/;"	s
+div.flushleft 	make4ht-doc.css	/^div.flushleft {text-align: left;}$/;"	s
+div.flushleft 	out/make4ht-doc.css	/^div.flushleft {text-align: left;}$/;"	s
+div.flushright	htmldoc/make4ht-doc.css	/^div.flushright, div.flushright div.flushright {text-align: right;}$/;"	s
+div.flushright	make4ht-doc.css	/^div.flushright, div.flushright div.flushright {text-align: right;}$/;"	s
+div.flushright	out/make4ht-doc.css	/^div.flushright, div.flushright div.flushright {text-align: right;}$/;"	s
+div.flushright div 	htmldoc/make4ht-doc.css	/^div.flushright div {text-align: left;}$/;"	s
+div.flushright div 	make4ht-doc.css	/^div.flushright div {text-align: left;}$/;"	s
+div.flushright div 	out/make4ht-doc.css	/^div.flushright div {text-align: left;}$/;"	s
+div.flushright div.flushright 	htmldoc/make4ht-doc.css	/^div.flushright, div.flushright div.flushright {text-align: right;}$/;"	s
+div.flushright div.flushright 	make4ht-doc.css	/^div.flushright, div.flushright div.flushright {text-align: right;}$/;"	s
+div.flushright div.flushright 	out/make4ht-doc.css	/^div.flushright, div.flushright div.flushright {text-align: right;}$/;"	s
+div.maketitle	htmldoc/make4ht-doc.css	/^div.maketitle{ margin-bottom: 2em; }$/;"	s
+div.maketitle	make4ht-doc.css	/^div.maketitle{ margin-bottom: 2em; }$/;"	s
+div.maketitle	out/make4ht-doc.css	/^div.maketitle{ margin-bottom: 2em; }$/;"	s
+div.maketitle 	htmldoc/make4ht-doc.css	/^div.maketitle {text-align:center;}$/;"	s
+div.maketitle 	make4ht-doc.css	/^div.maketitle {text-align:center;}$/;"	s
+div.maketitle 	out/make4ht-doc.css	/^div.maketitle {text-align:center;}$/;"	s
+div.minipage	htmldoc/make4ht-doc.css	/^div.minipage{width:100%;}$/;"	s
+div.minipage	make4ht-doc.css	/^div.minipage{width:100%;}$/;"	s
+div.minipage	out/make4ht-doc.css	/^div.minipage{width:100%;}$/;"	s
+div.newtheorem 	htmldoc/make4ht-doc.css	/^div.newtheorem { margin-bottom: 2em; margin-top: 2em;}$/;"	s
+div.newtheorem 	make4ht-doc.css	/^div.newtheorem { margin-bottom: 2em; margin-top: 2em;}$/;"	s
+div.newtheorem 	out/make4ht-doc.css	/^div.newtheorem { margin-bottom: 2em; margin-top: 2em;}$/;"	s
+div.obeylines-v p 	htmldoc/make4ht-doc.css	/^div.obeylines-v p { margin-top:0; margin-bottom:0; }$/;"	s
+div.obeylines-v p 	make4ht-doc.css	/^div.obeylines-v p { margin-top:0; margin-bottom:0; }$/;"	s
+div.obeylines-v p 	out/make4ht-doc.css	/^div.obeylines-v p { margin-top:0; margin-bottom:0; }$/;"	s
+div.pmatrix 	htmldoc/make4ht-doc.css	/^div.pmatrix {text-align:center;}$/;"	s
+div.pmatrix 	make4ht-doc.css	/^div.pmatrix {text-align:center;}$/;"	s
+div.pmatrix 	out/make4ht-doc.css	/^div.pmatrix {text-align:center;}$/;"	s
+div.tabular	htmldoc/make4ht-doc.css	/^div.tabular, div.center div.tabular {text-align: center; margin-top:0.5em; margin-bottom:0.5em; }$/;"	s
+div.tabular	make4ht-doc.css	/^div.tabular, div.center div.tabular {text-align: center; margin-top:0.5em; margin-bottom:0.5em; }$/;"	s
+div.tabular	out/make4ht-doc.css	/^div.tabular, div.center div.tabular {text-align: center; margin-top:0.5em; margin-bottom:0.5em; }$/;"	s
+div.td00	htmldoc/make4ht-doc.css	/^div.td00{ margin-left:0pt; margin-right:0pt; }$/;"	s
+div.td00	make4ht-doc.css	/^div.td00{ margin-left:0pt; margin-right:0pt; }$/;"	s
+div.td00	out/make4ht-doc.css	/^div.td00{ margin-left:0pt; margin-right:0pt; }$/;"	s
+div.td01	htmldoc/make4ht-doc.css	/^div.td01{ margin-left:0pt; margin-right:5pt; }$/;"	s
+div.td01	make4ht-doc.css	/^div.td01{ margin-left:0pt; margin-right:5pt; }$/;"	s
+div.td01	out/make4ht-doc.css	/^div.td01{ margin-left:0pt; margin-right:5pt; }$/;"	s
+div.td10	htmldoc/make4ht-doc.css	/^div.td10{ margin-left:5pt; margin-right:0pt; }$/;"	s
+div.td10	make4ht-doc.css	/^div.td10{ margin-left:5pt; margin-right:0pt; }$/;"	s
+div.td10	out/make4ht-doc.css	/^div.td10{ margin-left:5pt; margin-right:0pt; }$/;"	s
+div.td11	htmldoc/make4ht-doc.css	/^div.td11{ margin-left:5pt; margin-right:5pt; }$/;"	s
+div.td11	make4ht-doc.css	/^div.td11{ margin-left:5pt; margin-right:5pt; }$/;"	s
+div.td11	out/make4ht-doc.css	/^div.td11{ margin-left:5pt; margin-right:5pt; }$/;"	s
+div.thanks	htmldoc/make4ht-doc.css	/^div.thanks{text-align:left; margin-left:10%; font-size:85%; font-style:italic; }$/;"	s
+div.thanks	make4ht-doc.css	/^div.thanks{text-align:left; margin-left:10%; font-size:85%; font-style:italic; }$/;"	s
+div.thanks	out/make4ht-doc.css	/^div.thanks{text-align:left; margin-left:10%; font-size:85%; font-style:italic; }$/;"	s
+div.verbatim 	htmldoc/make4ht-doc.css	/^div.verbatim {font-family: monospace,monospace; white-space: nowrap; text-align:left; clear:both; }$/;"	s
+div.verbatim 	make4ht-doc.css	/^div.verbatim {font-family: monospace,monospace; white-space: nowrap; text-align:left; clear:both; }$/;"	s
+div.verbatim 	out/make4ht-doc.css	/^div.verbatim {font-family: monospace,monospace; white-space: nowrap; text-align:left; clear:both; }$/;"	s
+doc_file	Makefile	/^doc_file = $(doc_root).pdf$/;"	m
+doc_root	Makefile	/^doc_root = make4ht-doc$/;"	m
+doc_sources	Makefile	/^doc_sources = $(doc_tex) readme.tex changelog.tex tags$/;"	m
+doc_tex	Makefile	/^doc_tex = $(doc_root).tex$/;"	m
+domfilters	Makefile	/^domfilters = $(wildcard domfilters\/*.lua)$/;"	m
+elseif type(filters) 	build/make4ht/make4ht-filterlib.lua	/^	elseif type(filters) == "function" then$/;"	f
+elseif type(filters) 	make4ht-filterlib.lua	/^	elseif type(filters) == "function" then$/;"	f
+elseif type(n) 	build/make4ht/make4ht-filterlib.lua	/^			elseif type(n) == "function" then$/;"	f
+elseif type(n) 	make4ht-filterlib.lua	/^			elseif type(n) == "function" then$/;"	f
+env.Font   	build/make4ht/mkutils.lua	/^env.Font   = function(s)$/;"	f
+env.Font   	mkutils.lua	/^env.Font   = function(s)$/;"	f
+env.Make.disable_extension 	build/make4ht/mkutils.lua	/^env.Make.disable_extension = function(self,name)$/;"	f
+env.Make.disable_extension 	mkutils.lua	/^env.Make.disable_extension = function(self,name)$/;"	f
+env.Make.enable_extension 	build/make4ht/mkutils.lua	/^env.Make.enable_extension = function(self,name)$/;"	f
+env.Make.enable_extension 	mkutils.lua	/^env.Make.enable_extension = function(self,name)$/;"	f
+env.filter_settings	build/make4ht/mkutils.lua	/^function env.filter_settings(name)$/;"	f
+env.filter_settings	mkutils.lua	/^function env.filter_settings(name)$/;"	f
+env.get_filter_settings	build/make4ht/mkutils.lua	/^function env.get_filter_settings(name)$/;"	f
+env.get_filter_settings	mkutils.lua	/^function env.get_filter_settings(name)$/;"	f
+env.set_settings	build/make4ht/mkutils.lua	/^function env.set_settings(par)$/;"	f
+env.set_settings	mkutils.lua	/^function env.set_settings(par)$/;"	f
+env.settings_add	build/make4ht/mkutils.lua	/^function env.settings_add(par)$/;"	f
+env.settings_add	mkutils.lua	/^function env.settings_add(par)$/;"	f
+error	build/make4ht/lapp-mk4.lua	/^local function error(msg,no_usage)$/;"	f
+error	lapp-mk4.lua	/^local function error(msg,no_usage)$/;"	f
+escape_file	build/make4ht/formats/make4ht-odt.lua	/^local function escape_file(filename)$/;"	f
+escape_file	formats/make4ht-odt.lua	/^local function escape_file(filename)$/;"	f
+exec_group	build/make4ht/formats/make4ht-odt.lua	/^local function exec_group(groups, name, fn)$/;"	f
+exec_group	formats/make4ht-odt.lua	/^local function exec_group(groups, name, fn)$/;"	f
+execute	build/make4ht/mkutils.lua	/^function execute(command)$/;"	f
+execute	mkutils.lua	/^function execute(command)$/;"	f
+execute_dvisvgm	build/make4ht/extensions/make4ht-ext-dvisvgm_hashes.lua	/^local function execute_dvisvgm(idvfile, pages)$/;"	f
+execute_dvisvgm	extensions/make4ht-ext-dvisvgm_hashes.lua	/^local function execute_dvisvgm(idvfile, pages)$/;"	f
+execute_job	build/make4ht/make4ht-aeneas-config.lua	/^local function execute_job(options)$/;"	f
+execute_job	make4ht-aeneas-config.lua	/^local function execute_job(options)$/;"	f
+execute_sequence	build/make4ht/extensions/make4ht-ext-preprocess_input.lua	/^local function execute_sequence(sequence, arg, make)$/;"	f
+execute_sequence	extensions/make4ht-ext-preprocess_input.lua	/^local function execute_sequence(sequence, arg, make)$/;"	f
+extensions	Makefile	/^extensions = $(wildcard extensions\/*.lua)$/;"	m
+extensions_modify_build	build/make4ht/mkutils.lua	/^function extensions_modify_build(extensions, make)$/;"	f
+extensions_modify_build	mkutils.lua	/^function extensions_modify_build(extensions, make)$/;"	f
+extensions_prepare_parameters	build/make4ht/mkutils.lua	/^function extensions_prepare_parameters(extensions, parameters)$/;"	f
+extensions_prepare_parameters	mkutils.lua	/^function extensions_prepare_parameters(extensions, parameters)$/;"	f
+extract_colors	build/make4ht/domfilters/make4ht-joincolors.lua	/^local function extract_colors(csscontent)$/;"	f
+extract_colors	domfilters/make4ht-joincolors.lua	/^local function extract_colors(csscontent)$/;"	f
+extract_css	build/make4ht/filters/make4ht-mathjaxnode.lua	/^local function extract_css(contents)$/;"	f
+extract_css	filters/make4ht-mathjaxnode.lua	/^local function extract_css(contents)$/;"	f
+figcaption.caption 	htmldoc/make4ht-doc.css	/^figcaption.caption {text-indent:-2em; margin-left:3em; margin-right:1em; text-align:center;}$/;"	s
+figcaption.caption 	make4ht-doc.css	/^figcaption.caption {text-indent:-2em; margin-left:3em; margin-right:1em; text-align:center;}$/;"	s
+figcaption.caption 	out/make4ht-doc.css	/^figcaption.caption {text-indent:-2em; margin-left:3em; margin-right:1em; text-align:center;}$/;"	s
+figcaption.caption span.id	htmldoc/make4ht-doc.css	/^figcaption.caption span.id{font-weight: bold; white-space: nowrap; }$/;"	s
+figcaption.caption span.id	make4ht-doc.css	/^figcaption.caption span.id{font-weight: bold; white-space: nowrap; }$/;"	s
+figcaption.caption span.id	out/make4ht-doc.css	/^figcaption.caption span.id{font-weight: bold; white-space: nowrap; }$/;"	s
+figure.figure > p 	htmldoc/make4ht-doc.css	/^figure.figure > p {text-align:center;}$/;"	s
+figure.figure > p 	make4ht-doc.css	/^figure.figure > p {text-align:center;}$/;"	s
+figure.figure > p 	out/make4ht-doc.css	/^figure.figure > p {text-align:center;}$/;"	s
+figure.figure img 	htmldoc/make4ht-doc.css	/^figure.figure img {text-align:center;}$/;"	s
+figure.figure img 	make4ht-doc.css	/^figure.figure img {text-align:center;}$/;"	s
+figure.figure img 	out/make4ht-doc.css	/^figure.figure img {text-align:center;}$/;"	s
+figure.float	htmldoc/make4ht-doc.css	/^figure.float, div.figure {margin-left: auto; margin-right: auto;}$/;"	s
+figure.float	make4ht-doc.css	/^figure.float, div.figure {margin-left: auto; margin-right: auto;}$/;"	s
+figure.float	out/make4ht-doc.css	/^figure.float, div.figure {margin-left: auto; margin-right: auto;}$/;"	s
+figure.float img 	htmldoc/make4ht-doc.css	/^figure.float img {text-align:center;}$/;"	s
+figure.float img 	make4ht-doc.css	/^figure.float img {text-align:center;}$/;"	s
+figure.float img 	out/make4ht-doc.css	/^figure.float img {text-align:center;}$/;"	s
+file_exists	build/make4ht/mkutils.lua	/^function file_exists(file)$/;"	f
+file_exists	mkutils.lua	/^function file_exists(file)$/;"	f
+filter	build/make4ht/filters/make4ht-cleanspan-nat.lua	/^local function filter(s)$/;"	f
+filter	build/make4ht/filters/make4ht-cleanspan.lua	/^function filter(input)$/;"	f
+filter	build/make4ht/filters/make4ht-domfilter.lua	/^local function filter(filters, name)$/;"	f
+filter	build/make4ht/filters/make4ht-entities.lua	/^function filter(s)$/;"	f
+filter	build/make4ht/filters/make4ht-filter.lua	/^function filter(filters)$/;"	f
+filter	build/make4ht/filters/make4ht-fixligatures.lua	/^function filter(s)$/;"	f
+filter	filters/make4ht-cleanspan-nat.lua	/^local function filter(s)$/;"	f
+filter	filters/make4ht-cleanspan.lua	/^function filter(input)$/;"	f
+filter	filters/make4ht-domfilter.lua	/^local function filter(filters, name)$/;"	f
+filter	filters/make4ht-entities.lua	/^function filter(s)$/;"	f
+filter	filters/make4ht-filter.lua	/^function filter(filters)$/;"	f
+filter	filters/make4ht-fixligatures.lua	/^function filter(s)$/;"	f
+filters	Makefile	/^filters = $(wildcard filters\/*.lua)$/;"	m
+find_cmidrules	build/make4ht/domfilters/make4ht-booktabs.lua	/^local function find_cmidrules(current_rows)$/;"	f
+find_cmidrules	domfilters/make4ht-booktabs.lua	/^local function find_cmidrules(current_rows)$/;"	f
+find_directories	build/make4ht/mkutils.lua	/^function find_directories(dirs, pos)$/;"	f
+find_directories	mkutils.lua	/^function find_directories(dirs, pos)$/;"	f
+find_lua_file	build/make4ht/mkutils.lua	/^local function find_lua_file(name)$/;"	f
+find_lua_file	mkutils.lua	/^local function find_lua_file(name)$/;"	f
+find_magic_program	build/make4ht/extensions/make4ht-ext-detect_engine.lua	/^local function find_magic_program(filename)$/;"	f
+find_magic_program	extensions/make4ht-ext-detect_engine.lua	/^local function find_magic_program(filename)$/;"	f
+find_tex4ht_jar	build/make4ht/make4ht-xtpipes.lua	/^local function find_tex4ht_jar(path)$/;"	f
+find_tex4ht_jar	make4ht-xtpipes.lua	/^local function find_tex4ht_jar(path)$/;"	f
+find_texmfroot	build/make4ht/make4ht-xtpipes.lua	/^local function find_texmfroot()$/;"	f
+find_texmfroot	make4ht-xtpipes.lua	/^local function find_texmfroot()$/;"	f
+find_toc_levels	build/make4ht/domfilters/make4ht-collapsetoc.lua	/^local function find_toc_levels(toc)$/;"	f
+find_toc_levels	domfilters/make4ht-collapsetoc.lua	/^local function find_toc_levels(toc)$/;"	f
+find_zip	build/make4ht/mkutils.lua	/^function find_zip()$/;"	f
+find_zip	mkutils.lua	/^function find_zip()$/;"	f
+fix_href_colons	build/make4ht/filters/make4ht-fix-links.lua	/^local function fix_href_colons(s)$/;"	f
+fix_href_colons	filters/make4ht-fix-links.lua	/^local function fix_href_colons(s)$/;"	f
+fix_id_colons	build/make4ht/filters/make4ht-fix-links.lua	/^local function fix_id_colons(s)$/;"	f
+fix_id_colons	filters/make4ht-fix-links.lua	/^local function fix_id_colons(s)$/;"	f
+fix_inlines	build/make4ht/domfilters/make4ht-fixinlines.lua	/^local function fix_inlines(obj)$/;"	f
+fix_inlines	domfilters/make4ht-fixinlines.lua	/^local function fix_inlines(obj)$/;"	f
+fix_nested_mstyle	build/make4ht/domfilters/make4ht-mathmlfixes.lua	/^local function fix_nested_mstyle(el)$/;"	f
+fix_nested_mstyle	domfilters/make4ht-mathmlfixes.lua	/^local function fix_nested_mstyle(el)$/;"	f
+fix_token_elements	build/make4ht/domfilters/make4ht-mathmlfixes.lua	/^local function fix_token_elements(el)$/;"	f
+fix_token_elements	domfilters/make4ht-mathmlfixes.lua	/^local function fix_token_elements(el)$/;"	f
+force_short	build/make4ht/lapp-mk4.lua	/^local function force_short(short)$/;"	f
+force_short	lapp-mk4.lua	/^local function force_short(short)$/;"	f
+format.modify_build 	build/make4ht/mkutils.lua	/^      format.modify_build = format.modify_build or function(make) return make end$/;"	f
+format.modify_build 	mkutils.lua	/^      format.modify_build = format.modify_build or function(make) return make end$/;"	f
+format.prepare_extensions 	build/make4ht/mkutils.lua	/^      format.prepare_extensions = format.prepare_extensions or function(extensions) return extensions end$/;"	f
+format.prepare_extensions 	mkutils.lua	/^      format.prepare_extensions = format.prepare_extensions or function(extensions) return extensions end$/;"	f
+formats	Makefile	/^formats = $(wildcard formats\/*.lua)$/;"	m
+get_args	build/make4ht/mkparams.lua	/^local function get_args(parameters, optiontext)$/;"	f
+get_args	mkparams.lua	/^local function get_args(parameters, optiontext)$/;"	f
+get_audio_file	build/make4ht/make4ht-aeneas-config.lua	/^local function get_audio_file(filename, config)$/;"	f
+get_audio_file	make4ht-aeneas-config.lua	/^local function get_audio_file(filename, config)$/;"	f
+get_chunks	build/make4ht/make4ht-errorlogparser.lua	/^local function get_chunks(text)$/;"	f
+get_chunks	make4ht-errorlogparser.lua	/^local function get_chunks(text)$/;"	f
+get_dvi_pages	build/make4ht/extensions/make4ht-ext-dvisvgm_hashes.lua	/^local function get_dvi_pages(arg)$/;"	f
+get_dvi_pages	extensions/make4ht-ext-dvisvgm_hashes.lua	/^local function get_dvi_pages(arg)$/;"	f
+get_end_of_page	build/make4ht/make4ht-dvireader.lua	/^  local function get_end_of_page(str, pos)$/;"	f
+get_end_of_page	make4ht-dvireader.lua	/^  local function get_end_of_page(str, pos)$/;"	f
+get_errors	build/make4ht/make4ht-errorlogparser.lua	/^local function get_errors(chunks, errors)$/;"	f
+get_errors	make4ht-errorlogparser.lua	/^local function get_errors(chunks, errors)$/;"	f
+get_filename	build/make4ht/make4ht-errorlogparser.lua	/^local function get_filename(chunk)$/;"	f
+get_filename	make4ht-errorlogparser.lua	/^local function get_filename(chunk)$/;"	f
+get_format_extensions	build/make4ht/mkparams.lua	/^local function get_format_extensions(format_string)$/;"	f
+get_format_extensions	mkparams.lua	/^local function get_format_extensions(format_string)$/;"	f
+get_generated_pages	build/make4ht/extensions/make4ht-ext-dvisvgm_hashes.lua	/^local function get_generated_pages(output, pages)$/;"	f
+get_generated_pages	extensions/make4ht-ext-dvisvgm_hashes.lua	/^local function get_generated_pages(output, pages)$/;"	f
+get_header	build/make4ht/filters/make4ht-staticsite.lua	/^local function get_header(tbl)$/;"	f
+get_header	filters/make4ht-staticsite.lua	/^local function get_header(tbl)$/;"	f
+get_height	build/make4ht/filters/make4ht-svg-height.lua	/^local function get_height(svg)$/;"	f
+get_height	filters/make4ht-svg-height.lua	/^local function get_height(svg)$/;"	f
+get_html_files	build/make4ht/make4ht-aeneas-config.lua	/^local function get_html_files(config)$/;"	f
+get_html_files	make4ht-aeneas-config.lua	/^local function get_html_files(config)$/;"	f
+get_id	build/make4ht/domfilters/make4ht-collapsetoc.lua	/^local function get_id(el)$/;"	f
+get_id	domfilters/make4ht-collapsetoc.lua	/^local function get_id(el)$/;"	f
+get_inserter	build/make4ht/mkparams.lua	/^	local function get_inserter(args,tb)$/;"	f
+get_inserter	mkparams.lua	/^	local function get_inserter(args,tb)$/;"	f
+get_last_lg_file	build/make4ht/make4ht-aeneas-config.lua	/^local function get_last_lg_file()$/;"	f
+get_last_lg_file	make4ht-aeneas-config.lua	/^local function get_last_lg_file()$/;"	f
+get_max_height	build/make4ht/filters/make4ht-svg-height.lua	/^local function get_max_height(path,max_number)$/;"	f
+get_max_height	filters/make4ht-svg-height.lua	/^local function get_max_height(path,max_number)$/;"	f
+get_next	build/make4ht/domfilters/make4ht-joincharacters.lua	/^  local function get_next(curr, class)$/;"	f
+get_next	domfilters/make4ht-joincharacters.lua	/^  local function get_next(curr, class)$/;"	f
+get_next_mi	build/make4ht/domfilters/make4ht-joincharacters.lua	/^    local function get_next_mi(curr)$/;"	f
+get_next_mi	domfilters/make4ht-joincharacters.lua	/^    local function get_next_mi(curr)$/;"	f
+get_pages	build/make4ht/make4ht-dvireader.lua	/^local function get_pages(dvicontent)$/;"	f
+get_pages	make4ht-dvireader.lua	/^local function get_pages(dvicontent)$/;"	f
+get_postamble_addr	build/make4ht/make4ht-dvireader.lua	/^local function get_postamble_addr(dvicontent)$/;"	f
+get_postamble_addr	make4ht-dvireader.lua	/^local function get_postamble_addr(dvicontent)$/;"	f
+get_preprocessing_pipeline	build/make4ht/extensions/make4ht-ext-preprocess_input.lua	/^local function get_preprocessing_pipeline(input_file)$/;"	f
+get_preprocessing_pipeline	extensions/make4ht-ext-preprocess_input.lua	/^local function get_preprocessing_pipeline(input_file)$/;"	f
+get_slug	build/make4ht/extensions/make4ht-ext-staticsite.lua	/^local function get_slug(settings)$/;"	f
+get_slug	extensions/make4ht-ext-staticsite.lua	/^local function get_slug(settings)$/;"	f
+get_sub_file	build/make4ht/make4ht-aeneas-config.lua	/^local function get_sub_file(filename, config)$/;"	f
+get_sub_file	make4ht-aeneas-config.lua	/^local function get_sub_file(filename, config)$/;"	f
+get_template_filename	build/make4ht/filters/make4ht-odttemplate.lua	/^local function get_template_filename(settings)$/;"	f
+get_template_filename	filters/make4ht-odttemplate.lua	/^local function get_template_filename(settings)$/;"	f
+get_texmfroot	build/make4ht/make4ht-xtpipes.lua	/^local function get_texmfroot()$/;"	f
+get_texmfroot	make4ht-xtpipes.lua	/^local function get_texmfroot()$/;"	f
+h1.partHead	htmldoc/make4ht-doc.css	/^h1.partHead{text-align: center}$/;"	s
+h1.partHead	make4ht-doc.css	/^h1.partHead{text-align: center}$/;"	s
+h1.partHead	out/make4ht-doc.css	/^h1.partHead{text-align: center}$/;"	s
+h2.titleHead	htmldoc/make4ht-doc.css	/^h2.titleHead{text-align:center;}$/;"	s
+h2.titleHead	make4ht-doc.css	/^h2.titleHead{text-align:center;}$/;"	s
+h2.titleHead	out/make4ht-doc.css	/^h2.titleHead{text-align:center;}$/;"	s
+handle_input_file	build/make4ht/mkparams.lua	/^local function handle_input_file(filename)$/;"	f
+handle_input_file	mkparams.lua	/^local function handle_input_file(filename)$/;"	f
+handle_jobname	build/make4ht/mkparams.lua	/^local function handle_jobname(input, args)$/;"	f
+handle_jobname	mkparams.lua	/^local function handle_jobname(input, args)$/;"	f
+has_no_attributes	build/make4ht/domfilters/make4ht-joincharacters.lua	/^    local function has_no_attributes(x)$/;"	f
+has_no_attributes	domfilters/make4ht-joincharacters.lua	/^    local function has_no_attributes(x)$/;"	f
+help	build/make4ht/lapp-mk4.lua	/^local function help()$/;"	f
+help	lapp-mk4.lua	/^local function help()$/;"	f
+htmldoc	Makefile	/^htmldoc = $(HTML_DOC_DIR)\/$(doc_root).html$/;"	m
+id_colons	build/make4ht/domfilters/make4ht-idcolons.lua	/^local function id_colons(obj)$/;"	f
+id_colons	domfilters/make4ht-idcolons.lua	/^local function id_colons(obj)$/;"	f
+if not setfenv then setfenv 	build/make4ht/mkutils.lua	/^  if not setfenv then setfenv = function(a,b) return true end end$/;"	f
+if not setfenv then setfenv 	mkutils.lua	/^  if not setfenv then setfenv = function(a,b) return true end end$/;"	f
+if type(command) 	build/make4ht/make4ht-lib.lua	/^				if type(command) == "function" then$/;"	f
+if type(command) 	build/make4ht/make4ht-lib.lua	/^	if type(command) == "function" then$/;"	f
+if type(command) 	make4ht-lib.lua	/^				if type(command) == "function" then$/;"	f
+if type(command) 	make4ht-lib.lua	/^	if type(command) == "function" then$/;"	f
+if type(rule) 	build/make4ht/filters/make4ht-staticsite.lua	/^    if type(rule) == "function" then$/;"	f
+if type(rule) 	filters/make4ht-staticsite.lua	/^    if type(rule) == "function" then$/;"	f
+if type(v.command)	build/make4ht/make4ht-lib.lua	/^		if type(v.command)=="function" then $/;"	f
+if type(v.command)	make4ht-lib.lua	/^		if type(v.command)=="function" then $/;"	f
+img.cdots	htmldoc/make4ht-doc.css	/^img.cdots{vertical-align:middle;}$/;"	s
+img.cdots	make4ht-doc.css	/^img.cdots{vertical-align:middle;}$/;"	s
+img.cdots	out/make4ht-doc.css	/^img.cdots{vertical-align:middle;}$/;"	s
+img.math	htmldoc/make4ht-doc.css	/^img.math{vertical-align:middle;}$/;"	s
+img.math	make4ht-doc.css	/^img.math{vertical-align:middle;}$/;"	s
+img.math	out/make4ht-doc.css	/^img.math{vertical-align:middle;}$/;"	s
+insert_filter	build/make4ht/extensions/make4ht-ext-staticsite.lua	/^local function insert_filter(make, pattern, fn)$/;"	f
+insert_filter	extensions/make4ht-ext-staticsite.lua	/^local function insert_filter(make, pattern, fn)$/;"	f
+interp	build/make4ht/mkutils.lua	/^function interp(s, tab)$/;"	f
+interp	mkutils.lua	/^function interp(s, tab)$/;"	f
+is_config	build/make4ht/make4ht-aeneas-config.lua	/^local function is_config(filename)$/;"	f
+is_config	make4ht-aeneas-config.lua	/^local function is_config(filename)$/;"	f
+is_escapedargument	build/make4ht/mkparams.lua	/^local function is_escapedargument(arg)$/;"	f
+is_escapedargument	mkparams.lua	/^local function is_escapedargument(arg)$/;"	f
+is_filetype	build/make4ht/lapp-mk4.lua	/^local function is_filetype(type)$/;"	f
+is_filetype	lapp-mk4.lua	/^local function is_filetype(type)$/;"	f
+is_skipped	build/make4ht/domfilters/make4ht-aeneas.lua	/^local function is_skipped(el, css)$/;"	f
+is_skipped	domfilters/make4ht-aeneas.lua	/^local function is_skipped(el, css)$/;"	f
+is_token_element	build/make4ht/domfilters/make4ht-mathmlfixes.lua	/^local function is_token_element(el)$/;"	f
+is_token_element	domfilters/make4ht-mathmlfixes.lua	/^local function is_token_element(el)$/;"	f
+join_characters	build/make4ht/domfilters/make4ht-joincharacters.lua	/^local function join_characters(obj,par)$/;"	f
+join_characters	domfilters/make4ht-joincharacters.lua	/^local function join_characters(obj,par)$/;"	f
+join_colors	build/make4ht/domfilters/make4ht-joincolors.lua	/^local function join_colors(dom)$/;"	f
+join_colors	domfilters/make4ht-joincolors.lua	/^local function join_colors(dom)$/;"	f
+join_rows	build/make4ht/domfilters/make4ht-booktabs.lua	/^local function join_rows(matched_rows,current_rows)$/;"	f
+join_rows	domfilters/make4ht-booktabs.lua	/^local function join_rows(matched_rows,current_rows)$/;"	f
+join_styles	build/make4ht/filters/make4ht-odttemplate.lua	/^local function join_styles(old, new)$/;"	f
+join_styles	filters/make4ht-odttemplate.lua	/^local function join_styles(old, new)$/;"	f
+lapp.add_type 	build/make4ht/lapp-mk4.lua	/^function lapp.add_type (name,converter,constraint)$/;"	f
+lapp.add_type 	lapp-mk4.lua	/^function lapp.add_type (name,converter,constraint)$/;"	f
+li div:last-child 	htmldoc/make4ht-doc.css	/^li p:last-child, li div:last-child { margin-bottom:0.5em; }$/;"	s
+li div:last-child 	make4ht-doc.css	/^li p:last-child, li div:last-child { margin-bottom:0.5em; }$/;"	s
+li div:last-child 	out/make4ht-doc.css	/^li p:last-child, li div:last-child { margin-bottom:0.5em; }$/;"	s
+li p	htmldoc/make4ht-doc.css	/^li p~ul:last-child, li p~ol:last-child{ margin-bottom:0.5em; }$/;"	s
+li p	make4ht-doc.css	/^li p~ul:last-child, li p~ol:last-child{ margin-bottom:0.5em; }$/;"	s
+li p	out/make4ht-doc.css	/^li p~ul:last-child, li p~ol:last-child{ margin-bottom:0.5em; }$/;"	s
+li p.indent 	htmldoc/make4ht-doc.css	/^li p.indent { text-indent: 0em }$/;"	s
+li p.indent 	make4ht-doc.css	/^li p.indent { text-indent: 0em }$/;"	s
+li p.indent 	out/make4ht-doc.css	/^li p.indent { text-indent: 0em }$/;"	s
+li p:first-child	htmldoc/make4ht-doc.css	/^li p:first-child{ margin-top:0em; }$/;"	s
+li p:first-child	make4ht-doc.css	/^li p:first-child{ margin-top:0em; }$/;"	s
+li p:first-child	out/make4ht-doc.css	/^li p:first-child{ margin-top:0em; }$/;"	s
+li p:last-child	htmldoc/make4ht-doc.css	/^li p:last-child, li div:last-child { margin-bottom:0.5em; }$/;"	s
+li p:last-child	make4ht-doc.css	/^li p:last-child, li div:last-child { margin-bottom:0.5em; }$/;"	s
+li p:last-child	out/make4ht-doc.css	/^li p:last-child, li div:last-child { margin-bottom:0.5em; }$/;"	s
+load_config	build/make4ht/make4ht-config.lua	/^local function load_config(filename, default)$/;"	f
+load_config	build/make4ht/mkutils.lua	/^function load_config(settings, config_name)$/;"	f
+load_config	make4ht-config.lua	/^local function load_config(filename, default)$/;"	f
+load_config	mkutils.lua	/^function load_config(settings, config_name)$/;"	f
+load_encfiles	build/make4ht/make4ht-indexing.lua	/^local function load_encfiles(f)$/;"	f
+load_encfiles	make4ht-indexing.lua	/^local function load_encfiles(f)$/;"	f
+load_extension	build/make4ht/mkutils.lua	/^function load_extension(name,format)$/;"	f
+load_extension	mkutils.lua	/^function load_extension(name,format)$/;"	f
+load_extensions	build/make4ht/mkutils.lua	/^function load_extensions(extensions, format)$/;"	f
+load_extensions	mkutils.lua	/^function load_extensions(extensions, format)$/;"	f
+load_filter	build/make4ht/filters/make4ht-domfilter.lua	/^local function load_filter(filtername)$/;"	f
+load_filter	build/make4ht/filters/make4ht-filter.lua	/^local function load_filter(filtername)$/;"	f
+load_filter	filters/make4ht-domfilter.lua	/^local function load_filter(filtername)$/;"	f
+load_filter	filters/make4ht-filter.lua	/^local function load_filter(filtername)$/;"	f
+load_output_format	build/make4ht/mkutils.lua	/^function load_output_format(format_name)$/;"	f
+load_output_format	mkutils.lua	/^function load_output_format(format_name)$/;"	f
+local content 	build/make4ht/filters/make4ht-entities-to-unicode.lua	/^   local content = content:gsub("%&%#x([A-Fa-f0-9]+);", function(entity)$/;"	f
+local content 	filters/make4ht-entities-to-unicode.lua	/^   local content = content:gsub("%&%#x([A-Fa-f0-9]+);", function(entity)$/;"	f
+local converted 	build/make4ht/domfilters/make4ht-joincolors.lua	/^    local converted = "textcolor-" .. color:gsub("rgb%((.-),(.-),(.-)%)", function(r,g,b)$/;"	f
+local converted 	domfilters/make4ht-joincolors.lua	/^    local converted = "textcolor-" .. color:gsub("rgb%((.-),(.-),(.-)%)", function(r,g,b)$/;"	f
+local debug_print 	build/make4ht/domfilters/make4ht-collapsetoc.lua	/^local debug_print = function(...) log:debug(...) end$/;"	f
+local debug_print 	domfilters/make4ht-collapsetoc.lua	/^local debug_print = function(...) log:debug(...) end$/;"	f
+local empty_line 	build/make4ht/extensions/make4ht-ext-detect_engine.lua	/^  local empty_line = function(line) return line:match("^%s*$") end$/;"	f
+local empty_line 	extensions/make4ht-ext-detect_engine.lua	/^  local empty_line = function(line) return line:match("^%s*$") end$/;"	f
+local filter 	build/make4ht/mkutils.lua	/^  local filter = filter or function(s) return s end$/;"	f
+local filter 	mkutils.lua	/^  local filter = filter or function(s) return s end$/;"	f
+local find_config 	build/make4ht/make4ht-config.lua	/^local find_config = function(filename)$/;"	f
+local find_config 	make4ht-config.lua	/^local find_config = function(filename)$/;"	f
+local fix_idx_pages 	build/make4ht/make4ht-indexing.lua	/^local fix_idx_pages = function(content, idxobj)$/;"	f
+local fix_idx_pages 	make4ht-indexing.lua	/^local fix_idx_pages = function(content, idxobj)$/;"	f
+local get_class 	build/make4ht/domfilters/make4ht-joincharacters.lua	/^  local get_class = function(next_el)$/;"	f
+local get_class 	domfilters/make4ht-joincharacters.lua	/^  local get_class = function(next_el)$/;"	f
+local get_comment 	build/make4ht/extensions/make4ht-ext-detect_engine.lua	/^  local get_comment = function(line)$/;"	f
+local get_comment 	extensions/make4ht-ext-detect_engine.lua	/^  local get_comment = function(line)$/;"	f
+local get_idxname 	make4ht-indexing.lua	/^local get_idxname = function(par)$/;"	f
+local get_lang 	build/make4ht/domfilters/make4ht-aeneas.lua	/^  local get_lang = function(d)$/;"	f
+local get_lang 	domfilters/make4ht-aeneas.lua	/^  local get_lang = function(d)$/;"	f
+local get_name 	build/make4ht/domfilters/make4ht-joincharacters.lua	/^  local get_name = function(curr) $/;"	f
+local get_name 	domfilters/make4ht-joincharacters.lua	/^  local get_name = function(curr) $/;"	f
+local get_utf8 	build/make4ht/make4ht-indexing.lua	/^local get_utf8 = function(input)$/;"	f
+local get_utf8 	make4ht-indexing.lua	/^local get_utf8 = function(input)$/;"	f
+local has_child_elements 	build/make4ht/domfilters/make4ht-tablerows.lua	/^  local has_child_elements = function(child)$/;"	f
+local has_child_elements 	domfilters/make4ht-tablerows.lua	/^  local has_child_elements = function(child)$/;"	f
+local has_matching_attributes 	build/make4ht/domfilters/make4ht-joincharacters.lua	/^local has_matching_attributes = function (el, next_el)$/;"	f
+local has_matching_attributes 	domfilters/make4ht-joincharacters.lua	/^local has_matching_attributes = function (el, next_el)$/;"	f
+local hruletohr 	build/make4ht/filters/make4ht-hruletohr.lua	/^local hruletohr = function(s)$/;"	f
+local hruletohr 	filters/make4ht-hruletohr.lua	/^local hruletohr = function(s)$/;"	f
+local is_empty_row 	build/make4ht/domfilters/make4ht-tablerows.lua	/^  local is_empty_row = function(row)$/;"	f
+local is_empty_row 	domfilters/make4ht-tablerows.lua	/^  local is_empty_row = function(row)$/;"	f
+local is_not_styled 	build/make4ht/domfilters/make4ht-tablerows.lua	/^  local is_not_styled = function(row, css)$/;"	f
+local is_not_styled 	domfilters/make4ht-tablerows.lua	/^  local is_not_styled = function(row, css)$/;"	f
+local is_span 	build/make4ht/domfilters/make4ht-joincharacters.lua	/^  local is_span = function(next_el)$/;"	f
+local is_span 	domfilters/make4ht-joincharacters.lua	/^  local is_span = function(next_el)$/;"	f
+local join_elements 	build/make4ht/domfilters/make4ht-joincharacters.lua	/^  local join_elements = function(el, next_el)$/;"	f
+local join_elements 	domfilters/make4ht-joincharacters.lua	/^  local join_elements = function(el, next_el)$/;"	f
+local line 	build/make4ht/make4ht-indexing.lua	/^    local line = line:gsub("(%s*\\\\%a+.-%,)(.+)$", function(start,rest)$/;"	f
+local line 	make4ht-indexing.lua	/^    local line = line:gsub("(%s*\\\\%a+.-%,)(.+)$", function(start,rest)$/;"	f
+local load_css_files 	build/make4ht/domfilters/make4ht-tablerows.lua	/^  local load_css_files = function()$/;"	f
+local load_css_files 	domfilters/make4ht-tablerows.lua	/^  local load_css_files = function()$/;"	f
+local load_enc 	build/make4ht/make4ht-indexing.lua	/^local load_enc = function(enc)$/;"	f
+local load_enc 	make4ht-indexing.lua	/^local load_enc = function(enc)$/;"	f
+local make_name 	build/make4ht/make4ht-config.lua	/^local make_name = function(name)$/;"	f
+local make_name 	make4ht-config.lua	/^local make_name = function(name)$/;"	f
+local matchfunction 	build/make4ht/formats/make4ht-docbook.lua	/^    local matchfunction = xtpipeslib.get_xtpipes(selfautoparent)$/;"	f
+local matchfunction 	build/make4ht/formats/make4ht-odt.lua	/^    local matchfunction = xtpipeslib.get_xtpipes(selfautoparent)$/;"	f
+local matchfunction 	build/make4ht/make4ht-xtpipes.lua	/^  local matchfunction =  function(filename)$/;"	f
+local matchfunction 	formats/make4ht-docbook.lua	/^    local matchfunction = xtpipeslib.get_xtpipes(selfautoparent)$/;"	f
+local matchfunction 	formats/make4ht-odt.lua	/^    local matchfunction = xtpipeslib.get_xtpipes(selfautoparent)$/;"	f
+local matchfunction 	make4ht-xtpipes.lua	/^  local matchfunction =  function(filename)$/;"	f
+local max 	build/make4ht/filters/make4ht-svg-height.lua	/^local max = function(a,b)$/;"	f
+local max 	filters/make4ht-svg-height.lua	/^local max = function(a,b)$/;"	f
+local newtext 	build/make4ht/make4ht-errorlogparser.lua	/^  local newtext = text:gsub("(%b())", function(a)$/;"	f
+local newtext 	make4ht-errorlogparser.lua	/^  local newtext = text:gsub("(%b())", function(a)$/;"	f
+local output 	build/make4ht/make4ht-indexing.lua	/^	local output = input:gsub('\\\\IeC[%s]*(%b{})',function(iec)$/;"	f
+local output 	make4ht-indexing.lua	/^	local output = input:gsub('\\\\IeC[%s]*(%b{})',function(iec)$/;"	f
+local parse_args 	build/make4ht/filters/make4ht-cleanspan.lua	/^	local parse_args = function(s)$/;"	f
+local parse_args 	filters/make4ht-cleanspan.lua	/^	local parse_args = function(s)$/;"	f
+local parse_idx 	build/make4ht/make4ht-indexing.lua	/^local parse_idx = function(content)$/;"	f
+local parse_idx 	make4ht-indexing.lua	/^local parse_idx = function(content)$/;"	f
+local prepare_idx 	build/make4ht/make4ht-indexing.lua	/^local prepare_idx = function(filename)$/;"	f
+local prepare_idx 	make4ht-indexing.lua	/^local prepare_idx = function(filename)$/;"	f
+local prepare_tmp_idx 	build/make4ht/make4ht-indexing.lua	/^local prepare_tmp_idx = function(par)$/;"	f
+local prepare_tmp_idx 	make4ht-indexing.lua	/^local prepare_tmp_idx = function(par)$/;"	f
+local process_index 	build/make4ht/make4ht-indexing.lua	/^local process_index = function(indname, idx)$/;"	f
+local process_index 	make4ht-indexing.lua	/^local process_index = function(indname, idx)$/;"	f
+local run_indexing_command 	build/make4ht/make4ht-indexing.lua	/^local run_indexing_command = function(command, par)$/;"	f
+local splitindex 	make4ht-indexing.lua	/^local splitindex = function(par)$/;"	f
+local status, domobject 	build/make4ht/filters/make4ht-domfilter.lua	/^    local status, domobject = pcall(function()$/;"	f
+local status, domobject 	filters/make4ht-domfilter.lua	/^    local status, domobject = pcall(function()$/;"	f
+local table_count 	build/make4ht/domfilters/make4ht-joincharacters.lua	/^local table_count = function(tbl)$/;"	f
+local table_count 	domfilters/make4ht-joincharacters.lua	/^local table_count = function(tbl)$/;"	f
+local untrusted_function 	build/make4ht/mkutils.lua	/^  local untrusted_function = nil$/;"	f
+local untrusted_function 	mkutils.lua	/^  local untrusted_function = nil$/;"	f
+local update_params 	build/make4ht/extensions/make4ht-ext-preprocess_input.lua	/^    local update_params = function(cmd)$/;"	f
+local update_params 	extensions/make4ht-ext-preprocess_input.lua	/^    local update_params = function(cmd)$/;"	f
+local xdg_config  	build/make4ht/make4ht-config.lua	/^local xdg_config  = function(filename, xdg_config_name)$/;"	f
+local xdg_config  	make4ht-config.lua	/^local xdg_config  = function(filename, xdg_config_name)$/;"	f
+logging.new	build/make4ht/make4ht-logging.lua	/^function logging.new(module)$/;"	f
+logging.new	make4ht-logging.lua	/^function logging.new(module)$/;"	f
+logging.prepare_levels	build/make4ht/make4ht-logging.lua	/^function logging.prepare_levels(modes)$/;"	f
+logging.prepare_levels	make4ht-logging.lua	/^function logging.prepare_levels(modes)$/;"	f
+logging.print_msg	build/make4ht/make4ht-logging.lua	/^function logging.print_msg(header, message, color)$/;"	f
+logging.print_msg	make4ht-logging.lua	/^function logging.print_msg(header, message, color)$/;"	f
+logging.set_level	build/make4ht/make4ht-logging.lua	/^function logging.set_level(name)$/;"	f
+logging.set_level	make4ht-logging.lua	/^function logging.set_level(name)$/;"	f
+ltrim	build/make4ht/lapp-mk4.lua	/^local function ltrim(line)$/;"	f
+ltrim	lapp-mk4.lua	/^local function ltrim(line)$/;"	f
+lua_content	Makefile	/^lua_content = make4ht $(wildcard *.lua) $/;"	m
+m.htlatex	build/make4ht/make4ht-htlatex.lua	/^function m.htlatex(par, latex_command)$/;"	f
+m.htlatex	make4ht-htlatex.lua	/^function m.htlatex(par, latex_command)$/;"	f
+m.httex	build/make4ht/make4ht-htlatex.lua	/^function m.httex(par)$/;"	f
+m.httex	make4ht-htlatex.lua	/^function m.httex(par)$/;"	f
+m.parse	build/make4ht/make4ht-errorlogparser.lua	/^function m.parse(log)$/;"	f
+m.parse	make4ht-errorlogparser.lua	/^function m.parse(log)$/;"	f
+make_default_options	build/make4ht/make4ht-aeneas-config.lua	/^local function make_default_options(options)$/;"	f
+make_default_options	make4ht-aeneas-config.lua	/^local function make_default_options(options)$/;"	f
+make_hashed_name	build/make4ht/extensions/make4ht-ext-dvisvgm_hashes.lua	/^local function make_hashed_name(base, hash)$/;"	f
+make_hashed_name	extensions/make4ht-ext-dvisvgm_hashes.lua	/^local function make_hashed_name(base, hash)$/;"	f
+make_id	build/make4ht/domfilters/make4ht-aeneas.lua	/^local function make_id(lastid, id_prefix)$/;"	f
+make_id	domfilters/make4ht-aeneas.lua	/^local function make_id(lastid, id_prefix)$/;"	f
+make_ids	build/make4ht/domfilters/make4ht-aeneas.lua	/^local function make_ids(parent, text, lastid, id_prefix)$/;"	f
+make_ids	domfilters/make4ht-aeneas.lua	/^local function make_ids(parent, text, lastid, id_prefix)$/;"	f
+make_makefile_command	build/make4ht/extensions/make4ht-ext-dvisvgm_hashes.lua	/^local function make_makefile_command(idvfile, page_sequences)$/;"	f
+make_makefile_command	extensions/make4ht-ext-dvisvgm_hashes.lua	/^local function make_makefile_command(idvfile, page_sequences)$/;"	f
+make_options	build/make4ht/extensions/make4ht-ext-preprocess_input.lua	/^local function make_options(arg, command_options)$/;"	f
+make_options	extensions/make4ht-ext-preprocess_input.lua	/^local function make_options(arg, command_options)$/;"	f
+make_ranges	build/make4ht/extensions/make4ht-ext-dvisvgm_hashes.lua	/^local function make_ranges(pages)$/;"	f
+make_ranges	extensions/make4ht-ext-dvisvgm_hashes.lua	/^local function make_ranges(pages)$/;"	f
+make_span	build/make4ht/domfilters/make4ht-aeneas.lua	/^local function make_span(id,parent, text)$/;"	f
+make_span	domfilters/make4ht-aeneas.lua	/^local function make_span(id,parent, text)$/;"	f
+make_toc_selector	build/make4ht/domfilters/make4ht-collapsetoc.lua	/^local function make_toc_selector(toc_levels)$/;"	f
+make_toc_selector	domfilters/make4ht-collapsetoc.lua	/^local function make_toc_selector(toc_levels)$/;"	f
+make_yaml	build/make4ht/filters/make4ht-staticsite.lua	/^local function make_yaml(tbl, level)$/;"	f
+make_yaml	filters/make4ht-staticsite.lua	/^local function make_yaml(tbl, level)$/;"	f
+merge	build/make4ht/mkutils.lua	/^function merge(t1, t2)$/;"	f
+merge	mkutils.lua	/^function merge(t1, t2)$/;"	f
+mkdirectories	build/make4ht/mkutils.lua	/^function mkdirectories(dirs)$/;"	f
+mkdirectories	mkutils.lua	/^function mkdirectories(dirs)$/;"	f
+move_file	build/make4ht/formats/make4ht-odt.lua	/^        local function move_file(group, dest)$/;"	f
+move_file	formats/make4ht-odt.lua	/^        local function move_file(group, dest)$/;"	f
+mv	build/make4ht/mkutils.lua	/^function mv(src, dest)$/;"	f
+mv	mkutils.lua	/^function mv(src, dest)$/;"	f
+obeylines-v 	htmldoc/make4ht-doc.css	/^.obeylines-h,.obeylines-v {white-space: nowrap; }$/;"	s
+obeylines-v 	make4ht-doc.css	/^.obeylines-h,.obeylines-v {white-space: nowrap; }$/;"	s
+obeylines-v 	out/make4ht-doc.css	/^.obeylines-h,.obeylines-v {white-space: nowrap; }$/;"	s
+obj[name] 	build/make4ht/make4ht-logging.lua	/^    obj[name] = function(self, ...)$/;"	f
+obj[name] 	make4ht-logging.lua	/^    obj[name] = function(self, ...)$/;"	f
+ol:last-child	htmldoc/make4ht-doc.css	/^li p~ul:last-child, li p~ol:last-child{ margin-bottom:0.5em; }$/;"	s
+ol:last-child	make4ht-doc.css	/^li p~ul:last-child, li p~ol:last-child{ margin-bottom:0.5em; }$/;"	s
+ol:last-child	out/make4ht-doc.css	/^li p~ul:last-child, li p~ol:last-child{ margin-bottom:0.5em; }$/;"	s
+open 	build/make4ht/lapp-mk4.lua	/^local function open (file,opt)$/;"	f
+open 	lapp-mk4.lua	/^local function open (file,opt)$/;"	f
+output 	build/make4ht/make4ht-logging.lua	/^    output = function(self, output)$/;"	f
+output 	make4ht-logging.lua	/^    output = function(self, output)$/;"	f
+p	htmldoc/make4ht-doc.css	/^p{margin-top:0;margin-bottom:0}$/;"	s
+p	make4ht-doc.css	/^p{margin-top:0;margin-bottom:0}$/;"	s
+p	out/make4ht-doc.css	/^p{margin-top:0;margin-bottom:0}$/;"	s
+p + div	htmldoc/make4ht-doc.css	/^p + div, p + pre {margin-top:1em;}$/;"	s
+p + div	make4ht-doc.css	/^p + div, p + pre {margin-top:1em;}$/;"	s
+p + div	out/make4ht-doc.css	/^p + div, p + pre {margin-top:1em;}$/;"	s
+p + p	htmldoc/make4ht-doc.css	/^p + p{margin-top:1em;}$/;"	s
+p + p	make4ht-doc.css	/^p + p{margin-top:1em;}$/;"	s
+p + p	out/make4ht-doc.css	/^p + p{margin-top:1em;}$/;"	s
+p + pre 	htmldoc/make4ht-doc.css	/^p + div, p + pre {margin-top:1em;}$/;"	s
+p + pre 	make4ht-doc.css	/^p + div, p + pre {margin-top:1em;}$/;"	s
+p + pre 	out/make4ht-doc.css	/^p + div, p + pre {margin-top:1em;}$/;"	s
+p.bibitem 	htmldoc/make4ht-doc.css	/^p.bibitem { text-indent: -2em; margin-left: 2em; margin-top:0.6em; margin-bottom:0.6em; }$/;"	s
+p.bibitem 	make4ht-doc.css	/^p.bibitem { text-indent: -2em; margin-left: 2em; margin-top:0.6em; margin-bottom:0.6em; }$/;"	s
+p.bibitem 	out/make4ht-doc.css	/^p.bibitem { text-indent: -2em; margin-left: 2em; margin-top:0.6em; margin-bottom:0.6em; }$/;"	s
+p.bibitem-p 	htmldoc/make4ht-doc.css	/^p.bibitem-p { text-indent: 0em; margin-left: 2em; margin-top:0.6em; margin-bottom:0.6em; }$/;"	s
+p.bibitem-p 	make4ht-doc.css	/^p.bibitem-p { text-indent: 0em; margin-left: 2em; margin-top:0.6em; margin-bottom:0.6em; }$/;"	s
+p.bibitem-p 	out/make4ht-doc.css	/^p.bibitem-p { text-indent: 0em; margin-left: 2em; margin-top:0.6em; margin-bottom:0.6em; }$/;"	s
+p.indent	htmldoc/make4ht-doc.css	/^p.indent{text-indent:0;}$/;"	s
+p.indent	make4ht-doc.css	/^p.indent{text-indent:0;}$/;"	s
+p.indent	out/make4ht-doc.css	/^p.indent{text-indent:0;}$/;"	s
+parse_errors	build/make4ht/make4ht-errorlogparser.lua	/^local function parse_errors(text) $/;"	f
+parse_errors	make4ht-errorlogparser.lua	/^local function parse_errors(text) $/;"	f
+parse_lg	build/make4ht/mkutils.lua	/^function parse_lg(filename)$/;"	f
+parse_lg	mkutils.lua	/^function parse_lg(filename)$/;"	f
+pre + p 	htmldoc/make4ht-doc.css	/^div + p, pre + p {margin-top:1em;}$/;"	s
+pre + p 	make4ht-doc.css	/^div + p, pre + p {margin-top:1em;}$/;"	s
+pre + p 	out/make4ht-doc.css	/^div + p, pre + p {margin-top:1em;}$/;"	s
+prepare_command	build/make4ht/extensions/make4ht-ext-dvisvgm_hashes.lua	/^local function prepare_command(idvfile, pages)$/;"	f
+prepare_command	extensions/make4ht-ext-dvisvgm_hashes.lua	/^local function prepare_command(idvfile, pages)$/;"	f
+prepare_configuration	build/make4ht/make4ht-aeneas-config.lua	/^local function prepare_configuration(parameters)$/;"	f
+prepare_configuration	make4ht-aeneas-config.lua	/^local function prepare_configuration(parameters)$/;"	f
+prepare_output_files	build/make4ht/formats/make4ht-odt.lua	/^local function prepare_output_files(lgfiles)$/;"	f
+prepare_output_files	formats/make4ht-odt.lua	/^local function prepare_output_files(lgfiles)$/;"	f
+prepare_path	build/make4ht/extensions/make4ht-ext-staticsite.lua	/^  local function prepare_path(dir, subdir)$/;"	f
+prepare_path	build/make4ht/mkutils.lua	/^function prepare_path(path)$/;"	f
+prepare_path	extensions/make4ht-ext-staticsite.lua	/^  local function prepare_path(dir, subdir)$/;"	f
+prepare_path	mkutils.lua	/^function prepare_path(path)$/;"	f
+prepare_selectors	build/make4ht/domfilters/make4ht-aeneas.lua	/^local function prepare_selectors(skips)$/;"	f
+prepare_selectors	domfilters/make4ht-aeneas.lua	/^local function prepare_selectors(skips)$/;"	f
+prepare_tasks	build/make4ht/make4ht-aeneas-config.lua	/^local function prepare_tasks(files, configuration)$/;"	f
+prepare_tasks	make4ht-aeneas-config.lua	/^local function prepare_tasks(files, configuration)$/;"	f
+print_chunks	build/make4ht/make4ht-errorlogparser.lua	/^function print_chunks(chunks, level)$/;"	f
+print_chunks	make4ht-errorlogparser.lua	/^function print_chunks(chunks, level)$/;"	f
+process_args	build/make4ht/mkparams.lua	/^local function process_args(args)$/;"	f
+process_args	mkparams.lua	/^local function process_args(args)$/;"	f
+process_booktabs	build/make4ht/domfilters/make4ht-booktabs.lua	/^local function process_booktabs(dom)$/;"	f
+process_booktabs	domfilters/make4ht-booktabs.lua	/^local function process_booktabs(dom)$/;"	f
+process_css	build/make4ht/domfilters/make4ht-joincolors.lua	/^local function process_css(cssfile)$/;"	f
+process_css	domfilters/make4ht-joincolors.lua	/^local function process_css(cssfile)$/;"	f
+process_css_files	build/make4ht/domfilters/make4ht-joincolors.lua	/^local function process_css_files(dom)$/;"	f
+process_css_files	domfilters/make4ht-joincolors.lua	/^local function process_css_files(dom)$/;"	f
+process_options_string	build/make4ht/lapp-mk4.lua	/^function process_options_string(str)$/;"	f
+process_options_string	lapp-mk4.lua	/^function process_options_string(str)$/;"	f
+quit	build/make4ht/lapp-mk4.lua	/^local function quit(msg,no_usage)$/;"	f
+quit	lapp-mk4.lua	/^local function quit(msg,no_usage)$/;"	f
+range_check	build/make4ht/lapp-mk4.lua	/^local function range_check(x,min,max,parm)$/;"	f
+range_check	lapp-mk4.lua	/^local function range_check(x,min,max,parm)$/;"	f
+read_arguments	build/make4ht/make4ht-dvireader.lua	/^local function read_arguments(str, pos, args)$/;"	f
+read_arguments	make4ht-dvireader.lua	/^local function read_arguments(str, pos, args)$/;"	f
+read_byte	build/make4ht/make4ht-dvireader.lua	/^local function read_byte(str, pos)$/;"	f
+read_byte	make4ht-dvireader.lua	/^local function read_byte(str, pos)$/;"	f
+read_char	build/make4ht/make4ht-dvireader.lua	/^local function read_char(str, pos)$/;"	f
+read_char	make4ht-dvireader.lua	/^local function read_char(str, pos)$/;"	f
+read_integer	build/make4ht/make4ht-dvireader.lua	/^local function read_integer(str, pos)$/;"	f
+read_integer	make4ht-dvireader.lua	/^local function read_integer(str, pos)$/;"	f
+read_log	build/make4ht/extensions/make4ht-ext-dvisvgm_hashes.lua	/^local function read_log(dvisvgmlog)$/;"	f
+read_log	extensions/make4ht-ext-dvisvgm_hashes.lua	/^local function read_log(dvisvgmlog)$/;"	f
+read_opcode	build/make4ht/make4ht-dvireader.lua	/^local function read_opcode(opcode, str, pos)$/;"	f
+read_opcode	make4ht-dvireader.lua	/^local function read_opcode(opcode, str, pos)$/;"	f
+read_page	build/make4ht/make4ht-dvireader.lua	/^local function read_page(str, start, stop)$/;"	f
+read_page	make4ht-dvireader.lua	/^local function read_page(str, start, stop)$/;"	f
+read_sixteen	build/make4ht/make4ht-dvireader.lua	/^local function read_sixteen(str, pos)$/;"	f
+read_sixteen	make4ht-dvireader.lua	/^local function read_sixteen(str, pos)$/;"	f
+remove_extension	build/make4ht/mkutils.lua	/^function remove_extension(path)$/;"	f
+remove_extension	mkutils.lua	/^function remove_extension(path)$/;"	f
+remove_levels	build/make4ht/domfilters/make4ht-collapsetoc.lua	/^local function remove_levels(toc, matched_ids)$/;"	f
+remove_levels	domfilters/make4ht-collapsetoc.lua	/^local function remove_levels(toc, matched_ids)$/;"	f
+remove_sections	build/make4ht/domfilters/make4ht-collapsetoc.lua	/^local function remove_sections(part_elements, currentpart)$/;"	f
+remove_sections	domfilters/make4ht-collapsetoc.lua	/^local function remove_sections(part_elements, currentpart)$/;"	f
+return s:gsub('(href	build/make4ht/filters/make4ht-fix-links.lua	/^  return s:gsub('(href=".-")', function(a)$/;"	f
+return s:gsub('(href	filters/make4ht-fix-links.lua	/^  return s:gsub('(href=".-")', function(a)$/;"	f
+return s:gsub('(id	build/make4ht/filters/make4ht-fix-links.lua	/^  return s:gsub('(id=".-")', function(a)$/;"	f
+return s:gsub('(id	filters/make4ht-fix-links.lua	/^  return s:gsub('(id=".-")', function(a)$/;"	f
+return str:gsub('src	build/make4ht/extensions/make4ht-ext-dvisvgm_hashes.lua	/^      return str:gsub('src="([^"]+)', function(filename)$/;"	f
+return str:gsub('src	extensions/make4ht-ext-dvisvgm_hashes.lua	/^      return str:gsub('src=["\\'](.-)(["\\'])', function(filename, endquote)$/;"	f
+reversemarginpar 	htmldoc/make4ht-doc.css	/^.marginpar,.reversemarginpar {width:20%; float:right; text-align:left; margin-left:auto; margin-top:0.5em; font-size:85%; text-decoration:underline;}$/;"	s
+reversemarginpar 	make4ht-doc.css	/^.marginpar,.reversemarginpar {width:20%; float:right; text-align:left; margin-left:auto; margin-top:0.5em; font-size:85%; text-decoration:underline;}$/;"	s
+reversemarginpar 	out/make4ht-doc.css	/^.marginpar,.reversemarginpar {width:20%; float:right; text-align:left; margin-left:auto; margin-top:0.5em; font-size:85%; text-decoration:underline;}$/;"	s
+reversemarginpar p	htmldoc/make4ht-doc.css	/^.marginpar p,.reversemarginpar p{margin-top:0.4em; margin-bottom:0.4em;}$/;"	s
+reversemarginpar p	make4ht-doc.css	/^.marginpar p,.reversemarginpar p{margin-top:0.4em; margin-bottom:0.4em;}$/;"	s
+reversemarginpar p	out/make4ht-doc.css	/^.marginpar p,.reversemarginpar p{margin-top:0.4em; margin-bottom:0.4em;}$/;"	s
+rtrim	build/make4ht/lapp-mk4.lua	/^local function rtrim(line)$/;"	f
+rtrim	lapp-mk4.lua	/^local function rtrim(line)$/;"	f
+rules	htmldoc/make4ht-doc.css	/^table[rules] {border-left:solid black 0.4pt; border-right:solid black 0.4pt; }$/;"	s
+rules	make4ht-doc.css	/^table[rules] {border-left:solid black 0.4pt; border-right:solid black 0.4pt; }$/;"	s
+rules	out/make4ht-doc.css	/^table[rules] {border-left:solid black 0.4pt; border-right:solid black 0.4pt; }$/;"	s
+run	build/make4ht/mkutils.lua	/^local function run(untrusted_code, env)$/;"	f
+run	mkutils.lua	/^local function run(untrusted_code, env)$/;"	f
+run_indexing_command 	make4ht-indexing.lua	/^local function run_indexing_command (command, par)$/;"	f
+s) if s:match	build/make4ht/make4ht-indexing.lua	/^	return l:gsub(" (.)",function(s) if s:match("[%a]") then return " "..s else return s end end):sub(2,-2)$/;"	f
+s) if s:match	make4ht-indexing.lua	/^	return l:gsub(" (.)",function(s) if s:match("[%a]") then return " "..s else return s end end):sub(2,-2)$/;"	f
+s) table.insert	build/make4ht/make4ht-config.lua	/^	current:gsub("([^\/]+)", function(s) table.insert(path,s) end)$/;"	f
+s) table.insert	make4ht-config.lua	/^	current:gsub("([^\/]+)", function(s) table.insert(path,s) end)$/;"	f
+s:gsub("(%w+)%s*	build/make4ht/filters/make4ht-cleanspan.lua	/^		s:gsub("(%w+)%s*=%s*\\"([^\\"]-)\\"", function(k,w)$/;"	f
+s:gsub("(%w+)%s*	filters/make4ht-cleanspan.lua	/^		s:gsub("(%w+)%s*=%s*\\"([^\\"]-)\\"", function(k,w)$/;"	f
+sanitize_licr	build/make4ht/make4ht-indexing.lua	/^local function sanitize_licr(l)$/;"	f
+sanitize_licr	make4ht-indexing.lua	/^local function sanitize_licr(l)$/;"	f
+save_config	build/make4ht/domfilters/make4ht-aeneas.lua	/^local function save_config(dom, saves)$/;"	f
+save_config	domfilters/make4ht-aeneas.lua	/^local function save_config(dom, saves)$/;"	f
+save_css	build/make4ht/filters/make4ht-mathjaxnode.lua	/^local function save_css(filename, css)$/;"	f
+save_css	filters/make4ht-mathjaxnode.lua	/^local function save_css(filename, css)$/;"	f
+save_file	build/make4ht/extensions/make4ht-ext-dvisvgm_hashes.lua	/^local function save_file(filename, text)$/;"	f
+save_file	extensions/make4ht-ext-dvisvgm_hashes.lua	/^local function save_file(filename, text)$/;"	f
+self:gsub(pattern, function(c) fields[#fields+1] 	build/make4ht/mkutils.lua	/^	self:gsub(pattern, function(c) fields[#fields+1] = c end)$/;"	f
+self:gsub(pattern, function(c) fields[#fields+1] 	mkutils.lua	/^	self:gsub(pattern, function(c) fields[#fields+1] = c end)$/;"	f
+set_result	build/make4ht/lapp-mk4.lua	/^    local function set_result(ps,parm,val)$/;"	f
+set_result	lapp-mk4.lua	/^    local function set_result(ps,parm,val)$/;"	f
+span.LATEX span.A	htmldoc/make4ht-doc.css	/^span.LATEX span.A{ position:relative; top:-0.5ex; left:-0.4em; font-size:85%;}$/;"	s
+span.LATEX span.A	make4ht-doc.css	/^span.LATEX span.A{ position:relative; top:-0.5ex; left:-0.4em; font-size:85%;}$/;"	s
+span.LATEX span.A	out/make4ht-doc.css	/^span.LATEX span.A{ position:relative; top:-0.5ex; left:-0.4em; font-size:85%;}$/;"	s
+span.LATEX span.TEX	htmldoc/make4ht-doc.css	/^span.LATEX span.TEX{ position:relative; left: -0.4em; }$/;"	s
+span.LATEX span.TEX	make4ht-doc.css	/^span.LATEX span.TEX{ position:relative; left: -0.4em; }$/;"	s
+span.LATEX span.TEX	out/make4ht-doc.css	/^span.LATEX span.TEX{ position:relative; left: -0.4em; }$/;"	s
+span.TEX 	htmldoc/make4ht-doc.css	/^span.TEX {letter-spacing: -0.125em; }$/;"	s
+span.TEX 	make4ht-doc.css	/^span.TEX {letter-spacing: -0.125em; }$/;"	s
+span.TEX 	out/make4ht-doc.css	/^span.TEX {letter-spacing: -0.125em; }$/;"	s
+span.TEX span.E	htmldoc/make4ht-doc.css	/^span.TEX span.E{ position:relative;top:0.5ex;left:-0.0417em;}$/;"	s
+span.TEX span.E	make4ht-doc.css	/^span.TEX span.E{ position:relative;top:0.5ex;left:-0.0417em;}$/;"	s
+span.TEX span.E	out/make4ht-doc.css	/^span.TEX span.E{ position:relative;top:0.5ex;left:-0.0417em;}$/;"	s
+span.bar-css 	htmldoc/make4ht-doc.css	/^span.bar-css {text-decoration:overline;}$/;"	s
+span.bar-css 	make4ht-doc.css	/^span.bar-css {text-decoration:overline;}$/;"	s
+span.bar-css 	out/make4ht-doc.css	/^span.bar-css {text-decoration:overline;}$/;"	s
+span.footnote-mark a sup.textsuperscript	htmldoc/make4ht-doc.css	/^span.footnote-mark sup.textsuperscript, span.footnote-mark a sup.textsuperscript{ font-size:80%; }$/;"	s
+span.footnote-mark a sup.textsuperscript	make4ht-doc.css	/^span.footnote-mark sup.textsuperscript, span.footnote-mark a sup.textsuperscript{ font-size:80%; }$/;"	s
+span.footnote-mark a sup.textsuperscript	out/make4ht-doc.css	/^span.footnote-mark sup.textsuperscript, span.footnote-mark a sup.textsuperscript{ font-size:80%; }$/;"	s
+span.footnote-mark sup.textsuperscript	htmldoc/make4ht-doc.css	/^span.footnote-mark sup.textsuperscript, span.footnote-mark a sup.textsuperscript{ font-size:80%; }$/;"	s
+span.footnote-mark sup.textsuperscript	make4ht-doc.css	/^span.footnote-mark sup.textsuperscript, span.footnote-mark a sup.textsuperscript{ font-size:80%; }$/;"	s
+span.footnote-mark sup.textsuperscript	out/make4ht-doc.css	/^span.footnote-mark sup.textsuperscript, span.footnote-mark a sup.textsuperscript{ font-size:80%; }$/;"	s
+span.pmatrix img	htmldoc/make4ht-doc.css	/^span.pmatrix img{vertical-align:middle;}$/;"	s
+span.pmatrix img	make4ht-doc.css	/^span.pmatrix img{vertical-align:middle;}$/;"	s
+span.pmatrix img	out/make4ht-doc.css	/^span.pmatrix img{vertical-align:middle;}$/;"	s
+span.thank-mark	htmldoc/make4ht-doc.css	/^span.thank-mark{ vertical-align: super }$/;"	s
+span.thank-mark	make4ht-doc.css	/^span.thank-mark{ vertical-align: super }$/;"	s
+span.thank-mark	out/make4ht-doc.css	/^span.thank-mark{ vertical-align: super }$/;"	s
+string:split	build/make4ht/mkutils.lua	/^function string:split(sep)$/;"	f
+string:split	mkutils.lua	/^function string:split(sep)$/;"	f
+table	htmldoc/make4ht-doc.css	/^table[rules] {border-left:solid black 0.4pt; border-right:solid black 0.4pt; }$/;"	s
+table	make4ht-doc.css	/^table[rules] {border-left:solid black 0.4pt; border-right:solid black 0.4pt; }$/;"	s
+table	out/make4ht-doc.css	/^table[rules] {border-left:solid black 0.4pt; border-right:solid black 0.4pt; }$/;"	s
+table.eqnarray 	htmldoc/make4ht-doc.css	/^table.eqnarray-star, table.eqnarray {width:100%;}$/;"	s
+table.eqnarray 	make4ht-doc.css	/^table.eqnarray-star, table.eqnarray {width:100%;}$/;"	s
+table.eqnarray 	out/make4ht-doc.css	/^table.eqnarray-star, table.eqnarray {width:100%;}$/;"	s
+table.eqnarray-star	htmldoc/make4ht-doc.css	/^table.eqnarray-star, table.eqnarray {width:100%;}$/;"	s
+table.eqnarray-star	make4ht-doc.css	/^table.eqnarray-star, table.eqnarray {width:100%;}$/;"	s
+table.eqnarray-star	out/make4ht-doc.css	/^table.eqnarray-star, table.eqnarray {width:100%;}$/;"	s
+table.equation 	htmldoc/make4ht-doc.css	/^table.equation {width:100%;}$/;"	s
+table.equation 	make4ht-doc.css	/^table.equation {width:100%;}$/;"	s
+table.equation 	out/make4ht-doc.css	/^table.equation {width:100%;}$/;"	s
+table.pmatrix 	htmldoc/make4ht-doc.css	/^table.pmatrix {width:100%;}$/;"	s
+table.pmatrix 	make4ht-doc.css	/^table.pmatrix {width:100%;}$/;"	s
+table.pmatrix 	out/make4ht-doc.css	/^table.pmatrix {width:100%;}$/;"	s
+table.tabular	htmldoc/make4ht-doc.css	/^table.tabular{border-collapse: collapse; border-spacing: 0;}$/;"	s
+table.tabular	make4ht-doc.css	/^table.tabular{border-collapse: collapse; border-spacing: 0;}$/;"	s
+table.tabular	out/make4ht-doc.css	/^table.tabular{border-collapse: collapse; border-spacing: 0;}$/;"	s
+table.tabular 	htmldoc/make4ht-doc.css	/^table.tabular {margin-left: auto; margin-right: auto;}$/;"	s
+table.tabular 	make4ht-doc.css	/^table.tabular {margin-left: auto; margin-right: auto;}$/;"	s
+table.tabular 	out/make4ht-doc.css	/^table.tabular {margin-left: auto; margin-right: auto;}$/;"	s
+table.tabular td p	htmldoc/make4ht-doc.css	/^table.tabular td p{margin-top:0em;}$/;"	s
+table.tabular td p	make4ht-doc.css	/^table.tabular td p{margin-top:0em;}$/;"	s
+table.tabular td p	out/make4ht-doc.css	/^table.tabular td p{margin-top:0em;}$/;"	s
+td center 	htmldoc/make4ht-doc.css	/^td center { margin-top:0em; margin-bottom:0em; }$/;"	s
+td center 	make4ht-doc.css	/^td center { margin-top:0em; margin-bottom:0em; }$/;"	s
+td center 	out/make4ht-doc.css	/^td center { margin-top:0em; margin-bottom:0em; }$/;"	s
+td p:first-child	htmldoc/make4ht-doc.css	/^td p:first-child{ margin-top:0em; }$/;"	s
+td p:first-child	make4ht-doc.css	/^td p:first-child{ margin-top:0em; }$/;"	s
+td p:first-child	out/make4ht-doc.css	/^td p:first-child{ margin-top:0em; }$/;"	s
+td p:last-child	htmldoc/make4ht-doc.css	/^td p:last-child{ margin-bottom:0em; }$/;"	s
+td p:last-child	make4ht-doc.css	/^td p:last-child{ margin-bottom:0em; }$/;"	s
+td p:last-child	out/make4ht-doc.css	/^td p:last-child{ margin-bottom:0em; }$/;"	s
+td.displaylines 	htmldoc/make4ht-doc.css	/^td.displaylines {text-align:center; white-space:nowrap;}$/;"	s
+td.displaylines 	make4ht-doc.css	/^td.displaylines {text-align:center; white-space:nowrap;}$/;"	s
+td.displaylines 	out/make4ht-doc.css	/^td.displaylines {text-align:center; white-space:nowrap;}$/;"	s
+td.eqnarray2 	htmldoc/make4ht-doc.css	/^td.eqnarray2 { width:5%; }$/;"	s
+td.eqnarray2 	make4ht-doc.css	/^td.eqnarray2 { width:5%; }$/;"	s
+td.eqnarray2 	out/make4ht-doc.css	/^td.eqnarray2 { width:5%; }$/;"	s
+td.eqnarray4 	htmldoc/make4ht-doc.css	/^td.eqnarray4 { width:5%; white-space: normal; }$/;"	s
+td.eqnarray4 	make4ht-doc.css	/^td.eqnarray4 { width:5%; white-space: normal; }$/;"	s
+td.eqnarray4 	out/make4ht-doc.css	/^td.eqnarray4 { width:5%; white-space: normal; }$/;"	s
+td.equation 	htmldoc/make4ht-doc.css	/^td.equation { margin-top:1em; margin-bottom:1em; } $/;"	s
+td.equation 	make4ht-doc.css	/^td.equation { margin-top:1em; margin-bottom:1em; } $/;"	s
+td.equation 	out/make4ht-doc.css	/^td.equation { margin-top:1em; margin-bottom:1em; } $/;"	s
+td.equation-label 	htmldoc/make4ht-doc.css	/^td.equation-label { width:5%; text-align:center; }$/;"	s
+td.equation-label 	make4ht-doc.css	/^td.equation-label { width:5%; text-align:center; }$/;"	s
+td.equation-label 	out/make4ht-doc.css	/^td.equation-label { width:5%; text-align:center; }$/;"	s
+td.td00	htmldoc/make4ht-doc.css	/^td.td00{ padding-left:0pt; padding-right:0pt; }$/;"	s
+td.td00	make4ht-doc.css	/^td.td00{ padding-left:0pt; padding-right:0pt; }$/;"	s
+td.td00	out/make4ht-doc.css	/^td.td00{ padding-left:0pt; padding-right:0pt; }$/;"	s
+td.td01	htmldoc/make4ht-doc.css	/^td.td01{ padding-left:0pt; padding-right:5pt; }$/;"	s
+td.td01	make4ht-doc.css	/^td.td01{ padding-left:0pt; padding-right:5pt; }$/;"	s
+td.td01	out/make4ht-doc.css	/^td.td01{ padding-left:0pt; padding-right:5pt; }$/;"	s
+td.td10	htmldoc/make4ht-doc.css	/^td.td10{ padding-left:5pt; padding-right:0pt; }$/;"	s
+td.td10	make4ht-doc.css	/^td.td10{ padding-left:5pt; padding-right:0pt; }$/;"	s
+td.td10	out/make4ht-doc.css	/^td.td10{ padding-left:5pt; padding-right:0pt; }$/;"	s
+td.td11	htmldoc/make4ht-doc.css	/^td.td11{ padding-left:5pt; padding-right:5pt; }$/;"	s
+td.td11	make4ht-doc.css	/^td.td11{ padding-left:5pt; padding-right:5pt; }$/;"	s
+td.td11	out/make4ht-doc.css	/^td.td11{ padding-left:5pt; padding-right:5pt; }$/;"	s
+test_make	build/make4ht/extensions/make4ht-ext-dvisvgm_hashes.lua	/^local function test_make()$/;"	f
+test_make	extensions/make4ht-ext-dvisvgm_hashes.lua	/^local function test_make()$/;"	f
+testlogfile	build/make4ht/make4ht-htlatex.lua	/^local function testlogfile(par)$/;"	f
+testlogfile	make4ht-htlatex.lua	/^local function testlogfile(par)$/;"	f
+tex_content	Makefile	/^tex_content = $(wildcard *.tex)$/;"	m
+tex_file_not_exits	build/make4ht/mkparams.lua	/^local function tex_file_not_exits(tex_file)$/;"	f
+tex_file_not_exits	mkparams.lua	/^local function tex_file_not_exits(tex_file)$/;"	f
+texorpdfstring Incorrect handling of command line arguments for texttt tex4ht	build/make4ht/readme.tex	/^\\subsection{\\texorpdfstring{Incorrect handling of command line arguments$/;"	b
+texorpdfstring Incorrect handling of command line arguments for texttt tex4ht	readme.tex	/^\\subsection{\\texorpdfstring{Incorrect handling of command line arguments$/;"	b
+texorpdfstring The texttt collapsetoc	build/make4ht/readme.tex	/^\\subsection{\\texorpdfstring{The \\texttt{collapsetoc} dom$/;"	b
+texorpdfstring The texttt collapsetoc	readme.tex	/^\\subsection{\\texorpdfstring{The \\texttt{collapsetoc} dom$/;"	b
+texorpdfstring The texttt fixinlines	build/make4ht/readme.tex	/^\\subsection{\\texorpdfstring{The \\texttt{fixinlines} dom$/;"	b
+texorpdfstring The texttt fixinlines	readme.tex	/^\\subsection{\\texorpdfstring{The \\texttt{fixinlines} dom$/;"	b
+texorpdfstring The texttt make4ht aeneas config	build/make4ht/readme.tex	/^\\subsection{\\texorpdfstring{The \\texttt{make4ht-aeneas-config}$/;"	b
+texorpdfstring The texttt make4ht aeneas config	readme.tex	/^\\subsection{\\texorpdfstring{The \\texttt{make4ht-aeneas-config}$/;"	b
+texorpdfstring The texttt makeindex	build/make4ht/readme.tex	/^\\subsubsection{\\texorpdfstring{The \\texttt{makeindex}$/;"	b
+texorpdfstring The texttt makeindex	readme.tex	/^\\subsubsection{\\texorpdfstring{The \\texttt{makeindex}$/;"	b
+texorpdfstring The texttt tidy	build/make4ht/readme.tex	/^\\subsection{\\texorpdfstring{The \\texttt{tidy}$/;"	b
+texorpdfstring The texttt tidy	readme.tex	/^\\subsection{\\texorpdfstring{The \\texttt{tidy}$/;"	b
+texorpdfstring The texttt xindex	build/make4ht/readme.tex	/^\\subsubsection{\\texorpdfstring{The \\texttt{xindex}$/;"	b
+texorpdfstring The texttt xindex	readme.tex	/^\\subsubsection{\\texorpdfstring{The \\texttt{xindex}$/;"	b
+texorpdfstring The texttt xindy	build/make4ht/readme.tex	/^\\subsubsection{\\texorpdfstring{The \\texttt{xindy}$/;"	b
+texorpdfstring The texttt xindy	readme.tex	/^\\subsubsection{\\texorpdfstring{The \\texttt{xindy}$/;"	b
+texorpdfstring Why texttt make4ht	build/make4ht/readme.tex	/^\\section{\\texorpdfstring{Why \\texttt{make4ht}? -- \\texttt{htlatex}$/;"	s
+texorpdfstring Why texttt make4ht	readme.tex	/^\\section{\\texorpdfstring{Why \\texttt{make4ht}? -- \\texttt{htlatex}$/;"	s
+trim	build/make4ht/lapp-mk4.lua	/^local function trim(s)$/;"	f
+trim	lapp-mk4.lua	/^local function trim(s)$/;"	f
+ul:last-child	htmldoc/make4ht-doc.css	/^li p~ul:last-child, li p~ol:last-child{ margin-bottom:0.5em; }$/;"	s
+ul:last-child	make4ht-doc.css	/^li p~ul:last-child, li p~ol:last-child{ margin-bottom:0.5em; }$/;"	s
+ul:last-child	out/make4ht-doc.css	/^li p~ul:last-child, li p~ol:last-child{ margin-bottom:0.5em; }$/;"	s
+untrusted_function, message 	build/make4ht/mkutils.lua	/^  untrusted_function, message = load(untrusted_code, nil, "t",env)$/;"	f
+untrusted_function, message 	mkutils.lua	/^  untrusted_function, message = load(untrusted_code, nil, "t",env)$/;"	f
+update_build_sequence	build/make4ht/extensions/make4ht-ext-detect_engine.lua	/^local function update_build_sequence(program, build_seq)$/;"	f
+update_build_sequence	extensions/make4ht-ext-detect_engine.lua	/^local function update_build_sequence(program, build_seq)$/;"	f
+update_height	build/make4ht/filters/make4ht-svg-height.lua	/^local function update_height(svg, height)$/;"	f
+update_height	filters/make4ht-svg-height.lua	/^local function update_height(svg, height)$/;"	f
+update_jobname	build/make4ht/extensions/make4ht-ext-staticsite.lua	/^local function update_jobname(slug, latex_par)$/;"	f
+update_jobname	extensions/make4ht-ext-staticsite.lua	/^local function update_jobname(slug, latex_par)$/;"	f
+update_mathvariant	build/make4ht/domfilters/make4ht-joincharacters.lua	/^local function update_mathvariant(curr)$/;"	f
+update_mathvariant	domfilters/make4ht-joincharacters.lua	/^local function update_mathvariant(curr)$/;"	f
+update_properties	build/make4ht/filters/make4ht-staticsite.lua	/^local function update_properties(properties, dom)$/;"	f
+update_properties	filters/make4ht-staticsite.lua	/^local function update_properties(properties, dom)$/;"	f
+update_row	build/make4ht/domfilters/make4ht-booktabs.lua	/^local function update_row(current_rows, match, newspan, i)$/;"	f
+update_row	domfilters/make4ht-booktabs.lua	/^local function update_row(current_rows, match, newspan, i)$/;"	f
+use_fonts	build/make4ht/filters/make4ht-mathjaxnode.lua	/^local function use_fonts(css)$/;"	f
+use_fonts	filters/make4ht-mathjaxnode.lua	/^local function use_fonts(css)$/;"	f
+version	build/make4ht/lapp-mk4.lua	/^local function version()$/;"	f
+version	lapp-mk4.lua	/^local function version()$/;"	f
+w) return tab[w:sub	build/make4ht/mkutils.lua	/^	return (s:gsub('($%b{})', function(w) return tab[w:sub(3, -2)] or w end))$/;"	f
+w) return tab[w:sub	mkutils.lua	/^	return (s:gsub('($%b{})', function(w) return tab[w:sub(3, -2)] or w end))$/;"	f
+write_config	build/make4ht/make4ht-aeneas-config.lua	/^local function write_config(filename, configuration)$/;"	f
+write_config	make4ht-aeneas-config.lua	/^local function write_config(filename, configuration)$/;"	f
+xassert	build/make4ht/lapp-mk4.lua	/^local function xassert(condn,msg)$/;"	f
+xassert	lapp-mk4.lua	/^local function xassert(condn,msg)$/;"	f
+xtonumber	build/make4ht/lapp-mk4.lua	/^local function xtonumber(s)$/;"	f
+xtonumber	lapp-mk4.lua	/^local function xtonumber(s)$/;"	f
