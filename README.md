@@ -888,13 +888,11 @@ modules
 
 options
 
-
 :    additional command line options for the Makeindex command.
 
 ### The `xindex` command
 
 options
-
 
 :    additional command line options for the Xindex command.
 
