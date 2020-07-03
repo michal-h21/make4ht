@@ -118,6 +118,9 @@ function cp(src,dest)
 	local command = string.format('%s "%s" "%s"', cp_func, src, dest)
 	if cp_func == "copy" then command = command:gsub("/",'\\') end
 	log:info("Copy: "..command)
+  if not file_exists(src) then
+    log:error("File " .. src .. " doesn't exist")
+  end
 	os.execute(command)
 end
 

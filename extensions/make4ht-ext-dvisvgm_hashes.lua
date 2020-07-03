@@ -244,11 +244,11 @@ function M.modify_build(make)
 
   -- fix src attributes
   local process = filter {
-    function(str)
-      return str:gsub('src="([^"]+)', function(filename)
+    function(str, filename)
+      return str:gsub('src=["\'](.-)(["\'])', function(filename, endquote)
         local newname = output_map[filename] or filename
         log:debug("newname", newname)
-        return 'src="'.. newname 
+        return 'src=' .. endquote .. newname  .. endquote
       end)
     end
   }

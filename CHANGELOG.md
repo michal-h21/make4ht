@@ -1,5 +1,13 @@
 # Changelog
 
+- 2020/05/27
+
+    - test if copied file exists in `mkutils.cp`.
+    
+- 2020/05/19
+
+    - fixed image filename replace in `dvisvgm_hashes` extension.
+
 - 2020/05/16
 
     - fixed HTML filename matching in extensions.
