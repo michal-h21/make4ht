@@ -1,5 +1,9 @@
 # Changelog
 
+- 2020/07/08
+
+    - don't fail when filename cannot be detected in `make4ht-errorlogparser.lua`.
+
 - 2020/05/27
 
     - test if copied file exists in `mkutils.cp`.

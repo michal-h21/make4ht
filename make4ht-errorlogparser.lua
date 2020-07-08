@@ -1,7 +1,10 @@
 local m = {}
 
 local function get_filename(chunk)
-  local filename = chunk:match("([^\n^%(]+)")
+  local filename = chunk:match("([^\n^%(]+)") 
+  if not filename then 
+    return false, "No filename detected"
+  end
   local first = filename:match("^[%./\\]+")
   if first then return filename end
   return false
