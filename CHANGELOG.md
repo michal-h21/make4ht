@@ -1,5 +1,9 @@
 # Changelog
 
+- 2020/07/10
+
+    - use the `joincharacters` DOM filter for TEI output.
+
 - 2020/07/08
 
     - don't fail when filename cannot be detected in `make4ht-errorlogparser.lua`.
