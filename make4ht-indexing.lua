@@ -75,7 +75,7 @@ local parse_idx = function(content)
     if line:match("^\\beforeentry") then
       -- increment index entry number
       current_entry = current_entry + 1
-      local file, dest = line:match("\\beforeentry{(.-)}{(.-)}")
+      local file, dest = line:match("\\beforeentry%s*{(.-)}{(.-)}")
       map[current_entry] = {file = file, dest = dest}
     elseif line:match("^\\indexentry") then
       -- replace the page number with the current

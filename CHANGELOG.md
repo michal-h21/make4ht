@@ -1,5 +1,9 @@
 # Changelog
 
+- 2020/07/17
+
+    - fixed bug in index parsing.
+
 - 2020/07/10
 
     - use the `joincharacters` DOM filter for TEI output.
