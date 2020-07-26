@@ -133,6 +133,8 @@ figure.figure > p {text-align:center;}
 figcaption.caption {text-indent:-2em; margin-left:3em; margin-right:1em; text-align:center;}
 figcaption.caption span.id{font-weight: bold; white-space: nowrap; }
 .small-caps{font-variant: small-caps;}
-p.indent{text-indent:0;}
+body{ font-size:18px; font-size-adjust: 0.5; width:65ch; max-width:100%; margin: 1em auto; }
+p,li,dt{ line-height: calc(1ex / 0.32); text-align: justify; hyphens: auto; }
+div.center p {text-align:center;}
 /* end css.sty */
 
