@@ -1,5 +1,9 @@
 # Changelog
 
+- 2020/07/18
+
+    - changed CSS for the HTML documentation.
+
 - 2020/07/17
 
     - fixed bug in index parsing.
