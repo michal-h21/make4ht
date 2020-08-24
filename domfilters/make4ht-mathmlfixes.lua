@@ -28,6 +28,7 @@ local function fix_nested_mstyle(el)
       -- if parent doesn't have the mathvariant attribute copy it from <mstyle>
       if not parent:get_attribute("mathvariant") then
         local mathvariant = el:get_attribute("mathvariant") 
+        parent._attr = parent._attr or {}
         parent:set_attribute("mathvariant", mathvariant)
       end
       -- copy the contents of <mstyle> to the parent element

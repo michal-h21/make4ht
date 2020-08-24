@@ -1,5 +1,9 @@
 # Changelog
 
+- 2020/08/24
+
+    - initialize attributes in new element in `mathmlfixes` DOM extension.
+
 - 2020/07/18
 
     - changed CSS for the HTML documentation.
