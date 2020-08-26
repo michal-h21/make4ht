@@ -1,5 +1,9 @@
 # Changelog
 
+- 2020/08/26
+
+    - `fixinlines` DOM filter: added `<a>` element into list of inline elements.
+
 - 2020/08/24
 
     - initialize attributes in new element in `mathmlfixes` DOM extension.

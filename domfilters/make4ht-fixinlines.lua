@@ -1,4 +1,5 @@
 local inline_elements = {
+  a=true,
   b=true,
   big=true,
   i=true,
