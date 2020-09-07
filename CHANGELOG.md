@@ -1,5 +1,9 @@
 # Changelog
 
+- 2020/09/07
+
+    - version `0.3f` released.
+
 - 2020/08/26
 
     - `fixinlines` DOM filter: added `<a>` element into list of inline elements.
