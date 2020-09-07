@@ -189,9 +189,9 @@ should copy all output files to the correct destinations.
 for diagrams or complicated math, for example.
 
 By default, the image conversion is configured in a
-[`.env` file](http://www.tug.org/applications/tex4ht/mn35.html#index35-73001).
+[`.env` file](https://www.tug.org/applications/tex4ht/mn34.html#mn35.html).
 It has a bit of strange syntax,  with 
-[operating system dependent](http://www.tug.org/applications/tex4ht/mn-unix.html#index27-69005) rules.
+operating system dependent rules.
 `make4ht` provides simpler means for the image conversion in the build files.
 It is possible to change the image conversion parameters without a need to modify the `.env` file.
 The process is described in section \ref{sec:imageconversion}.
