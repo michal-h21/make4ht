@@ -4,16 +4,16 @@
 <meta name="generator" content="HTML Tidy for HTML5 for Linux version 5.6.0" />
 <title>The make4ht build system</title>
 <meta charset='utf-8' />
-<meta name='generator' content='TeX4ht (https://tug.org/tex4ht/)' />
-<meta name='viewport' content='width=device-width,initial-scale=1' />
+<meta content='TeX4ht (https://tug.org/tex4ht/)' name='generator' />
+<meta content='width=device-width,initial-scale=1' name='viewport' />
 <link rel='stylesheet' type='text/css' href='make4ht-doc.css' />
-<meta name='src' content='make4ht-doc.tex' />
+<meta content='make4ht-doc.tex' name='src' />
 <script src='https://hypothes.is/embed.js'></script>
-<meta content='The make4ht build system' property='og:title' />
-<meta content='Michal Hoftich' property='og:author' />
-<meta content='website' property='og:type' />
-<meta content='https://www.kodymirus.cz/make4ht/make4ht-doc.html' property='og:url' />
-<link rel='canonical' href='https://www.kodymirus.cz/make4ht/make4ht-doc.html' />
+<meta property='og:title' content='The make4ht build system' />
+<meta property='og:author' content='Michal Hoftich' />
+<meta property='og:type' content='website' />
+<meta property='og:url' content='https://www.kodymirus.cz/make4ht/make4ht-doc.html' />
+<link href='https://www.kodymirus.cz/make4ht/make4ht-doc.html' rel='canonical' />
 </head>
 <body>
 <!-- l. 26 -->
@@ -29,7 +29,7 @@
 <colgroup id='TBL-1-1g'>
 <col id='TBL-1-1' /></colgroup>
 <tr style='vertical-align:baseline;' id='TBL-1-1-'>
-<td class='td11' id='TBL-1-1-1' style='white-space:nowrap; text-align:center;'><span class='rm-lmr-12'>Michal Hoftich &lt;</span><a href='michal.h21@gmail.com'><span class='rm-lmr-12'>michal.h21@gmail.com</span></a><span class='rm-lmr-12'>&gt;</span></td>
+<td id='TBL-1-1-1' style='white-space:nowrap; text-align:center;' class='td11'><span class='rm-lmr-12'>Michal Hoftich &lt;</span><a href='michal.h21@gmail.com'><span class='rm-lmr-12'>michal.h21@gmail.com</span></a><span class='rm-lmr-12'>&gt;</span></td>
 </tr>
 </table>
 </div>
@@ -267,14 +267,14 @@ $ make4ht -d outputdir filename.tex
 <!-- l. 241 -->
 <p class='noindent'>TeX4ht&nbsp;can convert parts of the document to images. This is useful for diagrams or complicated math, for example.</p>
 <!-- l. 244 -->
-<p class='indent'>By default, the image conversion is configured in a <a href='http://www.tug.org/applications/tex4ht/mn35.html#index35-73001'><span class='ec-lmtt-10'>.env</span> file</a>. It has a bit of strange syntax, with <a href='http://www.tug.org/applications/tex4ht/mn-unix.html#index27-69005'>operating system dependent</a> rules. <span class='ec-lmtt-10'>make4ht</span> provides simpler means for the image conversion in the build files. It is possible to change the image conversion parameters
-without a need to modify the <span class='ec-lmtt-10'>.env</span> file. The process is described in section <a href='#x1-210005.4'>5.4<!-- tex4ht:ref: sec:imageconversion  --></a>.</p>
-<!-- l. 253 -->
+<p class='indent'>By default, the image conversion is configured in a <a href='https://www.tug.org/applications/tex4ht/mn34.html#mn35.html'><span class='ec-lmtt-10'>.env</span> file</a>. It has a bit of strange syntax, with operating system dependent rules. <span class='ec-lmtt-10'>make4ht</span> provides simpler means for the image conversion in the build files. It is possible to change the image conversion parameters without a need to modify the <span class='ec-lmtt-10'>.env</span> file. The process is
+described in section <a href='#x1-210005.4'>5.4<!-- tex4ht:ref: sec:imageconversion  --></a>.</p>
+<!-- l. 252 -->
 <p class='indent'>It is also possible to post-process the generated output files. The post-processing can be done either using external programs such as <span class='ec-lmtt-10'>XSLT</span> processors and <span class='ec-lmtt-10'>HTML&nbsp;Tidy</span> or using <span class='ec-lmtt-10'>Lua</span> functions. More information can be found in section <a href='#x1-180005.3'>5.3<!-- tex4ht:ref: sec:postprocessing  --></a>.</p>
-<!-- l. 261 -->
+<!-- l. 260 -->
 <p class='indent'><a id='output-file-formats-and-extensions'></a></p>
 <h3 class='sectionHead'><span class='titlemark'>4</span> <a id='x1-90004'></a>Output file formats and extensions</h3>
-<!-- l. 263 -->
+<!-- l. 262 -->
 <p class='noindent'>The default output format used by <span class='ec-lmtt-10'>make4ht</span> is <span class='ec-lmtt-10'>html5</span>. A different format can be requested using the <span class='ec-lmtt-10'>--format</span> option. Supported formats are:</p>
 <ul class='itemize1'>
 <li class='itemize'><span class='ec-lmtt-10'>xhtml</span></li>
@@ -283,23 +283,23 @@ without a need to modify the <span class='ec-lmtt-10'>.env</span> file. The proc
 <li class='itemize'><span class='ec-lmtt-10'>tei</span></li>
 <li class='itemize'><span class='ec-lmtt-10'>docbook</span></li>
 </ul>
-<!-- l. 281 -->
+<!-- l. 280 -->
 <p class='indent'>The <span class='ec-lmtt-10'>--format</span> option can be also used for extension loading.</p>
-<!-- l. 284 -->
+<!-- l. 283 -->
 <p class='indent'><a id='extensions'></a></p>
 <h4 class='subsectionHead'><span class='titlemark'>4.1</span> <a id='x1-100004.1'></a>Extensions</h4>
-<!-- l. 286 -->
+<!-- l. 285 -->
 <p class='noindent'>Extensions can be used to modify the build process without the need to use a build file. They may post-process the output files or request additional commands for the compilation.</p>
-<!-- l. 290 -->
+<!-- l. 289 -->
 <p class='indent'>The extensions can be enabled or disabled by appending <span class='ec-lmtt-10'>+EXTENSION</span> or <span class='ec-lmtt-10'>-EXTENSION</span> after the output format name:</p>
 <pre class='verbatim' id='verbatim-17'>
  $ make4ht -uf html5+tidy filename.tex
 </pre>
-<!-- l. 295 -->
+<!-- l. 294 -->
 <p class='nopar'></p>
-<!-- l. 297 -->
+<!-- l. 296 -->
 <p class='indent'>Available extensions:</p>
-<!-- l. 299 -->
+<!-- l. 298 -->
 <p class='indent'></p>
 <dl class='description'>
 <dt class='description'><span class='rm-lmbx-10'>common_filters</span></dt>
@@ -307,9 +307,9 @@ without a need to modify the <span class='ec-lmtt-10'>.env</span> file. The proc
 <dt class='description'><span class='rm-lmbx-10'>common_domfilters</span></dt>
 <dd class='description'>clean the HTML file using DOM filters. It is more powerful than <span class='ec-lmtt-10'>common_filters</span>. Used DOM filters are <span class='ec-lmtt-10'>fixinlines</span>, <span class='ec-lmtt-10'>idcolons</span>, <span class='ec-lmtt-10'>joincharacters</span>, and <span class='ec-lmtt-10'>tablerows</span>.</dd>
 <dt class='description'><span class='rm-lmbx-10'>detect_engine</span></dt>
-<dd class='description'>detect engine and format necessary for the document compilation from the magic comments supported by LaTeX&nbsp;editors such as TeXShop or TeXWorks. Add something like the following line at the beginning of the main TeX&nbsp;file: <!-- l. 312 -->
+<dd class='description'>detect engine and format necessary for the document compilation from the magic comments supported by LaTeX&nbsp;editors such as TeXShop or TeXWorks. Add something like the following line at the beginning of the main TeX&nbsp;file: <!-- l. 311 -->
 <p class='noindent'><span class='ec-lmtt-10'>%!TEX&nbsp;TS-program&nbsp;=&nbsp;xelatex</span></p>
-<!-- l. 314 -->
+<!-- l. 313 -->
 <p class='noindent'>It supports also Plain TeX, use for example <span class='ec-lmtt-10'>tex</span> or <span class='ec-lmtt-10'>luatex</span> as the program name.</p>
 </dd>
 <dt class='description'><span class='rm-lmbx-10'>dvisvgm_hashes</span></dt>
@@ -330,64 +330,64 @@ Markdown or reStructuredText.</dd>
 <dt class='description'><span class='rm-lmbx-10'>tidy</span></dt>
 <dd class='description'>clean the <span class='ec-lmtt-10'>HTML</span> files using the <span class='ec-lmtt-10'>tidy</span> command.</dd>
 </dl>
-<!-- l. 347 -->
+<!-- l. 346 -->
 <p class='indent'><a id='build-files'></a></p>
 <h3 class='sectionHead'><span class='titlemark'>5</span> <a id='x1-110005'></a>Build files</h3>
-<!-- l. 351 -->
+<!-- l. 350 -->
 <p class='noindent'><span class='ec-lmtt-10'>make4ht</span> supports build files. These are <span class='ec-lmtt-10'>Lua</span> scripts that can adjust the build process. They can request external applications like <span class='ec-lmtt-10'>BibTeX</span> or <span class='ec-lmtt-10'>Makeindex</span>, pass options to the commands, modify the image conversion process, or post-process the generated files.</p>
-<!-- l. 357 -->
+<!-- l. 356 -->
 <p class='indent'><span class='ec-lmtt-10'>make4ht</span> tries to load default build file named as <span class='ec-lmtt-10'>filename&nbsp;+&nbsp;.mk4&nbsp;extension</span>. It is possible to select a different build file with <span class='ec-lmtt-10'>-e</span> or <span class='ec-lmtt-10'>--build-file</span> command line option.</p>
-<!-- l. 362 -->
+<!-- l. 361 -->
 <p class='indent'>Sample build file:</p>
 <pre class='verbatim' id='verbatim-18'>
 Make:htlatex()
 Make:match("html$", "tidy -m -xml -utf8 -q -i ${filename}")
 </pre>
-<!-- l. 367 -->
+<!-- l. 366 -->
 <p class='nopar'></p>
-<!-- l. 369 -->
+<!-- l. 368 -->
 <p class='indent'><span class='ec-lmtt-10'>Make:htlatex()</span> is preconfigured command for calling LaTeX&nbsp;with the <span class='ec-lmtt-10'>tex4ht.sty</span> package loaded. In this example, it will be executed only once. After the compilation, the <span class='ec-lmtt-10'>tidy</span> command is executed on the output <span class='ec-lmtt-10'>HTML</span> files.</p>
-<!-- l. 374 -->
+<!-- l. 373 -->
 <p class='indent'>Note that it is not necessary to call <span class='ec-lmtt-10'>tex4ht</span> and <span class='ec-lmtt-10'>t4ht</span> commands explicitly in the build file, they are called automatically.</p>
-<!-- l. 378 -->
+<!-- l. 377 -->
 <p class='indent'><a id='user-commands'></a></p>
 <h4 class='subsectionHead'><span class='titlemark'>5.1</span> <a id='x1-120005.1'></a>User commands</h4>
-<!-- l. 380 -->
+<!-- l. 379 -->
 <p class='noindent'>It is possible to add more commands like <span class='ec-lmtt-10'>Make:htlatex</span> using the <span class='ec-lmtt-10'>Make:add</span> command:</p>
 <pre class='verbatim' id='verbatim-19'>
 Make:add("name", "command", {settings table}, repetition)
 </pre>
-<!-- l. 385 -->
+<!-- l. 384 -->
 <p class='nopar'></p>
-<!-- l. 387 -->
+<!-- l. 386 -->
 <p class='indent'>This defines the <span class='ec-lmtt-10'>name</span> command, which can be then executed using <span class='ec-lmtt-10'>Make:name()</span> command in the build file.</p>
-<!-- l. 390 -->
+<!-- l. 389 -->
 <p class='indent'>The <span class='ec-lmtt-10'>name</span> and <span class='ec-lmtt-10'>command</span> parameters are required, the rest of the parameters are optional.</p>
-<!-- l. 393 -->
+<!-- l. 392 -->
 <p class='indent'>The defined command receives a table with settings as a parameter at the call time. The default settings are provided by <span class='ec-lmtt-10'>make4ht</span>. Additional settings can be declared in the <span class='ec-lmtt-10'>Make:add</span> commands, user can also override the default settings when the command is executed in the build file:</p>
 <pre class='verbatim' id='verbatim-20'>
 Make:name({hello="world"})
 </pre>
-<!-- l. 401 -->
+<!-- l. 400 -->
 <p class='nopar'></p>
-<!-- l. 403 -->
+<!-- l. 402 -->
 <p class='indent'>More information about settings, including the default settings provided by <span class='ec-lmtt-10'>make4ht</span>, can be found in section <a href='#x1-230005.6'>5.6<!-- tex4ht:ref: sec:settings  --></a> on page <a href='#x1-230005.6'>40<!-- tex4ht:ref: sec:settings  --></a>.</p>
-<!-- l. 409 -->
+<!-- l. 408 -->
 <p class='indent'><a id='the-command-function'></a></p>
 <h5 class='subsubsectionHead'><span class='titlemark'>5.1.1</span> <a id='x1-130005.1.1'></a>The <span class='ec-lmtt-10'>command</span> function</h5>
-<!-- l. 413 -->
+<!-- l. 412 -->
 <p class='noindent'>The <span class='ec-lmtt-10'>command</span> parameter can be either a string template or function:</p>
 <pre class='verbatim' id='verbatim-21'>
 Make:add("text", "echo hello, input file: ${input}")
 </pre>
-<!-- l. 418 -->
+<!-- l. 417 -->
 <p class='nopar'></p>
-<!-- l. 420 -->
+<!-- l. 419 -->
 <p class='indent'>The template can get a variable value from the parameters table using a <span class='ec-lmtt-10'>${var_name}</span> placeholder. Templates are executed using the operating system, so they should invoke existing OS commands.</p>
-<!-- l. 426 -->
+<!-- l. 425 -->
 <p class='indent'><a id='the-settings-table-table'></a></p>
 <h5 class='subsubsectionHead'><span class='titlemark'>5.1.2</span> <a id='x1-140005.1.2'></a>The <span class='ec-lmtt-10'>settings&nbsp;table</span> table</h5>
-<!-- l. 428 -->
+<!-- l. 427 -->
 <p class='noindent'>The <span class='ec-lmtt-10'>settings&nbsp;table</span> parameter is optional. If it is present, it should be a table with new settings available in the command. It can also override the default <span class='ec-lmtt-10'>make4ht</span> settings for the defined command.</p>
 <pre class='verbatim' id='verbatim-22'>
 Make:add("sample_function", function(params)
@@ -396,33 +396,33 @@ Make:add("sample_function", function(params)
   end, {custom="Hello world"}
 )
 </pre>
-<!-- l. 439 -->
+<!-- l. 438 -->
 <p class='nopar'></p>
-<!-- l. 442 -->
+<!-- l. 441 -->
 <p class='indent'><a id='repetition'></a></p>
 <h5 class='subsubsectionHead'><span class='titlemark'>5.1.3</span> <a id='x1-150005.1.3'></a>Repetition</h5>
-<!-- l. 444 -->
+<!-- l. 443 -->
 <p class='noindent'>The <span class='ec-lmtt-10'>repetition</span> parameter specifies the maximum number of executions of the particular command. This is used for instance for <span class='ec-lmtt-10'>tex4ht</span> and <span class='ec-lmtt-10'>t4ht</span> commands, as they should be executed only once in the compilation. They would be executed multiple times when they are included in the build file, as they are called by <span class='ec-lmtt-10'>make4ht</span> by default. Because these commands allow only
 one <span class='ec-lmtt-10'>repetition</span>, the second execution is blocked.</p>
-<!-- l. 453 -->
+<!-- l. 452 -->
 <p class='indent'><a id='expected-exit-code'></a></p>
 <h5 class='subsubsectionHead'><span class='titlemark'>5.1.4</span> <a id='x1-160005.1.4'></a>Expected exit code</h5>
-<!-- l. 455 -->
+<!-- l. 454 -->
 <p class='noindent'>You can set the expected exit code from a command with a <span class='ec-lmtt-10'>correct_exit</span> key in the settings table. The compilation will be terminated when the command returns a different exit code.</p>
 <pre class='verbatim' id='verbatim-23'>
 Make:add("biber", "biber ${input}", {correct_exit=0})
 </pre>
-<!-- l. 461 -->
+<!-- l. 460 -->
 <p class='nopar'></p>
-<!-- l. 463 -->
+<!-- l. 462 -->
 <p class='indent'>Commands that execute lua functions can return the numerical values using the <span class='ec-lmtt-10'>return</span> statement.</p>
-<!-- l. 466 -->
+<!-- l. 465 -->
 <p class='indent'>This mechanism isn’t used for TeX, because it doesn’t differentiate between fatal and non-fatal errors. It returns the same exit code in all cases. Because of this, log parsing is used for a fatal error detection instead. Error code value <span class='ec-lmtt-10'>1</span> is returned in the case of a fatal error, <span class='ec-lmtt-10'>0</span> is used otherwise. The <span class='ec-lmtt-10'>Make.testlogfile</span> function can be used in the build file to detect compilation errors in
 the TeX log file.</p>
-<!-- l. 475 -->
+<!-- l. 474 -->
 <p class='indent'><a id='provided-commands'></a></p>
 <h4 class='subsectionHead'><span class='titlemark'>5.2</span> <a id='x1-170005.2'></a>Provided commands</h4>
-<!-- l. 477 -->
+<!-- l. 476 -->
 <p class='noindent'></p>
 <dl class='description'>
 <dt class='description'><span class='ec-lmtk-10'>Make:htlatex</span></dt>
@@ -448,25 +448,25 @@ the TeX log file.</p>
 <dt class='description'><span class='ec-lmtk-10'>Make:xindex</span></dt>
 <dd class='description'>Generate index using the Xindex command.</dd>
 </dl>
-<!-- l. 505 -->
+<!-- l. 504 -->
 <p class='noindent'><a id='file-matches'></a></p>
 <h4 class='subsectionHead'><span class='titlemark'>5.3</span> <a id='x1-180005.3'></a>File matches</h4>
-<!-- l. 509 -->
+<!-- l. 508 -->
 <p class='noindent'>Another type of action that can be specified in the build file is <span class='ec-lmtt-10'>Make:match</span>. It can be used to post-process the generated files:</p>
 <pre class='verbatim' id='verbatim-24'>
 Make:match("html$", "tidy -m -xml -utf8 -q -i ${filename}")
 </pre>
-<!-- l. 514 -->
+<!-- l. 513 -->
 <p class='nopar'></p>
-<!-- l. 516 -->
+<!-- l. 515 -->
 <p class='indent'>The above example will clean all output <span class='ec-lmtt-10'>HTML</span> files using the <span class='ec-lmtt-10'>tidy</span> command.</p>
-<!-- l. 519 -->
+<!-- l. 518 -->
 <p class='indent'>The <span class='ec-lmtt-10'>Make:match</span> action tests output filenames using a <span class='ec-lmtt-10'>Lua</span> pattern matching function.<br class='newline' />
 It executes a command or a function, specified in the second argument, on files whose filenames match the pattern.</p>
-<!-- l. 524 -->
+<!-- l. 523 -->
 <p class='indent'>The commands to be executed can be specified as strings. They can contain <span class='ec-lmtt-10'>${var_name}</span> placeholders, which are replaced with corresponding variables from the <span class='ec-lmtt-10'>settings</span> table. The templating system was described in subsection <a href='#x1-130005.1.1'>5.1.1<!-- tex4ht:ref: sec:commandfunction  --></a>. There is an additional variable available in this table, called <span class='ec-lmtt-10'>filename</span>. It contains the name of
 the current output file.</p>
-<!-- l. 531 -->
+<!-- l. 530 -->
 <p class='indent'>If a function is used instead, it will get two parameters. The first one is the current filename, the second one is the <span class='ec-lmtt-10'>settings</span> table.</p>
 <pre class='verbatim' id='verbatim-25'>
 Make:match("html$", function(filename, settings)
@@ -477,22 +477,22 @@ Make:match("html$", function(filename, settings)
   end
   return true
 </pre>
-<!-- l. 542 -->
+<!-- l. 541 -->
 <p class='nopar'></p>
-<!-- l. 544 -->
+<!-- l. 543 -->
 <p class='indent'>end)</p>
-<!-- l. 546 -->
+<!-- l. 545 -->
 <p class='indent'>Multiple post-processing actions can be executed on each filename. The Lua action functions can return an exit code. If the exit code is false, the execution of the post-processing chain for the current file will be terminated.</p>
-<!-- l. 552 -->
+<!-- l. 551 -->
 <p class='indent'><a id='filters'></a></p>
 <h5 class='subsubsectionHead'><span class='titlemark'>5.3.1</span> <a id='x1-190005.3.1'></a>Filters</h5>
-<!-- l. 556 -->
+<!-- l. 555 -->
 <p class='noindent'>To make it easier to post-process the generated files using the <span class='ec-lmtt-10'>match</span> actions, <span class='ec-lmtt-10'>make4ht</span> provides a filtering mechanism thanks to the <span class='ec-lmtt-10'>make4ht-filter</span> module.</p>
-<!-- l. 560 -->
+<!-- l. 559 -->
 <p class='indent'>The <span class='ec-lmtt-10'>make4ht-filter</span> module returns a function that can be used for the filter chain building. Multiple filters can be chained into a pipeline. Each filter can modify the string that is passed to it from the previous filters. The changes are then saved to the processed file.</p>
-<!-- l. 565 -->
+<!-- l. 564 -->
 <p class='indent'>Several built-in filters are available, it is also possible to create new ones.</p>
-<!-- l. 568 -->
+<!-- l. 567 -->
 <p class='indent'>Example that use only the built-in filters:</p>
 <pre class='verbatim' id='verbatim-26'>
 local filter = require "make4ht-filter"
@@ -500,11 +500,11 @@ local process = filter{"cleanspan", "fixligatures", "hruletohr"}
 Make:htlatex()
 Make:match("html$",process)
 </pre>
-<!-- l. 575 -->
+<!-- l. 574 -->
 <p class='nopar'></p>
-<!-- l. 577 -->
+<!-- l. 576 -->
 <p class='indent'>Function <span class='ec-lmtt-10'>filter</span> accepts also function arguments, in this case this function takes file contents as a parameter and modified contents are returned.</p>
-<!-- l. 581 -->
+<!-- l. 580 -->
 <p class='indent'>Example with custom filter:</p>
 <pre class='verbatim' id='verbatim-27'>
 local filter  = require "make4ht-filter"
@@ -513,13 +513,13 @@ local process = filter{"cleanspan", "fixligatures", changea}
 Make:htlatex()
 Make:match("html$",process)
 </pre>
-<!-- l. 589 -->
+<!-- l. 588 -->
 <p class='nopar'></p>
-<!-- l. 591 -->
+<!-- l. 590 -->
 <p class='indent'>In this example, spurious span elements are joined, ligatures are decomposed, and then all letters “a” are replaced with “z” letters.</p>
-<!-- l. 594 -->
+<!-- l. 593 -->
 <p class='indent'>Built-in filters are the following:</p>
-<!-- l. 596 -->
+<!-- l. 595 -->
 <p class='indent'></p>
 <dl class='description'>
 <dt class='description'><span class='rm-lmbx-10'>cleanspan</span></dt>
@@ -543,23 +543,23 @@ Make:match("html$",process)
 <dt class='description'><span class='rm-lmbx-10'>svg-height</span></dt>
 <dd class='description'>some SVG images produced by <span class='ec-lmtt-10'>dvisvgm</span> seem to have wrong dimensions. This filter tries to set the correct image size.</dd>
 </dl>
-<!-- l. 632 -->
+<!-- l. 631 -->
 <p class='indent'><a id='dom-filters'></a></p>
 <h5 class='subsubsectionHead'><span class='titlemark'>5.3.2</span> <a id='x1-200005.3.2'></a>DOM filters</h5>
-<!-- l. 634 -->
+<!-- l. 633 -->
 <p class='noindent'>DOM filters are variants of filters that use the <a href='https://ctan.org/pkg/luaxml'><span class='ec-lmtt-10'>LuaXML</span></a> library to modify directly the XML object. This enables more powerful operations than the regex-based filters from the previous section.</p>
-<!-- l. 639 -->
+<!-- l. 638 -->
 <p class='indent'>Example:</p>
 <pre class='verbatim' id='verbatim-28'>
 local domfilter = require "make4ht-domfilter"
 local process = domfilter {"joincharacters"}
 Make:match("html$", process)
 </pre>
-<!-- l. 645 -->
+<!-- l. 644 -->
 <p class='nopar'></p>
-<!-- l. 647 -->
+<!-- l. 646 -->
 <p class='indent'>Available DOM filters:</p>
-<!-- l. 649 -->
+<!-- l. 648 -->
 <p class='indent'></p>
 <dl class='description'>
 <dt class='description'><span class='rm-lmbx-10'>aeneas</span></dt>
@@ -587,38 +587,38 @@ Make:match("html$", process)
 <dt class='description'><span class='rm-lmbx-10'>t4htlinks</span></dt>
 <dd class='description'>fix hyperlinks in the ODT format.</dd>
 </dl>
-<!-- l. 691 -->
+<!-- l. 690 -->
 <p class='indent'><a id='image-conversion'></a></p>
 <h4 class='subsectionHead'><span class='titlemark'>5.4</span> <a id='x1-210005.4'></a>Image conversion</h4>
-<!-- l. 695 -->
+<!-- l. 694 -->
 <p class='noindent'>It is possible to convert parts of the LaTeX&nbsp;input as pictures. It can be used for preserving the appearance of math or diagrams, for example.</p>
-<!-- l. 698 -->
+<!-- l. 697 -->
 <p class='indent'>These pictures are stored in a special <span class='ec-lmtt-10'>DVI</span> file, which can be processed by a <span class='ec-lmtt-10'>DVI</span> to image commands, such as <span class='ec-lmtt-10'>dvipng</span> or <span class='ec-lmtt-10'>dvisvgm</span>.</p>
-<!-- l. 702 -->
+<!-- l. 701 -->
 <p class='indent'>This conversion is normally configured in the <span class='ec-lmtt-10'>tex4ht.env</span> file. This file is system dependent and it has quite an unintuitive syntax. The configuration is processed by the <span class='ec-lmtt-10'>t4ht</span> application and the conversion command is called for all pictures.</p>
-<!-- l. 707 -->
+<!-- l. 706 -->
 <p class='indent'>It is possible to disable <span class='ec-lmtt-10'>t4ht</span> image processing and configure image conversion in the build file using the <span class='ec-lmtt-10'>image</span> action:</p>
 <pre class='verbatim' id='verbatim-29'>
 Make:image("png$",
 "dvipng -bg Transparent -T tight -o ${output}  -pp ${page} ${source}")
 </pre>
-<!-- l. 713 -->
+<!-- l. 712 -->
 <p class='nopar'></p>
-<!-- l. 715 -->
+<!-- l. 714 -->
 <p class='indent'><span class='ec-lmtt-10'>Make:image</span> takes two parameters, a <span class='ec-lmtt-10'>Lua</span> pattern to match the image name, and the action.</p>
-<!-- l. 718 -->
+<!-- l. 717 -->
 <p class='indent'>Action can be either a string template with the conversion command or a function that takes a table with parameters as an argument.</p>
-<!-- l. 721 -->
+<!-- l. 720 -->
 <p class='indent'>There are three parameters:</p>
 <ul class='itemize1'>
 <li class='itemize'><span class='ec-lmtt-10'>output</span> - output image filename</li>
 <li class='itemize'><span class='ec-lmtt-10'>source</span> - <span class='ec-lmtt-10'>DVI</span> file with the pictures</li>
 <li class='itemize'><span class='ec-lmtt-10'>page</span> - page number of the converted image</li>
 </ul>
-<!-- l. 735 -->
+<!-- l. 734 -->
 <p class='indent'><a id='the-mode-variable'></a></p>
 <h4 class='subsectionHead'><span class='titlemark'>5.5</span> <a id='x1-220005.5'></a>The <span class='ec-lmtt-10'>mode</span> variable</h4>
-<!-- l. 737 -->
+<!-- l. 736 -->
 <p class='noindent'>The <span class='ec-lmtt-10'>mode</span> variable available in the build process contains contents of the <span class='ec-lmtt-10'>--mode</span> command line option. It can be used to run some commands conditionally. For example:</p>
 <pre class='verbatim' id='verbatim-30'>
  if mode == "draft" then
@@ -629,32 +629,32 @@ Make:image("png$",
    Make:htlatex{}
  end
 </pre>
-<!-- l. 749 -->
+<!-- l. 748 -->
 <p class='nopar'></p>
-<!-- l. 751 -->
+<!-- l. 750 -->
 <p class='indent'>In this example (which is the default configuration used by <span class='ec-lmtt-10'>make4ht</span>), LaTeX&nbsp;is called only once when <span class='ec-lmtt-10'>make4ht</span> is called with the <span class='ec-lmtt-10'>draft</span> mode:</p>
 <pre class='verbatim' id='verbatim-31'>
 make4ht -m draft filename
 </pre>
-<!-- l. 757 -->
+<!-- l. 756 -->
 <p class='nopar'></p>
-<!-- l. 761 -->
+<!-- l. 760 -->
 <p class='indent'><a id='the-settings-table'></a></p>
 <h4 class='subsectionHead'><span class='titlemark'>5.6</span> <a id='x1-230005.6'></a>The <span class='ec-lmtt-10'>settings</span> table</h4>
-<!-- l. 765 -->
+<!-- l. 764 -->
 <p class='noindent'>It is possible to access the parameters outside commands, file matches and image conversion functions. For example, to convert the document to the <span class='ec-lmtt-10'>OpenDocument&nbsp;Format&nbsp;(ODT)</span>, the following settings can be used. They are based on the <span class='ec-lmtt-10'>oolatex</span> command:</p>
 <pre class='verbatim' id='verbatim-32'>
 settings.tex4ht_sty_par = settings.tex4ht_sty_par ..",ooffice"
 settings.tex4ht_par = settings.tex4ht_par .. " ooffice/! -cmozhtf"
 settings.t4ht_par = settings.t4ht_par .. " -cooxtpipes -coo "
 </pre>
-<!-- l. 774 -->
+<!-- l. 773 -->
 <p class='nopar'></p>
-<!-- l. 776 -->
+<!-- l. 775 -->
 <p class='indent'>(Note that it is possible to use the <span class='ec-lmtt-10'>--format&nbsp;odt</span> option which is superior to the previous code. This example is intended just as an illustration)</p>
-<!-- l. 780 -->
+<!-- l. 779 -->
 <p class='indent'>There are some functions to simplify access to the settings:</p>
-<!-- l. 782 -->
+<!-- l. 781 -->
 <p class='indent'></p>
 <dl class='description'>
 <dt class='description'><span class='ec-lmtk-10'>set_settings{parameters}</span></dt>
@@ -666,7 +666,7 @@ settings.t4ht_par = settings.t4ht_par .. " -cooxtpipes -coo "
 <dt class='description'><span class='ec-lmtk-10'>get_filter_settings(name)</span></dt>
 <dd class='description'>get settings for a filter</dd>
 </dl>
-<!-- l. 793 -->
+<!-- l. 792 -->
 <p class='indent'>For example, it is possible to simplify the sample from the previous code listings:</p>
 <pre class='verbatim' id='verbatim-33'>
 settings_add {
@@ -675,18 +675,18 @@ settings_add {
   t4ht_par = " -cooxtpipes -coo "
 }
 </pre>
-<!-- l. 802 -->
+<!-- l. 801 -->
 <p class='nopar'></p>
-<!-- l. 804 -->
+<!-- l. 803 -->
 <p class='indent'>Settings for filters and extensions can be set using <span class='ec-lmtt-10'>filter_settings</span>:</p>
 <pre class='verbatim' id='verbatim-34'>
 filter_settings "test" {
   hello = "world"
 }
 </pre>
-<!-- l. 811 -->
+<!-- l. 810 -->
 <p class='nopar'></p>
-<!-- l. 813 -->
+<!-- l. 812 -->
 <p class='indent'>These settings can be retrieved in the extensions and filters using the <span class='ec-lmtt-10'>get_filter_settings</span> function:</p>
 <pre class='verbatim' id='verbatim-35'>
 function test(input)
@@ -695,14 +695,14 @@ function test(input)
    return input
 end
 </pre>
-<!-- l. 823 -->
+<!-- l. 822 -->
 <p class='nopar'></p>
-<!-- l. 826 -->
+<!-- l. 825 -->
 <p class='indent'><a id='default-settings'></a></p>
 <h5 class='subsubsectionHead'><span class='titlemark'>5.6.1</span> <a id='x1-240005.6.1'></a>Default settings</h5>
-<!-- l. 828 -->
+<!-- l. 827 -->
 <p class='noindent'>The default parameters are the following:</p>
-<!-- l. 830 -->
+<!-- l. 829 -->
 <p class='indent'></p>
 <dl class='description'>
 <dt class='description'><span class='ec-lmtk-10'>htlatex</span></dt>
@@ -728,26 +728,26 @@ end
 <dt class='description'><span class='ec-lmtk-10'>correct_exit</span></dt>
 <dd class='description'>expected <span class='ec-lmtt-10'>exit&nbsp;code</span> from the command. The compilation will be terminated if the exit code of the executed command has a different value.</dd>
 </dl>
-<!-- l. 864 -->
+<!-- l. 863 -->
 <p class='indent'><a id='configfile'></a></p>
 <h3 class='sectionHead'><span class='titlemark'>6</span> <a id='x1-250006'></a>Configuration file</h3>
-<!-- l. 866 -->
+<!-- l. 865 -->
 <p class='noindent'>It is possible to globally modify the build settings using the configuration file. It is a special version of a build file where the global settings can be set.</p>
-<!-- l. 870 -->
+<!-- l. 869 -->
 <p class='indent'>Common tasks for the configuration file can be a declaration of the new commands, loading of the default filters or specification of a default build sequence.</p>
-<!-- l. 874 -->
+<!-- l. 873 -->
 <p class='indent'>One additional functionality not available in the build files are commands for enabling and disabling of extensions.</p>
-<!-- l. 878 -->
+<!-- l. 877 -->
 <p class='indent'><a id='location'></a></p>
 <h4 class='subsectionHead'><span class='titlemark'>6.1</span> <a id='x1-260006.1'></a>Location</h4>
-<!-- l. 880 -->
+<!-- l. 879 -->
 <p class='noindent'>The configuration file can be saved either in the <span class='ec-lmtt-10'>$HOME/.config/make4ht/config.lua</span> file, or in the <span class='ec-lmtt-10'>.make4ht</span> file placed in the current directory or it’s parent directories (up to the <span class='ec-lmtt-10'>$HOME</span> directory).</p>
-<!-- l. 886 -->
+<!-- l. 885 -->
 <p class='indent'><a id='additional-commands'></a></p>
 <h4 class='subsectionHead'><span class='titlemark'>6.2</span> <a id='x1-270006.2'></a>Additional commands</h4>
-<!-- l. 888 -->
+<!-- l. 887 -->
 <p class='noindent'>There are two additional commands:</p>
-<!-- l. 890 -->
+<!-- l. 889 -->
 <p class='indent'></p>
 <dl class='description'>
 <dt class='description'><span class='ec-lmtk-10'>Make:enable_extension(name)</span></dt>
@@ -755,10 +755,10 @@ end
 <dt class='description'><span class='ec-lmtk-10'>Make:disable_extension(name)</span></dt>
 <dd class='description'>disable extension</dd>
 </dl>
-<!-- l. 898 -->
+<!-- l. 897 -->
 <p class='indent'><a id='example'></a></p>
 <h4 class='subsectionHead'><span class='titlemark'>6.3</span> <a id='x1-280006.3'></a>Example</h4>
-<!-- l. 900 -->
+<!-- l. 899 -->
 <p class='noindent'>The following example of the configuration file adds support for the <span class='ec-lmtt-10'>biber</span> command, requires <span class='ec-lmtt-10'>common_domfilters</span> extension and requires MathML output for math.</p>
 <pre class='verbatim' id='verbatim-36'>
 Make:add("biber", "biber ${input}")
@@ -767,19 +767,19 @@ settings_add {
   tex4ht_sty_par =",mathml"
 }
 </pre>
-<!-- l. 910 -->
+<!-- l. 909 -->
 <p class='nopar'></p>
-<!-- l. 914 -->
+<!-- l. 913 -->
 <p class='indent'><a id='list-of-available-settings-for-filters-and-extensions.'></a></p>
 <h3 class='sectionHead'><span class='titlemark'>7</span> <a id='x1-290007'></a>List of available settings for filters and extensions.</h3>
-<!-- l. 916 -->
+<!-- l. 915 -->
 <p class='noindent'>These settings may be set using <span class='ec-lmtt-10'>filter_settings</span> function in a build file or in the <span class='ec-lmtt-10'>make4ht</span> configuration file.</p>
-<!-- l. 920 -->
+<!-- l. 919 -->
 <p class='indent'><a id='indexing-commands'></a></p>
 <h4 class='subsectionHead'><span class='titlemark'>7.1</span> <a id='x1-300007.1'></a>Indexing commands</h4>
-<!-- l. 922 -->
+<!-- l. 921 -->
 <p class='noindent'>The indexing commands (like <span class='ec-lmtt-10'>xindy</span> or <span class='ec-lmtt-10'>makeindex</span>) use some common settings.</p>
-<!-- l. 925 -->
+<!-- l. 924 -->
 <p class='indent'></p>
 <dl class='description'>
 <dt class='description'><span class='rm-lmbx-10'>idxfile</span></dt>
@@ -787,12 +787,12 @@ settings_add {
 <dt class='description'><span class='rm-lmbx-10'>indfile</span></dt>
 <dd class='description'>name of the <span class='ec-lmtt-10'>.ind</span> file. Default value is the same as <span class='ec-lmtt-10'>idxfile</span> with the file extension changed to <span class='ec-lmtt-10'>.ind</span>.</dd>
 </dl>
-<!-- l. 934 -->
+<!-- l. 933 -->
 <p class='indent'>Each indexing command can have some additional settings.</p>
-<!-- l. 938 -->
+<!-- l. 937 -->
 <p class='indent'><a id='the-xindy-command'></a></p>
 <h5 class='subsubsectionHead'><span class='titlemark'>7.1.1</span> <a id='x1-310007.1.1'></a>The <span class='ec-lmtt-10'>xindy</span> command</h5>
-<!-- l. 940 -->
+<!-- l. 939 -->
 <p class='noindent'></p>
 <dl class='description'>
 <dt class='description'><span class='rm-lmbx-10'>encoding</span></dt>
@@ -802,19 +802,19 @@ settings_add {
 <dt class='description'><span class='rm-lmbx-10'>modules</span></dt>
 <dd class='description'>table with names of additional <span class='ec-lmtt-10'>Xindy</span> modules to be used.</dd>
 </dl>
-<!-- l. 951 -->
+<!-- l. 950 -->
 <p class='noindent'><a id='the-makeindex-command'></a></p>
 <h5 class='subsubsectionHead'><span class='titlemark'>7.1.2</span> <a id='x1-320007.1.2'></a>The <span class='ec-lmtt-10'>makeindex</span> command</h5>
-<!-- l. 953 -->
+<!-- l. 952 -->
 <p class='noindent'></p>
 <dl class='description'>
 <dt class='description'><span class='rm-lmbx-10'>options</span></dt>
 <dd class='description'>additional command line options for the Makeindex command.</dd>
 </dl>
-<!-- l. 960 -->
+<!-- l. 959 -->
 <p class='noindent'><a id='the-xindex-command'></a></p>
 <h5 class='subsubsectionHead'><span class='titlemark'>7.1.3</span> <a id='x1-330007.1.3'></a>The <span class='ec-lmtt-10'>xindex</span> command</h5>
-<!-- l. 962 -->
+<!-- l. 961 -->
 <p class='noindent'></p>
 <dl class='description'>
 <dt class='description'><span class='rm-lmbx-10'>options</span></dt>
@@ -822,19 +822,19 @@ settings_add {
 <dt class='description'><span class='rm-lmbx-10'>language</span></dt>
 <dd class='description'>document language</dd>
 </dl>
-<!-- l. 971 -->
+<!-- l. 970 -->
 <p class='noindent'><a id='the-tidy-extension'></a></p>
 <h4 class='subsectionHead'><span class='titlemark'>7.2</span> <a id='x1-340007.2'></a>The <span class='ec-lmtt-10'>tidy</span> extension</h4>
-<!-- l. 973 -->
+<!-- l. 972 -->
 <p class='noindent'></p>
 <dl class='description'>
 <dt class='description'><span class='rm-lmbx-10'>options</span></dt>
 <dd class='description'>command line options for the <span class='ec-lmtt-10'>tidy</span> command. Default value is <span class='ec-lmtt-10'>-m&nbsp;-utf8&nbsp;-w&nbsp;512&nbsp;-q</span>.</dd>
 </dl>
-<!-- l. 981 -->
+<!-- l. 980 -->
 <p class='noindent'><a id='the-collapsetoc-dom-filter'></a></p>
 <h4 class='subsectionHead'><span class='titlemark'>7.3</span> <a id='x1-350007.3'></a>The <span class='ec-lmtt-10'>collapsetoc</span> dom filter</h4>
-<!-- l. 983 -->
+<!-- l. 982 -->
 <p class='noindent'></p>
 <dl class='description'>
 <dt class='description'><span class='ec-lmtk-10'>toc_query</span></dt>
@@ -844,7 +844,7 @@ settings_add {
 <dt class='description'><span class='ec-lmtk-10'>toc_levels</span></dt>
 <dd class='description'>table containing a hierarchy of classes used in TOC</dd>
 </dl>
-<!-- l. 993 -->
+<!-- l. 992 -->
 <p class='noindent'>Default values:</p>
 <pre class='verbatim' id='verbatim-37'>
 filter_settings "collapsetoc" {
@@ -853,59 +853,59 @@ filter_settings "collapsetoc" {
   toc_levels = {"partToc", "chapterToc", "sectionToc", "subsectionToc", "subsubsectionToc"}
 }
 </pre>
-<!-- l. 1001 -->
+<!-- l. 1000 -->
 <p class='nopar'></p>
-<!-- l. 1005 -->
+<!-- l. 1004 -->
 <p class='indent'><a id='the-fixinlines-dom-filter'></a></p>
 <h4 class='subsectionHead'><span class='titlemark'>7.4</span> <a id='x1-360007.4'></a>The <span class='ec-lmtt-10'>fixinlines</span> dom filter</h4>
-<!-- l. 1007 -->
+<!-- l. 1006 -->
 <p class='noindent'></p>
 <dl class='description'>
 <dt class='description'><span class='rm-lmbx-10'>inline_elements</span></dt>
 <dd class='description'>table of inline elements that shouldn’t be direct descendants of the <span class='ec-lmtt-10'>body</span> element. The element names should be table keys, the values should be true.</dd>
 </dl>
-<!-- l. 1014 -->
+<!-- l. 1013 -->
 <p class='noindent'>Example</p>
 <pre class='verbatim' id='verbatim-38'>
 filter_settings "fixinlines" {inline_elements = {a = true, b = true}}
 </pre>
-<!-- l. 1018 -->
+<!-- l. 1017 -->
 <p class='nopar'></p>
-<!-- l. 1022 -->
+<!-- l. 1021 -->
 <p class='indent'><a id='the-joincharacters-dom-filter'></a></p>
 <h4 class='subsectionHead'><span class='titlemark'>7.5</span> <a id='x1-370007.5'></a>The <span class='ec-lmtt-10'>joincharacters</span> dom filter</h4>
-<!-- l. 1024 -->
+<!-- l. 1023 -->
 <p class='noindent'></p>
 <dl class='description'>
 <dt class='description'><span class='rm-lmbx-10'>charclasses</span></dt>
 <dd class='description'>table of elements that should be concatenated when two or more of such elements with the same value of the <span class='ec-lmtt-10'>class</span> attribute are placed one after another.</dd>
 </dl>
-<!-- l. 1031 -->
+<!-- l. 1030 -->
 <p class='noindent'>Example</p>
 <pre class='verbatim' id='verbatim-39'>
 filter_settings "joincharacters" { charclasses = { span=true, mn = true}}
 </pre>
-<!-- l. 1035 -->
+<!-- l. 1034 -->
 <p class='nopar'></p>
-<!-- l. 1039 -->
+<!-- l. 1038 -->
 <p class='indent'><a id='mathjaxsettings'></a></p>
 <h4 class='subsectionHead'><span class='titlemark'>7.6</span> <a id='x1-380007.6'></a>The <span class='ec-lmtt-10'>mathjaxnode</span> filter</h4>
-<!-- l. 1041 -->
+<!-- l. 1040 -->
 <p class='noindent'></p>
 <dl class='description'>
 <dt class='description'><span class='rm-lmbx-10'>options</span></dt>
 <dd class='description'>command line options for the <span class='ec-lmtt-10'>mjpage</span> command. Default value is <span class='ec-lmtt-10'>--output&nbsp;CommonHTML</span></dd>
 </dl>
-<!-- l. 1047 -->
+<!-- l. 1046 -->
 <p class='noindent'>Example</p>
 <pre class='verbatim' id='verbatim-40'>
 filter_settings "mathjaxnode" {
   options="--output SVG --font Neo-Euler"
 }
 </pre>
-<!-- l. 1053 -->
+<!-- l. 1052 -->
 <p class='nopar'></p>
-<!-- l. 1055 -->
+<!-- l. 1054 -->
 <p class='indent'></p>
 <dl class='description'>
 <dt class='description'><span class='rm-lmbx-10'>cssfilename</span></dt>
@@ -913,19 +913,19 @@ filter_settings "mathjaxnode" {
 <dt class='description'><span class='rm-lmbx-10'>fontdir</span></dt>
 <dd class='description'>directory with MathJax font files. This option enables the use of local fonts, which is useful in the conversion to ePub, for example. The font directory should be sub-directory of the current directory. Only TeX font is supported at the moment.</dd>
 </dl>
-<!-- l. 1067 -->
+<!-- l. 1066 -->
 <p class='indent'>Example</p>
 <pre class='verbatim' id='verbatim-41'>
 filter_settings "mathjaxnode" {
   fontdir="fonts/TeX/woff/"
 }
 </pre>
-<!-- l. 1073 -->
+<!-- l. 1072 -->
 <p class='nopar'></p>
-<!-- l. 1077 -->
+<!-- l. 1076 -->
 <p class='indent'><a id='the-staticsite-filter-and-extension'></a></p>
 <h4 class='subsectionHead'><span class='titlemark'>7.7</span> <a id='x1-390007.7'></a>The <span class='ec-lmtt-10'>staticsite</span> filter and extension</h4>
-<!-- l. 1079 -->
+<!-- l. 1078 -->
 <p class='noindent'></p>
 <dl class='description'>
 <dt class='description'><span class='rm-lmbx-10'>site_root</span></dt>
@@ -937,7 +937,7 @@ filter_settings "mathjaxnode" {
 <dt class='description'><span class='rm-lmbx-10'>header</span></dt>
 <dd class='description'>table with variables to be set in the YAML header in HTML files. If the table value is a function, it is executed with current parameters and HTML page DOM object as arguments.</dd>
 </dl>
-<!-- l. 1098 -->
+<!-- l. 1097 -->
 <p class='noindent'>Example:</p>
 <pre class='verbatim' id='verbatim-42'>
 local outdir = os.getenv "blog_root"
@@ -954,12 +954,12 @@ filter_settings "staticsite" {
   }
 }
 </pre>
-<!-- l. 1115 -->
+<!-- l. 1114 -->
 <p class='nopar'></p>
-<!-- l. 1119 -->
+<!-- l. 1118 -->
 <p class='indent'><a id='the-dvisvgm_hashes-extension'></a></p>
 <h4 class='subsectionHead'><span class='titlemark'>7.8</span> <a id='x1-400007.8'></a>The <span class='ec-lmtt-10'>dvisvgm_hashes</span> extension</h4>
-<!-- l. 1121 -->
+<!-- l. 1120 -->
 <p class='noindent'></p>
 <dl class='description'>
 <dt class='description'><span class='rm-lmbx-10'>options</span></dt>
@@ -971,26 +971,26 @@ filter_settings "staticsite" {
 <dt class='description'><span class='rm-lmbx-10'>scale</span></dt>
 <dd class='description'>SVG scaling.</dd>
 </dl>
-<!-- l. 1138 -->
+<!-- l. 1137 -->
 <p class='noindent'><a id='the-odttemplate-filter-and-extension'></a></p>
 <h4 class='subsectionHead'><span class='titlemark'>7.9</span> <a id='x1-410007.9'></a>The <span class='ec-lmtt-10'>odttemplate</span> filter and extension</h4>
-<!-- l. 1140 -->
+<!-- l. 1139 -->
 <p class='noindent'></p>
 <dl class='description'>
 <dt class='description'><span class='rm-lmbx-10'>template</span></dt>
 <dd class='description'>filename of the template <span class='ec-lmtt-10'>ODT</span> file</dd>
 </dl>
-<!-- l. 1145 -->
+<!-- l. 1144 -->
 <p class='noindent'><span class='ec-lmtt-10'>odttemplate</span> can also get the template filename from the <span class='ec-lmtt-10'>odttemplate</span> option from <span class='ec-lmtt-10'>tex4ht_sty_par</span> parameter. It can be set using the following command line call:</p>
 <pre class='verbatim' id='verbatim-43'>
  make4ht -f odt+odttemplate filename.tex "odttemplate=template.odt"
 </pre>
-<!-- l. 1151 -->
+<!-- l. 1150 -->
 <p class='nopar'></p>
-<!-- l. 1155 -->
+<!-- l. 1154 -->
 <p class='indent'><a id='the-aeneas-filter'></a></p>
 <h4 class='subsectionHead'><span class='titlemark'>7.10</span> <a id='x1-420007.10'></a>The <span class='ec-lmtt-10'>aeneas</span> filter</h4>
-<!-- l. 1157 -->
+<!-- l. 1156 -->
 <p class='noindent'></p>
 <dl class='description'>
 <dt class='description'><span class='rm-lmbx-10'>skip_elements</span></dt>
@@ -1000,14 +1000,14 @@ filter_settings "staticsite" {
 <dt class='description'><span class='rm-lmbx-10'>sentence_match</span></dt>
 <dd class='description'>Lua pattern used to match a sentence. Default value: <span class='ec-lmtt-10'>"([^%.^%?^!]*)([%.%?!]?)"</span>.</dd>
 </dl>
-<!-- l. 1170 -->
+<!-- l. 1169 -->
 <p class='noindent'><a id='the-make4ht-aeneas-config-package'></a></p>
 <h4 class='subsectionHead'><span class='titlemark'>7.11</span> <a id='x1-430007.11'></a>The <span class='ec-lmtt-10'>make4ht-aeneas-config</span> package</h4>
-<!-- l. 1172 -->
+<!-- l. 1171 -->
 <p class='noindent'>Companion for the <span class='ec-lmtt-10'>aeneas</span> DOM filter is the <span class='ec-lmtt-10'>make4ht-aeneas-config</span> plugin. It can be used to write the Aeneas configuration file or execute Aeneas on the generated HTML files.</p>
-<!-- l. 1176 -->
+<!-- l. 1175 -->
 <p class='indent'>Available functions:</p>
-<!-- l. 1178 -->
+<!-- l. 1177 -->
 <p class='indent'></p>
 <dl class='description'>
 <dt class='description'><span class='rm-lmbx-10'>write_job(parameters)</span></dt>
@@ -1017,14 +1017,14 @@ filter_settings "staticsite" {
 <dt class='description'><span class='rm-lmbx-10'>process_files(parameters)</span></dt>
 <dd class='description'>process the audio and generated subtitle files.</dd>
 </dl>
-<!-- l. 1189 -->
+<!-- l. 1188 -->
 <p class='indent'>By default, a <span class='ec-lmtt-10'>SMIL</span> file is created. It is assumed that there is an audio file in the <span class='ec-lmtt-10'>mp3</span> format, named as the TeX&nbsp;file. It is possible to use different formats and filenames using mapping.</p>
-<!-- l. 1193 -->
+<!-- l. 1192 -->
 <p class='indent'>The configuration options can be passed directly to the functions or set using <span class='ec-lmtt-10'>filter_settings&nbsp;"aeneas-config"&nbsp;{parameters}</span> function.</p>
-<!-- l. 1198 -->
+<!-- l. 1197 -->
 <p class='indent'><a id='available-parameters'></a></p>
 <h5 class='subsubsectionHead'><span class='titlemark'>7.11.1</span> <a id='x1-440007.11.1'></a>Available parameters</h5>
-<!-- l. 1200 -->
+<!-- l. 1199 -->
 <p class='noindent'></p>
 <dl class='description'>
 <dt class='description'><span class='rm-lmbx-10'>lang</span></dt>
@@ -1040,7 +1040,7 @@ filter_settings "staticsite" {
 <dt class='description'><span class='rm-lmbx-10'>sub_format</span></dt>
 <dd class='description'>generated subtitle format. The default value is <span class='ec-lmtt-10'>smil</span>.</dd>
 </dl>
-<!-- l. 1219 -->
+<!-- l. 1218 -->
 <p class='noindent'><a id='additional-parameters-for-the-job-configuration-file'></a></p>
 <h5 class='subsubsectionHead'><span class='titlemark'>7.11.2</span> <a id='x1-450007.11.2'></a>Additional parameters for the job configuration file</h5>
 <ul class='itemize1'>
@@ -1049,9 +1049,9 @@ filter_settings "staticsite" {
 <li class='itemize'>config_name</li>
 <li class='itemize'>keep_config</li>
 </ul>
-<!-- l. 1233 -->
+<!-- l. 1232 -->
 <p class='noindent'>It is possible to generate multiple HTML files from the LaTeX&nbsp;source. For example, <span class='ec-lmtt-10'>tex4ebook</span> generates a separate file for each chapter or section. It is possible to set options for each HTML file, in particular names of the corresponding audio files. This mapping is done using the <span class='ec-lmtt-10'>map</span> parameter.</p>
-<!-- l. 1239 -->
+<!-- l. 1238 -->
 <p class='indent'>Example:</p>
 <pre class='verbatim' id='verbatim-44'>
 filter_settings "aeneas-config" {
@@ -1061,18 +1061,18 @@ filter_settings "aeneas-config" {
   }
 }
 </pre>
-<!-- l. 1248 -->
+<!-- l. 1247 -->
 <p class='nopar'></p>
-<!-- l. 1250 -->
+<!-- l. 1249 -->
 <p class='indent'>Table keys are the configured filenames. It is necessary to insert them as <span class='ec-lmtt-10'>["filename.html"]</span>, because of Lua syntax rules.</p>
-<!-- l. 1253 -->
+<!-- l. 1252 -->
 <p class='indent'>This example maps audio file <span class='ec-lmtt-10'>sample.mp3</span> to a section subpage. The main HTML file, which may contain title and table of contents doesn’t have a corresponding audio file.</p>
-<!-- l. 1257 -->
+<!-- l. 1256 -->
 <p class='indent'>Filenames of the subfiles correspond to the chapter numbers, so they are not stable when a new chapter is added. It is possible to request filenames derived from the chapter titles using the <span class='ec-lmtt-10'>sec-filename</span> option for <span class='ec-lmtt-10'>tex4ht.sty</span>.</p>
-<!-- l. 1264 -->
+<!-- l. 1263 -->
 <p class='indent'><a id='available-map-options'></a></p>
 <h5 class='subsubsectionHead'><span class='titlemark'>7.11.3</span> <a id='x1-460007.11.3'></a>Available <span class='ec-lmtt-10'>map</span> options</h5>
-<!-- l. 1266 -->
+<!-- l. 1265 -->
 <p class='noindent'></p>
 <dl class='description'>
 <dt class='description'><span class='rm-lmbx-10'>audio_file</span></dt>
@@ -1080,7 +1080,7 @@ filter_settings "aeneas-config" {
 <dt class='description'><span class='rm-lmbx-10'>sub_file</span></dt>
 <dd class='description'>name of the generated subtitle file</dd>
 </dl>
-<!-- l. 1273 -->
+<!-- l. 1272 -->
 <p class='noindent'>The following options are the same as their counterparts from the main parameters table and generally, don’t need to be set:</p>
 <ul class='itemize1'>
 <li class='itemize'>prefix</li>
@@ -1091,7 +1091,7 @@ filter_settings "aeneas-config" {
 <li class='itemize'>id_prefix</li>
 <li class='itemize'>sub_format</li>
 </ul>
-<!-- l. 1295 -->
+<!-- l. 1294 -->
 <p class='indent'><a id='full-example'></a></p>
 <h5 class='subsubsectionHead'><span class='titlemark'>7.11.4</span> <a id='x1-470007.11.4'></a>Full example</h5>
 <pre class='verbatim' id='verbatim-45'>
@@ -1111,68 +1111,63 @@ else
   aeneas_config.execute {}
 end
 </pre>
-<!-- l. 1316 -->
+<!-- l. 1315 -->
 <p class='nopar'></p>
-<!-- l. 1319 -->
+<!-- l. 1318 -->
 <p class='indent'><a id='troubleshooting'></a></p>
 <h3 class='sectionHead'><span class='titlemark'>8</span> <a id='x1-480008'></a>Troubleshooting</h3>
-<!-- l. 1324 -->
+<!-- l. 1323 -->
 <p class='noindent'><a id='incorrect-handling-of-command-line-arguments-for-tex4ht-t4ht-or-latex'></a></p>
 <h4 class='subsectionHead'><span class='titlemark'>8.1</span> <a id='x1-490008.1'></a>Incorrect handling of command line arguments for <span class='ec-lmtt-10'>tex4ht</span>, <span class='ec-lmtt-10'>t4ht</span> or <span class='ec-lmtt-10'>latex</span></h4>
-<!-- l. 1326 -->
+<!-- l. 1325 -->
 <p class='noindent'>Sometimes, you may get a similar error:</p>
 <pre class='verbatim' id='verbatim-46'>
 make4ht:unrecognized parameter: i
 </pre>
-<!-- l. 1330 -->
+<!-- l. 1329 -->
 <p class='nopar'></p>
-<!-- l. 1332 -->
+<!-- l. 1331 -->
 <p class='indent'>It may be caused by a following <span class='ec-lmtt-10'>make4ht</span> invocation:</p>
 <pre class='verbatim' id='verbatim-47'>
 $ make4ht hello.tex "customcfg,charset=utf-8" "-cunihtf -utf8" -d foo
 </pre>
-<!-- l. 1336 -->
+<!-- l. 1335 -->
 <p class='nopar'></p>
-<!-- l. 1338 -->
+<!-- l. 1337 -->
 <p class='indent'>The command line option parser is confused by mixing options for <span class='ec-lmtt-10'>make4ht</span> and TeX4ht&nbsp;in this case. It tries to interpret the <span class='ec-lmtt-10'>-cunihtf&nbsp;-utf8</span>, which are options for the <span class='ec-lmtt-10'>tex4ht</span> command, as <span class='ec-lmtt-10'>make4ht</span> options. To fix that, try to move the <span class='ec-lmtt-10'>-d&nbsp;foo</span> directly after the <span class='ec-lmtt-10'>make4ht</span> command:</p>
 <pre class='verbatim' id='verbatim-48'>
 $ make4ht -d foo hello.tex "customcfg,charset=utf-8" "-cunihtf -utf8"
 </pre>
-<!-- l. 1346 -->
+<!-- l. 1345 -->
 <p class='nopar'></p>
-<!-- l. 1348 -->
+<!-- l. 1347 -->
 <p class='indent'>Another option is to add a space before the <span class='ec-lmtt-10'>tex4ht</span> options:</p>
 <pre class='verbatim' id='verbatim-49'>
 $ make4ht hello.tex "customcfg,charset=utf-8" " -cunihtf -utf8" -d foo
 </pre>
-<!-- l. 1352 -->
+<!-- l. 1351 -->
 <p class='nopar'></p>
-<!-- l. 1354 -->
+<!-- l. 1353 -->
 <p class='indent'>The former way is preferable, though.</p>
-<!-- l. 1358 -->
+<!-- l. 1357 -->
 <p class='indent'><a id='filenames-containing-spaces'></a></p>
 <h4 class='subsectionHead'><span class='titlemark'>8.2</span> <a id='x1-500008.2'></a>Filenames containing spaces</h4>
-<!-- l. 1360 -->
+<!-- l. 1359 -->
 <p class='noindent'><span class='ec-lmtt-10'>tex4ht</span> command cannot handle filenames containing spaces. to fix this issue, <span class='ec-lmtt-10'>make4ht</span> replaces spaces in the input filenames with underscores. The generated XML filenames use underscores instead of spaces as well.</p>
-<!-- l. 1367 -->
+<!-- l. 1366 -->
 <p class='indent'><a id='filenames-containing-non-ascii-characters'></a></p>
 <h4 class='subsectionHead'><span class='titlemark'>8.3</span> <a id='x1-510008.3'></a>Filenames containing non-ASCII characters</h4>
-<!-- l. 1369 -->
+<!-- l. 1368 -->
 <p class='noindent'>The <span class='ec-lmtt-10'>odt</span> output doesn’t support accented filenames, it is best to stick to ASCII characters in filenames.</p>
-<!-- l. 1373 -->
+<!-- l. 1372 -->
 <p class='indent'><a id='license'></a></p>
 <h3 class='sectionHead'><span class='titlemark'>9</span> <a id='x1-520009'></a>License</h3>
-<!-- l. 1375 -->
+<!-- l. 1374 -->
 <p class='noindent'>Permission is granted to copy, distribute and/or modify this software under the terms of the LaTeX Project Public License, version 1.3.</p>
 <!-- l. 2 -->
 <p class='indent'><a id='changelog'></a></p>
 <h3 class='sectionHead'><span class='titlemark'>10</span> <a id='x1-5300010'></a>Changelog</h3>
 <ul class='itemize1'>
-<li class='itemize'>2020/09/07
-<ul class='itemize2'>
-<li class='itemize'>version <span class='ec-lmtt-10'>0.3f</span> released.</li>
-</ul>
-</li>
 <li class='itemize'>2020/08/26
 <ul class='itemize2'>
 <li class='itemize'><span class='ec-lmtt-10'>fixinlines</span> DOM filter: added <span class='ec-lmtt-10'>&lt;a&gt;</span> element into list of inline elements.</li>
