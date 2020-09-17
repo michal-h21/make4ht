@@ -1,5 +1,9 @@
 # Changelog
 
+- 2020/09/17
+
+    - require `mathml` option when `mathjaxnode` extension is used.
+
 - 2020/09/07
 
     - version `0.3f` released.
