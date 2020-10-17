@@ -1,5 +1,9 @@
 # Changelog
 
+- 2020/10/17
+
+    - generate YAML header for all generated files with the `staticsite` extension.
+
 - 2020/09/17
 
     - require `mathml` option when `mathjaxnode` extension is used.

@@ -125,8 +125,7 @@ function M.modify_build(make)
     --   match.params.outdir = outdir
     --   print(match.pattern, match.params.outdir)
     -- end
-    -- make the YAML header only for the main HTML file
-    make:match(mainfile .. ".html", process)
+    make:match("html?$", process)
     make:match(".*", copy_files, {slug=slug})
   end)
 
