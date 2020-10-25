@@ -1,5 +1,9 @@
 # Changelog
 
+- 2020/10/25
+
+    - fixed command name for `Make:httex`, it was `Make:htttex`.
+
 - 2020/10/17
 
     - generate YAML header for all generated files with the `staticsite` extension.

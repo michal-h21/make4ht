@@ -343,7 +343,7 @@ env.Make:add("test","test the variables:  ${tex4ht_sty_par} ${htlatex} ${input} 
 local htlatex = require "make4ht-htlatex"
 env.Make:add("htlatex", htlatex.htlatex
 ,{correct_exit=0})
-env.Make:add("htttex", htlatex.httex, {
+env.Make:add("httex", htlatex.httex, {
   htlatex = "etex",
   correct_exit=0
 })
