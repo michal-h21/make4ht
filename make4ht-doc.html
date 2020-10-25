@@ -4,10 +4,10 @@
 <meta name="generator" content="HTML Tidy for HTML5 for Linux version 5.6.0" />
 <title>The make4ht build system</title>
 <meta charset='utf-8' />
-<meta name='generator' content='TeX4ht (https://tug.org/tex4ht/)' />
-<meta name='viewport' content='width=device-width,initial-scale=1' />
-<link rel='stylesheet' href='make4ht-doc.css' type='text/css' />
-<meta name='src' content='make4ht-doc.tex' />
+<meta content='TeX4ht (https://tug.org/tex4ht/)' name='generator' />
+<meta content='width=device-width,initial-scale=1' name='viewport' />
+<link href='make4ht-doc.css' type='text/css' rel='stylesheet' />
+<meta content='make4ht-doc.tex' name='src' />
 <script src='https://hypothes.is/embed.js'></script>
 <meta property='og:title' content='The make4ht build system' />
 <meta property='og:author' content='Michal Hoftich' />
@@ -29,7 +29,7 @@
 <colgroup id='TBL-1-1g'>
 <col id='TBL-1-1' /></colgroup>
 <tr id='TBL-1-1-' style='vertical-align:baseline;'>
-<td id='TBL-1-1-1' style='white-space:nowrap; text-align:center;' class='td11'><span class='rm-lmr-12'>Michal Hoftich &lt;</span><a href='michal.h21@gmail.com'><span class='rm-lmr-12'>michal.h21@gmail.com</span></a><span class='rm-lmr-12'>&gt;</span></td>
+<td id='TBL-1-1-1' class='td11' style='white-space:nowrap; text-align:center;'><span class='rm-lmr-12'>Michal Hoftich &lt;</span><a href='michal.h21@gmail.com'><span class='rm-lmr-12'>michal.h21@gmail.com</span></a><span class='rm-lmr-12'>&gt;</span></td>
 </tr>
 </table>
 </div>
@@ -1168,6 +1168,11 @@ $ make4ht hello.tex "customcfg,charset=utf-8" " -cunihtf -utf8" -d foo
 <p class='indent'><a id='changelog'></a></p>
 <h3 class='sectionHead'><span class='titlemark'>10</span> <a id='x1-5300010'></a>Changelog</h3>
 <ul class='itemize1'>
+<li class='itemize'>2020/10/25
+<ul class='itemize2'>
+<li class='itemize'>fixed command name for <span class='ec-lmtt-10'>Make:httex</span>, it was <span class='ec-lmtt-10'>Make:htttex</span>.</li>
+</ul>
+</li>
 <li class='itemize'>2020/10/17
 <ul class='itemize2'>
 <li class='itemize'>generate YAML header for all generated files with the <span class='ec-lmtt-10'>staticsite</span> extension.</li>
