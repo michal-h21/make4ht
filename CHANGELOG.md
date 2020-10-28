@@ -1,5 +1,9 @@
 # Changelog
 
+- 2020/10/28
+
+    - fixed handling of nested `<span>` elements in `joincharacters` DOM filter.
+
 - 2020/10/25
 
     - fixed command name for `Make:httex`, it was `Make:htttex`.
