@@ -68,11 +68,43 @@ local function fix_mfenced(el)
   end
 end
 
+local function is_fence(el)
+  return el:get_element_name() == "mo" and el:get_attribute("fence") == "true"
+end
+
+local function fix_mo_to_mfenced(el)
+  -- LibreOffice NEEDS <mfenced> element. so we need to convert <mrow><mo fence="true">
+  -- to <mfenced>. ouch.
+  if is_fence(el) then
+    local parent = el:get_parent()
+    local open = el:get_text():gsub("%s*", "") -- convert mo content to text, so it can be used in 
+    -- close needs to be the last element in the sibling list of the current element
+    local siblings = el:get_siblings()
+    el:remove_node() -- we don't need this element anymore
+    local close
+    for i = #siblings, 1, -1 do
+      last = siblings[i]
+      if last:is_element() then
+        if is_fence(last) then -- set close attribute only if the last element is fence
+          close = last:get_text():gsub("%s*", "")
+          last:remove_node() -- remove <mo>
+        end
+        break -- break looping over elements once we find last element
+      end 
+    end
+    -- convert parent <mrow> to <mfenced>
+    parent._name = "mfenced"
+    parent._attr = {open = open, close = close}
+  end
+end
+
 return function(dom)
   dom:traverse_elements(function(el)
     if settings.output_format ~= "odt" then
       -- LibreOffice needs <mfenced>, but Firefox doesn't
       fix_mfenced(el)
+    else
+      fix_mo_to_mfenced(el)
     end
     fix_token_elements(el)
     fix_nested_mstyle(el)

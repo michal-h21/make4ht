@@ -3,6 +3,7 @@
 - 2020/11/01
 
     - fix deprecated `<mfenced>` element in MathML 
+    - convert `<mo fence>` elements to `<mfenced>` in `ODT` format.
 
 - 2020/10/28
 
