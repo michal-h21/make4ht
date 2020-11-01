@@ -37,8 +37,43 @@ local function fix_nested_mstyle(el)
   end
 end
 
+local function get_fence(el, attr, form)
+  -- convert fence attribute to <mo> element
+  -- attr: open | close
+  -- form: prefix | postfix
+  local char = el:get_attribute(attr)
+  local mo 
+  if char then
+    mo = el:create_element("mo", {fence="true", form = form})
+    mo:add_child_node(mo:create_text_node(char))
+  end
+  return mo
+end
+
+
+local function fix_mfenced(el)
+  -- TeX4ht uses in some cases <mfenced> element which is deprecated in MathML.
+  -- Firefox doesn't support it already.
+  if el:get_element_name() == "mfenced" then
+    -- we must replace it by <mrow><mo>start</mo><mfenced children...><mo>end</mo></mrow>
+    local open = get_fence(el, "open", "prefix")
+    local close = get_fence(el, "close", "postfix")
+    -- there can be also separator attribute, but it is not used in TeX4ht
+    -- change <mfenced> to <mrow> and remove all attributes
+    el._name = "mrow"
+    el._attr = {}
+    -- open must be first child, close needs to be last
+    if open then el:add_child_node(open, 1) end
+    if close then el:add_child_node(close) end
+  end
+end
+
 return function(dom)
   dom:traverse_elements(function(el)
+    if settings.output_format ~= "odt" then
+      -- LibreOffice needs <mfenced>, but Firefox doesn't
+      fix_mfenced(el)
+    end
     fix_token_elements(el)
     fix_nested_mstyle(el)
   end)

@@ -1,5 +1,9 @@
 # Changelog
 
+- 2020/11/01
+
+    - fix deprecated `<mfenced>` element in MathML 
+
 - 2020/10/28
 
     - fixed handling of nested `<span>` elements in `joincharacters` DOM filter.
