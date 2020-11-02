@@ -29,7 +29,7 @@ It will produce a file named `filename.html` if the compilation goes without fat
          possible values: tex4ht or lua4ht
     -c,--config (default xhtml) Custom config file
     -d,--output-dir (default "")  Output directory
-    -e,--build-file (default nil)  If build filename is different 
+    -e,--build-file (default nil)  If the build filename is different 
          than `filename`.mk4
     -f,--format  (default nil)  Output file format
     -j,--jobname (default nil)  Set the jobname
@@ -43,7 +43,7 @@ It will produce a file named `filename.html` if the compilation goes without fat
     <filename> (string) Input filename
 
 
-It is still possible to invoke `make4ht` in the same way as is invoked `htlatex`:
+It is still possible to invoke `make4ht` in the same way as `htlatex`:
 
     $ make4ht filename "customcfg, charset=utf-8" "-cunihtf -utf8" "-dfoo"
 
@@ -58,7 +58,7 @@ This call has the same effect as the following:
     $ make4ht -u -c customcfg -d foo filename
 
 
-Output directory doesn't have to exist, it will be created automatically. 
+Output directory does not have to exist, it `make4ht` creates it automatically. 
 Specified path can be relative to the current directory, or absolute:
 
     $ make4ht -d use/current/dir/ filename
@@ -66,21 +66,21 @@ Specified path can be relative to the current directory, or absolute:
     $ make4ht -d ~/gotohomedir filename
     $ make4ht -d c:\documents\windowspathsareworkingtoo filename
 
-The short options that don't take parameters can be collapsed:
+The short options that do not take parameters can be collapsed:
 
 
     $ make4ht -ulc customcfg -d foo filename
 
 
-To pass output from the other commands to `make4ht` use the `-` character as a
+To pass the output from other commands to `make4ht`, use the `-` character as a
 filename. It is best to use this feature together with the `--jobname` or `-j`
 option.
 
     $ cat hello.tex | make4ht -j world -
 
 By default, `make4ht` tries to be quiet, so it hides most of the command line
-messages and the output from the executed commands. It will display only status
-messages, warnings and errors. The logging level can be selected using the
+messages and output from the executed commands. It displays status
+messages, warnings, and errors. The logging level can be selected using the
 `--loglevel` or `-a` options. If the compilation fails, it may be useful to display more 
 information using the `info` or `debug` levels. 
 
@@ -183,7 +183,7 @@ should copy all output files to the correct destinations.
 
     $ make4ht -d outputdir filename.tex
 
-## Image conversion and post-processing of the generated files
+## Image conversion and postprocessing of the generated files
 
 \TeX4ht\ can convert parts of the document to images. This is useful 
 for diagrams or complicated math, for example.
