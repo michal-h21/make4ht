@@ -1,5 +1,9 @@
 # Changelog
 
+- 2020/11/22
+
+    - new extension, `build_changed`. 
+
 - 2020/11/01
 
     - fix deprecated `<mfenced>` element in MathML 
