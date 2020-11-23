@@ -2,6 +2,10 @@
 
 - 2020/11/22
 
+    - set exit status for `make4ht`
+
+- 2020/11/22
+
     - new extension, `build_changed`. 
 
 - 2020/11/01
