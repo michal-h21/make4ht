@@ -6,6 +6,7 @@ local levels = {}
 -- level of bugs that should be shown
 local show_level = 1
 local max_width = 0
+local max_status = 0
 
 logging.use_colors = true
 
@@ -14,8 +15,8 @@ logging.modes = {
   {name = "info", color = 32},
   {name = "status", color = 37},
   {name = "warning", color = 33}, 
-  {name = "error", color = 31},
-  {name = "fatal", color = 35}
+  {name = "error", color = 31, status = 1},
+  {name = "fatal", color = 35, status = 2}
 }
 
 -- prepare table with mapping between mode names and corresponding levels
@@ -62,7 +63,10 @@ function logging.new(module)
   for _, mode in ipairs(logging.modes) do
     local name = mode.name
     local color = mode.color
+    local status = mode.status or 0
     obj[name] = function(self, ...)
+      -- set make4ht exit status
+      max_status = math.max(status, max_status)
       -- max width is saved in logging.prepare_levels
       if mode.level >= show_level then
         -- support variable number of parameters
@@ -80,6 +84,11 @@ function logging.new(module)
   end
   return setmetatable({}, obj)
 
+end
+
+-- exit make4ht with maximal error status
+function logging.exit_status()
+  os.exit(max_status)
 end
 
 

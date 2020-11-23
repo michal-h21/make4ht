@@ -123,4 +123,5 @@ end)
 make:run()
 
 log:status("Conversion finished")
+logging.exit_status()
 
