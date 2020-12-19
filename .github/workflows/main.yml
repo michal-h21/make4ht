@@ -1,6 +1,11 @@
-name: CI
+name: Build documentation
 
-on: [push]
+on: 
+  push:
+    paths: 
+    - README.md
+    - CHANGELOG.md
+    - make4ht-doc.tex
 
 jobs:
   build:
@@ -17,7 +22,7 @@ jobs:
         echo test, and deploy your project.
     - name: Generate HTML docs
       uses: ./.github/actions/make4ht-build
-    - name: Publish the wen pages
+    - name: Publish the web pages
       uses: peaceiris/actions-gh-pages@v2.5.0
       env:
         ACTIONS_DEPLOY_KEY: ${{ secrets.ACTIONS_DEPLOY_KEY }}
