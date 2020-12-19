@@ -1,8 +1,12 @@
 # Changelog
 
+- 2020/12/19
+
+    - build web documentation only when documentation sources change.
+
 - 2020/11/22
 
-    - set exit status for `make4ht`
+    - set exit status for the `make4ht` command.
 
 - 2020/11/22
 
