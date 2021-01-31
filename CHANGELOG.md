@@ -1,5 +1,9 @@
 # Changelog
 
+- 2021/01/31
+
+    - added new MathJax Node filter, `mjcli`.
+
 - 2020/12/19
 
     - build web documentation only when documentation sources change.
