@@ -2,12 +2,18 @@
 
 # Introduction
 
-`make4ht` is a build system for \TeX4ht, \TeX\ to XML converter. It provides a command line tool
+`make4ht` is a build system for [\TeX4ht](https://tug.org/tex4ht/), \TeX\ to XML converter. It provides a command line tool
 that drives the conversion process. It also provides a library that can be used to create
 customized conversion tools. An example of such a tool is
 [tex4ebook](https://github.com/michal-h21/tex4ebook), a tool for conversion from \TeX\ to
 ePub and other e-book formats.
 
+See section \ref{sec:htlatex} for some reasons why you should consider to use `make4ht` instead of `htlatex`,  
+section \ref{sec:output} talks about supported output formats and extensions and section \ref{sec:buildfiles} 
+describes build files, which can be used to execute additional commands or post-process the generated files.
+
+
+# Usage
 
 The basic conversion from \LaTeX\ to `HTML` using `make4ht` can be executed using the following command:
 
@@ -15,8 +21,7 @@ The basic conversion from \LaTeX\ to `HTML` using `make4ht` can be executed usin
 
 It will produce a file named `filename.html` if the compilation goes without fatal errors.
 
-
-# Command line options {#clioptions}
+## Command line options {#clioptions}
 \label{sec:clioptions}
 
     make4ht - build system for TeX4ht
@@ -42,8 +47,9 @@ It will produce a file named `filename.html` if the compilation goes without fat
     -v,--version  Print version number
     <filename> (string) Input filename
 
+## Option handling
 
-It is still possible to invoke `make4ht` in the same way as `htlatex`:
+It is possible to invoke `make4ht` in the same way as `htlatex`:
 
     $ make4ht filename "customcfg, charset=utf-8" "-cunihtf -utf8" "-dfoo"
 
@@ -71,12 +77,16 @@ The short options that do not take parameters can be collapsed:
 
     $ make4ht -ulc customcfg -d foo filename
 
+## Input from the standard input
+
 
 To pass the output from other commands to `make4ht`, use the `-` character as a
 filename. It is best to use this feature together with the `--jobname` or `-j`
 option.
 
     $ cat hello.tex | make4ht -j world -
+
+## Change amount of information printed on the command line
 
 By default, `make4ht` tries to be quiet, so it hides most of the command line
 messages and output from the executed commands. It displays status
@@ -89,7 +99,8 @@ information using the `info` or `debug` levels.
 
 
 
-# Why `make4ht`? -- `htlatex` issues
+# Difference of `make4ht` from  `htlatex` 
+\label{sec:htlatex}
 
 
 \TeX4ht\ system supports several output formats, most notably `XHTML`, `HTML 5`
@@ -104,7 +115,7 @@ that contains the code for the desired output format. The produced `DVI` file
 is then processed using the `tex4ht` command, which in conjunction with the
 `t4ht` command produces the desired output files.
 
-## Passing command line arguments
+## Passing of command line arguments to low-level commands used in the conversion
 
 The basic conversion script provided by \TeX4ht\ system is named `htlatex`. It  compiles \LaTeX\  
 files to `HTML` with this command sequence:
@@ -203,6 +214,7 @@ using `Lua` functions. More information can be found in section \ref{sec:postpro
 
 
 # Output file formats and extensions
+\label{sec:output}
 
 The default output format used by `make4ht` is `html5`. A different
 format can be requested using the `--format` option. Supported formats are:
@@ -263,9 +275,14 @@ latexmk\_build
 
 mathjaxnode
 
-:    use [mathjax-node-page](https://github.com/pkra/mathjax-node-page/) to
+:    (**deprecated**, use `mjcli` extension instead) Old information: use [mathjax-node-page](https://github.com/pkra/mathjax-node-page/) to
      convert from MathML code to HTML + CSS or SVG. See [the available
      settings](#mathjaxsettings).
+
+mjcli
+
+:    use [mjcli](https://github.com/michal-h21/mjcli) to convert math in MathML or \LaTeX\ 
+     format to plain HTML + CSS.  See [the available settings](#mathjaxsettings).
 
 odttemplate
 
@@ -543,9 +560,15 @@ fix-links
 
 mathjaxnode
 
-:    use [mathjax-node-page](https://github.com/pkra/mathjax-node-page/) to
+:    (**deprecated**, use `mjcli` extension instead) Old information: use [mathjax-node-page](https://github.com/pkra/mathjax-node-page/) to
      convert from MathML code to HTML + CSS or SVG. See [the available
      settings](#mathjaxsettings).
+
+mjcli
+
+:    use [mjcli](https://github.com/michal-h21/mjcli) to convert math in MathML or \LaTeX\ 
+     format to plain HTML + CSS.  See [the available settings](#mathjaxsettings).
+
 
 odttemplate
 
@@ -797,7 +820,7 @@ The default parameters are the following:
      if the exit code of the executed command has a different value.
 
 
-# Configuration file {#configfile}
+# `make4ht` configuration file {#configfile}
 
 It is possible to globally modify the build settings using the configuration
 file. It is a special version of a build file where the global settings can be set.
