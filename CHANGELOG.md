@@ -1,5 +1,9 @@
 # Changelog
 
+- 2021/02/01
+
+    - better error messages when extension cannot be loaded.
+
 - 2021/01/31
 
     - added new MathJax Node filter, `mjcli`.

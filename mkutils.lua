@@ -498,7 +498,7 @@ function load_extension(name,format)
   local extension_library = "make4ht.extensions.make4ht-ext-" .. name
   local is_extension_file = find_lua_file(extension_library)
   -- don't try to load the extension if it doesn't exist
-  if not is_extension_file then return nil end
+  if not is_extension_file then return nil, "cannot fint extension " .. name  end
   local extension = require("make4ht.extensions.make4ht-ext-".. name)
   -- extensions can test if the current output format is supported
   local test = extension.test
@@ -507,7 +507,7 @@ function load_extension(name,format)
       return extension
     end
     -- if the test fail return nil
-    return nil
+    return nil, "extension " .. name .. " is not supported in the " .. format .. " format"
   end
   -- if the extension doesn't provide the test function, we will assume that
   -- it supports every output format
@@ -538,12 +538,13 @@ function load_extensions(extensions, format)
     -- the extension can be inserted into the extension_sequence, but disabled
     -- later.
     if module_names[name] == true then
-      local extension = load_extension(name,format)
+      local extension, msg= load_extension(name,format)
       if extension then
         log:info("Load extension", name)
         table.insert(extension_table, extension)
       else
         log:warning("Cannot load extension: ".. name)
+        log:warning(msg)
       end
     end
   end
