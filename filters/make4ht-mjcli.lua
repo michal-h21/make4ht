@@ -12,7 +12,7 @@ local fontdest = nil
 local fontformat = "woff"
 local cssfilename =  "mathjax-chtml.css"
 
-local function compile(filename)
+local function compile(filename, options)
   -- local tmpfile = os.tmpname()
   log:info("Compile using MathJax")
   local command =  mathnodepath .. " ".. options .. " " .. filename
@@ -147,15 +147,22 @@ return function(text, arguments)
   local extoptions = mkutils.get_filter_settings "mjcli" or {}
   local arguments = arguments or {}
   mathnodepath = arguments.prg or extoptions.prg or  mathnodepath
-  options      = arguments.options or extoptions.options or options
+  local options      = arguments.options or extoptions.options or options
   fontdir      = arguments.fontdir or extoptions.fontdir or fontdir
   -- the following ne is unused ATM
   fontdest     = arguments.fontdest or extoptions.fontdest or fontdest
   fontformat   = arguments.fontformat or extoptions.fontformat or fontformat
-  cssfilename  = arguments.cssfilename or extoptions.cssfilename or cssfilename
+  cssfilename  = arguments.cssfilename or extoptions.cssfilename or arguments.input .. "-mathjax.css"
+  local is_latex = arguments.latex or extoptions.latex or false
   local filename = arguments.filename
+
+  -- modify options to use LaTeX syntax by MathJax
+  if is_latex then
+    options = options .. " -l"
+  end
+
   -- compile current html file with mathjax
-  local newtext, msg = compile(filename)
+  local newtext, msg = compile(filename, options)
   if not newtext then 
     log:error(msg)
     return text

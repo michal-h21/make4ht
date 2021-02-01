@@ -3,6 +3,8 @@
 - 2021/02/01
 
     - better error messages when extension cannot be loaded.
+    - added `mjcli` extension.
+    - `mjcli` filter supports \LaTeX\ syntax.
 
 - 2021/01/31
 
