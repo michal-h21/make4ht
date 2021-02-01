@@ -282,7 +282,9 @@ mathjaxnode
 mjcli
 
 :    use [mjcli](https://github.com/michal-h21/mjcli) to convert math in MathML or \LaTeX\ 
-     format to plain HTML + CSS.  See [the available settings](#mathjaxsettings).
+     format to plain HTML + CSS. MathML is used by default. If you want to use \LaTeX\ math,
+     add "mathjax" option on the command line (like `make4ht -f html5+mjcli filename.tex "mathjax"`).
+     See [the available settings](#mathjaxsettings).
 
 odttemplate
 
@@ -971,32 +973,38 @@ Example
 
     filter_settings "joincharacters" { charclasses = { span=true, mn = true}}
 
-## The `mathjaxnode` filter {#mathjaxsettings}
+## The `mjcli` filter and extension {#mathjaxsettings}
+
+`mjcli` detects whether to use MathML or \LaTeX\ input by use of the `mathjax` option for `make4ht`. By default, it uses MathML. \LaTeX\ input can be required using:
+
+    make4ht -f html5+mjcli filename.tex "mathjax"
+
+### Available settings
 
 options
 
-:  command line options for the `mjpage` command. Default value is `--output CommonHTML`
+:  command line options for the `mjcli` command. 
 
 Example
 
-    filter_settings "mathjaxnode" {
-      options="--output SVG --font Neo-Euler"
+    filter_settings "mjcli" {
+      options="--svg"
     }
 
 cssfilename  
 
-:  the `mjpage` command puts some CSS code into the HTML pages. `mathjaxnode` extracts this information and saves it to a standalone CSS file. Default CSS filename is `mathjax-chtml.css`
+:  the `mjcli` command puts some CSS code into the HTML pages. The `mjcli` filter extracts this information and saves it to a standalone CSS file. Default name of this CSS file is `${input}-mathjax.css`
 
 fontdir
 
 :  directory with MathJax font files. This option enables the use of local fonts, which
    is useful in the conversion to ePub, for example. The font directory should be
-   sub-directory of the current directory. Only TeX font is supported at the moment.
+   sub-directory of the current directory. Only \TeX\ font is supported at the moment.
 
 Example
 
 
-    filter_settings "mathjaxnode" {
+    filter_settings "mjcli" {
       fontdir="fonts/TeX/woff/" 
     }
 
