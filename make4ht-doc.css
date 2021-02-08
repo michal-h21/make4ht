@@ -126,13 +126,15 @@ div.maketitle{ margin-bottom: 2em; }
 div.author, div.date {text-align:center;}
 div.thanks{text-align:left; margin-left:10%; font-size:85%; font-style:italic; }
 div.author{white-space: nowrap;}
-.abstract p {margin-left:5%; margin-right:5%;}
+div.abstract p {margin-left:5%; margin-right:5%;}
 div.abstract {width:100%;}
+.abstracttitle{text-align:center;margin-bottom:1em;}
 figure.float, div.figure {margin-left: auto; margin-right: auto;}
 figure.float img, figure.figure img {display: block; margin-left: auto; margin-right: auto;}
 figure.figure > p {text-align:center;}
 figcaption.caption {text-indent:-2em; margin-left:3em; margin-right:1em; text-align:center;}
 figcaption.caption span.id{font-weight: bold; white-space: nowrap; }
+.abstract{margin:1em;}
 .small-caps{font-variant: small-caps;}
 body{ font-size:18px; font-size-adjust: 0.5; width:65ch; max-width:100%; margin: 1em auto; }
 p,li,dt{ line-height: calc(1ex / 0.32); text-align: justify; hyphens: auto; }
