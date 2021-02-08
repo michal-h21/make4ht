@@ -128,6 +128,13 @@ local function exec_group(groups, name, fn)
   end
 end
 
+-- remove <?xtpipes XML instructions, because they cause issues in some ODT processing
+-- applications
+local function remove_xtpipes(text)
+  -- remove <?x
+  return text:gsub("%<%?xtpipes.-%?%>", "")
+end
+
 function M.modify_build(make)
   local executed = false
   -- execute xtpipes from the build file, instead of t4ht. this fixes issues with wrong paths
@@ -142,7 +149,7 @@ function M.modify_build(make)
   -- execute it before xtpipes, because we don't want xtpipes to mess with t4htlink elements
   move_matches(make)
   -- convert XML entities for Unicode characters produced by Xtpipes to characters
-  local fixentities = filter {"entities-to-unicode"}
+  local fixentities = filter {"entities-to-unicode", remove_xtpipes}
   make:match("4oo", fixentities)
   make:match("4om", fixentities)
 

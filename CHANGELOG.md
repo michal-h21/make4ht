@@ -1,5 +1,9 @@
 # Changelog
 
+- 2021/02/08
+
+    - remove `<?xtpipes ?>` processing instructions from the generated ODT file.
+
 - 2021/02/01
 
     - better error messages when extension cannot be loaded.
