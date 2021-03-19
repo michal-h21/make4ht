@@ -1,5 +1,9 @@
 # Changelog
 
+- 2021/03/19 
+
+    - version `0.3g` released.
+
 - 2021/02/08
 
     - remove `<?xtpipes ?>` processing instructions from the generated ODT file.
