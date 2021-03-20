@@ -175,6 +175,19 @@ cross-references work. It can save quite a lot of the compilation time:
 
     $ make4ht -um draft filename.tex
 
+Another buil-in mode is `clean`. It executes the `Make:clean()` command to
+remove all generated and temporary files from the current directory. 
+No \LaTeX\ compilation happens in this mode. 
+
+It should be used in this way:
+    
+    # copy generated files to a direcory
+    $ make4ht -d outdir filename.tex 
+    # remove all generated files in the current dir
+    # the -a info option will print files that are removed
+    $ make4ht -m clean -a info filename.tex
+    
+
 More information about the build files can be found in section \ref{sec:buildfiles}.
 
 ## Handling of the generated files
@@ -415,6 +428,12 @@ detect compilation errors in the TeX log file.
 `Make:htlatex`
 
 :    One call to the TeX engine with special configuration for loading of the `tex4ht.sty` package.
+
+`Make:clean`
+
+:    This command removes all generated files, including images, HTML files and
+     various auxilary files, from the current directory. It keeps files whose
+     file names don't match the input file name.
 
 `Make:httex`
 

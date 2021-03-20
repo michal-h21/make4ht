@@ -3,6 +3,7 @@
 - 2021/03/20
 
     - use `kpse` library when files are copied to an outut directory.
+    - added `clean` mode. It removes all generated, temporary and auxilary files.
 
 - 2021/03/19 
 

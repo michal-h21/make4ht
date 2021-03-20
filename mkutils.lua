@@ -369,6 +369,52 @@ end, {correct_exit= 0})
 env.Make:add("tex4ht","tex4ht ${tex4ht_par} \"${input}.${dvi}\"", nil, 1)
 env.Make:add("t4ht","t4ht ${t4ht_par} \"${input}.${ext}\"",{ext="dvi"},1)
 
+env.Make:add("clean", function(par)
+  -- remove all functions that process produced files
+  -- we will provide only one function, that remove all of them
+  Make.matches = {}
+  local main_name = par.input
+  local remove_file = function(filename)
+    if file_exists(filename) then
+      log:info("removing file: " .. filename)
+      os.remove(filename)
+    end
+  end
+  -- try to find if the last converted file was in the ODT format
+  local lg_file = parse_lg(main_name .. ".lg") 
+  local is_odt = false
+  if lg_file and lg_file.files then
+    for _, x in ipairs(lg_file.files) do
+      is_odt = x:match("odt$") or is_odt
+    end
+  end
+  if is_odt then
+    Make:match("4om$",function(filename)
+      -- math temporary file
+      local to_remove = filename:gsub("4om$", "tmp")
+      remove_file(to_remove)
+      return false
+    end)
+    Make:match("4og$", remove_file)
+  end
+  Make:match("tmp$", function()
+    -- remove temporary and auxilary files
+    for _,ext in ipairs {"aux", "xref", "tmp", "4tc", "4ct", "idv", "lg","dvi", "log"} do
+      remove_file(main_name .. "." .. ext)
+    end
+  end)
+  Make:match(".*", function(filename, par)
+    -- remove only files that start with the input file basename
+    -- this should prevent removing of images. this also means that
+    -- images shouldn't be names as <filename>-hello.png for example
+    if filename:find(main_name, 1,true) then
+      -- log:info("Matched file", filename)
+      remove_file(filename)
+    end
+  end)
+
+end)
+
 -- enable extension in the config file
 -- the following two functions must be here and not in make4ht-lib.lua
 -- because of the access to env.settings
