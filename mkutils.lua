@@ -115,6 +115,10 @@ local cp_func = os.type == "unix" and "cp" or "copy"
 -- in reality it isn't.
 -- local cp_func = os.type == "unix" and "mv" or "move"
 function cp(src,dest)
+  if not file_exists(src) then
+    -- try to find file using kpse library if it cannot be found
+    src = kpse.find_file(src) or src
+  end
 	local command = string.format('%s "%s" "%s"', cp_func, src, dest)
 	if cp_func == "copy" then command = command:gsub("/",'\\') end
 	log:info("Copy: "..command)

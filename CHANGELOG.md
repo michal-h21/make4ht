@@ -1,5 +1,9 @@
 # Changelog
 
+- 2021/03/20
+
+    - use `kpse` library when files are copied to an outut directory.
+
 - 2021/03/19 
 
     - version `0.3g` released.
