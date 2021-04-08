@@ -1,12 +1,17 @@
 -- this make4ht build file tries to recompile modified blog article sources
 --
 
+local M = {}
+
 -- disable any compilation
 Make.build_seq = {}
+Make.matches = {}
+
 Make:add("tex4ht", "")
 Make:add("t4ht", "")
 
 local log = logging.new "compile newest"
+
 
 
 
@@ -63,6 +68,9 @@ Make:add("rebuild", function(par)
   local file_pattern = config.file_pattern or "%Y-%m-%d-${input}"
   local published = find_published(par.tex_dir, file_pattern)
   local changed = find_changed(published, config.site_root)
+  print(changed)
 end)
 
 Make:rebuild{tex_dir = "posts"}
+
+return M
