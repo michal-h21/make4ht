@@ -1,4 +1,3 @@
-local domfilter = require "make4ht-domfilter"
 local mkutils   = require "mkutils"
 -- Unicode data distributed with TeX
 -- defines "characters" table
@@ -88,8 +87,7 @@ end
 
     
 
-local process = domfilter{
-  function(dom, par)
+return  function(dom, par)
     local msg
     toc, msg = toc or parse_toc(par.input .. ".4tc")
     msg = msg or "Cannot load TOC"
@@ -116,7 +114,4 @@ local process = domfilter{
     return dom
   end
 
-}
-
-Make:match("html$", process)
 
