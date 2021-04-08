@@ -1,5 +1,11 @@
 # Changelog
 
+- 2021/04/08
+
+    - removed `build_changed`. New script, [siterebuild](https://github.com/michal-h21/siterebuild), should be used instead.
+    - new DOM filter, `sectionid`. It uses sanitized titles instead of automatically generated numbers as section IDs.
+    - added `sectionid` to `common_domfilters`.
+
 - 2021/03/20
 
     - use `kpse` library when files are copied to an outut directory.
