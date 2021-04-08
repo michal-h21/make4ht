@@ -69,7 +69,6 @@ local function parse_toc(filename)
   if not mkutils.file_exists(filename) then return nil, "Cannot open TOC file "  .. filename end
   for line in io.lines(filename) do
     local id, name = parse_toc_line(line)
-    print(id,name)
     -- not all lines in the .4tc file contains TOC entries
     if id then
       -- test if the same name was used already. user should be notified
@@ -106,7 +105,6 @@ return  function(dom, par)
     if not toc then log:warning(msg) end
     -- process all elements with id atribute or <a href>
     for _, el in ipairs(dom:query_selector "[id],a[href]") do
-      -- print(el:get_element_name(), el:get_attribute("id"), el:get_attribute("href"))
       local id, href = el:get_attribute("id"), el:get_attribute("href") 
       if id then
         -- replace id with new section id
