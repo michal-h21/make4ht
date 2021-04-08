@@ -5,6 +5,7 @@
     - removed `build_changed`. New script, [siterebuild](https://github.com/michal-h21/siterebuild), should be used instead.
     - new DOM filter, `sectionid`. It uses sanitized titles instead of automatically generated numbers as section IDs.
     - added `sectionid` to `common_domfilters`.
+    - use `context` in the Docker file, because it contains the `char-def.lua` file.
 
 - 2021/03/20
 
