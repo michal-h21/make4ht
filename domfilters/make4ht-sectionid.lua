@@ -84,6 +84,18 @@ local function parse_toc(filename)
   
 end
 
+-- we don't want to change the original id, as there may be links to it from the outside
+-- so we will set it to the parent element (which should be h[1-6])
+local function set_id(el, id)
+  local section = el:get_parent()
+  if section:get_attribute("id") then -- if it already has id, we don't override it, but create dummy child instead
+    local new = section:create_element("span", {id=id})
+    section:add_child_node(new,1)
+  else
+    section:set_attribute("id", id)
+  end
+
+end
 
     
 
@@ -100,7 +112,7 @@ return  function(dom, par)
         -- replace id with new section id
         local name = toc[id]
         if name then
-          el:set_attribute("id", name)
+          set_id(el, name)
         end
       elseif href then
         -- replace links to sections with new id
