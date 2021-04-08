@@ -261,7 +261,7 @@ common\_domfilters
 
 :    clean the HTML file using DOM filters. It is more powerful than
 `common_filters`. Used DOM filters are `fixinlines`, `idcolons`,
-`joincharacters`, and `tablerows`.
+`joincharacters`, `sectionid` and `tablerows`.
 
 detect\_engine
 
@@ -671,6 +671,10 @@ tablerows
 mathmlfixes
 
 :  fix common issues for MathML.
+
+sectionid
+
+:  create `id` attribute for HTML sectioning elements derived from the section title.
 
 t4htlinks
 
