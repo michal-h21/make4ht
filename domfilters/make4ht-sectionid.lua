@@ -87,7 +87,8 @@ end
 -- so we will set it to the parent element (which should be h[1-6])
 local function set_id(el, id)
   local section = el:get_parent()
-  if section:get_attribute("id") then -- if it already has id, we don't override it, but create dummy child instead
+  local section_id = section:get_attribute("id")
+  if section_id and section_id~=id then -- if it already has id, we don't override it, but create dummy child instead
     local new = section:create_element("span", {id=id})
     section:add_child_node(new,1)
   else
@@ -112,7 +113,8 @@ return  function(dom, par)
         if name then
           set_id(el, name)
         end
-      elseif href then
+      end
+      if href then
         -- replace links to sections with new id
         local base, anchor = href:match("^(.*)%#(.+)")
         local name = toc[anchor]
