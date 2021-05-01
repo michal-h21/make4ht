@@ -55,12 +55,30 @@ function remove_extension(path)
 end
 
 -- 
-
+-- check if file exists
 function file_exists(file)
 	local f = io.open(file, "rb")
 	if f then f:close() end
 	return f ~= nil
 end
+
+-- check if Lua module exists
+-- source: https://stackoverflow.com/a/15434737/2467963
+function isModuleAvailable(name)
+  if package.loaded[name] then
+    return true
+  else
+    for _, searcher in ipairs(package.searchers or package.loaders) do
+      local loader = searcher(name)
+      if type(loader) == 'function' then
+        package.preload[name] = loader
+        return true
+      end
+    end
+    return false
+  end
+end
+
 
 -- searching for converted images
 function parse_lg(filename)
