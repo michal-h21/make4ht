@@ -1,5 +1,10 @@
 # Changelog
 
+- 2021/05/01
+
+    - added function `mkutils.isModuleAvailable`. It checks if Lua library is available.
+    - check for `char-def` library in `sectionid` DOM filter.
+
 - 2021/04/08
 
     - removed `build_changed`. New script, [siterebuild](https://github.com/michal-h21/siterebuild), should be used instead.
