@@ -1,10 +1,15 @@
 local mkutils   = require "mkutils"
--- Unicode data distributed with TeX
+local log = logging.new("tocid")
+-- Unicode data distributed with ConTeXt
 -- defines "characters" table
+if not mkutils.isModuleAvailable("char-def") then
+  log:warning("char-def module not found")
+  log:warning("cannot fix section id's")
+  return function(dom) return dom end
+end
 require "char-def"
 local chardata = characters.data or {}
 
-local log = logging.new("tocid")
 
 local toc = nil
 
@@ -73,7 +78,7 @@ local function parse_toc(filename)
     if id then
       -- test if the same name was used already. user should be notified
       if used[name] then
-        log:warning("Duplicate id used")
+        log:warning("Duplicate id used: "..name)
       end
       used[name] = true
       toc[id] = name
