@@ -40,6 +40,12 @@ return function(dom)
     -- that matches this pattern, so we should keep the row if we match them too)
     return not css:match(search_term)
   end
+  local hline_hr = function(row)
+    -- remove <hr> elements from "hline" rows
+    for _, hr in ipairs(row:query_selector(".hline hr")) do
+      hr:remove_node()
+    end
+  end
   local load_css_files = function()
     -- the empty rows can be styled using CSS, for example configuration for 
     -- Booktabs does that. We shouldn't remove such rows.
@@ -62,6 +68,7 @@ return function(dom)
     -- find the empty rows
     for _, row in ipairs(tbl:query_selector("tr")) do
       if is_empty_row(row) and is_not_styled(row, css) then row:remove_node() end
+      hline_hr(row)
     end
 
   end

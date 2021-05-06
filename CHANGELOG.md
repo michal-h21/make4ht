@@ -1,5 +1,9 @@
 # Changelog
 
+- 2021/05/06
+
+    - remove `<hr>` elements in `.hline` rows in `tablerows` DOM filter.
+
 - 2021/05/01
 
     - added function `mkutils.isModuleAvailable`. It checks if Lua library is available.
