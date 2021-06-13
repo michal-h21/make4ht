@@ -1,5 +1,9 @@
 # Changelog
 
+- 2021/06/13
+
+    - added `itemparagraphs` DOM filter. It removes unnecessary paragraphs from `<li>` elements.
+
 - 2021/05/06
 
     - remove `<hr>` elements in `.hline` rows in `tablerows` DOM filter.
