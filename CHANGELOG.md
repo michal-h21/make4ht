@@ -1,5 +1,9 @@
 # Changelog
 
+- 2021/06/16
+
+    - better handling of duplicate ID attributes in `sectionid` DOM filter.
+
 - 2021/06/13
 
     - added `itemparagraphs` DOM filter. It removes unnecessary paragraphs from `<li>` elements.

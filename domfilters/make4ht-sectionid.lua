@@ -68,24 +68,27 @@ local function parse_toc_line(line)
   end
 end
 
+local used = {}
 
 local function parse_toc(filename)
-  local toc, used = {}, {}
+  local toc = {}
   if not mkutils.file_exists(filename) then return nil, "Cannot open TOC file "  .. filename end
   for line in io.lines(filename) do
     local id, name = parse_toc_line(line)
+    local orig_name = name
     -- not all lines in the .4tc file contains TOC entries
     if id then
       -- test if the same name was used already. user should be notified
       if used[name] then
-        log:warning("Duplicate id used: "..name)
+        -- update 
+        name = name .. used[name]
+        log:debug("Duplicate id found: ".. orig_name .. ". New id: " .. name)
       end
-      used[name] = true
+      used[orig_name] = (used[orig_name] or 0) + 1
       toc[id] = name
     end
   end
   return toc
-  
 end
 
 -- we don't want to change the original id, as there may be links to it from the outside
@@ -108,15 +111,30 @@ return  function(dom, par)
     local msg
     toc, msg = toc or parse_toc(par.input .. ".4tc")
     msg = msg or "Cannot load TOC"
-    if not toc then log:warning(msg) end
+    -- don't do anyting if toc cannot be found
+    if not toc then 
+      log:warning(msg) 
+      return dom
+    end
+    -- the HTML file can already contain ID that we want to assign
+    -- we will not set duplicate id from TOC in that case
+    local toc_ids = {}
+    for _, el in ipairs(dom:query_selector("[id]")) do
+      local id = el:get_attribute("id")
+      toc_ids[id] = true
+    end
     -- process all elements with id atribute or <a href>
     for _, el in ipairs(dom:query_selector "[id],a[href]") do
       local id, href = el:get_attribute("id"), el:get_attribute("href") 
       if id then
-        -- replace id with new section id
         local name = toc[id]
-        if name then
+        -- replace id with new section id
+        if name and not toc_ids[name] then
           set_id(el, name)
+        else
+          if name then
+            log:debug("Document already contains id: " .. name)
+          end
         end
       end
       if href then
