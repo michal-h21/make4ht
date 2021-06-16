@@ -674,7 +674,9 @@ mathmlfixes
 
 sectionid
 
-:  create `id` attribute for HTML sectioning elements derived from the section title.
+:  create `id` attribute for HTML sectioning elements derived from the section
+   title. It also updates links to these sections. Use the `notoc` command line
+   option to prevent that.
 
 t4htlinks
 

@@ -3,6 +3,7 @@
 - 2021/06/16
 
     - better handling of duplicate ID attributes in `sectionid` DOM filter.
+    - support `notoc` option in `sectionid`.
 
 - 2021/06/13
 

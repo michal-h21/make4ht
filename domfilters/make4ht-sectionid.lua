@@ -116,6 +116,10 @@ return  function(dom, par)
       log:warning(msg) 
       return dom
     end
+    -- if user selects the "notoc" option on the command line, we 
+    -- will not update href links
+    local notoc = false
+    if par["tex4ht_sty_par"]:match("notoc") then notoc = true end
     -- the HTML file can already contain ID that we want to assign
     -- we will not set duplicate id from TOC in that case
     local toc_ids = {}
@@ -137,7 +141,7 @@ return  function(dom, par)
           end
         end
       end
-      if href then
+      if href and notoc == false then
         -- replace links to sections with new id
         local base, anchor = href:match("^(.*)%#(.+)")
         local name = toc[anchor]
