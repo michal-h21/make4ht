@@ -1287,6 +1287,20 @@ Another option is to add a space before the `tex4ht` options:
 
 The former way is preferable, though.
 
+## Table of Contents points to a wrong destination
+
+The `sectionid` DOM filter creates better link destinations for sectioning commands.
+In some cases, for example if you use Pandoc, the document may already contain the
+link destination with the same name. In such cases the original destination is preserved 
+in the file. In this case links to the section will point to that place, instead of
+correct destination in the section. This may happen for example if you use Pandoc for
+the Markdown to \LaTeX\ conversion. It creates `\hypertarget` commands that are placed 
+just before section. The links points to that place, instead of the actual section. 
+
+In this case you don't want to update links. Use the `notoc` option to prevent that.
+
+
+
 ## Filenames containing spaces
 
 `tex4ht` command cannot handle filenames containing spaces. to fix this issue, `make4ht` 
