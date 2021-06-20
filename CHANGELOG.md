@@ -1,5 +1,11 @@
 # Changelog
 
+- 2021/06/20
+
+    - test for the `svg` picture mode in the `tex4ht` command. Use the `-g.svg`
+      option if it is detected. This is necessary for correct support of
+      pictorial characters.
+
 - 2021/06/16
 
     - better handling of duplicate ID attributes in `sectionid` DOM filter.

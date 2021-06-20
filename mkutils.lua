@@ -384,7 +384,29 @@ end, {correct_exit= 0})
 
 
 
-env.Make:add("tex4ht","tex4ht ${tex4ht_par} \"${input}.${dvi}\"", nil, 1)
+-- env.Make:add("tex4ht","tex4ht ${tex4ht_par} \"${input}.${dvi}\"", nil, 1)
+env.Make:add("tex4ht",function(par)
+  -- detect if svg output is used
+  -- if yes, we need to pass the -g.svg option to tex4ht command
+  -- to support svg images for character pictures
+  local logfile = par.input .. ".log"
+  if file_exists(logfile) then
+    for line in io.lines(logfile) do
+      local options = line:match("TeX4ht package options:(.+)")
+      if options then
+        log:info(options)
+        if options:match("svg") then
+          par.tex4ht_par = (par.tex4ht_par or "") .. " -g.svg"
+        end
+        break
+      end
+    end
+  end
+  local command = "tex4ht ${tex4ht_par} \"${input}.${dvi}\"" % par
+  log:info("executing: " .. command)
+  return execute(command)
+end
+ , nil, 1)
 env.Make:add("t4ht","t4ht ${t4ht_par} \"${input}.${ext}\"",{ext="dvi"},1)
 
 env.Make:add("clean", function(par)
