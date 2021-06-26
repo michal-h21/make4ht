@@ -34,7 +34,7 @@ local max_depth = 1
 -- debugging function to test correct structure of the TOC tree
 local function print_tree(tree, level) 
   local level = level or 0
-  print(string.rep(" ", level) .. (tree.type or "root"), tree.id)
+  log:debug(string.rep(" ", level) .. (tree.type or "root"), tree.id)
   for k, v in pairs(tree.children) do
     print_tree(v, level + 2)
   end
