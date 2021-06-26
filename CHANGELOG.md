@@ -1,5 +1,9 @@
 # Changelog
 
+- 2021/06/26
+
+    - rewrote the `collapsetoc` DOM filter.
+
 - 2021/06/20
 
     - test for the `svg` picture mode in the `tex4ht` command. Use the `-g.svg`

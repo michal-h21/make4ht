@@ -960,7 +960,7 @@ options
 
 `toc_query` 
 
-:  CSS selector for selecting the table of contents container. 
+:  CSS selector for selection of element that contains the table of contents. 
 
 `title_query`
 
@@ -970,12 +970,33 @@ options
 
 :  table containing a hierarchy of classes used in TOC
 
+`max_depth`
+
+:  set detph of displayed children TOC levels
+
 Default values:
 
     filter_settings "collapsetoc" {
       toc_query = ".tableofcontents",
-      title_query = ".partHead a, .chapterHead a, .sectionHead a, .subsectionHead a",
-      toc_levels = {"partToc", "chapterToc", "sectionToc", "subsectionToc", "subsubsectionToc"}
+      title_query = "h1 a, h2 a, h3 a, h4 a, h5 a, h6 a",
+      max_depth = 1,
+      toc_levels = {
+        tocpart = 1,
+        toclikepart = 1,
+        tocappendix = 1,
+        toclikechapter = 2,
+        tocchapter = 2,
+        tocsection = 3,
+        toclikesection = 3,
+        tocsubsection = 4,
+        toclikesubsection = 4,
+        tocsubsubsection = 5,
+        toclikesubsubsection = 5,
+        tocparagraph = 6,
+        toclikeparagraph = 6,
+        tocsubparagraph = 7,
+        toclikesubparagraph = 7,
+      }
     }
 
 ## The `fixinlines` dom filter 
