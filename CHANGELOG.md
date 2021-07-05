@@ -1,5 +1,9 @@
 # Changelog
 
+- 2021/07/05
+
+    - sort colors alphabetically in the `joincolors` DOM filter to enable reproducible builds.
+
 - 2021/06/26
 
     - rewrote the `collapsetoc` DOM filter.
