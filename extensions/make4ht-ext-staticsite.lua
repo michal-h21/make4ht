@@ -127,7 +127,7 @@ function M.modify_build(make)
   -- detect if we should remove maketitle
   local site_settings = get_filter_settings "staticsite"
   -- \maketitle is removed by default, set `remove_maketitle=false` setting to disable that
-  if  site_settings.remove_maketitle ~= false then
+  if site_settings.remove_maketitle ~= false then
     remove_maketitle(make)
   end
 
