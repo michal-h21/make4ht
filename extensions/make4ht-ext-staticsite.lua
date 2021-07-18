@@ -76,6 +76,22 @@ local function insert_filter(make, pattern, fn)
   })
 end
 
+local function remove_maketitle(make)
+  -- use DOM filter to remove \maketitle block
+  local domfilter = require "make4ht-domfilter"
+  local process = domfilter {
+    function(dom)
+      local maketitles = dom:query_selector(".maketitle")
+      for _, el in ipairs(maketitles) do
+        log:debug("removing maketitle")
+        el:remove_node()
+      end
+      return dom
+    end
+  }
+  make:match("html$", process)
+end
+
 
 local function copy_files(filename, par)
   local function prepare_path(dir, subdir)
@@ -107,6 +123,14 @@ function M.modify_build(make)
   local process = filter {
     "staticsite"
   }
+
+  -- detect if we should remove maketitle
+  local site_settings = get_filter_settings "staticsite"
+  -- \maketitle is removed by default, set `remove_maketitle=false` setting to disable that
+  if  site_settings.remove_maketitle ~= false then
+    remove_maketitle(make)
+  end
+
   local settings = make.params
   -- get the published file name
   local slug = get_slug(settings)
