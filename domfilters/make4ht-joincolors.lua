@@ -25,6 +25,7 @@ local function extract_colors(csscontent)
   for class, color in pairs(used_colors) do
     t[#t+1] = string.format(".%s{color:%s;}", class, color)
   end
+  table.sort(t)
   return csscontent .. table.concat(t, "\n")
 end
 
