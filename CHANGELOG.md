@@ -1,5 +1,9 @@
 # Changelog
 
+- 2021/07/18
+ 
+    - remove elements produced by `\maketitle` in the `staticsite` extension.
+
 - 2021/07/05
 
     - sort colors alphabetically in the `joincolors` DOM filter to enable reproducible builds.

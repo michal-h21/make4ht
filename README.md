@@ -1080,15 +1080,22 @@ header
 table value is a function, it is executed with current parameters and HTML page
 DOM object as arguments.
 
+remove\_maketitle
+
+:  the `staticsite` extension removes text produced by the `\maketitle` command by default. Set this 
+option to `false` to disable the removal.
+
 Example:
 
 
+    -- set the environmental variable 'blog_root' with path to 
+    -- the directory that should hold the generated HTML files
     local outdir = os.getenv "blog_root" 
     
     filter_settings "staticsite" {
       site_root = outdir, 
       map = {
-        [".css$"] = "../css/"
+        [".css$"] = "/css/"
       },
       header = {
          layout="post",
