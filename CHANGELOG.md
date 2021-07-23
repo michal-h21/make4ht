@@ -1,5 +1,9 @@
 # Changelog
 
+- 2021/07/23
+
+    - fixed detection of single paragraphs inside `<li>` in the `itemparagraphs` DOM filter.
+
 - 2021/07/18
  
     - remove elements produced by `\maketitle` in the `staticsite` extension.
