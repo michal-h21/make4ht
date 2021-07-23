@@ -16,7 +16,7 @@ local function get_slug(settings)
     local f = io.open(published_name, "r")
     local readtime  = f:read("*line")
     time = tonumber(readtime)
-    log:info("Already pubslished", slug)
+    log:info("Already pubslished", os.date("%Y-%m-%d %H:%M", time))
     f:close()
   else
     -- escape 
