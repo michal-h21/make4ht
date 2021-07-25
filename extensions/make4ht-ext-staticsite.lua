@@ -100,7 +100,7 @@ local function copy_files(filename, par)
   end
   -- get extension settings
   local site_settings = get_filter_settings "staticsite"
-  local site_root = site_settings.site_root
+  local site_root = site_settings.site_root or "./"
   local map = site_settings.map or {}
   -- default path without subdir, will be used if the file is not matched
   -- by any pattern in the map
