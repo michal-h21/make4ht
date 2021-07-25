@@ -1,5 +1,9 @@
 # Changelog
 
+- 2021/07/25
+
+    - use current directory as default output dir in `staticsite` extension.
+
 - 2021/07/23
 
     - fixed detection of single paragraphs inside `<li>` in the `itemparagraphs` DOM filter.
