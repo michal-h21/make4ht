@@ -2,6 +2,10 @@
 
 - 2021/07/25
 
+    - version `0.3h` released.
+
+- 2021/07/25
+
     - use current directory as default output dir in `staticsite` extension.
 
 - 2021/07/23
@@ -53,7 +57,7 @@
 
 - 2021/03/20
 
-    - use `kpse` library when files are copied to an outut directory.
+    - use `kpse` library when files are copied to the output directory.
     - added `clean` mode. It removes all generated, temporary and auxilary files.
 
 - 2021/03/19 
