@@ -7,7 +7,13 @@ local function make_yaml(tbl, level)
   local indent = string.rep("  ", level)
   -- indentation for multilen strings
   local str_indent = string.rep("  ", level + 1)
-  for k,v in pairs(tbl) do
+  local sorted = {}
+  for k, _ in pairs(tbl) do
+    sorted[#sorted+1] = k
+  end
+  table.sort(sorted)
+  for _,k in ipairs(sorted) do
+    local v = tbl[k]
     if type(v)=="string" then
       -- detect multiline strings
       if v:match("\n") then

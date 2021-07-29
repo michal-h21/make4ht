@@ -1,5 +1,9 @@
 # Changelog
 
+- 2021/07/29
+
+    - sort YAML header in the `staticsite` filter.
+
 - 2021/07/25
 
     - version `0.3h` released.
