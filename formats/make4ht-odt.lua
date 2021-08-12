@@ -141,7 +141,7 @@ function M.modify_build(make)
   -- expanded in tex4ht.env in Miktex or Debian
   call_xtpipes(make)
   -- fix the image dimensions wrongly set by xtpipes
-  local domfilters = domfilter {"t4htlinks", "odtpartable"}
+  local domfilters = domfilter {"t4htlinks", "odtpartable", "odtsvg"}
   make:match("4oo$", domfilters)
   -- fixes for mathml
   local mathmldomfilters = domfilter {"joincharacters","mathmlfixes"}

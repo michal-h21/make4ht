@@ -1,5 +1,9 @@
 # Changelog
 
+- 2021/08/1
+
+    - correctly set dimensions for `SVG` images in the `ODT` format.
+
 - 2021/07/29
 
     - sort YAML header in the `staticsite` filter.
