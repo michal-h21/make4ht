@@ -433,7 +433,8 @@ detect compilation errors in the TeX log file.
 
 :    This command removes all generated files, including images, HTML files and
      various auxilary files, from the current directory. It keeps files whose
-     file names don't match the input file name.
+     file names don't match the input file name. It is preferable to use `make4ht -m clean filename.tex`
+     to clean output files.
 
 `Make:httex`
 
