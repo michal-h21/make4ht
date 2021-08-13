@@ -1,6 +1,11 @@
 # Changelog
 
-- 2021/08/1
+- 2021/08/13
+
+    - use LaTeX new hook mechanism to load `tex4ht.sty` before document class.
+      It fixes some issues with packages required in classes.
+
+- 2021/08/12
 
     - correctly set dimensions for `SVG` images in the `ODT` format.
 
