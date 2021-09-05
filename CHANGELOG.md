@@ -1,5 +1,9 @@
 # Changelog
 
+- 2021/09/05
+
+    - correced detection of closing brace in CSS style in `mjcli` filter.
+
 - 2021/08/13
 
     - use LaTeX new hook mechanism to load `tex4ht.sty` before document class.
