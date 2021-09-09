@@ -1,5 +1,9 @@
 # Changelog
 
+- 2021/09/09
+
+    - corrected SVG dimension setting in the ODT output. Dimensions are set also for PNG and JPG pictures.
+
 - 2021/09/05
 
     - correced detection of closing brace in CSS style in `mjcli` filter.
