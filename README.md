@@ -661,9 +661,6 @@ odtimagesize
 
 :  set correct dimensions for images in the ODT format. It is no longer used, as the dimensions are set by TeX4ht itself.
 
-odtsvg
-
-:  set correct size for SVG images in the ODT format.
 
 odtpartable
 
