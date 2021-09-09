@@ -5,6 +5,7 @@ local os      = require "os"
 local kpse    = require "kpse"
 local filter  = require "make4ht-filter"
 local domfilter  = require "make4ht-domfilter"
+local domobject  = require "luaxml-domobject"
 local xtpipeslib = require "make4ht-xtpipes"
 local log = logging.new "odt"
 
@@ -81,6 +82,82 @@ function Odtfile:pack()
   mkutils.delete_dir(self.archivelocation)
 end
 
+--- *************************
+--  *** fix picture sizes ***
+--  *************************
+--
+local function add_points(dimen)
+  if type(dimen) ~= "string" then return dimen end
+  -- convert SVG dimensions to points if only number is provided
+  if dimen:match("[0-9]$") then return dimen .. "pt" end
+  return dimen
+end
+
+local function get_svg_dimensions(filename) 
+  local width, height
+  if mkutils.file_exists(filename) then 
+    for line in io.lines(filename) do
+      width = line:match("width%s*=%s*[\"'](.-)[\"']") or width
+      height = line:match("height%s*=%s*[\"'](.-)[\"']") or height
+      -- stop parsing once we get both width and height
+      if width and height then break end
+    end
+  end
+  width = add_points(width)
+  height = add_points(height)
+  return width, height
+end
+
+local function get_xbb_dimensions(filename)
+  local f = io.popen("ebb -x -O " .. filename)
+  if f then
+    local content = f:read("*all")
+    local width, height = content:match("%%BoundingBox: %d+ %d+ (%d+) (%d+)")
+    return add_points(width), add_points(height)
+  end
+  return nil
+end
+--
+local function fix_picture_sizes(tmpdir)
+  local filename = tmpdir .. "/content.xml"
+  local f = io.open(filename, "r")
+  if not f then 
+    log:warning("Cannot open ", filename, "for picture size fixes")
+    return nil
+  end
+  local content = f:read("*all") or ""
+  f:close()
+  local dom = domobject.parse(content)
+  for _, pic in ipairs(dom:query_selector("draw|image")) do
+    local imagename = pic:get_attribute("xlink:href")
+    -- update SVG images dimensions
+    log:debug("image", imagename)
+    local parent = pic:get_parent()
+    local width =  parent:get_attribute("svg:width")
+    local height = parent:get_attribute("svg:height")
+    -- if width == "0.0pt" then width = nil end
+    -- if height == "0.0pt" then height = nil end
+    if not width or not height then
+      local imgfilename = tmpdir .. "/" .. imagename
+      if imagename:match("svg$") then
+        width, height = get_svg_dimensions(imgfilename) --  or width, height
+      elseif imagename:match("png$") or imagename:match("jpe?g$") then
+        width, height = get_xbb_dimensions(imgfilename)
+      end
+    end
+    log:debug("new dimensions", width, height)
+    parent:set_attribute("svg:width", width)
+    parent:set_attribute("svg:height", height)
+    -- if 
+  end
+  -- save the modified DOM again
+  log:debug("Fixed picture sizes")
+  local content = dom:serialize()
+  local f = io.open(filename, "w")
+  f:write(content)
+  f:close()
+end
+
 -- escape string to be used in the gsub search
 local function escape_file(filename)
   local quotepattern = '(['..("%^$().[]*+-?"):gsub("(.)", "%%%1")..'])'
@@ -141,7 +218,7 @@ function M.modify_build(make)
   -- expanded in tex4ht.env in Miktex or Debian
   call_xtpipes(make)
   -- fix the image dimensions wrongly set by xtpipes
-  local domfilters = domfilter {"t4htlinks", "odtpartable", "odtsvg"}
+  local domfilters = domfilter {"t4htlinks", "odtpartable"}
   make:match("4oo$", domfilters)
   -- fixes for mathml
   local mathmldomfilters = domfilter {"joincharacters","mathmlfixes"}
@@ -218,6 +295,9 @@ function M.modify_build(make)
           -- the Pictues dir is flat, without subdirs
           odt:copy("${basename}" % par, "Pictures")
         end)
+
+        -- fix picture sizes in the content file
+        fix_picture_sizes(odt.archivelocation)
 
         -- remove some spurious file
         exec_group(groups, "4od", function(par)
