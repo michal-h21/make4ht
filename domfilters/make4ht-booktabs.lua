@@ -58,7 +58,7 @@ local function join_rows(matched_rows,current_rows)
         local prev_row = matched_rows[continue]
         -- find column where the previous cmidrule ends
         local prev_end = prev_row.column + prev_row.span
-        local newspan = match.column - prev_end 
+        local newspan = 1 + match.column - prev_end 
         update_row(current_rows, match, newspan, i)
         -- update the current row position
         prev_row.column = match.column
