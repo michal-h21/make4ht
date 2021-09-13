@@ -6,7 +6,7 @@
 
 - 2021/09/05
 
-    - correced detection of closing brace in CSS style in `mjcli` filter.
+    - corrected detection of closing brace in CSS style in `mjcli` filter.
 
 - 2021/08/13
 

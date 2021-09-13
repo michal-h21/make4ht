@@ -62,7 +62,8 @@ local function parse_css(css, file_class)
         status = "record"
       end
     elseif status == "record" then
-      if line:match("^%s*%}%s*$") then
+      -- find end of the CSS rule
+      if line:match("}%s*$") then
         status = "init"
         if not used_styles[current_selector] then
           table.insert(saved_styles, {selector = current_selector, content = current})
