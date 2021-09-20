@@ -1,5 +1,9 @@
 # Changelog
 
+- 2021/09/20
+
+    - remove LaTeX commands from TOC entries in `sectionid` DOM filter.
+
 - 2021/09/09
 
     - corrected SVG dimension setting in the ODT output. Dimensions are set also for PNG and JPG pictures.

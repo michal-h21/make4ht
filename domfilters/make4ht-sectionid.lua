@@ -44,6 +44,9 @@ end
 
 local escape_name = function(name)
   local result = {}
+  -- remove LaTeX commands
+  name = name:gsub("\\[%a]+", "")
+  name = name:gsub("^%s+", ""):gsub("%s+$", "")
   for _,char in utf8.codes(name) do
     local info = chardata[char] or {}
     if is_space(info) then
@@ -62,7 +65,7 @@ local function parse_toc_line(line)
   -- the section ids and titles are saved in the following format:
   -- \csname a:TocLink\endcsname{1}{x1-20001}{QQ2-1-2}{Nazdar světe}
   -- ............................... id ................. title ...
-  local id, name = line:match("a:TocLink.-{.-}{(.-)}{.-}{(.-)}")
+  local id, name = line:match("a:TocLink.-{.-}{(.-)}{.-}(%b{})")
   if id then
     return id, escape_name(name)
   end
