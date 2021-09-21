@@ -1,5 +1,9 @@
 # Changelog
 
+- 2021/09/21
+
+    - run DOM parse in sandbox in the ODT format picture size function.
+
 - 2021/09/20
 
     - remove LaTeX commands from TOC entries in `sectionid` DOM filter.

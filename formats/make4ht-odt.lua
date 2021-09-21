@@ -127,7 +127,13 @@ local function fix_picture_sizes(tmpdir)
   end
   local content = f:read("*all") or ""
   f:close()
-  local dom = domobject.parse(content)
+  local status, domobject = pcall(function()
+    return domobject.parse(content)
+  end)
+  if not status then 
+    log:warning("Cannot parse DOM, the resulting ODT file will be most likely corrupted")
+    return nil
+  end
   for _, pic in ipairs(dom:query_selector("draw|image")) do
     local imagename = pic:get_attribute("xlink:href")
     -- update SVG images dimensions
