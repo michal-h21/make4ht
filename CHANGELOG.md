@@ -1,5 +1,9 @@
 # Changelog
 
+- 2021/09/30
+
+  - version `0.3i` released.
+
 - 2021/09/21
 
     - run DOM parse in sandbox in the ODT format picture size function.
