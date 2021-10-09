@@ -127,7 +127,7 @@ local function fix_picture_sizes(tmpdir)
   end
   local content = f:read("*all") or ""
   f:close()
-  local status, domobject = pcall(function()
+  local status, dom= pcall(function()
     return domobject.parse(content)
   end)
   if not status then 
