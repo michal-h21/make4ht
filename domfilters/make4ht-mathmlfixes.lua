@@ -37,6 +37,30 @@ local function fix_nested_mstyle(el)
   end
 end
 
+-- if element contains 
+-- wrap everything in <mrow>
+local function top_mrow(math)
+  local children = math:get_children()
+  local put_mrow = false
+  -- don't process elements with one or zero children
+  -- don't process elements that already are mrow
+  if #children < 2 or  math:get_element_name() == "mrow" then return nil end
+  for _,v in ipairs(children) do
+    if v:is_element() and is_token_element(v) then
+      put_mrow = true
+      break
+    end
+  end
+  if put_mrow then
+    local mrow = math:create_element("mrow")
+    for _, el in ipairs(children) do
+      mrow:add_child_node(el)
+    end
+    math._children = {mrow}
+  end
+
+end
+
 local function get_fence(el, attr, form)
   -- convert fence attribute to <mo> element
   -- attr: open | close
@@ -108,6 +132,7 @@ return function(dom)
     end
     fix_token_elements(el)
     fix_nested_mstyle(el)
+    top_mrow(el)
   end)
   return dom
 end
