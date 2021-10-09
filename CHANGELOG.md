@@ -3,6 +3,7 @@
 - 2021/10/09
 
   - fixed wrong DOM object name in the ODT format.
+  - add addtional `<mrow>` elements when necessary.
 
 - 2021/09/30
 
