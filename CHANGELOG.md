@@ -1,5 +1,9 @@
 # Changelog
 
+- 2021/10/10
+
+  - version `0.3j` released.
+
 - 2021/10/09
 
   - fixed wrong DOM object name in the ODT format.
