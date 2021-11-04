@@ -50,7 +50,8 @@ local function fix_inlines(obj)
         if not new then
           -- start new paragraph
           if jej._type == "TEXT" and jej._text:match("^%s+$") then
-            -- ignore parts that contain only whitespace
+            -- ignore parts that contain only whitespace and are placed before 
+            -- paragraph start
           else
             new = obj:create_element("p" )
             new:add_child_node(obj:copy_node(jej))
