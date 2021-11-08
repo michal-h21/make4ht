@@ -1,5 +1,10 @@
 # Changelog
 
+- 2021/11/04
+
+  - more intelligent handling of text and inline elements outside of paragraphs
+    in the `fixinlines` DOM filter.
+
 - 2021/10/11
 
   - version `0.3j` released.
