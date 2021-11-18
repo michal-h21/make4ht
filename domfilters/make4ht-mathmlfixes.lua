@@ -44,7 +44,10 @@ local function top_mrow(math)
   local put_mrow = false
   -- don't process elements with one or zero children
   -- don't process elements that already are mrow
-  if #children < 2 or  math:get_element_name() == "mrow" then return nil end
+  local parent = math:get_parent()
+  local parent_name
+  if parent then parent_name = parent:get_element_name() end
+  if #children < 2 or  math:get_element_name() == "mrow" or parent_name == "mrow" then return nil end
   for _,v in ipairs(children) do
     if v:is_element() and is_token_element(v) then
       put_mrow = true

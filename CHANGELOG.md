@@ -1,5 +1,9 @@
 # Changelog
 
+- 2021/11/18
+
+  - don't put `<mrow>` as children of `<mrow>` in the `mathmlfixes` DOM filter.
+
 - 2021/11/04
 
   - more intelligent handling of text and inline elements outside of paragraphs
