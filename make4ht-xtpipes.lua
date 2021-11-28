@@ -53,7 +53,7 @@ function M.get_xtpipes(selfautoparent)
       -- if xtpipes failed to process the file, it may mean that it was bad-formed xml
       -- we can try to make it well-formed using Tidy
       local tidy_command = 'tidy -utf8 -xml -asxml -q -o "${filename}" "${tmpfile}"' % {tmpfile = tmpfile, filename = filename}
-      log:warning("xtpipes failed trying tidy")
+      log:warning("xtpipes failed, trying tidy")
       log:debug(tidy_command)
       local status = os.execute(tidy_command)
       if status > 0 then
