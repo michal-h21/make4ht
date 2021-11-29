@@ -48,18 +48,27 @@ function M.get_xtpipes(selfautoparent)
     mkutils.mv(filename, tmpfile)
     local command = pattern % {filename = tmpfile, outputfile = filename}
     log:info("execute: " ..command)
-    local status = mkutils.execute(command)
+    local status, output = mkutils.execute(command)
     if status > 0 then
       -- if xtpipes failed to process the file, it may mean that it was bad-formed xml
       -- we can try to make it well-formed using Tidy
       local tidy_command = 'tidy -utf8 -xml -asxml -q -o "${filename}" "${tmpfile}"' % {tmpfile = tmpfile, filename = filename}
-      log:warning("xtpipes failed, trying tidy")
+      log:warning("Xtpipes failed")
+      -- show_level 1 is debug mode, which prints command output as well
+      -- we need this condition to prevent multiple instances of the output
+      if logging.show_level > 1 then
+        print(output)
+      end
+      log:warning("Trying HTML tidy")
       log:debug(tidy_command)
-      local status = os.execute(tidy_command)
+      local status, output = os.execute(tidy_command)
       if status > 0 then
         -- if tidy failed as well, just use the original file
         -- it will probably produce corrupted ODT file though
         log:warning("Tidy failed as well")
+        if logging.show_level > 1 then
+          print(output)
+        end
         mkutils.mv(tmpfile, filename)
       end
     end

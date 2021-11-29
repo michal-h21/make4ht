@@ -3,6 +3,7 @@
 - 2021/11/29
  
   - make current logging level available outside of the Logging module.
+  - print Xtpipes and Tidy output if these command fail in the Xtpipes module.
 
 - 2021/11/18
 
