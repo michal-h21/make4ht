@@ -1,5 +1,9 @@
 # Changelog
 
+- 2021/11/29
+ 
+  - make current logging level available outside of the Logging module.
+
 - 2021/11/18
 
   - don't put `<mrow>` as children of `<mrow>` in the `mathmlfixes` DOM filter.

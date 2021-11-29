@@ -4,7 +4,8 @@ local logging = {}
 
 local levels = {}
 -- level of bugs that should be shown
-local show_level = 1
+-- enable querying of current log level
+logging.show_level = 1
 local max_width = 0
 local max_status = 0
 
@@ -34,7 +35,7 @@ end
 -- the logging level is set once
 function logging.set_level(name)
   local level = levels[name] or 1
-  show_level = level
+  logging.show_level = level
 end
 
 function logging.print_msg(header, message, color)
@@ -53,7 +54,7 @@ function logging.new(module)
     module = module,
     output = function(self, output)
       -- used for printing of output of commands
-      if show_level <= (levels[debug] or 1) then
+      if logging.show_level <= (levels["debug"] or 1) then
         print(output)
       end
     end
@@ -68,7 +69,7 @@ function logging.new(module)
       -- set make4ht exit status
       max_status = math.max(status, max_status)
       -- max width is saved in logging.prepare_levels
-      if mode.level >= show_level then
+      if mode.level >= logging.show_level then
         -- support variable number of parameters
         local table_with_holes = table.pack(...) 
         local table_without_holes = {}
@@ -106,6 +107,7 @@ logging.prepare_levels()
 -- logging.set_level("error")
 -- cls:info("level set")
 -- cls:error("just print the error")
+--
 
 
 return logging
