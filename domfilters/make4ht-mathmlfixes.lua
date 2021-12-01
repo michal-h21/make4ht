@@ -143,6 +143,7 @@ local function fix_numbers(el)
       then
         -- join numbers and set it as text content of the current element
         local newnumber = el:get_text() .. "." .. x:get_text()
+        log:debug("Joining numbers: " .. newnumber)
         el._children = {}
         local newchild = el:create_text_node(newnumber)
         el:add_child_node(newchild)
