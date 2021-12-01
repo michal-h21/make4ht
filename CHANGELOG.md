@@ -3,7 +3,9 @@
 - 2021/12/01
 
   - transform `<mn>x</mn><mo>.</mo><mn>x</mn>` to `<mn>x.x</mn>` in MathML.
-  - transform `<mo>` elements that are single childs to `<mi>` in MathML.
+  - transform `<mo>` elements that are single childs to `<mi>` in MathML, and
+    list of consecutive `<mo>` elements to `<mtext>`. This should fix rendering
+    issues of superscripts in LibreOffice.
   - added filter names in extensions to prevent multiple execution of filters.
 
 - 2021/11/29
