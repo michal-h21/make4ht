@@ -155,16 +155,52 @@ local function fix_numbers(el)
   end
 end
 
-local function fix_operators(el)
+local domfilter = require "make4ht-domfilter"
+
+local function just_operators(list)
+  -- count <mo> and return true if list contains just them
+  local mo = 0
+  for _, x in ipairs(list) do
+    if x:get_element_name() == "mo" then mo = mo + 1 end
+  end
+  return mo
+end
+
+
+local function fix_operators(x)
   -- change <mo> elements that are only children of any element to <mi>
   -- this fixes issues in LibreOffice with a^{*}
   -- I hope it doesn't introduce different issues
-  if el:get_element_name() == "mo" 
-     and #el:get_siblings() == 1
-  then
-    log:debug("Converting <mo> to <mi>: " .. el:get_text())
-    el._name = "mi"
-    el:set_attribute("mathvariant", "normal")
+  -- process only <mo>
+  if x:get_element_name() ~= "mo" then return nil end
+	local siblings = x:get_siblings()
+	-- test if current element list contains only <mo>
+	if just_operators(siblings) == #siblings then
+		if #siblings == 1 then
+			-- one <mo> translate to <mi>
+			x._name = "mi"
+      log:debug("changing <mo> to <mi>: " .. x:get_text())
+			x:set_attribute("mathvariant", "normal")
+		else
+			-- multiple <mo> translate to <mtext>
+			local text = {}
+			for _, el in ipairs(siblings) do
+				text[#text+1] = el:get_text()
+			end
+			-- replace first <mo> text with concetanated text content
+			-- of all <mo> elements
+			x._children = {}
+      local newtext = table.concat(text)
+			local text_el = x:create_text_node(newtext)
+      log:debug("changing <mo> to <mtext>: " .. newtext)
+      x:add_child_node(text_el)
+      -- change <mo> to <mtext>
+      x._name = "mtext"
+      -- remove subsequent <mo>
+      for i = 2, #siblings do
+        siblings[i]:remove_node()
+      end
+    end
   end
 end
 
