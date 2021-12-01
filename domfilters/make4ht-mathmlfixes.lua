@@ -1,3 +1,4 @@
+local log = logging.new("mathmlfixes")
 -- <mglyph> should be inside <mi>, so we don't process it 
 -- even though it is  a token element
 local token = {"mi", "mn", "mo", "mtext", "mspace", "ms"}
@@ -153,6 +154,18 @@ local function fix_numbers(el)
   end
 end
 
+local function fix_operators(el)
+  -- change <mo> elements that are only children of any element to <mi>
+  -- this fixes issues in LibreOffice with a^{*}
+  -- I hope it doesn't introduce different issues
+  if el:get_element_name() == "mo" 
+     and #el:get_siblings() == 1
+  then
+    log:debug("Converting <mo> to <mi>: " .. el:get_text())
+    el._name = "mi"
+  end
+end
+
 return function(dom)
   dom:traverse_elements(function(el)
     if settings.output_format ~= "odt" then
@@ -164,6 +177,7 @@ return function(dom)
     fix_token_elements(el)
     fix_nested_mstyle(el)
     fix_numbers(el)
+    fix_operators(el)
     top_mrow(el)
   end)
   return dom

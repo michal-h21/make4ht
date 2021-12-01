@@ -3,6 +3,7 @@
 - 2021/12/01
 
   - transform `<mn>x</mn><mo>.</mo><mn>x</mn>` to `<mn>x.x</mn>` in MathML.
+  - transform `<mo>` elements that are single childs to `<mi>` in MathML.
 
 - 2021/11/29
  
