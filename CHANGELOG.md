@@ -4,6 +4,7 @@
 
   - transform `<mn>x</mn><mo>.</mo><mn>x</mn>` to `<mn>x.x</mn>` in MathML.
   - transform `<mo>` elements that are single childs to `<mi>` in MathML.
+  - added filter names in extensions to prevent multiple execution of filters.
 
 - 2021/11/29
  
