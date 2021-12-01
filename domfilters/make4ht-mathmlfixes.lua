@@ -164,6 +164,7 @@ local function fix_operators(el)
   then
     log:debug("Converting <mo> to <mi>: " .. el:get_text())
     el._name = "mi"
+    el:set_attribute("mathvariant", "normal")
   end
 end
 
