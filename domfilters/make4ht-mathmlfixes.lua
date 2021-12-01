@@ -125,6 +125,34 @@ local function fix_mo_to_mfenced(el)
   end
 end
 
+local function fix_numbers(el)
+  -- convert <mn>1</mn><mo>.</mo><mn>3</mn> to <mn>1.3</mn>
+  if el:get_element_name() == "mn" then
+    local n = el:get_sibling_node(1)
+    -- test if next  element is <mo class="MathClass-punc">.</mo>
+    if n and n:is_element() 
+         and n:get_element_name() == "mo" 
+         and n:get_attribute("class") == "MathClass-punc" 
+         and n:get_text() == "." 
+    then
+      -- get next element and test if it is <mn>
+      local x = el:get_sibling_node(2)
+      if x and x:is_element() 
+           and x:get_element_name() == "mn" 
+      then
+        -- join numbers and set it as text content of the current element
+        local newnumber = el:get_text() .. "." .. x:get_text()
+        el._children = {}
+        local newchild = el:create_text_node(newnumber)
+        el:add_child_node(newchild)
+        -- remove elements that hold dot and decimal part
+        n:remove_node()
+        x:remove_node()
+      end
+    end
+  end
+end
+
 return function(dom)
   dom:traverse_elements(function(el)
     if settings.output_format ~= "odt" then
@@ -135,6 +163,7 @@ return function(dom)
     end
     fix_token_elements(el)
     fix_nested_mstyle(el)
+    fix_numbers(el)
     top_mrow(el)
   end)
   return dom

@@ -1,5 +1,9 @@
 # Changelog
 
+- 2021/12/01
+
+  - transform `<mn>x</mn><mo>.</mo><mn>x</mn>` to `<mn>x.x</mn>` in MathML.
+
 - 2021/11/29
  
   - make current logging level available outside of the Logging module.
