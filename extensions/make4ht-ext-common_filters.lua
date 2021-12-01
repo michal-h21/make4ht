@@ -2,7 +2,7 @@ local M = {}
 
 
 local filter = require "make4ht-filter"
-local process = filter {"cleanspan-nat", "fixligatures", "hruletohr", "entities", "fix-links"}
+local process = filter({"cleanspan-nat", "fixligatures", "hruletohr", "entities", "fix-links"}, "commonfilters")
 
 -- filters support only html formats
 function M.test(format)

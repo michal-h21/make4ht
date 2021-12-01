@@ -13,7 +13,7 @@ function M.prepare_parameters(params)
 
 end
 function M.modify_build(make)
-  local mathjax = filter { "mathjaxnode"}
+  local mathjax = filter({ "mathjaxnode"}, "mathjaxnode")
   -- this extension needs mathml enabled
   make:match("html?$",mathjax)
   return make

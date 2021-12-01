@@ -8,7 +8,7 @@ M.test = function(format)
 end
 
 M.modify_build = function(make)
-  local process = filter {"odttemplate"}
+  local process = filter({"odttemplate"}, "odttemplate")
   make:match("4oy$", process)
   return make
 end

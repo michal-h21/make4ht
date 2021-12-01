@@ -243,7 +243,7 @@ function M.modify_build(make)
   end)
 
   -- fix src attributes
-  local process = filter {
+  local process = filter({
     function(str, filename)
       return str:gsub('src=["\'](.-)(["\'])', function(filename, endquote)
         local newname = output_map[filename] or filename
@@ -251,7 +251,7 @@ function M.modify_build(make)
         return 'src=' .. endquote .. newname  .. endquote
       end)
     end
-  }
+  }, "dvisvgmhashes")
 
   make:match("htm.?$", process)
 

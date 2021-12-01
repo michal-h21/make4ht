@@ -24,7 +24,7 @@ function M.prepare_parameters(params)
 
 end
 function M.modify_build(make)
-  local mathjax = filter { "mjcli"}
+  local mathjax = filter({ "mjcli"}, "mjcli")
   local params = {}
   if detected_latex then
     params.latex = true
