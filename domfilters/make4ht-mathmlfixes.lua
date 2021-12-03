@@ -155,7 +155,6 @@ local function fix_numbers(el)
   end
 end
 
-local domfilter = require "make4ht-domfilter"
 
 local function just_operators(list)
   -- count <mo> and return true if list contains just them
