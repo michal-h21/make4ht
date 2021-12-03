@@ -41,6 +41,9 @@ end
 -- I don't understand what the following code should fix
 -- It breaks lot of things, so I will keep it in the sources,
 -- but it is not used
+local allowed_top_mrow = {
+  math=true
+}
 local function top_mrow(math)
   local children = math:get_children()
   local put_mrow = false
@@ -49,12 +52,20 @@ local function top_mrow(math)
   local parent = math:get_parent()
   local parent_name
   if parent then parent_name = parent:get_element_name() end
-  if #children < 2 or  math:get_element_name() == "mrow" or parent_name == "mrow" then return nil end
+  local current_name = math:get_element_name()
+  if #children < 2 or not allowed_top_mrow[current_name] or current_name == "mrow" or parent_name == "mrow" then return nil end
+  local mrow_count = 0
   for _,v in ipairs(children) do
     if v:is_element() and is_token_element(v) then
       put_mrow = true
-      break
+      -- break
+    elseif v:is_element() and v:get_element_name() == "mrow" then
+      mrow_count = mrow_count + 1
     end
+  end
+  if not put_mrow and math:get_element_name() == "math" and mrow_count == 0 then
+    -- put at least one <mrow> to each <math>
+    put_mrow = true
   end
   if put_mrow then
     local mrow = math:create_element("mrow")
@@ -216,7 +227,7 @@ return function(dom)
     fix_nested_mstyle(el)
     fix_numbers(el)
     fix_operators(el)
-    -- top_mrow(el) -- this causes lot of issues as it is
+    top_mrow(el)
   end)
   return dom
 end
