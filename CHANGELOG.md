@@ -1,5 +1,10 @@
 # Changelog
 
+- 2021/12/03
+
+  - don't add additional `<mrow>` elements in the `mathmlfixes` DOM filter. It caused 
+    various issues.
+
 - 2021/12/01
 
   - transform `<mn>x</mn><mo>.</mo><mn>x</mn>` to `<mn>x.x</mn>` in MathML.

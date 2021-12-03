@@ -38,8 +38,9 @@ local function fix_nested_mstyle(el)
   end
 end
 
--- if element contains 
--- wrap everything in <mrow>
+-- I don't understand what the following code should fix
+-- It breaks lot of things, so I will keep it in the sources,
+-- but it is not used
 local function top_mrow(math)
   local children = math:get_children()
   local put_mrow = false
@@ -215,7 +216,7 @@ return function(dom)
     fix_nested_mstyle(el)
     fix_numbers(el)
     fix_operators(el)
-    top_mrow(el)
+    -- top_mrow(el) -- this causes lot of issues as it is
   end)
   return dom
 end
