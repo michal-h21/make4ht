@@ -38,9 +38,7 @@ local function fix_nested_mstyle(el)
   end
 end
 
--- I don't understand what the following code should fix
--- It breaks lot of things, so I will keep it in the sources,
--- but it is not used
+-- put <mrow> as child of <math> if it already isn't here
 local allowed_top_mrow = {
   math=true
 }
@@ -188,10 +186,13 @@ local function fix_operators(x)
 	-- test if current element list contains only <mo>
 	if just_operators(siblings) == #siblings then
 		if #siblings == 1 then
-			-- one <mo> translate to <mi>
-			x._name = "mi"
-      log:debug("changing <mo> to <mi>: " .. x:get_text())
-			x:set_attribute("mathvariant", "normal")
+			-- one <mo> translates to <mtext>
+			x._name = "mtext"
+      log:debug("changing one <mo> to <mtext>: " .. x:get_text())
+      -- I think we should use <mi>, but LO incorrectly renders it in <msubsup>,
+      -- even if we use the mathvariant="normal" attribute. <mtext> works, so
+      -- we use that instead.
+			-- x:set_attribute("mathvariant", "normal")
 		else
 			-- multiple <mo> translate to <mtext>
 			local text = {}

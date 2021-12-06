@@ -1,5 +1,10 @@
 # Changelog
 
+- 2021/12/06
+
+  - in the end, use `<mtext>` even for one `<mo>` in the `fix_operators` function. LO 
+    had issues with `<mi>`.
+
 - 2021/12/03
 
   - don't add additional `<mrow>` elements in the `mathmlfixes` DOM filter. It caused 
