@@ -3,7 +3,7 @@
 - 2021/12/06
 
   - in the end, use `<mtext>` even for one `<mo>` in the `fix_operators` function. LO 
-    had issues with `<mi>`.
+    had issues with `<mi>`. 
 
 - 2021/12/03
 
