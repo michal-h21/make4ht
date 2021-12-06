@@ -18,7 +18,7 @@ RUN apt-get update && \
     tidy \
     # texlive-fonts-recommended \
     fonts-noto-mono \
-    texlive-plain-generic texlive-generic-recommended \
+    texlive-plain-generic texlive-latex-recommended \
     pandoc latexmk texlive lmodern fonts-lmodern tex-gyre fonts-texgyre \
     texlive-lang-english && \
     apt-get autoclean && apt-get --purge --yes autoremove && \
