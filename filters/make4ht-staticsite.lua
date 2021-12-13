@@ -58,13 +58,17 @@ local function update_properties(properties, dom)
   -- enable properties update from the config or build file
   local settings = get_filter_settings "staticsite" or {}
   local header = settings.header or {}
+  -- set non-function properties first
+  for field, rule in pairs(header) do
+    if type(rule) ~="function" then
+      properties[field] = rule
+    end
+  end
+  -- then execute functions. it ensures that all propeties set in header are available
   for field, rule in pairs(header) do
     -- it is possible to pass function as a rule, it will be executed with properties as a parameter
     if type(rule) == "function" then
       properties[field] = rule(properties, dom)
-    else
-      -- otherwise set properties
-      properties[field] = rule
     end
   end
   return properties

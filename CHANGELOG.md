@@ -1,5 +1,9 @@
 # Changelog
 
+- 2021/12/13
+
+  - fixed setting of properties in the `staticsite` filter.
+
 - 2021/12/06
 
   - in the end, use `<mtext>` even for one `<mo>` in the `fix_operators` function. LO 

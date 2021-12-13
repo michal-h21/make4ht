@@ -22,6 +22,7 @@ local function get_slug(settings)
     -- escape 
     -- slug must contain the unescaped input name
     local f = io.open(published_name, "w")
+    log:info("Publishing article", os.date("%Y-%m-%d %H:%M", time))
     f:write(time)
     f:close()
   end
