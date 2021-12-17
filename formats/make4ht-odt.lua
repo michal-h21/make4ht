@@ -73,10 +73,10 @@ function Odtfile:pack()
   lfs.chdir(self.archivelocation)
   -- make temporary mime type file
   self:make_mimetype()
-  mkutils.execute(zip_command .. " -q0X " .. self.name .. " " .. self.mimetypename)
+  mkutils.execute(zip_command .. " -q0X '" .. self.name .. "' " .. self.mimetypename)
   -- remove it, so the next command doesn't overwrite it
   self:remove_mimetype()
-  mkutils.execute(zip_command .." -r " .. self.name .. " *")
+  mkutils.execute(zip_command .." -r '" .. self.name .. "' *")
   lfs.chdir(currentdir)
   mkutils.cp(self.archivelocation .. "/" .. self.name, self.name)
   mkutils.delete_dir(self.archivelocation)

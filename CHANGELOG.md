@@ -1,5 +1,9 @@
 # Changelog
 
+- 2021/12/17
+
+  - quote jobname in order to support filenames like `(xxx).tex`.
+
 - 2021/12/13
 
   - fixed setting of properties in the `staticsite` filter.

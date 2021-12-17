@@ -108,7 +108,7 @@ local function handle_jobname(input, args)
     input = input:match("([^%/^%\\]+)$")
     -- input also cannot contain spaces, replace them with underscores
     input = input:gsub("%s", "_")
-    table.insert(latex_params,"-jobname="..input)
+    table.insert(latex_params,"-jobname='"..input.. "'")
   else
     -- when user specifies -jobname, we must change name of the input file,
     -- in order to be able to process correct dvi file with tex4ht and t4ht
