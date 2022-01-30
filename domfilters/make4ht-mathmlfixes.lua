@@ -38,6 +38,30 @@ local function fix_nested_mstyle(el)
   end
 end
 
+local function fix_mathvariant(el)
+  -- set mathvariant of <mi> that is child of <mstyle> to have the same value
+  local function find_mstyle(x)
+    -- find if element has <mstyle> parent, and its value of mathvariant
+    if not x:is_element() then
+      return nil
+    elseif x:get_element_name() == "mstyle" then 
+      return x:get_attribute("mathvariant")
+    else
+      return find_mstyle(x:get_parent())
+    end
+  end
+  if el:get_element_name() == "mi" then
+    -- process only <mi> that have mathvariant set
+    local oldmathvariant = el:get_attribute("mathvariant")
+    if oldmathvariant then
+      local mathvariant = find_mstyle(el:get_parent())
+      if mathvariant then
+        el:set_attribute("mathvariant", mathvariant)
+      end
+    end
+  end
+end
+
 -- put <mrow> as child of <math> if it already isn't here
 local allowed_top_mrow = {
   math=true
@@ -228,6 +252,7 @@ return function(dom)
     fix_nested_mstyle(el)
     fix_numbers(el)
     fix_operators(el)
+    fix_mathvariant(el)
     top_mrow(el)
   end)
   return dom

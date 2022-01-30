@@ -1,5 +1,9 @@
 # Changelog
 
+- 2022/01/30
+
+  - fix `mathvariant` attribue of `<mi>` elements if they are children of `<mstyle>`.
+
 - 2021/12/17
 
   - quote jobname in order to support filenames like `(xxx).tex`.
