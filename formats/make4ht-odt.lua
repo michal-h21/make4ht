@@ -164,13 +164,64 @@ local function fix_picture_sizes(tmpdir)
   f:close()
 end
 
+-- fix font records in the lg file that don't correct Font_Size record
+local lg_fonts_processed=false
+local patched_lg_fonts = {}
+local function fix_lgfile_fonts(ignored_name, params)
+  -- this function is called from file match. we must use the name of the .lg file
+  local filename = params.input .. ".lg"
+  if not lg_fonts_processed then
+    local lines = {}
+    -- default font_size
+    local font_size = "10"
+    if mkutils.file_exists(filename) then 
+      -- 
+      for line in io.lines(filename) do
+        -- default font_size can be set in the .lg file
+        if line:match("Font_Size") then
+          font_size = line:match("Font_Size:%s*(%d+)")
+        elseif line:match("Font%(") then
+          -- match Font record
+          local name, size, size2, size3 = line:match('Font%("([^"]+)","([%d]*)","([%d]+)","([%d]+)"')
+          -- find if the first size is not set, and add the default font_size then
+          if size == "" then
+            line = string.format('Font("%s","%s","%s","%s")', name, font_size, size2, size3)
+            -- we must also save the font name and size for later post-processing, because 
+            -- we will need to fix styles in content.xml too
+            patched_lg_fonts[name .. "-" .. font_size] = true
+          end
+        end
+        lines[#lines+1] = line
+      end
+      -- save changed lines to the lg file
+      local f = io.open(filename, "w")
+      for _,line in ipairs(lines) do
+        f:write(line .. "\n")
+      end
+      f:close()
+    end
+    filter_settings "odtfonts" {patched_lg_fonts = patched_lg_fonts}
+  end
+  lg_fonts_processed=true
+  return true
+end
+
+local move_matches = xtpipeslib.move_matches
+
+local function insert_lgfile_fonts(make)
+  local first_file = make.params.input .. ".4oo"
+  -- find the last file and escape it so it can be used 
+  -- in filename match
+  make:match(first_file, fix_lgfile_fonts)
+  move_matches(make)
+end
+
 -- escape string to be used in the gsub search
 local function escape_file(filename)
   local quotepattern = '(['..("%^$().[]*+-?"):gsub("(.)", "%%%1")..'])'
   return filename:gsub(quotepattern, "%%%1")
 end
 
-local move_matches = xtpipeslib.move_matches
 
 -- call xtpipes from Lua
 local function call_xtpipes(make)
@@ -185,6 +236,8 @@ local function call_xtpipes(make)
     -- we need to move last two matches, for 4oo and 4om files
     move_matches(make)
     move_matches(make)
+    -- fix font records in the lg file
+    insert_lgfile_fonts(make)
   else
     log:warning "Cannot locate xtpipes. Try to set TEXMFROOT variable to a root directory of your TeX distribution"
   end
@@ -231,6 +284,9 @@ function M.modify_build(make)
   -- fixes for mathml
   local mathmldomfilters = domfilter({"joincharacters","mathmlfixes"}, "mathmlfilters")
   make:match("4om$", mathmldomfilters)
+  -- DOM filters that should be executed after xtpipes
+  local latedom = domfilter({"odtfonts"}, "lateodtfilters")
+  make:match("4oo$", latedom)
   -- convert XML entities for Unicode characters produced by Xtpipes to characters
   local fixentities = filter {"entities-to-unicode", remove_xtpipes}
   make:match("4oo", fixentities)

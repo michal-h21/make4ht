@@ -1,4 +1,8 @@
 # Changelog
+- 2022/02/07
+
+  - fixed support for some fonts in the ODT format.
+  - added `odtfonts` DOM filter.
 
 - 2022/01/30
 

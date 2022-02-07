@@ -657,6 +657,10 @@ joincolors
    substantial growth of the CSS file. This filter replaces these rules with a
    common one for elements with the same color value.
 
+odtfonts
+
+:  fix styles for fonts that were wrongly converted by `Xtpipes` in the ODT format.
+
 odtimagesize
 
 :  set correct dimensions for images in the ODT format. It is no longer used, as the dimensions are set by TeX4ht itself.
