@@ -1,4 +1,9 @@
 # Changelog
+
+- 2022/02/18
+
+  - version `0.3k` released.
+
 - 2022/02/07
 
   - fixed support for some fonts in the ODT format.
