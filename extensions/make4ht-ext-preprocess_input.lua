@@ -5,12 +5,13 @@ local mkutils = require "mkutils"
 
 local commands = {
   knitr = { command = 'Rscript -e "library(knitr); knit(\'${tex_file}\', output=\'${tmp_file}\')"'},
-  pandoc = { command = 'pandoc -f ${input_format} -s -o \'${tmp_file}\' -t latex \'${tex_file}\''}
+  pandoc = { command = 'pandoc -f ${input_format} -s -o \'${tmp_file}\' -t latex \'${tex_file}\''},
+  render = { command = 'Rscript -e "library(rmarkdown); render(\'${tex_file}\', output_file=\'${tmp_file}\')"'}
 }
 local filetypes = {
   rnw = {sequence = {"knitr"} },
   rtex = {sequence = {"knitr"}},
-  rmd = {sequence = {"knitr", "pandoc"}, options = {input_format = "markdown"}},
+  rmd = {sequence = {"render"}},
   rrst = {sequence = {"knitr", "pandoc"}, options = {input_format = "rst"}},
   md = {sequence = {"pandoc"}, options = {input_format = "markdown"}},
   rst = {sequence = {"pandoc"}, options = {input_format = "rst"}},
