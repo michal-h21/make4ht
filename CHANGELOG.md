@@ -1,5 +1,10 @@
 # Changelog
 
+- 2022/03/01
+
+  - use `rmarkdown` package to process `.rmd` files in the `preprocess_input`
+    extension (thanks to James Clawson).
+
 - 2022/02/18
 
   - version `0.3k` released.
