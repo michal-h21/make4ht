@@ -93,6 +93,18 @@ local function get_format_extensions(format_string)
   return format, extensions
 end
 
+
+-- try to make safe filename 
+local function escape_filename(input)
+  -- quoting don't work on Windows, so we will just
+  if os.type == "windows" then
+    return '"' .. input .. '"'
+  else
+    -- single quotes are safe in Unix
+    return "'" .. input .. "'"
+  end
+end
+
 -- detect if user specified -jobname in arguments to the TeX engine
 -- or used the --jobname option for make4ht
 local function handle_jobname(input, args)
@@ -108,7 +120,7 @@ local function handle_jobname(input, args)
     input = input:match("([^%/^%\\]+)$")
     -- input also cannot contain spaces, replace them with underscores
     input = input:gsub("%s", "_")
-    table.insert(latex_params,"-jobname='"..input.. "'")
+    table.insert(latex_params,"-jobname=".. escape_filename(input))
   else
     -- when user specifies -jobname, we must change name of the input file,
     -- in order to be able to process correct dvi file with tex4ht and t4ht
