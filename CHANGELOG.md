@@ -1,5 +1,10 @@
 # Changelog
 
+- 2022/02/22
+
+  - version `0.3l` released.
+  - fixed issues with filenames on Windows.
+
 - 2022/03/01
 
   - use `rmarkdown` package to process `.rmd` files in the `preprocess_input`
