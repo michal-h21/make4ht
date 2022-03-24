@@ -1,6 +1,10 @@
 # Changelog
 
-- 2022/02/22
+- 2022/03/24
+
+  - don't use totally random names in the `preprocess_input` extension, in order to support images correctly.
+
+- 2022/03/22
 
   - version `0.3l` released.
   - fixed issues with filenames on Windows.
