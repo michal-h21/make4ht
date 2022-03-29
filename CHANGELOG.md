@@ -1,5 +1,9 @@
 # Changelog
 
+- 2022/03/29
+
+  - check if tidy return non-empty string in the `tidy` extension.
+
 - 2022/03/24
 
   - don't use totally random names in the `preprocess_input` extension, in order to support images correctly.
