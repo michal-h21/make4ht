@@ -291,6 +291,9 @@ function M.modify_build(make)
   local fixentities = filter {"entities-to-unicode", remove_xtpipes}
   make:match("4oo", fixentities)
   make:match("4om", fixentities)
+  -- we must handle outdir. make4ht copies the ODT file before it was packed, so
+  -- we will copy it again after packing later in this format file
+  local outdir = make.params["outdir"]
 
   -- build the ODT file. This match must be executed as a last one
   -- this will be executed as a first match, just to find the last filename 
@@ -305,7 +308,7 @@ function M.modify_build(make)
       local lastfile = escape_file(lgfiles[#lgfiles]) .."$"
       -- make match for the last file
       -- odt packing will be done here
-      make:match(lastfile, function()
+      make:match(lastfile, function(filename, par)
         local groups = prepare_output_files(make.lgfile.files)
         local basename = groups.odt[1]
         local odtname = basename .. ".odt"
@@ -367,6 +370,12 @@ function M.modify_build(make)
         end)
 
         odt:pack()
+        if outdir and outdir ~= "" then
+          local filename = odt.name
+          local outfilename = outdir .. "/" .. filename
+          log:info("Copying ODT file to the output dir: " .. outfilename)
+          mkutils.copy(filename,outfilename)
+        end
       end)
     end
     executed = true
