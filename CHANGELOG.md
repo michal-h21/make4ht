@@ -1,5 +1,10 @@
 # Changelog
 
+- 2022/04/01
+
+  - don't copy files to the output dir if it wasn't requested
+  - fixed copying of the ODT file to the output dir.
+
 - 2022/03/29
 
   - check if tidy return non-empty string in the `tidy` extension.
