@@ -439,7 +439,7 @@ env.Make:add("clean", function(par)
   end
   Make:match("tmp$", function()
     -- remove temporary and auxilary files
-    for _,ext in ipairs {"aux", "xref", "tmp", "4tc", "4ct", "idv", "lg","dvi", "log"} do
+    for _,ext in ipairs {"aux", "xref", "tmp", "4tc", "4ct", "idv", "lg","dvi", "log", "ncx"} do
       remove_file(main_name .. "." .. ext)
     end
   end)
