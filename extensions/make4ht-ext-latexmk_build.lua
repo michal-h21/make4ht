@@ -12,8 +12,31 @@ function M.modify_build(make)
       first = pos
     end
   end
+  -- we need to save contents of the .tmp file, to prevent extra executions from latexmk
+  -- tex4ht command overwrites content that was set by LaTeX with it's own stuff
+  local tmp_file 
+  make:add("save_tmp", function(par)
+    local f = io.open(par.input .. ".tmp", "r")
+    if f then
+      tmp_file = f:read("*all")
+      f:close()
+    end
+    return 0
+  end)
+  make:add("load_tmp", function(par)
+    if tmp_file then
+      local f = io.open(par.input .. ".tmp", "w")
+      if f then
+        f:write(tmp_file)
+      end
+    end
+    return 0
+  end)
   -- if htlatex was found
   if first then
+    -- handle tmp file
+    make:load_tmp {}
+    make:save_tmp {}
     -- add dummy latexmk call to the build sequence
     make:latexmk {}
     -- replace name, command and type in the first htlatex
@@ -29,7 +52,14 @@ function M.modify_build(make)
   -- remove htlatex calls from the build sequence, they are unnecessary
   local new_build_seq = {}
   for pos, v in ipairs(build_seq) do
-    if v.name ~= "htlatex" then
+    if v.name ~= "htlatex" and v.name ~= "tex4ht" then
+      table.insert(new_build_seq, v)
+    elseif v.name == "tex4ht" then
+      -- insert save_tmp before tex4ht
+      table.insert(new_build_seq, build_seq[#build_seq])
+      -- remove save_tmp from the end
+      table.remove(build_seq)
+      -- and now insert tex4ht
       table.insert(new_build_seq, v)
     end
   end
