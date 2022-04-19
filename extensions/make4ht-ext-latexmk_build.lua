@@ -26,6 +26,14 @@ function M.modify_build(make)
     -- remove the dummy latexmk
     table.remove(build_seq)
   end
+  -- remove htlatex calls from the build sequence, they are unnecessary
+  local new_build_seq = {}
+  for pos, v in ipairs(build_seq) do
+    if v.name ~= "htlatex" then
+      table.insert(new_build_seq, v)
+    end
+  end
+  make.build_seq = new_build_seq
   return make
 end
 return M

@@ -1,5 +1,9 @@
 # Changelog
 
+- 2022/04/19
+
+  - remove all `htlatex` calls from the build sequence when the `latexmk_build` extension is used.
+
 - 2022/04/01
 
   - don't copy files to the output dir if it wasn't requested
