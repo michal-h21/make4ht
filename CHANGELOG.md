@@ -3,6 +3,7 @@
 - 2022/04/19
 
   - remove all `htlatex` calls from the build sequence when the `latexmk_build` extension is used.
+  - fixed other issues that caused spurious executions of `latexmk`.
 
 - 2022/04/01
 
