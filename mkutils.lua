@@ -90,18 +90,18 @@ function parse_lg(filename)
   else
     local usedfiles={}
     for line in io.lines(filename) do
-			--- needs --- pokus.idv[1] ==> pokus0x.png --- 
+      --- needs --- pokus.idv[1] ==> pokus0x.png --- 
       -- line:gsub("needs --- (.+?)[([0-9]+) ==> ([%a%d%p%.%-%_]*)",function(name,page,k) table.insert(outputimages,k)end)
       line:gsub("needs %-%-%- (.+)%[([0-9]+)%] ==> ([%a%d%p%.%-%_]*)",
-			  function(file,page,output) 
-					local rec = {
-						source = file,
-						page=page,
-						output = output
-					}
-					table.insert(outputimages,rec)
-				end
-			)
+      function(file,page,output) 
+        local rec = {
+          source = file,
+          page=page,
+          output = output
+        }
+        table.insert(outputimages,rec)
+      end
+      )
       line:gsub("File: (.*)",  function(k) 
         if not usedfiles[k] then
           table.insert(outputfiles,k)
@@ -137,20 +137,20 @@ function cp(src,dest)
     -- try to find file using kpse library if it cannot be found
     src = kpse.find_file(src) or src
   end
-	local command = string.format('%s "%s" "%s"', cp_func, src, dest)
-	if cp_func == "copy" then command = command:gsub("/",'\\') end
-	log:info("Copy: "..command)
+  local command = string.format('%s "%s" "%s"', cp_func, src, dest)
+  if cp_func == "copy" then command = command:gsub("/",'\\') end
+  log:info("Copy: "..command)
   if not file_exists(src) then
     log:error("File " .. src .. " doesn't exist")
   end
-	os.execute(command)
+  os.execute(command)
 end
 
 function mv(src, dest)
   local mv_func = os.type == "unix" and "mv " or "move "
-	local command = string.format('%s "%s" "%s"', mv_func, src, dest)
+  local command = string.format('%s "%s" "%s"', mv_func, src, dest)
   -- fix windows paths
-	if mv_func == "move" then command = command:gsub("/",'\\') end
+  if mv_func == "move" then command = command:gsub("/",'\\') end
   log:info("Move: ".. command)
   os.execute(command)
 end
@@ -163,61 +163,61 @@ end
 local used_dir = {}
 
 function prepare_path(path)
-	--local dirs = path:split("/")
-	local dirs = {}
-	if path:match("^/") then dirs = {""}
-	elseif path:match("^~") then
-		local home = os.getenv "HOME"
-		dirs = home:split "/"
-		path = path:gsub("^~/","")
-		table.insert(dirs,1,"")
-	end
-	if path:match("/$")then path = path .. " " end
-	for _,d in pairs(path:split "/") do
-		table.insert(dirs,d)
-	end
-	table.remove(dirs,#dirs)
-	return dirs,table.concat(dirs,"/")
+  --local dirs = path:split("/")
+  local dirs = {}
+  if path:match("^/") then dirs = {""}
+  elseif path:match("^~") then
+    local home = os.getenv "HOME"
+    dirs = home:split "/"
+    path = path:gsub("^~/","")
+    table.insert(dirs,1,"")
+  end
+  if path:match("/$")then path = path .. " " end
+  for _,d in pairs(path:split "/") do
+    table.insert(dirs,d)
+  end
+  table.remove(dirs,#dirs)
+  return dirs,table.concat(dirs,"/")
 end
 
 -- Find which part of path already exists
 -- and which directories have to be created
 function find_directories(dirs, pos)
-	local pos = pos or #dirs
-	-- we tried whole path and no dir exist
-	if pos < 1 then return dirs end
-	local path = ""
-	-- in the case of unix absolute path, empty string is inserted in dirs
-	if pos == 1 and dirs[pos] == "" then
-		path = "/"
-	else
-		path = table.concat(dirs,"/", 1,pos) .. "/"
-	end
-	if not lfs.chdir(path)  then -- recursion until we succesfully changed dir
-	-- or there are no elements in the dir table
-	return find_directories(dirs,pos - 1)
+  local pos = pos or #dirs
+  -- we tried whole path and no dir exist
+  if pos < 1 then return dirs end
+  local path = ""
+  -- in the case of unix absolute path, empty string is inserted in dirs
+  if pos == 1 and dirs[pos] == "" then
+    path = "/"
+  else
+    path = table.concat(dirs,"/", 1,pos) .. "/"
+  end
+  if not lfs.chdir(path)  then -- recursion until we succesfully changed dir
+  -- or there are no elements in the dir table
+  return find_directories(dirs,pos - 1)
 elseif pos ~= #dirs then -- if we succesfully changed dir
-	-- and we have dirs to create
-	local p = {}
-	for i = pos+1, #dirs do
-		table.insert(p, dirs[i])
-	end
-	return p
+  -- and we have dirs to create
+  local p = {}
+  for i = pos+1, #dirs do
+    table.insert(p, dirs[i])
+  end
+  return p
 else  -- whole path exists
-	return {}
+  return {}
 end
 end
 
 function mkdirectories(dirs)
-	if type(dirs) ~="table" then
-		return false, "mkdirectories: dirs is not table"
-	end
-	for _,d in ipairs(dirs) do
-		local stat,msg = lfs.mkdir(d)
-		if not stat then return false, "makedirectories error: "..msg end
-		lfs.chdir(d)
-	end
-	return true
+  if type(dirs) ~="table" then
+    return false, "mkdirectories: dirs is not table"
+  end
+  for _,d in ipairs(dirs) do
+    local stat,msg = lfs.mkdir(d)
+    if not stat then return false, "makedirectories error: "..msg end
+    lfs.chdir(d)
+  end
+  return true
 end
 
 function copy_filter(src,dest, filter)
@@ -233,22 +233,22 @@ end
 
 
 function copy(filename,outfilename)
-	local currdir = lfs.currentdir()
-	if filename == outfilename then return true end
-	local parts, path = prepare_path(outfilename)
-	if not used_dir[path] then 
-		local to_create, msg = find_directories(parts)
-		if not to_create then
-			log:warning(msg)
-			return false
-		end
-		used_dir[path] = true
-		local stat, msg = mkdirectories(to_create)
-		if not stat then log:warning(msg) end
-	end
-	lfs.chdir(currdir)
-	cp(filename, path)
-	return true
+  local currdir = lfs.currentdir()
+  if filename == outfilename then return true end
+  local parts, path = prepare_path(outfilename)
+  if not used_dir[path] then 
+    local to_create, msg = find_directories(parts)
+    if not to_create then
+      log:warning(msg)
+      return false
+    end
+    used_dir[path] = true
+    local stat, msg = mkdirectories(to_create)
+    if not stat then log:warning(msg) end
+  end
+  lfs.chdir(currdir)
+  cp(filename, path)
+  return true
 end
 
 function execute(command)
@@ -409,7 +409,7 @@ env.Make:add("tex4ht",function(par)
   log:info("executing: " .. command)
   return execute(command)
 end
- , nil, 1)
+, nil, 1)
 env.Make:add("t4ht","t4ht ${t4ht_par} \"${input}.${ext}\"",{ext="dvi"},1)
 
 env.Make:add("clean", function(par)
