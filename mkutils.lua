@@ -373,7 +373,9 @@ env.Make:add("httex", htlatex.httex, {
 env.Make:add("latexmk", function(par)
   local settings = get_filter_settings "htlatex" or {}
   par.interaction = par.interaction or settings.interaction or "batchmode"
-  local command = Make.latex_command
+  local command = Make.latex_command 
+  -- add " %O " after the engine name. it should be filled by latexmk
+  command = command:gsub("%s", " %%O ", 1)
   par.expanded = command % par
   -- quotes in latex_command must be escaped, they cause Latexmk error
   par.expanded = par.expanded:gsub('"', '\\"')
