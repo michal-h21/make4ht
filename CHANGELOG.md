@@ -1,5 +1,9 @@
 # Changelog
 
+- 2022/04/22
+
+  - use more explicit options for `latexmk`.
+
 - 2022/04/19
 
   - remove all `htlatex` calls from the build sequence when the `latexmk_build` extension is used.
