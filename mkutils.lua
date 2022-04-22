@@ -7,17 +7,17 @@ local mkparams = require("mkparams")
 local indexing = require("make4ht-indexing")
 --template engine
 function interp(s, tab)
-	local tab = tab or {}
-	return (s:gsub('($%b{})', function(w) return tab[w:sub(3, -2)] or w end))
+  local tab = tab or {}
+  return (s:gsub('($%b{})', function(w) return tab[w:sub(3, -2)] or w end))
 end
 --print( interp("${name} is ${value}", {name = "foo", value = "bar"}) )
 
 function addProperty(s,prop)
-	if prop ~=nil then
-		return s .." "..prop
-	else
-		return s
-	end
+  if prop ~=nil then
+    return s .." "..prop
+  else
+    return s
+  end
 end
 getmetatable("").__mod = interp
 getmetatable("").__add = addProperty 
@@ -39,27 +39,27 @@ function merge(t1, t2)
 end
 
 function string:split(sep)
-	local sep, fields = sep or ":", {}
-	local pattern = string.format("([^%s]+)", sep)
-	self:gsub(pattern, function(c) fields[#fields+1] = c end)
-	return fields
+  local sep, fields = sep or ":", {}
+  local pattern = string.format("([^%s]+)", sep)
+  self:gsub(pattern, function(c) fields[#fields+1] = c end)
+  return fields
 end
 
 function remove_extension(path)
-	local found, len, remainder = string.find(path, "^(.*)%.[^%.]*$")
-	if found then
-		return remainder
-	else
-		return path
-	end
+  local found, len, remainder = string.find(path, "^(.*)%.[^%.]*$")
+  if found then
+    return remainder
+  else
+    return path
+  end
 end
 
 -- 
 -- check if file exists
 function file_exists(file)
-	local f = io.open(file, "rb")
-	if f then f:close() end
-	return f ~= nil
+  local f = io.open(file, "rb")
+  if f then f:close() end
+  return f ~= nil
 end
 
 -- check if Lua module exists
