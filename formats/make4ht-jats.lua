@@ -1,5 +1,95 @@
 local M = {}
 local xtpipeslib = require "make4ht-xtpipes"
+local domfilter = require "make4ht-domfilter"
+
+
+-- some elements need to be moved from the document flow to the document meta
+local article_meta 
+local elements_to_move_to_meta = {}
+local function move_to_meta(el)
+  -- we don't move elements immediatelly, because it would prevent them from further 
+  -- processing in the filter. so we save them in an array, and move them once 
+  -- the full DOM was processed
+  table.insert(elements_to_move_to_meta, el)
+end
+
+local elements_to_move_to_title = {}
+local function move_to_title_group(el)
+  -- there can be only one title and subtitle
+  local name = el:get_element_name()
+  if not elements_to_move_to_title[name] then
+    elements_to_move_to_title[name] = el
+  end
+end
+
+local elements_to_move_to_contribs = {}
+local function move_to_contribs(el)
+  table.insert(elements_to_move_to_contribs, el)
+end
+
+
+
+local function process_moves()
+  if article_meta then
+    if elements_to_move_to_title["article-title"] then
+      local title_group = article_meta:create_element("title_group")
+      for _, name in ipairs{ "article-title", "subtitle" } do
+        local v = elements_to_move_to_title[name] 
+        if v then
+          title_group:add_child_node(v:copy_node())
+          v:remove_node()
+        end
+      end
+      article_meta:add_child_node(title_group)
+    end
+    if #elements_to_move_to_contribs > 0 then
+      local contrib_group = article_meta:create_element("contrib-group")
+      for _, el in ipairs(elements_to_move_to_contribs) do
+        contrib_group:add_child_node(el:copy_node())
+        el:remove_node()
+      end
+      article_meta:add_child_node(contrib_group)
+    end
+    for _, el in ipairs(elements_to_move_to_meta) do
+      -- move elemnt's copy, and remove the original
+      article_meta:add_child_node(el:copy_node())
+      el:remove_node()
+    end
+  end
+end
+
+local function has_no_text(el)
+  -- detect if element contains only whitespace
+  return el:get_text():match("^%s*$")
+end
+
+local function is_xref_id(el)
+  return el:get_element_name() == "xref" and el:get_attribute("id") and el:get_attribute("rid") == nil and has_no_text(el)
+end
+-- set id to parent element for <xref> that contain only id
+local function xref_to_id(el)
+  local parent = el:get_parent()
+  -- set id only if it doesn't exist yet
+  if parent:get_attribute("id") == nil then
+    parent:set_attribute("id", el:get_attribute("id"))
+    el:remove_node()
+  end
+end
+
+local function make_text(el)
+  local text = el:get_text():gsub("^%s*", ""):gsub("%s*$", "")
+  local text_el = el:create_text_node(text)
+  el._children = {text_el}
+end
+
+local function is_empty_par(el)
+  return el:get_element_name() == "p" and has_no_text(el)
+end
+
+
+
+
+
 
 function M.prepare_parameters(settings, extensions)
   settings.tex4ht_sty_par = settings.tex4ht_sty_par ..",jats"
@@ -9,6 +99,46 @@ end
 
 function M.prepare_extensions(extensions)
   return extensions
+end
+
+function M.modify_build(make)
+  filter_settings("joincharacters", {charclasses = {italic=true, bold=true}})
+
+  local process =  domfilter {
+    function(dom)
+      dom:traverse_elements(function(el)
+        -- some elements need special treatment
+        local el_name = el:get_element_name()
+        if is_xref_id(el) then
+          xref_to_id(el)
+        elseif el_name == "article-meta" then
+          -- save article-meta element for further processig
+          article_meta = el
+        elseif el_name == "article-title" then
+          move_to_title_group(el)
+        elseif el_name == "subtitle" then
+          move_to_title_group(el)
+        elseif el_name == "abstract" then
+          move_to_meta(el)
+        elseif el_name == "string-name" then
+          make_text(el)
+        elseif el_name == "contrib" then
+          move_to_contribs(el)
+        elseif is_empty_par(el) then
+          -- remove empty paragraphs
+          el:remove_node()
+        elseif el_name == "div" and el:get_attribute("class") == "maketitle" then
+          el:remove_node()
+        end
+
+      end)
+      -- move elements that are marked for move
+      process_moves()
+      return dom
+    end, "joincharacters","mathmlfixes", "tablerows","booktabs"
+  }
+  make:match("xml$", process)
+  return make
 end
 
 return M

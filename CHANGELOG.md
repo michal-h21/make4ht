@@ -1,5 +1,9 @@
 # Changelog
 
+- 2022/06/16
+
+  - use DOM filters to fix JATS output.
+
 - 2022/04/22
 
   - use more explicit options for `latexmk`.
