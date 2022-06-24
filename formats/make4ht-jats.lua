@@ -86,6 +86,24 @@ local function is_empty_par(el)
   return el:get_element_name() == "p" and has_no_text(el)
 end
 
+local function handle_links(el, params)
+  -- we must distinguish between internal links in the document, and external links
+  -- to websites etc. these needs to be changed to the <ext-link> element.
+  local link = el:get_attribute("rid") 
+  if link then
+    -- try to remove \jobname.xml from the beginning of the link
+    -- if the rest starts with #, then it is an internal link
+    local local_link = link:gsub("^" .. params.input .. ".xml", "")
+    if local_link:match("^%#") then
+      el:set_attribute("rid", local_link)
+    else
+      -- change element to ext-link for extenal links
+      el._name = "ext-link"
+      el:set_attribute("rid", nil)
+      el:set_attribute("xlink:href", link)
+    end
+  end
+end
 
 
 
@@ -105,7 +123,7 @@ function M.modify_build(make)
   filter_settings("joincharacters", {charclasses = {italic=true, bold=true}})
 
   local process =  domfilter {
-    function(dom)
+    function(dom, params)
       dom:traverse_elements(function(el)
         -- some elements need special treatment
         local el_name = el:get_element_name()
@@ -127,6 +145,8 @@ function M.modify_build(make)
         elseif is_empty_par(el) then
           -- remove empty paragraphs
           el:remove_node()
+        elseif el_name == "xref" then
+          handle_links(el, params)
         elseif el_name == "div" and el:get_attribute("class") == "maketitle" then
           el:remove_node()
         end

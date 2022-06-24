@@ -1,5 +1,9 @@
 # Changelog
 
+- 2022/06/24
+  
+  - handle internal and external links in the JATS output.
+
 - 2022/06/16
 
   - use DOM filters to fix JATS output.
