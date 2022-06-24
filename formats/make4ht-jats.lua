@@ -60,7 +60,14 @@ end
 
 local function has_no_text(el)
   -- detect if element contains only whitespace
-  return el:get_text():match("^%s*$")
+  if el:get_text():match("^%s*$") then
+    --- if it contains any elements, it has text
+    for _, child in ipairs(el:get_children()) do
+      if child:is_element() then return false end
+    end
+    return true
+  end
+  return false
 end
 
 local function is_xref_id(el)
