@@ -31,7 +31,8 @@ end
 
 local function process_moves()
   if article_meta then
-    if elements_to_move_to_title["article-title"] then
+    if elements_to_move_to_title["article-title"] 
+      and #article_meta:query_selector("title_group") == 0 then -- don't move anything if user added title_group from a config file
       local title_group = article_meta:create_element("title_group")
       for _, name in ipairs{ "article-title", "subtitle" } do
         local v = elements_to_move_to_title[name] 
@@ -112,6 +113,53 @@ local function handle_links(el, params)
   end
 end
 
+local function handle_maketitle(el)
+  -- <maketitle> is special element produced by TeX4ht from LaTeX's \maketitle
+  -- we need to pick interesting info from there, and move it to the header
+  local function is_empty(selector)
+    return #article_meta:query_selector(selector) == 0
+  end
+  -- move <aff> to <contrib>
+  local affiliations = {}
+  for _, aff in ipairs(el:query_selector("aff")) do
+    local id = aff:get_attribute("id") 
+    if id then 
+      for _,mark in ipairs(aff:query_selector("affmark")) do mark:remove_node() end
+      affiliations[id] = aff:copy_node() 
+    end
+  end
+  if is_empty("contrib") then
+    for _, contrib in ipairs(el:query_selector("contrib")) do
+      for _, affref in ipairs(contrib:query_selector("affref")) do
+        local id = affref:get_attribute("rid") or ""
+        -- we no longer need this node
+        affref:remove_node()
+        local linked_affiliation = affiliations[id]
+        if linked_affiliation then
+          contrib:add_child_node(linked_affiliation)
+        end
+      end
+      for _, string_name in ipairs(contrib:query_selector("string-name")) do
+        make_text(string_name)
+      end
+      move_to_contribs(contrib:copy_node())
+      -- we need to remove it from here, even though we remove <maketitle> later
+      -- we got doubgle contributors without that
+      contrib:remove_node()
+    end
+  end
+  if is_empty("pub-date") then
+    for _, date in ipairs(el:query_selector("date")) do
+      date._name = "pub-date"
+      for _, s in ipairs(date:query_selector("string-date")) do
+        make_text(s)
+      end
+      move_to_meta(date:copy_node())
+    end
+  end
+  el:remove_node()
+end
+
 
 
 
@@ -148,12 +196,15 @@ function M.modify_build(make)
         elseif el_name == "string-name" then
           make_text(el)
         elseif el_name == "contrib" then
+          print "stejně je tu contrib"
           move_to_contribs(el)
         elseif is_empty_par(el) then
           -- remove empty paragraphs
           el:remove_node()
         elseif el_name == "xref" then
           handle_links(el, params)
+        elseif el_name == "maketitle" then
+          handle_maketitle(el)
         elseif el_name == "div" and el:get_attribute("class") == "maketitle" then
           el:remove_node()
         end

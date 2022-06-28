@@ -1,5 +1,9 @@
 # Changelog
 
+- 2022/06/28
+
+  - handle `\maketitle` in JATS.
+
 - 2022/06/24
   
   - handle internal and external links in the JATS output.
