@@ -196,7 +196,6 @@ function M.modify_build(make)
         elseif el_name == "string-name" then
           make_text(el)
         elseif el_name == "contrib" then
-          print "stejně je tu contrib"
           move_to_contribs(el)
         elseif is_empty_par(el) then
           -- remove empty paragraphs
