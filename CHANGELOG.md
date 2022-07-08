@@ -3,6 +3,7 @@
 - 2022/07/08
 
   - configure elements used in `join_characters` DOM filter.
+  - added support for the `mml:` prefix in `mathml_fixes` DOM filter.
 
 - 2022/06/28
 

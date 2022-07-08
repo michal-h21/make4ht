@@ -5,17 +5,52 @@ local token = {"mi", "mn", "mo", "mtext", "mspace", "ms"}
 local token_elements = {}
 for _, tok in ipairs(token) do token_elements[tok] = true end
 
+-- helper functions to support MathML elements with prefixes (<mml:mi> etc).
+--
+local function get_element_name(el)
+  -- return element name and xmlns prefix
+  local name = el:get_element_name()
+  if name:match(":") then
+    local prefix, real_name =  name:match("([^%:]+):?(.+)")
+    return real_name, prefix
+  else
+    return name
+  end
+end
+
+local function get_attribute(el, attr_name)
+  -- attributes can have the prefix, but sometimes they don't have it
+  -- so we need to catch both cases
+  local _, prefix = get_element_name(el)
+  return el:get_attribute(attr_name) or el:get_attribute(prefix .. ":" .. attr_name)
+end
+
+local function get_new_element_name(name, prefix)
+  return prefix and prefix .. ":" .. name or name
+end
+
+local function update_element_name(el, name, prefix)
+  local newname = get_new_element_name(name, prefix)
+  el._name = newname
+end
+
+local function create_element(el, name, prefix)
+  return el:create_element(newname)
+end
+
 local function is_token_element(el)
-  return token_elements[el:get_element_name()]
+  local name, prefix = get_element_name(el)
+  return token_elements[name], prefix
 end
 
 local function fix_token_elements(el)
   -- find token elements that are children of other token elements
   if is_token_element(el) then
     local parent = el:get_parent()
-    if is_token_element(parent) then
+    local is_parent_token, prefix = is_token_element(parent)
+    if is_parent_token then
       -- change top element in nested token elements to mstyle
-      parent._name = "mstyle"
+      update_element_name(parent, "mstyle", prefix)
     end
   end
 end
@@ -23,7 +58,8 @@ end
 local function fix_nested_mstyle(el)
   -- the <mstyle> element can be child of token elements
   -- we must exterminate it
-  if el:get_element_name() == "mstyle" then
+  local el_name = get_element_name(el)
+  if el_name == "mstyle" then
     local parent = el:get_parent()
     if is_token_element(parent) then
       -- if parent doesn't have the mathvariant attribute copy it from <mstyle>
@@ -44,13 +80,13 @@ local function fix_mathvariant(el)
     -- find if element has <mstyle> parent, and its value of mathvariant
     if not x:is_element() then
       return nil
-    elseif x:get_element_name() == "mstyle" then 
+    elseif get_element_name(x) == "mstyle" then 
       return x:get_attribute("mathvariant")
     else
       return find_mstyle(x:get_parent())
     end
   end
-  if el:get_element_name() == "mi" then
+  if get_element_name(el) == "mi" then
     -- process only <mi> that have mathvariant set
     local oldmathvariant = el:get_attribute("mathvariant")
     if oldmathvariant then
@@ -73,24 +109,25 @@ local function top_mrow(math)
   -- don't process elements that already are mrow
   local parent = math:get_parent()
   local parent_name
-  if parent then parent_name = parent:get_element_name() end
-  local current_name = math:get_element_name()
+  if parent then parent_name = get_element_name(parent) end
+  local current_name, prefix = get_element_name(math)
   if #children < 2 or not allowed_top_mrow[current_name] or current_name == "mrow" or parent_name == "mrow" then return nil end
   local mrow_count = 0
   for _,v in ipairs(children) do
     if v:is_element() and is_token_element(v) then
       put_mrow = true
       -- break
-    elseif v:is_element() and v:get_element_name() == "mrow" then
+    elseif v:is_element() and get_element_name(v) == "mrow" then
       mrow_count = mrow_count + 1
     end
   end
-  if not put_mrow and math:get_element_name() == "math" and mrow_count == 0 then
+  if not put_mrow and get_element_name(math) == "math" and mrow_count == 0 then
     -- put at least one <mrow> to each <math>
     put_mrow = true
   end
   if put_mrow then
-    local mrow = math:create_element("mrow")
+    local newname = get_new_element_name("mrow", prefix)
+    local mrow = math:create_element(newname)
     for _, el in ipairs(children) do
       mrow:add_child_node(el)
     end
@@ -106,7 +143,9 @@ local function get_fence(el, attr, form)
   local char = el:get_attribute(attr)
   local mo 
   if char then
-    mo = el:create_element("mo", {fence="true", form = form})
+    local name, prefix = get_element_name(el)
+    local newname = get_new_element_name("mo", prefix)
+    mo = el:create_element(newname, {fence="true", form = form})
     mo:add_child_node(mo:create_text_node(char))
   end
   return mo
@@ -116,13 +155,15 @@ end
 local function fix_mfenced(el)
   -- TeX4ht uses in some cases <mfenced> element which is deprecated in MathML.
   -- Firefox doesn't support it already.
-  if el:get_element_name() == "mfenced" then
+  local name, prefix = get_element_name(el)
+  if name == "mfenced" then
     -- we must replace it by <mrow><mo>start</mo><mfenced children...><mo>end</mo></mrow>
     local open = get_fence(el, "open", "prefix")
     local close = get_fence(el, "close", "postfix")
     -- there can be also separator attribute, but it is not used in TeX4ht
     -- change <mfenced> to <mrow> and remove all attributes
-    el._name = "mrow"
+    local newname = get_new_element_name("mrow", prefix)
+    el._name = newname
     el._attr = {}
     -- open must be first child, close needs to be last
     if open then el:add_child_node(open, 1) end
@@ -131,7 +172,7 @@ local function fix_mfenced(el)
 end
 
 local function is_fence(el)
-  return el:get_element_name() == "mo" and el:get_attribute("fence") == "true"
+  return get_element_name(el) == "mo" and el:get_attribute("fence") == "true"
 end
 
 local function fix_mo_to_mfenced(el)
@@ -155,25 +196,27 @@ local function fix_mo_to_mfenced(el)
       end 
     end
     -- convert parent <mrow> to <mfenced>
-    parent._name = "mfenced"
+    local _, prefix = get_element_name(parent)
+    local newname = get_new_element_name("mfenced", prefix)
+    parent._name = newname
     parent._attr = {open = open, close = close}
   end
 end
 
 local function fix_numbers(el)
   -- convert <mn>1</mn><mo>.</mo><mn>3</mn> to <mn>1.3</mn>
-  if el:get_element_name() == "mn" then
+  if get_element_name(el) == "mn" then
     local n = el:get_sibling_node(1)
     -- test if next  element is <mo class="MathClass-punc">.</mo>
     if n and n:is_element() 
-         and n:get_element_name() == "mo" 
-         and n:get_attribute("class") == "MathClass-punc" 
+         and get_element_name(n) == "mo" 
+         and get_attribute(n, "class") == "MathClass-punc" 
          and n:get_text() == "." 
     then
       -- get next element and test if it is <mn>
       local x = el:get_sibling_node(2)
       if x and x:is_element() 
-           and x:get_element_name() == "mn" 
+           and get_element_name(x) == "mn" 
       then
         -- join numbers and set it as text content of the current element
         local newnumber = el:get_text() .. "." .. x:get_text()
@@ -194,7 +237,7 @@ local function just_operators(list)
   -- count <mo> and return true if list contains just them
   local mo = 0
   for _, x in ipairs(list) do
-    if x:get_element_name() == "mo" then mo = mo + 1 end
+    if get_element_name(x) == "mo" then mo = mo + 1 end
   end
   return mo
 end
@@ -205,13 +248,15 @@ local function fix_operators(x)
   -- this fixes issues in LibreOffice with a^{*}
   -- I hope it doesn't introduce different issues
   -- process only <mo>
-  if x:get_element_name() ~= "mo" then return nil end
+  local el_name, prefix = get_element_name(x)
+  if el_name ~= "mo" then return nil end
 	local siblings = x:get_siblings()
 	-- test if current element list contains only <mo>
 	if just_operators(siblings) == #siblings then
 		if #siblings == 1 then
 			-- one <mo> translates to <mtext>
-			x._name = "mtext"
+      local newname = get_new_element_name("mtext", prefix)
+			x._name = newname
       log:debug("changing one <mo> to <mtext>: " .. x:get_text())
       -- I think we should use <mi>, but LO incorrectly renders it in <msubsup>,
       -- even if we use the mathvariant="normal" attribute. <mtext> works, so
@@ -231,7 +276,8 @@ local function fix_operators(x)
       log:debug("changing <mo> to <mtext>: " .. newtext)
       x:add_child_node(text_el)
       -- change <mo> to <mtext>
-      x._name = "mtext"
+      local newname = get_new_element_name("mtext", prefix)
+      x._name = newname
       -- remove subsequent <mo>
       for i = 2, #siblings do
         siblings[i]:remove_node()
