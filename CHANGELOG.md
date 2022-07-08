@@ -1,5 +1,9 @@
 # Changelog
 
+- 2022/07/08
+
+  - configure elements used in `join_characters` DOM filter.
+
 - 2022/06/28
 
   - handle `\maketitle` in JATS.

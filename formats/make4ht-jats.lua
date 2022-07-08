@@ -215,7 +215,8 @@ function M.modify_build(make)
       return dom
     end, "joincharacters","mathmlfixes", "tablerows","booktabs"
   }
-  make:match("xml$", process)
+  local charclasses = {["mml:mi"] = true, ["mml:mn"] = true , italic = true, bold=true, roman = true, ["mml:mtext"] = true, mi=true, mn=true}
+  make:match("xml$", process, {charclasses = charclasses})
   return make
 end
 
