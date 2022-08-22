@@ -2,7 +2,9 @@
 
 - 2022/07/22
 
-  - `mathmlfixes` DOM filter: don't change `<mo>` to `<mtext>` if the element contain the `stretchy` attribute.
+  - `mathmlfixes` DOM filter: 
+    - don't change `<mo>` to `<mtext>` if the element contain the `stretchy` attribute.
+    - add `<mtext>` to `<mstyle>` if it contains only plain text
 
 - 2022/07/08
 

@@ -98,6 +98,33 @@ local function fix_mathvariant(el)
   end
 end
 
+local function contains_only_text(el)
+  -- detect if element contains only text
+  local elements = 0
+  local text     = 0
+  local children = el:get_children() or {}
+  for _ , child in ipairs(children) do
+    if child:is_text() then text = text + 1
+    elseif child:is_element() then elements = elements + 1
+    end
+  end
+  return text > 0 and elements == 0
+end
+
+-- check if <mstyle> element contains direct text. in that case, add
+-- <mtext>
+local function fix_missing_mtext(el)
+  if el:get_element_name() == "mstyle" and contains_only_text(el) then
+    -- add child <mtext>
+    log:debug("mstyle contains only text: " .. el:get_text())
+    -- copy the current mode, change it's element name to mtext and add it as a child of <mstyle>
+    local copy = el:copy_node()
+    copy._name = "mtext"
+    copy._parent = el
+    el._children = {copy}
+  end
+end
+
 -- put <mrow> as child of <math> if it already isn't here
 local allowed_top_mrow = {
   math=true
@@ -298,6 +325,7 @@ return function(dom)
     end
     fix_token_elements(el)
     fix_nested_mstyle(el)
+    fix_missing_mtext(el)
     fix_numbers(el)
     fix_operators(el)
     fix_mathvariant(el)
