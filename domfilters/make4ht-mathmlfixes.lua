@@ -254,14 +254,16 @@ local function fix_operators(x)
 	-- test if current element list contains only <mo>
 	if just_operators(siblings) == #siblings then
 		if #siblings == 1 then
-			-- one <mo> translates to <mtext>
-      local newname = get_new_element_name("mtext", prefix)
-			x._name = newname
-      log:debug("changing one <mo> to <mtext>: " .. x:get_text())
-      -- I think we should use <mi>, but LO incorrectly renders it in <msubsup>,
-      -- even if we use the mathvariant="normal" attribute. <mtext> works, so
-      -- we use that instead.
-			-- x:set_attribute("mathvariant", "normal")
+      if not x:get_attribute("stretchy") then
+        -- one <mo> translates to <mtext>
+        local newname = get_new_element_name("mtext", prefix)
+        x._name = newname
+        log:debug("changing one <mo> to <mtext>: " .. x:get_text())
+        -- I think we should use <mi>, but LO incorrectly renders it in <msubsup>,
+        -- even if we use the mathvariant="normal" attribute. <mtext> works, so
+        -- we use that instead.
+        -- x:set_attribute("mathvariant", "normal")
+      end
 		else
 			-- multiple <mo> translate to <mtext>
 			local text = {}

@@ -1,5 +1,9 @@
 # Changelog
 
+- 2022/07/22
+
+  - `mathmlfixes` DOM filter: don't change `<mo>` to `<mtext>` if the element contain the `stretchy` attribute.
+
 - 2022/07/08
 
   - configure elements used in `join_characters` DOM filter.
