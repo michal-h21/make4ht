@@ -1,5 +1,9 @@
 # Changelog
 
+- 2022/09/16
+
+  - use the `no^` option to compile the `make4ht` HTML docs, to prevent clash with the Doc package.
+
 - 2022/07/22
 
   - `mathmlfixes` DOM filter: 
