@@ -107,7 +107,7 @@ local function join_characters(obj,par)
           -- we must create a new node
           el:add_child_node(el:create_text_node(s))
           next_el:remove_node()
-          real_next = nil
+          -- real_next = nil
         else
           real_next = nil
         end

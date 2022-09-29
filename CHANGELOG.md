@@ -1,5 +1,9 @@
 # Changelog
 
+- 2022/09/29
+
+  - the `join_characters` DOM filter now shouldn't produce extra `<span>` elements after white space.
+
 - 2022/09/16
 
   - use the `no^` option to compile the `make4ht` HTML docs, to prevent clash with the Doc package.
