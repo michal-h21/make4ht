@@ -278,9 +278,13 @@ dvisvgm\_hashes
 :    efficient generation of SVG pictures using Dvisvgm. It can utilize
 multiple processor cores and generates only changed images.
 
+inlinecss
+
+:    load the `inlinecss` DOM filter.
+
 join\_colors
 
-:    load the `joincolors` domfilter for all HTML files.
+:    load the `joincolors` DOM filter for all HTML files.
 
 latexmk\_build
 
@@ -646,6 +650,11 @@ idcolons
 
 :  replace the colon (`:`) character in internal links and `id` attributes. They cause validation issues.
 
+inlinecss
+
+:  remove CSS rules that target elements with unique attributes, such as color boxes, table rules, or inline math pictures,
+   and insert their properties as a inline `style` attribute in the HTML document.
+
 joincharacters
 
 :  join consecutive `<span>` or `<mn>` elements. This DOM filter supersedes the `cleanspan` filter.
@@ -655,7 +664,8 @@ joincolors
 :  many `<span>` elements with unique `id` attributes are created when \LaTeX\ colors are being used in the document.
    A CSS rule is added for each of these elements, which may result in
    substantial growth of the CSS file. This filter replaces these rules with a
-   common one for elements with the same color value.
+   common one for elements with the same color value. See also the `inlinecss` DOM filter and extension, which provides an
+   alternative using inline styles.
 
 odtfonts
 

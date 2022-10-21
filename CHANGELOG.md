@@ -1,5 +1,9 @@
 # Changelog
 
+- 2022/10/21
+
+  - added the `inlinecss` DOM filter and extension with the same name.
+
 - 2022/09/29
 
   - the `join_characters` DOM filter now shouldn't produce extra `<span>` elements after white space.
