@@ -22,6 +22,7 @@ local function get_attribute(el, attr_name)
   -- attributes can have the prefix, but sometimes they don't have it
   -- so we need to catch both cases
   local _, prefix = get_element_name(el)
+  prefix = prefix or ""
   return el:get_attribute(attr_name) or el:get_attribute(prefix .. ":" .. attr_name)
 end
 
@@ -315,6 +316,47 @@ local function fix_operators(x)
   end
 end
 
+local function is_last_element(el)
+  local siblings = el:get_siblings()
+  -- return true only if the current element is the last in the parent's children
+  for i = #siblings, 1, -1 do
+    local curr = siblings[i]
+    if curr == el then
+      return true
+    elseif curr:is_element() then
+      return false
+    end
+  end
+  return false
+end
+
+local function is_empty_row(el)
+  -- empty row should contain only one <mtd>
+  local count = 0
+  if el:get_text():match("^%s*$") then
+    for _, child in ipairs(el:get_children()) do
+      if child:is_element() then count = count + 1 end
+    end
+  end
+  -- if there is one or zero childrens, then it is empty row
+  return count < 2
+end
+
+
+local function delete_last_empty_mtr(el)
+  -- arrays sometimes contain last empty row, which causes rendering issues,
+  -- so we should remove them
+  local el_name, prefix = get_element_name(el)
+  if el_name == "mtr" 
+    and get_attribute(el, "class") == "array-row" 
+    and is_last_element(el)
+    and is_empty_row(el)
+  then
+    el:remove_node()
+  end
+
+end
+
 return function(dom)
   dom:traverse_elements(function(el)
     if settings.output_format ~= "odt" then
@@ -330,6 +372,7 @@ return function(dom)
     fix_operators(el)
     fix_mathvariant(el)
     top_mrow(el)
+    delete_last_empty_mtr(el)
   end)
   return dom
 end

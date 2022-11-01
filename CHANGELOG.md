@@ -1,5 +1,9 @@
 # Changelog
 
+- 2022/11/01
+
+  - remove empty last rows in MathML tables.
+
 - 2022/10/21
 
   - added the `inlinecss` DOM filter and extension with the same name.
