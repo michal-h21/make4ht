@@ -1,5 +1,9 @@
 # Changelog
 
+- 2022/11/24
+
+  - `make4ht-indexing`: fixed handling of numbers in index entries text.
+
 - 2022/11/01
 
   - remove empty last rows in MathML tables.

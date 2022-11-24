@@ -80,7 +80,7 @@ local parse_idx = function(content)
     elseif line:match("^\\indexentry") then
       -- replace the page number with the current
       -- index entry number
-      local result = line:gsub("{[0-9]+}", "{"..current_entry .."}")
+      local result = line:gsub("{[0-9]+}$", "{"..current_entry .."}")
       buffer[#buffer+1] = get_utf8(result)
     else
       buffer[#buffer+1] = line
@@ -96,11 +96,11 @@ local fix_idx_pages = function(content, idxobj)
   local entries = idxobj.map
   for  line in content:gmatch("([^\n]+)")  do
     local line = line:gsub("(%s*\\%a+.-%,)(.+)$", function(start,rest)
-      return start .. rest:gsub("(%d+)", function(page)
+      return start .. rest:gsub("(%d+)([^%d]*)$", function(page, rest)
         local entry = entries[tonumber(page)]
         if entry then
           -- construct link to the index entry
-          return "\\Link[" .. entry.file .."]{".. entry.dest .."}{}" .. page .."\\EndLink{}"
+          return "\\Link[" .. entry.file .."]{".. entry.dest .."}{}" .. page .."\\EndLink{}" .. rest
         else
           return page
         end
