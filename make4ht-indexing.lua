@@ -151,6 +151,7 @@ end
 
 local prepare_tmp_idx = function(par)
   par.idxfile = get_idxname(par)
+  if not par.idxfile or not mkutils.file_exists(par.idxfile) then return nil, "Cannot load idx file " .. (par.idxfile or "''") end
   -- construct the .ind name, based on the .idx name
   par.indfile = par.indfile or par.idxfile:gsub("idx$", "ind")
   load_enc()
@@ -169,6 +170,7 @@ local splitindex = function(par)
   local idxfiles = {}
   local buffer 
   local idxfile = get_idxname(par)
+  if not idxfile or not mkutils.file_exists(idxfile) then return nil, "Cannot load idx file " .. (idxfile or "''") end
   for line in io.lines(idxfile) do
     local file = line:match("indexentry%[(.-)%]")
     if file then
@@ -201,7 +203,7 @@ local function run_indexing_command (command, par)
   local cmd_name = command:match("^[%a]+") or "indexing"
   local xindylog  = logging.new(cmd_name)
   -- support split index
-  local subindexes = splitindex(par)
+  local subindexes = splitindex(par) or {}
   if #subindexes > 0 then
     -- call the command again on all files produced by splitindex
     for _, subindex in ipairs(subindexes) do

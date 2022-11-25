@@ -3,6 +3,7 @@
 - 2022/11/25
 
   - reverted change of index page numbers, it was buggy
+  - test if the `.idx` file exists.
 
 - 2022/11/24
 
