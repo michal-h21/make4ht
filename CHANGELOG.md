@@ -1,5 +1,9 @@
 # Changelog
 
+- 2022/11/25
+
+  - reverted change of index page numbers, it was buggy
+
 - 2022/11/24
 
   - `make4ht-indexing`: fixed handling of numbers in index entries text.

@@ -96,11 +96,14 @@ local fix_idx_pages = function(content, idxobj)
   local entries = idxobj.map
   for  line in content:gmatch("([^\n]+)")  do
     local line = line:gsub("(%s*\\%a+.-%,)(.+)$", function(start,rest)
-      return start .. rest:gsub("(%d+)([^%d]*)$", function(page, rest)
+      -- there is a problem when index term itself contains numbers, like Bible verses (1:2),
+      -- because they will be detected as page numbers too. I cannot find a good solution 
+      -- that wouldn't break something else.
+      return start .. rest:gsub("(%d+)", function(page)
         local entry = entries[tonumber(page)]
         if entry then
           -- construct link to the index entry
-          return "\\Link[" .. entry.file .."]{".. entry.dest .."}{}" .. page .."\\EndLink{}" .. rest
+          return "\\Link[" .. entry.file .."]{".. entry.dest .."}{}" .. page .."\\EndLink{}" 
         else
           return page
         end
