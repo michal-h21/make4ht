@@ -140,7 +140,7 @@ local function get_mrow_child(el)
   -- either return first child, and if the child is <mrow>, return it's first child
   if first and first:is_element() then
     if first:get_element_name() == "mrow" then
-      return get_first(first)
+      return get_first(first), first
     else
       return first
     end
@@ -149,10 +149,19 @@ end
 
 local function fix_radicals(el)
   if is_radical(el) then
-    local first_child = get_mrow_child(el)
+    local first_child, mrow = get_mrow_child(el)
     -- if the first child is only one character long, it is possible that there is a problem
     if first_child and string.len(first_child:get_text()) == 1 then
-      print("one child", first_child:get_element_name())
+      local name = first_child:get_element_name() 
+      local siblings = el:get_siblings()
+      local pos = el:find_element_pos()
+      -- it doesn't make sense to do any further processing if the element is at the beginning
+      if pos == 1 then return end
+      if name == "mo" then
+        for i = pos, 1 do
+        end
+
+      end
     end
 
   end
