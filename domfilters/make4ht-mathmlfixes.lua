@@ -126,6 +126,38 @@ local function fix_missing_mtext(el)
   end
 end
 
+local function is_radical(el)
+  local radicals = {msup=true, msub=true, msubsup=true}
+  return radicals[el:get_element_name()]
+end
+
+local function get_mrow_child(el)
+  local get_first = function(x) 
+    local children = x:get_children() 
+    return children[1]
+  end
+  local first = get_first(el)
+  -- either return first child, and if the child is <mrow>, return it's first child
+  if first and first:is_element() then
+    if first:get_element_name() == "mrow" then
+      return get_first(first)
+    else
+      return first
+    end
+  end
+end
+
+local function fix_radicals(el)
+  if is_radical(el) then
+    local first_child = get_mrow_child(el)
+    -- if the first child is only one character long, it is possible that there is a problem
+    if first_child and string.len(first_child:get_text()) == 1 then
+      print("one child", first_child:get_element_name())
+    end
+
+  end
+end
+
 -- put <mrow> as child of <math> if it already isn't here
 local allowed_top_mrow = {
   math=true
@@ -365,6 +397,7 @@ return function(dom)
     else
       fix_mo_to_mfenced(el)
     end
+    fix_radicals(el)
     fix_token_elements(el)
     fix_nested_mstyle(el)
     fix_missing_mtext(el)
