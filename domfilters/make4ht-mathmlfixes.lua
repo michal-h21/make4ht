@@ -158,7 +158,7 @@ local function fix_radicals(el)
       -- it doesn't make sense to do any further processing if the element is at the beginning
       if pos == 1 then return end
       if name == "mo" then
-        for i = pos, 1 do
+        for i = pos, 1,-1 do
         end
 
       end
