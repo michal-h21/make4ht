@@ -92,7 +92,7 @@ function parse_lg(filename)
     for line in io.lines(filename) do
       --- needs --- pokus.idv[1] ==> pokus0x.png --- 
       -- line:gsub("needs --- (.+?)[([0-9]+) ==> ([%a%d%p%.%-%_]*)",function(name,page,k) table.insert(outputimages,k)end)
-      line:gsub("needs %-%-%- (.+)%[([0-9]+)%] ==> ([%a%d%p%.%-%_]*)",
+      line:gsub("needs %-%-%- (.+)%[([0-9]+)%] ==> (.*) %-%-%-",
       function(file,page,output) 
         local rec = {
           source = file,
