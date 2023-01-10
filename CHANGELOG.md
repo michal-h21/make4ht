@@ -1,4 +1,5 @@
 # Changelog
+
 - 2023/01/09
 
   - fixed detection of image file names in `mkutils.parse_lg()`
