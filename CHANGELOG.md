@@ -1,5 +1,9 @@
 # Changelog
 
+- 2023/02/24
+
+  - version `0.3k` released.
+
 - 2023/01/09
 
   - fixed detection of image file names in `mkutils.parse_lg()`
