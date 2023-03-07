@@ -4,10 +4,16 @@ return function(dom)
     -- detect if the element contains child elements
     local child_elements = 0
     local children = child:get_children()
-    for _, el in ipairs(children) do
+    local last_child_pos
+    for pos, el in ipairs(children) do
+      last_child_pos = pos
       local step = el:is_element() and 1 or 0
       -- log:info("element name", el._name)
       child_elements = child_elements + step
+    end
+    -- longtable has <td><p></p></td> inside empty rows, we regard them as empty
+    if child_elements == 1 and children[last_child_pos]:get_element_name() == "p" and child:get_text():gsub("%s", "") == "" then
+      child_elements = 0
     end
     return child_elements > 0
   end

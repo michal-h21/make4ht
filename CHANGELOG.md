@@ -1,5 +1,9 @@
 # Changelog
 
+- 2023/03/07
+
+  - remove empty rows in `longtable`.
+
 - 2023/02/24
 
   - version `0.3k` released.
