@@ -7,7 +7,7 @@ included in the distributions.
 
 ## Prerequisites  
 
-You need a teX distribution such as TeX Live or Miktex. It must include `tex4ht` system and `texlua` script. All modern
+You need a teX distribution such as TeX Live or Miktex. It must include `tex4ht` system, Noto fonts and `texlua` script. All modern
 distributions include it. You also need [Pandoc](http://pandoc.org/) in order to make the documentation and 
 `latexmk`, which should be included in your TeX distro.
 
