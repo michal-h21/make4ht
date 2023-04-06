@@ -3,16 +3,20 @@ local function id_colons(obj)
   obj:traverse_elements(function(el) 
     local name = string.lower(obj:get_element_name(el))
     if name == "a" then
-      local href = obj:get_attribute(el, "href")
+      local href = el:get_attribute("href")
+      -- don't replace colons in external links
       if href and not href:match("[a-z]%://") then
-        obj:set_attribute(el, "href", href:gsub(":", "_"))
+        local base, id = href:match("(.*)%#(.*)")
+        if base and id then
+          id = id:gsub(":", "_")
+          el:set_attribute("href", base .. "#" .. id)
+        end
       end
     end
-    local id  = obj:get_attribute( el , "id")
+    local id  = el:get_attribute("id")
     if id then
-      obj:set_attribute(el, "id", id:gsub(":", "_"))
+      el:set_attribute("id", id:gsub(":", "_"))
     end
-    -- local id = obj:get_attribute(el, "id")
   end)
   return obj
 end
