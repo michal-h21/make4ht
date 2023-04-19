@@ -1,5 +1,9 @@
 # Changelog
 
+- 2023/04/19
+
+  - handle additional characters in the `idcolons` DOM filter.
+
 - 2023/04/06
 
   - fixed handling of ID attributes in the `idcolons` DOM filter.
