@@ -1,5 +1,9 @@
 # Changelog
 
+- 2023/05/26
+
+  - load `tex4ht.sty` before input file processing starts.
+
 - 2023/04/19
 
   - handle additional characters in the `idcolons` DOM filter.
