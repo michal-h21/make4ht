@@ -378,6 +378,9 @@ local function is_empty_row(el)
     for _, child in ipairs(el:get_children()) do
       if child:is_element() then count = count + 1 end
     end
+  else
+    -- row is not empty if it contains any text
+    return false
   end
   -- if there is one or zero childrens, then it is empty row
   return count < 2

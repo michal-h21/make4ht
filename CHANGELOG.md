@@ -1,5 +1,10 @@
 # Changelog
 
+- 2023/06/14
+
+  - fixed bug in the `mathmlfixes` DOM filter -- non-empty last rows were
+    removed if they contained only one element.
+
 - 2023/05/26
 
   - load `tex4ht.sty` before input file processing starts.
