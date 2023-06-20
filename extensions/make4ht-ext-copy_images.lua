@@ -14,13 +14,17 @@ local function image_copy(path, parameters, img_dir)
   local basename = path:match("([^/]+)$")
   -- if outdir is empty, keep it empty, otherwise add / separator
   local outdir = parameters.outdir == "" and "" or parameters.outdir .. "/"
-  if img_dir then 
+  if img_dir ~= "" then 
     outdir = outdir .. img_dir .. "/"
   end
-  local output_file = outdir .. basename
   -- handle trailing //
-  outdir = outdir:gsub("//","/")
-  mkutils.copy(path, output_file)
+  outdir = outdir:gsub("%/+","/")
+  local output_file = outdir .. basename
+  if outdir == "" then
+    mkutils.cp(path, output_file)
+  else
+    mkutils.copy(path, output_file)
+  end
 end
 
 -- filters support only html formats
@@ -41,7 +45,7 @@ function M.modify_build(make)
         if src and not is_url(src) then
           -- remove path specification
           src = src:match("([^/]+)$")
-          if img_dir then
+          if img_dir ~= "" then
             src = img_dir .. "/" ..  src
             src = src:gsub("%/+", "/")
           end
