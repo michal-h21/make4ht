@@ -263,6 +263,11 @@ common\_domfilters
 `common_filters`. Used DOM filters are `fixinlines`, `idcolons`,
 `joincharacters`, `sectionid` and `tablerows`.
 
+copy\_images
+
+:    Copies the images to the output directory. This is useful if the original
+     images are stored in directories above the document directory.
+
 detect\_engine
 
 :    detect engine and format necessary for the document compilation from the
@@ -1014,6 +1019,24 @@ Default values:
         toclikesubparagraph = 7,
       }
     }
+
+## The `copy_images` extension
+
+extensions
+
+:  table with list of image extensions that should be processed. 
+
+
+img\_dir
+
+:  name of the output directory where images should be stored
+
+Default values:
+
+     filter_settings "copy_images" {
+        extensions = {"png", "jpg", "jpeg", "svg"},
+        img_dir = ""
+     }
 
 ## The `fixinlines` dom filter 
 

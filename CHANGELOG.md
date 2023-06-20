@@ -1,5 +1,9 @@
 # Changelog
 
+- 2023/06/20
+
+  - added the `copy_images` extension.
+
 - 2023/06/14
 
   - fixed bug in the `mathmlfixes` DOM filter -- non-empty last rows were
