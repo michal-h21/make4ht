@@ -78,6 +78,9 @@ local function parse_toc(filename)
   if not mkutils.file_exists(filename) then return nil, "Cannot open TOC file "  .. filename end
   for line in io.lines(filename) do
     local id, name = parse_toc_line(line)
+    -- if section name doesn't contain any text, it would lead to id which contains only number
+    -- this is invalid in HTML
+    if name == "" then name = "_" end
     local orig_name = name
     -- not all lines in the .4tc file contains TOC entries
     if id then

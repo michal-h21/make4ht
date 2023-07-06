@@ -1,5 +1,9 @@
 # Changelog
 
+- 2023/07/06
+
+  - add prefix to section IDs if the section name is empty.
+
 - 2023/06/20
 
   - added the `copy_images` extension.
