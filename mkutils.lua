@@ -25,6 +25,10 @@ getmetatable("").__add = addProperty
 --print( "${name} is ${value}" % {name = "foo", value = "bar"} )
 -- Outputs "foo is bar"
 
+function is_url(path)
+  return path:match("^%a+://")
+end
+
 
 -- merge two tables recursively
 function merge(t1, t2)
@@ -133,6 +137,10 @@ local cp_func = os.type == "unix" and "cp" or "copy"
 -- in reality it isn't.
 -- local cp_func = os.type == "unix" and "mv" or "move"
 function cp(src,dest)
+  if is_url(src) then
+    log.info(src .. " is a URL, will leave as is")
+    return
+  end
   if not file_exists(src) then
     -- try to find file using kpse library if it cannot be found
     src = kpse.find_file(src) or src
