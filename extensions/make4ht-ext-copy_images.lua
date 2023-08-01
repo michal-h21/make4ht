@@ -4,12 +4,8 @@ local domfilter = require "make4ht-domfilter"
 
 local copied_images = {}
 
-local function is_url(path)
-  return path:match("^%a%://")
-end
-
 local function image_copy(path, parameters, img_dir)
-  if is_url(path) then return nil, "External image" end
+  if mkutils.is_url(path) then return nil, "External image" end
   -- get image basename
   local basename = path:match("([^/]+)$")
   -- if outdir is empty, keep it empty, otherwise add / separator
@@ -42,7 +38,7 @@ function M.modify_build(make)
     function(dom, par)
       for _, img in ipairs(dom:query_selector("img")) do
         local src = img:get_attribute("src")
-        if src and not is_url(src) then
+        if src and not mkutils.is_url(src) then
           -- remove path specification
           src = src:match("([^/]+)$")
           if img_dir ~= "" then
