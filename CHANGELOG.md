@@ -1,5 +1,9 @@
 # Changelog
 
+- 2023/08/12
+
+  - remove unnecessary `<a>` elements with `id` attributes and set the `id` on the parent.
+
 - 2023/07/06
 
   - add prefix to section IDs if the section name is empty.

@@ -112,6 +112,15 @@ local function set_id(el, id)
 end
 
     
+-- we want to remove <a id="xxx"> elements from some elements, most notably <figure>
+local elements_to_remove = {
+  figure = true
+}
+
+local function remove_a(el, parent, id)
+  parent:set_attribute("id", id)
+  el:remove_node()
+end
 
 return  function(dom, par)
     local msg
@@ -138,8 +147,12 @@ return  function(dom, par)
       local id, href = el:get_attribute("id"), el:get_attribute("href") 
       if id then
         local name = toc[id]
+        local parent = el:get_parent()
+        -- remove unnecessary <a> elements if the parent doesn't have id yet
+        if elements_to_remove[parent:get_element_name()] and not parent:get_attribute("id") then
+          remove_a(el, parent, id)
         -- replace id with new section id
-        if name and not toc_ids[name] then
+        elseif name and not toc_ids[name] then
           set_id(el, name)
         else
           if name then
