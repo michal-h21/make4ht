@@ -248,7 +248,13 @@ may post-process the output files or request additional commands for the compila
 The extensions can be enabled or disabled by appending `+EXTENSION` or `-EXTENSION` after
 the output format name:
 
-     $ make4ht -uf html5+tidy filename.tex
+     $ make4ht -f html5+tidy filename.tex
+
+In `xhtml` and `html5` output formats, the `common_domfilters` extension is triggered automatically, but
+it can still be disabled using:
+
+     $ make4ht -f html5-common_domfilters filename.tex
+
 
 Available extensions:
 
@@ -260,8 +266,9 @@ common\_filters
 common\_domfilters
 
 :    clean the HTML file using DOM filters. It is more powerful than
-`common_filters`. Used DOM filters are `fixinlines`, `idcolons`,
-`joincharacters`, `sectionid` and `tablerows`.
+     `common_filters`. It used following DOM filters: `fixinlines`, `idcolons`,
+     `joincharacters`, `mathmlfixes`, `tablerows`,`booktabs`, `sectionid`
+     and`itemparagraphs`
 
 copy\_images
 

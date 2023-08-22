@@ -1,5 +1,9 @@
 # Changelog
 
+- 2023/08/22
+
+  - updated list of DOM filters used by the `common_domfilters` extension, and documented that it is used automatically in the HTML output.
+
 - 2023/08/12
 
   - remove unnecessary `<a>` elements with `id` attributes and set the `id` on the parent.
