@@ -1,5 +1,9 @@
 # Changelog
 
+- 2023/08/24
+
+  - support non-numerical values in index entry destinations (for example roman numerals).
+
 - 2023/08/22
 
   - updated list of DOM filters used by the `common_domfilters` extension, and documented that it is used automatically in the HTML output.

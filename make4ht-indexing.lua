@@ -80,7 +80,7 @@ local parse_idx = function(content)
     elseif line:match("^\\indexentry") then
       -- replace the page number with the current
       -- index entry number
-      local result = line:gsub("{[0-9]+}$", "{"..current_entry .."}")
+      local result = line:gsub("%b{}$", "{"..current_entry .."}")
       buffer[#buffer+1] = get_utf8(result)
     else
       buffer[#buffer+1] = line
