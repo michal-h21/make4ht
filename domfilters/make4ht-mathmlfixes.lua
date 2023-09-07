@@ -357,6 +357,46 @@ local function fix_operators(x)
   end
 end
 
+local function get_third_parent(el)
+  local first = el:get_parent()
+  if not first then return nil end
+  local second = first:get_parent()
+  if not second then return nil end
+  return second:get_parent()
+end
+
+local function add_space(el, pos)
+  local parent = el:get_parent()
+  local space = parent:create_element("mspace")
+  space:set_attribute("width", "0.3em")
+  parent:add_child_node(space, pos)
+end
+
+local function fix_dcases(el)
+	-- we need to fix spacing in dcases* environments
+	-- when you use something like:
+	-- \begin{dcases*}
+	-- 1 & if $a=b$ then
+	-- \end{dcases*}
+	-- the spaces around $a=b$ will be missing
+	-- we detect if the <mtext> elements contains spaces that are collapsed by the browser, and add explicit <mspace>
+	-- elements when necessary
+	if el:get_element_name() == "mtext" then
+		local parent = get_third_parent(el)
+		if parent and parent:get_element_name() == "mtable" and parent:get_attribute("class") == "dcases-star" then
+			local text = el:get_text()
+			local pos = el:find_element_pos()
+			if pos == 1 and text:match("%s$") then 
+				add_space(el, 2)
+			elseif text:match("^%s") and not el._used then
+				add_space(el, pos)
+				-- this is necessary to avoid infinite loop, we mark this element as processed
+				el._used = true
+			end
+		end
+	end
+end
+
 local function is_last_element(el)
   local siblings = el:get_siblings()
   -- return true only if the current element is the last in the parent's children
@@ -416,6 +456,7 @@ return function(dom)
     fix_numbers(el)
     fix_operators(el)
     fix_mathvariant(el)
+    fix_dcases(el)
     top_mrow(el)
     delete_last_empty_mtr(el)
   end)

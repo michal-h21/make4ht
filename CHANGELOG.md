@@ -1,5 +1,9 @@
 # Changelog
 
+- 2023/09/07
+
+  - fix spacing for the `dcases*` environment in the `mathml_fixes` DOM filter.
+
 - 2023/08/24
 
   - support non-numerical values in index entry destinations (for example roman numerals).
