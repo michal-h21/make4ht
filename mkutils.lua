@@ -85,8 +85,9 @@ end
 
 
 -- searching for converted images
-function parse_lg(filename)
+function parse_lg(filename, builddir)
   log:info("Parse LG")
+  local dir = builddir and builddir .. "/" or ""
   local outputimages,outputfiles,status={},{},nil
   local fonts, used_fonts = {},{}
   if not file_exists(filename) then
@@ -106,7 +107,8 @@ function parse_lg(filename)
         table.insert(outputimages,rec)
       end
       )
-      line:gsub("File: (.*)",  function(k) 
+      line:gsub("File: (.*)",  function(k)
+        k = dir .. k
         if not usedfiles[k] then
           table.insert(outputfiles,k)
           usedfiles[k] = true
@@ -413,12 +415,29 @@ env.Make:add("tex4ht",function(par)
       end
     end
   end
+  local cwd = lfs.currentdir()
+  if par.builddir then
+      lfs.chdir(par.builddir)
+  end
   local command = "tex4ht ${tex4ht_par} \"${input}.${dvi}\"" % par
   log:info("executing: " .. command)
-  return execute(command)
+  local status, output = execute(command)
+  lfs.chdir(cwd)
+  return status, output
 end
 , nil, 1)
-env.Make:add("t4ht","t4ht ${t4ht_par} \"${input}.${ext}\"",{ext="dvi"},1)
+env.Make:add("t4ht", function(par)
+    par.ext = "dvi"
+    local cwd = lfs.currentdir()
+    if par.builddir then
+        lfs.chdir(par.builddir)
+    end
+    local command = "t4ht ${t4ht_par} \"${input}.${ext}\"" % par
+    log:info("executing: " .. command)
+    execute(command)
+    lfs.chdir(cwd)
+end
+)
 
 env.Make:add("clean", function(par)
   -- remove all functions that process produced files
@@ -432,7 +451,8 @@ env.Make:add("clean", function(par)
     end
   end
   -- try to find if the last converted file was in the ODT format
-  local lg_file = parse_lg(main_name .. ".lg") 
+  local lg_name = (params.builddir and params.builddir .. "/") .. main_name .. ".lg"
+  local lg_file = parse_lg(lg_name, params.builddir)
   local is_odt = false
   if lg_file and lg_file.files then
     for _, x in ipairs(lg_file.files) do

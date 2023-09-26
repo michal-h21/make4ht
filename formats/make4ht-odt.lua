@@ -169,7 +169,7 @@ local lg_fonts_processed=false
 local patched_lg_fonts = {}
 local function fix_lgfile_fonts(ignored_name, params)
   -- this function is called from file match. we must use the name of the .lg file
-  local filename = params.input .. ".lg"
+  local filename = (params.builddir and params.builddir .. "/") .. main_name .. ".lg"
   if not lg_fonts_processed then
     local lines = {}
     -- default font_size

@@ -21,6 +21,7 @@ Available options:
                 possible values: tex4ht or lua4ht
   -c,--config (default xhtml) Custom config file
   -d,--output-dir (default nil)  Output directory
+  -B,--build-dir (default nil)  Build directory
   -e,--build-file (default nil)  If build file is different than `filename`.mk4
   -f,--format  (default html5)  Output file format
   -h,--help  Display this message
@@ -191,10 +192,18 @@ local function process_args(args)
 	local outdir = ""
 	local packages = ""
 
-	if  args["output-dir"] ~= "nil" then 
+	if  args["output-dir"] ~= "nil" then
 		outdir =  args["output-dir"]  or ""
 		outdir = outdir:gsub('\\','/')
 		outdir = outdir:gsub('/$','')
+	end
+
+	local builddir = ""
+
+	if  args["build-dir"] ~= "nil" then
+		builddir =  args["build-dir"]  or ""
+		builddir = builddir:gsub('\\','/')
+		builddir = builddir:gsub('/$','')
 	end
 
   -- make4ht now requires UTF-8 output, because of DOM filters
@@ -274,7 +283,7 @@ local function process_args(args)
 	local parameters = {
 		htlatex = compiler
 		,input=input
-    ,tex_file=tex_file
+        ,tex_file=tex_file
 		,packages=packages
 		,latex_par=table.concat(latex_params," ")
 		--,config=ebookutils.remove_extension(args.config)
@@ -291,6 +300,7 @@ local function process_args(args)
 		--,t4ht_dir_format=t4ht_dir_format
 	}
 	if outdir then parameters.outdir = outdir end
+	if builddir then parameters.builddir = builddir end
 	log:info("Output dir: "..outdir)
 	log:info("Compiler: "..compiler)
 	log:info("Latex options: ".. table.concat(latex_params," "))
