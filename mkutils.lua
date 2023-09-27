@@ -620,7 +620,13 @@ function load_extension(name,format)
   local is_extension_file = find_lua_file(extension_library)
   -- don't try to load the extension if it doesn't exist
   if not is_extension_file then return nil, "cannot fint extension " .. name  end
-  local extension = require("make4ht.extensions.make4ht-ext-".. name)
+  local extension = nil
+  local local_extension_path = package.searchpath(extension_library, package.path)
+  if local_extension_path then
+      extension = dofile(local_extension_path)
+  else
+      extension = require("make4ht.extensions.make4ht-ext-".. name)
+  end
   -- extensions can test if the current output format is supported
   local test = extension.test
   if test then
