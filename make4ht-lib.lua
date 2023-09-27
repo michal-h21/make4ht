@@ -194,8 +194,8 @@ Make.run = function(self)
 			end
 		end
 	end
-	local lgfile = params.input and params.input .. ".lg" or nil
-    local lgfile = (params.builddir and params.builddir .. "/") .. lgfile
+  local lgfile = params.input and params.input .. ".lg" or nil
+  local lgfile = (params.builddir~="" and params.builddir .. "/") .. lgfile
 	if lgfile then
    	self.lgfile = self.lgfile or mkutils.parse_lg(lgfile, params.builddir)
     local lg = self.lgfile
