@@ -6,7 +6,7 @@ local Make = Make or {}
 -- this function reads the LaTeX log file and tries to detect fatal errors in the compilation
 local function testlogfile(par)
   local logfile = par.input .. ".log"
-  if par.builddir then
+  if par.builddir~="" then
       logfile = par.builddir .. "/" .. logfile
   end
   local f = io.open(logfile,"r")
