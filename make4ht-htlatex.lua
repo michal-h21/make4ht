@@ -6,7 +6,7 @@ local Make = Make or {}
 -- this function reads the LaTeX log file and tries to detect fatal errors in the compilation
 local function testlogfile(par)
   local logfile = par.input .. ".log"
-  if par.builddir then
+  if par.builddir~="" then
       logfile = par.builddir .. "/" .. logfile
   end
   local f = io.open(logfile,"r")
@@ -53,7 +53,7 @@ Make.latex_command = "${htlatex} --interaction=${interaction} ${build_dir_arg} $
 "\\documentstyle[tex4ht]}}\\RequirePackage[#1,html]{tex4ht}${packages}}\\makeatother\\HCode ${tex4ht_sty_par}.a.b.c."..
 "\\input \"\\detokenize{${tex_file}}\"'"
 
-Make.plain_command = '${htlatex} --interaction=${interaction} ${build_dir} ${latex_par}' ..
+Make.plain_command = '${htlatex} --interaction=${interaction} ${build_dir_arg} ${latex_par}' ..
 "'\\def\\Link#1.a.b.c.{\\expandafter\\def\\csname tex4ht\\endcsname{\\expandafter\\def\\csname tex4ht\\endcsname{#1,html}\\input tex4ht.sty }}" ..
 "\\def\\HCode{\\futurelet\\HCode\\HChar}\\def\\HChar{\\ifx\"\\HCode\\def\\HCode\"##1\"{\\Link##1}\\expandafter\\HCode\\else\\expandafter\\Link\\fi}" ..
 "\\HCode ${tex4ht_sty_par}.a.b.c.\\input \"\\detokenize{${tex_file}}\"'"
@@ -70,7 +70,7 @@ function m.htlatex(par, latex_command)
     devnull = " > nul 2>&1"
   end
   par.interaction = par.interaction or "batchmode"
-  if par.builddir then
+  if par.builddir~="" then
       par.build_dir_arg = "--output-directory=${builddir}" % par
   else
       par.build_dir_arg = ""

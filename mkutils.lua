@@ -87,7 +87,7 @@ end
 -- searching for converted images
 function parse_lg(filename, builddir)
   log:info("Parse LG")
-  local dir = builddir and builddir .. "/" or ""
+  local dir = builddir~="" and builddir .. "/" or ""
   local outputimages,outputfiles,status={},{},nil
   local fonts, used_fonts = {},{}
   if not file_exists(filename) then
