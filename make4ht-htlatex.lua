@@ -70,7 +70,7 @@ function m.htlatex(par, latex_command)
     devnull = " > nul 2>&1"
   end
   par.interaction = par.interaction or "batchmode"
-  if par.builddir then
+  if par.builddir~="" then
       par.build_dir_arg = "--output-directory=${builddir}" % par
   else
       par.build_dir_arg = ""
