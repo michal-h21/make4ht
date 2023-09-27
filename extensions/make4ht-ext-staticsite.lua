@@ -96,7 +96,11 @@ end
 
 local function copy_files(filename, par)
   local function prepare_path(dir, subdir)
-    local path = dir .. "/" .. subdir .. "/" .. filename
+    local f = filename
+    if par.builddir then
+        f = f:gsub("^" .. par.builddir .. "/", "")
+    end
+    local path = dir .. "/" .. subdir .. "/" .. f
     return path:gsub("//", "/")
   end
   -- get extension settings
@@ -151,7 +155,7 @@ function M.modify_build(make)
     --   print(match.pattern, match.params.outdir)
     -- end
     make:match("html?$", process)
-    make:match(".*", copy_files, {slug=slug})
+    make:match(".*", copy_files, {slug=slug, builddir=make.params.builddir})
   end)
 
   return make
