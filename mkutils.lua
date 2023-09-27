@@ -222,10 +222,11 @@ function mkdirectories(dirs)
   if type(dirs) ~="table" then
     return false, "mkdirectories: dirs is not table"
   end
+  local path = ""
   for _,d in ipairs(dirs) do
-    local stat,msg = lfs.mkdir(d)
+    path = path .. d .. "/"
+    local stat,msg = lfs.mkdir(path)
     if not stat then return false, "makedirectories error: "..msg end
-    lfs.chdir(d)
   end
   return true
 end
