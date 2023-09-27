@@ -100,9 +100,9 @@ function parse_lg(filename, builddir)
       line:gsub("needs %-%-%- (.+)%[([0-9]+)%] ==> (.*) %-%-%-",
       function(file,page,output) 
         local rec = {
-          source = file,
+          source=file,
           page=page,
-          output = output
+          output=dir..output
         }
         table.insert(outputimages,rec)
       end
