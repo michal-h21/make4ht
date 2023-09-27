@@ -39,6 +39,14 @@ local parameters = mkparams.process_args(args)
 log:status("Conversion started")
 log:status("Input file: " .. parameters.tex_file)
 
+
+if parameters.builddir ~= "" then
+  -- we must create the build dir if it doesn't exist
+  local parts = mkutils.prepare_path(parameters.builddir .. "/foo")
+  local to_create = mkutils.find_directories(parts)
+  mkutils.mkdirectories(to_create)
+end
+
 local mode = parameters.mode
 local build_file = parameters.build_file 
 
