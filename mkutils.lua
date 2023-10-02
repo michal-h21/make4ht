@@ -242,6 +242,13 @@ function make_path(path)
   lfs.chdir(cwd)
 end
 
+function file_in_builddir(filename, par)
+  if par.builddir and par.builddir ~= "" then
+    return par.builddir .. "/" .. filename
+  end
+  return filename
+end
+
 function copy_filter(src,dest, filter)
   local src_f=io.open(src,"rb")
   local dst_f=io.open(dest,"w")
