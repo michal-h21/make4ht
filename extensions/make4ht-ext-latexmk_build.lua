@@ -16,7 +16,7 @@ function M.modify_build(make)
   -- tex4ht command overwrites content that was set by LaTeX with it's own stuff
   local tmp_file 
   make:add("save_tmp", function(par)
-    local f = io.open(par.input .. ".tmp", "r")
+    local f = io.open(mkutils.file_in_builddir(par.input .. ".tmp", par), "r")
     if f then
       tmp_file = f:read("*all")
       f:close()
@@ -25,7 +25,7 @@ function M.modify_build(make)
   end)
   make:add("load_tmp", function(par)
     if tmp_file then
-      local f = io.open(par.input .. ".tmp", "w")
+      local f = io.open(mkutils.file_in_builddir(par.input .. ".tmp", par), "w")
       if f then
         f:write(tmp_file)
       end
