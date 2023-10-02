@@ -124,7 +124,7 @@ end
 
 return  function(dom, par)
     local msg
-    toc, msg = toc or parse_toc(par.input .. ".4tc")
+    toc, msg = toc or parse_toc(mkutils.file_in_builddir(par.input .. ".4tc", par))
     msg = msg or "Cannot load TOC"
     -- don't do anyting if toc cannot be found
     if not toc then 
