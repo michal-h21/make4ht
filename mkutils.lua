@@ -435,7 +435,7 @@ env.Make:add("tex4ht",function(par)
     end
   end
   local cwd = lfs.currentdir()
-  if par.builddir then
+  if par.builddir~="" then
       lfs.chdir(par.builddir)
   end
   local command = "tex4ht ${tex4ht_par} \"${input}.${dvi}\"" % par
@@ -448,7 +448,7 @@ end
 env.Make:add("t4ht", function(par)
     par.ext = "dvi"
     local cwd = lfs.currentdir()
-    if par.builddir then
+    if par.builddir ~= "" then
         lfs.chdir(par.builddir)
     end
     local command = "t4ht ${t4ht_par} \"${input}.${ext}\"" % par
