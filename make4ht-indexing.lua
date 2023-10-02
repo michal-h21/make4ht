@@ -150,7 +150,7 @@ local get_idxname = function(par)
 end
 
 local prepare_tmp_idx = function(par)
-  par.idxfile = get_idxname(par)
+  par.idxfile = mkutils.file_in_builddir(get_idxname(par), par)
   if not par.idxfile or not mkutils.file_exists(par.idxfile) then return nil, "Cannot load idx file " .. (par.idxfile or "''") end
   -- construct the .ind name, based on the .idx name
   par.indfile = par.indfile or par.idxfile:gsub("idx$", "ind")
