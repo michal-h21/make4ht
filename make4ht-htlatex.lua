@@ -5,10 +5,7 @@ local error_logparser = require("make4ht-errorlogparser")
 local Make = Make or {}
 -- this function reads the LaTeX log file and tries to detect fatal errors in the compilation
 local function testlogfile(par)
-  local logfile = par.input .. ".log"
-  if par.builddir~="" then
-      logfile = par.builddir .. "/" .. logfile
-  end
+  local logfile = mkutils.file_in_builddir(par.input .. ".log", par)
   local f = io.open(logfile,"r")
   if not f then
     log:warning("Make4ht: cannot open log file "..logfile)
