@@ -231,6 +231,17 @@ function mkdirectories(dirs)
   return true
 end
 
+function make_path(path)
+  -- we must create the build dir if it doesn't exist
+  local cwd = lfs.currentdir()
+  -- add dummy /foo dir. it won't be created, but without that, the top-level dir wouldn't be created
+  local parts = mkutils.prepare_path(path .. "/foo")
+  local to_create = mkutils.find_directories(parts)
+  mkutils.mkdirectories(to_create)
+  -- change back to the original dir
+  lfs.chdir(cwd)
+end
+
 function copy_filter(src,dest, filter)
   local src_f=io.open(src,"rb")
   local dst_f=io.open(dest,"w")

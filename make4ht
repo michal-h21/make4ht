@@ -41,10 +41,7 @@ log:status("Input file: " .. parameters.tex_file)
 
 
 if parameters.builddir ~= "" then
-  -- we must create the build dir if it doesn't exist
-  local parts = mkutils.prepare_path(parameters.builddir .. "/foo")
-  local to_create = mkutils.find_directories(parts)
-  mkutils.mkdirectories(to_create)
+  mkutils.make_path(parameters.builddir)
 end
 
 local mode = parameters.mode
