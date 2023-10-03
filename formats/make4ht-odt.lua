@@ -169,7 +169,7 @@ local lg_fonts_processed=false
 local patched_lg_fonts = {}
 local function fix_lgfile_fonts(ignored_name, params)
   -- this function is called from file match. we must use the name of the .lg file
-  local filename = (params.builddir and params.builddir .. "/") .. main_name .. ".lg"
+  local filename = mkutils.file_in_builddir(params.input .. ".lg", params)
   if not lg_fonts_processed then
     local lines = {}
     -- default font_size
@@ -209,7 +209,8 @@ end
 local move_matches = xtpipeslib.move_matches
 
 local function insert_lgfile_fonts(make)
-  local first_file = make.params.input .. ".4oo"
+  local params = make.params
+  local first_file = mkutils.file_in_builddir(params.input .. ".4oo", params)
   -- find the last file and escape it so it can be used 
   -- in filename match
   make:match(first_file, fix_lgfile_fonts)
@@ -310,7 +311,8 @@ function M.modify_build(make)
       -- odt packing will be done here
       make:match(lastfile, function(filename, par)
         local groups = prepare_output_files(make.lgfile.files)
-        local basename = groups.odt[1]
+        -- we must remove any path from the basename
+        local basename = groups.odt[1]:match("([^/]+)$")
         local odtname = basename .. ".odt"
         local odt,msg = Odtfile.new(odtname)
         if not odt then
