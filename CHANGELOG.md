@@ -1,5 +1,9 @@
 # Changelog
 
+- 2023/10/03
+
+  - fixed most features that didn't work with the `--build-dir` argument.
+
 - 2023/10/02
 
   - working on new command line argument `--build-dir`. It should allow moving of temporary files to a temporary directory. The idea and most of the code comes from Robin Seth Ekman.
