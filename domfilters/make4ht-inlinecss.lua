@@ -58,7 +58,7 @@ return function(dom, par)
   if not processed then 
     -- process the CSS file before everything else, but only once
     processed = true
-    local css_file = par.input .. ".css"
+    local css_file = mkutils.file_in_builddir(par.input .. ".css", par)
     local status, msg = parse_css(css_file)
     if not status then log:warning(msg) end
   end
