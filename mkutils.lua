@@ -421,7 +421,7 @@ env.Make:add("tex4ht",function(par)
   -- detect if svg output is used
   -- if yes, we need to pass the -g.svg option to tex4ht command
   -- to support svg images for character pictures
-  local logfile = par.input .. ".log"
+  local logfile = mkutils.file_in_builddir(par.input .. ".log", par)
   if file_exists(logfile) then
     for line in io.lines(logfile) do
       local options = line:match("TeX4ht package options:(.+)")
@@ -462,7 +462,7 @@ env.Make:add("clean", function(par)
   -- remove all functions that process produced files
   -- we will provide only one function, that remove all of them
   Make.matches = {}
-  local main_name = par.input
+  local main_name = mkutils.file_in_builddir( par.input, par)
   local remove_file = function(filename)
     if file_exists(filename) then
       log:info("removing file: " .. filename)
@@ -470,8 +470,8 @@ env.Make:add("clean", function(par)
     end
   end
   -- try to find if the last converted file was in the ODT format
-  local lg_name = (params.builddir and params.builddir .. "/") .. main_name .. ".lg"
-  local lg_file = parse_lg(lg_name, params.builddir)
+  local lg_name =  main_name .. ".lg"
+  local lg_file = parse_lg(lg_name, par.builddir)
   local is_odt = false
   if lg_file and lg_file.files then
     for _, x in ipairs(lg_file.files) do
@@ -489,7 +489,7 @@ env.Make:add("clean", function(par)
   end
   Make:match("tmp$", function()
     -- remove temporary and auxilary files
-    for _,ext in ipairs {"aux", "xref", "tmp", "4tc", "4ct", "idv", "lg","dvi", "log", "ncx"} do
+    for _,ext in ipairs {"aux", "xref", "tmp", "4tc", "4ct", "idv", "lg","dvi", "log", "ncx", "idx", "ind"} do
       remove_file(main_name .. "." .. ext)
     end
   end)
