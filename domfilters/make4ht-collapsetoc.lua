@@ -168,7 +168,7 @@ end
 -- process the .4tc file and convert entries to a tree structure
 -- based on the sectioning level
 local function parse_4tc(parameters, toc_levels)
-  local tcfilename = parameters.input .. ".4tc"
+  local tcfilename = mkutils.file_in_builddir(parameters.input .. ".4tc", parameters)
   if not mkutils.file_exists(tcfilename) then 
     log:warning("Cannot find TOC: " .. tcfilename)
     return {}
