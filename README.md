@@ -34,6 +34,7 @@ It will produce a file named `filename.html` if the compilation goes without fat
          possible values: tex4ht or lua4ht
     -c,--config (default xhtml) Custom config file
     -d,--output-dir (default "")  Output directory
+    -B,--build-dir (default nil)  Build directory
     -e,--build-file (default nil)  If the build filename is different 
          than `filename`.mk4
     -f,--format  (default nil)  Output file format
