@@ -35,9 +35,38 @@ local function update_element_name(el, name, prefix)
   el._name = newname
 end
 
-local function create_element(el, name, prefix)
-  return el:create_element(newname)
+local function create_element(el, name, prefix, attributes)
+  local attributes = attributes or {}
+  local newname = get_new_element_name(name, prefix)
+  return el:create_element(newname, attributes)
 end
+
+local function element_pos(el)
+  local pos, count = 0, 0
+  for _, node in ipairs(el:get_siblings()) do
+    if node:is_element() then
+      count = count + 1
+      if node == el then
+        pos = count
+      end
+    end
+  end
+  return pos, count
+end
+
+-- test if element is the first element in the current element list
+local function is_first_element(el)
+  local pos, count = element_pos(el)
+  return pos == 1 
+end
+
+-- test if element is the last element in the current element list
+local function is_last_element(el)
+  local pos, count = element_pos(el)
+  return pos == count
+end
+
+
 
 local function is_token_element(el)
   local name, prefix = get_element_name(el)
@@ -397,20 +426,6 @@ local function fix_dcases(el)
 	end
 end
 
-local function is_last_element(el)
-  local siblings = el:get_siblings()
-  -- return true only if the current element is the last in the parent's children
-  for i = #siblings, 1, -1 do
-    local curr = siblings[i]
-    if curr == el then
-      return true
-    elseif curr:is_element() then
-      return false
-    end
-  end
-  return false
-end
-
 local function is_empty_row(el)
   -- empty row should contain only one <mtd>
   local count = 0
@@ -441,6 +456,28 @@ local function delete_last_empty_mtr(el)
 
 end
 
+local function fix_rel_mo(el)
+  -- this is necessary for LibreOffice. It has a problem with relative <mo> that are
+  -- first childs in an element list. This often happens in equations, where first
+  -- element in a table column is an operator, like non-equal-, less-than etc.
+  local el_name, prefix = get_element_name(el)
+  if el_name == "mo" 
+     and not get_attribute(el, "fence") -- ignore fences
+     and not get_attribute(el, "form")  -- these should be also ignored
+  then
+    local parent = el:get_parent()
+    if is_first_element(el) then
+      local mrow = create_element(parent, "mrow", prefix)
+      parent:add_child_node(mrow, 1)
+    elseif is_last_element(el) then
+      local mrow = create_element(parent, "mrow", prefix)
+      parent:add_child_node(mrow)
+    end
+  end
+
+end
+
+
 return function(dom)
   dom:traverse_elements(function(el)
     if settings.output_format ~= "odt" then
@@ -459,6 +496,7 @@ return function(dom)
     fix_dcases(el)
     top_mrow(el)
     delete_last_empty_mtr(el)
+    fix_rel_mo(el)
   end)
   return dom
 end

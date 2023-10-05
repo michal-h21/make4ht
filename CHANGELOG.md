@@ -1,5 +1,9 @@
 # Changelog
 
+- 2023/10/05
+
+  - added fix for LibreOffice's bug regarding relation type math operators.
+
 - 2023/10/03
 
   - fixed most features that didn't work with the `--build-dir` argument.
