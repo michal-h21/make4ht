@@ -396,7 +396,8 @@ end
 
 local function add_space(el, pos)
   local parent = el:get_parent()
-  local space = parent:create_element("mspace")
+  local name, prefix = get_element_name(el)
+  local space = create_element(parent, "mspace", prefix)
   space:set_attribute("width", "0.3em")
   parent:add_child_node(space, pos)
 end
