@@ -208,6 +208,12 @@ should copy all output files to the correct destinations.
 
     $ make4ht -d outputdir filename.tex
 
+`make4ht` can also output temporary files to a build directory, thanks to the `--build-dir` (or `-B`)
+option. The following command with put `.aux`, `.4tc` and other auxiliary files to the
+`build` dir, and the generated `.html` and `.css` files to the `outputdir` directory.
+
+    $ make4ht -B build -d outputdir filename.tex
+
 ## Image conversion and postprocessing of the generated files
 
 \TeX4ht\ can convert parts of the document to images. This is useful 
