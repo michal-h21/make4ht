@@ -29,6 +29,9 @@ local function testlogfile(par)
       end
     end
   end
+  -- info about packages with no corresponding .4ht files
+  local missing_4ht = error_logparser.get_missing_4ht_files(content)
+  for _, filename in ipairs(missing_4ht) do log:info("Unsupported file: " .. filename) end
   -- test for fatal errors
   if text:match("No pages of output") or text:match("TeX capacity exceeded, sorry") or text:match("That makes 100 errors") or text:match("Emergency stop") then return 1 end
   return 0

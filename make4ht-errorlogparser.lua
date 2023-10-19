@@ -81,6 +81,28 @@ local function get_errors(chunks, errors)
   return errors
 end
 
+function m.get_missing_4ht_files(log)
+  local used_files = {}
+  local used_4ht_files = {}
+  local missing_4ht_files = {}
+  local pkg_names = {sty=true, cls=true}
+  for filename, ext in log:gmatch("[^%s]-([^%/^%\\^%.%s]+)%.([%w][%w]+)") do
+    -- break ak
+    if ext == "aux" then break end
+    if pkg_names[ext] then
+      used_files[filename .. "." .. ext] = true
+    elseif ext == "4ht" then
+      used_4ht_files[filename] = true
+    end
+  end
+  for filename, _ in pairs(used_files) do 
+    if not used_4ht_files[mkutils.remove_extension(filename)] then 
+      table.insert(missing_4ht_files, filename)
+    end
+  end
+  return missing_4ht_files
+end
+
 
 function m.parse(log)
   local chunks, newtext = get_chunks(log)

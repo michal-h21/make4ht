@@ -1,5 +1,9 @@
 # Changelog
 
+- 2023/10/19
+
+  - print info about packages with no corresponding `.4ht` file.
+
 - 2023/10/05
 
   - added fix for LibreOffice's bug regarding relation type math operators.
