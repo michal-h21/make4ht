@@ -151,6 +151,7 @@ return  function(dom, par)
         -- remove unnecessary <a> elements if the parent doesn't have id yet
         if elements_to_remove[parent:get_element_name()] and not parent:get_attribute("id") then
           remove_a(el, parent, id)
+          set_id(el, name)
         -- replace id with new section id
         elseif name and not toc_ids[name] then
           set_id(el, name)

@@ -1,5 +1,9 @@
 # Changelog
 
+- 2023/10/25
+
+  - fixed addition of named IDs to figures.
+
 - 2023/10/19
 
   - print info about packages with no corresponding `.4ht` file.
