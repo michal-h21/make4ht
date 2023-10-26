@@ -154,7 +154,6 @@ return  function(dom, par)
           and not parent:get_attribute("id") 
           and el:get_element_name() == "a"
         then
-          print("remove", el:serialize())
           remove_a(el, parent, id)
           set_id(el, name)
         -- replace id with new section id
