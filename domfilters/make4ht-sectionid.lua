@@ -114,7 +114,8 @@ end
     
 -- we want to remove <a id="xxx"> elements from some elements, most notably <figure>
 local elements_to_remove = {
-  figure = true
+  figure = true,
+  figcaption
 }
 
 local function remove_a(el, parent, id)
@@ -149,7 +150,11 @@ return  function(dom, par)
         local name = toc[id]
         local parent = el:get_parent()
         -- remove unnecessary <a> elements if the parent doesn't have id yet
-        if elements_to_remove[parent:get_element_name()] and not parent:get_attribute("id") then
+        if elements_to_remove[parent:get_element_name()] 
+          and not parent:get_attribute("id") 
+          and el:get_element_name() == "a"
+        then
+          print("remove", el:serialize())
           remove_a(el, parent, id)
           set_id(el, name)
         -- replace id with new section id

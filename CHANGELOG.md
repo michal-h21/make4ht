@@ -1,5 +1,9 @@
 # Changelog
 
+- 2023/10/26
+
+  - check that removed elements in the `sectionid` DOM filter are `<a>` elements.
+
 - 2023/10/25
 
   - fixed addition of named IDs to figures.
