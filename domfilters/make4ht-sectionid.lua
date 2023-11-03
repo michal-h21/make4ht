@@ -58,7 +58,9 @@ local escape_name = function(name)
   --- convert table with normalized characters to string
   local name = table.concat(result)
   -- remove spaces
-  return name:gsub("%s+", "-")
+  name = name:gsub("%s+", "-")
+  name = name:gsub("^%-", "")
+  return name
 end
 
 local function parse_toc_line(line)

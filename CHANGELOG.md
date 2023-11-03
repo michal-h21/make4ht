@@ -1,5 +1,9 @@
 # Changelog
 
+- 2023/11/03
+
+  - remove leading dashes in ids created by the `sectionid` DOM filter.
+
 - 2023/10/26
 
   - check that removed elements in the `sectionid` DOM filter are `<a>` elements.
