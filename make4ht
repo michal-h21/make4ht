@@ -133,7 +133,7 @@ make:match(".*",function(filename,par)
     return true
   end
   log:info("outdir: "..outdir)
-  local outfilename = filename:gsub("^" .. par.builddir or "", "")
+  local outfilename = filename:gsub("^" .. (par.builddir or ""), "")
   outfilename = outdir .. outfilename
   mkutils.copy(filename,outfilename)
 	return true
