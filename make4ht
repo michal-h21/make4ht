@@ -40,7 +40,7 @@ log:status("Conversion started")
 log:status("Input file: " .. parameters.tex_file)
 
 
-if parameters.builddir ~= "" then
+if parameters.builddir and parameters.builddir ~= "" then
   mkutils.make_path(parameters.builddir)
 end
 
