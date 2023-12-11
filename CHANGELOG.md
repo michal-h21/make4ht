@@ -1,5 +1,9 @@
 # Changelog
 
+- 2023/12/11
+
+  - fixed handling of the `--build-dir` argument in `dvisvgm_hashes` extension.
+
 - 2023/11/03
 
   - remove leading dashes in ids created by the `sectionid` DOM filter.

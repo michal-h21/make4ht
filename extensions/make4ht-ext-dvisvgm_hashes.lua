@@ -177,7 +177,7 @@ local function get_dvi_pages(arg)
   f:close()
   local dvi_pages = dvireader.get_pages(content)
   -- we must find page numbers and output name sfor the generated images
-  local lg = mkutils.parse_lg(arg.input ..".lg")
+  local lg = mkutils.parse_lg(arg.input ..".lg", arg.builddir)
   for _, name in ipairs(lg.images) do
     local page = tonumber(name.page)
     local hash = dvi_pages[page]
