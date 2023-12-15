@@ -465,6 +465,7 @@ local function fix_rel_mo(el)
   if el_name == "mo" 
      and not get_attribute(el, "fence") -- ignore fences
      and not get_attribute(el, "form")  -- these should be also ignored
+     and not get_attribute(el, "accent") -- and accents too
   then
     local parent = el:get_parent()
     if is_first_element(el) then
@@ -486,6 +487,7 @@ return function(dom)
       fix_mfenced(el)
     else
       fix_mo_to_mfenced(el)
+      fix_rel_mo(el)
     end
     fix_radicals(el)
     fix_token_elements(el)
@@ -497,7 +499,6 @@ return function(dom)
     fix_dcases(el)
     top_mrow(el)
     delete_last_empty_mtr(el)
-    fix_rel_mo(el)
   end)
   return dom
 end

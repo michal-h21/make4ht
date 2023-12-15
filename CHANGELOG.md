@@ -1,5 +1,9 @@
 # Changelog
 
+- 2023/12/15
+
+  - call `fix_rel_mo` MathML fix only in the ODT output.
+
 - 2023/12/11
 
   - fixed handling of the `--build-dir` argument in `dvisvgm_hashes` extension.
