@@ -1,5 +1,9 @@
 # Changelog
 
+- 2024/01/22
+
+  - don't enable parsing of void elements in DOM filter with XML output formats.
+
 - 2023/12/15
 
   - call `fix_rel_mo` MathML fix only in the ODT output.

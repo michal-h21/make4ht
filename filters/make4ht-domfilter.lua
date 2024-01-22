@@ -37,10 +37,13 @@ local function filter(filters, name)
     end
     local input = filter_lib.load_input_file(filename)
     if not input  then return nil, "Cannot load the input file" end
+    -- in pure XML, we need to ignore void_elements provided by LuaXML, because these can exist only in HTML
+    local no_void_elements = {docbook = {}, jats = {}, odt = {}, tei = {} }
+    local void_elements = no_void_elements[parameters.output_format]
     -- we need to use pcall, because XML error would break the whole build process
     -- domobject will be error object if DOM parsing failed
     local status, domobject = pcall(function()
-      return dom.parse(input)
+      return dom.parse(input, void_elements)
     end)
     if not status then
       log:warning("DOM parsing of " .. filename .. " failed:")
