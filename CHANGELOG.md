@@ -1,5 +1,9 @@
 # Changelog
 
+- 2024/01/26
+
+  - fixed passing of the params table in the `staticsite` extension.
+
 - 2024/01/22
 
   - don't enable parsing of void elements in DOM filter with XML output formats.
