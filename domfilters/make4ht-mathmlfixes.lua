@@ -304,6 +304,14 @@ end
 local function fix_numbers(el)
   -- convert <mn>1</mn><mo>.</mo><mn>3</mn> to <mn>1.3</mn>
   if get_element_name(el) == "mn" then
+    -- sometimes minus sign can be outside <mn>
+    local x = el:get_sibling_node(-1)
+    if x and x:is_text()
+         and x:get_text() == "−" 
+    then
+      el:add_child_node(x:copy_node(), 1)
+      x:remove_node()
+    end
     local n = el:get_sibling_node(1)
     -- test if next  element is <mo class="MathClass-punc">.</mo>
     if n and n:is_element() 

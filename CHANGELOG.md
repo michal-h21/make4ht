@@ -1,5 +1,9 @@
 # Changelog
 
+- 2024/02/21
+
+  - add standalone minus sign to the `<mn>` element in MathML.
+
 - 2024/01/26
 
   - fixed passing of the params table in the `staticsite` extension.
