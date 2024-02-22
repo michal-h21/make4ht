@@ -1,5 +1,9 @@
 # Changelog
 
+- 2024/02/22
+
+  - fixed name of the `<title-group>` element in JATS output.
+
 - 2024/02/21
 
   - add standalone minus sign to the `<mn>` element in MathML.

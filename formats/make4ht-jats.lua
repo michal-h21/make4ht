@@ -32,8 +32,8 @@ end
 local function process_moves()
   if article_meta then
     if elements_to_move_to_title["article-title"] 
-      and #article_meta:query_selector("title_group") == 0 then -- don't move anything if user added title_group from a config file
-      local title_group = article_meta:create_element("title_group")
+      and #article_meta:query_selector("title-group") == 0 then -- don't move anything if user added title-group from a config file
+      local title_group = article_meta:create_element("title-group")
       for _, name in ipairs{ "article-title", "subtitle" } do
         local v = elements_to_move_to_title[name] 
         if v then
