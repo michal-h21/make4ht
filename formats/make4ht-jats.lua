@@ -41,7 +41,7 @@ local function process_moves()
           v:remove_node()
         end
       end
-      article_meta:add_child_node(title_group)
+      article_meta:add_child_node(title_group, 1)
     end
     if #elements_to_move_to_contribs > 0 then
       local contrib_group = article_meta:create_element("contrib-group")
