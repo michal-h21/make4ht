@@ -2,6 +2,7 @@
 
 - 2024/02/22
 
+  - version `0.4` released
   - fixed name of the `<title-group>` element in JATS output.
 
 - 2024/02/21
