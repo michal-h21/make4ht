@@ -1,5 +1,10 @@
 # Changelog
 
+- 2024/03/29
+
+  - ignore numbers in braces in `make4ht-indexing` library.
+    https://tex.stackexchange.com/q/714247/2891
+
 - 2024/02/22
 
   - version `0.4` released

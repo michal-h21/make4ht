@@ -99,7 +99,9 @@ local fix_idx_pages = function(content, idxobj)
       -- there is a problem when index term itself contains numbers, like Bible verses (1:2),
       -- because they will be detected as page numbers too. I cannot find a good solution 
       -- that wouldn't break something else.
-      return start .. rest:gsub("(%d+)", function(page)
+      -- There can be also commands with numbers in braces. These numbers in braces will be ignored, 
+      -- as they may be not page numbers
+      return start .. rest:gsub("(%{?%d+%}?)", function(page)
         local entry = entries[tonumber(page)]
         if entry then
           -- construct link to the index entry
