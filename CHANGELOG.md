@@ -1,5 +1,10 @@
 # Changelog
 
+- 2024/04/15
+
+  - made the `make` command used in the `dvisvgm_hashes` extension configurable.
+   https://tex.stackexchange.com/q/715633/2891
+
 - 2024/03/29
 
   - ignore numbers in braces in `make4ht-indexing` library.

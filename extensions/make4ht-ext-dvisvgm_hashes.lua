@@ -11,6 +11,8 @@ local M = {}
 local output_map = {}
 local dvisvgm_options = "-n --exact -c ${scale},${scale}"
 local parallel_size = 64
+local make_command = "make -j ${process_count} -f ${make_file}"
+local test_make_command = "make -v"
 -- local parallel_size = 3
 
 local function make_hashed_name(base, hash)
@@ -88,11 +90,12 @@ end
 
 -- test the existence of GNU Make, which can execute tasks in parallel
 local function test_make()
-  local make = io.popen("make -v", "r")
-  if not make then return false end
+  local make = io.popen(test_make_command, "r")
   local content = make:read("*all")
   make:close()
-  return true
+  -- io.popen always returns valid handle, so we can find that the command doesn't exists only by checking that the 
+  -- content is empty
+  return content~=nil and content ~= ""
 end
 
 local function save_file(filename, text)
@@ -120,7 +123,8 @@ local function make_makefile_command(idvfile, page_sequences)
   -- construct makefile and save it
   local makefile = "all: " .. table.concat(all, " ") .. "\n\n" .. table.concat(targets, "\n")
   save_file(makefilename, makefile)
-  local command = "make -j" .. cpu_cnt .." -f " .. makefilename
+  local command = make_command % {process_count = cpu_cnt, make_file = makefilename}
+  log:debug("Makefile command: " .. command)
   return command, logs
 end
 
@@ -171,6 +175,8 @@ local function get_dvi_pages(arg)
   cpu_cnt = arg.cpu_cnt or extoptions.cpu_cnt or cpu_cnt
   dvisvgm_par.scale = arg.scale or extoptions.scale or 1.15
   dvisvgm_options = dvisvgm_options % dvisvgm_par
+  make_command   = arg.make_command or extoptions.make_command or make_command
+  test_make_command = arg.test_make_command or extoptions.test_make_command or test_make_command
   local f = io.open(idv_file, "rb")
   if not f then return nil, "Cannot open idv file: " .. idv_file end
   local content = f:read("*all")

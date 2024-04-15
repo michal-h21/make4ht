@@ -1168,6 +1168,17 @@ cpu_cnt
 
 :  the number of processor cores used for the conversion. The extension tries to detect the available cores automatically by default.
 
+make_command
+
+:  variant of the `make` command used for the parallel conversion of large
+number of pages. It receives tvo variables, `process_count` and `make_file`.
+Default value is "make -j ${process_count} -f ${make_file}".
+
+test_make_command
+
+:  command that tests if the selected variant of the `make` command exists. Default value is `make -v`.
+
+
 parallel_size
 
 :  the number of pages used in each Dvisvgm call. The extension detects changed
