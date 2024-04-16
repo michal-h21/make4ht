@@ -49,7 +49,7 @@ local function get_generated_pages(output, pages)
   local pos = 1
   local pos, finish, page = string.find(output, "processing page (%d+)", pos)
   while(pos) do
-    pos, finish, file = string.find(output, "output written to ([^\n]+)", finish)
+    pos, finish, file = string.find(output, "output written to ([^\n^\r]+)", finish)
     pages[tonumber(page)] = file
     if not finish then break end
     pos, finish, page = string.find(output, "processing page (%d+)", finish)
