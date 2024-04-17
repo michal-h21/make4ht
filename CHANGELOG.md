@@ -1,5 +1,9 @@
 # Changelog
 
+- 2024/04/16
+
+  - fixed bug in `dvisvgm_hashes` log parsing. On Windows, it didn't expect `\r` characters at the line ends, they then ended in new SVG filenames. 
+
 - 2024/04/15
 
   - made the `make` command used in the `dvisvgm_hashes` extension configurable.
