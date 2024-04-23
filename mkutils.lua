@@ -107,8 +107,11 @@ function parse_lg(filename, builddir)
         table.insert(outputimages,rec)
       end
       )
-      line:gsub("File: (.*)",  function(k)
-        k = dir .. k
+      line:gsub("File: (.*)",  function(x)
+        local k = dir .. x
+        if not file_exists(k) then
+          k = x
+        end
         if not usedfiles[k] then
           table.insert(outputfiles,k)
           usedfiles[k] = true
@@ -244,7 +247,8 @@ end
 
 function file_in_builddir(filename, par)
   if par.builddir and par.builddir ~= "" then
-    return par.builddir .. "/" .. filename
+    local newname = par.builddir .. "/" .. filename
+    return newname
   end
   return filename
 end

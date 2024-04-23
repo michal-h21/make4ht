@@ -1,5 +1,10 @@
 # Changelog
 
+- 2024/04/23
+
+  - test if referenced files are contained in the `build-dir` directory, use the current dir otherwise.
+    https://github.com/michal-h21/tex4ebook/issues/126
+
 - 2024/04/16
 
   - fixed bug in `dvisvgm_hashes` log parsing. On Windows, it didn't expect `\r` characters at the line ends, they then ended in new SVG filenames. 
