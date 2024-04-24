@@ -52,7 +52,7 @@ local function get_args(parameters, optiontext)
 	parameters.postfile = parameters.postfile or ""
 	optiontext = optiontext .. parameters.postparams ..[[  <filename> (string) Input file name
  
-Positional optional argumens:
+Positional optional arguments:
   ["tex4ht.sty op."]  Additional parameters for tex4ht.sty
   ["tex4ht op."]      Options for tex4ht command
   ["t4ht op"]         Options for t4ht command
