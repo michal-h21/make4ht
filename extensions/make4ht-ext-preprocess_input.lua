@@ -84,7 +84,7 @@ end
 
 M.modify_build = function(make)
 
-  -- get access to the main argumens
+  -- get access to the main arguments
   local arg = make.params
   -- get the execution sequence for the input format
   local matched, msg  = get_preprocessing_pipeline(arg.tex_file)
