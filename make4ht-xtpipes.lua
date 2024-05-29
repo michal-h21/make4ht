@@ -1,5 +1,7 @@
 local M = {}
 
+local mkutils = require "mkutils"
+
 local log = logging.new "xtpipes"
 -- find if tex4ht.jar exists in a path
 local function find_tex4ht_jar(path)
@@ -37,6 +39,21 @@ function M.get_selfautoparent()
   return get_texmfroot() or find_texmfroot()
 end
 
+local function replace_lg_file()
+  -- xtpipes expects the lg file to be placed in the current working dir, but with the --build option,
+  -- it is saved in the build dir. So we need to copy that file to the place where it is expected.
+  local params = Make.params
+  local basename = params.input
+  local lg_name = basename .. ".lg"
+  local lg_in_builddir = mkutils.file_in_builddir(lg_name,params)
+  if lg_name ~= lg_in_builddir and mkutils.file_exists(lg_in_builddir) then
+    log:info("Creating temporary lg_file", lg_name)
+    mkutils.cp(lg_in_builddir, lg_name)
+    return true, lg_name
+  end
+  log:warning(lg_name, lg_in_builddir)
+end
+
 function M.get_xtpipes(selfautoparent)
   -- make pattern using TeX distro path
   local pattern = string.format('java -classpath "%s/tex4ht/bin/tex4ht.jar" xtpipes -i "%s/tex4ht/xtpipes/" -o "${outputfile}" "${filename}"', selfautoparent, selfautoparent)
@@ -45,10 +62,13 @@ function M.get_xtpipes(selfautoparent)
     -- move the matched file to a temporary file, xtpipes will write it back to the original file
     local basename = mkutils.remove_extension(filename)
     local tmpfile = basename ..".tmp"
+    local remove, lg_filename = replace_lg_file()
     mkutils.mv(filename, tmpfile)
     local command = pattern % {filename = tmpfile, outputfile = filename}
     log:info("execute: " ..command)
     local status, output = mkutils.execute(command)
+    -- remove temporary lg file if it was created
+    if remove then os.remove(lg_filename) end
     if status > 0 then
       -- if xtpipes failed to process the file, it may mean that it was bad-formed xml
       -- we can try to make it well-formed using Tidy

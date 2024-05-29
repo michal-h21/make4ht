@@ -1,5 +1,10 @@
 # Changelog
 
+- 2024/05/29
+
+  - create temporary Lg file for Xtpipes.
+    https://github.com/michal-h21/make4ht/issues/148#issuecomment-2136160818
+
 - 2024/04/23
 
   - test if referenced files are contained in the `build-dir` directory, use the current dir otherwise.
@@ -12,7 +17,7 @@
 - 2024/04/15
 
   - made the `make` command used in the `dvisvgm_hashes` extension configurable.
-   https://tex.stackexchange.com/q/715633/2891
+    https://tex.stackexchange.com/q/715633/2891
 
 - 2024/03/29
 
