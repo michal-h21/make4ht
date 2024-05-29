@@ -51,7 +51,8 @@ local function replace_lg_file()
     mkutils.cp(lg_in_builddir, lg_name)
     return true, lg_name
   end
-  log:warning(lg_name, lg_in_builddir)
+  -- don't copy the Lg file if --build_fir option isn't used
+  return false, lg_name
 end
 
 function M.get_xtpipes(selfautoparent)
