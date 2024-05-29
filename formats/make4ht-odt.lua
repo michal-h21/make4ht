@@ -54,10 +54,14 @@ function Odtfile:create_dir(dir)
   lfs.mkdir(dir)
   lfs.chdir(currentdir)
 end
-  
+
 function Odtfile:make_mimetype()
   self.mimetypename = "mimetype"
-  local m = io.open(self.mimetypename, "w")
+  local m, msg = io.open(self.mimetypename, "w")
+  if not m then
+    log:error(msg)
+    return nil, msg
+  end
   m:write("application/vnd.oasis.opendocument.text")
   m:close()
 end
@@ -78,7 +82,7 @@ function Odtfile:pack()
   self:remove_mimetype()
   mkutils.execute(zip_command ..' -r "' .. self.name .. '" *')
   lfs.chdir(currentdir)
-  mkutils.cp(self.archivelocation .. "/" .. self.name, self.name)
+  mkutils.cp(self.archivelocation .. "/" .. self.name, mkutils.file_in_builddir(self.name, Make.params))
   mkutils.delete_dir(self.archivelocation)
 end
 
@@ -93,9 +97,9 @@ local function add_points(dimen)
   return dimen
 end
 
-local function get_svg_dimensions(filename) 
+local function get_svg_dimensions(filename)
   local width, height
-  if mkutils.file_exists(filename) then 
+  if mkutils.file_exists(filename) then
     for line in io.lines(filename) do
       width = line:match("width%s*=%s*[\"'](.-)[\"']") or width
       height = line:match("height%s*=%s*[\"'](.-)[\"']") or height
@@ -121,7 +125,7 @@ end
 local function fix_picture_sizes(tmpdir)
   local filename = tmpdir .. "/content.xml"
   local f = io.open(filename, "r")
-  if not f then 
+  if not f then
     log:warning("Cannot open ", filename, "for picture size fixes")
     return nil
   end
@@ -130,7 +134,7 @@ local function fix_picture_sizes(tmpdir)
   local status, dom= pcall(function()
     return domobject.parse(content)
   end)
-  if not status then 
+  if not status then
     log:warning("Cannot parse DOM, the resulting ODT file will be most likely corrupted")
     return nil
   end
@@ -158,9 +162,13 @@ local function fix_picture_sizes(tmpdir)
   end
   -- save the modified DOM again
   log:debug("Fixed picture sizes")
-  local content = dom:serialize()
-  local f = io.open(filename, "w")
-  f:write(content)
+  local domcontent = dom:serialize()
+  local f, msg = io.open(filename, "w")
+  if not f then
+    log:error(msg)
+    return nil, msg
+  end
+  f:write(domcontent)
   f:close()
 end
 
@@ -174,7 +182,7 @@ local function fix_lgfile_fonts(ignored_name, params)
     local lines = {}
     -- default font_size
     local font_size = "10"
-    if mkutils.file_exists(filename) then 
+    if mkutils.file_exists(filename) then
       -- 
       for line in io.lines(filename) do
         -- default font_size can be set in the .lg file
@@ -304,6 +312,9 @@ function M.modify_build(make)
     if not executed then
       -- this is list of processed files
       local lgfiles = make.lgfile.files
+      for k,v in ipairs(lgfiles) do
+        if v:match("odt$") then table.remove(lgfiles, k) end
+      end
       -- find the last file and escape it so it can be used 
       -- in filename match
       local lastfile = escape_file(lgfiles[#lgfiles]) .."$"
@@ -312,7 +323,8 @@ function M.modify_build(make)
       make:match(lastfile, function(filename, par)
         local groups = prepare_output_files(make.lgfile.files)
         -- we must remove any path from the basename
-        local basename = groups.odt[1]:match("([^/]+)$")
+        -- local basename = groups.odt[1]:match("([^/]+)$")
+        local basename = make.params.input
         local odtname = basename .. ".odt"
         local odt,msg = Odtfile.new(odtname)
         if not odt then
@@ -372,11 +384,13 @@ function M.modify_build(make)
         end)
 
         odt:pack()
+        local build_filename = mkutils.file_in_builddir(odt.name, make.params)
         if outdir and outdir ~= "" then
-          local filename = odt.name
-          local outfilename = outdir .. "/" .. filename
+          local outfilename = outdir .. "/" .. odt.name
           log:info("Copying ODT file to the output dir: " .. outfilename)
-          mkutils.copy(filename,outfilename)
+          mkutils.copy(build_filename,outfilename)
+        elseif build_filename ~= odt.name then
+          mkutils.cp(build_filename, odt.name)
         end
       end)
     end
