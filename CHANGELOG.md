@@ -4,6 +4,9 @@
 
   - create temporary Lg file for Xtpipes.
     https://github.com/michal-h21/make4ht/issues/148#issuecomment-2136160818
+  - fixed handling of the generated ODT file, don't copy it unnecessarily and
+    handle build and output directories.
+    https://github.com/michal-h21/make4ht/issues/148#issuecomment-2136160818
 
 - 2024/04/23
 
