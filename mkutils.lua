@@ -207,18 +207,18 @@ function find_directories(dirs, pos)
     path = table.concat(dirs,"/", 1,pos) .. "/"
   end
   if not lfs.chdir(path)  then -- recursion until we succesfully changed dir
-  -- or there are no elements in the dir table
-  return find_directories(dirs,pos - 1)
-elseif pos ~= #dirs then -- if we succesfully changed dir
-  -- and we have dirs to create
-  local p = {}
-  for i = pos+1, #dirs do
-    table.insert(p, dirs[i])
+    -- or there are no elements in the dir table
+    return find_directories(dirs,pos - 1)
+  elseif pos ~= #dirs then -- if we succesfully changed dir
+    -- and we have dirs to create
+    local p = {}
+    for i = pos+1, #dirs do
+      table.insert(p, dirs[i])
+    end
+    return p
+  else  -- whole path exists
+    return {}
   end
-  return p
-else  -- whole path exists
-  return {}
-end
 end
 
 function mkdirectories(dirs)
