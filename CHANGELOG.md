@@ -1,5 +1,9 @@
 # Changelog
 
+- 2024/06/17
+
+  - fixed support for index entries that are broken over several lines.
+
 - 2024/05/29
 
   - create temporary Lg file for Xtpipes.

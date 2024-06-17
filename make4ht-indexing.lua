@@ -90,28 +90,41 @@ local parse_idx = function(content)
   return {map = map, idx = table.concat(buffer, "\n")}
 end
 
+
+-- replace numbers in .ind file with links back to text
+local function replace_index_pages(rest, entries)
+ return rest:gsub("(%{?%d+%}?)", function(page)
+   local entry = entries[tonumber(page)]
+   if entry then
+     -- construct link to the index entry
+     return "\\Link[" .. entry.file .."]{".. entry.dest .."}{}" .. page .."\\EndLink{}"
+   else
+     return page
+   end
+ end)
+end
+
+
 -- replace page numbers in the ind file with hyperlinks
 local fix_idx_pages = function(content, idxobj)
   local buffer = {}
   local entries = idxobj.map
   for  line in content:gmatch("([^\n]+)")  do
-    local line = line:gsub("(%s*\\%a+.-%,)(.+)$", function(start,rest)
+    local line, count = line:gsub("(%s*\\%a+.-%,)(.+)$", function(start,rest)
       -- there is a problem when index term itself contains numbers, like Bible verses (1:2),
       -- because they will be detected as page numbers too. I cannot find a good solution 
       -- that wouldn't break something else.
       -- There can be also commands with numbers in braces. These numbers in braces will be ignored, 
       -- as they may be not page numbers
-      return start .. rest:gsub("(%{?%d+%}?)", function(page)
-        local entry = entries[tonumber(page)]
-        if entry then
-          -- construct link to the index entry
-          return "\\Link[" .. entry.file .."]{".. entry.dest .."}{}" .. page .."\\EndLink{}" 
-        else
-          return page
-        end
+      return start .. replace_index_pages(rest, entries)    end)
+    -- longer index entries may be broken over several lines, in that case, we need to process only numbers
+    if count == 0 then
+      line = line:gsub("(%s*%d+.+)", function(rest)
+        return replace_index_pages(rest, entries)
       end)
-    end)
-    buffer[#buffer+1] = line 
+    end
+    print(line)
+    buffer[#buffer+1] = line
   end
   return table.concat(buffer, "\n")
 end
