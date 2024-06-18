@@ -1,5 +1,9 @@
 # Changelog
 
+- 2024/06/18 
+
+  - changed default scaling in `dvisvgm_hashes` to 1.4.
+
 - 2024/06/17
 
   - fixed support for index entries that are broken over several lines.

@@ -1162,7 +1162,7 @@ Example:
 
 options
 
-:  command line options for Dvisvgm. The default value is `-n --exact -c 1.15,1.15`.
+:  command line options for Dvisvgm. The default value is `-n --exact -c ${scale},${scale}`.
 
 cpu_cnt
 
@@ -1187,7 +1187,7 @@ pages.
 
 scale
 
-:  SVG scaling.
+:  amount of SVG scaling. The default value is 1.4.
 
 ## The `odttemplate` filter and extension
 

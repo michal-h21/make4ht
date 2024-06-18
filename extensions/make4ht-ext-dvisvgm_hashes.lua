@@ -173,7 +173,7 @@ local function get_dvi_pages(arg)
   dvisvgm_options = arg.options or extoptions.options or dvisvgm_options
   parallel_size = arg.parallel_size or extoptions.parallel_size or parallel_size
   cpu_cnt = arg.cpu_cnt or extoptions.cpu_cnt or cpu_cnt
-  dvisvgm_par.scale = arg.scale or extoptions.scale or 1.15
+  dvisvgm_par.scale = arg.scale or extoptions.scale or 1.4
   dvisvgm_options = dvisvgm_options % dvisvgm_par
   make_command   = arg.make_command or extoptions.make_command or make_command
   test_make_command = arg.test_make_command or extoptions.test_make_command or test_make_command
