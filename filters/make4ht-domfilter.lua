@@ -46,9 +46,18 @@ local function filter(filters, name)
       return dom.parse(input, void_elements)
     end)
     if not status then
-      log:warning("DOM parsing of " .. filename .. " failed:")
+      log:warning("XML DOM parsing of " .. filename .. " failed:")
       log:warning(domobject)
-      return nil, "DOM parsing failed"
+      log:debug("Trying HTML DOM parsing")
+      status, domobject = pcall(function()
+        return dom.html_parse(input)
+      end)
+      if not status then
+        log:warning("HTML DOM parsing failed as well")
+        return nil, "DOM parsing failed"
+      else 
+        log:warning("HTML DOM parsing OK, DOM filters will be executed")
+      end
     end
 		for _,f in pairs(sequence) do
 			domobject = f(domobject,parameters)

@@ -1,5 +1,9 @@
 # Changelog
 
+- 2024/08/21 
+
+  - try the HTML parser for DOM filters if XML parser fails.
+
 - 2024/06/18 
 
   - changed default scaling in `dvisvgm_hashes` to 1.4.
