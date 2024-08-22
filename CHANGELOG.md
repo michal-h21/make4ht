@@ -1,5 +1,9 @@
 # Changelog
 
+- 2024/08/22 
+
+  - print debug message with XML parsing error context
+
 - 2024/08/21 
 
   - try the HTML parser for DOM filters if XML parser fails.

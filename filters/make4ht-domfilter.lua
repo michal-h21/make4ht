@@ -7,6 +7,19 @@ local function load_filter(filtername)
 	return require("domfilters.make4ht-"..filtername)
 end
 
+-- get snippet of the position where XML parsing failed
+local function get_html_snippet(str, errmsg)
+  -- we can get position in bytes from message like this:   
+  -- /home/mint/texmf/scripts/lua/LuaXML/luaxml-mod-xml.lua:175: Unbalanced Tag (/p) [char=1112]
+  local position = tonumber(errmsg:match("char=(%d+)") or "")
+  if not position then return "Cannot find error position" end
+  -- number of bytes around the error position that shoule be printed
+  local error_context = 100
+  local start = position > error_context and position - error_context or 0
+  local stop = (position + error_context) < str:len() and position + error_context or str:len()
+  return str:sub(start, stop)
+end
+
 -- save processed names, in order to block multiple executions of the filter
 -- sequence on a same file
 local processed = {}
@@ -48,6 +61,7 @@ local function filter(filters, name)
     if not status then
       log:warning("XML DOM parsing of " .. filename .. " failed:")
       log:warning(domobject)
+      log:debug("Error context:\n" .. (get_html_snippet(input, domobject) or ""))
       log:debug("Trying HTML DOM parsing")
       status, domobject = pcall(function()
         return dom.html_parse(input)
