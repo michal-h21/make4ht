@@ -18,13 +18,15 @@ local function testlogfile(par)
   -- parse log file for all errors in non-interactive modes
   if par.interaction~="errorstopmode" then
     -- the error log parsing can be slow, so detect errors first
-    if content:match("\n!")  then
+    -- detect both default error messages (! msg) and -file-line-number errors (filename:lineno:msg)
+    if content:match("\n!") or content:match("[^:]+%:%d+%:.+")  then
       local errors, chunks = error_logparser.parse(content)
       if #errors > 0 then
         log:error("Compilation errors in the htlatex run")
         log:error("Filename", "Line", "Message")
         for _, err in ipairs(errors) do
           log:error(err.filename or "?", err.line or "?", err.error)
+          log:status(err.context)
         end
       end
     end

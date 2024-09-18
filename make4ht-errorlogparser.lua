@@ -18,13 +18,13 @@ local function get_chunks(text)
     local chunk = string.sub(a,2,-2)
     -- if no filename had been found in the chunk, it is probably not file chunk
     -- so just return the original text
-    local filename = get_filename(chunk) 
+    local filename = get_filename(chunk)
     if not filename then return a end
     local children, text = get_chunks(chunk)
     table.insert(chunks, {filename = filename, text = text, children = children})
     return ""
   end)
-  return chunks, newtext 
+  return chunks, newtext
 end
 
 
@@ -37,44 +37,85 @@ function print_chunks(chunks, level)
   end
 end
 
-local function parse_errors(text) 
+local function parse_default_error(lines, i)
+  local line = lines[i]
+  -- get the error message "! msg text"
+  local err = line:match("^!(.+)")
+  -- the next line should contain line number where error happened
+  local next_line = lines[i+1] or ""
+  local msg = {}
+  -- get the line number and first line of the error context
+  local line_no, msg_start = next_line:match("^l%.(%d+)(.+)") 
+  line_no = line_no or false 
+  msg_start = msg_start or ""
+  msg[#msg+1] = msg_start .. " <-"
+  -- try to find rest of the error context. 
+  for x = i+2, i+5 do
+    local next_line = lines[x] or ""
+    -- break on blank lines
+    if next_line:match("^%s*$") then break end
+    msg[#msg+1] = next_line:gsub("^%s*", ""):gsub("%s$", "")
+  end
+  return err, line_no, table.concat(msg, " ")
+end
+
+local  function parse_linenumber_error(lines, i)
+  -- parse errors from log created with the -file-line-number option
+  local line = lines[i]
+  local filename, line_no, err = line:match("^([^%:]+)%:(%d+)%:%s*(.*)")
+  local msg = {}
+  -- get error context
+  for x = i+1, i+2 do
+    local next_line = lines[x] or ""
+    -- break on blank lines
+    if next_line:match("^%s*$") then break end
+    msg[#msg+1] = next_line:gsub("^%s*", ""):gsub("%s$", "")
+  end
+  -- insert mark to the error
+  if #msg > 1 then
+    table.insert(msg, 2, "<-")
+  end
+  return err, line_no, table.concat(msg, " ")
+end
+
+--- get error messages, linenumbers and contexts from a log file chunk
+---@param text string chunk from the long file where we should find errors
+---@return table errors error messages
+---@return table error_lines error line number 
+---@return table error_messages error line contents
+local function parse_errors(text)
   local lines = {}
   local errors = {}
   local find_line_no = false
   local error_lines = {}
+  local error_messages = {}
   for line in text:gmatch("([^\n]+)") do
     lines[#lines+1] = line
   end
-  for i = 1, #lines do 
+  for i = 1, #lines do
     local line = lines[i]
-    -- error lines start with !
-    local err = line:match("^!(.+)")
-    -- error lines can be on following lines
-    -- the format is l.number
-    local lineno = line:match("^l%.([0-9]+)")
-    if err then 
-      errors[#errors+1] = err 
-      -- we didn't find error line number since previous error, insert 
-      if find_line_no then
-        error_lines[#error_lines+1] = false
-      end
-      find_line_no = true
-    elseif lineno then
-      find_line_no = false
-      error_lines[#error_lines+1] = tonumber(lineno)
+    local err, line_no, msg
+    if line:match("^!(.+)") then
+      err, line_no, msg = parse_default_error(lines, i)
+    elseif line:match("^[^%:]+%:%d+%:.+") then
+      err, line_no, msg = parse_linenumber_error(lines, i)
     end
-    i = i + 1
+    if err then
+      errors[#errors+1] = err
+      error_lines[#errors] = line_no
+      error_messages[#errors] = msg
+    end
   end
-  return errors, error_lines
+  return errors, error_lines, error_messages
 end
 
 
 local function get_errors(chunks, errors)
   local errors =  errors or {}
   for _, v in ipairs(chunks) do
-    local current_errors, error_lines = parse_errors(v.text)
+    local current_errors, error_lines, error_contexts = parse_errors(v.text)
     for i, err in ipairs(current_errors) do
-      table.insert(errors, {filename = v.filename, error = err, line = error_lines[i] })
+      table.insert(errors, {filename = v.filename, error = err, line = error_lines[i], context = error_contexts[i] })
     end
     errors = get_errors(v.children, errors)
   end
@@ -95,8 +136,8 @@ function m.get_missing_4ht_files(log)
       used_4ht_files[filename] = true
     end
   end
-  for filename, _ in pairs(used_files) do 
-    if not used_4ht_files[mkutils.remove_extension(filename)] then 
+  for filename, _ in pairs(used_files) do
+    if not used_4ht_files[mkutils.remove_extension(filename)] then
       table.insert(missing_4ht_files, filename)
     end
   end
@@ -113,7 +154,7 @@ function m.parse(log)
   -- for _,v in ipairs(errors) do 
     -- print("error", v.filename, v.line, v.error)
   -- end
-  return errors, chunks 
+  return errors, chunks
 end
 
 

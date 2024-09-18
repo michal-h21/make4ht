@@ -1,5 +1,9 @@
 # Changelog
 
+- 2024/09/18 
+
+  - print error messages from the `log` file.
+
 - 2024/08/22 
 
   - print debug message with XML parsing error context
