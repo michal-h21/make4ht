@@ -1,4 +1,5 @@
 % [![Build Status](https://travis-ci.org/michal-h21/make4ht.svg?branch=master)](https://travis-ci.org/michal-h21/make4ht)
+% HTML version of the documentation can be found [here](https://www.kodymirus.cz/make4ht/make4ht-doc.html)
 
 # Introduction
 
@@ -8,9 +9,10 @@ customized conversion tools. An example of such a tool is
 [tex4ebook](https://github.com/michal-h21/tex4ebook), a tool for conversion from \TeX\ to
 ePub and other e-book formats.
 
-See section \ref{sec:htlatex} for some reasons why you should consider to use `make4ht` instead of `htlatex`,  
-section \ref{sec:output} talks about supported output formats and extensions and section \ref{sec:buildfiles} 
+See section \ref{sec:htlatex} for some reasons why you should consider to use `make4ht` instead 
+of `htlatex`, section \ref{sec:output} talks about supported output formats and extensions and section \ref{sec:buildfiles} 
 describes build files, which can be used to execute additional commands or post-process the generated files.
+
 
 
 # Usage
