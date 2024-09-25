@@ -21,3 +21,4 @@ tags
 *.css
 readme.tex
 changelog.tex
+make4ht-char-def.lua

@@ -54,9 +54,9 @@ ifeq ($(strip $(shell git rev-parse --is-inside-work-tree 2>/dev/null)),true)
 	git fetch --tags
 endif 
 
-doc: $(doc_file) readme.tex 
+doc: chardef $(doc_file) readme.tex 
 
-htmldoc: ${htmldoc}
+htmldoc: chardef ${htmldoc}
  
 make4ht-doc.pdf: $(doc_sources)
 	latexmk -pdf -pdflatex='lualatex "\def\version{${VERSION}}\def\gitdate{${DATE}}\input{%S}"' make4ht-doc.tex
@@ -70,7 +70,7 @@ readme.tex: README.md
 changelog.tex: CHANGELOG.md
 	pandoc -f markdown+definition_lists -t LaTeX CHANGELOG.md > changelog.tex
 
-build: doc $(lua_content) $(filters) $(domfilters)
+build: chardef doc $(lua_content) $(filters) $(domfilters)
 	@rm -rf build
 	@mkdir -p $(BUILD_MAKE4HT)
 	@mkdir -p $(BUILD_MAKE4HT)/filters
@@ -86,10 +86,10 @@ build: doc $(lua_content) $(filters) $(domfilters)
 	@cp README.md $(BUILD_MAKE4HT)/README
 	@cd $(BUILD_DIR) && zip -r make4ht.zip make4ht
 
-install: doc $(lua_content) $(filters) $(domfilters) justinstall 
+install: chardef doc $(lua_content) $(filters) $(domfilters) justinstall 
 	cp  $(doc_file) $(MANUAL_DIR)
 
-justinstall:
+justinstall: chardef
 	mkdir -p $(INSTALL_DIR)
 	mkdir -p $(MANUAL_DIR)
 	mkdir -p $(FILTERS_DIR)
@@ -105,6 +105,9 @@ justinstall:
 	chmod +x $(INSTALL_DIR)/make4ht
 	echo $(wildcard $(EXECUTABLE))
 	$(INSTALL_COMMAND)
+
+chardef:
+	texlua tools/make_chardata.lua > make4ht-char-def.lua
 
 version:
 	echo $(VERSION), $(DATE)

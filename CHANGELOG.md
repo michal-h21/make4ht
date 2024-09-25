@@ -1,5 +1,12 @@
 # Changelog
 
+- 2024/09/25 
+
+  - added `make4ht-char-def` library to remove dependency on `char-def` from
+    ConTeXt. It is used by the `sectionid` DOM filter. The library is
+    automatically created from UnicodeData.txt by `tools/make_chardata.lua`.
+    https://tex.stackexchange.com/q/727202/2891
+
 - 2024/09/18 
 
   - print error messages from the `log` file.

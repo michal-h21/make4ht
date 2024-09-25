@@ -2,13 +2,14 @@ local mkutils   = require "mkutils"
 local log = logging.new("tocid")
 -- Unicode data distributed with ConTeXt
 -- defines "characters" table
-if not mkutils.isModuleAvailable("char-def") then
+if not mkutils.isModuleAvailable("make4ht-char-def") then
   log:warning("char-def module not found")
   log:warning("cannot fix section id's")
   return function(dom) return dom end
 end
-require "char-def"
-local chardata = characters.data or {}
+
+local chardata = require "make4ht-char-def"
+
 
 
 local toc = nil
