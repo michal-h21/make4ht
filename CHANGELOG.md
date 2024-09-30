@@ -1,5 +1,9 @@
 # Changelog
 
+- 2024/09/30
+
+  - remove last empty row in `longtable` environments.
+
 - 2024/09/25 
 
   - added `make4ht-char-def` library to remove dependency on `char-def` from
