@@ -1,5 +1,9 @@
 # Changelog
 
+- 2024/10/21 
+
+  - version `0.4a` released.
+
 - 2024/09/30
 
   - remove last empty row in `longtable` environments.
