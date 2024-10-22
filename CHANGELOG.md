@@ -1,5 +1,10 @@
 # Changelog
 
+- 2024/10/22 
+
+  - version `0.4b` released.
+  - test for the existence of the class atribute of tables before performing string matches in the `tablerows` DOM filter.
+
 - 2024/10/21 
 
   - version `0.4a` released.
