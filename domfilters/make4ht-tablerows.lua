@@ -89,7 +89,7 @@ return function(dom)
       if is_empty_row(row) and is_not_styled(row, css) then row:remove_node() end
       hline_hr(row)
     end
-    if tbl:get_attribute("class"):match("longtable") then
+    if tbl:get_attribute("class") and tbl:get_attribute("class"):match("longtable") then
       longrable_last_row(tbl)
     end
   end
