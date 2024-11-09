@@ -1,5 +1,10 @@
 # Changelog
 
+- 2024/11/09 
+
+  - fixed `tablerows` for longtables longer than 200 rows.
+  https://tex.stackexchange.com/a/730466/2891
+
 - 2024/10/22 
 
   - version `0.4b` released.
