@@ -42,11 +42,11 @@ local function fix_inlines(obj)
   local inline_elements = settings.inline_elements or inline_elements
   local nodes = obj:get_path("html body")
   local new = nil
-  obj:traverse_node_list(nodes, function(jej) 
-    if jej._type == "ELEMENT" or jej._type == "TEXT" then
+  obj:traverse_node_list(nodes, function(jej)
+    if jej._type == "ELEMENT" or jej._type == "TEXT" or jej._type == "COMMENT" then
       local name = string.lower(jej._name or "")
       -- local parent = jej:get_parent_node()
-      if inline_elements[name] or jej._type == "TEXT" then
+      if inline_elements[name] or jej._type == "TEXT" or jej._type == "COMMENT" or (name:match(":?math") and  jej:get_attribute("display") == "inline") then
         if not new then
           -- start new paragraph
           if jej._type == "TEXT" and jej._text:match("^%s+$") then
@@ -67,6 +67,7 @@ local function fix_inlines(obj)
         new = nil
       end
     else
+      print("else", jej._type)
       new = nil
     end
   end)

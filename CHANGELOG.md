@@ -1,5 +1,9 @@
 # Changelog
 
+- 2024/12/05 
+
+  - recognize inline math and comments as inline content in the `fixinlines` DOM filter.
+
 - 2024/11/09 
 
   - fixed `tablerows` for longtables longer than 200 rows.
