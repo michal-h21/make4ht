@@ -1,5 +1,10 @@
 # Changelog
 
+- 2024/12/08
+
+  - support other index locators than index command counters.
+    https://tex.stackexchange.com/a/732446/2891
+
 - 2024/12/05 
 
   - recognize inline math and comments as inline content in the `fixinlines` DOM filter.
@@ -7,7 +12,7 @@
 - 2024/11/09 
 
   - fixed `tablerows` for longtables longer than 200 rows.
-  https://tex.stackexchange.com/a/730466/2891
+    https://tex.stackexchange.com/a/730466/2891
 
 - 2024/10/22 
 

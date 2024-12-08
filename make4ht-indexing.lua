@@ -75,8 +75,11 @@ local parse_idx = function(content)
     if line:match("^\\beforeentry") then
       -- increment index entry number
       current_entry = current_entry + 1
-      local file, dest = line:match("\\beforeentry%s*{(.-)}{(.-)}")
-      map[current_entry] = {file = file, dest = dest}
+      local file, dest, locator = line:match("\\beforeentry%s*{(.-)}{(.-)}{(.-)}")
+      -- if the third argument to \beforeentry is not empty, 
+      -- use it as a index entry locator instead of the index counter
+      if locator and locator == "" then locator = nil end
+      map[current_entry] = {file = file, dest = dest, locator = locator}
     elseif line:match("^\\indexentry") then
       -- replace the page number with the current
       -- index entry number
@@ -93,9 +96,10 @@ end
 
 -- replace numbers in .ind file with links back to text
 local function replace_index_pages(rest, entries)
- return rest:gsub("(%{?%d+%}?)", function(page)
+ return rest:gsub("%{?(%d+)%}?", function(page)
    local entry = entries[tonumber(page)]
    if entry then
+     page = entry.locator or page
      -- construct link to the index entry
      return "\\Link[" .. entry.file .."]{".. entry.dest .."}{}" .. page .."\\EndLink{}"
    else
@@ -123,7 +127,6 @@ local fix_idx_pages = function(content, idxobj)
         return replace_index_pages(rest, entries)
       end)
     end
-    print(line)
     buffer[#buffer+1] = line
   end
   return table.concat(buffer, "\n")
