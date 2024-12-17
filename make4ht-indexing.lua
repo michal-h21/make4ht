@@ -96,15 +96,15 @@ end
 
 -- replace numbers in .ind file with links back to text
 local function replace_index_pages(rest, entries)
- return rest:gsub("%{?(%d+)%}?", function(page)
-   local entry = entries[tonumber(page)]
-   if entry then
-     page = entry.locator or page
-     -- construct link to the index entry
-     return "\\Link[" .. entry.file .."]{".. entry.dest .."}{}" .. page .."\\EndLink{}"
-   else
-     return page
-   end
+  return rest:gsub("(%{?)(%d+)(%}?)", function(lbrace, page, rbrace)
+    local entry = entries[tonumber(page)]
+    if entry then
+      page = entry.locator or page
+      -- construct link to the index entry
+      return "{\\Link[" .. entry.file .."]{".. entry.dest .."}{}" .. lbrace ..  page .. rbrace .."\\EndLink{}}"
+    else
+      return lbrace .. page .. rbrace
+    end
  end)
 end
 

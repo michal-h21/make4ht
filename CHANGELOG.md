@@ -1,5 +1,10 @@
 # Changelog
 
+- 2024/12/17
+
+  - keep track of braces around index entries page numbers.
+    https://tex.stackexchange.com/a/733106/2891
+
 - 2024/12/08
 
   - support other index locators than index command counters.
