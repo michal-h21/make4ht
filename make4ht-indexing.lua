@@ -101,7 +101,7 @@ local function replace_index_pages(rest, entries)
     if entry then
       page = entry.locator or page
       -- construct link to the index entry
-      return "{\\Link[" .. entry.file .."]{".. entry.dest .."}{}" .. lbrace ..  page .. rbrace .."\\EndLink{}}"
+      return lbrace ..  "\\Link[" .. entry.file .."]{".. entry.dest .."}{}" ..  page .."\\EndLink{}" .. rbrace
     else
       return lbrace .. page .. rbrace
     end
