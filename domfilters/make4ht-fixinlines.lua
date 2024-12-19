@@ -49,8 +49,8 @@ local function fix_inlines(obj)
       if inline_elements[name] or jej._type == "TEXT" or jej._type == "COMMENT" or (name:match(":?math") and  jej:get_attribute("display") == "inline") then
         if not new then
           -- start new paragraph
-          if jej._type == "TEXT" and jej._text:match("^%s+$") then
-            -- ignore parts that contain only whitespace and are placed before 
+          if (jej._type == "TEXT" and jej._text:match("^%s+$")) or jej._type == "COMMENT" then
+            -- ignore parts that contain only whitespace or comments and are placed before 
             -- paragraph start
           else
             new = obj:create_element("p" )
@@ -67,7 +67,6 @@ local function fix_inlines(obj)
         new = nil
       end
     else
-      print("else", jej._type)
       new = nil
     end
   end)

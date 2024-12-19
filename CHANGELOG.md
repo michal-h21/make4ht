@@ -1,5 +1,9 @@
 # Changelog
 
+- 2024/12/19
+
+  - fixed fatal error caused by handling comments in the `fixinlines` DOM filter.
+
 - 2024/12/17
 
   - keep track of braces around index entries page numbers.
