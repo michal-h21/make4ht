@@ -1,5 +1,10 @@
 # Changelog
 
+- 2024/12/20 
+
+  - remove duplicate index locators in the `make4ht-indexing` library.
+    https://tex.stackexchange.com/a/733106/2891
+
 - 2024/12/19
 
   - fixed fatal error caused by handling comments in the `fixinlines` DOM filter.

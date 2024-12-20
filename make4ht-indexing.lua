@@ -96,14 +96,25 @@ end
 
 -- replace numbers in .ind file with links back to text
 local function replace_index_pages(rest, entries)
-  return rest:gsub("(%{?)(%d+)(%}?)", function(lbrace, page, rbrace)
+  -- keep track of the previous page number
+  local previous
+  return rest:gsub("(%s*%-*%s*)(,?%s*)(%{?)(%d+)(%}?)", function(dash, coma, lbrace, page, rbrace)
     local entry = entries[tonumber(page)]
     if entry then
       page = entry.locator or page
-      -- construct link to the index entry
-      return lbrace ..  "\\Link[" .. entry.file .."]{".. entry.dest .."}{}" ..  page .."\\EndLink{}" .. rbrace
+      -- if the page number is the same as the previous one, don't create a link
+      -- this can happen when we use section numbers as locators. for example, 
+      -- we could get 1.1 -- 1.1, 1.1, so we want to keep only the first one
+      if page == previous then
+        previous = page
+        return ""
+      else
+        previous = page
+        -- construct link to the index entry
+        return dash .. coma.. lbrace ..  "\\Link[" .. entry.file .."]{".. entry.dest .."}{}" ..  page .."\\EndLink{}" .. rbrace
+      end
     else
-      return lbrace .. page .. rbrace
+      return dash .. coma .. lbrace .. page .. rbrace
     end
  end)
 end
