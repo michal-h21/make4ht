@@ -94,22 +94,36 @@ local parse_idx = function(content)
 end
 
 
+local previous
 -- replace numbers in .ind file with links back to text
 local function replace_index_pages(rest, entries)
   -- keep track of the previous page number
-  local previous
+  local count = 0
+  local delete_coma = false
   return rest:gsub("(%s*%-*%s*)(,?%s*)(%{?)(%d+)(%}?)", function(dash, coma, lbrace, page, rbrace)
     local entry = entries[tonumber(page)]
+    count = count + 1
     if entry then
       page = entry.locator or page
+      if delete_coma then
+        -- if the coma was marked for deletion, remove it. this may happen after line breaks in the index
+        coma = ""
+      end
       -- if the page number is the same as the previous one, don't create a link
       -- this can happen when we use section numbers as locators. for example, 
       -- we could get 1.1 -- 1.1, 1.1, so we want to keep only the first one
       if page == previous then
         previous = page
+        -- if the first page number on a line is the same as the previous one, we need to delete the coma,
+        -- otherwise the coma will be left in the output
+        if count == 1 then
+          delete_coma = true
+        end
         return ""
       else
         previous = page
+        -- don't forget to reset the delete_coma flag after page change
+        delete_coma = false
         -- construct link to the index entry
         return dash .. coma.. lbrace ..  "\\Link[" .. entry.file .."]{".. entry.dest .."}{}" ..  page .."\\EndLink{}" .. rbrace
       end
@@ -126,6 +140,8 @@ local fix_idx_pages = function(content, idxobj)
   local entries = idxobj.map
   for  line in content:gmatch("([^\n]+)")  do
     local line, count = line:gsub("(%s*\\%a+.-%,)(.+)$", function(start,rest)
+      -- reset the previous page number
+      previous = nil
       -- there is a problem when index term itself contains numbers, like Bible verses (1:2),
       -- because they will be detected as page numbers too. I cannot find a good solution 
       -- that wouldn't break something else.

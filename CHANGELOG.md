@@ -1,5 +1,11 @@
 # Changelog
 
+- 2024/12/23 
+
+  - fixed bug in the `make4ht-indexing` library. It didn't handle index entries
+    with the duplicate locator number that were broken over several lines correctly.
+    https://tex.stackexchange.com/a/733106/2891
+
 - 2024/12/20 
 
   - remove duplicate index locators in the `make4ht-indexing` library.
