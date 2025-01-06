@@ -108,6 +108,7 @@ justinstall: chardef
 
 chardef:
 	texlua tools/make_chardata.lua > make4ht-char-def.lua
+	texlua tools/make_mathmlchardata.lua > make4ht-mathml-char-def.lua
 
 version:
 	echo $(VERSION), $(DATE)
