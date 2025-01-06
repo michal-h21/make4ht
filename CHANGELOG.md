@@ -1,5 +1,10 @@
 # Changelog
 
+- 2025/01/06
+
+  - use Unicode characters for MathML font styles.
+    https://tex.stackexchange.com/a/734331/2891
+
 - 2024/12/23 
 
   - fixed bug in the `make4ht-indexing` library. It didn't handle index entries
