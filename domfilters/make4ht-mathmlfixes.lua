@@ -468,6 +468,58 @@ local function delete_last_empty_mtr(el)
 
 end
 
+
+local function fix_mtable_hlines(mtable)
+  -- TeX4ht adds <mtr class="hline"> for hlines. we need to remove these <mtr> elements and construct 
+  -- correct "rowlines" attribute for horizontal lines
+  local hlines = {}
+  local rowlines = {}
+  local styles = {}
+  local el_name, prefix = get_element_name(mtable)
+  -- process only <mtable> elements
+  if el_name ~= "mtable" or  mtable:get_attribute("rowlines") then
+    -- if rowlines attribute is already set, we don't need to do anything
+    return
+  end
+  local mtrs = mtable:query_selector("mtr")
+  for count, mtr in ipairs(mtrs) do
+    local hline = mtr:get_attribute("class")
+    if hline and hline == "array-hline" then
+      table.insert(hlines, "hline")
+      -- we need to remove <mtr> elements that represent hlines, hlines will be displayed using the rowlines attribute
+      mtr:remove_node()
+    elseif count == #mtrs and hline == "array-row" and is_empty_row(mtr) then
+      -- ignore empty row that is inserted if \hline is at the end of the array
+      mtr:remove_node()
+    else
+      -- just keep the track of normal lines
+      table.insert(hlines, "")
+    end
+  end
+  -- now we need to construct rowlines attribute
+  for i, el in ipairs(hlines) do
+    if el == "hline" then
+      -- rowlines are used only inside the array. at the start and at the end, we need to use CSS
+      if i == 1 then
+        table.insert(styles, "border-top: 1px solid black;")
+      elseif i == #hlines then
+        table.insert(styles, "border-bottom: 1px solid black;")
+      else
+        table.insert(rowlines, "solid")
+      end
+    else
+      -- we need to detect rows that weren't separated by hlines. in that case, we need to insert none to rowlines
+      if i > 1 and i ~= #hlines then
+        if hlines[i-1] ~= "hline" then table.insert(rowlines, "none") end
+      end
+    end
+  end
+  mtable:set_attribute("rowlines", table.concat(rowlines, " "))
+  local style = mtable:get_attribute("style") or ""
+  mtable:set_attribute("style", style .. table.concat(styles, " "))
+end
+
+
 local function fix_rel_mo(el)
   -- this is necessary for LibreOffice. It has a problem with relative <mo> that are
   -- first childs in an element list. This often happens in equations, where first
@@ -535,6 +587,7 @@ return function(dom)
       fix_mo_to_mfenced(el)
       fix_rel_mo(el)
     end
+    fix_mtable_hlines(el)
     fix_radicals(el)
     fix_token_elements(el)
     fix_nested_mstyle(el)

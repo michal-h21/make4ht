@@ -1,5 +1,10 @@
 # Changelog
 
+- 2025/01/09
+
+  - convert horizontal rules in MathML arrays to the `rowlines` attribute.
+    https://tex.stackexchange.com/a/734616/2891
+
 - 2025/01/06
 
   - use Unicode characters for MathML font styles.
