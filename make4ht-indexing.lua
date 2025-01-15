@@ -100,7 +100,11 @@ local function replace_index_pages(rest, entries)
   -- keep track of the previous page number
   local count = 0
   local delete_coma = false
-  return rest:gsub("(%s*%-*%s*)(,?%s*)(%{?)(%d+)(%}?)", function(dash, coma, lbrace, page, rbrace)
+  return rest:gsub("(%s*%-*%s*)(,?%s*)(%{?)(%[?)(%d+)(%]?)(%}?)", function(dash, coma, lbrace, lbracket, page, rbracket, rbrace)
+    if lbracket == "[" and rbracket == "]" then
+      -- don't process numbers in brackets, they are not page numbers
+      return nil
+    end
     local entry = entries[tonumber(page)]
     count = count + 1
     if entry then
@@ -128,7 +132,7 @@ local function replace_index_pages(rest, entries)
         return dash .. coma.. lbrace ..  "\\Link[" .. entry.file .."]{".. entry.dest .."}{}" ..  page .."\\EndLink{}" .. rbrace
       end
     else
-      return dash .. coma .. lbrace .. page .. rbrace
+      return dash .. coma .. lbrace .. lbracket .. page .. rbracket .. rbrace
     end
  end)
 end
@@ -139,7 +143,7 @@ local fix_idx_pages = function(content, idxobj)
   local buffer = {}
   local entries = idxobj.map
   for  line in content:gmatch("([^\n]+)")  do
-    local line, count = line:gsub("(%s*\\%a+.-%,)(.+)$", function(start,rest)
+    local line, count = line:gsub("(%s*\\%a+[^%[^,]+)(.+)$", function(start,rest)
       -- reset the previous page number
       previous = nil
       -- there is a problem when index term itself contains numbers, like Bible verses (1:2),

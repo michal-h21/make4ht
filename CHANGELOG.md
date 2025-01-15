@@ -1,5 +1,10 @@
 # Changelog
 
+- 2025/01/15
+
+  - fixed handling of commands with number as optional arguments in the `make4ht-indexing` library.
+  https://fosstodon.org/@juergen_hubert@thefolklore.cafe/113809011903088411
+
 - 2025/01/09
 
   - convert horizontal rules in MathML arrays to the `rowlines` attribute.
