@@ -1,5 +1,10 @@
 # Changelog
 
+- 2025/02/03 
+
+  - added the `nodynamicodt` extension. It removes dynamic content from ODT files.
+    https://puszcza.gnu.org.ua/bugs/?505#discussion
+
 - 2025/01/15
 
   - fixed handling of commands with number as optional arguments in the `make4ht-indexing` library.

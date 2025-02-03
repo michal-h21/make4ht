@@ -324,6 +324,10 @@ mjcli
      add "mathjax" option on the command line (like `make4ht -f html5+mjcli filename.tex "mathjax"`).
      See [the available settings](#mathjaxsettings).
 
+nodynamicodt 
+
+:    change dynamic content in ODT files (such as tables of contents or bibliographies) to text.
+
 odttemplate
 
 :    it automatically loads the `odttemplate` filter (page \pageref{sec:odttemplate}).
