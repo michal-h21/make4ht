@@ -1,5 +1,9 @@
 # Changelog
 
+- 2025/02/19 
+
+  - version `0.4c` released.
+
 - 2025/02/03 
 
   - added the `nodynamicodt` extension. It removes dynamic content from ODT files.
