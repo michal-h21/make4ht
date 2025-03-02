@@ -137,6 +137,19 @@ local function replace_index_pages(rest, entries)
  end)
 end
 
+local function fix_subitems(start, rest)
+  -- in xindex, subentries start with a comma, so if the subentry itself is number, it would be mistaken for the page number
+  -- the start should contain just \subitem -\
+  if start:match("%s*\\subitem %-\\$") then
+    -- the keyword in this case is the first item in the rest
+    local keyword, newrest = rest:match("(,?[^,]+,)(.+)")
+    if keyword and newrest then
+      -- join the extracted keyword with the start, newrest should contain only actual page numbers
+      return start .. keyword, newrest
+    end
+  end
+  return start, rest
+end
 
 -- replace page numbers in the ind file with hyperlinks
 local fix_idx_pages = function(content, idxobj)
@@ -146,6 +159,7 @@ local fix_idx_pages = function(content, idxobj)
     local line, count = line:gsub("(%s*\\%a+[^%[^,]+)(.+)$", function(start,rest)
       -- reset the previous page number
       previous = nil
+      start, rest = fix_subitems(start, rest)
       -- there is a problem when index term itself contains numbers, like Bible verses (1:2),
       -- because they will be detected as page numbers too. I cannot find a good solution 
       -- that wouldn't break something else.
