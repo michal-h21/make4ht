@@ -1,4 +1,5 @@
 local log = logging.new "htlatex"
+local autolog = logging.new "autohtlatex"
 
 local error_logparser = require("make4ht-errorlogparser")
 
@@ -96,5 +97,57 @@ function m.httex(par)
   if newpar.htlatex == "tex" then newpar.htlatex = "etex" end
   return m.htlatex(newpar, Make.plain_command)
 end
+
+
+local function get_checksum(main_file, extensions)
+  -- make checksum for temporary files 
+  local checksum = "" 
+  local extensions = extensions or {"aux", "4tc", "xref"}
+  for _, ext in ipairs(extensions) do
+    local f = io.open(main_file .. "." .. ext, "r")
+    if f then
+      local content = f:read("*all")
+      f:close()
+      -- make checksum of the file and previous checksum 
+      -- this way, we will detect change in any file 
+      checksum = md5.sumhexa(checksum .. content)
+    end
+  end
+  return checksum
+end
+
+-- this function runs htlatex multiple times until the checksum of temporary files doesn't change
+Make:add("autohtlatex", function(par)
+  -- get checksum of temp files before compilation 
+  local options = get_filter_settings "autohtlatex"
+  local extensions = par.auto_extensions or options.auto_extensions or {"aux", "4tc", "xref"}
+  local max_compilations  = par.max_compilations or options.max_compilations or  5
+  local checksum = get_checksum(par.input, extensions)
+  local status = m.htlatex(par)
+  -- stop processing on error 
+  if status ~= 0 then
+    autolog:info("Stopping after first run, with status: " .. status)
+    return status
+  end
+  -- get checksum after compilation 
+  local newchecksum = get_checksum(par.input, extensions)
+  -- this is needed to prevent possible infinite loops 
+  local compilation_count = 1
+  while checksum ~= newchecksum do
+    -- stop processing if we reach maximum number of compilations
+    if compilation_count > max_compilations then
+      autolog:info("Stopping after " .. max_compilations .. " compilations")
+      return status
+    end
+    status = m.htlatex(par)
+    -- stop processing on error 
+    if status ~= 0 then return status end
+    checksum = newchecksum
+    -- get checksum after compilation 
+    newchecksum = get_checksum(par.input, extensions)
+    compilation_count = compilation_count + 1
+  end
+  return status
+end)
 
 return m

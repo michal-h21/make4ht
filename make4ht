@@ -85,9 +85,8 @@ if make:length() < 1 then
     make:clean()
     make.no_dvi_process = true
 	else
-		make:htlatex()
-		make:htlatex()
-		make:htlatex()
+    -- automatically detect and execute number of necessary compilations by default
+    make:autohtlatex()
 	end
 end
 

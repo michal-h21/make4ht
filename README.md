@@ -458,6 +458,11 @@ detect compilation errors in the TeX log file.
 
 :    One call to the TeX engine with special configuration for loading of the `tex4ht.sty` package.
 
+`Make:autohtlatex`
+
+:    Variant of `Make:htlatex` that automates the compilation of \LaTeX\ documents, 
+     ensuring that the process is repeated until the output stabilizes or an error occurs.
+
 `Make:clean`
 
 :    This command removes all generated files, including images, HTML files and
@@ -887,6 +892,14 @@ The default parameters are the following:
 :    expected `exit code` from the command. The compilation will be terminated
      if the exit code of the executed command has a different value.
 
+`auto_extensions`
+
+:    table with extensions of auxiliary files that should be watched by the `Make:autohtlatex` command.
+
+`max_compilations`
+
+:    maximum number of \LaTeX\ runs by the `Make:autohtlatex` command.
+
 
 # `make4ht` configuration file {#configfile}
 
@@ -945,6 +958,17 @@ output for math.
 
 These settings may be set using `filter_settings` function in a build file or in the `make4ht` configuration file.
 
+## Compilation commands
+
+## The `autohtlatex` command
+
+auto_extensions
+
+:    table with extensions of auxiliary files that should be watched by the `Make:autohtlatex` command.
+
+max_compilations
+
+:    maximum number of \LaTeX\ runs by the `Make:autohtlatex` command.
 
 
 ## Indexing commands
