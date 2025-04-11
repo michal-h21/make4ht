@@ -1,9 +1,14 @@
 # Changelog
 
+- 2025/04/11
+
+  - support `--build-dir` in `autohtlatex`
+
 - 2025/03/12
 
-  - added `autohtlatex` function to automate \LaTeX\ compilation, ensuring
+  - added `Make:autohtlatex` function to automate \LaTeX\ compilation, ensuring
     repeated runs until temporary file checksums stabilize or a max limit is reached.
+    This function is used by default instead of `Make:htlatex`.
 
 - 2025/03/02 
 

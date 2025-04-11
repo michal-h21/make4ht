@@ -99,12 +99,13 @@ function m.httex(par)
 end
 
 
-local function get_checksum(main_file, extensions)
+local function get_checksum(main_file, extensions, par)
   -- make checksum for temporary files 
   local checksum = "" 
   local extensions = extensions or {"aux", "4tc", "xref"}
   for _, ext in ipairs(extensions) do
-    local f = io.open(main_file .. "." .. ext, "r")
+    local filename = mkutils.file_in_builddir(main_file .. "." .. ext, par)
+    local f = io.open(filename, "r")
     if f then
       local content = f:read("*all")
       f:close()
@@ -122,7 +123,7 @@ Make:add("autohtlatex", function(par)
   local options = get_filter_settings "autohtlatex"
   local extensions = par.auto_extensions or options.auto_extensions or {"aux", "4tc", "xref"}
   local max_compilations  = par.max_compilations or options.max_compilations or  5
-  local checksum = get_checksum(par.input, extensions)
+  local checksum = get_checksum(par.input, extensions, par)
   local status = m.htlatex(par)
   -- stop processing on error 
   if status ~= 0 then
@@ -130,7 +131,7 @@ Make:add("autohtlatex", function(par)
     return status
   end
   -- get checksum after compilation 
-  local newchecksum = get_checksum(par.input, extensions)
+  local newchecksum = get_checksum(par.input, extensions, par)
   -- this is needed to prevent possible infinite loops 
   local compilation_count = 1
   while checksum ~= newchecksum do
@@ -144,7 +145,7 @@ Make:add("autohtlatex", function(par)
     if status ~= 0 then return status end
     checksum = newchecksum
     -- get checksum after compilation 
-    newchecksum = get_checksum(par.input, extensions)
+    newchecksum = get_checksum(par.input, extensions, par)
     compilation_count = compilation_count + 1
   end
   return status
