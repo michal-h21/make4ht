@@ -1,5 +1,9 @@
 # Changelog
 
+- 2025/04/14 
+
+  - version `0.4d` released.
+
 - 2025/04/11
 
   - support `--build-dir` in `autohtlatex`
