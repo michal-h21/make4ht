@@ -25,6 +25,11 @@ local function is_space(info)
   return category == "zs"
 end
 
+
+local function is_number(char)
+  return char >= 48 and char <= 57
+end
+
 local uchar = utf8.char
 local function normalize_letter(char, result)
   local info = chardata[char] or {}
@@ -54,6 +59,8 @@ local escape_name = function(name)
       result[#result+1] = " "
     elseif is_letter(info) then
       normalize_letter(char, result)
+    elseif is_number(char) then
+      result[#result+1] = uchar(char)
     end
   end
   --- convert table with normalized characters to string
@@ -61,6 +68,8 @@ local escape_name = function(name)
   -- remove spaces
   name = name:gsub("%s+", "-")
   name = name:gsub("^%-", "")
+  -- ids cannot start with number in HTML 4, so we will add x
+  name = name:gsub("^(%d)", "x%1")
   return name
 end
 

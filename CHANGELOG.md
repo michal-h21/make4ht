@@ -1,5 +1,9 @@
 # Changelog
 
+- 2025/04/16 
+
+  - added support for numbers in `id` attributes created by the `sectionid` DOM filter.
+
 - 2025/04/14 
 
   - version `0.4d` released.
