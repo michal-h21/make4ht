@@ -9,7 +9,7 @@ local dvisvgm_par = {}
 local M = {}
 -- mapping between tex4ht image names and hashed image names
 local output_map = {}
-local dvisvgm_options = "-n --exact -c ${scale},${scale}"
+local dvisvgm_options = "-n --exact --embed-bitmaps -c ${scale},${scale}"
 local parallel_size = 64
 local make_command = "make -j ${process_count} -f ${make_file}"
 local test_make_command = "make -v"

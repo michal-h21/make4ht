@@ -1,5 +1,9 @@
 # Changelog
 
+- 2025/06/02
+
+  - use `--embed-bitmaps` option for `dvisvgm` in the `dvisvgm_hashes` extension.
+
 - 2025/04/16 
 
   - added support for numbers in `id` attributes created by the `sectionid` DOM filter.
