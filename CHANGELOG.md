@@ -1,5 +1,10 @@
 # Changelog
 
+
+- 2025/06/27
+
+  - fixed `latexmk_build` extension to work with the current build process.
+
 - 2025/06/02
 
   - use `--embed-bitmaps` option for `dvisvgm` in the `dvisvgm_hashes` extension.
