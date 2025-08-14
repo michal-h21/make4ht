@@ -127,7 +127,6 @@ Make:add("autohtlatex", function(par)
   local status = m.htlatex(par)
   -- stop processing on error 
   if status ~= 0 then
-    autolog:info("Stopping after first run, with status: " .. status)
     return status
   end
   -- get checksum after compilation 
@@ -149,6 +148,6 @@ Make:add("autohtlatex", function(par)
     compilation_count = compilation_count + 1
   end
   return status
-end)
+end, {correct_exit= 0})
 
 return m

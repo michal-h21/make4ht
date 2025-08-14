@@ -1,5 +1,8 @@
 # Changelog
 
+- 2026/08/14
+
+  - produce fatal error if `Make:autohtlatex` fails.
 
 - 2025/06/27
 
