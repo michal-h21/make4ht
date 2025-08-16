@@ -1,6 +1,10 @@
 # Changelog
 
-- 2026/08/14
+- 2025/08/16
+
+  - added support for the MathML `intent` and `arg` attributes in the `mathml-fixes` DOM filter.
+
+- 2025/08/14
 
   - produce fatal error if `Make:autohtlatex` fails.
 

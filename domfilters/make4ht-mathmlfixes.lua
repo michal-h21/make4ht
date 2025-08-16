@@ -578,6 +578,31 @@ local function fix_mathml_chars(el)
 end
 
 
+local function fix_intent(mrow)
+  -- put the intent or arg attribute on a child element if mrow with these attributes contain only single child node 
+  local element_name, _ = get_element_name(mrow)
+  if element_name ~= "mrow" then
+    return nil
+  end
+  local intent = get_attribute(mrow,"intent")
+  local arg = get_attribute(mrow, "arg")
+  if intent or arg then
+    local children = mrow:get_children()
+    local first_child = children[1]
+    -- if there is only one child, we can set the attributes on it and remove mrow
+    if #children == 1 and first_child:is_element() then
+      local parent = mrow:get_parent()
+      -- replace the mrow with its single child
+      local pos = mrow:find_element_pos()
+      parent._children[pos] = first_child
+      -- now set the attributes on the child element
+      first_child:set_attribute("arg", arg)
+      first_child:set_attribute("intent", intent)
+    end
+  end
+end
+
+
 return function(dom)
   dom:traverse_elements(function(el)
     if settings.output_format ~= "odt" then
@@ -600,6 +625,7 @@ return function(dom)
       fix_mathml_chars(el)
     end
     fix_dcases(el)
+    fix_intent(el)
     top_mrow(el)
     delete_last_empty_mtr(el)
   end)
