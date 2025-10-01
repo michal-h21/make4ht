@@ -1,5 +1,10 @@
 # Changelog
 
+- 2025/10/01
+
+  - added the `tablecaption` DOM filter. It moves `<caption>` elements as the first child of `<table>`, to create a valid HTML code.
+  https://puszcza.gnu.org.ua/bugs/index.php?315
+
 - 2025/08/16
 
   - added support for the MathML `intent` and `arg` attributes in the `mathml-fixes` DOM filter.
