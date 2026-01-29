@@ -3,6 +3,7 @@
 - 2026/01/29
 
   - removed the `<script>` element from list of inline elements in the `fixinlines` DOM filter.
+  - use `article` instead of `ltxdoc` class, because the latter results in infinite loop with some verbatims.
 
 - 2025/10/01
 
