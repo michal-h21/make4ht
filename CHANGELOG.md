@@ -1,5 +1,9 @@
 # Changelog
 
+- 2026/01/29
+
+  - removed the `<script>` element from list of inline elements in the `fixinlines` DOM filter.
+
 - 2025/10/01
 
   - added the `tablecaption` DOM filter. It moves `<caption>` elements as the first child of `<table>`, to create a valid HTML code.

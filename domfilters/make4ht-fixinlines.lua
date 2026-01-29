@@ -23,7 +23,6 @@ local inline_elements = {
   map=true,
   object=true,
   q=true,
-  script=true,
   span=true,
   sub=true,
   sup=true,
@@ -32,8 +31,6 @@ local inline_elements = {
   label=true,
   select=true,
   textarea=true,
-  mn=true,
-  mi=true
 }
 
 
