@@ -2,40 +2,25 @@
 <html lang='en'>
 <head>
 <meta name="generator" content="HTML Tidy for HTML5 for Linux version 5.8.0" />
-<title>The make4ht build system</title>
+<title>The make4ht build system, The make4ht build system</title>
 <meta charset='utf-8' />
 <meta content='TeX4ht (https://tug.org/tex4ht/)' name='generator' />
 <meta content='width=device-width,initial-scale=1' name='viewport' />
 <link href='make4ht-doc.css' rel='stylesheet' type='text/css' />
 <meta content='make4ht-doc.tex' name='src' />
 <script src='https://hypothes.is/embed.js'></script>
-<meta content='The make4ht build system' property='og:title' />
-<meta content='Michal Hoftich' property='og:author' />
+<meta content='Michal Hoftich' property='og:title' />
 <meta content='website' property='og:type' />
 <meta content='https://www.kodymirus.cz/make4ht/make4ht-doc.html' property='og:url' />
 <link href='https://www.kodymirus.cz/make4ht/make4ht-doc.html' rel='canonical' />
 </head>
 <body>
-<!-- l. 26 -->
-<p class='noindent'></p>
-<!-- l. 26 -->
-<p class='indent'></p>
-<div class='center'><!-- l. 26 -->
-<p class='noindent'></p>
-<!-- l. 26 -->
-<p class='noindent'><span class='ec-lmr-17'>The</span> <span class='ec-lmtt-12x-x-144'>make4ht</span> <span class='ec-lmr-17'>build system</span></p>
-<div class='tabular'>
-<table class='tabular' id='TBL-1'>
-<colgroup id='TBL-1-1g'>
-<col id='TBL-1-1' /></colgroup>
-<tr id='TBL-1-1-' style='vertical-align:baseline;'>
-<td class='td11' id='TBL-1-1-1' style='white-space:nowrap; text-align:center;'><span class='ec-lmr-12'>Michal Hoftich &lt;</span><a href='michal.h21@gmail.com'><span class='ec-lmr-12'>michal.h21@gmail.com</span></a><span class='ec-lmr-12'>&gt;</span></td>
-</tr>
-</table>
-</div>
-<!-- l. 26 -->
-<p class='noindent'><span class='ec-lmr-12'>Version undefined</span><br />
-<span class='ec-lmr-12'>undefined</span></p>
+<div class='maketitle'>
+<h1 class='titleHead'>The make4ht build system</h1>
+<div class='author'><span class='rm-lmr-12'>Michal Hoftich &lt;</span><a href='michal.h21@gmail.com'><span class='rm-lmr-12'>michal.h21@gmail.com</span></a><span class='rm-lmr-12'>&gt;</span></div>
+<br />
+<div class='date'><span class='rm-lmr-12'>Version undefined</span><br />
+<span class='rm-lmr-12'>undefined</span></div>
 </div>
 <h3 class='likesectionHead' id='contents'><a id='x1-1000'></a>Contents</h3>
 <div class='tableofcontents'><span class='sectionToc'>1 <a href='#introduction' id='QQ2-1-2'>Introduction</a></span><br />
@@ -344,20 +329,20 @@ described in section <a href='#image-conversion'>5.4<!-- tex4ht:ref: sec:imageco
 <!-- l. 346 -->
 <p class='indent'></p>
 <dl class='description'>
-<dt class='description'><a id='x1-14001x4.1'></a> <span class='ec-lmbx-10'>common_filters</span></dt>
+<dt class='description'><a id='x1-14001x4.1'></a> <span class='rm-lmbx-10'>common_filters</span></dt>
 <dd class='description'><!-- l. 347 -->
 <p class='noindent'>clean the output HTML files using filters.</p>
 </dd>
-<dt class='description'><a id='x1-14002x4.1'></a> <span class='ec-lmbx-10'>common_domfilters</span></dt>
+<dt class='description'><a id='x1-14002x4.1'></a> <span class='rm-lmbx-10'>common_domfilters</span></dt>
 <dd class='description'><!-- l. 349 -->
 <p class='noindent'>clean the HTML file using DOM filters. It is more powerful than <span class='ec-lmtt-10'>common_filters</span>. It used following DOM filters: <span class='ec-lmtt-10'>fixinlines</span>, <span class='ec-lmtt-10'>idcolons</span>, <span class='ec-lmtt-10'>joincharacters</span>, <span class='ec-lmtt-10'>mathmlfixes</span>, <span class='ec-lmtt-10'>tablerows</span>,<span class='ec-lmtt-10'>booktabs</span>, <span class='ec-lmtt-10'>sectionid</span> and<span class=
 'ec-lmtt-10'>itemparagraphs</span></p>
 </dd>
-<dt class='description'><a id='x1-14003x4.1'></a> <span class='ec-lmbx-10'>copy_images</span></dt>
+<dt class='description'><a id='x1-14003x4.1'></a> <span class='rm-lmbx-10'>copy_images</span></dt>
 <dd class='description'><!-- l. 355 -->
 <p class='noindent'>Copies the images to the output directory. This is useful if the original images are stored in directories above the document directory.</p>
 </dd>
-<dt class='description'><a id='x1-14004x4.1'></a> <span class='ec-lmbx-10'>detect_engine</span></dt>
+<dt class='description'><a id='x1-14004x4.1'></a> <span class='rm-lmbx-10'>detect_engine</span></dt>
 <dd class='description'><!-- l. 358 -->
 <p class='noindent'>detect engine and format necessary for the document compilation from the magic comments supported by LaTeX&nbsp;editors such as TeXShop or TeXWorks. Add something like the following line at the beginning of the main TeX&nbsp;file:</p>
 <!-- l. 364 -->
@@ -365,48 +350,48 @@ described in section <a href='#image-conversion'>5.4<!-- tex4ht:ref: sec:imageco
 <!-- l. 366 -->
 <p class='noindent'>It supports also Plain TeX, use for example <span class='ec-lmtt-10'>tex</span> or <span class='ec-lmtt-10'>luatex</span> as the program name.</p>
 </dd>
-<dt class='description'><a id='x1-14005x4.1'></a> <span class='ec-lmbx-10'>dvisvgm_hashes</span></dt>
+<dt class='description'><a id='x1-14005x4.1'></a> <span class='rm-lmbx-10'>dvisvgm_hashes</span></dt>
 <dd class='description'><!-- l. 368 -->
 <p class='noindent'>efficient generation of SVG pictures using Dvisvgm. It can utilize multiple processor cores and generates only changed images.</p>
 </dd>
-<dt class='description'><a id='x1-14006x4.1'></a> <span class='ec-lmbx-10'>inlinecss</span></dt>
+<dt class='description'><a id='x1-14006x4.1'></a> <span class='rm-lmbx-10'>inlinecss</span></dt>
 <dd class='description'><!-- l. 371 -->
 <p class='noindent'>load the <span class='ec-lmtt-10'>inlinecss</span> DOM filter.</p>
 </dd>
-<dt class='description'><a id='x1-14007x4.1'></a> <span class='ec-lmbx-10'>join_colors</span></dt>
+<dt class='description'><a id='x1-14007x4.1'></a> <span class='rm-lmbx-10'>join_colors</span></dt>
 <dd class='description'><!-- l. 373 -->
 <p class='noindent'>load the <span class='ec-lmtt-10'>joincolors</span> DOM filter for all HTML files.</p>
 </dd>
-<dt class='description'><a id='x1-14008x4.1'></a> <span class='ec-lmbx-10'>latexmk_build</span></dt>
+<dt class='description'><a id='x1-14008x4.1'></a> <span class='rm-lmbx-10'>latexmk_build</span></dt>
 <dd class='description'><!-- l. 375 -->
 <p class='noindent'>use <a href='https://ctan.org/pkg/latexmk?lang=en'>Latexmk</a> for the LaTeX&nbsp;compilation.</p>
 </dd>
-<dt class='description'><a id='x1-14009x4.1'></a> <span class='ec-lmbx-10'>mathjaxnode</span></dt>
+<dt class='description'><a id='x1-14009x4.1'></a> <span class='rm-lmbx-10'>mathjaxnode</span></dt>
 <dd class='description'><!-- l. 378 -->
 <p class='noindent'>(<strong>deprecated</strong>, use <span class='ec-lmtt-10'>mjcli</span> extension instead) Old information: use <a href='https://github.com/pkra/mathjax-node-page/'>mathjax-node-page</a> to convert from MathML code to HTML + CSS or SVG. See <a href='#the-mjcli-filter-and-extension'>the available settings</a>.</p>
 </dd>
-<dt class='description'><a id='x1-14010x4.1'></a> <span class='ec-lmbx-10'>mjcli</span></dt>
+<dt class='description'><a id='x1-14010x4.1'></a> <span class='rm-lmbx-10'>mjcli</span></dt>
 <dd class='description'><!-- l. 384 -->
 <p class='noindent'>use <a href='https://github.com/michal-h21/mjcli'>mjcli</a> to convert math in MathML or LaTeX&nbsp; format to plain HTML + CSS. MathML is used by default. If you want to use LaTeX&nbsp;math, add “mathjax” option on the command line (like <span class='ec-lmtt-10'>make4ht&nbsp;-f&nbsp;html5+mjcli&nbsp;filename.tex&nbsp;"mathjax"</span>). See <a href='#the-mjcli-filter-and-extension'>the available settings</a>.</p>
 </dd>
-<dt class='description'><a id='x1-14011x4.1'></a> <span class='ec-lmbx-10'>nodynamicodt</span></dt>
+<dt class='description'><a id='x1-14011x4.1'></a> <span class='rm-lmbx-10'>nodynamicodt</span></dt>
 <dd class='description'><!-- l. 390 -->
 <p class='noindent'>change dynamic content in ODT files (such as tables of contents or bibliographies) to text.</p>
 </dd>
-<dt class='description'><a id='x1-14012x4.1'></a> <span class='ec-lmbx-10'>odttemplate</span></dt>
+<dt class='description'><a id='x1-14012x4.1'></a> <span class='rm-lmbx-10'>odttemplate</span></dt>
 <dd class='description'><!-- l. 393 -->
-<p class='noindent'>it automatically loads the <span class='ec-lmtt-10'>odttemplate</span> filter (page <a href='#x1-23009x5.3.1'>40<!-- tex4ht:ref: sec:odttemplate  --></a>).</p>
+<p class='noindent'>it automatically loads the <span class='ec-lmtt-10'>odttemplate</span> filter (page <a href='#x1-23009x5.3.1'>38<!-- tex4ht:ref: sec:odttemplate  --></a>).</p>
 </dd>
-<dt class='description'><a id='x1-14013x4.1'></a> <span class='ec-lmbx-10'>preprocess_input</span></dt>
+<dt class='description'><a id='x1-14013x4.1'></a> <span class='rm-lmbx-10'>preprocess_input</span></dt>
 <dd class='description'><!-- l. 396 -->
 <p class='noindent'>compilation of the formats supported by <a href='https://yihui.name/knitr/'>Knitr</a> (<span class='ec-lmtt-10'>.Rnw</span>, <span class='ec-lmtt-10'>.Rtex</span>, <span class='ec-lmtt-10'>.Rmd</span>, <span class='ec-lmtt-10'>.Rrst</span>) and also Markdown and reStructuredText formats. It requires <a href='https://www.r-project.org/'>R</a> + <a href='https://yihui.name/knitr/'>Knitr</a> installation, it requires also <a href='https://pandoc.org/'>Pandoc</a> for formats based on
 Markdown or reStructuredText.</p>
 </dd>
-<dt class='description'><a id='x1-14014x4.1'></a> <span class='ec-lmbx-10'>staticsite</span></dt>
+<dt class='description'><a id='x1-14014x4.1'></a> <span class='rm-lmbx-10'>staticsite</span></dt>
 <dd class='description'><!-- l. 404 -->
 <p class='noindent'>build the document in a form suitable for static site generators like <a href='https://jekyllrb.com/'>Jekyll</a>.</p>
 </dd>
-<dt class='description'><a id='x1-14015x4.1'></a> <span class='ec-lmbx-10'>tidy</span></dt>
+<dt class='description'><a id='x1-14015x4.1'></a> <span class='rm-lmbx-10'>tidy</span></dt>
 <dd class='description'><!-- l. 407 -->
 <p class='noindent'>clean the <span class='ec-lmtt-10'>HTML</span> files using the <span class='ec-lmtt-10'>tidy</span> command.</p>
 </dd>
@@ -448,7 +433,7 @@ Make:name({hello="world"})
 <!-- l. 464 -->
 <p class='nopar'></p>
 <!-- l. 466 -->
-<p class='indent'>More information about settings, including the default settings provided by <span class='ec-lmtt-10'>make4ht</span>, can be found in section <a href='#the-settings-table'>5.6<!-- tex4ht:ref: sec:settings  --></a> on page <a href='#the-settings-table'>46<!-- tex4ht:ref: sec:settings  --></a>.</p>
+<p class='indent'>More information about settings, including the default settings provided by <span class='ec-lmtt-10'>make4ht</span>, can be found in section <a href='#the-settings-table'>5.6<!-- tex4ht:ref: sec:settings  --></a> on page <a href='#the-settings-table'>44<!-- tex4ht:ref: sec:settings  --></a>.</p>
 <h5 class='subsubsectionHead' id='the-command-function'><span class='titlemark'>5.1.1</span> <a id='x1-170005.1.1'></a>The <span class='ec-lmtt-10'>command</span> function</h5>
 <!-- l. 475 -->
 <p class='noindent'>The <span class='ec-lmtt-10'>command</span> parameter can be either a string template or function:</p>
@@ -615,47 +600,47 @@ Make:match("html$",process)
 <!-- l. 661 -->
 <p class='indent'></p>
 <dl class='description'>
-<dt class='description'><a id='x1-23001x5.3.1'></a> <span class='ec-lmbx-10'>cleanspan</span></dt>
+<dt class='description'><a id='x1-23001x5.3.1'></a> <span class='rm-lmbx-10'>cleanspan</span></dt>
 <dd class='description'><!-- l. 662 -->
 <p class='noindent'>clean spurious span elements when accented characters are used</p>
 </dd>
-<dt class='description'><a id='x1-23002x5.3.1'></a> <span class='ec-lmbx-10'>cleanspan-nat</span></dt>
+<dt class='description'><a id='x1-23002x5.3.1'></a> <span class='rm-lmbx-10'>cleanspan-nat</span></dt>
 <dd class='description'><!-- l. 664 -->
 <p class='noindent'>alternative clean span filter, provided by Nat Kuhn</p>
 </dd>
-<dt class='description'><a id='x1-23003x5.3.1'></a> <span class='ec-lmbx-10'>fixligatures</span></dt>
+<dt class='description'><a id='x1-23003x5.3.1'></a> <span class='rm-lmbx-10'>fixligatures</span></dt>
 <dd class='description'><!-- l. 666 -->
 <p class='noindent'>decompose ligatures to base characters</p>
 </dd>
-<dt class='description'><a id='x1-23004x5.3.1'></a> <span class='ec-lmbx-10'>hruletohr</span></dt>
+<dt class='description'><a id='x1-23004x5.3.1'></a> <span class='rm-lmbx-10'>hruletohr</span></dt>
 <dd class='description'><!-- l. 668 -->
 <p class='noindent'><span class='ec-lmtt-10'>\hrule</span> commands are translated to series of underscore characters by TeX4ht, this filter translates these underscores to <span class='ec-lmtt-10'>&lt;hr&gt;</span> elements</p>
 </dd>
-<dt class='description'><a id='x1-23005x5.3.1'></a> <span class='ec-lmbx-10'>entites</span></dt>
+<dt class='description'><a id='x1-23005x5.3.1'></a> <span class='rm-lmbx-10'>entites</span></dt>
 <dd class='description'><!-- l. 672 -->
 <p class='noindent'>convert prohibited named entities to numeric entities (only <span class='ec-lmtt-10'>&amp;nbsp;</span> currently).</p>
 </dd>
-<dt class='description'><a id='x1-23006x5.3.1'></a> <span class='ec-lmbx-10'>fix-links</span></dt>
+<dt class='description'><a id='x1-23006x5.3.1'></a> <span class='rm-lmbx-10'>fix-links</span></dt>
 <dd class='description'><!-- l. 675 -->
 <p class='noindent'>replace colons in local links and <span class='ec-lmtt-10'>id</span> attributes with underscores. Some cross-reference commands may produce colons in internal links, which results in a validation error.</p>
 </dd>
-<dt class='description'><a id='x1-23007x5.3.1'></a> <span class='ec-lmbx-10'>mathjaxnode</span></dt>
+<dt class='description'><a id='x1-23007x5.3.1'></a> <span class='rm-lmbx-10'>mathjaxnode</span></dt>
 <dd class='description'><!-- l. 679 -->
 <p class='noindent'>(<strong>deprecated</strong>, use <span class='ec-lmtt-10'>mjcli</span> extension instead) Old information: use <a href='https://github.com/pkra/mathjax-node-page/'>mathjax-node-page</a> to convert from MathML code to HTML + CSS or SVG. See <a href='#the-mjcli-filter-and-extension'>the available settings</a>.</p>
 </dd>
-<dt class='description'><a id='x1-23008x5.3.1'></a> <span class='ec-lmbx-10'>mjcli</span></dt>
+<dt class='description'><a id='x1-23008x5.3.1'></a> <span class='rm-lmbx-10'>mjcli</span></dt>
 <dd class='description'><!-- l. 685 -->
 <p class='noindent'>use <a href='https://github.com/michal-h21/mjcli'>mjcli</a> to convert math in MathML or LaTeX&nbsp; format to plain HTML + CSS. See <a href='#the-mjcli-filter-and-extension'>the available settings</a>.</p>
 </dd>
-<dt class='description'><a id='x1-23009x5.3.1'></a> <span class='ec-lmbx-10'>odttemplate</span></dt>
+<dt class='description'><a id='x1-23009x5.3.1'></a> <span class='rm-lmbx-10'>odttemplate</span></dt>
 <dd class='description'><!-- l. 689 -->
 <p class='noindent'>use styles from another <span class='ec-lmtt-10'>ODT</span> file serving as a template in the current document. It works for the <span class='ec-lmtt-10'>styles.xml</span> file in the <span class='ec-lmtt-10'>ODT</span> file. During the compilation, this file is named as <span class='ec-lmtt-10'>\jobname.4oy</span>.</p>
 </dd>
-<dt class='description'><a id='x1-23010x5.3.1'></a> <span class='ec-lmbx-10'>staticsite</span></dt>
+<dt class='description'><a id='x1-23010x5.3.1'></a> <span class='rm-lmbx-10'>staticsite</span></dt>
 <dd class='description'><!-- l. 694 -->
 <p class='noindent'>create HTML files in a format suitable for static site generators such as <a href='https://jekyllrb.com/'>Jekyll</a></p>
 </dd>
-<dt class='description'><a id='x1-23011x5.3.1'></a> <span class='ec-lmbx-10'>svg-height</span></dt>
+<dt class='description'><a id='x1-23011x5.3.1'></a> <span class='rm-lmbx-10'>svg-height</span></dt>
 <dd class='description'><!-- l. 697 -->
 <p class='noindent'>some SVG images produced by <span class='ec-lmtt-10'>dvisvgm</span> seem to have wrong dimensions. This filter tries to set the correct image size.</p>
 </dd>
@@ -677,64 +662,64 @@ Make:match("html$", process)
 <!-- l. 719 -->
 <p class='indent'></p>
 <dl class='description'>
-<dt class='description'><a id='x1-24001x5.3.2'></a> <span class='ec-lmbx-10'>aeneas</span></dt>
+<dt class='description'><a id='x1-24001x5.3.2'></a> <span class='rm-lmbx-10'>aeneas</span></dt>
 <dd class='description'><!-- l. 720 -->
 <p class='noindent'><a href='https://www.readbeyond.it/aeneas/'>Aeneas</a> is a tool for automagical synchronization of text and audio. This filter modifies the HTML code to support synchronization.</p>
 </dd>
-<dt class='description'><a id='x1-24002x5.3.2'></a> <span class='ec-lmbx-10'>booktabs</span></dt>
+<dt class='description'><a id='x1-24002x5.3.2'></a> <span class='rm-lmbx-10'>booktabs</span></dt>
 <dd class='description'><!-- l. 724 -->
 <p class='noindent'>fix lines produced by the <span class='ec-lmtt-10'>\cmidrule</span> command provided by the Booktabs package.</p>
 </dd>
-<dt class='description'><a id='x1-24003x5.3.2'></a> <span class='ec-lmbx-10'>collapsetoc</span></dt>
+<dt class='description'><a id='x1-24003x5.3.2'></a> <span class='rm-lmbx-10'>collapsetoc</span></dt>
 <dd class='description'><!-- l. 727 -->
 <p class='noindent'>collapse table of contents to contain only top-level sectioning level and sections on the current page.</p>
 </dd>
-<dt class='description'><a id='x1-24004x5.3.2'></a> <span class='ec-lmbx-10'>fixinlines</span></dt>
+<dt class='description'><a id='x1-24004x5.3.2'></a> <span class='rm-lmbx-10'>fixinlines</span></dt>
 <dd class='description'><!-- l. 730 -->
 <p class='noindent'>put all inline elements which are direct children of the <span class='ec-lmtt-10'>&lt;body&gt;</span> elements to a paragraph.</p>
 </dd>
-<dt class='description'><a id='x1-24005x5.3.2'></a> <span class='ec-lmbx-10'>idcolons</span></dt>
+<dt class='description'><a id='x1-24005x5.3.2'></a> <span class='rm-lmbx-10'>idcolons</span></dt>
 <dd class='description'><!-- l. 733 -->
 <p class='noindent'>replace the colon (<span class='ec-lmtt-10'>:</span>) character in internal links and <span class='ec-lmtt-10'>id</span> attributes. They cause validation issues.</p>
 </dd>
-<dt class='description'><a id='x1-24006x5.3.2'></a> <span class='ec-lmbx-10'>inlinecss</span></dt>
+<dt class='description'><a id='x1-24006x5.3.2'></a> <span class='rm-lmbx-10'>inlinecss</span></dt>
 <dd class='description'><!-- l. 736 -->
 <p class='noindent'>remove CSS rules that target elements with unique attributes, such as color boxes, table rules, or inline math pictures, and insert their properties as a inline <span class='ec-lmtt-10'>style</span> attribute in the HTML document.</p>
 </dd>
-<dt class='description'><a id='x1-24007x5.3.2'></a> <span class='ec-lmbx-10'>joincharacters</span></dt>
+<dt class='description'><a id='x1-24007x5.3.2'></a> <span class='rm-lmbx-10'>joincharacters</span></dt>
 <dd class='description'><!-- l. 740 -->
 <p class='noindent'>join consecutive <span class='ec-lmtt-10'>&lt;span&gt;</span> or <span class='ec-lmtt-10'>&lt;mn&gt;</span> elements. This DOM filter supersedes the <span class='ec-lmtt-10'>cleanspan</span> filter.</p>
 </dd>
-<dt class='description'><a id='x1-24008x5.3.2'></a> <span class='ec-lmbx-10'>joincolors</span></dt>
+<dt class='description'><a id='x1-24008x5.3.2'></a> <span class='rm-lmbx-10'>joincolors</span></dt>
 <dd class='description'><!-- l. 744 -->
 <p class='noindent'>many <span class='ec-lmtt-10'>&lt;span&gt;</span> elements with unique <span class='ec-lmtt-10'>id</span> attributes are created when LaTeX&nbsp;colors are being used in the document. A CSS rule is added for each of these elements, which may result in substantial growth of the CSS file. This filter replaces these rules with a common one for elements with the same color value. See also the <span class='ec-lmtt-10'>inlinecss</span> DOM filter and extension, which provides an alternative
 using inline styles.</p>
 </dd>
-<dt class='description'><a id='x1-24009x5.3.2'></a> <span class='ec-lmbx-10'>odtfonts</span></dt>
+<dt class='description'><a id='x1-24009x5.3.2'></a> <span class='rm-lmbx-10'>odtfonts</span></dt>
 <dd class='description'><!-- l. 752 -->
 <p class='noindent'>fix styles for fonts that were wrongly converted by <span class='ec-lmtt-10'>Xtpipes</span> in the ODT format.</p>
 </dd>
-<dt class='description'><a id='x1-24010x5.3.2'></a> <span class='ec-lmbx-10'>odtimagesize</span></dt>
+<dt class='description'><a id='x1-24010x5.3.2'></a> <span class='rm-lmbx-10'>odtimagesize</span></dt>
 <dd class='description'><!-- l. 755 -->
 <p class='noindent'>set correct dimensions for images in the ODT format. It is no longer used, as the dimensions are set by TeX4ht itself.</p>
 </dd>
-<dt class='description'><a id='x1-24011x5.3.2'></a> <span class='ec-lmbx-10'>odtpartable</span></dt>
+<dt class='description'><a id='x1-24011x5.3.2'></a> <span class='rm-lmbx-10'>odtpartable</span></dt>
 <dd class='description'><!-- l. 758 -->
 <p class='noindent'>resolve tables nested inside paragraphs, which is invalid in the ODT format.</p>
 </dd>
-<dt class='description'><a id='x1-24012x5.3.2'></a> <span class='ec-lmbx-10'>tablerows</span></dt>
+<dt class='description'><a id='x1-24012x5.3.2'></a> <span class='rm-lmbx-10'>tablerows</span></dt>
 <dd class='description'><!-- l. 761 -->
 <p class='noindent'>remove spurious rows from HTML tables.</p>
 </dd>
-<dt class='description'><a id='x1-24013x5.3.2'></a> <span class='ec-lmbx-10'>mathmlfixes</span></dt>
+<dt class='description'><a id='x1-24013x5.3.2'></a> <span class='rm-lmbx-10'>mathmlfixes</span></dt>
 <dd class='description'><!-- l. 763 -->
 <p class='noindent'>fix common issues for MathML.</p>
 </dd>
-<dt class='description'><a id='x1-24014x5.3.2'></a> <span class='ec-lmbx-10'>sectionid</span></dt>
+<dt class='description'><a id='x1-24014x5.3.2'></a> <span class='rm-lmbx-10'>sectionid</span></dt>
 <dd class='description'><!-- l. 765 -->
 <p class='noindent'>create <span class='ec-lmtt-10'>id</span> attribute for HTML sectioning elements derived from the section title. It also updates links to these sections. Use the <span class='ec-lmtt-10'>notoc</span> command line option to prevent that.</p>
 </dd>
-<dt class='description'><a id='x1-24015x5.3.2'></a> <span class='ec-lmbx-10'>t4htlinks</span></dt>
+<dt class='description'><a id='x1-24015x5.3.2'></a> <span class='rm-lmbx-10'>t4htlinks</span></dt>
 <dd class='description'><!-- l. 769 -->
 <p class='noindent'>fix hyperlinks in the ODT format.</p>
 </dd>
@@ -956,11 +941,11 @@ settings_add {
 <!-- l. 1004 -->
 <p class='noindent'></p>
 <dl class='description'>
-<dt class='description'><a id='x1-35001x7.2'></a> <span class='ec-lmbx-10'>auto_extensions</span></dt>
+<dt class='description'><a id='x1-35001x7.2'></a> <span class='rm-lmbx-10'>auto_extensions</span></dt>
 <dd class='description'><!-- l. 1005 -->
 <p class='noindent'>table with extensions of auxiliary files that should be watched by the <span class='ec-lmtt-10'>Make:autohtlatex</span> command.</p>
 </dd>
-<dt class='description'><a id='x1-35002x7.2'></a> <span class='ec-lmbx-10'>max_compilations</span></dt>
+<dt class='description'><a id='x1-35002x7.2'></a> <span class='rm-lmbx-10'>max_compilations</span></dt>
 <dd class='description'><!-- l. 1008 -->
 <p class='noindent'>maximum number of LaTeX&nbsp;runs by the <span class='ec-lmtt-10'>Make:autohtlatex</span> command.</p>
 </dd>
@@ -971,11 +956,11 @@ settings_add {
 <!-- l. 1017 -->
 <p class='indent'></p>
 <dl class='description'>
-<dt class='description'><a id='x1-36001x7.3'></a> <span class='ec-lmbx-10'>idxfile</span></dt>
+<dt class='description'><a id='x1-36001x7.3'></a> <span class='rm-lmbx-10'>idxfile</span></dt>
 <dd class='description'><!-- l. 1018 -->
 <p class='noindent'>name of the <span class='ec-lmtt-10'>.idx</span> file. Default value is <span class='ec-lmtt-10'>\jobname.idx</span>.</p>
 </dd>
-<dt class='description'><a id='x1-36002x7.3'></a> <span class='ec-lmbx-10'>indfile</span></dt>
+<dt class='description'><a id='x1-36002x7.3'></a> <span class='rm-lmbx-10'>indfile</span></dt>
 <dd class='description'><!-- l. 1021 -->
 <p class='noindent'>name of the <span class='ec-lmtt-10'>.ind</span> file. Default value is the same as <span class='ec-lmtt-10'>idxfile</span> with the file extension changed to <span class='ec-lmtt-10'>.ind</span>.</p>
 </dd>
@@ -986,15 +971,15 @@ settings_add {
 <!-- l. 1031 -->
 <p class='noindent'></p>
 <dl class='description'>
-<dt class='description'><a id='x1-37001x7.3.1'></a> <span class='ec-lmbx-10'>encoding</span></dt>
+<dt class='description'><a id='x1-37001x7.3.1'></a> <span class='rm-lmbx-10'>encoding</span></dt>
 <dd class='description'><!-- l. 1032 -->
 <p class='noindent'>text encoding of the <span class='ec-lmtt-10'>.idx</span> file. Default value is <span class='ec-lmtt-10'>utf8</span>.</p>
 </dd>
-<dt class='description'><a id='x1-37002x7.3.1'></a> <span class='ec-lmbx-10'>language</span></dt>
+<dt class='description'><a id='x1-37002x7.3.1'></a> <span class='rm-lmbx-10'>language</span></dt>
 <dd class='description'><!-- l. 1034 -->
 <p class='noindent'>index language. Default language is English.</p>
 </dd>
-<dt class='description'><a id='x1-37003x7.3.1'></a> <span class='ec-lmbx-10'>modules</span></dt>
+<dt class='description'><a id='x1-37003x7.3.1'></a> <span class='rm-lmbx-10'>modules</span></dt>
 <dd class='description'><!-- l. 1036 -->
 <p class='noindent'>table with names of additional <span class='ec-lmtt-10'>Xindy</span> modules to be used.</p>
 </dd>
@@ -1003,7 +988,7 @@ settings_add {
 <!-- l. 1043 -->
 <p class='noindent'></p>
 <dl class='description'>
-<dt class='description'><a id='x1-38001x7.3.2'></a> <span class='ec-lmbx-10'>options</span></dt>
+<dt class='description'><a id='x1-38001x7.3.2'></a> <span class='rm-lmbx-10'>options</span></dt>
 <dd class='description'><!-- l. 1044 -->
 <p class='noindent'>additional command line options for the Makeindex command.</p>
 </dd>
@@ -1012,11 +997,11 @@ settings_add {
 <!-- l. 1051 -->
 <p class='noindent'></p>
 <dl class='description'>
-<dt class='description'><a id='x1-39001x7.3.3'></a> <span class='ec-lmbx-10'>options</span></dt>
+<dt class='description'><a id='x1-39001x7.3.3'></a> <span class='rm-lmbx-10'>options</span></dt>
 <dd class='description'><!-- l. 1052 -->
 <p class='noindent'>additional command line options for the Xindex command.</p>
 </dd>
-<dt class='description'><a id='x1-39002x7.3.3'></a> <span class='ec-lmbx-10'>language</span></dt>
+<dt class='description'><a id='x1-39002x7.3.3'></a> <span class='rm-lmbx-10'>language</span></dt>
 <dd class='description'><!-- l. 1054 -->
 <p class='noindent'>document language</p>
 </dd>
@@ -1025,7 +1010,7 @@ settings_add {
 <!-- l. 1061 -->
 <p class='noindent'></p>
 <dl class='description'>
-<dt class='description'><a id='x1-40001x7.4'></a> <span class='ec-lmbx-10'>options</span></dt>
+<dt class='description'><a id='x1-40001x7.4'></a> <span class='rm-lmbx-10'>options</span></dt>
 <dd class='description'><!-- l. 1062 -->
 <p class='noindent'>command line options for the <span class='ec-lmtt-10'>tidy</span> command. Default value is <span class='ec-lmtt-10'>-m&nbsp;-utf8&nbsp;-w&nbsp;512&nbsp;-q</span>.</p>
 </dd>
@@ -1083,11 +1068,11 @@ filter_settings "collapsetoc" {
 <!-- l. 1113 -->
 <p class='noindent'></p>
 <dl class='description'>
-<dt class='description'><a id='x1-42001x7.6'></a> <span class='ec-lmbx-10'>extensions</span></dt>
+<dt class='description'><a id='x1-42001x7.6'></a> <span class='rm-lmbx-10'>extensions</span></dt>
 <dd class='description'><!-- l. 1114 -->
 <p class='noindent'>table with list of image extensions that should be processed.</p>
 </dd>
-<dt class='description'><a id='x1-42002x7.6'></a> <span class='ec-lmbx-10'>img_dir</span></dt>
+<dt class='description'><a id='x1-42002x7.6'></a> <span class='rm-lmbx-10'>img_dir</span></dt>
 <dd class='description'><!-- l. 1116 -->
 <p class='noindent'>name of the output directory where images should be stored</p>
 </dd>
@@ -1106,7 +1091,7 @@ filter_settings "collapsetoc" {
 <!-- l. 1132 -->
 <p class='noindent'></p>
 <dl class='description'>
-<dt class='description'><a id='x1-43001x7.7'></a> <span class='ec-lmbx-10'>inline_elements</span></dt>
+<dt class='description'><a id='x1-43001x7.7'></a> <span class='rm-lmbx-10'>inline_elements</span></dt>
 <dd class='description'><!-- l. 1133 -->
 <p class='noindent'>table of inline elements that shouldn’t be direct descendants of the <span class='ec-lmtt-10'>body</span> element. The element names should be table keys, the values should be true.</p>
 </dd>
@@ -1122,7 +1107,7 @@ filter_settings "fixinlines" {inline_elements = {a = true, b = true}}
 <!-- l. 1148 -->
 <p class='noindent'></p>
 <dl class='description'>
-<dt class='description'><a id='x1-44001x7.8'></a> <span class='ec-lmbx-10'>charclasses</span></dt>
+<dt class='description'><a id='x1-44001x7.8'></a> <span class='rm-lmbx-10'>charclasses</span></dt>
 <dd class='description'><!-- l. 1149 -->
 <p class='noindent'>table of elements that should be concatenated when two or more of such elements with the same value of the <span class='ec-lmtt-10'>class</span> attribute are placed one after another.</p>
 </dd>
@@ -1146,7 +1131,7 @@ make4ht -f html5+mjcli filename.tex "mathjax"
 <!-- l. 1174 -->
 <p class='noindent'></p>
 <dl class='description'>
-<dt class='description'><a id='x1-46001x7.9.1'></a> <span class='ec-lmbx-10'>options</span></dt>
+<dt class='description'><a id='x1-46001x7.9.1'></a> <span class='rm-lmbx-10'>options</span></dt>
 <dd class='description'><!-- l. 1175 -->
 <p class='noindent'>command line options for the <span class='ec-lmtt-10'>mjcli</span> command.</p>
 </dd>
@@ -1163,11 +1148,11 @@ filter_settings "mjcli" {
 <!-- l. 1187 -->
 <p class='indent'></p>
 <dl class='description'>
-<dt class='description'><a id='x1-46002x7.9.1'></a> <span class='ec-lmbx-10'>cssfilename</span></dt>
+<dt class='description'><a id='x1-46002x7.9.1'></a> <span class='rm-lmbx-10'>cssfilename</span></dt>
 <dd class='description'><!-- l. 1188 -->
 <p class='noindent'>the <span class='ec-lmtt-10'>mjcli</span> command puts some CSS code into the HTML pages. The <span class='ec-lmtt-10'>mjcli</span> filter extracts this information and saves it to a standalone CSS file. Default name of this CSS file is <span class='ec-lmtt-10'>${input}-mathjax.css</span></p>
 </dd>
-<dt class='description'><a id='x1-46003x7.9.1'></a> <span class='ec-lmbx-10'>fontdir</span></dt>
+<dt class='description'><a id='x1-46003x7.9.1'></a> <span class='rm-lmbx-10'>fontdir</span></dt>
 <dd class='description'><!-- l. 1193 -->
 <p class='noindent'>directory with MathJax font files. This option enables the use of local fonts, which is useful in the conversion to ePub, for example. The font directory should be sub-directory of the current directory. Only TeX&nbsp;font is supported at the moment.</p>
 </dd>
@@ -1185,23 +1170,23 @@ filter_settings "mjcli" {
 <!-- l. 1211 -->
 <p class='noindent'></p>
 <dl class='description'>
-<dt class='description'><a id='x1-47001x7.10'></a> <span class='ec-lmbx-10'>site_root</span></dt>
+<dt class='description'><a id='x1-47001x7.10'></a> <span class='rm-lmbx-10'>site_root</span></dt>
 <dd class='description'><!-- l. 1212 -->
 <p class='noindent'>directory where generated files should be copied.</p>
 </dd>
-<dt class='description'><a id='x1-47002x7.10'></a> <span class='ec-lmbx-10'>map</span></dt>
+<dt class='description'><a id='x1-47002x7.10'></a> <span class='rm-lmbx-10'>map</span></dt>
 <dd class='description'><!-- l. 1214 -->
 <p class='noindent'>a hash table where keys contain patterns that match filenames and values contain destination directory for the matched files. The destination directories are relative to the <span class='ec-lmtt-10'>site_root</span> (it is possible to use <span class='ec-lmtt-10'>..</span> to switch to a parent directory).</p>
 </dd>
-<dt class='description'><a id='x1-47003x7.10'></a> <span class='ec-lmbx-10'>file_pattern</span></dt>
+<dt class='description'><a id='x1-47003x7.10'></a> <span class='rm-lmbx-10'>file_pattern</span></dt>
 <dd class='description'><!-- l. 1219 -->
 <p class='noindent'>a pattern used for filename generation. It is possible to use string templates and format strings for <span class='ec-lmtt-10'>os.date</span> function. The default pattern <span class='ec-lmtt-10'>%Y-%m-%d-${input}</span> creates names in the form of <span class='ec-lmtt-10'>YYYY-MM-DD-file_name</span>.</p>
 </dd>
-<dt class='description'><a id='x1-47004x7.10'></a> <span class='ec-lmbx-10'>header</span></dt>
+<dt class='description'><a id='x1-47004x7.10'></a> <span class='rm-lmbx-10'>header</span></dt>
 <dd class='description'><!-- l. 1224 -->
 <p class='noindent'>table with variables to be set in the YAML header in HTML files. If the table value is a function, it is executed with current parameters and HTML page DOM object as arguments.</p>
 </dd>
-<dt class='description'><a id='x1-47005x7.10'></a> <span class='ec-lmbx-10'>remove_maketitle</span></dt>
+<dt class='description'><a id='x1-47005x7.10'></a> <span class='rm-lmbx-10'>remove_maketitle</span></dt>
 <dd class='description'><!-- l. 1228 -->
 <p class='noindent'>the <span class='ec-lmtt-10'>staticsite</span> extension removes text produced by the <span class='ec-lmtt-10'>\maketitle</span> command by default. Set this option to <span class='ec-lmtt-10'>false</span> to disable the removal.</p>
 </dd>
@@ -1232,27 +1217,27 @@ filter_settings "staticsite" {
 <!-- l. 1258 -->
 <p class='noindent'></p>
 <dl class='description'>
-<dt class='description'><a id='x1-48001x7.11'></a> <span class='ec-lmbx-10'>options</span></dt>
+<dt class='description'><a id='x1-48001x7.11'></a> <span class='rm-lmbx-10'>options</span></dt>
 <dd class='description'><!-- l. 1259 -->
 <p class='noindent'>command line options for Dvisvgm. The default value is <span class='ec-lmtt-10'>-n&nbsp;--exact&nbsp;-c&nbsp;${scale},${scale}</span>.</p>
 </dd>
-<dt class='description'><a id='x1-48002x7.11'></a> <span class='ec-lmbx-10'>cpu_cnt</span></dt>
+<dt class='description'><a id='x1-48002x7.11'></a> <span class='rm-lmbx-10'>cpu_cnt</span></dt>
 <dd class='description'><!-- l. 1262 -->
 <p class='noindent'>the number of processor cores used for the conversion. The extension tries to detect the available cores automatically by default.</p>
 </dd>
-<dt class='description'><a id='x1-48003x7.11'></a> <span class='ec-lmbx-10'>make_command</span></dt>
+<dt class='description'><a id='x1-48003x7.11'></a> <span class='rm-lmbx-10'>make_command</span></dt>
 <dd class='description'><!-- l. 1265 -->
 <p class='noindent'>variant of the <span class='ec-lmtt-10'>make</span> command used for the parallel conversion of large number of pages. It receives tvo variables, <span class='ec-lmtt-10'>process_count</span> and <span class='ec-lmtt-10'>make_file</span>. Default value is “make -j ${process_count} -f ${make_file}”.</p>
 </dd>
-<dt class='description'><a id='x1-48004x7.11'></a> <span class='ec-lmbx-10'>test_make_command</span></dt>
+<dt class='description'><a id='x1-48004x7.11'></a> <span class='rm-lmbx-10'>test_make_command</span></dt>
 <dd class='description'><!-- l. 1270 -->
 <p class='noindent'>command that tests if the selected variant of the <span class='ec-lmtt-10'>make</span> command exists. Default value is <span class='ec-lmtt-10'>make&nbsp;-v</span>.</p>
 </dd>
-<dt class='description'><a id='x1-48005x7.11'></a> <span class='ec-lmbx-10'>parallel_size</span></dt>
+<dt class='description'><a id='x1-48005x7.11'></a> <span class='rm-lmbx-10'>parallel_size</span></dt>
 <dd class='description'><!-- l. 1273 -->
 <p class='noindent'>the number of pages used in each Dvisvgm call. The extension detects changed pages in the DVI file and constructs multiple calls to Dvisvgm with only changed pages.</p>
 </dd>
-<dt class='description'><a id='x1-48006x7.11'></a> <span class='ec-lmbx-10'>scale</span></dt>
+<dt class='description'><a id='x1-48006x7.11'></a> <span class='rm-lmbx-10'>scale</span></dt>
 <dd class='description'><!-- l. 1277 -->
 <p class='noindent'>amount of SVG scaling. The default value is 1.4.</p>
 </dd>
@@ -1261,7 +1246,7 @@ filter_settings "staticsite" {
 <!-- l. 1284 -->
 <p class='noindent'></p>
 <dl class='description'>
-<dt class='description'><a id='x1-49001x7.12'></a> <span class='ec-lmbx-10'>template</span></dt>
+<dt class='description'><a id='x1-49001x7.12'></a> <span class='rm-lmbx-10'>template</span></dt>
 <dd class='description'><!-- l. 1285 -->
 <p class='noindent'>filename of the template <span class='ec-lmtt-10'>ODT</span> file</p>
 </dd>
@@ -1277,15 +1262,15 @@ filter_settings "staticsite" {
 <!-- l. 1300 -->
 <p class='noindent'></p>
 <dl class='description'>
-<dt class='description'><a id='x1-50001x7.13'></a> <span class='ec-lmbx-10'>skip_elements</span></dt>
+<dt class='description'><a id='x1-50001x7.13'></a> <span class='rm-lmbx-10'>skip_elements</span></dt>
 <dd class='description'><!-- l. 1301 -->
 <p class='noindent'>List of CSS selectors that match elements that shouldn’t be processed. Default value: <span class='ec-lmtt-10'>{&nbsp;"math",&nbsp;"svg"}</span>.</p>
 </dd>
-<dt class='description'><a id='x1-50002x7.13'></a> <span class='ec-lmbx-10'>id_prefix</span></dt>
+<dt class='description'><a id='x1-50002x7.13'></a> <span class='rm-lmbx-10'>id_prefix</span></dt>
 <dd class='description'><!-- l. 1304 -->
 <p class='noindent'>prefix used in the ID attribute forming.</p>
 </dd>
-<dt class='description'><a id='x1-50003x7.13'></a> <span class='ec-lmbx-10'>sentence_match</span></dt>
+<dt class='description'><a id='x1-50003x7.13'></a> <span class='rm-lmbx-10'>sentence_match</span></dt>
 <dd class='description'><!-- l. 1306 -->
 <p class='noindent'>Lua pattern used to match a sentence. Default value: <span class='ec-lmtt-10'>"([^%.^%?^!]*)([%.%?!]?)"</span>.</p>
 </dd>
@@ -1298,15 +1283,15 @@ filter_settings "staticsite" {
 <!-- l. 1320 -->
 <p class='indent'></p>
 <dl class='description'>
-<dt class='description'><a id='x1-51001x7.14'></a> <span class='ec-lmbx-10'>write_job(parameters)</span></dt>
+<dt class='description'><a id='x1-51001x7.14'></a> <span class='rm-lmbx-10'>write_job(parameters)</span></dt>
 <dd class='description'><!-- l. 1321 -->
 <p class='noindent'>write Aenas job configuration to <span class='ec-lmtt-10'>config.xml</span> file. See the <a href='https://www.readbeyond.it/aeneas/docs/clitutorial.html#processing-jobs'>Aeneas documentation</a> for more information about jobs.</p>
 </dd>
-<dt class='description'><a id='x1-51002x7.14'></a> <span class='ec-lmbx-10'>execute(parameters)</span></dt>
+<dt class='description'><a id='x1-51002x7.14'></a> <span class='rm-lmbx-10'>execute(parameters)</span></dt>
 <dd class='description'><!-- l. 1325 -->
 <p class='noindent'>execute Aeneas.</p>
 </dd>
-<dt class='description'><a id='x1-51003x7.14'></a> <span class='ec-lmbx-10'>process_files(parameters)</span></dt>
+<dt class='description'><a id='x1-51003x7.14'></a> <span class='rm-lmbx-10'>process_files(parameters)</span></dt>
 <dd class='description'><!-- l. 1327 -->
 <p class='noindent'>process the audio and generated subtitle files.</p>
 </dd>
@@ -1319,27 +1304,27 @@ filter_settings "staticsite" {
 <!-- l. 1341 -->
 <p class='noindent'></p>
 <dl class='description'>
-<dt class='description'><a id='x1-52001x7.14.1'></a> <span class='ec-lmbx-10'>lang</span></dt>
+<dt class='description'><a id='x1-52001x7.14.1'></a> <span class='rm-lmbx-10'>lang</span></dt>
 <dd class='description'><!-- l. 1342 -->
 <p class='noindent'>document language. It is interfered from the HTML file, so it is not necessary to set it.</p>
 </dd>
-<dt class='description'><a id='x1-52002x7.14.1'></a> <span class='ec-lmbx-10'>map</span></dt>
+<dt class='description'><a id='x1-52002x7.14.1'></a> <span class='rm-lmbx-10'>map</span></dt>
 <dd class='description'><!-- l. 1345 -->
 <p class='noindent'>mapping between HTML, audio and subtitle files. More info below.</p>
 </dd>
-<dt class='description'><a id='x1-52003x7.14.1'></a> <span class='ec-lmbx-10'>text_type</span></dt>
+<dt class='description'><a id='x1-52003x7.14.1'></a> <span class='rm-lmbx-10'>text_type</span></dt>
 <dd class='description'><!-- l. 1347 -->
 <p class='noindent'>type of input. The <span class='ec-lmtt-10'>aeneas</span> DOM filter produces an <span class='ec-lmtt-10'>unparsed</span> text type.</p>
 </dd>
-<dt class='description'><a id='x1-52004x7.14.1'></a> <span class='ec-lmbx-10'>id_sort</span></dt>
+<dt class='description'><a id='x1-52004x7.14.1'></a> <span class='rm-lmbx-10'>id_sort</span></dt>
 <dd class='description'><!-- l. 1350 -->
 <p class='noindent'>sorting of id attributes. The default value is <span class='ec-lmtt-10'>numeric</span>.</p>
 </dd>
-<dt class='description'><a id='x1-52005x7.14.1'></a> <span class='ec-lmbx-10'>id_regex</span></dt>
+<dt class='description'><a id='x1-52005x7.14.1'></a> <span class='rm-lmbx-10'>id_regex</span></dt>
 <dd class='description'><!-- l. 1352 -->
 <p class='noindent'>regular expression to parse the id attributes.</p>
 </dd>
-<dt class='description'><a id='x1-52006x7.14.1'></a> <span class='ec-lmbx-10'>sub_format</span></dt>
+<dt class='description'><a id='x1-52006x7.14.1'></a> <span class='rm-lmbx-10'>sub_format</span></dt>
 <dd class='description'><!-- l. 1354 -->
 <p class='noindent'>generated subtitle format. The default value is <span class='ec-lmtt-10'>smil</span>.</p>
 </dd>
@@ -1375,11 +1360,11 @@ filter_settings "aeneas-config" {
 <!-- l. 1405 -->
 <p class='noindent'></p>
 <dl class='description'>
-<dt class='description'><a id='x1-54001x7.14.3'></a> <span class='ec-lmbx-10'>audio_file</span></dt>
+<dt class='description'><a id='x1-54001x7.14.3'></a> <span class='rm-lmbx-10'>audio_file</span></dt>
 <dd class='description'><!-- l. 1406 -->
 <p class='noindent'>the corresponding audio file</p>
 </dd>
-<dt class='description'><a id='x1-54002x7.14.3'></a> <span class='ec-lmbx-10'>sub_file</span></dt>
+<dt class='description'><a id='x1-54002x7.14.3'></a> <span class='rm-lmbx-10'>sub_file</span></dt>
 <dd class='description'><!-- l. 1408 -->
 <p class='noindent'>name of the generated subtitle file</p>
 </dd>
@@ -1468,421 +1453,428 @@ LaTeX&nbsp;conversion. It creates <span class='ec-lmtt-10'>\hypertarget</span> c
 <h3 class='sectionHead' id='changelog'><span class='titlemark'>10</span> <a id='x1-6200010'></a>Changelog</h3>
 <ul class='itemize1'>
 <li class='itemize'><!-- l. 5 -->
+<p class='noindent'>2026/01/29</p>
+<ul class='itemize2'>
+<li class='itemize'>removed the <span class='ec-lmtt-10'>&lt;script&gt;</span> element from list of inline elements in the <span class='ec-lmtt-10'>fixinlines</span> DOM filter.</li>
+<li class='itemize'>use <span class='ec-lmtt-10'>article</span> instead of <span class='ec-lmtt-10'>ltxdoc</span> class, because the latter results in infinite loop with some verbatims.</li>
+</ul>
+</li>
+<li class='itemize'><!-- l. 17 -->
 <p class='noindent'>2025/10/01</p>
 <ul class='itemize2'>
 <li class='itemize'>added the <span class='ec-lmtt-10'>tablecaption</span> DOM filter. It moves <span class='ec-lmtt-10'>&lt;caption&gt;</span> elements as the first child of <span class='ec-lmtt-10'>&lt;table&gt;</span>, to create a valid HTML code. https://puszcza.gnu.org.ua/bugs/index.php?315</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 16 -->
+<li class='itemize'><!-- l. 28 -->
 <p class='noindent'>2025/08/16</p>
 <ul class='itemize2'>
 <li class='itemize'>added support for the MathML <span class='ec-lmtt-10'>intent</span> and <span class='ec-lmtt-10'>arg</span> attributes in the <span class='ec-lmtt-10'>mathml-fixes</span> DOM filter.</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 25 -->
+<li class='itemize'><!-- l. 37 -->
 <p class='noindent'>2025/08/14</p>
 <ul class='itemize2'>
 <li class='itemize'>produce fatal error if <span class='ec-lmtt-10'>Make:autohtlatex</span> fails.</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 33 -->
+<li class='itemize'><!-- l. 45 -->
 <p class='noindent'>2025/06/27</p>
 <ul class='itemize2'>
 <li class='itemize'>fixed <span class='ec-lmtt-10'>latexmk_build</span> extension to work with the current build process.</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 42 -->
+<li class='itemize'><!-- l. 54 -->
 <p class='noindent'>2025/06/02</p>
 <ul class='itemize2'>
 <li class='itemize'>use <span class='ec-lmtt-10'>--embed-bitmaps</span> option for <span class='ec-lmtt-10'>dvisvgm</span> in the <span class='ec-lmtt-10'>dvisvgm_hashes</span> extension.</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 51 -->
+<li class='itemize'><!-- l. 63 -->
 <p class='noindent'>2025/04/16</p>
 <ul class='itemize2'>
 <li class='itemize'>added support for numbers in <span class='ec-lmtt-10'>id</span> attributes created by the <span class='ec-lmtt-10'>sectionid</span> DOM filter.</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 60 -->
+<li class='itemize'><!-- l. 72 -->
 <p class='noindent'>2025/04/14</p>
 <ul class='itemize2'>
 <li class='itemize'>version <span class='ec-lmtt-10'>0.4d</span> released.</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 68 -->
+<li class='itemize'><!-- l. 80 -->
 <p class='noindent'>2025/04/11</p>
 <ul class='itemize2'>
 <li class='itemize'>support <span class='ec-lmtt-10'>--build-dir</span> in <span class='ec-lmtt-10'>autohtlatex</span></li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 76 -->
+<li class='itemize'><!-- l. 88 -->
 <p class='noindent'>2025/03/12</p>
 <ul class='itemize2'>
 <li class='itemize'>added <span class='ec-lmtt-10'>Make:autohtlatex</span> function to automate LaTeX&nbsp;compilation, ensuring repeated runs until temporary file checksums stabilize or a max limit is reached. This function is used by default instead of <span class='ec-lmtt-10'>Make:htlatex</span>.</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 87 -->
+<li class='itemize'><!-- l. 99 -->
 <p class='noindent'>2025/03/02</p>
 <ul class='itemize2'>
 <li class='itemize'>fixed bug in the <span class='ec-lmtt-10'>make4ht-indexing</span> library. If subentries generated by Xindex keywords were only numbers, they were mistaken for the page numbers. https://tug.org/pipermail/tex4ht/2025q1/003699.html</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 98 -->
+<li class='itemize'><!-- l. 110 -->
 <p class='noindent'>2025/02/19</p>
 <ul class='itemize2'>
 <li class='itemize'>version <span class='ec-lmtt-10'>0.4c</span> released.</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 106 -->
+<li class='itemize'><!-- l. 118 -->
 <p class='noindent'>2025/02/03</p>
 <ul class='itemize2'>
 <li class='itemize'>added the <span class='ec-lmtt-10'>nodynamicodt</span> extension. It removes dynamic content from ODT files. https://puszcza.gnu.org.ua/bugs/?505#discussion</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 116 -->
+<li class='itemize'><!-- l. 128 -->
 <p class='noindent'>2025/01/15</p>
 <ul class='itemize2'>
 <li class='itemize'>fixed handling of commands with number as optional arguments in the <span class='ec-lmtt-10'>make4ht-indexing</span> library. https://fosstodon.org/@juergen_hubert@thefolklore.cafe/113809011903088411</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 126 -->
+<li class='itemize'><!-- l. 138 -->
 <p class='noindent'>2025/01/09</p>
 <ul class='itemize2'>
 <li class='itemize'>convert horizontal rules in MathML arrays to the <span class='ec-lmtt-10'>rowlines</span> attribute. https://tex.stackexchange.com/a/734616/2891</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 135 -->
+<li class='itemize'><!-- l. 147 -->
 <p class='noindent'>2025/01/06</p>
 <ul class='itemize2'>
 <li class='itemize'>use Unicode characters for MathML font styles. https://tex.stackexchange.com/a/734331/2891</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 144 -->
+<li class='itemize'><!-- l. 156 -->
 <p class='noindent'>2024/12/23</p>
 <ul class='itemize2'>
 <li class='itemize'>fixed bug in the <span class='ec-lmtt-10'>make4ht-indexing</span> library. It didn’t handle index entries with the duplicate locator number that were broken over several lines correctly. https://tex.stackexchange.com/a/733106/2891</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 155 -->
+<li class='itemize'><!-- l. 167 -->
 <p class='noindent'>2024/12/20</p>
 <ul class='itemize2'>
 <li class='itemize'>remove duplicate index locators in the <span class='ec-lmtt-10'>make4ht-indexing</span> library. https://tex.stackexchange.com/a/733106/2891</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 164 -->
+<li class='itemize'><!-- l. 176 -->
 <p class='noindent'>2024/12/19</p>
 <ul class='itemize2'>
 <li class='itemize'>fixed fatal error caused by handling comments in the <span class='ec-lmtt-10'>fixinlines</span> DOM filter.</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 173 -->
+<li class='itemize'><!-- l. 185 -->
 <p class='noindent'>2024/12/17</p>
 <ul class='itemize2'>
 <li class='itemize'>keep track of braces around index entries page numbers. https://tex.stackexchange.com/a/733106/2891</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 182 -->
+<li class='itemize'><!-- l. 194 -->
 <p class='noindent'>2024/12/08</p>
 <ul class='itemize2'>
 <li class='itemize'>support other index locators than index command counters. https://tex.stackexchange.com/a/732446/2891</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 191 -->
+<li class='itemize'><!-- l. 203 -->
 <p class='noindent'>2024/12/05</p>
 <ul class='itemize2'>
 <li class='itemize'>recognize inline math and comments as inline content in the <span class='ec-lmtt-10'>fixinlines</span> DOM filter.</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 200 -->
+<li class='itemize'><!-- l. 212 -->
 <p class='noindent'>2024/11/09</p>
 <ul class='itemize2'>
 <li class='itemize'>fixed <span class='ec-lmtt-10'>tablerows</span> for longtables longer than 200 rows. https://tex.stackexchange.com/a/730466/2891</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 209 -->
+<li class='itemize'><!-- l. 221 -->
 <p class='noindent'>2024/10/22</p>
 <ul class='itemize2'>
 <li class='itemize'>version <span class='ec-lmtt-10'>0.4b</span> released.</li>
 <li class='itemize'>test for the existence of the class atribute of tables before performing string matches in the <span class='ec-lmtt-10'>tablerows</span> DOM filter.</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 220 -->
+<li class='itemize'><!-- l. 232 -->
 <p class='noindent'>2024/10/21</p>
 <ul class='itemize2'>
 <li class='itemize'>version <span class='ec-lmtt-10'>0.4a</span> released.</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 228 -->
+<li class='itemize'><!-- l. 240 -->
 <p class='noindent'>2024/09/30</p>
 <ul class='itemize2'>
 <li class='itemize'>remove last empty row in <span class='ec-lmtt-10'>longtable</span> environments.</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 236 -->
+<li class='itemize'><!-- l. 248 -->
 <p class='noindent'>2024/09/25</p>
 <ul class='itemize2'>
 <li class='itemize'>added <span class='ec-lmtt-10'>make4ht-char-def</span> library to remove dependency on <span class='ec-lmtt-10'>char-def</span> from ConTeXt. It is used by the <span class='ec-lmtt-10'>sectionid</span> DOM filter. The library is automatically created from UnicodeData.txt by <span class='ec-lmtt-10'>tools/make_chardata.lua</span>. https://tex.stackexchange.com/q/727202/2891</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 248 -->
+<li class='itemize'><!-- l. 260 -->
 <p class='noindent'>2024/09/18</p>
 <ul class='itemize2'>
 <li class='itemize'>print error messages from the <span class='ec-lmtt-10'>log</span> file.</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 256 -->
+<li class='itemize'><!-- l. 268 -->
 <p class='noindent'>2024/08/22</p>
 <ul class='itemize2'>
 <li class='itemize'>print debug message with XML parsing error context</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 264 -->
+<li class='itemize'><!-- l. 276 -->
 <p class='noindent'>2024/08/21</p>
 <ul class='itemize2'>
 <li class='itemize'>try the HTML parser for DOM filters if XML parser fails.</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 272 -->
+<li class='itemize'><!-- l. 284 -->
 <p class='noindent'>2024/06/18</p>
 <ul class='itemize2'>
 <li class='itemize'>changed default scaling in <span class='ec-lmtt-10'>dvisvgm_hashes</span> to 1.4.</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 280 -->
+<li class='itemize'><!-- l. 292 -->
 <p class='noindent'>2024/06/17</p>
 <ul class='itemize2'>
 <li class='itemize'>fixed support for index entries that are broken over several lines.</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 288 -->
+<li class='itemize'><!-- l. 300 -->
 <p class='noindent'>2024/05/29</p>
 <ul class='itemize2'>
 <li class='itemize'>create temporary Lg file for Xtpipes. https://github.com/michal-h21/make4ht/issues/148#issuecomment-2136160818</li>
 <li class='itemize'>fixed handling of the generated ODT file, don’t copy it unnecessarily and handle build and output directories. https://github.com/michal-h21/make4ht/issues/148#issuecomment-2136160818</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 301 -->
+<li class='itemize'><!-- l. 313 -->
 <p class='noindent'>2024/04/23</p>
 <ul class='itemize2'>
 <li class='itemize'>test if referenced files are contained in the <span class='ec-lmtt-10'>build-dir</span> directory, use the current dir otherwise. https://github.com/michal-h21/tex4ebook/issues/126</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 311 -->
+<li class='itemize'><!-- l. 323 -->
 <p class='noindent'>2024/04/16</p>
 <ul class='itemize2'>
 <li class='itemize'>fixed bug in <span class='ec-lmtt-10'>dvisvgm_hashes</span> log parsing. On Windows, it didn’t expect <span class='ec-lmtt-10'>\r</span> characters at the line ends, they then ended in new SVG filenames.</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 321 -->
+<li class='itemize'><!-- l. 333 -->
 <p class='noindent'>2024/04/15</p>
 <ul class='itemize2'>
 <li class='itemize'>made the <span class='ec-lmtt-10'>make</span> command used in the <span class='ec-lmtt-10'>dvisvgm_hashes</span> extension configurable. https://tex.stackexchange.com/q/715633/2891</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 330 -->
+<li class='itemize'><!-- l. 342 -->
 <p class='noindent'>2024/03/29</p>
 <ul class='itemize2'>
 <li class='itemize'>ignore numbers in braces in <span class='ec-lmtt-10'>make4ht-indexing</span> library. https://tex.stackexchange.com/q/714247/2891</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 339 -->
+<li class='itemize'><!-- l. 351 -->
 <p class='noindent'>2024/02/22</p>
 <ul class='itemize2'>
 <li class='itemize'>version <span class='ec-lmtt-10'>0.4</span> released</li>
 <li class='itemize'>fixed name of the <span class='ec-lmtt-10'>&lt;title-group&gt;</span> element in JATS output.</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 350 -->
+<li class='itemize'><!-- l. 362 -->
 <p class='noindent'>2024/02/21</p>
 <ul class='itemize2'>
 <li class='itemize'>add standalone minus sign to the <span class='ec-lmtt-10'>&lt;mn&gt;</span> element in MathML.</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 359 -->
+<li class='itemize'><!-- l. 371 -->
 <p class='noindent'>2024/01/26</p>
 <ul class='itemize2'>
 <li class='itemize'>fixed passing of the params table in the <span class='ec-lmtt-10'>staticsite</span> extension.</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 368 -->
+<li class='itemize'><!-- l. 380 -->
 <p class='noindent'>2024/01/22</p>
 <ul class='itemize2'>
 <li class='itemize'>don’t enable parsing of void elements in DOM filter with XML output formats.</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 377 -->
+<li class='itemize'><!-- l. 389 -->
 <p class='noindent'>2023/12/15</p>
 <ul class='itemize2'>
 <li class='itemize'>call <span class='ec-lmtt-10'>fix_rel_mo</span> MathML fix only in the ODT output.</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 385 -->
+<li class='itemize'><!-- l. 397 -->
 <p class='noindent'>2023/12/11</p>
 <ul class='itemize2'>
 <li class='itemize'>fixed handling of the <span class='ec-lmtt-10'>--build-dir</span> argument in <span class='ec-lmtt-10'>dvisvgm_hashes</span> extension.</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 394 -->
+<li class='itemize'><!-- l. 406 -->
 <p class='noindent'>2023/11/03</p>
 <ul class='itemize2'>
 <li class='itemize'>remove leading dashes in ids created by the <span class='ec-lmtt-10'>sectionid</span> DOM filter.</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 403 -->
+<li class='itemize'><!-- l. 415 -->
 <p class='noindent'>2023/10/26</p>
 <ul class='itemize2'>
 <li class='itemize'>check that removed elements in the <span class='ec-lmtt-10'>sectionid</span> DOM filter are <span class='ec-lmtt-10'>&lt;a&gt;</span> elements.</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 412 -->
+<li class='itemize'><!-- l. 424 -->
 <p class='noindent'>2023/10/25</p>
 <ul class='itemize2'>
 <li class='itemize'>fixed addition of named IDs to figures.</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 420 -->
+<li class='itemize'><!-- l. 432 -->
 <p class='noindent'>2023/10/19</p>
 <ul class='itemize2'>
 <li class='itemize'>print info about packages with no corresponding <span class='ec-lmtt-10'>.4ht</span> file.</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 428 -->
+<li class='itemize'><!-- l. 440 -->
 <p class='noindent'>2023/10/05</p>
 <ul class='itemize2'>
 <li class='itemize'>added fix for LibreOffice’s bug regarding relation type math operators.</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 437 -->
+<li class='itemize'><!-- l. 449 -->
 <p class='noindent'>2023/10/03</p>
 <ul class='itemize2'>
 <li class='itemize'>fixed most features that didn’t work with the <span class='ec-lmtt-10'>--build-dir</span> argument.</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 446 -->
+<li class='itemize'><!-- l. 458 -->
 <p class='noindent'>2023/10/02</p>
 <ul class='itemize2'>
 <li class='itemize'>working on new command line argument <span class='ec-lmtt-10'>--build-dir</span>. It should allow moving of temporary files to a temporary directory. The idea and most of the code comes from Robin Seth Ekman.</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 456 -->
+<li class='itemize'><!-- l. 468 -->
 <p class='noindent'>2023/09/07</p>
 <ul class='itemize2'>
 <li class='itemize'>fix spacing for the <span class='ec-lmtt-10'>dcases*</span> environment in the <span class='ec-lmtt-10'>mathml_fixes</span> DOM filter.</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 465 -->
+<li class='itemize'><!-- l. 477 -->
 <p class='noindent'>2023/08/24</p>
 <ul class='itemize2'>
 <li class='itemize'>support non-numerical values in index entry destinations (for example roman numerals).</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 474 -->
+<li class='itemize'><!-- l. 486 -->
 <p class='noindent'>2023/08/22</p>
 <ul class='itemize2'>
 <li class='itemize'>updated list of DOM filters used by the <span class='ec-lmtt-10'>common_domfilters</span> extension, and documented that it is used automatically in the HTML output.</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 484 -->
+<li class='itemize'><!-- l. 496 -->
 <p class='noindent'>2023/08/12</p>
 <ul class='itemize2'>
 <li class='itemize'>remove unnecessary <span class='ec-lmtt-10'>&lt;a&gt;</span> elements with <span class='ec-lmtt-10'>id</span> attributes and set the <span class='ec-lmtt-10'>id</span> on the parent.</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 493 -->
+<li class='itemize'><!-- l. 505 -->
 <p class='noindent'>2023/07/06</p>
 <ul class='itemize2'>
 <li class='itemize'>add prefix to section IDs if the section name is empty.</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 501 -->
+<li class='itemize'><!-- l. 513 -->
 <p class='noindent'>2023/06/20</p>
 <ul class='itemize2'>
 <li class='itemize'>added the <span class='ec-lmtt-10'>copy_images</span> extension.</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 509 -->
+<li class='itemize'><!-- l. 521 -->
 <p class='noindent'>2023/06/14</p>
 <ul class='itemize2'>
 <li class='itemize'>fixed bug in the <span class='ec-lmtt-10'>mathmlfixes</span> DOM filter – non-empty last rows were removed if they contained only one element.</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 518 -->
+<li class='itemize'><!-- l. 530 -->
 <p class='noindent'>2023/05/26</p>
 <ul class='itemize2'>
 <li class='itemize'>load <span class='ec-lmtt-10'>tex4ht.sty</span> before input file processing starts.</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 526 -->
+<li class='itemize'><!-- l. 538 -->
 <p class='noindent'>2023/04/19</p>
 <ul class='itemize2'>
 <li class='itemize'>handle additional characters in the <span class='ec-lmtt-10'>idcolons</span> DOM filter.</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 534 -->
+<li class='itemize'><!-- l. 546 -->
 <p class='noindent'>2023/04/06</p>
 <ul class='itemize2'>
 <li class='itemize'>fixed handling of ID attributes in the <span class='ec-lmtt-10'>idcolons</span> DOM filter.</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 542 -->
+<li class='itemize'><!-- l. 554 -->
 <p class='noindent'>2023/03/07</p>
 <ul class='itemize2'>
 <li class='itemize'>remove empty rows in <span class='ec-lmtt-10'>longtable</span>.</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 550 -->
+<li class='itemize'><!-- l. 562 -->
 <p class='noindent'>2023/02/24</p>
 <ul class='itemize2'>
 <li class='itemize'>version <span class='ec-lmtt-10'>0.3k</span> released.</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 558 -->
+<li class='itemize'><!-- l. 570 -->
 <p class='noindent'>2023/01/09</p>
 <ul class='itemize2'>
 <li class='itemize'>fixed detection of image file names in <span class='ec-lmtt-10'>mkutils.parse_lg()</span></li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 566 -->
+<li class='itemize'><!-- l. 578 -->
 <p class='noindent'>2022/11/25</p>
 <ul class='itemize2'>
 <li class='itemize'>reverted change of index page numbers, it was buggy</li>
 <li class='itemize'>test if the <span class='ec-lmtt-10'>.idx</span> file exists.</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 576 -->
+<li class='itemize'><!-- l. 588 -->
 <p class='noindent'>2022/11/24</p>
 <ul class='itemize2'>
 <li class='itemize'><span class='ec-lmtt-10'>make4ht-indexing</span>: fixed handling of numbers in index entries text.</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 585 -->
+<li class='itemize'><!-- l. 597 -->
 <p class='noindent'>2022/11/01</p>
 <ul class='itemize2'>
 <li class='itemize'>remove empty last rows in MathML tables.</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 593 -->
+<li class='itemize'><!-- l. 605 -->
 <p class='noindent'>2022/10/21</p>
 <ul class='itemize2'>
 <li class='itemize'>added the <span class='ec-lmtt-10'>inlinecss</span> DOM filter and extension with the same name.</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 602 -->
+<li class='itemize'><!-- l. 614 -->
 <p class='noindent'>2022/09/29</p>
 <ul class='itemize2'>
 <li class='itemize'>the <span class='ec-lmtt-10'>join_characters</span> DOM filter now shouldn’t produce extra <span class='ec-lmtt-10'>&lt;span&gt;</span> elements after white space.</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 611 -->
+<li class='itemize'><!-- l. 623 -->
 <p class='noindent'>2022/09/16</p>
 <ul class='itemize2'>
 <li class='itemize'>use the <span class='ec-lmtt-10'>no^</span> option to compile the <span class='ec-lmtt-10'>make4ht</span> HTML docs, to prevent clash with the Doc package.</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 620 -->
+<li class='itemize'><!-- l. 632 -->
 <p class='noindent'>2022/07/22</p>
 <ul class='itemize2'>
-<li class='itemize'><!-- l. 625 -->
+<li class='itemize'><!-- l. 637 -->
 <p class='noindent'><span class='ec-lmtt-10'>mathmlfixes</span> DOM filter:</p>
 <ul class='itemize3'>
 <li class='itemize'>don’t change <span class='ec-lmtt-10'>&lt;mo&gt;</span> to <span class='ec-lmtt-10'>&lt;mtext&gt;</span> if the element contain the <span class='ec-lmtt-10'>stretchy</span> attribute.</li>
@@ -1891,121 +1883,121 @@ LaTeX&nbsp;conversion. It creates <span class='ec-lmtt-10'>\hypertarget</span> c
 </li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 640 -->
+<li class='itemize'><!-- l. 652 -->
 <p class='noindent'>2022/07/08</p>
 <ul class='itemize2'>
 <li class='itemize'>configure elements used in <span class='ec-lmtt-10'>join_characters</span> DOM filter.</li>
 <li class='itemize'>added support for the <span class='ec-lmtt-10'>mml:</span> prefix in <span class='ec-lmtt-10'>mathml_fixes</span> DOM filter.</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 651 -->
+<li class='itemize'><!-- l. 663 -->
 <p class='noindent'>2022/06/28</p>
 <ul class='itemize2'>
 <li class='itemize'>handle <span class='ec-lmtt-10'>\maketitle</span> in JATS.</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 659 -->
+<li class='itemize'><!-- l. 671 -->
 <p class='noindent'>2022/06/24</p>
 <ul class='itemize2'>
 <li class='itemize'>handle internal and external links in the JATS output.</li>
 <li class='itemize'>better detection of empty paragraphs.</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 669 -->
+<li class='itemize'><!-- l. 681 -->
 <p class='noindent'>2022/06/16</p>
 <ul class='itemize2'>
 <li class='itemize'>use DOM filters to fix JATS output.</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 677 -->
+<li class='itemize'><!-- l. 689 -->
 <p class='noindent'>2022/04/22</p>
 <ul class='itemize2'>
 <li class='itemize'>use more explicit options for <span class='ec-lmtt-10'>latexmk</span>.</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 685 -->
+<li class='itemize'><!-- l. 697 -->
 <p class='noindent'>2022/04/19</p>
 <ul class='itemize2'>
 <li class='itemize'>remove all <span class='ec-lmtt-10'>htlatex</span> calls from the build sequence when the <span class='ec-lmtt-10'>latexmk_build</span> extension is used.</li>
 <li class='itemize'>fixed other issues that caused spurious executions of <span class='ec-lmtt-10'>latexmk</span>.</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 697 -->
+<li class='itemize'><!-- l. 709 -->
 <p class='noindent'>2022/04/01</p>
 <ul class='itemize2'>
 <li class='itemize'>don’t copy files to the output dir if it wasn’t requested</li>
 <li class='itemize'>fixed copying of the ODT file to the output dir.</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 707 -->
+<li class='itemize'><!-- l. 719 -->
 <p class='noindent'>2022/03/29</p>
 <ul class='itemize2'>
 <li class='itemize'>check if tidy return non-empty string in the <span class='ec-lmtt-10'>tidy</span> extension.</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 716 -->
+<li class='itemize'><!-- l. 728 -->
 <p class='noindent'>2022/03/24</p>
 <ul class='itemize2'>
 <li class='itemize'>don’t use totally random names in the <span class='ec-lmtt-10'>preprocess_input</span> extension, in order to support images correctly.</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 725 -->
+<li class='itemize'><!-- l. 737 -->
 <p class='noindent'>2022/03/22</p>
 <ul class='itemize2'>
 <li class='itemize'>version <span class='ec-lmtt-10'>0.3l</span> released.</li>
 <li class='itemize'>fixed issues with filenames on Windows.</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 735 -->
+<li class='itemize'><!-- l. 747 -->
 <p class='noindent'>2022/03/01</p>
 <ul class='itemize2'>
 <li class='itemize'>use <span class='ec-lmtt-10'>rmarkdown</span> package to process <span class='ec-lmtt-10'>.rmd</span> files in the <span class='ec-lmtt-10'>preprocess_input</span> extension (thanks to James Clawson).</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 744 -->
+<li class='itemize'><!-- l. 756 -->
 <p class='noindent'>2022/02/18</p>
 <ul class='itemize2'>
 <li class='itemize'>version <span class='ec-lmtt-10'>0.3k</span> released.</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 752 -->
+<li class='itemize'><!-- l. 764 -->
 <p class='noindent'>2022/02/07</p>
 <ul class='itemize2'>
 <li class='itemize'>fixed support for some fonts in the ODT format.</li>
 <li class='itemize'>added <span class='ec-lmtt-10'>odtfonts</span> DOM filter.</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 762 -->
+<li class='itemize'><!-- l. 774 -->
 <p class='noindent'>2022/01/30</p>
 <ul class='itemize2'>
 <li class='itemize'>fix <span class='ec-lmtt-10'>mathvariant</span> attribue of <span class='ec-lmtt-10'>&lt;mi&gt;</span> elements if they are children of <span class='ec-lmtt-10'>&lt;mstyle&gt;</span>.</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 772 -->
+<li class='itemize'><!-- l. 784 -->
 <p class='noindent'>2021/12/17</p>
 <ul class='itemize2'>
 <li class='itemize'>quote jobname in order to support filenames like <span class='ec-lmtt-10'>(xxx).tex</span>.</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 780 -->
+<li class='itemize'><!-- l. 792 -->
 <p class='noindent'>2021/12/13</p>
 <ul class='itemize2'>
 <li class='itemize'>fixed setting of properties in the <span class='ec-lmtt-10'>staticsite</span> filter.</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 788 -->
+<li class='itemize'><!-- l. 800 -->
 <p class='noindent'>2021/12/06</p>
 <ul class='itemize2'>
 <li class='itemize'>in the end, use <span class='ec-lmtt-10'>&lt;mtext&gt;</span> even for one <span class='ec-lmtt-10'>&lt;mo&gt;</span> in the <span class='ec-lmtt-10'>fix_operators</span> function. LO had issues with <span class='ec-lmtt-10'>&lt;mi&gt;</span>.</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 798 -->
+<li class='itemize'><!-- l. 810 -->
 <p class='noindent'>2021/12/03</p>
 <ul class='itemize2'>
 <li class='itemize'>don’t add additional <span class='ec-lmtt-10'>&lt;mrow&gt;</span> elements in the <span class='ec-lmtt-10'>mathmlfixes</span> DOM filter. It caused various issues.</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 807 -->
+<li class='itemize'><!-- l. 819 -->
 <p class='noindent'>2021/12/01</p>
 <ul class='itemize2'>
 <li class='itemize'>transform <span class='ec-lmtt-10'>&lt;mn&gt;x&lt;/mn&gt;&lt;mo&gt;.&lt;/mo&gt;&lt;mn&gt;x&lt;/mn&gt;</span> to <span class='ec-lmtt-10'>&lt;mn&gt;x.x&lt;/mn&gt;</span> in MathML.</li>
@@ -2013,155 +2005,155 @@ LaTeX&nbsp;conversion. It creates <span class='ec-lmtt-10'>\hypertarget</span> c
 <li class='itemize'>added filter names in extensions to prevent multiple execution of filters.</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 828 -->
+<li class='itemize'><!-- l. 840 -->
 <p class='noindent'>2021/11/29</p>
 <ul class='itemize2'>
 <li class='itemize'>make current logging level available outside of the Logging module.</li>
 <li class='itemize'>print Xtpipes and Tidy output if these command fail in the Xtpipes module.</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 839 -->
+<li class='itemize'><!-- l. 851 -->
 <p class='noindent'>2021/11/18</p>
 <ul class='itemize2'>
 <li class='itemize'>don’t put <span class='ec-lmtt-10'>&lt;mrow&gt;</span> as children of <span class='ec-lmtt-10'>&lt;mrow&gt;</span> in the <span class='ec-lmtt-10'>mathmlfixes</span> DOM filter.</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 849 -->
+<li class='itemize'><!-- l. 861 -->
 <p class='noindent'>2021/11/04</p>
 <ul class='itemize2'>
 <li class='itemize'>more intelligent handling of text and inline elements outside of paragraphs in the <span class='ec-lmtt-10'>fixinlines</span> DOM filter.</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 858 -->
+<li class='itemize'><!-- l. 870 -->
 <p class='noindent'>2021/10/11</p>
 <ul class='itemize2'>
 <li class='itemize'>version <span class='ec-lmtt-10'>0.3j</span> released.</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 866 -->
+<li class='itemize'><!-- l. 878 -->
 <p class='noindent'>2021/10/09</p>
 <ul class='itemize2'>
 <li class='itemize'>fixed wrong DOM object name in the ODT format.</li>
 <li class='itemize'>add addtional <span class='ec-lmtt-10'>&lt;mrow&gt;</span> elements when necessary.</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 877 -->
+<li class='itemize'><!-- l. 889 -->
 <p class='noindent'>2021/09/30</p>
 <ul class='itemize2'>
 <li class='itemize'>version <span class='ec-lmtt-10'>0.3i</span> released.</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 885 -->
+<li class='itemize'><!-- l. 897 -->
 <p class='noindent'>2021/09/21</p>
 <ul class='itemize2'>
 <li class='itemize'>run DOM parse in sandbox in the ODT format picture size function.</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 893 -->
+<li class='itemize'><!-- l. 905 -->
 <p class='noindent'>2021/09/20</p>
 <ul class='itemize2'>
 <li class='itemize'>remove LaTeX commands from TOC entries in <span class='ec-lmtt-10'>sectionid</span> DOM filter.</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 902 -->
+<li class='itemize'><!-- l. 914 -->
 <p class='noindent'>2021/09/09</p>
 <ul class='itemize2'>
 <li class='itemize'>corrected SVG dimension setting in the ODT output. Dimensions are set also for PNG and JPG pictures.</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 911 -->
+<li class='itemize'><!-- l. 923 -->
 <p class='noindent'>2021/09/05</p>
 <ul class='itemize2'>
 <li class='itemize'>corrected detection of closing brace in CSS style in <span class='ec-lmtt-10'>mjcli</span> filter.</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 920 -->
+<li class='itemize'><!-- l. 932 -->
 <p class='noindent'>2021/08/13</p>
 <ul class='itemize2'>
 <li class='itemize'>use LaTeX new hook mechanism to load <span class='ec-lmtt-10'>tex4ht.sty</span> before document class. It fixes some issues with packages required in classes.</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 930 -->
+<li class='itemize'><!-- l. 942 -->
 <p class='noindent'>2021/08/12</p>
 <ul class='itemize2'>
 <li class='itemize'>correctly set dimensions for <span class='ec-lmtt-10'>SVG</span> images in the <span class='ec-lmtt-10'>ODT</span> format.</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 939 -->
+<li class='itemize'><!-- l. 951 -->
 <p class='noindent'>2021/07/29</p>
 <ul class='itemize2'>
 <li class='itemize'>sort YAML header in the <span class='ec-lmtt-10'>staticsite</span> filter.</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 947 -->
+<li class='itemize'><!-- l. 959 -->
 <p class='noindent'>2021/07/25</p>
 <ul class='itemize2'>
 <li class='itemize'>version <span class='ec-lmtt-10'>0.3h</span> released.</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 955 -->
+<li class='itemize'><!-- l. 967 -->
 <p class='noindent'>2021/07/25</p>
 <ul class='itemize2'>
 <li class='itemize'>use current directory as default output dir in <span class='ec-lmtt-10'>staticsite</span> extension.</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 964 -->
+<li class='itemize'><!-- l. 976 -->
 <p class='noindent'>2021/07/23</p>
 <ul class='itemize2'>
 <li class='itemize'>fixed detection of single paragraphs inside <span class='ec-lmtt-10'>&lt;li&gt;</span> in the <span class='ec-lmtt-10'>itemparagraphs</span> DOM filter.</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 974 -->
+<li class='itemize'><!-- l. 986 -->
 <p class='noindent'>2021/07/18</p>
 <ul class='itemize2'>
 <li class='itemize'>remove elements produced by <span class='ec-lmtt-10'>\maketitle</span> in the <span class='ec-lmtt-10'>staticsite</span> extension.</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 983 -->
+<li class='itemize'><!-- l. 995 -->
 <p class='noindent'>2021/07/05</p>
 <ul class='itemize2'>
 <li class='itemize'>sort colors alphabetically in the <span class='ec-lmtt-10'>joincolors</span> DOM filter to enable reproducible builds.</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 992 -->
+<li class='itemize'><!-- l. 1004 -->
 <p class='noindent'>2021/06/26</p>
 <ul class='itemize2'>
 <li class='itemize'>rewrote the <span class='ec-lmtt-10'>collapsetoc</span> DOM filter.</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 1000 -->
+<li class='itemize'><!-- l. 1012 -->
 <p class='noindent'>2021/06/20</p>
 <ul class='itemize2'>
 <li class='itemize'>test for the <span class='ec-lmtt-10'>svg</span> picture mode in the <span class='ec-lmtt-10'>tex4ht</span> command. Use the <span class='ec-lmtt-10'>-g.svg</span> option if it is detected. This is necessary for correct support of pictorial characters.</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 1010 -->
+<li class='itemize'><!-- l. 1022 -->
 <p class='noindent'>2021/06/16</p>
 <ul class='itemize2'>
 <li class='itemize'>better handling of duplicate ID attributes in <span class='ec-lmtt-10'>sectionid</span> DOM filter.</li>
 <li class='itemize'>support <span class='ec-lmtt-10'>notoc</span> option in <span class='ec-lmtt-10'>sectionid</span>.</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 1021 -->
+<li class='itemize'><!-- l. 1033 -->
 <p class='noindent'>2021/06/13</p>
 <ul class='itemize2'>
 <li class='itemize'>added <span class='ec-lmtt-10'>itemparagraphs</span> DOM filter. It removes unnecessary paragraphs from <span class='ec-lmtt-10'>&lt;li&gt;</span> elements.</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 1030 -->
+<li class='itemize'><!-- l. 1042 -->
 <p class='noindent'>2021/05/06</p>
 <ul class='itemize2'>
 <li class='itemize'>remove <span class='ec-lmtt-10'>&lt;hr&gt;</span> elements in <span class='ec-lmtt-10'>.hline</span> rows in <span class='ec-lmtt-10'>tablerows</span> DOM filter.</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 1039 -->
+<li class='itemize'><!-- l. 1051 -->
 <p class='noindent'>2021/05/01</p>
 <ul class='itemize2'>
 <li class='itemize'>added function <span class='ec-lmtt-10'>mkutils.isModuleAvailable</span>. It checks if Lua library is available.</li>
 <li class='itemize'>check for <span class='ec-lmtt-10'>char-def</span> library in <span class='ec-lmtt-10'>sectionid</span> DOM filter.</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 1051 -->
+<li class='itemize'><!-- l. 1063 -->
 <p class='noindent'>2021/04/08</p>
 <ul class='itemize2'>
 <li class='itemize'>removed <span class='ec-lmtt-10'>build_changed</span>. New script, <a href='https://github.com/michal-h21/siterebuild'>siterebuild</a>, should be used instead.</li>
@@ -2170,26 +2162,26 @@ LaTeX&nbsp;conversion. It creates <span class='ec-lmtt-10'>\hypertarget</span> c
 <li class='itemize'>use <span class='ec-lmtt-10'>context</span> in the Docker file, because it contains the <span class='ec-lmtt-10'>char-def.lua</span> file.</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 1069 -->
+<li class='itemize'><!-- l. 1081 -->
 <p class='noindent'>2021/03/20</p>
 <ul class='itemize2'>
 <li class='itemize'>use <span class='ec-lmtt-10'>kpse</span> library when files are copied to the output directory.</li>
 <li class='itemize'>added <span class='ec-lmtt-10'>clean</span> mode. It removes all generated, temporary and auxilary files.</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 1081 -->
+<li class='itemize'><!-- l. 1093 -->
 <p class='noindent'>2021/03/19</p>
 <ul class='itemize2'>
 <li class='itemize'>version <span class='ec-lmtt-10'>0.3g</span> released.</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 1089 -->
+<li class='itemize'><!-- l. 1101 -->
 <p class='noindent'>2021/02/08</p>
 <ul class='itemize2'>
 <li class='itemize'>remove <span class='ec-lmtt-10'>&lt;?xtpipes&nbsp;?&gt;</span> processing instructions from the generated ODT file.</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 1098 -->
+<li class='itemize'><!-- l. 1110 -->
 <p class='noindent'>2021/02/01</p>
 <ul class='itemize2'>
 <li class='itemize'>better error messages when extension cannot be loaded.</li>
@@ -2198,165 +2190,165 @@ LaTeX&nbsp;conversion. It creates <span class='ec-lmtt-10'>\hypertarget</span> c
 <li class='itemize'>updated documentation.</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 1112 -->
+<li class='itemize'><!-- l. 1124 -->
 <p class='noindent'>2021/01/31</p>
 <ul class='itemize2'>
 <li class='itemize'>added new MathJax Node filter, <span class='ec-lmtt-10'>mjcli</span>.</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 1120 -->
+<li class='itemize'><!-- l. 1132 -->
 <p class='noindent'>2020/12/19</p>
 <ul class='itemize2'>
 <li class='itemize'>build web documentation only when documentation sources change.</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 1128 -->
+<li class='itemize'><!-- l. 1140 -->
 <p class='noindent'>2020/11/22</p>
 <ul class='itemize2'>
 <li class='itemize'>set exit status for the <span class='ec-lmtt-10'>make4ht</span> command.</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 1136 -->
+<li class='itemize'><!-- l. 1148 -->
 <p class='noindent'>2020/11/22</p>
 <ul class='itemize2'>
 <li class='itemize'>new extension, <span class='ec-lmtt-10'>build_changed</span>.</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 1144 -->
+<li class='itemize'><!-- l. 1156 -->
 <p class='noindent'>2020/11/01</p>
 <ul class='itemize2'>
 <li class='itemize'>fix deprecated <span class='ec-lmtt-10'>&lt;mfenced&gt;</span> element in MathML</li>
 <li class='itemize'>convert <span class='ec-lmtt-10'>&lt;mo&nbsp;fence&gt;</span> elements to <span class='ec-lmtt-10'>&lt;mfenced&gt;</span> in <span class='ec-lmtt-10'>ODT</span> format.</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 1156 -->
+<li class='itemize'><!-- l. 1168 -->
 <p class='noindent'>2020/10/28</p>
 <ul class='itemize2'>
 <li class='itemize'>fixed handling of nested <span class='ec-lmtt-10'>&lt;span&gt;</span> elements in <span class='ec-lmtt-10'>joincharacters</span> DOM filter.</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 1165 -->
+<li class='itemize'><!-- l. 1177 -->
 <p class='noindent'>2020/10/25</p>
 <ul class='itemize2'>
 <li class='itemize'>fixed command name for <span class='ec-lmtt-10'>Make:httex</span>, it was <span class='ec-lmtt-10'>Make:htttex</span>.</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 1174 -->
+<li class='itemize'><!-- l. 1186 -->
 <p class='noindent'>2020/10/17</p>
 <ul class='itemize2'>
 <li class='itemize'>generate YAML header for all generated files with the <span class='ec-lmtt-10'>staticsite</span> extension.</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 1183 -->
+<li class='itemize'><!-- l. 1195 -->
 <p class='noindent'>2020/09/17</p>
 <ul class='itemize2'>
 <li class='itemize'>require <span class='ec-lmtt-10'>mathml</span> option when <span class='ec-lmtt-10'>mathjaxnode</span> extension is used.</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 1192 -->
+<li class='itemize'><!-- l. 1204 -->
 <p class='noindent'>2020/09/07</p>
 <ul class='itemize2'>
 <li class='itemize'>version <span class='ec-lmtt-10'>0.3f</span> released.</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 1200 -->
+<li class='itemize'><!-- l. 1212 -->
 <p class='noindent'>2020/08/26</p>
 <ul class='itemize2'>
 <li class='itemize'><span class='ec-lmtt-10'>fixinlines</span> DOM filter: added <span class='ec-lmtt-10'>&lt;a&gt;</span> element into list of inline elements.</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 1210 -->
+<li class='itemize'><!-- l. 1222 -->
 <p class='noindent'>2020/08/24</p>
 <ul class='itemize2'>
 <li class='itemize'>initialize attributes in new element in <span class='ec-lmtt-10'>mathmlfixes</span> DOM extension.</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 1219 -->
+<li class='itemize'><!-- l. 1231 -->
 <p class='noindent'>2020/07/18</p>
 <ul class='itemize2'>
 <li class='itemize'>changed CSS for the HTML documentation.</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 1227 -->
+<li class='itemize'><!-- l. 1239 -->
 <p class='noindent'>2020/07/17</p>
 <ul class='itemize2'>
 <li class='itemize'>fixed bug in index parsing.</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 1235 -->
+<li class='itemize'><!-- l. 1247 -->
 <p class='noindent'>2020/07/10</p>
 <ul class='itemize2'>
 <li class='itemize'>use the <span class='ec-lmtt-10'>joincharacters</span> DOM filter for TEI output.</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 1243 -->
+<li class='itemize'><!-- l. 1255 -->
 <p class='noindent'>2020/07/08</p>
 <ul class='itemize2'>
 <li class='itemize'>don’t fail when filename cannot be detected in <span class='ec-lmtt-10'>make4ht-errorlogparser.lua</span>.</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 1252 -->
+<li class='itemize'><!-- l. 1264 -->
 <p class='noindent'>2020/05/27</p>
 <ul class='itemize2'>
 <li class='itemize'>test if copied file exists in <span class='ec-lmtt-10'>mkutils.cp</span>.</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 1260 -->
+<li class='itemize'><!-- l. 1272 -->
 <p class='noindent'>2020/05/19</p>
 <ul class='itemize2'>
 <li class='itemize'>fixed image filename replace in <span class='ec-lmtt-10'>dvisvgm_hashes</span> extension.</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 1268 -->
+<li class='itemize'><!-- l. 1280 -->
 <p class='noindent'>2020/05/16</p>
 <ul class='itemize2'>
 <li class='itemize'>fixed HTML filename matching in extensions.</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 1276 -->
+<li class='itemize'><!-- l. 1288 -->
 <p class='noindent'>2020/05/08</p>
 <ul class='itemize2'>
 <li class='itemize'>use global environment in the build files.</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 1284 -->
+<li class='itemize'><!-- l. 1296 -->
 <p class='noindent'>2020/03/03</p>
 <ul class='itemize2'>
 <li class='itemize'>added <span class='ec-lmtt-10'>jats</span> format.</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 1292 -->
+<li class='itemize'><!-- l. 1304 -->
 <p class='noindent'>2020/02/28</p>
 <ul class='itemize2'>
 <li class='itemize'>version <span class='ec-lmtt-10'>0.3e&nbsp;released</span>.</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 1300 -->
+<li class='itemize'><!-- l. 1312 -->
 <p class='noindent'>2020/02/24</p>
 <ul class='itemize2'>
 <li class='itemize'><span class='ec-lmtt-10'>t4htlinks</span> DOM filter: cleanup file names from internal links.</li>
 <li class='itemize'><span class='ec-lmtt-10'>make4ht-indexing</span>: added support for splitindex.</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 1311 -->
+<li class='itemize'><!-- l. 1323 -->
 <p class='noindent'>2020/02/19</p>
 <ul class='itemize2'>
 <li class='itemize'>use <span class='ec-lmtt-10'>UTF-8</span> output by default. <span class='ec-lmtt-10'>8-bit</span> output is broken and non fixable.</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 1320 -->
+<li class='itemize'><!-- l. 1332 -->
 <p class='noindent'>2020/02/07</p>
 <ul class='itemize2'>
 <li class='itemize'>use <span class='ec-lmtt-10'>lualatex-dev</span> instead of <span class='ec-lmtt-10'>harflatex</span></li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 1328 -->
+<li class='itemize'><!-- l. 1340 -->
 <p class='noindent'>2020/02/06</p>
 <ul class='itemize2'>
 <li class='itemize'>added support for <span class='ec-lmtt-10'>harflatex</span> and <span class='ec-lmtt-10'>harftex</span> in the <span class='ec-lmtt-10'>detect_engine</span> extension.</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 1337 -->
+<li class='itemize'><!-- l. 1349 -->
 <p class='noindent'>2020/01/22</p>
 <ul class='itemize2'>
 <li class='itemize'>version <span class='ec-lmtt-10'>0.3d</span> released.</li>
@@ -2364,39 +2356,39 @@ LaTeX&nbsp;conversion. It creates <span class='ec-lmtt-10'>\hypertarget</span> c
 <li class='itemize'>added <span class='ec-lmtt-10'>detect_engine</span> extension. It supports detection of the used engine and format from TeX Shop or TeXWorks magic comments. These comments can look like: <span class='ec-lmtt-10'>%!TEX&nbsp;TS-program&nbsp;=&nbsp;xelatex</span>.</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 1352 -->
+<li class='itemize'><!-- l. 1364 -->
 <p class='noindent'>2020/01/22</p>
 <ul class='itemize2'>
 <li class='itemize'>fixed support for multiple indices in <span class='ec-lmtt-10'>make4ht-indexing.lua</span>.</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 1360 -->
+<li class='itemize'><!-- l. 1372 -->
 <p class='noindent'>2019/12/29</p>
 <ul class='itemize2'>
 <li class='itemize'>use the <span class='ec-lmtt-10'>mathvariant="italic"</span> attribute for joined <span class='ec-lmtt-10'>&lt;mi&gt;</span> elements.</li>
 <li class='itemize'>fixed comparison of element attributes in <span class='ec-lmtt-10'>joincharacters</span> DOM filter.</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 1372 -->
+<li class='itemize'><!-- l. 1384 -->
 <p class='noindent'>2019/12/28</p>
 <ul class='itemize2'>
 <li class='itemize'>print warning if the input file doesn’t exist.</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 1380 -->
+<li class='itemize'><!-- l. 1392 -->
 <p class='noindent'>2019/12/17</p>
 <ul class='itemize2'>
 <li class='itemize'>added <span class='ec-lmtt-10'>booktabs</span> DOM filter.</li>
 <li class='itemize'>load the <span class='ec-lmtt-10'>booktabs</span> in <span class='ec-lmtt-10'>common_domfilters</span> by default.</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 1391 -->
+<li class='itemize'><!-- l. 1403 -->
 <p class='noindent'>2019/12/14</p>
 <ul class='itemize2'>
 <li class='itemize'>fixed bug in the <span class='ec-lmtt-10'>tablerows</span> DOM filter – it could remove table rows if they contained only one column with elements that contained no text content.</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 1401 -->
+<li class='itemize'><!-- l. 1413 -->
 <p class='noindent'>2019/11/28</p>
 <ul class='itemize2'>
 <li class='itemize'>version <span class='ec-lmtt-10'>0.3c</span> released.</li>
@@ -2404,7 +2396,7 @@ LaTeX&nbsp;conversion. It creates <span class='ec-lmtt-10'>\hypertarget</span> c
 <li class='itemize'>use <span class='ec-lmtt-10'>mathmlfixes</span> and <span class='ec-lmtt-10'>joincharacters</span> DOM filters for math XML files in the ODT output.</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 1416 -->
+<li class='itemize'><!-- l. 1428 -->
 <p class='noindent'>2019/11/25</p>
 <ul class='itemize2'>
 <li class='itemize'>added <span class='ec-lmtt-10'>pythontex</span> command.</li>
@@ -2412,21 +2404,21 @@ LaTeX&nbsp;conversion. It creates <span class='ec-lmtt-10'>\hypertarget</span> c
 <li class='itemize'>use the <span class='ec-lmtt-10'>mathmlfixes</span> DOM filter in <span class='ec-lmtt-10'>common_domfilters</span> extension.</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 1429 -->
+<li class='itemize'><!-- l. 1441 -->
 <p class='noindent'>2019/11/22</p>
 <ul class='itemize2'>
 <li class='itemize'><span class='ec-lmtt-10'>make4ht-joincharacters</span> dom filter: added support for the <span class='ec-lmtt-10'>&lt;mi&gt;</span> element. Test all attributes for match when joining characters.</li>
 <li class='itemize'><span class='ec-lmtt-10'>html5</span> format: use the <span class='ec-lmtt-10'>common_domfilters</span> by default.</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 1442 -->
+<li class='itemize'><!-- l. 1454 -->
 <p class='noindent'>2019/11/03</p>
 <ul class='itemize2'>
 <li class='itemize'>version <span class='ec-lmtt-10'>0.3b</span></li>
 <li class='itemize'>use <span class='ec-lmtt-10'>make4ht-ext-</span> prefix for extensions to prevent filename clashes with corresponding filters.</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 1453 -->
+<li class='itemize'><!-- l. 1465 -->
 <p class='noindent'>2019/11/01</p>
 <ul class='itemize2'>
 <li class='itemize'>version <span class='ec-lmtt-10'>0.3a</span> released.</li>
@@ -2434,33 +2426,33 @@ LaTeX&nbsp;conversion. It creates <span class='ec-lmtt-10'>\hypertarget</span> c
 <li class='itemize'>removed the unused <span class='ec-lmtt-10'>mathjaxnode.lua</span> file.</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 1465 -->
+<li class='itemize'><!-- l. 1477 -->
 <p class='noindent'>2019/11/01</p>
 <ul class='itemize2'>
 <li class='itemize'>version <span class='ec-lmtt-10'>0.3</span> released.</li>
 <li class='itemize'>added <span class='ec-lmtt-10'>Make:makeindex</span>, <span class='ec-lmtt-10'>Make:xindex</span> and <span class='ec-lmtt-10'>Make:bibtex</span> commands.</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 1476 -->
+<li class='itemize'><!-- l. 1488 -->
 <p class='noindent'>2019/10/25</p>
 <ul class='itemize2'>
 <li class='itemize'>modified the <span class='ec-lmtt-10'>Make:xindy</span> command to use the indexing mechanism.</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 1485 -->
+<li class='itemize'><!-- l. 1497 -->
 <p class='noindent'>2019/10/24</p>
 <ul class='itemize2'>
 <li class='itemize'>added functions for preparing and cleaning of the index files in <span class='ec-lmtt-10'>make4ht-indexing.lua</span>.</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 1494 -->
+<li class='itemize'><!-- l. 1506 -->
 <p class='noindent'>2019/10/23</p>
 <ul class='itemize2'>
 <li class='itemize'>replaced <span class='ec-lmtt-10'>os.execute</span> function with <span class='ec-lmtt-10'>mkutils.execute</span>. It uses the logging mechanism for the output.</li>
 <li class='itemize'>finished transforming of filters, extensions and formats to the logging system.</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 1506 -->
+<li class='itemize'><!-- l. 1518 -->
 <p class='noindent'>2019/10/22</p>
 <ul class='itemize2'>
 <li class='itemize'>added <span class='ec-lmtt-10'>tablerows</span> domfilter.</li>
@@ -2468,20 +2460,20 @@ LaTeX&nbsp;conversion. It creates <span class='ec-lmtt-10'>\hypertarget</span> c
 <li class='itemize'>converted most of the filters to use the logging mechanism.</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 1519 -->
+<li class='itemize'><!-- l. 1531 -->
 <p class='noindent'>2019/10/20</p>
 <ul class='itemize2'>
 <li class='itemize'>added <span class='ec-lmtt-10'>status</span> log level.</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 1527 -->
+<li class='itemize'><!-- l. 1539 -->
 <p class='noindent'>2019/10/18</p>
 <ul class='itemize2'>
 <li class='itemize'>converted most print commands to use the logging mechanism.</li>
 <li class='itemize'>added <span class='ec-lmtt-10'>output</span> log level used for printing of the commands output.</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 1538 -->
+<li class='itemize'><!-- l. 1550 -->
 <p class='noindent'>2019/10/17</p>
 <ul class='itemize2'>
 <li class='itemize'>added <span class='ec-lmtt-10'>--loglevel</span> CLI parameter.</li>
@@ -2489,57 +2481,57 @@ LaTeX&nbsp;conversion. It creates <span class='ec-lmtt-10'>\hypertarget</span> c
 <li class='itemize'>moved <span class='ec-lmtt-10'>htlatex</span> related code to <span class='ec-lmtt-10'>make4ht-htlatex.lua</span> from <span class='ec-lmtt-10'>mkutils.lua</span></li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 1551 -->
+<li class='itemize'><!-- l. 1563 -->
 <p class='noindent'>2019/10/11</p>
 <ul class='itemize2'>
 <li class='itemize'>added <span class='ec-lmtt-10'>xindy</span> settings.</li>
 <li class='itemize'>added simple regular expression to detect errors in the log file, because log parsing can be slow.</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 1562 -->
+<li class='itemize'><!-- l. 1574 -->
 <p class='noindent'>2019/10/09</p>
 <ul class='itemize2'>
 <li class='itemize'>added the <span class='ec-lmtt-10'>interaction</span> parameter for the <span class='ec-lmtt-10'>htlatex</span> command. The default value is <span class='ec-lmtt-10'>batchmode</span> to suppress the user input on errors, and to suppress full log output to the terminal.</li>
 <li class='itemize'>added the <span class='ec-lmtt-10'>make4ht-errorlogparser</span> module. It is used to parse errors in the <span class='ec-lmtt-10'>htlatex</span> run unless <span class='ec-lmtt-10'>interaction</span> is set to <span class='ec-lmtt-10'>errorstopmode</span>.</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 1577 -->
+<li class='itemize'><!-- l. 1589 -->
 <p class='noindent'>2019/10/08</p>
 <ul class='itemize2'>
 <li class='itemize'>set up Github Actions pipeline to compile the documentation to HTML and publish it at https://www.kodymirus.cz/make4ht/make4ht-doc.html.</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 1586 -->
+<li class='itemize'><!-- l. 1598 -->
 <p class='noindent'>2019/10/07</p>
 <ul class='itemize2'>
 <li class='itemize'>don’t move the <span class='ec-lmtt-10'>common_domfilters</span> extension to the first place in the file matches pipeline. We may want to run <span class='ec-lmtt-10'>tidy</span> or regex filters first, to fix XML validation errors.</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 1596 -->
+<li class='itemize'><!-- l. 1608 -->
 <p class='noindent'>2019/10/04</p>
 <ul class='itemize2'>
 <li class='itemize'>added HTML documentation.</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 1604 -->
+<li class='itemize'><!-- l. 1616 -->
 <p class='noindent'>2019/09/27</p>
 <ul class='itemize2'>
 <li class='itemize'>don’t convert Latin 1 entities to Unicode in the <span class='ec-lmtt-10'>entities_to_unicode</span> extension.</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 1613 -->
+<li class='itemize'><!-- l. 1625 -->
 <p class='noindent'>2019/09/20</p>
 <ul class='itemize2'>
 <li class='itemize'>fixed bugs in the temporary directory handling for the ODT output.</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 1621 -->
+<li class='itemize'><!-- l. 1633 -->
 <p class='noindent'>2019/09/13</p>
 <ul class='itemize2'>
 <li class='itemize'>added <span class='ec-lmtt-10'>preprocess_input</span> extension. It enables compilation of formats supported by <a href='https://yihui.name/knitr/'>Knitr</a> (<span class='ec-lmtt-10'>.Rnw</span>, <span class='ec-lmtt-10'>.Rtex</span>, <span class='ec-lmtt-10'>.Rmd</span>, <span class='ec-lmtt-10'>.Rrst</span>) and also Markdown and reStructuredText formats.</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 1632 -->
+<li class='itemize'><!-- l. 1644 -->
 <p class='noindent'>2019/09/12</p>
 <ul class='itemize2'>
 <li class='itemize'>added support for the ODT files in <span class='ec-lmtt-10'>common_domfilters</span> extension.</li>
@@ -2547,19 +2539,19 @@ LaTeX&nbsp;conversion. It creates <span class='ec-lmtt-10'>\hypertarget</span> c
 <li class='itemize'>don’t execute the <span class='ec-lmtt-10'>fixentities</span> filter before Xtpipes, it makes no sense.</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 1647 -->
+<li class='itemize'><!-- l. 1659 -->
 <p class='noindent'>2019/09/11</p>
 <ul class='itemize2'>
 <li class='itemize'>added support for Biber in the build files.</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 1655 -->
+<li class='itemize'><!-- l. 1667 -->
 <p class='noindent'>2019/08/28</p>
 <ul class='itemize2'>
 <li class='itemize'>added support for input from <span class='ec-lmtt-10'>stdin</span>.</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 1663 -->
+<li class='itemize'><!-- l. 1675 -->
 <p class='noindent'>2019/08/27</p>
 <ul class='itemize2'>
 <li class='itemize'>fixed <span class='ec-lmtt-10'>-jobname</span> detection regex.</li>
@@ -2567,125 +2559,125 @@ LaTeX&nbsp;conversion. It creates <span class='ec-lmtt-10'>\hypertarget</span> c
 <li class='itemize'>added the <span class='ec-lmtt-10'>--jobname</span> command line option.</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 1675 -->
+<li class='itemize'><!-- l. 1687 -->
 <p class='noindent'>2019/08/26</p>
 <ul class='itemize2'>
 <li class='itemize'>quote file names and paths in <span class='ec-lmtt-10'>xtpipes</span> and <span class='ec-lmtt-10'>tidy</span> invocation.</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 1684 -->
+<li class='itemize'><!-- l. 1696 -->
 <p class='noindent'>2019/08/25</p>
 <ul class='itemize2'>
 <li class='itemize'>the issue tracker link in the help message is now configurable.</li>
 <li class='itemize'>fixed bug in the XeTeX handling: the <span class='ec-lmtt-10'>.xdv</span> argument for <span class='ec-lmtt-10'>tex4ht</span> wasn’t used if command line arguments for <span class='ec-lmtt-10'>tex4ht</span> were present.</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 1696 -->
+<li class='itemize'><!-- l. 1708 -->
 <p class='noindent'>2019/07/03</p>
 <ul class='itemize2'>
 <li class='itemize'>new DOM filter: <span class='ec-lmtt-10'>odtpartable</span>. It fixes tables nested in paragraphs in the ODT format.</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 1705 -->
+<li class='itemize'><!-- l. 1717 -->
 <p class='noindent'>2019/06/13</p>
 <ul class='itemize2'>
 <li class='itemize'>new DOM extension: <span class='ec-lmtt-10'>collapsetoc</span>.</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 1713 -->
+<li class='itemize'><!-- l. 1725 -->
 <p class='noindent'>2019/05/29</p>
 <ul class='itemize2'>
 <li class='itemize'>new module: <span class='ec-lmtt-10'>make4ht-indexing</span> for working with index files.</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 1721 -->
+<li class='itemize'><!-- l. 1733 -->
 <p class='noindent'>2019/05/24</p>
 <ul class='itemize2'>
 <li class='itemize'>version 0.2g released</li>
 <li class='itemize'>fixed failing <span class='ec-lmtt-10'>dvisvgm_hashes</span> extension on Windows.</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 1731 -->
+<li class='itemize'><!-- l. 1743 -->
 <p class='noindent'>2019/05/02</p>
 <ul class='itemize2'>
 <li class='itemize'>fixed infinite loop bug in the <span class='ec-lmtt-10'>dvisvgm_hashes</span> extension.</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 1739 -->
+<li class='itemize'><!-- l. 1751 -->
 <p class='noindent'>2019/04/09</p>
 <ul class='itemize2'>
 <li class='itemize'><span class='ec-lmtt-10'>make4ht-joincolors</span> fix: remove the hash character from the color name. This caused issues with colors specified in the hexadecimal format.</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 1749 -->
+<li class='itemize'><!-- l. 1761 -->
 <p class='noindent'>2019/04/02</p>
 <ul class='itemize2'>
 <li class='itemize'><span class='ec-lmtt-10'>dvisvgm_hashes</span> fix: update also the lgfile.images table with generated filenames, in order to support tex4ebook</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 1758 -->
+<li class='itemize'><!-- l. 1770 -->
 <p class='noindent'>2019/04/01</p>
 <ul class='itemize2'>
 <li class='itemize'>fixed bug in <span class='ec-lmtt-10'>dvisvgm_hashes</span> extension: didn’t check for table index existence in string concenation</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 1767 -->
+<li class='itemize'><!-- l. 1779 -->
 <p class='noindent'>2019/03/21</p>
 <ul class='itemize2'>
 <li class='itemize'>version 0.2f released</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 1775 -->
+<li class='itemize'><!-- l. 1787 -->
 <p class='noindent'>2019/03/15</p>
 <ul class='itemize2'>
 <li class='itemize'>check for the image dimensions existence in the <span class='ec-lmtt-10'>odtimagesize</span> domfilter.</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 1784 -->
+<li class='itemize'><!-- l. 1796 -->
 <p class='noindent'>2019/03/13</p>
 <ul class='itemize2'>
 <li class='itemize'>don’t use <span class='ec-lmtt-10'>odtimagesize</span> domfilter in the <span class='ec-lmtt-10'>ODT</span> format, the issue it fixes had been resolved in <span class='ec-lmtt-10'>tex4ht</span>.</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 1793 -->
+<li class='itemize'><!-- l. 1805 -->
 <p class='noindent'>2019/03/08</p>
 <ul class='itemize2'>
 <li class='itemize'>use <span class='ec-lmtt-10'>%USERPROFILE</span> for home dir search on Windows.</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 1801 -->
+<li class='itemize'><!-- l. 1813 -->
 <p class='noindent'>2019/01/28</p>
 <ul class='itemize2'>
 <li class='itemize'>added <span class='ec-lmtt-10'>joincolors</span> domfilter and <span class='ec-lmtt-10'>join_colors</span> extension. It can join CSS rules created for the LaTeX colors and update the HTML file.</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 1811 -->
+<li class='itemize'><!-- l. 1823 -->
 <p class='noindent'>2019/01/22</p>
 <ul class='itemize2'>
 <li class='itemize'>version 0.2e released</li>
 <li class='itemize'>updated the <span class='ec-lmtt-10'>odttemplate</span> filter. It will use styles from the generated ODT file that haven’t been present in the template file.</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 1822 -->
+<li class='itemize'><!-- l. 1834 -->
 <p class='noindent'>2019/01/10</p>
 <ul class='itemize2'>
 <li class='itemize'>version 0.2d released</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 1830 -->
+<li class='itemize'><!-- l. 1842 -->
 <p class='noindent'>2019/01/05</p>
 <ul class='itemize2'>
 <li class='itemize'>added <span class='ec-lmtt-10'>docbook</span> and <span class='ec-lmtt-10'>tei</span> output formats.</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 1838 -->
+<li class='itemize'><!-- l. 1850 -->
 <p class='noindent'>2018/12/19</p>
 <ul class='itemize2'>
 <li class='itemize'>new library: <span class='ec-lmtt-10'>make4ht-xtpipes.lua</span>. It contains code for xtpipes handling.</li>
 <li class='itemize'>moved Xtpipes handling code from <span class='ec-lmtt-10'>formats/odt.lua</span>.</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 1849 -->
+<li class='itemize'><!-- l. 1861 -->
 <p class='noindent'>2018/12/18</p>
 <ul class='itemize2'>
 <li class='itemize'>new filter: <span class='ec-lmtt-10'>odttemplate</span>. It can be used for replacing style in a generated <span class='ec-lmtt-10'>ODT</span> file by a style from another existing <span class='ec-lmtt-10'>ODT</span> file.</li>
@@ -2693,76 +2685,76 @@ LaTeX&nbsp;conversion. It creates <span class='ec-lmtt-10'>\hypertarget</span> c
 <li class='itemize'>fixed bug in <span class='ec-lmtt-10'>make4ht-filters.lua</span>: the parameters table haven’t been passed to filters.</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 1865 -->
+<li class='itemize'><!-- l. 1877 -->
 <p class='noindent'>2018/12/17</p>
 <ul class='itemize2'>
 <li class='itemize'>fixed extension handling. The disabling from the command line didn’t take precedence over extensions enabled in the config file. Extensions also could be executed multiple times.</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 1875 -->
+<li class='itemize'><!-- l. 1887 -->
 <p class='noindent'>2018/11/08</p>
 <ul class='itemize2'>
 <li class='itemize'>removed replacing newlines by blank strings in the <span class='ec-lmtt-10'>joincharacters</span> domfilter. The issue it fixed doesn’t seem to exist anymore, and it ate spaces sometimes.</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 1885 -->
+<li class='itemize'><!-- l. 1897 -->
 <p class='noindent'>2018/11/01</p>
 <ul class='itemize2'>
 <li class='itemize'>added <span class='ec-lmtt-10'>t4htlinks</span> domfilter</li>
 <li class='itemize'>fixed the <span class='ec-lmtt-10'>xtpipes</span> and <span class='ec-lmtt-10'>filters</span> execution order in the <span class='ec-lmtt-10'>ODT</span> format</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 1896 -->
+<li class='itemize'><!-- l. 1908 -->
 <p class='noindent'>2018/10/26</p>
 <ul class='itemize2'>
 <li class='itemize'>fixed ODT generation for files that contains special characters for Lua string patterns</li>
 <li class='itemize'>replace non-breaking spaces with entities. It caused issues in LO</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 1907 -->
+<li class='itemize'><!-- l. 1919 -->
 <p class='noindent'>2018/10/18</p>
 <ul class='itemize2'>
 <li class='itemize'>fixed the executable installation</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 1915 -->
+<li class='itemize'><!-- l. 1927 -->
 <p class='noindent'>2018/09/16</p>
 <ul class='itemize2'>
 <li class='itemize'>added the <span class='ec-lmtt-10'>scale</span> option for <span class='ec-lmtt-10'>dvisvgm_hashes</span> extension</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 1924 -->
+<li class='itemize'><!-- l. 1936 -->
 <p class='noindent'>2018/09/14</p>
 <ul class='itemize2'>
 <li class='itemize'>require the <span class='ec-lmtt-10'>-dvi</span> option with <span class='ec-lmtt-10'>latexmk_build</span> extension</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 1933 -->
+<li class='itemize'><!-- l. 1945 -->
 <p class='noindent'>2018/09/12</p>
 <ul class='itemize2'>
 <li class='itemize'>added <span class='ec-lmtt-10'>xindy</span> command for the build file</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 1941 -->
+<li class='itemize'><!-- l. 1953 -->
 <p class='noindent'>2018/09/03</p>
 <ul class='itemize2'>
 <li class='itemize'>expanded the <span class='ec-lmtt-10'>--help</span> option</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 1949 -->
+<li class='itemize'><!-- l. 1961 -->
 <p class='noindent'>2018/08/27</p>
 <ul class='itemize2'>
 <li class='itemize'>added <span class='ec-lmtt-10'>odtimagesize</span> domfilter</li>
 <li class='itemize'>load <span class='ec-lmtt-10'>odtimagesize</span> by default in the ODT format</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 1959 -->
+<li class='itemize'><!-- l. 1971 -->
 <p class='noindent'>2018/08/23</p>
 <ul class='itemize2'>
 <li class='itemize'>released version 0.2c</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 1967 -->
+<li class='itemize'><!-- l. 1979 -->
 <p class='noindent'>2018/08/21</p>
 <ul class='itemize2'>
 <li class='itemize'>added processor core detection on Windows</li>
@@ -2770,62 +2762,62 @@ LaTeX&nbsp;conversion. It creates <span class='ec-lmtt-10'>\hypertarget</span> c
 <li class='itemize'>updated the documentation.</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 1979 -->
+<li class='itemize'><!-- l. 1991 -->
 <p class='noindent'>2018/08/20</p>
 <ul class='itemize2'>
 <li class='itemize'>added <span class='ec-lmtt-10'>dvisvgm_hashes</span> extension</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 1987 -->
+<li class='itemize'><!-- l. 1999 -->
 <p class='noindent'>2018/07/03</p>
 <ul class='itemize2'>
 <li class='itemize'>create the <span class='ec-lmtt-10'>mimetype</span> file to achieve the ODT file validity</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 1995 -->
+<li class='itemize'><!-- l. 2007 -->
 <p class='noindent'>2018/07/02</p>
 <ul class='itemize2'>
 <li class='itemize'>disabled conversion of XML entities for &amp;, &lt; and &gt; characters back to Unicode, because it breaks XML validity</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 2005 -->
+<li class='itemize'><!-- l. 2017 -->
 <p class='noindent'>2018/06/27</p>
 <ul class='itemize2'>
 <li class='itemize'>fixed root dir detection</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 2013 -->
+<li class='itemize'><!-- l. 2025 -->
 <p class='noindent'>2018/06/26</p>
 <ul class='itemize2'>
 <li class='itemize'>added code for detection of TeX distribution root for Miktex and TL</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 2021 -->
+<li class='itemize'><!-- l. 2033 -->
 <p class='noindent'>2018/06/25</p>
 <ul class='itemize2'>
 <li class='itemize'>moved call to <span class='ec-lmtt-10'>xtpipes</span> from <span class='ec-lmtt-10'>t4ht</span> to the <span class='ec-lmtt-10'>ODT</span> format drives. This should fix issues with path expansion in <span class='ec-lmtt-10'>tex4ht.env</span> in TeX distributions.</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 2031 -->
+<li class='itemize'><!-- l. 2043 -->
 <p class='noindent'>2018/06/22</p>
 <ul class='itemize2'>
 <li class='itemize'>added <span class='ec-lmtt-10'>mkutils.find_zip</span> function. It detects <span class='ec-lmtt-10'>zip</span> or <span class='ec-lmtt-10'>miktex-zip</span> executables</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 2040 -->
+<li class='itemize'><!-- l. 2052 -->
 <p class='noindent'>2018/06/19</p>
 <ul class='itemize2'>
 <li class='itemize'>added new filter: <span class='ec-lmtt-10'>entities-to-unicode</span>. It converts XML entites for Unicode characters back to Unicode.</li>
 <li class='itemize'>execute <span class='ec-lmtt-10'>entities-to-unicode</span> filter on text and math files in the ODT output.</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 2052 -->
+<li class='itemize'><!-- l. 2064 -->
 <p class='noindent'>2018/06/12</p>
 <ul class='itemize2'>
 <li class='itemize'>added support for direct <span class='ec-lmtt-10'>ODT</span> file packing</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 2060 -->
+<li class='itemize'><!-- l. 2072 -->
 <p class='noindent'>2018/06/11</p>
 <ul class='itemize2'>
 <li class='itemize'>new function available for formats, <span class='ec-lmtt-10'>format.modify_build</span></li>
@@ -2834,7 +2826,7 @@ LaTeX&nbsp;conversion. It creates <span class='ec-lmtt-10'>\hypertarget</span> c
 <li class='itemize'>started on packing of the <span class='ec-lmtt-10'>ODT</span> files directly by the format, instead of <span class='ec-lmtt-10'>t4ht</span></li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 2075 -->
+<li class='itemize'><!-- l. 2087 -->
 <p class='noindent'>2018/06/08</p>
 <ul class='itemize2'>
 <li class='itemize'>added support for filenames containing spaces</li>
@@ -2842,24 +2834,24 @@ LaTeX&nbsp;conversion. It creates <span class='ec-lmtt-10'>\hypertarget</span> c
 <li class='itemize'>don’t require sudo for the installation, let the user to install symbolic links to <span class='ec-lmtt-10'>$PATH</span></li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 2088 -->
+<li class='itemize'><!-- l. 2100 -->
 <p class='noindent'>2018/05/03</p>
 <ul class='itemize2'>
 <li class='itemize'>released version <span class='ec-lmtt-10'>0.2b</span></li>
 <li class='itemize'>bug fix: use only <span class='ec-lmtt-10'>load</span> function in <span class='ec-lmtt-10'>Make:run</span>, in order to support a local environment.</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 2099 -->
+<li class='itemize'><!-- l. 2111 -->
 <p class='noindent'>2018/05/03</p>
 <ul class='itemize2'>
 <li class='itemize'>released version <span class='ec-lmtt-10'>0.2a</span></li>
 <li class='itemize'>renamed <span class='ec-lmtt-10'>latexmk</span> extension to <span class='ec-lmtt-10'>latexmk_build</span>, due to clash in TL</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 2110 -->
+<li class='itemize'><!-- l. 2122 -->
 <p class='noindent'>2018/04/18</p>
 <ul class='itemize2'>
-<li class='itemize'><!-- l. 2115 -->
+<li class='itemize'><!-- l. 2127 -->
 <p class='noindent'><span class='ec-lmtt-10'>staticsite</span> extension:</p>
 <ul class='itemize3'>
 <li class='itemize'>make YAML header configurable</li>
@@ -2869,53 +2861,53 @@ LaTeX&nbsp;conversion. It creates <span class='ec-lmtt-10'>\hypertarget</span> c
 <li class='itemize'>don’t override existing tables in <span class='ec-lmtt-10'>filter_settings</span></li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 2128 -->
+<li class='itemize'><!-- l. 2140 -->
 <p class='noindent'>2018/04/17</p>
 <ul class='itemize2'>
 <li class='itemize'>done first version of <span class='ec-lmtt-10'>staticsite</span> extension</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 2136 -->
+<li class='itemize'><!-- l. 2148 -->
 <p class='noindent'>2018/04/16</p>
 <ul class='itemize2'>
 <li class='itemize'>check for Git repo in the Makefile, don’t run Git commands outside of repo</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 2145 -->
+<li class='itemize'><!-- l. 2157 -->
 <p class='noindent'>2018/04/15</p>
 <ul class='itemize2'>
 <li class='itemize'>added <span class='ec-lmtt-10'>staticsite</span> filter</li>
 <li class='itemize'>working on <span class='ec-lmtt-10'>staticsite</span> extension</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 2155 -->
+<li class='itemize'><!-- l. 2167 -->
 <p class='noindent'>2018/04/13</p>
 <ul class='itemize2'>
 <li class='itemize'>use <span class='ec-lmtt-10'>ipairs</span> instead of <span class='ec-lmtt-10'>pairs</span> to traverse lists of images and image match functions</li>
 <li class='itemize'>load extensions in the correct order</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 2166 -->
+<li class='itemize'><!-- l. 2178 -->
 <p class='noindent'>2018/04/09</p>
 <ul class='itemize2'>
 <li class='itemize'>released version <span class='ec-lmtt-10'>0.2</span></li>
 <li class='itemize'>disabled default loading of <span class='ec-lmtt-10'>common_domfilters</span> extension</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 2176 -->
+<li class='itemize'><!-- l. 2188 -->
 <p class='noindent'>2018/04/06</p>
 <ul class='itemize2'>
 <li class='itemize'>added <span class='ec-lmtt-10'>Make:enable_extension</span> and <span class='ec-lmtt-10'>Make:disable_extension</span> functions</li>
 <li class='itemize'>documented the configuration file</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 2187 -->
+<li class='itemize'><!-- l. 2199 -->
 <p class='noindent'>2018/03/09</p>
 <ul class='itemize2'>
 <li class='itemize'>load the configuration file before extensions</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 2195 -->
+<li class='itemize'><!-- l. 2207 -->
 <p class='noindent'>2018/03/02</p>
 <ul class='itemize2'>
 <li class='itemize'>Aeneas execution works</li>
@@ -2923,26 +2915,26 @@ LaTeX&nbsp;conversion. It creates <span class='ec-lmtt-10'>\hypertarget</span> c
 <li class='itemize'>added support for <span class='ec-lmtt-10'>.make4ht</span> configuration file</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 2207 -->
+<li class='itemize'><!-- l. 2219 -->
 <p class='noindent'>2018/02/28</p>
 <ul class='itemize2'>
 <li class='itemize'>Aeneas configuration file creation works</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 2215 -->
+<li class='itemize'><!-- l. 2227 -->
 <p class='noindent'>2018/02/22</p>
 <ul class='itemize2'>
 <li class='itemize'>fixed bug in <span class='ec-lmtt-10'>fixinlines</span> DOM filter</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 2223 -->
+<li class='itemize'><!-- l. 2235 -->
 <p class='noindent'>2018/02/21</p>
 <ul class='itemize2'>
 <li class='itemize'>added Aeneas domfilter</li>
 <li class='itemize'>fixed bugs in <span class='ec-lmtt-10'>joincharacters</span> DOM filter</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 2233 -->
+<li class='itemize'><!-- l. 2245 -->
 <p class='noindent'>2018/02/20</p>
 <ul class='itemize2'>
 <li class='itemize'>fixed bug in <span class='ec-lmtt-10'>joincharacters</span> DOM filter</li>
@@ -2950,42 +2942,42 @@ LaTeX&nbsp;conversion. It creates <span class='ec-lmtt-10'>\hypertarget</span> c
 <li class='itemize'>added documentation for <span class='ec-lmtt-10'>mathjaxnode</span> settings</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 2245 -->
+<li class='itemize'><!-- l. 2257 -->
 <p class='noindent'>2018/02/19</p>
 <ul class='itemize2'>
 <li class='itemize'>fixed bug in filter loading</li>
 <li class='itemize'>added <span class='ec-lmtt-10'>mathjaxnode</span> extension</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 2255 -->
+<li class='itemize'><!-- l. 2267 -->
 <p class='noindent'>2018/02/15</p>
 <ul class='itemize2'>
 <li class='itemize'>use HTML5 as a default format</li>
 <li class='itemize'>use <span class='ec-lmtt-10'>common_domfilters</span> implicitly for the XHTML and HTML5 formats</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 2266 -->
+<li class='itemize'><!-- l. 2278 -->
 <p class='noindent'>2018/02/12</p>
 <ul class='itemize2'>
 <li class='itemize'>added <span class='ec-lmtt-10'>common_domfilters</span> extension</li>
 <li class='itemize'>documented DOM filters</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 2276 -->
+<li class='itemize'><!-- l. 2288 -->
 <p class='noindent'>2018/02/12</p>
 <ul class='itemize2'>
 <li class='itemize'>handle XML parsing errors in the DOM handler</li>
 <li class='itemize'>enable extension loading in Formatters</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 2286 -->
+<li class='itemize'><!-- l. 2298 -->
 <p class='noindent'>2018/02/11</p>
 <ul class='itemize2'>
 <li class='itemize'>fixed Tidy extension output to support LuaXML</li>
 <li class='itemize'>fixed white space issues with <span class='ec-lmtt-10'>joincharacters</span> DOM filter</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 2296 -->
+<li class='itemize'><!-- l. 2308 -->
 <p class='noindent'>2018/02/09</p>
 <ul class='itemize2'>
 <li class='itemize'>fixed issues with the Mathjax filter</li>
@@ -2993,142 +2985,142 @@ LaTeX&nbsp;conversion. It creates <span class='ec-lmtt-10'>\hypertarget</span> c
 <li class='itemize'>DOM filter optimalizations</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 2308 -->
+<li class='itemize'><!-- l. 2320 -->
 <p class='noindent'>2018/02/08</p>
 <ul class='itemize2'>
 <li class='itemize'>make Tidy extension configurable</li>
 <li class='itemize'>documented filter settings</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 2318 -->
+<li class='itemize'><!-- l. 2330 -->
 <p class='noindent'>2018/02/07</p>
 <ul class='itemize2'>
 <li class='itemize'>added filter for Mathjax-node</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 2326 -->
+<li class='itemize'><!-- l. 2338 -->
 <p class='noindent'>2018/02/06</p>
 <ul class='itemize2'>
 <li class='itemize'>created DOM filter function</li>
 <li class='itemize'>added DOM filter for spurious inlinine elements</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 2336 -->
+<li class='itemize'><!-- l. 2348 -->
 <p class='noindent'>2018/02/03</p>
 <ul class='itemize2'>
 <li class='itemize'>added settings handling functions</li>
 <li class='itemize'>settings made available for extensions and filters</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 2346 -->
+<li class='itemize'><!-- l. 2358 -->
 <p class='noindent'>2017/12/08</p>
 <ul class='itemize2'>
 <li class='itemize'>fixed the <span class='ec-lmtt-10'>mk4</span> build file loading when it is placed in the current working dir and another one with same filename somewhere in the TEXMF tree.</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 2356 -->
+<li class='itemize'><!-- l. 2368 -->
 <p class='noindent'>2017/11/10</p>
 <ul class='itemize2'>
 <li class='itemize'>Added new filter: <span class='ec-lmtt-10'>svg-height</span>. It tries to fix height of some of the images produced by <span class='ec-lmtt-10'>dvisvgm</span></li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 2365 -->
+<li class='itemize'><!-- l. 2377 -->
 <p class='noindent'>2017/10/06</p>
 <ul class='itemize2'>
 <li class='itemize'>Added support for output format selection. Supported formats are <span class='ec-lmtt-10'>xhtml</span>, <span class='ec-lmtt-10'>html5</span> and <span class='ec-lmtt-10'>odt</span></li>
 <li class='itemize'>Added support for extensions</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 2376 -->
+<li class='itemize'><!-- l. 2388 -->
 <p class='noindent'>2017/09/10</p>
 <ul class='itemize2'>
 <li class='itemize'>Added support for Latexmk</li>
 <li class='itemize'>Added support of <span class='ec-lmtt-10'>math</span> library and <span class='ec-lmtt-10'>tonumber</span> function in the build files</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 2387 -->
+<li class='itemize'><!-- l. 2399 -->
 <p class='noindent'>2017/09/04</p>
 <ul class='itemize2'>
 <li class='itemize'>fixed bug caused by the previous change – the –help and –version didn’t work</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 2396 -->
+<li class='itemize'><!-- l. 2408 -->
 <p class='noindent'>2017/08/22</p>
 <ul class='itemize2'>
 <li class='itemize'>fixed the command line option parsing for <span class='ec-lmtt-10'>tex4ht</span>, <span class='ec-lmtt-10'>t4ht</span> and <span class='ec-lmtt-10'>latex</span> commands</li>
 <li class='itemize'>various grammar and factual fixes in the documentation</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 2407 -->
+<li class='itemize'><!-- l. 2419 -->
 <p class='noindent'>2017/04/26</p>
 <ul class='itemize2'>
 <li class='itemize'>Released version <span class='ec-lmtt-10'>v0.1c</span></li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 2415 -->
+<li class='itemize'><!-- l. 2427 -->
 <p class='noindent'>2017/03/16</p>
 <ul class='itemize2'>
 <li class='itemize'>check for <span class='ec-lmtt-10'>TeX&nbsp;capacity&nbsp;exceeded</span> error in the LaTeX&nbsp;run.</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 2423 -->
+<li class='itemize'><!-- l. 2435 -->
 <p class='noindent'>2016/12/19</p>
 <ul class='itemize2'>
 <li class='itemize'>use full input name in <span class='ec-lmtt-10'>tex_file</span> variable. This should enable use of files without <span class='ec-lmtt-10'>.tex</span> extension.</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 2432 -->
+<li class='itemize'><!-- l. 2444 -->
 <p class='noindent'>2016/10/22</p>
 <ul class='itemize2'>
 <li class='itemize'>new command available in the build file: <span class='ec-lmtt-10'>Make:add_file(filename)</span>. This enables filters and commands to register files to the output.</li>
 <li class='itemize'>use ipairs instead of pairs for traversing files and executing filters. This should ensure correct order of executions.</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 2445 -->
+<li class='itemize'><!-- l. 2457 -->
 <p class='noindent'>2016/10/18</p>
 <ul class='itemize2'>
 <li class='itemize'>new filter: replace colons in <span class='ec-lmtt-10'>id</span> and <span class='ec-lmtt-10'>href</span> attributes with underscores</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 2454 -->
+<li class='itemize'><!-- l. 2466 -->
 <p class='noindent'>2016/01/11</p>
 <ul class='itemize2'>
 <li class='itemize'>fixed bug in loading documents with full path specified</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 2462 -->
+<li class='itemize'><!-- l. 2474 -->
 <p class='noindent'>2015/12/06 version 0.1b</p>
 <ul class='itemize2'>
 <li class='itemize'>modifed lapp library to recognize <span class='ec-lmtt-10'>--version</span> and</li>
 <li class='itemize'>added <span class='ec-lmtt-10'>--help</span> and <span class='ec-lmtt-10'>--version</span> command line options</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 2473 -->
+<li class='itemize'><!-- l. 2485 -->
 <p class='noindent'>2015/11/30</p>
 <ul class='itemize2'>
 <li class='itemize'>use <span class='ec-lmtt-10'>kpse</span> library for build file locating</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 2481 -->
+<li class='itemize'><!-- l. 2493 -->
 <p class='noindent'>2015/11/17</p>
 <ul class='itemize2'>
 <li class='itemize'>better <span class='ec-lmtt-10'>-jobname</span> handling</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 2489 -->
+<li class='itemize'><!-- l. 2501 -->
 <p class='noindent'>2015/09/23 version 0.1a</p>
 <ul class='itemize2'>
 <li class='itemize'>various documentation updates</li>
 <li class='itemize'><span class='ec-lmtt-10'>mozhtf</span> profile for unicode output is used, this should prevent ligatures in the output files</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 2500 -->
+<li class='itemize'><!-- l. 2512 -->
 <p class='noindent'>2015/06/29 version 0.1</p>
 <ul class='itemize2'>
 <li class='itemize'>major README file update</li>
 </ul>
 </li>
-<li class='itemize'><!-- l. 2508 -->
+<li class='itemize'><!-- l. 2520 -->
 <p class='noindent'>2015/06/26</p>
 <ul class='itemize2'>
 <li class='itemize'>added Makefile</li>

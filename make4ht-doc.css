@@ -1,59 +1,14 @@
  
 /* start css.sty */
-.ec-lmr-17{font-size:170%;}
+.rm-lmr-17{font-size:170%;}
 .ec-lmtt-12x-x-144{font-size:172%; font-family: monospace,monospace;}
 .ec-lmtt-12x-x-144{ font-family: monospace,monospace;}
 .ec-lmtt-12x-x-144{ font-family: monospace,monospace;}
-.ec-lmtt-12x-x-144{ font-family: monospace,monospace;}
-.ec-lmtt-12x-x-144{ font-family: monospace,monospace;}
-.ec-lmtt-12x-x-144{ font-family: monospace,monospace;}
-.ec-lmtt-12x-x-144{ font-family: monospace,monospace;}
-.ec-lmtt-12x-x-144{ font-family: monospace,monospace;}
-.ec-lmtt-12x-x-144{ font-family: monospace,monospace;}
-.ec-lmr-12{font-size:120%;}
-.ec-lmtt-12{font-size:120%; font-family: monospace,monospace;}
-.ec-lmtt-12{ font-family: monospace,monospace;}
-.ec-lmtt-12{ font-family: monospace,monospace;}
-.ec-lmtt-12{ font-family: monospace,monospace;}
-.ec-lmtt-12{ font-family: monospace,monospace;}
-.ec-lmtt-12{ font-family: monospace,monospace;}
-.ec-lmtt-12{ font-family: monospace,monospace;}
-.ec-lmtt-12{ font-family: monospace,monospace;}
-.ec-lmtt-12{ font-family: monospace,monospace;}
+.rm-lmr-12{font-size:120%;}
 .ec-lmtt-10{ font-family: monospace,monospace;}
 .ec-lmtt-10{ font-family: monospace,monospace;}
 .ec-lmtt-10{ font-family: monospace,monospace;}
-.ec-lmtt-10{ font-family: monospace,monospace;}
-.ec-lmtt-10{ font-family: monospace,monospace;}
-.ec-lmtt-10{ font-family: monospace,monospace;}
-.ec-lmtt-10{ font-family: monospace,monospace;}
-.ec-lmtt-10{ font-family: monospace,monospace;}
-.ec-lmtt-10{ font-family: monospace,monospace;}
-.ec-lmtt-9{font-size:90%; font-family: monospace,monospace;}
-.ec-lmtt-9{ font-family: monospace,monospace;}
-.ec-lmtt-9{ font-family: monospace,monospace;}
-.ec-lmtt-9{ font-family: monospace,monospace;}
-.ec-lmtt-9{ font-family: monospace,monospace;}
-.ec-lmtt-9{ font-family: monospace,monospace;}
-.ec-lmtt-9{ font-family: monospace,monospace;}
-.ec-lmtt-9{ font-family: monospace,monospace;}
-.ec-lmtt-9{ font-family: monospace,monospace;}
-.ts1-lmtt9-{font-size:90%;}
-.ec-lmbx-10{ font-weight: bold;}
-.ec-lmbx-10{ font-weight: bold;}
-.ec-lmbx-10{ font-weight: bold;}
-.ec-lmbx-10{ font-weight: bold;}
-.ec-lmbx-10{ font-weight: bold;}
-.ec-lmbx-10{ font-weight: bold;}
-.ec-lmbx-10{ font-weight: bold;}
-.ec-lmbx-10{ font-weight: bold;}
-.ec-lmbx-10{ font-weight: bold;}
-.ec-lmtk-10{ font-family: monospace,monospace;}
-.ec-lmtk-10{ font-family: monospace,monospace;}
-.ec-lmtk-10{ font-family: monospace,monospace;}
-.ec-lmtk-10{ font-family: monospace,monospace;}
-.ec-lmtk-10{ font-family: monospace,monospace;}
-.ec-lmtk-10{ font-family: monospace,monospace;}
+.rm-lmbx-10{ font-weight: bold;}
 .ec-lmtk-10{ font-family: monospace,monospace;}
 .ec-lmtk-10{ font-family: monospace,monospace;}
 .ec-lmtk-10{ font-family: monospace,monospace;}
