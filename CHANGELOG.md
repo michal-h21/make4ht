@@ -1,5 +1,9 @@
 # Changelog
 
+- 2026/01/31
+
+  - remove `#` character from internal links in the JATS output (it needs to be here to distinguish internal and external links).
+
 - 2026/01/29
 
   - removed the `<script>` element from list of inline elements in the `fixinlines` DOM filter.

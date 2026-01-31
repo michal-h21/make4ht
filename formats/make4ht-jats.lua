@@ -79,6 +79,7 @@ local function xref_to_id(el)
   local parent = el:get_parent()
   -- set id only if it doesn't exist yet
   if parent:get_attribute("id") == nil then
+    print(parent:serialize())
     parent:set_attribute("id", el:get_attribute("id"))
     el:remove_node()
   end
@@ -103,6 +104,8 @@ local function handle_links(el, params)
     -- if the rest starts with #, then it is an internal link
     local local_link = link:gsub("^" .. params.input .. ".xml", "")
     if local_link:match("^%#") then
+      -- the rid attribute should not start with #, it must be the exact ID used in the linked element
+      local_link = local_link:gsub("^%#", "")
       el:set_attribute("rid", local_link)
     else
       -- change element to ext-link for extenal links
