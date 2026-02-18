@@ -5,6 +5,14 @@ local charclasses = {
   mn = true,
 }
 
+local safe_mathml_elements = {
+  math = true,
+  mrow = true,
+  mstyle = true,
+  mtext = true,
+  mtd = true,
+}
+
 local function update_mathvariant(curr)
   -- when we join several <mi> elements, they will be rendered incorrectly
   -- we must set the mathvariant attribute
@@ -56,6 +64,16 @@ local function join_characters(obj,par)
   local is_span = function(next_el)
     return charclasses[get_name(next_el)]
   end
+
+  local is_safe_mathml = function(el)
+    -- we want to join the <mn> element only when it is safe. for example <mfrac><mn>1</mn><mn>2</mn></mfrac> should be left
+    local current_name = get_name(el)
+    if current_name == "mn" then
+      local parent_name = get_name(el:get_parent())
+      return safe_mathml_elements[parent_name]
+    end
+    return true
+  end
   local has_children = function(curr)
     -- don't process spans that have child elements
     local children = curr:get_children() or {}
@@ -92,7 +110,7 @@ local function join_characters(obj,par)
   obj:traverse_elements(function(el)
     -- loop over all elements and test if the current element is in a list of
     -- processed elements (charclasses) and if it doesn't contain children
-    if is_span(el) and not has_children(el) then
+    if is_span(el) and not has_children(el) and is_safe_mathml(el) then
       local next_el = get_next(el)
       -- loop over the following elements and test whether they are of the same type
       -- as the current one
