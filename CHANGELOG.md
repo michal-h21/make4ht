@@ -1,5 +1,9 @@
 # Changelog
 
+- 2026/02/18
+
+  - consecutive `<mn>` elements in MathML are now merged only within parent elements whose meaning does not depend on the order of their child elements.
+
 - 2026/01/31
 
   - remove `#` character from internal links in the JATS output (it needs to be here to distinguish internal and external links).
