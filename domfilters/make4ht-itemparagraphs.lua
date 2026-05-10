@@ -8,11 +8,20 @@ return function(dom)
     -- remove the paragraph only if it is the only child element
     local el_count, par_count = 0, 0
     local par = {}
-    for _, el in ipairs(li._children) do
+    for pos, el in ipairs(li._children) do
       if el:is_element() then
         el_count = el_count + 1
-        if el:get_element_name() == "p" then
+        local name = el:get_element_name()
+        if name == "p" then
           par[#par+1] = el
+        elseif name == "a" and el_count == 1 and el:get_attribute("id") then
+          -- if the first element is <a> with id, we can move it to <li> and remove it from the list of children, this is needed for nested lists
+          el_count = el_count - 1
+          local id = el:get_attribute("id")
+          if not li:get_attribute("id") then
+            li:set_attribute("id", id)
+            el:remove_node()
+          end
         end
       end
     end

@@ -1,5 +1,9 @@
 # Changelog
 
+- 2026/05/10
+
+  - set anchor id in lists to the `<li>` element in the `itemparagraphs` DOM filter.
+
 - 2026/02/24
 
   - version `0.4e` released.
