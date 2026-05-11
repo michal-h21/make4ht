@@ -1,5 +1,11 @@
 # Changelog
 
+- 2026/05/11
+
+  - added new `mkutils` function, `escape_pattern`
+  - use `escape_pattern` to sanitize output file names
+    https://tex.stackexchange.com/q/762690/2891
+
 - 2026/05/10
 
   - set anchor id in lists to the `<li>` element in the `itemparagraphs` DOM filter.
