@@ -48,13 +48,14 @@ return function(dom)
   end
   local hline_hr = function(row)
     -- remove <hr> elements from "hline" rows
+    -- process only rows with the hline class
+    if row:get_attribute("class") ~= "hline" then return end
     for _, hr in ipairs(row:query_selector(".hline hr")) do
       hr:remove_node()
     end
   end
-  local longtable_last_row = function(tbl)
+  local longtable_last_row = function(rows)
     -- longtable contains last row of empty cells
-    local rows= tbl:query_selector("tr")
     local last_row = rows[#rows]
     if not last_row or last_row:get_attribute("class") == "hline" then return end
     for _, cell in ipairs(last_row:query_selector("td")) do
@@ -91,7 +92,7 @@ return function(dom)
       hline_hr(row)
     end
     if tbl:get_attribute("class") and tbl:get_attribute("class"):match("longtable") then
-      longtable_last_row(tbl)
+      longtable_last_row(rows)
     end
   end
   return dom
