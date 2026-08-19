@@ -368,8 +368,14 @@ function M.modify_build(make)
         exec_group(groups, "4og", function(par)
           -- add support for images in the TEXMF tree
           if not mkutils.file_exists(par.basename) then
-            par.basename = kpse.find_file(par.basename, "graphic/figure")
-            if not par.basename then return nil, "Cannot find picture" end
+            -- try to find the file in the directory with the original TeX file
+            local without_builddir = par.basename:gsub("^" .. mkutils.escape_pattern(make.params.builddir or "") .. "/", "")
+            if mkutils.file_exists(without_builddir) then
+              par.basename = without_builddir
+            else
+              par.basename = kpse.find_file(par.basename, "graphic/figure") or kpse.find_file(without_builddir, "graphic/figure")
+              if not par.basename then return nil, "Cannot find picture" end
+            end
           end
           -- the Pictues dir is flat, without subdirs
           odt:copy("${basename}" % par, "Pictures")

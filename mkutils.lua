@@ -320,6 +320,11 @@ local function run(untrusted_code, env)
   return pcall(untrusted_function)
 end
 
+function escape_pattern(str)
+  -- escape all magic characters in the string, so it can be used as a literal pattern
+  return (str:gsub("([%(%)%.%%%+%-%*%?%[%]%^%$])", "%%%1"))
+end
+
 local main_settings = {}
 main_settings.fonts = {}
 -- use global environment in the build file
