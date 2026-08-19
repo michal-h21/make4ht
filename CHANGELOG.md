@@ -1,5 +1,9 @@
 # Changelog
 
+- 2026/08/19
+
+  - Improved the performance of `tablerows` and `booktabs` DOM filters.
+
 - 2026/05/10
 
   - set anchor id in lists to the `<li>` element in the `itemparagraphs` DOM filter.
