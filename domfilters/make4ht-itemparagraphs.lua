@@ -19,8 +19,11 @@ return function(dom)
           el_count = el_count - 1
           local id = el:get_attribute("id")
           if not li:get_attribute("id") then
-            li:set_attribute("id", id)
-            el:remove_node()
+            if #el._children == 0 then
+              -- set the ID only if the <a> element doesn't have any children
+              li:set_attribute("id", id)
+              el:remove_node()
+            end
           end
         end
       end
