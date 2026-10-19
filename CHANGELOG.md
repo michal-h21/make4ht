@@ -3,6 +3,7 @@
 - 2026/10/18 
 
   - don't remove `<a>` elements that contain child elements in the `itemparagraphs` DOM filter.
+
 - 2026/08/19
 
   - Improved the performance of `tablerows` and `booktabs` DOM filters.
