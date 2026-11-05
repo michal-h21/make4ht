@@ -1,5 +1,10 @@
 # Changelog
 
+- 2026/11/05 
+
+  - use large numbers to avoid collision between index entry numbers and numbers used in the entry text.
+    https://github.com/michal-h21/make4ht/issues/191
+
 - 2026/10/18 
 
   - don't remove `<a>` elements that contain child elements in the `itemparagraphs` DOM filter.

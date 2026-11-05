@@ -58,6 +58,17 @@ local get_utf8 = function(input)
 	return output
 end
 
+local function get_large_number(content)
+  -- to avoid problems with numbers in index entries, we will find the largest 
+  -- number used in the index file and make each page number larger than this number.
+  -- this should avoid issues with regexes that process the index file
+  local max = 0
+  for number in content:gmatch("(%d+)") do
+    max = math.max(max, tonumber(number))
+  end
+  return max
+end
+
 
 -- parse the idx file produced by tex4ht
 -- it replaces the document page numbers by index entry number
@@ -66,7 +77,8 @@ end
 
 local parse_idx = function(content)
   -- index entry number
-  local current_entry = 0
+  local large_number = get_large_number(content)
+  local current_entry = large_number
   -- map between index entry number and corresponding HTML file and destination
   local map = {}
   local buffer = {}
@@ -79,7 +91,7 @@ local parse_idx = function(content)
       -- if the third argument to \beforeentry is not empty, 
       -- use it as a index entry locator instead of the index counter
       if locator and locator == "" then locator = nil end
-      map[current_entry] = {file = file, dest = dest, locator = locator}
+      map[current_entry] = {file = file, dest = dest, locator = locator, base = large_number}
     elseif line:match("^\\indexentry") then
       -- replace the page number with the current
       -- index entry number
@@ -108,7 +120,8 @@ local function replace_index_pages(rest, entries)
     local entry = entries[tonumber(page)]
     count = count + 1
     if entry then
-      page = entry.locator or page
+      -- page numbers have an offset by the largest number found in the index file, so we need to 
+      page = entry.locator or string.format("%i", (page - entry.base))
       if delete_coma then
         -- if the coma was marked for deletion, remove it. this may happen after line breaks in the index
         coma = ""
