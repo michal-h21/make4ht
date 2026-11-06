@@ -1,5 +1,10 @@
 # Changelog
 
+- 2026/11/06
+
+  - fixed build dir support for split indexes.
+    https://github.com/michal-h21/make4ht/issues/192
+
 - 2026/11/05 
 
   - use large numbers to avoid collision between index entry numbers and numbers used in the entry text.

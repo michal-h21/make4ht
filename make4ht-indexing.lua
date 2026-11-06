@@ -225,8 +225,12 @@ local get_idxname = function(par)
   return par.idxfile or par.input .. ".idx"
 end
 
-local prepare_tmp_idx = function(par)
-  par.idxfile = mkutils.file_in_builddir(get_idxname(par), par)
+local prepare_tmp_idx = function(par, nested)
+  if nested then
+    par.idxfile = get_idxname(par)
+  else
+    par.idxfile = mkutils.file_in_builddir(get_idxname(par), par)
+  end
   if not par.idxfile or not mkutils.file_exists(par.idxfile) then return nil, "Cannot load idx file " .. (par.idxfile or "''") end
   -- construct the .ind name, based on the .idx name
   par.indfile = par.indfile or par.idxfile:gsub("idx$", "ind")
@@ -245,13 +249,13 @@ local splitindex = function(par)
   local files = {}
   local idxfiles = {}
   local buffer 
-  local idxfile = get_idxname(par)
+  local idxfile = mkutils.file_in_builddir(get_idxname(par), par)
   if not idxfile or not mkutils.file_exists(idxfile) then return nil, "Cannot load idx file " .. (idxfile or "''") end
   for line in io.lines(idxfile) do
     local file = line:match("indexentry%[(.-)%]")
     if file then
       -- generate idx name for the current output file
-      file =  par.input .. "-" ..file .. ".idx"
+      file =  mkutils.file_in_builddir(par.input .. "-" ..file .. ".idx", par)
       local current = files[file] or {}
       -- remove file name from the index entry
       local indexentry = line:gsub("indexentry%[.-%]", "indexentry")
@@ -274,7 +278,7 @@ local splitindex = function(par)
   return idxfiles
 end
 
-local function run_indexing_command (command, par)
+local function run_indexing_command (command, par, nested)
   -- detect command name from the command. It will be the first word
   local cmd_name = command:match("^[%a]+") or "indexing"
   local xindylog  = logging.new(cmd_name)
@@ -287,11 +291,11 @@ local function run_indexing_command (command, par)
       local t = {}
       for k,v in pairs(par) do t[k] = v end
       t.idxfile = subindex
-      run_indexing_command(command, t)
+      run_indexing_command(command, t, true)
     end
     return nil
   end
-  local newidxfile, idxdata = prepare_tmp_idx(par)
+  local newidxfile, idxdata = prepare_tmp_idx(par, nested)
   if not newidxfile then
     -- the idxdata will contain error message in the case of error
     xindylog:warning(idxdata)
