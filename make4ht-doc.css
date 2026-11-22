@@ -155,6 +155,7 @@ p + figcaption, img + figcaption{margin-top: 1em;}
 .abstract{margin:1em;}
 .small-caps{font-variant: small-caps;}
 .textls{letter-spacing:0.05rem;}
+div.colorbox {width: fit-content; padding: 0.2em;}
 body{ font-size:18px; font-size-adjust: 0.5; width:65ch; max-width:100%; margin: 1em auto; }
 p,li,dt{ line-height: calc(1ex / 0.32); text-align: justify; hyphens: auto; }
 div.center p {text-align:center;}
