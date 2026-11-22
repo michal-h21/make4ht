@@ -58,6 +58,17 @@ local get_utf8 = function(input)
 	return output
 end
 
+local function get_large_number(content)
+  -- to avoid problems with numbers in index entries, we will find the largest 
+  -- number used in the index file and make each page number larger than this number.
+  -- this should avoid issues with regexes that process the index file
+  local max = 0
+  for number in content:gmatch("(%d+)") do
+    max = math.max(max, tonumber(number))
+  end
+  return max
+end
+
 
 -- parse the idx file produced by tex4ht
 -- it replaces the document page numbers by index entry number
@@ -66,7 +77,8 @@ end
 
 local parse_idx = function(content)
   -- index entry number
-  local current_entry = 0
+  local large_number = get_large_number(content)
+  local current_entry = large_number
   -- map between index entry number and corresponding HTML file and destination
   local map = {}
   local buffer = {}
@@ -79,7 +91,7 @@ local parse_idx = function(content)
       -- if the third argument to \beforeentry is not empty, 
       -- use it as a index entry locator instead of the index counter
       if locator and locator == "" then locator = nil end
-      map[current_entry] = {file = file, dest = dest, locator = locator}
+      map[current_entry] = {file = file, dest = dest, locator = locator, base = large_number}
     elseif line:match("^\\indexentry") then
       -- replace the page number with the current
       -- index entry number
@@ -108,7 +120,8 @@ local function replace_index_pages(rest, entries)
     local entry = entries[tonumber(page)]
     count = count + 1
     if entry then
-      page = entry.locator or page
+      -- page numbers have an offset by the largest number found in the index file, so we need to 
+      page = entry.locator or string.format("%i", (page - entry.base))
       if delete_coma then
         -- if the coma was marked for deletion, remove it. this may happen after line breaks in the index
         coma = ""
@@ -212,8 +225,12 @@ local get_idxname = function(par)
   return par.idxfile or par.input .. ".idx"
 end
 
-local prepare_tmp_idx = function(par)
-  par.idxfile = mkutils.file_in_builddir(get_idxname(par), par)
+local prepare_tmp_idx = function(par, nested)
+  if nested then
+    par.idxfile = get_idxname(par)
+  else
+    par.idxfile = mkutils.file_in_builddir(get_idxname(par), par)
+  end
   if not par.idxfile or not mkutils.file_exists(par.idxfile) then return nil, "Cannot load idx file " .. (par.idxfile or "''") end
   -- construct the .ind name, based on the .idx name
   par.indfile = par.indfile or par.idxfile:gsub("idx$", "ind")
@@ -232,13 +249,13 @@ local splitindex = function(par)
   local files = {}
   local idxfiles = {}
   local buffer 
-  local idxfile = get_idxname(par)
+  local idxfile = mkutils.file_in_builddir(get_idxname(par), par)
   if not idxfile or not mkutils.file_exists(idxfile) then return nil, "Cannot load idx file " .. (idxfile or "''") end
   for line in io.lines(idxfile) do
     local file = line:match("indexentry%[(.-)%]")
     if file then
       -- generate idx name for the current output file
-      file =  par.input .. "-" ..file .. ".idx"
+      file =  mkutils.file_in_builddir(par.input .. "-" ..file .. ".idx", par)
       local current = files[file] or {}
       -- remove file name from the index entry
       local indexentry = line:gsub("indexentry%[.-%]", "indexentry")
@@ -261,7 +278,7 @@ local splitindex = function(par)
   return idxfiles
 end
 
-local function run_indexing_command (command, par)
+local function run_indexing_command (command, par, nested)
   -- detect command name from the command. It will be the first word
   local cmd_name = command:match("^[%a]+") or "indexing"
   local xindylog  = logging.new(cmd_name)
@@ -274,11 +291,11 @@ local function run_indexing_command (command, par)
       local t = {}
       for k,v in pairs(par) do t[k] = v end
       t.idxfile = subindex
-      run_indexing_command(command, t)
+      run_indexing_command(command, t, true)
     end
     return nil
   end
-  local newidxfile, idxdata = prepare_tmp_idx(par)
+  local newidxfile, idxdata = prepare_tmp_idx(par, nested)
   if not newidxfile then
     -- the idxdata will contain error message in the case of error
     xindylog:warning(idxdata)
