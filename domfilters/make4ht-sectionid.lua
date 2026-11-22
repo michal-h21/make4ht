@@ -87,25 +87,41 @@ local used = {}
 
 local function parse_toc(filename)
   local toc = {}
-  if not mkutils.file_exists(filename) then return nil, "Cannot open TOC file "  .. filename end
+  if not mkutils.file_exists(filename) then
+    return nil, "Cannot open TOC file " .. filename
+  end
+
+  local counters = {}
+
   for line in io.lines(filename) do
     local id, name = parse_toc_line(line)
+
     -- if section name doesn't contain any text, it would lead to id which contains only number
     -- this is invalid in HTML
     if name == "" then name = "_" end
+
     local orig_name = name
+
     -- not all lines in the .4tc file contains TOC entries
     if id then
-      -- test if the same name was used already. user should be notified
       if used[name] then
-        -- update 
-        name = name .. used[name]
-        log:debug("Duplicate id found: ".. orig_name .. ". New id: " .. name)
+
+        -- find an unused ID
+        local counter = (counters[orig_name] or 0) + 1
+        repeat
+          name = orig_name .. counter
+          counter = counter + 1
+        until not used[name]
+
+        counters[orig_name] = counter - 1
+        log:debug("New id: " .. name)
       end
-      used[orig_name] = (used[orig_name] or 0) + 1
+
+      used[name] = true
       toc[id] = name
     end
   end
+
   return toc
 end
 

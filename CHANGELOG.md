@@ -1,5 +1,10 @@
 # Changelog
 
+- 2026/11/22
+
+  - fixed duplicate HTML IDs when generated section IDs collide with IDs of other headings
+    https://github.com/michal-h21/make4ht/issues/194
+
 - 2026/10/18 
 
   - don't remove `<a>` elements that contain child elements in the `itemparagraphs` DOM filter.
