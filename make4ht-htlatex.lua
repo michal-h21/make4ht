@@ -54,7 +54,9 @@ Make.latex_command = "${htlatex} --interaction=${interaction} ${build_dir_arg} $
 "\\HCode\\expandafter\\def\\csname tex4ht\\endcsname{#1,html}\\def"..
 "\\HCode####1{\\documentstyle[tex4ht,}\\@ifnextchar[{\\HCode}{"..
 "\\documentstyle[tex4ht]}}\\RequirePackage[#1,html]{tex4ht}${packages}}\\makeatother\\HCode ${tex4ht_sty_par}.a.b.c."..
-"\\input \"\\detokenize{${tex_file}}\"'"
+"\\input {${tex_file}}'"
+-- we used to use \detokenize to support accented filenames, but it seems that it isn't necessary anymore
+-- "\\input \"\\detokenize{${tex_file}}\"'" 
 
 Make.plain_command = '${htlatex} --interaction=${interaction} ${build_dir_arg} ${latex_par}' ..
 "'\\def\\Link#1.a.b.c.{\\expandafter\\def\\csname tex4ht\\endcsname{\\expandafter\\def\\csname tex4ht\\endcsname{#1,html}\\input tex4ht.sty }}" ..

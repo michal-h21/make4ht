@@ -1,5 +1,9 @@
 # Changelog
 
+- 2026/11/23
+
+  - changed the filename escaping in `make4ht-htlatex.lua`, we don't need `\detokenize` anymore.
+
 - 2026/11/22
 
   - fixed duplicate HTML IDs when generated section IDs collide with IDs of other headings
