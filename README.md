@@ -178,6 +178,14 @@ cross-references work. It can save quite a lot of the compilation time:
 
     $ make4ht -um draft filename.tex
 
+The `fast` mode uses `tenkana` to speed up repeated LaTeX builds. It creates
+snapshots of the \TeX\ engine before `\begin{document}` and before each `\include`,
+allowing subsequent builds to resume from the last snapshot preceding a change.
+This avoids reprocessing the preamble, loading packages, fonts, \TeX4ht configuration files and
+processing unchanged chapters. As a result, only the parts of the document
+affected by an edit need to be rebuilt, significantly reducing compilation
+time.
+
 Another buil-in mode is `clean`. It executes the `Make:clean()` command to
 remove all generated and temporary files from the current directory. 
 No \LaTeX\ compilation happens in this mode. 

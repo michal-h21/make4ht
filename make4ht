@@ -84,6 +84,10 @@ if make:length() < 1 then
   elseif mode == "clean" then
     make:clean()
     make.no_dvi_process = true
+  elseif mode == "fast" then
+    -- tenkana is a tool which makes a snapshot of latex run and then it can be used to run latex multiple times without recompiling the whole document
+    local tenkana = "tenkana " ..  parameters.htlatex
+    make:autohtlatex {htlatex = tenkana}
 	else
     -- automatically detect and execute number of necessary compilations by default
     make:autohtlatex()

@@ -2,6 +2,7 @@
 
 - 2026/11/23
 
+  - added `fast` mode.
   - changed the filename escaping in `make4ht-htlatex.lua`, we don't need `\detokenize` anymore.
 
 - 2026/11/22
